@@ -1,0 +1,14 @@
+{
+  "agent": "claude-opus",
+  "task": "atomic-write",
+  "intent": "claim 레코드 쓰기를 원자적으로 만든다 (임시파일+rename), 장부에 임시파일이 스테이징되지 않게 한다",
+  "actor": null,
+  "since": "2026-08-25T01:08:05.966Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bin/axmap.mjs",
+    "docs/SPEC.md",
+    "test/cli.test.mjs",
+    "tools/bus.mjs"
+  ]
+}
