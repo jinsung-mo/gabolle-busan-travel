@@ -3,7 +3,7 @@
   "task": "restructure",
   "intent": "axMap 을 axmap/ 하위로 내리고 루트를 팀 프로젝트 자리로 비운다",
   "actor": null,
-  "since": "2026-08-25T06:29:56.238Z",
+  "since": "2026-08-25T06:30:28.585Z",
   "ttlMs": 3600000,
   "paths": [
     ".claude",
