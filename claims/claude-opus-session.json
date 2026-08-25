@@ -1,0 +1,16 @@
+{
+  "agent": "claude-opus-session",
+  "task": "handover",
+  "intent": "브랜치 단계 판정 수정 + 정책 파일 + 인수인계 문서",
+  "actor": null,
+  "since": "2026-08-25T08:08:13.552Z",
+  "ttlMs": 5400000,
+  "paths": [
+    "CLAUDE.md",
+    "axmap/docs/VERSIONING.md",
+    "axmap/governance",
+    "axmap/src/version.mjs",
+    "axmap/test/version.test.mjs",
+    "docs"
+  ]
+}
