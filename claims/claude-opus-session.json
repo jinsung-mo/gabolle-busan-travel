@@ -1,11 +1,14 @@
 {
   "agent": "claude-opus-session",
   "task": "team-maintainer",
-  "intent": "0.0절 권한 표를 Maintainer 승격에 맞춰 고친다",
+  "intent": "MCP 를 남의 저장소에 붙일 때 깨지던 셋을 고친다 (bus 경로·init 도구·brief 대상)",
   "actor": null,
-  "since": "2026-08-25T03:36:55.250Z",
-  "ttlMs": 2700000,
+  "since": "2026-08-25T04:24:26.225Z",
+  "ttlMs": 1800000,
   "paths": [
-    "CLAUDE.md"
+    "docs/SPEC.md",
+    "mcp/README.md",
+    "mcp/server.mjs",
+    "test"
   ]
 }
