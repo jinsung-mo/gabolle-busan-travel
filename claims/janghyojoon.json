@@ -1,0 +1,11 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-axmap",
+  "intent": "관문1 원격 push 연결 확인 — 편집하지 않고 즉시 반납합니다",
+  "actor": null,
+  "since": "2026-08-25T08:54:16.860Z",
+  "ttlMs": 300000,
+  "paths": [
+    "axmap/docs/DECISIONS.md"
+  ]
+}
