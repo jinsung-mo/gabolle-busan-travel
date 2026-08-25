@@ -1,13 +1,16 @@
 {
   "agent": "claude-opus-session",
-  "task": "remote-name",
-  "intent": "장부 원격 이름을 설정으로 뽑는다 — origin 하드코딩 제거 (d)",
+  "task": "blastmap-scrub",
+  "intent": "BLASTMAP_* 한시 호환을 걷어낸다 — 팀 배포 전에 옛 이름을 남기지 않는다",
   "actor": null,
-  "since": "2026-08-25T05:14:25.149Z",
+  "since": "2026-08-25T05:21:23.282Z",
   "ttlMs": 5400000,
   "paths": [
+    "app",
     "bin/axmap.mjs",
+    "corpus",
     "docs/SPEC.md",
+    "mcp",
     "test"
   ]
 }
