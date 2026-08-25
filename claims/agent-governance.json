@@ -1,11 +1,12 @@
 {
   "agent": "agent-governance",
   "task": "governance",
-  "intent": "합의제 MR 1·2단계 — 문서와 순수 판정",
+  "intent": "D18 추가로 낡은 목차 한 줄 갱신",
   "actor": null,
-  "since": "2026-08-25T06:59:44.996Z",
-  "ttlMs": 7200000,
+  "since": "2026-08-25T07:17:53.109Z",
+  "ttlMs": 1800000,
   "paths": [
+    "axmap/CLAUDE.md",
     "axmap/docs/DECISIONS.md",
     "axmap/governance",
     "axmap/src",
