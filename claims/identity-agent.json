@@ -1,11 +1,13 @@
 {
   "agent": "identity-agent",
   "task": "session-identity",
-  "intent": "세션마다 고유 AXMAP_AGENT + 장부 git lock 재시도",
+  "intent": "I7 추가에 따른 불변식 범위 갱신",
   "actor": null,
-  "since": "2026-08-25T01:22:34.952Z",
-  "ttlMs": 5400000,
+  "since": "2026-08-25T01:23:47.424Z",
+  "ttlMs": 1800000,
   "paths": [
+    "CLAUDE.md",
+    "README.md",
     "app/lib/session.mjs",
     "app/lib/slots.mjs",
     "bin/axmap.mjs",
