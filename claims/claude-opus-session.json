@@ -1,14 +1,15 @@
 {
   "agent": "claude-opus-session",
   "task": "team-maintainer",
-  "intent": "MCP 를 남의 저장소에 붙일 때 깨지던 셋을 고친다 (bus 경로·init 도구·brief 대상)",
+  "intent": "쪽지함 위치를 대상 저장소 기준으로 열어준다 (MCP 가 남의 저장소에 붙을 때)",
   "actor": null,
-  "since": "2026-08-25T04:24:26.225Z",
+  "since": "2026-08-25T04:25:55.716Z",
   "ttlMs": 1800000,
   "paths": [
     "docs/SPEC.md",
     "mcp/README.md",
     "mcp/server.mjs",
-    "test"
+    "test",
+    "tools/bus.mjs"
   ]
 }
