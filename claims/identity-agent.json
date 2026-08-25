@@ -1,0 +1,19 @@
+{
+  "agent": "identity-agent",
+  "task": "session-identity",
+  "intent": "세션마다 고유 AXMAP_AGENT + 장부 git lock 재시도",
+  "actor": null,
+  "since": "2026-08-25T01:22:34.952Z",
+  "ttlMs": 5400000,
+  "paths": [
+    "app/lib/session.mjs",
+    "app/lib/slots.mjs",
+    "bin/axmap.mjs",
+    "docs/INVARIANTS.md",
+    "mcp/server.mjs",
+    "src/invariants.mjs",
+    "test/ledgerlock.test.mjs",
+    "test/session-identity.test.mjs",
+    "test/slots.test.mjs"
+  ]
+}
