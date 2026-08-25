@@ -1,10 +1,10 @@
 {
   "agent": "identity-agent",
   "task": "session-identity",
-  "intent": "I7 추가에 따른 불변식 범위 갱신",
+  "intent": "장부 lock 재시도와 세션 슬롯 레지스트리를 규격에 적는다",
   "actor": null,
-  "since": "2026-08-25T01:23:47.424Z",
-  "ttlMs": 1800000,
+  "since": "2026-08-25T01:34:35.675Z",
+  "ttlMs": 5400000,
   "paths": [
     "CLAUDE.md",
     "README.md",
@@ -12,6 +12,7 @@
     "app/lib/slots.mjs",
     "bin/axmap.mjs",
     "docs/INVARIANTS.md",
+    "docs/SPEC.md",
     "mcp/server.mjs",
     "src/invariants.mjs",
     "test/ledgerlock.test.mjs",
