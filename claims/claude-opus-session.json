@@ -1,0 +1,11 @@
+{
+  "agent": "claude-opus-session",
+  "task": "team-maintainer",
+  "intent": "0.0절 권한 표를 Maintainer 승격에 맞춰 고친다",
+  "actor": null,
+  "since": "2026-08-25T03:31:03.952Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "CLAUDE.md"
+  ]
+}
