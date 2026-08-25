@@ -1,16 +1,20 @@
 {
   "agent": "claude-opus-session",
-  "task": "blastmap-scrub",
-  "intent": "BLASTMAP_* 한시 호환을 걷어낸다 — 팀 배포 전에 옛 이름을 남기지 않는다",
+  "task": "versioning",
+  "intent": "브랜치 단계에 따라 버전을 올리는 자동화 (main/func/dev)",
   "actor": null,
-  "since": "2026-08-25T05:21:23.282Z",
+  "since": "2026-08-25T05:25:02.641Z",
   "ttlMs": 5400000,
   "paths": [
+    ".gitlab-ci.yml",
     "app",
     "bin/axmap.mjs",
     "corpus",
     "docs/SPEC.md",
+    "docs/VERSIONING.md",
     "mcp",
-    "test"
+    "src",
+    "test",
+    "tools"
   ]
 }
