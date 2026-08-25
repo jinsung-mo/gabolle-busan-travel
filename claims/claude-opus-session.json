@@ -1,9 +1,9 @@
 {
   "agent": "claude-opus-session",
   "task": "versioning",
-  "intent": "브랜치 단계에 따라 버전을 올리는 자동화 (main/func/dev)",
+  "intent": "clone 뒤 한 번 도는 설치 스크립트",
   "actor": null,
-  "since": "2026-08-25T05:25:02.641Z",
+  "since": "2026-08-25T05:29:25.314Z",
   "ttlMs": 5400000,
   "paths": [
     ".gitlab-ci.yml",
@@ -13,6 +13,8 @@
     "docs/SPEC.md",
     "docs/VERSIONING.md",
     "mcp",
+    "setup.ps1",
+    "setup.sh",
     "src",
     "test",
     "tools"
