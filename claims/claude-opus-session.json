@@ -1,0 +1,11 @@
+{
+  "agent": "claude-opus-session",
+  "task": "blastmap-scrub",
+  "intent": "쪽지함 없는 저장소에서도 도는 테스트",
+  "actor": null,
+  "since": "2026-08-25T05:38:39.072Z",
+  "ttlMs": 3600000,
+  "paths": [
+    "test"
+  ]
+}
