@@ -1,14 +1,15 @@
 {
   "agent": "agent-multicli",
   "task": "multi-cli",
-  "intent": "Antigravity 워크스페이스 MCP 설정",
+  "intent": "AI CLI 감지 후 MCP 자동 등록",
   "actor": null,
-  "since": "2026-08-25T06:50:29.604Z",
+  "since": "2026-08-25T06:56:03.492Z",
   "ttlMs": 5400000,
   "paths": [
     ".agents",
     "README.md",
     "axmap/mcp/README.md",
+    "axmap/tools/mcp-register.mjs",
     "docs",
     "setup.ps1",
     "setup.sh"
