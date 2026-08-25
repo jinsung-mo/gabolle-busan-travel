@@ -1,0 +1,14 @@
+{
+  "agent": "agent-governance",
+  "task": "governance",
+  "intent": "합의제 MR 1·2단계 — 문서와 순수 판정",
+  "actor": null,
+  "since": "2026-08-25T06:59:44.996Z",
+  "ttlMs": 7200000,
+  "paths": [
+    "axmap/docs/DECISIONS.md",
+    "axmap/governance",
+    "axmap/src",
+    "axmap/test"
+  ]
+}
