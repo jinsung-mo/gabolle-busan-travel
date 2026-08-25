@@ -1,11 +1,12 @@
 {
   "agent": "claude-opus-session",
   "task": "team-maintainer",
-  "intent": "쪽지함 위치를 대상 저장소 기준으로 열어준다 (MCP 가 남의 저장소에 붙을 때)",
+  "intent": "0.0절 Maintainer 승격 반영 커밋",
   "actor": null,
-  "since": "2026-08-25T04:25:55.716Z",
+  "since": "2026-08-25T04:32:47.405Z",
   "ttlMs": 1800000,
   "paths": [
+    "CLAUDE.md",
     "docs/SPEC.md",
     "mcp/README.md",
     "mcp/server.mjs",
