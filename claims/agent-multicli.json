@@ -1,11 +1,12 @@
 {
   "agent": "agent-multicli",
   "task": "multi-cli",
-  "intent": "Codex·Antigravity 용 MCP 등록과 안내",
+  "intent": "Antigravity 워크스페이스 MCP 설정",
   "actor": null,
-  "since": "2026-08-25T06:47:32.086Z",
+  "since": "2026-08-25T06:50:29.604Z",
   "ttlMs": 5400000,
   "paths": [
+    ".agents",
     "README.md",
     "axmap/mcp/README.md",
     "docs",
