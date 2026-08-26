@@ -6,14 +6,7 @@
   "since": "2026-08-26T05:37:09.888Z",
   "ttlMs": 2700000,
   "paths": [
-    ".editorconfig",
-    ".gitignore",
-    ".gitlab",
     ".gitlab-ci.yml",
-    "README.md",
-    "axmap/app/lib/usage.mjs",
-    "axmap/app/server.mjs",
-    "axmap/app/web",
     "axmap/governance/GOVERNANCE.md",
     "axmap/governance/gate.mjs",
     "axmap/governance/policy.json",
@@ -23,13 +16,9 @@
     "axmap/test/closure.test.mjs",
     "axmap/test/gate.test.mjs",
     "axmap/test/governance.test.mjs",
-    "axmap/test/usage.test.mjs",
     "axmap/tools/vendor.mjs",
-    "backend",
     "ci",
-    "docs",
     "docs/HANDOVER.md",
-    "frontend",
     "governance"
   ]
 }
