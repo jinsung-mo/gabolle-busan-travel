@@ -1,14 +1,16 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-4",
-  "intent": "CI/CD 인수인계 문서 — 러너·버전 자동화·봇 토큰·도커 (박재현 님용)",
+  "intent": "대상 저장소 따라가기 결정을 D19 로 남기고 인수인계 문서의 미결정 목록을 갱신한다",
   "actor": "agent",
-  "since": "2026-08-26T00:38:16.775Z",
+  "since": "2026-08-26T00:45:28.609Z",
   "ttlMs": 2700000,
   "paths": [
     "axmap/desktop/main.mjs",
+    "axmap/docs/DECISIONS.md",
     "axmap/mcp/server.mjs",
     "axmap/src/repotarget.mjs",
-    "axmap/test/mcp.test.mjs"
+    "axmap/test/mcp.test.mjs",
+    "docs/HANDOVER.md"
   ]
 }
