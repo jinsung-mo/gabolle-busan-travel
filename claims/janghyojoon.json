@@ -1,14 +1,22 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-CI",
-  "intent": "CI 가 쓰는 axMap 도구를 ci/axmap 으로 벤더링 + 드리프트 검사",
+  "intent": "정책 파일 자리를 팀 저장소 기준으로 옮기고 경로를 설정 가능하게 — 분리 전 필수",
   "actor": "agent",
-  "since": "2026-08-26T04:50:27.670Z",
+  "since": "2026-08-26T05:05:33.731Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitlab-ci.yml",
+    "axmap/governance/GOVERNANCE.md",
+    "axmap/governance/gate.mjs",
+    "axmap/governance/policy.json",
+    "axmap/governance/vote.mjs",
+    "axmap/src/governance.mjs",
     "axmap/test/closure.test.mjs",
+    "axmap/test/gate.test.mjs",
+    "axmap/test/governance.test.mjs",
     "axmap/tools/vendor.mjs",
-    "ci"
+    "ci",
+    "governance"
   ]
 }
