@@ -1,0 +1,19 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-CI",
+  "intent": "MR 대상 제한 잡 · 정족수 게이트 · docs/CI.md · CLAUDE.md 항목기호 금지 규칙",
+  "actor": "agent",
+  "since": "2026-08-26T01:02:19.139Z",
+  "ttlMs": 2700000,
+  "paths": [
+    ".gitlab-ci.yml",
+    "CLAUDE.md",
+    "axmap/governance/gate.mjs",
+    "axmap/governance/vote.mjs",
+    "axmap/src/mrtarget.mjs",
+    "axmap/test/gate.test.mjs",
+    "axmap/test/mrtarget.test.mjs",
+    "axmap/tools/mr-target.mjs",
+    "docs/CI.md"
+  ]
+}
