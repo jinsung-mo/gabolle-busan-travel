@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-4",
+  "intent": "요금제 사용률을 관측 추정 대신 CLI 가 캐시한 실제 값에서 읽는다",
+  "actor": null,
+  "since": "2026-08-26T03:24:01.615Z",
+  "ttlMs": 3600000,
+  "paths": [
+    "axmap/app/lib/usage.mjs",
+    "axmap/app/web/shell.js",
+    "axmap/test/usage.test.mjs"
+  ]
+}
