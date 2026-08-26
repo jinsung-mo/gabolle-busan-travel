@@ -1,11 +1,12 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-15",
-  "intent": "ref 폴더 신설(MR·CI 예외) + 투표권자 확장 준비",
+  "intent": "bus.mjs 벤더 누락·setup 죽은 호출·슬래시 명령 복구",
   "actor": "agent",
-  "since": "2026-08-26T08:10:38.000Z",
+  "since": "2026-08-26T08:23:34.364Z",
   "ttlMs": 1800000,
   "paths": [
+    ".claude",
     ".gitlab-ci.yml",
     ".mcp.json",
     "CLAUDE.md",
