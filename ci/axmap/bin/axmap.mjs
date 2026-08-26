@@ -390,9 +390,16 @@ function unreadNotes(root, me) {
  *    읽는 방법을 틀리게 알려주는 것이라, 받은 사람은 도구가 고장 났다고 결론짓는다.
  */
 function busReadHint(me) {
-  const bus = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'tools', 'bus.mjs')
-  const rel = path.relative(process.cwd(), bus).replace(/\\/g, '/')
-  return `node ${rel.startsWith('.') ? rel : './' + rel} list --to ${me}`
+  const abs = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'tools', 'bus.mjs')
+  const rel = path.relative(process.cwd(), abs).replace(/\\/g, '/')
+  // 🔴 상대경로가 늘 짧은 것은 아니다. 도구가 대상 저장소 **밖**에 있으면
+  //    (전역 설치, 다른 드라이브) `../../../../../..` 가 줄줄이 붙어 사람이 읽을
+  //    수 없는 문자열이 된다. 실제로 그렇게 나왔다. 둘 중 짧은 쪽을 쓴다 —
+  //    안내는 맞기만 해서는 부족하고 **칠 수 있어야** 한다.
+  const use = rel.startsWith('..' + path.posix.sep + '..') || rel.length >= abs.length
+    ? abs.replace(/\\/g, '/')
+    : (rel.startsWith('.') ? rel : './' + rel)
+  return `node ${use} list --to ${me}`
 }
 
 /** claim·status 끝에 붙이는 알림. 없으면 아무것도 안 찍는다. */
