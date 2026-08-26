@@ -8,18 +8,12 @@
   "paths": [
     ".gitlab-ci.yml",
     "CLAUDE.md",
-    "axmap/desktop/main.mjs",
-    "axmap/docs/DECISIONS.md",
     "axmap/governance/gate.mjs",
     "axmap/governance/vote.mjs",
-    "axmap/mcp/server.mjs",
     "axmap/src/mrtarget.mjs",
-    "axmap/src/repotarget.mjs",
     "axmap/test/gate.test.mjs",
-    "axmap/test/mcp.test.mjs",
     "axmap/test/mrtarget.test.mjs",
     "axmap/tools/mr-target.mjs",
-    "docs/CI.md",
-    "docs/HANDOVER.md"
+    "docs/CI.md"
   ]
 }
