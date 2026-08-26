@@ -325,6 +325,20 @@ function unreadNotes(root, me) {
   return out
 }
 
+/**
+ * 쪽지를 읽는 명령. **경로를 문자열로 적지 않고 계산한다.**
+ *
+ * 🔴 `node tools/bus.mjs …` 라고 적혀 있었다. 이 저장소에서는 맞고 **사본에서는
+ *    틀린다** — 팀 저장소에 벤더링되면 그 파일은 `ci/axmap/tools/bus.mjs` 다.
+ *    안내대로 치면 `MODULE_NOT_FOUND` 가 난다. 알림이 "쪽지가 있다" 고 말한 직후에
+ *    읽는 방법을 틀리게 알려주는 것이라, 받은 사람은 도구가 고장 났다고 결론짓는다.
+ */
+function busReadHint(me) {
+  const bus = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'tools', 'bus.mjs')
+  const rel = path.relative(process.cwd(), bus).replace(/\\/g, '/')
+  return `node ${rel.startsWith('.') ? rel : './' + rel} list --to ${me}`
+}
+
 /** claim·status 끝에 붙이는 알림. 없으면 아무것도 안 찍는다. */
 function printUnread(root, me) {
   let notes = []
@@ -333,7 +347,7 @@ function printUnread(root, me) {
   console.log('\n  안 읽은 쪽지 ' + notes.length + '건')
   for (const n of notes.slice(0, 3)) console.log('     ' + n.from + ' — ' + n.subject)
   if (notes.length > 3) console.log('     … 그 밖에 ' + (notes.length - 3) + '건')
-  console.log('     읽기: node tools/bus.mjs list --to ' + me)
+  console.log('     읽기: ' + busReadHint(me) + '   (AI 도구를 쓰면 ax_inbox)')
 }
 
 function repoRoot() {

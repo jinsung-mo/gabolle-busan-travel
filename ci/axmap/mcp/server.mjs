@@ -642,7 +642,20 @@ function dispatch(name, args = {}) {
       }
     }
     case 'ax_inbox': {
-      const a = args.id ? ['read', String(args.id)] : ['list', ...(args.all ? ['--all'] : ['--to', ACTOR])]
+      // 🔴 받는 사람은 `AGENT` 다. `ACTOR` 가 아니다.
+      //
+      //    둘 다 문자열이라 자리를 바꿔 넣어도 아무도 못 막는다. 그런데 뜻이 다르다 —
+      //    `AGENT` 는 **장부에 적히는 이름**(git config user.name, 예: `bob`)이고
+      //    `ACTOR` 는 `.mcp.json` 이 넣는 **역할**(`agent`)이다. 사람 이름이 아니다.
+      //
+      //    여기에 `ACTOR` 가 들어가 있어서 서버는 `--to agent` 를 물었고, 그런 이름의
+      //    수신자는 없으므로 **어떤 쪽지도 찾지 못했다.** 2026-08-26 팀 저장소에서
+      //    실제 팀원 쪽지가 이 버그로 묻혀 있었다.
+      //
+      //    보내기는 멀쩡했던 것이 이 버그를 오래 살렸다 — `ax_send` 는 `AGENT` 를
+      //    넘긴다. 보낸 쪽은 성공을 보고 받는 쪽은 "쪽지 없음" 을 본다. 양쪽 다
+      //    오류가 없으므로 아무도 실패를 보지 못한다.
+      const a = args.id ? ['read', String(args.id)] : ['list', ...(args.all ? ['--all'] : ['--to', AGENT])]
       const r = bus(a)
       return {
         ok: r.code === 0,

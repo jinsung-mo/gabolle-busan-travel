@@ -34,20 +34,48 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+/** **이 프로그램**의 뿌리. 데이터가 아니라 코드를 찾을 때만 쓴다 (`who` 의 axmap.mjs). */
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 
+/** 지금 서 있는 폴더가 속한 **대상 저장소**의 루트. git 이 없거나 밖이면 null. */
+function targetRepo() {
+  try {
+    return execFileSync('git', ['rev-parse', '--show-toplevel'], {
+      cwd: process.cwd(), encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim()
+  } catch { return null }
+}
+
 /**
- * 쪽지가 쌓이는 곳. **기본값은 이 저장소지만 `AXMAP_BUS_DIR` 로 옮길 수 있다.**
+ * 쪽지가 쌓이는 곳. **기본값은 대상 저장소이고 `AXMAP_BUS_DIR` 로 옮길 수 있다.**
  *
  * 🔴 프로그램은 여기(axMap)에 있고 데이터는 대상 저장소에 있어야 한다.
  *    MCP 서버가 남의 저장소에 붙었을 때 이 값을 `<대상>/docs/bus` 로 넘긴다.
  *    안 그러면 그 팀의 쪽지가 axMap 저장소에 쌓이고, 정작 팀의 저장소에는
  *    아무것도 안 남는다 — 쪽지는 커밋해야 상대에게 가는데 커밋할 저장소가
  *    엉뚱한 곳이 되는 것이다.
+ *
+ * 🔴 예전 기본값은 `ROOT/docs/bus` 였다. **사본에서 조용히 틀린다** — 팀 저장소의
+ *    `ci/axmap/tools/bus.mjs` 에서 `ROOT` 는 `ci/axmap` 이므로 없는 폴더를 가리키고,
+ *    `readdirSync` 가 던지면 `readAll` 이 빈 배열을 낸다. 즉 **쪽지가 있어도
+ *    "쪽지 없음" 이라고 답한다.** 2026-08-26 에 팀 저장소에서 실제로 그랬다.
+ *    프로그램 위치로 데이터를 찾은 것이 원인이므로 이제 대상 저장소에게 묻는다.
+ *
+ *    못 찾으면 `ROOT` 로 되돌리지 않는다. 그건 서로 다른 두 상황(대상 저장소 안 /
+ *    엉뚱한 곳)을 한 값으로 만드는 치환이고, 위 사고가 정확히 그 치환이었다.
  */
-const BOX = process.env.AXMAP_BUS_DIR
-  ? path.resolve(process.env.AXMAP_BUS_DIR)
-  : path.join(ROOT, 'docs', 'bus')
+const BOX = (() => {
+  if (process.env.AXMAP_BUS_DIR) return path.resolve(process.env.AXMAP_BUS_DIR)
+  const repo = targetRepo()
+  if (!repo) {
+    console.error(
+      '쪽지함을 찾지 못했습니다 — 여기는 git 저장소 안이 아닙니다.\n' +
+        '대상 저장소 안에서 실행하거나 AXMAP_BUS_DIR 로 쪽지함을 직접 지정하세요.',
+    )
+    process.exit(1)
+  }
+  return path.join(repo, 'docs', 'bus')
+})()
 
 const args = process.argv.slice(2)
 const cmd = args[0]

@@ -1,12 +1,12 @@
 {
   "_": "이 폴더는 다른 저장소에서 복사해 온 사본입니다. 손으로 고치지 마세요 — README.md 를 보세요.",
   "source": {
-    "repository": "https://lab.ssafy.com/s15-bigdata-dist-sub1/S15P21E201.git",
-    "commit": "2b1b4ea64c77a1f3cf62d3d06c2465b68a8c42a9",
-    "branch": "chore/axmap-bootstrap",
+    "repository": "https://lab.ssafy.com/rleaderjoon/axmap.git",
+    "commit": "7bb54905618450670eaf35eb9feef7dbb5045da4",
+    "branch": "team-sync",
     "generator": "axmap/tools/vendor.mjs"
   },
-  "vendoredAt": "2026-08-26T08:25:18.173Z",
+  "vendoredAt": "2026-08-26T10:36:31.843Z",
   "entrypoints": [
     "bin/axmap.mjs",
     "governance/gate.mjs",
