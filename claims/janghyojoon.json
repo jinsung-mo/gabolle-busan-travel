@@ -1,9 +1,9 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-15",
-  "intent": "bus.mjs 벤더 누락·setup 죽은 호출·슬래시 명령 복구",
+  "intent": "axMap 분리 — 루트 걷어내고 ci/axmap 사본으로",
   "actor": "agent",
-  "since": "2026-08-26T08:23:34.364Z",
+  "since": "2026-08-26T08:27:44.345Z",
   "ttlMs": 1800000,
   "paths": [
     ".claude",
@@ -20,6 +20,7 @@
     "demo",
     "desktop",
     "docs",
+    "governance",
     "governance/policy.json",
     "mcp",
     "package.json",
