@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-22",
+  "intent": "CI 회복력 원칙 · 정족수 2표 · README 최신화 · 팀 쪽지",
+  "actor": null,
+  "since": "2026-08-26T17:45:48.855Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "README.md",
+    "ci",
+    "docs",
+    "governance"
+  ]
+}
