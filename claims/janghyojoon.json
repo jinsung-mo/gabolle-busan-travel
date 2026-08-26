@@ -1,19 +1,25 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-CI",
-  "intent": "MR 대상 제한 잡 · 정족수 게이트 · docs/CI.md · CLAUDE.md 항목기호 금지 규칙",
+  "task": "S15P21E201-4",
+  "intent": "대상 따라가기 작업을 코드와 문서 두 커밋으로 나눠 올린다",
   "actor": "agent",
-  "since": "2026-08-26T01:02:19.139Z",
+  "since": "2026-08-26T01:13:39.616Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitlab-ci.yml",
     "CLAUDE.md",
+    "axmap/desktop/main.mjs",
+    "axmap/docs/DECISIONS.md",
     "axmap/governance/gate.mjs",
     "axmap/governance/vote.mjs",
+    "axmap/mcp/server.mjs",
     "axmap/src/mrtarget.mjs",
+    "axmap/src/repotarget.mjs",
     "axmap/test/gate.test.mjs",
+    "axmap/test/mcp.test.mjs",
     "axmap/test/mrtarget.test.mjs",
     "axmap/tools/mr-target.mjs",
-    "docs/CI.md"
+    "docs/CI.md",
+    "docs/HANDOVER.md"
   ]
 }
