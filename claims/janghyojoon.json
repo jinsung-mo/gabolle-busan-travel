@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-21",
+  "intent": "긴급 경로 반영",
+  "actor": null,
+  "since": "2026-08-26T14:07:30.667Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "CLAUDE.md",
+    "ci/axmap"
+  ]
+}
