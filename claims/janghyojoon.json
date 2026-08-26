@@ -1,12 +1,16 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-CI",
-  "intent": "팀 저장소만 clone 해도 claim 이 돌게 — 사본을 가리키도록",
+  "intent": "claim CLI 와 MCP 서버까지 사본에 포함 — 팀 저장소만 clone 해도 돌게",
   "actor": "agent",
-  "since": "2026-08-26T07:31:54.884Z",
+  "since": "2026-08-26T07:32:38.616Z",
   "ttlMs": 2700000,
   "paths": [
+    ".gitlab-ci.yml",
     ".mcp.json",
+    "axmap/src/closure.mjs",
+    "axmap/test/closure.test.mjs",
+    "ci",
     "setup.ps1",
     "setup.sh"
   ]
