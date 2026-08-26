@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-4",
+  "intent": "origin/chore/axmap-bootstrap 1커밋 병합 후 push",
+  "actor": null,
+  "since": "2026-08-26T08:59:34.421Z",
+  "ttlMs": 1200000,
+  "paths": [
+    "axmap/app/lib/agentcli.mjs",
+    "axmap/app/server.mjs",
+    "axmap/tools/smoke.mjs"
+  ]
+}
