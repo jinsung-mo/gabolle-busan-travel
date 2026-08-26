@@ -1,9 +1,9 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-CI",
-  "intent": "과반 도입·게이트 구현·MR 대상 잡을 문서에 반영",
+  "intent": "주간/일간 승격 봇 — 정족수 통과한 MR 만 CAS 로 머지",
   "actor": "agent",
-  "since": "2026-08-26T01:35:26.879Z",
+  "since": "2026-08-26T01:42:08.840Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitlab-ci.yml",
@@ -13,9 +13,12 @@
     "axmap/governance/gate.mjs",
     "axmap/governance/vote.mjs",
     "axmap/src/mrtarget.mjs",
+    "axmap/src/promote.mjs",
     "axmap/test/gate.test.mjs",
     "axmap/test/mrtarget.test.mjs",
+    "axmap/test/promote.test.mjs",
     "axmap/tools/mr-target.mjs",
+    "axmap/tools/promote.mjs",
     "docs/CI.md",
     "docs/HANDOVER.md"
   ]
