@@ -1,0 +1,37 @@
+{
+  "_": "이 폴더는 다른 저장소에서 복사해 온 사본입니다. 손으로 고치지 마세요 — README.md 를 보세요.",
+  "source": {
+    "repository": "https://lab.ssafy.com/s15-bigdata-dist-sub1/S15P21E201.git",
+    "commit": "2b1b4ea64c77a1f3cf62d3d06c2465b68a8c42a9",
+    "branch": "chore/axmap-bootstrap",
+    "generator": "axmap/tools/vendor.mjs"
+  },
+  "vendoredAt": "2026-08-26T08:25:18.173Z",
+  "entrypoints": [
+    "bin/axmap.mjs",
+    "governance/gate.mjs",
+    "governance/vote.mjs",
+    "mcp/server.mjs",
+    "tools/bus.mjs",
+    "tools/mr-target.mjs",
+    "tools/promote.mjs",
+    "tools/version.mjs"
+  ],
+  "files": [
+    "bin/axmap.mjs",
+    "governance/gate.mjs",
+    "governance/vote.mjs",
+    "mcp/server.mjs",
+    "src/governance.mjs",
+    "src/invariants.mjs",
+    "src/mrtarget.mjs",
+    "src/promote.mjs",
+    "src/protocol.mjs",
+    "src/repotarget.mjs",
+    "src/version.mjs",
+    "tools/bus.mjs",
+    "tools/mr-target.mjs",
+    "tools/promote.mjs",
+    "tools/version.mjs"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+
+  "voters": [
+    { "id": "rleaderjoon", "email": "rleaderjoon@gmail.com" },
+    { "id": "masdf13", "email": "masdf13@naver.com" }
+  ],
+
+  "amendment": {
+    "paths": ["governance", ".gitlab-ci.yml", "ci"],
+    "threshold": "majority"
+  },
+
+  "default": { "threshold": "majority" },
+
+  "rules": [],
+
+  "succession": { "window_days": 90, "top": 3 }
+}
