@@ -1,14 +1,15 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-4",
-  "intent": "MCP 대상 저장소를 요청마다 다시 정하고, 앱에서 폴더를 바꾸면 따라가며 이전 저장소 claim 을 자동 반납한다",
+  "intent": "CI/CD 인수인계 문서 — 러너·버전 자동화·봇 토큰·도커 (박재현 님용)",
   "actor": "agent",
-  "since": "2026-08-26T00:37:04.053Z",
+  "since": "2026-08-26T00:38:16.775Z",
   "ttlMs": 2700000,
   "paths": [
     "axmap/desktop/main.mjs",
     "axmap/mcp/server.mjs",
     "axmap/src/repotarget.mjs",
-    "axmap/test/mcp.test.mjs"
+    "axmap/test/mcp.test.mjs",
+    "docs/CI.md"
   ]
 }
