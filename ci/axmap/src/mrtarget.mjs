@@ -50,7 +50,40 @@ export const EXIT = {
  * 그래서 규칙에 안 걸리고 기능 브랜치로 취급돼 **`<파트>/dev` 로 올릴 수 있게
  * 된다.** 명시적으로 막지 않으면 그 길이 열려 있다.
  */
-const RESERVED = new Set(['axmap/claims', 'axmap/votes'])
+const RESERVED = new Set(['axmap/claims', 'axmap/votes', 'axmap/bus'])
+
+/**
+ * 긴급 수정 브랜치인가 — `hotfix/…` 로 시작하는가.
+ *
+ * ── 🔴 이 판정은 사다리에 **구멍을 낸다.** 그 대가를 알고 낸 것이다 ──────────
+ *
+ * 사다리(기능 → `<파트>/dev` → `<파트>/main` → `main`)의 요점은 "아래 관문을
+ * 지난 것만 위로 간다" 이다. 여기만 그 규칙을 어긴다. 왜 어기는가.
+ *
+ * **고장 난 것이 `main` 자신일 때 사다리가 막다른 길이 되기 때문이다.**
+ * 2026-08-26 에 실제로 그랬다 — `main` 의 `.gitlab-ci.yml` 이 무효라 모든
+ * 파이프라인이 잡 0개로 죽었는데, 그것을 고치는 MR 이 `verify:mr-target` 에
+ * 걸려 `main` 으로 갈 수 없었다(S15P21E201-22). `Pipelines must succeed` 가
+ * 켜져 있었다면 **팀 전체가 CI 를 영영 못 고쳤을 것이다.**
+ *
+ * 탈출구가 없으면 사람은 시스템 밖에서 탈출한다 — 스위치를 잠깐 내리거나
+ * `main` 에 직접 push 한다. 둘 다 흔적이 안 남는다. **탈출구를 시스템 안에 두는
+ * 편이 낫다.** 보이고, 기록되고, 규칙으로 다듬을 수 있다.
+ *
+ * 남는 브레이크가 둘 있어서 이 구멍이 공짜 통과가 되지는 않는다.
+ *   · `main` 으로 가는 MR 은 `governance` 가 정족수를 요구한다 (표 없이는 못 간다)
+ *   · 브랜치 이름이 `hotfix/…` 라 diff 목록과 이력에 그대로 남는다
+ *
+ * 🔴 이름만 보고 판정한다 — 내용이 정말 긴급한지는 코드가 알 수 없다.
+ *    그 판단은 표를 던지는 사람의 몫이고, 여기서 하려 들면 못 하는 판정을
+ *    하는 척하게 된다.
+ *
+ * 규약에는 원래부터 있던 타입이다 — `docs/git-convention.md` 의
+ * *"`hotfix`: 운영 중인 `main`의 긴급 수정"*. 게이트만 그것을 몰랐다.
+ */
+function isHotfix(branch) {
+  return /^hotfix\//.test(branch)
+}
 
 /** `front/dev` → `front`. 슬래시가 없으면 `null`. */
 export function partOf(branch) {
@@ -92,7 +125,10 @@ export function allowedTargetsOf(branch) {
       const part = partOf(name)
       return part ? `같은 파트의 \`${part}/main\` (= \`${part}/func\`)` : '같은 파트의 파트 브랜치'
     }
-    default: return '`<파트>/dev` — 예: `front/dev` · `back/dev`'
+    default:
+      return isHotfix(name)
+        ? '`<파트>/dev`, 또는 `main` 이 그 자체로 고장 났다면 최상위 `main`'
+        : '`<파트>/dev` — 예: `front/dev` · `back/dev`'
   }
 }
 
@@ -129,13 +165,15 @@ export function checkTarget(source, target) {
   const from = levelOf(s)
   const to = levelOf(t)
 
-  // 기능 브랜치 → 파트 dev. 여기만 열려 있다.
+  // 기능 브랜치 → 파트 dev. 그리고 hotfix 만 최상위로도 갈 수 있다.
   if (from === null) {
     if (to === 'dev') return good('기능 브랜치 → 파트 개발 브랜치')
+    if (to === 'main' && isHotfix(s)) return good('긴급 수정 → 최상위 (사다리를 건너뛴다)')
     return bad(
       'feature-must-target-dev',
       '기능 브랜치는 파트 개발 브랜치(`<파트>/dev`)로만 올립니다.\n' +
-        '  한 칸씩 올라가야 아래 관문을 지난 것만 위로 갑니다 — 건너뛰면 그 관문이 없는 것과 같습니다.',
+        '  한 칸씩 올라가야 아래 관문을 지난 것만 위로 갑니다 — 건너뛰면 그 관문이 없는 것과 같습니다.\n' +
+        '  `main` 이 그 자체로 고장 났을 때만 `hotfix/…` 로 바로 올립니다.',
     )
   }
 
