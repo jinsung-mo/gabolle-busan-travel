@@ -1,9 +1,9 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-CI",
-  "intent": "정책 파일 자리를 팀 저장소 기준으로 옮기고 경로를 설정 가능하게 — 분리 전 필수",
+  "intent": "정책 경로 변경을 인수인계 문서에 반영 + 벤더링 커밋에 폐포 모듈 포함",
   "actor": "agent",
-  "since": "2026-08-26T05:05:33.731Z",
+  "since": "2026-08-26T05:24:58.843Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitlab-ci.yml",
@@ -11,12 +11,14 @@
     "axmap/governance/gate.mjs",
     "axmap/governance/policy.json",
     "axmap/governance/vote.mjs",
+    "axmap/src/closure.mjs",
     "axmap/src/governance.mjs",
     "axmap/test/closure.test.mjs",
     "axmap/test/gate.test.mjs",
     "axmap/test/governance.test.mjs",
     "axmap/tools/vendor.mjs",
     "ci",
+    "docs/HANDOVER.md",
     "governance"
   ]
 }
