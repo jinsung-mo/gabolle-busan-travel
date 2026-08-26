@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-21",
+  "intent": "쪽지 수신 3중 버그 수정 + 사본 재벤더링 + 문서 정정",
+  "actor": null,
+  "since": "2026-08-26T10:48:54.048Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "CLAUDE.md",
+    "ci/axmap"
+  ]
+}
