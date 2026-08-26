@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-21",
+  "intent": "쪽지를 고아 브랜치로 — 사본 갱신과 문서 정정",
+  "actor": null,
+  "since": "2026-08-26T12:15:10.003Z",
+  "ttlMs": 1800000,
+  "paths": [
+    ".claude",
+    "CLAUDE.md",
+    "ci/axmap"
+  ]
+}
