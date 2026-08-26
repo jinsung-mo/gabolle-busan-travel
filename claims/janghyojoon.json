@@ -1,0 +1,11 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-22",
+  "intent": "CI 설정이 무효라 잡이 0개인 것 — YAML 콜론 함정",
+  "actor": null,
+  "since": "2026-08-26T13:00:30.727Z",
+  "ttlMs": 1800000,
+  "paths": [
+    ".gitlab-ci.yml"
+  ]
+}
