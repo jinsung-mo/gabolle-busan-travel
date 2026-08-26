@@ -9,7 +9,6 @@
     "axmap/desktop/main.mjs",
     "axmap/mcp/server.mjs",
     "axmap/src/repotarget.mjs",
-    "axmap/test/mcp.test.mjs",
-    "docs/CI.md"
+    "axmap/test/mcp.test.mjs"
   ]
 }
