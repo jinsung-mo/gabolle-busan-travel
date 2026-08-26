@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-4",
+  "intent": "MCP 대상 저장소를 요청마다 다시 정하고, 앱에서 폴더를 바꾸면 따라가며 이전 저장소 claim 을 자동 반납한다",
+  "actor": "agent",
+  "since": "2026-08-26T00:35:31.387Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "axmap/desktop/main.mjs",
+    "axmap/mcp/server.mjs",
+    "axmap/test/mcp.test.mjs"
+  ]
+}
