@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-15",
-  "intent": "axMap 분리 — 루트 걷어내고 ci/axmap 사본으로",
+  "intent": "남은 axmap 폴더를 추적하지 않는다",
   "actor": "agent",
-  "since": "2026-08-26T08:27:44.345Z",
+  "since": "2026-08-26T08:30:08.813Z",
   "ttlMs": 1800000,
   "paths": [
     ".claude",
+    ".gitignore",
     ".gitlab-ci.yml",
     ".mcp.json",
     "CLAUDE.md",
