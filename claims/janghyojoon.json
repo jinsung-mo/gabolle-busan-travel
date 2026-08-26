@@ -1,17 +1,30 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-CI",
-  "intent": "claim CLI 와 MCP 서버까지 사본에 포함 — 팀 저장소만 clone 해도 돌게",
+  "task": "S15P21E201-15",
+  "intent": "main 재구조화 — 루트 axMap 을 걷어내고 ci/axmap 사본으로 대체",
   "actor": "agent",
-  "since": "2026-08-26T07:32:38.616Z",
+  "since": "2026-08-26T07:52:13.287Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitlab-ci.yml",
     ".mcp.json",
+    "CLAUDE.md",
+    "README.md",
+    "app",
     "axmap/src/closure.mjs",
     "axmap/test/closure.test.mjs",
+    "bin",
     "ci",
+    "corpus",
+    "demo",
+    "desktop",
+    "docs",
+    "mcp",
+    "package.json",
     "setup.ps1",
-    "setup.sh"
+    "setup.sh",
+    "src",
+    "test",
+    "tools"
   ]
 }
