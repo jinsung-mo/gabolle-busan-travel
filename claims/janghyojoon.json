@@ -1,0 +1,11 @@
+{
+  "agent": "janghyojoon",
+  "task": null,
+  "intent": "개인 저장소 통합으로 낡은 서술 갱신 — 벤치 기록 0건·AWS·원격 셋",
+  "actor": "agent",
+  "since": "2026-08-26T00:23:53.284Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/HANDOVER.md"
+  ]
+}
