@@ -1,0 +1,11 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-22",
+  "intent": "같은 한 줄 수정을 이 브랜치에도",
+  "actor": null,
+  "since": "2026-08-26T17:47:53.683Z",
+  "ttlMs": 1800000,
+  "paths": [
+    ".gitlab-ci.yml"
+  ]
+}
