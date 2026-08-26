@@ -1,12 +1,16 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-4",
-  "intent": "레일·지도 점유·바닥 상태줄 화면을 커밋한다",
+  "task": "S15P21E201-6",
+  "intent": "main 을 axmap/ 배치로 합쳐 경로 우주를 하나로 만든다",
   "actor": "agent",
-  "since": "2026-08-26T05:32:09.414Z",
+  "since": "2026-08-26T05:37:09.888Z",
   "ttlMs": 2700000,
   "paths": [
+    ".editorconfig",
+    ".gitignore",
+    ".gitlab",
     ".gitlab-ci.yml",
+    "README.md",
     "axmap/app/lib/usage.mjs",
     "axmap/app/server.mjs",
     "axmap/app/web",
@@ -21,8 +25,11 @@
     "axmap/test/governance.test.mjs",
     "axmap/test/usage.test.mjs",
     "axmap/tools/vendor.mjs",
+    "backend",
     "ci",
+    "docs",
     "docs/HANDOVER.md",
+    "frontend",
     "governance"
   ]
 }
