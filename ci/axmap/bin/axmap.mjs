@@ -650,8 +650,8 @@ function isLedgerWorktree(root) {
  * `ls-remote` 로 원격 자체에 닿는지를 먼저 묻는다. 닿으면 브랜치가 없을 뿐이고,
  * 못 닿으면 그건 장애다.
  */
-function remoteReachable(root, remote) {
-  const r = git(['ls-remote', '--exit-code', remote, 'HEAD'], { cwd: ledgerDir(root) })
+function remoteReachable(root, remote, cwd = ledgerDir(root)) {
+  const r = git(['ls-remote', '--exit-code', remote, 'HEAD'], { cwd })
   // --exit-code 는 참조가 없을 때 2 를 준다. 그것도 "닿았다"는 뜻이다.
   return r.code === 0 || r.code === 2
 }
@@ -1362,21 +1362,65 @@ function cmdVerify(flags) {
 
 function cmdAudit(flags) {
   const root = repoRoot()
-  requireLedger(root)
   const dir = ledgerDir(root)
-  if (flags.fetch) syncLedger(root)
+  const hasWorktree = fs.existsSync(path.join(dir, '.git'))
+
+  /**
+   * 🔴 **`--fetch` 는 장부 worktree 를 요구하지 않는다.**
+   *
+   * 예전에는 맨 앞에서 `requireLedger` 를 불렀다. 그런데 이 명령을 실제로 부르는
+   * 곳은 팀 CI 의 `claims` 잡이고, **CI 는 신선한 clone 이라 `.axmap/ledger` 가
+   * 없다.** 그래서 CI 에서는 늘 "장부가 없습니다. 먼저 axmap init" 으로 죽었다.
+   * `--fetch` 라는 플래그가 바로 그 CI 를 위해 있는 것인데 순서가 뒤집혀 있었다.
+   *
+   * 이 잡은 **설치 여부와 무관한 유일한 강제 장치**로 설계됐다 — 훅은 각자 PC 에
+   * 있고 이건 서버에 있다. 그것이 한 번도 안 돌았다는 뜻은, 선점 강제가 지금까지
+   * **훅을 설치한 사람에게만** 걸려 있었다는 것이다.
+   *
+   * 고치는 방향은 코드가 이미 알려준다 — `audit` 은 **읽기만** 한다
+   * (`log` · `ls-tree` · `show`). 쓰지 않으므로 worktree 가 필요 없고 ref 하나면 된다.
+   */
+  let cwd = dir
+  let tip = 'HEAD'
+  if (hasWorktree) {
+    if (flags.fetch) syncLedger(root)
+  } else if (flags.fetch) {
+    const r = resolveRemote(root)
+    const remote = r.source === 'ambiguous' ? null : r.name
+    if (!remote) {
+      die('장부를 받아올 원격을 정할 수 없습니다.\n  git config axmap.remote <이름> 으로 정하거나 axmap init 을 실행하세요.')
+    }
+    if (git(['fetch', '--quiet', remote, LEDGER_BRANCH], { cwd: root }).code !== 0) {
+      // 🔴 "아직 없다" 와 "못 닿는다" 를 가른다. init 이 같은 자리에서 하는 구분이다.
+      //    닿는데 브랜치가 없으면 아무도 아직 claim 한 적이 없다는 뜻이고, 검사할
+      //    것이 없는 것이지 실패가 아니다. 여기서 죽이면 장부를 처음 쓰는 팀의
+      //    CI 가 영원히 빨갛다.
+      if (remoteReachable(root, remote, root)) {
+        console.log('장부가 아직 없습니다 - 검사할 스냅샷이 없습니다.')
+        return
+      }
+      die(
+        `원격 장부에 닿을 수 없습니다 (${remote}/${LEDGER_BRANCH}).\n` +
+          '검사하지 못한 것을 통과로 내지 않습니다 — 연결을 고친 뒤 다시 시도하세요.',
+      )
+    }
+    cwd = root
+    tip = 'FETCH_HEAD'
+  } else {
+    requireLedger(root)
+  }
 
   // 오래된 것부터 재생한다.
-  const log = gitOrDie(['log', '--reverse', '--format=%H%x00%ct%x00%s'], { cwd: dir }).out
+  const log = gitOrDie(['log', '--reverse', '--format=%H%x00%ct%x00%s', tip], { cwd }).out
   const commits = log ? log.split('\n').map((l) => l.split('\0')) : []
 
   const snapshots = []
   for (const [sha, ct, subject] of commits) {
-    const files = git(['ls-tree', '-r', '--name-only', sha, 'claims/'], { cwd: dir }).out
+    const files = git(['ls-tree', '-r', '--name-only', sha, 'claims/'], { cwd }).out
     const claims = []
     // readClaims 와 같은 규칙으로 .json 만 본다. claims/ 에는 .gitkeep 도 있다.
     for (const f of (files ? files.split('\n') : []).filter((f) => f.endsWith('.json'))) {
-      const blob = git(['show', `${sha}:${f}`], { cwd: dir })
+      const blob = git(['show', `${sha}:${f}`], { cwd })
       if (blob.code !== 0) continue
       try {
         claims.push(JSON.parse(blob.out))
