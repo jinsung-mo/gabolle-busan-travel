@@ -1,17 +1,24 @@
 {
+  "//": "누가 투표권자이고 무엇을 통과시키려면 몇 표가 필요한가. 도구는 나갔고 이 데이터는 팀의 것이라 여기 남는다.",
+
   "version": 1,
 
+  "//voters": "이메일은 지어내지 않는다 — 투표는 커밋 저자 이메일로 대조하므로, 틀린 이메일은 그 사람이 영영 투표하지 못한다는 뜻이다. 그래서 이 저장소의 git 이력에 실제로 나타난 사람만 넣는다. 아직 커밋이 없는 팀원은 첫 커밋 뒤에 추가한다.",
   "voters": [
     { "id": "rleaderjoon", "email": "rleaderjoon@gmail.com" },
-    { "id": "masdf13", "email": "masdf13@naver.com" }
+    { "id": "masdf13", "email": "masdf13@naver.com" },
+    { "id": "yeaseung.lee96", "email": "yeaseung.lee96@gmail.com" }
   ],
 
+  "//threshold": "🔴 2026-08-27 변경 — 'majority' 에서 고정 2표로. 투표권자가 둘일 때 majority 는 작성자를 뺀 1명의 과반이라 사실상 1표였고, 그건 '한 사람이 올리고 한 사람이 눌러 준다' 는 뜻이다. 최소 두 사람이 봐야 하는 것이 팀의 뜻이므로 숫자로 못 박는다. 명단이 셋이 되어야 비로소 채울 수 있는 값이라, 명단 확대와 같은 변경으로 함께 간다.",
+
   "amendment": {
+    "//": "정책·CI·도구 사본을 바꾸는 것. 여기를 바꾸면 나머지 규칙이 다 바뀌므로 기본보다 낮을 수 없다.",
     "paths": ["governance", ".gitlab-ci.yml", "ci"],
-    "threshold": "majority"
+    "threshold": 2
   },
 
-  "default": { "threshold": "majority" },
+  "default": { "threshold": 2 },
 
   "rules": [],
 
