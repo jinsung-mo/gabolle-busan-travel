@@ -50,7 +50,7 @@ export const EXIT = {
  * 그래서 규칙에 안 걸리고 기능 브랜치로 취급돼 **`<파트>/dev` 로 올릴 수 있게
  * 된다.** 명시적으로 막지 않으면 그 길이 열려 있다.
  */
-const RESERVED = new Set(['axmap/claims', 'axmap/votes'])
+const RESERVED = new Set(['axmap/claims', 'axmap/votes', 'axmap/bus'])
 
 /** `front/dev` → `front`. 슬래시가 없으면 `null`. */
 export function partOf(branch) {

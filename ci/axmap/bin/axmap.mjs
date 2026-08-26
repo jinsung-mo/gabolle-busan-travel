@@ -57,6 +57,32 @@ function resolveActor(flag) {
 
 const LEDGER_BRANCH = 'axmap/claims'
 const LEDGER_REL = path.join('.axmap', 'ledger')
+
+/**
+ * 쪽지함. **장부와 같은 방식이지만 실패했을 때의 뜻이 정반대다.**
+ *
+ * 🔴 왜 코드 브랜치가 아니라 고아 브랜치인가.
+ *
+ *    쪽지는 원래 `docs/bus/` 에 있었다. 그건 작업 트리라서 상대에게 가려면
+ *    커밋 -> MR -> 머지 -> 상대가 pull 을 거쳤다. `main` 이 보호돼 있으면
+ *    **쪽지 한 통이 MR 한 사이클**이다. 그리고 보내려면 `docs/bus` 를 claim 해야
+ *    해서, 한 사람이 잡고 있는 동안 나머지는 쪽지를 못 보냈다 — 메시징 통로가
+ *    한 번에 한 명만 쓸 수 있는 자물쇠였다.
+ *
+ *    장부(`axmap/claims`)는 이미 그 문제를 안 겪는다. 고아 브랜치라 코드와
+ *    이력을 공유하지 않고, push/fetch 로 **즉시** 오간다. 쪽지도 같은 자리로
+ *    옮긴다. 표(`axmap/votes`)까지 셋이 나란히 서는 셈이다.
+ *
+ * 🔴 그러나 **push 실패를 장부처럼 다루면 안 된다.**
+ *
+ *    claim 은 push 가 실패하면 죽여야 한다. 로컬에만 남은 락은 나만 보이고
+ *    남은 같은 파일을 잡으므로, 실패를 삼키는 것이 곧 fail-open 이다.
+ *    쪽지는 반대다 — 안 간 쪽지는 **아직 안 간 것**일 뿐 아무 위험이 없다.
+ *    여기서 죽이면 원격이 잠깐 흔들릴 때마다 사람의 작업이 멈춘다.
+ *    그래서 이 아래 함수들은 경고만 하고 계속 간다.
+ */
+const BUS_BRANCH = 'axmap/bus'
+const BUS_REL = path.join('.axmap', 'bus')
 /**
  * `release` 가 아무것도 반납하지 못했을 때. SPEC 8절.
  * 0 이 아니어야 하는 이유는 그 주변 주석에 적혀 있다.
@@ -294,11 +320,41 @@ function parseArgs(argv) {
  * 읽었는지는 **나만의 상태**라 남과 합의할 필요가 없고, 장부에 쓰면
  * 쪽지를 읽을 때마다 push 경합이 생긴다.
  */
+/**
+ * 쪽지함을 원격과 맞춘다. **조용히 실패한다.**
+ *
+ * 장부의 `syncLedger` 는 같은 자리에서 `die` 한다 — 못 맞춘 장부로 claim 하면
+ * 나만 아는 락이 되기 때문이다. 쪽지에는 그 위험이 없다. 원격이 잠깐 안 되면
+ * 이번엔 새 쪽지를 못 보는 것뿐이고, 다음 호출에 따라온다.
+ */
+function syncBus(root) {
+  const dir = busDir(root)
+  if (!fs.existsSync(path.join(dir, '.git'))) return
+  const r = resolveRemote(root)
+  const remote = r.source === 'ambiguous' ? null : r.name
+  if (!remote) return
+  // fetch 는 반드시 그 worktree 안에서. FETCH_HEAD 가 worktree 마다 따로다.
+  if (git(['fetch', '--quiet', remote, BUS_BRANCH], { cwd: dir }).code !== 0) return
+  gitLockRetry(['reset', '--hard', '--quiet', 'FETCH_HEAD'], { cwd: dir })
+}
+
+/** 쪽지를 찾는 곳. 새것은 고아 브랜치, 옛것은 `docs/bus`(읽기 전용). */
+function busSearchDirs(root) {
+  return [busMessagesDir(root), legacyBusDir(root)]
+}
+
 function unreadNotes(root, me) {
   if (!me) return []
-  const box = path.join(root, 'docs', 'bus')
-  let names
-  try { names = fs.readdirSync(box).filter((f) => f.endsWith('.md')) } catch { return [] }
+  syncBus(root)
+  // 두 곳을 합쳐서 본다. id 가 시각으로 시작하므로 섞여도 순서가 맞고,
+  // "읽음" 표시(`id <= seen`)도 그대로 성립한다.
+  const found = []
+  for (const box of busSearchDirs(root)) {
+    let ns = []
+    try { ns = fs.readdirSync(box).filter((f) => f.endsWith('.md')) } catch { continue }
+    for (const f of ns) found.push({ box, f })
+  }
+  if (!found.length) return []
   let seen = ''
   try {
     const raw = JSON.parse(fs.readFileSync(path.join(root, '.axmap-bus-seen.json'), 'utf8'))
@@ -306,7 +362,7 @@ function unreadNotes(root, me) {
   } catch { /* 처음이면 아무것도 안 읽은 것 */ }
 
   const out = []
-  for (const f of names.sort()) {
+  for (const { box, f } of found.sort((a, b) => (a.f < b.f ? -1 : 1))) {
     const id = f.slice(0, -3)
     if (id <= seen) continue
     let head = ''
@@ -362,6 +418,27 @@ function ledgerDir(root) {
 
 function claimsDir(root) {
   return path.join(ledgerDir(root), 'claims')
+}
+
+function busDir(root) {
+  return path.join(root, BUS_REL)
+}
+
+/** 쪽지 파일이 실제로 쌓이는 곳. 브랜치 루트에 흩뿌리지 않고 한 폴더 아래 모은다. */
+function busMessagesDir(root) {
+  return path.join(busDir(root), 'messages')
+}
+
+/**
+ * 옛 쪽지함. **읽기만 한다.**
+ *
+ * 새로 보내는 것은 전부 고아 브랜치로 가지만, 이미 `docs/bus/` 에 쌓여 있는
+ * 쪽지를 안 보이게 만들면 그건 데이터를 잃는 것이다. 옮기지도 않는다 —
+ * 옮기면 같은 내용이 두 브랜치에 남고, 어느 쪽이 진짜인지 아무도 모른다.
+ * 쓰는 곳은 하나, 읽는 곳은 둘. 그러면 옛것은 자연히 마른다.
+ */
+function legacyBusDir(root) {
+  return path.join(root, 'docs', 'bus')
 }
 
 /**
@@ -483,7 +560,16 @@ let agentFrom = null
  * 옛 이름을 받아주던 한시적 분기는 걷어냈다. 이름을 바꾸기 전부터 돌고 있던 셸을
  * 위한 것이었고, 그런 셸은 이제 없다. 호환을 오래 두면 그것이 규격이 된다.
  */
-function agentName(flags) {
+/**
+ * 이름을 정한다. **못 정해도 죽지 않는다** — 못 정한 이유를 돌려준다.
+ *
+ * 🔴 `agentName` 과 순서를 **공유해야** 한다. 두 곳에 적으면 한쪽이 먼저 낡고,
+ *    그러면 claim 이 쓰는 이름과 다른 곳이 보는 이름이 갈린다. 갈린 이름은
+ *    "자기가 잡은 것을 자기가 반납 못 하는" 사고가 되므로, 판정은 여기 하나뿐이다.
+ *
+ * @returns {{name: string|null, reason: string|null}}
+ */
+function resolveAgentName(flags) {
   let n = null
   if (flags.agent) {
     n = flags.agent
@@ -496,15 +582,24 @@ function agentName(flags) {
     agentFrom = 'git config user.name'
   }
   if (!n) {
-    die(
-      '에이전트 이름을 알 수 없습니다. --agent 또는 AXMAP_AGENT 를 설정하세요.\n' +
+    return {
+      name: null,
+      reason:
+        '에이전트 이름을 알 수 없습니다. --agent 또는 AXMAP_AGENT 를 설정하세요.\n' +
         '기본 이름으로 대신 채우지 않습니다 — 여러 사람이 같은 이름이 되면\n' +
         '서로의 claim 을 겹침으로 보지 못해 같은 파일을 조용히 함께 고칩니다.',
-    )
+    }
   }
   const err = agentNameError(String(n))
-  if (err) die(err)
-  return String(n)
+  if (err) return { name: null, reason: err }
+  return { name: String(n), reason: null }
+}
+
+/** 이름이 반드시 필요한 자리. 못 정하면 **여기서 멈춘다.** */
+function agentName(flags) {
+  const r = resolveAgentName(flags)
+  if (!r.name) die(r.reason)
+  return r.name
 }
 
 /**
@@ -777,6 +872,80 @@ function restoreClaimFile(file, prev) {
 // 명령: init
 // ---------------------------------------------------------------------------
 
+/**
+ * 쪽지함 worktree 를 준비한다. **이미 있으면 아무 일도 안 한다** (여러 번 불러도 안전).
+ *
+ * 🔴 여기서는 절대 `die` 하지 않는다. 장부와 정반대다.
+ *    장부가 준비 안 되면 claim 이 나만 아는 락이 되므로 멈추는 것이 맞지만,
+ *    쪽지함이 없다고 사람의 작업을 막을 이유는 없다. 못 만들었으면 그렇게 말하고
+ *    나머지는 그대로 돈다.
+ *
+ * @returns {'ready'|'created'|'failed'}
+ */
+function ensureBus(root) {
+  const dir = busDir(root)
+  if (fs.existsSync(path.join(dir, '.git'))) return 'ready'
+  if (fs.existsSync(dir) && fs.readdirSync(dir).length) {
+    console.error(`경고: ${BUS_REL} 가 있지만 쪽지함 worktree 가 아닙니다.\n  지운 뒤 다시 실행하세요:  rm -rf ${BUS_REL}`)
+    return 'failed'
+  }
+
+  // 원격을 못 고르겠으면 **고르지 않는다.** 장부가 같은 자리에서 멈추는 것과 같은
+  // 이유다 — 엉뚱한 저장소로 간 쪽지는 push 가 성공하고 아무도 못 읽는다.
+  const r = resolveRemote(root)
+  const remote = r.source === 'ambiguous' ? null : r.name
+
+  let base = null
+  if (remote && git(['fetch', '--quiet', remote, BUS_BRANCH], { cwd: root }).code === 0) {
+    base = git(['rev-parse', 'FETCH_HEAD'], { cwd: root }).out
+  } else {
+    // 빈 트리 -> 부모 없는 커밋 -> 브랜치. 작업 트리를 건드리지 않는 고아 브랜치.
+    const tree = git(['mktree'], { cwd: root, input: '' })
+    if (tree.code !== 0) return busSetupFailed(tree)
+    const c = git(['commit-tree', tree.out, '-m', 'axmap: bus init'], { cwd: root })
+    if (c.code !== 0) return busSetupFailed(c)
+    base = c.out
+  }
+
+  if (git(['rev-parse', '--verify', '--quiet', BUS_BRANCH], { cwd: root }).code !== 0) {
+    const b = git(['branch', BUS_BRANCH, base], { cwd: root })
+    if (b.code !== 0) return busSetupFailed(b)
+  }
+  const w = git(['worktree', 'add', '--quiet', dir, BUS_BRANCH], { cwd: root })
+  if (w.code !== 0) return busSetupFailed(w)
+
+  // git 은 빈 디렉터리를 추적하지 않는다. 쪽지가 0개인 동안에도 폴더가 살아 있게 한다.
+  fs.mkdirSync(busMessagesDir(root), { recursive: true })
+  fs.writeFileSync(path.join(busMessagesDir(root), '.gitkeep'), '')
+
+  // 🔴 고아 브랜치는 **자기 트리의 `.gitattributes` 만** 본다. 저장소 루트에
+  //    있는 것은 여기 안 닿으므로, 심어 두지 않으면 Windows(`core.autocrlf=true`)
+  //    에서 쪽지가 CRLF 로 체크아웃된다. 2026-08-26 에 실제로 그랬고, 머리말
+  //    파서가 `\r` 에 걸려 **쪽지가 목록에서 조용히 사라졌다.**
+  //    파서도 함께 고쳤지만(`tools/bus.mjs`) 바이트가 플랫폼마다 달라지는 것
+  //    자체를 막는 편이 낫다 — 해시도, diff 도, 파서도 전부 같은 것을 본다.
+  fs.writeFileSync(
+    path.join(dir, '.gitattributes'),
+    '# 쪽지는 어느 OS 에서 만들어도 같은 바이트여야 한다.\n' +
+      '# 저장소 루트의 .gitattributes 는 고아 브랜치에 닿지 않으므로 여기 따로 둔다.\n' +
+      '* text=auto eol=lf\n',
+  )
+
+  if (remote) {
+    git(['add', '-A'], { cwd: dir })
+    // --no-verify: 연결된 worktree 는 훅을 공유한다. 쪽지함은 사용자 코드가 아니다.
+    git(['commit', '--quiet', '--no-verify', '-m', 'axmap: bus init'], { cwd: dir })
+    const p = git(['push', '--quiet', remote, `HEAD:${BUS_BRANCH}`], { cwd: dir })
+    if (p.code !== 0) console.error(`경고: 쪽지함 push 실패 - ${(p.err ?? '').split('\n')[0]}`)
+  }
+  return 'created'
+}
+
+function busSetupFailed(r) {
+  console.error(`경고: 쪽지함을 준비하지 못했습니다 - ${(r.err || r.out || '').split('\n')[0]}`)
+  return 'failed'
+}
+
 function cmdInit(flags = {}) {
   const root = repoRoot()
   const dir = ledgerDir(root)
@@ -787,6 +956,10 @@ function cmdInit(flags = {}) {
 
   if (fs.existsSync(path.join(dir, '.git'))) {
     console.log(`장부가 이미 있습니다: ${LEDGER_REL}`)
+    // 🔴 여기서 끝내면 안 된다. 쪽지함은 장부보다 나중에 생겼으므로, 이미 init 을
+    //    돌린 사람은 장부만 있고 쪽지함이 없다. 그 사람들이 다시 init 을 불렀을 때
+    //    받아 가는 자리가 여기다.
+    if (ensureBus(root) === 'created') console.log(`쪽지함을 만들었습니다: ${BUS_REL}  (${BUS_BRANCH})`)
     return
   }
   if (fs.existsSync(dir) && fs.readdirSync(dir).length) {
@@ -862,7 +1035,9 @@ function cmdInit(flags = {}) {
     warnSolo(r)
   }
 
-  console.log(`준비 완료. 장부 브랜치: ${LEDGER_BRANCH}`)
+  ensureBus(root)
+
+  console.log(`준비 완료. 장부 ${LEDGER_BRANCH} · 쪽지함 ${BUS_BRANCH}`)
 }
 
 // ---------------------------------------------------------------------------
@@ -1084,8 +1259,15 @@ function cmdStatus(flags) {
   const live = activeClaims(all, t)
   const dead = all.filter((c) => claimExpiresAt(c) <= t)
 
+  // 🔴 `status` 도 쪽지를 알린다. 예전에는 `claim` 만 알렸다.
+  //    "지금 무슨 일이 벌어지고 있나" 를 묻는 자리가 여기인데, 정작 나에게 온
+  //    말을 안 보여줬다. 이름을 못 정하면 조용히 건너뛴다 — 알림 때문에
+  //    status 가 죽으면 안 된다.
+  const mine = resolveAgentName(flags).name
+
   if (!live.length && !dead.length) {
     console.log('장부가 비어 있습니다. 아무도 아무것도 잡고 있지 않습니다.')
+    printUnread(root, mine)
     return
   }
 
@@ -1101,6 +1283,7 @@ function cmdStatus(flags) {
     for (const p of c.paths) console.log(`      ${p}`)
     console.log('')
   }
+  printUnread(root, mine)
 }
 
 // ---------------------------------------------------------------------------
