@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-CI",
+  "intent": "CI 가 쓰는 axMap 도구를 ci/axmap 으로 벤더링 + 드리프트 검사",
+  "actor": "agent",
+  "since": "2026-08-26T04:50:27.670Z",
+  "ttlMs": 2700000,
+  "paths": [
+    ".gitlab-ci.yml",
+    "axmap/test/closure.test.mjs",
+    "axmap/tools/vendor.mjs",
+    "ci"
+  ]
+}
