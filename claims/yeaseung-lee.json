@@ -1,0 +1,11 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-11",
+  "intent": "Full Course/app(LOCAL ROUTE) 자료를 ref/local-route/ 에 반영",
+  "actor": null,
+  "since": "2026-08-26T08:48:21.471Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "ref/local-route"
+  ]
+}
