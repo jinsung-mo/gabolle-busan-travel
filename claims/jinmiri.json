@@ -1,0 +1,11 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-33",
+  "intent": "진미리를 main 의 투표권자 명단에 올린다",
+  "actor": null,
+  "since": "2026-08-27T07:49:09.782Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "governance/policy.json"
+  ]
+}
