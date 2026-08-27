@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-25",
+  "intent": "장부를 못 읽으면 막는다 + ax_init 안내를 길목에서 한 번",
+  "actor": null,
+  "since": "2026-08-27T08:12:16.172Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "mcp/server.mjs",
+    "test/mcp.test.mjs"
+  ]
+}
