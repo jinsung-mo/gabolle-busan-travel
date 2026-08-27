@@ -1,0 +1,11 @@
+{
+  "agent": "rleaderjoon-desktop",
+  "task": "S15P21E201-23",
+  "intent": "쪽지 알림을 훅으로 — bus list 에 --mine/--throttle/--quiet-if-empty",
+  "actor": null,
+  "since": "2026-08-27T06:02:19.949Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "tools/bus.mjs"
+  ]
+}
