@@ -80,6 +80,15 @@ if (cmd === 'next' || cmd === 'bump') {
   let plan
   try { plan = planBump(branch, tags()) } catch (e) { die(e.message) }
 
+  // 🔴 제품이 아닌 파트는 여기서 끝난다. **종료 코드 0 이다** — 고장이 아니라
+  //    해당 없음이다. 1 을 주면 CI 가 빨개지고, 그러면 문서를 고칠 때마다
+  //    누군가 "왜 빨간가" 를 다시 찾는다.
+  if (plan.skip) {
+    console.log(`브랜치 ${branch}  →  버전 없음`)
+    console.log(`  ${plan.reason}`)
+    process.exit(0)
+  }
+
   const label = { main: 'major (한 주치를 main 으로)', func: 'minor (하루치를 func 로)', dev: 'patch (dev 작업)' }[plan.level]
   console.log(`브랜치 ${branch}  →  ${label}`)
   console.log(`  ${plan.from ? 'v' + plan.from : '(없음)'}  →  ${plan.tag}`)
