@@ -1,11 +1,12 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-21",
-  "intent": "/ax-inbox 명령의 낡은 마지막 줄(쪽지는 커밋해야 간다)을 고치고 common/dev 로 머지한다",
+  "intent": "동료가 올린 common/dev(axMap 재벤더링 포함)를 내 머지에 합쳐 넣는다 — 손으로 고치는 것이 아니라 머지다",
   "actor": "agent",
-  "since": "2026-08-27T05:40:40.078Z",
+  "since": "2026-08-27T05:42:30.800Z",
   "ttlMs": 2700000,
   "paths": [
-    ".claude/commands"
+    ".claude/commands",
+    "ci/axmap"
   ]
 }
