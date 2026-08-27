@@ -1,15 +1,16 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-ai-ondevice",
-  "intent": "온디바이스 멀티모달(사진 한 장으로 이게 뭔지 오프라인 안내) 모델 후보 조사 + 평가 장치(ai/eval) 신설. ai/ 밖은 읽기만 한다.",
+  "task": "S15P21E201-484",
+  "intent": "setup.sh 80행이 정의되지 않은 say 를 부르고 set -euo pipefail 때문에 거기서 죽는다 — 리눅스·Git Bash 에서 자가 점검이 한 번도 안 돌았다. 내가 방금 팀에 이 스크립트를 돌리라고 쪽지를 보냈으므로 아침 9시에 다섯 명이 같은 데서 막힌다",
   "actor": "agent",
-  "since": "2026-08-27T16:13:14.334Z",
+  "since": "2026-08-27T16:33:37.086Z",
   "ttlMs": 2700000,
   "paths": [
     "ai",
     "bigData/collect/pbf_boundary.py",
     "bigData/config/boundary.geojson",
     "bigData/config/sources.json",
-    "bigData/docs/WALKABILITY.md"
+    "bigData/docs/WALKABILITY.md",
+    "setup.sh"
   ]
 }
