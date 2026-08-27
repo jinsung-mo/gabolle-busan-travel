@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-23",
-  "intent": "지하철 출처 5건 등록 + 부산 행정경계 추출 (세 단계가 bbox 때문에 김해·양산·바다를 섞어 쓰고 있다)",
+  "intent": "낡은 실측 정정 — nsdi 는 V-World 로 풀렸고, 층수 가설은 기각됐고, 건물 실측표가 낡았다",
   "actor": "agent",
-  "since": "2026-08-27T16:03:45.862Z",
+  "since": "2026-08-27T16:07:32.686Z",
   "ttlMs": 2700000,
   "paths": [
     "bigData/collect/pbf_boundary.py",
     "bigData/config/boundary.geojson",
-    "bigData/config/sources.json"
+    "bigData/config/sources.json",
+    "bigData/docs/WALKABILITY.md"
   ]
 }
