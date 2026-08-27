@@ -2,11 +2,11 @@
   "_": "이 폴더는 다른 저장소에서 복사해 온 사본입니다. 손으로 고치지 마세요 — README.md 를 보세요.",
   "source": {
     "repository": "https://lab.ssafy.com/rleaderjoon/axmap.git",
-    "commit": "d60bf83176037c80a5b8e4e79b7eaf7faf4353cb",
+    "commit": "309465970ada4dbef4fb70ed6727028819b46c85",
     "branch": "team-sync",
     "generator": "axmap/tools/vendor.mjs"
   },
-  "vendoredAt": "2026-08-27T06:58:00.877Z",
+  "vendoredAt": "2026-08-27T08:18:03.455Z",
   "entrypoints": [
     "bin/axmap.mjs",
     "governance/gate.mjs",
