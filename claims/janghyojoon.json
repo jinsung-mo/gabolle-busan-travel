@@ -1,11 +1,17 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-23",
-  "intent": "짝 비교 설문 화면 + 완료 페이지 (Material Design 3, 모바일). responses.ndjson 을 choice-fit.mjs 규격으로 낸다",
+  "task": "S15P21E201-35",
+  "intent": "common 을 버전 축과 파트 사다리에서 뺀다 — 제품 코드가 없는 파트",
   "actor": "agent",
-  "since": "2026-08-27T05:51:53.724Z",
-  "ttlMs": 2700000,
+  "since": "2026-08-27T05:58:11.964Z",
+  "ttlMs": 1800000,
   "paths": [
-    "bigData/survey"
+    "bigData/survey",
+    "docs/VERSIONING.md",
+    "src/mrtarget.mjs",
+    "src/version.mjs",
+    "test/mrtarget.test.mjs",
+    "test/version.test.mjs",
+    "tools/version.mjs"
   ]
 }
