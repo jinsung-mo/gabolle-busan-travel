@@ -7,8 +7,6 @@
   "ttlMs": 2700000,
   "paths": [
     ".claude/commands/ax-ballot.md",
-    ".claude/commands/ax-vote.md",
-    "mcp/server.mjs",
-    "test/mcp.test.mjs"
+    ".claude/commands/ax-vote.md"
   ]
 }
