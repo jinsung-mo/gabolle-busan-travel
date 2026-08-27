@@ -1,0 +1,11 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-35",
+  "intent": "이예승 결정 5건 반영 + Epic 초안 16개 커밋",
+  "actor": "agent",
+  "since": "2026-08-27T06:26:15.469Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs"
+  ]
+}
