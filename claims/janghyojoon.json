@@ -10,10 +10,6 @@
     "ci/axmap/bin/axmap.mjs",
     "ci/axmap/manifest.sha256",
     "ci/axmap/mcp/server.mjs",
-    "ci/axmap/tools/bus.mjs",
-    "docs/SPEC.md",
-    "mcp/server.mjs",
-    "test/mcp.test.mjs",
-    "tools/bus.mjs"
+    "ci/axmap/tools/bus.mjs"
   ]
 }
