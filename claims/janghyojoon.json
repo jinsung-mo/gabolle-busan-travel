@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-25",
-  "intent": "upstream(main) 의 쪽지함 구현을 우리 배치로 옮겨 심는다 — 내 재구현을 버린다",
+  "intent": "Astryx 도입 검토 기록을 문서로 남긴다 — 후보 비교·실제 설치 결과·미정 항목",
   "actor": "agent",
-  "since": "2026-08-27T02:18:25.215Z",
+  "since": "2026-08-27T02:24:02.504Z",
   "ttlMs": 2700000,
   "paths": [
     "axmap/mcp/server.mjs",
     "axmap/test",
-    "axmap/tools/bus.mjs"
+    "axmap/tools/bus.mjs",
+    "docs/DESIGN_SYSTEM.md"
   ]
 }
