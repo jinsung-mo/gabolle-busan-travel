@@ -1,21 +1,24 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-23",
-  "intent": "V-World GIS건물통합정보(부산) SHP→NDJSON 변환 + 용도별 층당 높이 실측 보정",
+  "intent": "부산 도시철도 — 부산교통공사 CSV 3종 수집 + OSM 출구 778개와 출구번호 조인",
   "actor": "agent",
-  "since": "2026-08-27T15:40:36.602Z",
+  "since": "2026-08-27T15:44:21.699Z",
   "ttlMs": 2700000,
   "paths": [
     "bigData/collect/pbf_buildings.py",
     "bigData/collect/shp_buildings.py",
+    "bigData/collect/subway.mjs",
     "bigData/config/ontology.jsonld",
     "bigData/data/raw/building",
     "bigData/data/raw/building/gis-building.ndjson",
+    "bigData/data/raw/subway",
     "bigData/data/staged/_height-calibration.json",
     "bigData/docs/ONTOLOGY.md",
     "bigData/process/building-audit.mjs",
     "bigData/process/height-calibrate.mjs",
     "bigData/process/shadow.mjs",
+    "bigData/process/subway-access.mjs",
     "bigData/process/vista.mjs",
     "bigData/test/verify-ontology.mjs"
   ]
