@@ -1,0 +1,11 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-31",
+  "intent": "LOCAL_ROUTE_기능_화면_상세설계서.docx 마저 docs/ 로 이동 (S15P21E201-31 후속)",
+  "actor": "agent",
+  "since": "2026-08-27T02:06:22.084Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs"
+  ]
+}
