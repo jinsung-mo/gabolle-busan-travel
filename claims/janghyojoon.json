@@ -1,0 +1,11 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-3",
+  "intent": "S15P21E201-3 확인 요청 쪽지를 저장소에 올린다 (배달)",
+  "actor": "agent",
+  "since": "2026-08-27T01:30:24.254Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/bus"
+  ]
+}
