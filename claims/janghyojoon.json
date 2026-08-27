@@ -1,11 +1,12 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-31",
-  "intent": "v6 원문 맨 앞에 '이 문서는 v7로 대체됨' 안내 한 덩어리만 추가 — 본문은 안 건드린다",
+  "task": "S15P21E201-34",
+  "intent": "훅이 세 배치를 다 찾게 한 수정을 벤더 사본에 들인다",
   "actor": "agent",
-  "since": "2026-08-27T03:37:17.159Z",
-  "ttlMs": 2700000,
+  "since": "2026-08-27T03:38:03.084Z",
+  "ttlMs": 1800000,
   "paths": [
+    "ci/axmap",
     "docs/LOCAL_ROUTE_6인_개발계획서_및_업무지침서_v6.md",
     "docs/LOCAL_ROUTE_기능_화면_상세설계서.md",
     "docs/LOCAL_ROUTE_기획서_v6.md",
