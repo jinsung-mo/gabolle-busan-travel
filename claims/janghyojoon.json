@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-23",
+  "intent": "전원 끄기 전 오늘치 BIMS 보존 + 설문 화면·해독기 커밋",
+  "actor": "agent",
+  "since": "2026-08-27T08:51:53.960Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/data/raw/transit",
+    "bigData/process/choice-design.mjs",
+    "bigData/process/choice-fit.mjs",
+    "bigData/survey"
+  ]
+}
