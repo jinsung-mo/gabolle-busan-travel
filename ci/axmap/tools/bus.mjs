@@ -3,7 +3,8 @@
  * 에이전트 사이의 쪽지함 — 사람을 거치지 않고 서로에게 말한다.
  *
  *   node tools/bus.mjs post --to <상대> --subject "<제목>"   (본문은 stdin)
- *   node tools/bus.mjs list [--to <나>] [--from <상대>] [--all]
+ *   node tools/bus.mjs list [--to <나>|--mine] [--from <상대>] [--all]
+ *                          [--throttle <초>] [--quiet-if-empty]   ← 훅용
  *   node tools/bus.mjs read <아이디>
  *   node tools/bus.mjs reply <아이디> --subject "<제목>"      (본문은 stdin)
  *
@@ -117,12 +118,33 @@ const busReady = () => BUS_WT !== null && fs.existsSync(path.join(BUS_WT, '.git'
  * 원격의 쪽지를 받아온다. **실패해도 죽지 않는다** — 못 받은 것은 위험이 아니라
  * 지연이다. 장부(`syncLedger`)가 같은 자리에서 죽는 것과 정반대이고, 그 차이의
  * 근거는 `bin/axmap.mjs` 의 `BUS_BRANCH` 주석에 있다.
+ *
+ * 🔴 `--throttle <초>` 는 **훅 때문에 생겼다.** MCP 서버는 세션 내내 살아 있어서
+ *    `unreadBanner` 가 프로세스 안의 변수(`busCheckedAt`)로 15초를 잴 수 있었다.
+ *    훅은 부를 때마다 **새 프로세스**라 그 변수가 매번 0에서 시작한다 — 즉 캐시가
+ *    절대 안 맞고 훅이 뜰 때마다 `git fetch` 가 돈다. 그래서 시계를 프로세스
+ *    밖(스탬프 파일)에 둔다. 캐시를 그대로 옮겨 붙이면 조용히 원격을 두들긴다.
+ *
+ *    스탬프는 `.axmap/.bus-lastfetch` 다. `.axmap/` 는 통째로 무시되고(.gitignore),
+ *    쪽지 worktree(`.axmap/bus`) **바깥**이라 고아 브랜치에 섞이지 않는다.
  */
 function pull() {
   if (!busReady()) return
+  const sec = Number(flag('--throttle', '0'))
+  const stampFile = REPO ? path.join(REPO, '.axmap', '.bus-lastfetch') : null
+  if (sec > 0 && stampFile) {
+    // 스탬프가 아직 신선하면 원격을 묻지 않고 **로컬 worktree 만** 읽는다.
+    // 이미 받아둔 쪽지는 그대로 보인다 — 늦는 것은 새로 온 쪽지뿐이다.
+    try {
+      if (Date.now() - fs.statSync(stampFile).mtimeMs < sec * 1000) return
+    } catch { /* 스탬프가 없으면 이번이 처음이다. 받아온다 */ }
+  }
   const remote = gitBus(['config', '--get', 'axmap.remote'], { cwd: REPO }).out || 'origin'
   if (gitBus(['fetch', '--quiet', remote, BUS_BRANCH]).code !== 0) return
   gitBus(['reset', '--hard', '--quiet', 'FETCH_HEAD'])
+  // 🔴 성공했을 때만 찍는다. 실패에도 찍으면 원격이 잠깐 막힌 사이에 스탬프가
+  //    갱신되어 **다음 창까지 조용히 안 받는다.** 못 받은 것은 지연이지 성공이 아니다.
+  if (stampFile) { try { fs.writeFileSync(stampFile, '') } catch { /* 스탬프 실패는 치명적이지 않다 */ } }
 }
 
 const args = process.argv.slice(2)
@@ -130,14 +152,70 @@ const cmd = args[0]
 const flag = (n, d = null) => { const i = args.indexOf(n); return i < 0 ? d : args[i + 1] }
 const has = (n) => args.includes(n)
 
-/** 나는 누구인가. 선점 프로토콜과 **같은 값**을 쓴다 — 두 이름을 두면 갈린다. */
+/**
+ * 나는 누구인가. 선점 프로토콜과 **같은 값**을 쓴다 — 두 이름을 두면 갈린다.
+ *
+ * 🔴 MCP 서버는 `AXMAP_AGENT` 를 떨어뜨려 주지만 **훅은 그렇지 않다.** 훅은
+ *    하네스가 직접 띄우는 새 프로세스라 서버의 환경을 물려받지 않는다. 그래서
+ *    서버의 `resolveAgent()` 와 **같은 순서**로 되짚는다 — 환경변수가 없으면
+ *    `git config user.name`. 두 곳이 다른 순서를 쓰면 같은 사람이 두 이름을
+ *    갖게 되고, 그 순간 자기 앞으로 온 쪽지가 자기 함에 안 들어온다.
+ *
+ * 🔴 못 찾으면 기본 이름으로 채우지 않고 죽는다. 채우는 순간 clone 한 모두가
+ *    한 사람이 되고 쪽지함이 하나로 합쳐진다 (`mcp/server.mjs` 의 같은 판단).
+ */
 function me() {
   const v = process.env.AXMAP_AGENT
-  if (!v || !/^[\w.-]{1,64}$/.test(v)) {
-    console.error('AXMAP_AGENT 를 먼저 정하세요 (선점과 같은 값).')
-    process.exit(1)
-  }
-  return v
+  if (v && /^[\w.-]{1,64}$/.test(v)) return v
+  try {
+    const n = execFileSync('git', ['config', 'user.name'], {
+      cwd: REPO ?? process.cwd(), encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim()
+    // 서버와 달리 여기서는 형식을 본다. 통과 못 하면 아래에서 죽는다 —
+    // 못 읽는 이름을 그냥 쓰면 파일 이름과 필터가 조용히 어긋난다.
+    if (n && /^[\w.-]{1,64}$/.test(n)) return n
+  } catch { /* 아래에서 죽는다 */ }
+  console.error(
+    'AXMAP_AGENT 를 먼저 정하세요 (선점과 같은 값).\n' +
+      '  git config user.name 으로도 정하지 못했습니다.\n' +
+      '  기본 이름으로 대신 채우지 않습니다 — 여러 사람이 같은 이름이 되면\n' +
+      '  서로의 쪽지함이 하나로 합쳐집니다.',
+  )
+  process.exit(1)
+}
+
+/**
+ * 읽음 표시 — 규격은 `docs/SPEC.md` §2「읽음 표시」다. 여기와 `bin/axmap.mjs`
+ * 의 `unreadNotes` 가 **같은 파일을 같은 규칙으로** 본다. 규칙이 한 줄이라
+ * (`id > seen`) 공유 모듈로 빼지 않았지만, 한쪽을 고치면 반드시 다른 쪽도 본다.
+ *
+ * 🔴 장부에 넣지 않는다. 읽었는지는 나만의 상태라 남과 합의할 필요가 없고,
+ *    장부에 쓰면 쪽지를 볼 때마다 push 경합이 생긴다.
+ */
+const SEEN_FILE = REPO ? path.join(REPO, '.axmap-bus-seen.json') : null
+
+function readSeen(who) {
+  if (!SEEN_FILE) return ''
+  try { return JSON.parse(fs.readFileSync(SEEN_FILE, 'utf8'))[who] ?? '' } catch { return '' }
+}
+
+/**
+ * 🔴 **조용히 실패한다.** 못 찍으면 다음에 같은 쪽지가 한 번 더 뜰 뿐이다.
+ *    여기서 죽으면 쪽지를 보려다 명령이 통째로 죽는다 — 그쪽이 훨씬 나쁘다.
+ *
+ * 🔴 읽고-고쳐-쓴다. 이 파일에는 여러 에이전트의 표시가 함께 들어 있어서
+ *    통째로 덮으면 남의 표시가 지워진다. 같은 사람의 두 세션이 동시에 쓰면
+ *    한쪽이 질 수 있는데, 지는 쪽의 손해는 "한 번 더 뜬다" 뿐이라 잠그지 않는다.
+ */
+function markSeen(who, id) {
+  if (!SEEN_FILE || !who || !id) return
+  try {
+    let all = {}
+    try { all = JSON.parse(fs.readFileSync(SEEN_FILE, 'utf8')) } catch { /* 처음이다 */ }
+    if ((all[who] ?? '') >= id) return           // 뒤로 가지 않는다
+    all[who] = id
+    fs.writeFileSync(SEEN_FILE, JSON.stringify(all, null, 2) + '\n')
+  } catch { /* 조용히 */ }
 }
 
 const stamp = (d) => d.toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z')
@@ -280,19 +358,51 @@ function selfCmd() {
   return `node ${rel.startsWith('.') ? rel : './' + rel}`
 }
 
+/**
+ * 🔴 `--mine` 과 `--quiet-if-empty` 도 훅 때문에 생겼다.
+ *
+ *    `--mine`  — 훅은 자기 이름을 모른다. `--to <이름>` 을 설정 파일에 박으면
+ *                clone 한 모두가 한 사람의 함을 보게 된다. `me()` 가 풀게 한다.
+ *    `--quiet` — 훅은 매 턴 돈다. 쪽지가 없을 때 "쪽지 없음." 을 찍으면 그 줄이
+ *                대화의 절반을 채우고, 그러면 정작 쪽지가 왔을 때 안 보인다.
+ *                **아무것도 없을 때 아무 말도 안 하는 것이 알림의 조건이다.**
+ */
 function list() {
   pull()
   const all = readAll()
-  const to = flag('--to')
+  const to = has('--mine') ? me() : flag('--to')
   const from = flag('--from')
-  const rows = all.filter((m) => (has('--all') || !to || m.to === to || m.to === 'all')
+  let rows = all.filter((m) => (has('--all') || !to || m.to === to || m.to === 'all')
     && (!from || m.from === from))
-  if (!rows.length) return console.log('쪽지 없음.')
+
+  // 🔴 `--unread` 는 자기 앞으로 온 것을 가릴 때만 뜻이 있다. 받는 사람이
+  //    정해지지 않았는데 "안 읽음" 을 말하면 누구의 읽음인지가 없다.
+  const who = has('--unread') ? (to || me()) : null
+  if (who) {
+    const seen = readSeen(who)
+    rows = rows.filter((m) => m.id > seen)
+  }
+
+  if (!rows.length) return has('--quiet-if-empty') ? undefined : console.log('쪽지 없음.')
   for (const m of rows) {
     console.log(`${m.at?.slice(0, 16).replace('T', ' ')}  ${(m.from ?? '?').padEnd(18)} → ${(m.to ?? 'all').padEnd(18)} ${m.subject ?? ''}`)
     console.log(`    ${m.id}`)
   }
   console.log(`\n총 ${rows.length}개. 본문:  ${selfCmd()} read <아이디>`)
+
+  // 🔴 **찍는 것은 보여준 뒤다.** 위에서 죽으면 안 찍혀야 다음에 다시 뜬다.
+  //    규격은 SPEC §2「읽음 표시」— 목록에 뜬 순간이 읽은 순간이다.
+  //
+  // 🔴 `--no-mark` 는 **목록을 잘라서 보여주는 쪽**을 위한 것이다. MCP 배너는
+  //    받은 줄 중 3건만 그리는데, 여기서 전부를 찍으면 4번째부터는 화면에 뜬
+  //    적도 없이 읽음이 되어 **영영 안 보인다.** 목록을 그대로 다 내보내는 쪽
+  //    (사람이 부른 `list`)은 이 플래그가 필요 없다.
+  //
+  //    규칙 한 줄로 적으면 **그린 쪽이, 그린 것만 찍는다.** 자르는 쪽은
+  //    `--no-mark` 로 읽기만 하고 자기가 그린 id 를 `seen` 에 넘긴다.
+  if (who && !has('--no-mark')) {
+    markSeen(who, rows.reduce((hi, m) => (m.id > hi ? m.id : hi), ''))
+  }
 }
 
 function read(id) {
@@ -312,6 +422,35 @@ function who() {
   } catch (e) { console.error(e.message) }
 }
 
+/**
+ * 읽음 표시를 **주어진 쪽지에만** 찍는다. 규격은 SPEC §2「읽음 표시」.
+ *
+ * 🔴 이것이 따로 있는 이유는 하나다 — **목록을 잘라서 보여주는 쪽이 있기 때문이다.**
+ *    `list` 는 자기가 낸 줄을 전부 알지만, MCP 배너처럼 그중 앞의 몇 줄만 그리는
+ *    쪽은 `list` 에게 "내가 실제로 그린 것" 을 말해줄 방법이 없었다. 그래서
+ *    찍는 일을 목록에서 떼어내 여기로 옮겼다.
+ *
+ * 🔴 `pull()` 을 하지 않는다. 로컬 파일 하나를 쓸 뿐이라 원격을 물을 이유가 없고,
+ *    알림을 그릴 때마다 fetch 가 돌면 배너가 도구를 느리게 만든다.
+ *
+ * 고수위 하나만 들고 있으므로(SPEC §2) 여러 개를 받아도 가장 큰 것만 남는다.
+ * 뒤로 가지 않는지는 `markSeen` 이 본다.
+ */
+function seen() {
+  const ids = []
+  for (let i = 1; i < args.length; i++) {
+    if (args[i] === '--to') { i++; continue }        // 그 다음 것은 id 가 아니다
+    if (args[i].startsWith('--')) continue
+    ids.push(args[i])
+  }
+  if (!ids.length) {
+    console.error(`찍을 쪽지 id 를 주세요.  예:  ${selfCmd()} seen <아이디> [<아이디>…]`)
+    process.exit(1)
+  }
+  markSeen(has('--mine') ? me() : (flag('--to') || me()),
+    ids.reduce((hi, id) => (id > hi ? id : hi), ''))
+}
+
 switch (cmd) {
   case 'post': post({ to: flag('--to'), subject: flag('--subject'), body: stdin() }); break
   case 'reply': {
@@ -323,15 +462,21 @@ switch (cmd) {
   }
   case 'list': list(); break
   case 'read': read(args[1]); break
+  case 'seen': seen(); break
   case 'who': who(); break
   default:
     console.log(`에이전트 쪽지함
 
   ${selfCmd()} post --to <상대> --subject "<제목>" < 본문.md
-  ${selfCmd()} list [--to <나>] [--from <상대>] [--all]
+  ${selfCmd()} list [--to <나>|--mine] [--from <상대>] [--all]
+                   [--unread] [--no-mark] [--throttle <초>] [--quiet-if-empty]
   ${selfCmd()} read <아이디>
+  ${selfCmd()} seen <아이디> [<아이디>…]   보여준 쪽지만 읽음으로 찍는다
   ${selfCmd()} reply <아이디> < 본문.md
   ${selfCmd()} who          지금 누가 무엇을 잡고 있나
+
+목록을 잘라서 보여주는 쪽은 --no-mark 로 읽기만 하고, 자기가 그린 아이디만
+seen 에 넘기세요. 안 그러면 화면에 뜬 적 없는 쪽지가 읽음이 되어 안 보입니다.
 
 AXMAP_AGENT 를 선점과 같은 값으로 두세요.
 쪽지는 고아 브랜치 ${BUS_BRANCH} 로 바로 갑니다 — 커밋도 MR 도 필요 없습니다.`)

@@ -117,7 +117,10 @@ const isForeign = () => REPO !== SELF
 const BUS = path.join(SELF, 'tools', 'bus.mjs')
 
 /**
- * 🔴 `AXMAP_BUS_DIR` 을 **일부러 넘기지 않는다.**
+ * 🔴 `AXMAP_BUS_DIR` 에 **폴더를 넘기지 않는다.** 빈 문자열로 넘긴다 —
+ *    `bus.mjs` 는 빈 값을 "지정 안 됨" 으로 보므로 결과는 안 넘긴 것과 같고,
+ *    동시에 **부모 환경에 남아 있던 값을 지운다.** 그냥 생략하면 물려받은
+ *    엉뚱한 폴더로 쪽지가 떨어질 수 있다. (실제로 넘기는 자리는 `bus()` 안이다.)
  *
  * 예전에는 여기서 `REPO/docs/bus` 를 넘겼다. 쪽지가 작업 트리에 있었으니 폴더
  * 하나만 알려주면 됐다. 지금은 쪽지가 고아 브랜치(`axmap/bus`)의 worktree 에
@@ -189,13 +192,35 @@ function bus(args, input = undefined) {
  *    확실히 읽는 것은 자기가 부른 도구의 결과뿐이다. 그래서 그 자리에 붙인다.
  *    무엇을 부르든 — status 든 claim 이든 brief 든 — 보인다.
  *
- * 🔴 매번 원격을 물으면 도구가 느려진다. MCP 서버는 세션 내내 살아 있으므로
- *    프로세스 안에서 시간을 재서 15초에 한 번만 실제로 확인한다. 그 사이에는
- *    직전 결과를 그대로 쓴다. 쪽지가 15초 늦게 보이는 것은 MR 한 사이클을
- *    기다리던 것에 비하면 없는 지연이다.
+ * 🔴 매번 원격을 물으면 도구가 느려진다. 그 조절은 이제 `bus.mjs` 의 `--throttle`
+ *    이 한다 — 시계가 스탬프 파일이라 훅(부를 때마다 새 프로세스)과 이 서버
+ *    (세션 내내 살아 있음)가 **같은 창을 나눠 쓴다.**
+ *
+ *    예전에는 여기서 프로세스 안의 변수로 15초를 쟀다. 그 캐시는 이제 둘 수 없다 —
+ *    아래에서 읽음을 찍기 때문에, 캐시가 남아 있으면 **이미 찍은 쪽지를 다시 그린다.**
+ *    직전 결과를 재사용하는 것과 상태를 바꾸는 것은 같이 못 간다.
+ *
+ * 🔴 **그린 것만 찍는다.** 배너는 3건만 그리므로 3건만 읽음이 된다. `list` 에게
+ *    찍게 하면(= `--unread` 만 주면) 화면에 뜬 적 없는 4번째부터가 읽음이 되어
+ *    영영 안 보인다. 그래서 `--no-mark` 로 읽기만 하고 그린 id 만 `seen` 에 넘긴다.
+ *    조용히 사라지는 쪽으로 틀리면 아무도 못 찾는다.
  */
-let busCheckedAt = 0
-let busCached = ''
+const BANNER_ROWS = 3
+
+/**
+ * 목록 출력에서 (제목 줄, id) 쌍을 뽑는다. `bus list` 는 두 줄이 한 쌍이다 —
+ * 제목 줄에 화살표가 있고 **그 다음 줄이 id** 다.
+ */
+function busRows(out) {
+  const lines = out.split('\n')
+  const rows = []
+  for (let i = 0; i < lines.length; i++) {
+    if (!lines[i].includes('→')) continue
+    rows.push({ line: lines[i].trim(), id: (lines[i + 1] ?? '').trim() })
+  }
+  return rows
+}
+
 function unreadBanner(tool, text) {
   // 지금 쪽지를 읽고 있는 사람에게 "쪽지가 있다" 고 또 말하지 않는다.
   if (tool === 'ax_inbox') return ''
@@ -203,20 +228,41 @@ function unreadBanner(tool, text) {
   //    이미 같은 알림을 찍는다. 이름 목록으로 거르면 CLI 쪽이 알림을 붙이거나
   //    떼는 순간 여기가 조용히 낡는다 — 목록은 언제나 코드보다 먼저 낡는다.
   if (text.includes('안 읽은 쪽지')) return ''
-  const t = Date.now()
-  if (t - busCheckedAt > 15_000) {
-    busCheckedAt = t
-    const r = bus(['list', '--to', AGENT])
-    busCached = r.code === 0 ? r.out : ''
-  }
-  // 목록 줄만 센다. 제목 줄에는 화살표가 있고 id 줄에는 없다.
-  const rows = busCached.split('\n').filter((l) => l.includes('→'))
+
+  const r = bus(['list', '--to', AGENT, '--unread', '--no-mark', '--throttle', '15', '--quiet-if-empty'])
+  if (r.code !== 0) return ''
+  const rows = busRows(r.out)
   if (!rows.length) return ''
-  const head = rows.slice(0, 3).map((l) => '  ' + l.trim()).join('\n')
-  const more = rows.length > 3 ? `\n  … 그 밖에 ${rows.length - 3}건` : ''
-  return `\n\n───── 📬 나에게 온 쪽지 ${rows.length}건 — ax_inbox 로 읽으십시오 ─────\n${head}${more}`
+
+  const shown = rows.slice(0, BANNER_ROWS)
+  const head = shown.map((s) => '  ' + s.line).join('\n')
+  const more = rows.length > shown.length ? `\n  … 그 밖에 ${rows.length - shown.length}건` : ''
+  const banner = `\n\n───── 📬 나에게 온 쪽지 ${rows.length}건 — ax_inbox 로 읽으십시오 ─────\n${head}${more}`
+
+  // 🔴 배너를 다 만든 뒤에 찍는다. 위에서 죽으면 안 찍혀야 다음에 다시 뜬다.
+  const ids = shown.map((s) => s.id).filter(Boolean)
+  if (ids.length) bus(['seen', '--to', AGENT, ...ids])
+  return banner
 }
 
+/**
+ * 🔴 **사람이 읽을 것과 기계가 읽을 것을 가른다.**
+ *
+ *    예전에는 `out` 하나뿐이었고 거기에 stdout 과 stderr 를 합쳐서 담았다.
+ *    보여주기에는 그게 맞다 — 경고도 같이 보여야 한다. 그런데 `--json` 을
+ *    **파싱하는 쪽**에는 재앙이었다.
+ *
+ *    `axmap status` 는 원격이 없으면 이렇게 경고한다:
+ *
+ *        경고: 원격이 없어 단일 작업자 모드로 돕니다. 관문 1(CAS)이 …
+ *
+ *    이 줄이 stderr 로 나와 JSON 뒤에 붙으면 `JSON.parse` 가 죽는다. 그리고
+ *    `ax_check` 는 그 실패를 삼키고 **"겹치지 않습니다. claim 해도 됩니다"** 를
+ *    냈다 — 장부에 남의 claim 이 몇 개가 있든 상관없이. 원격이 없는 저장소
+ *    (새로 시작한 팀, 테스트 저장소)에서는 **언제나** 그랬다.
+ *
+ *    그래서 `out`(합친 것)은 보여주기용으로 남기고, 파싱은 `stdout` 만 본다.
+ */
 function cli(args) {
   const r = spawnSync(process.execPath, [CLI, ...args], {
     cwd: REPO,
@@ -224,9 +270,13 @@ function cli(args) {
     windowsHide: true,
     env: { ...process.env, AXMAP_AGENT: AGENT, AXMAP_ACTOR: ACTOR },
   })
+  const stdout = (r.stdout ?? '').trim()
+  const stderr = (r.stderr ?? '').trim()
   return {
     code: r.status ?? 1,
-    out: [(r.stdout ?? '').trim(), (r.stderr ?? '').trim()].filter(Boolean).join('\n'),
+    out: [stdout, stderr].filter(Boolean).join('\n'),   // 사람에게
+    stdout,                                             // 기계에게 — 합치지 않는다
+    stderr,
   }
 }
 
@@ -646,9 +696,37 @@ ${s.out}`
  *    `ax_claim` 이 쓰는 장부가 서로 다른 저장소일 수 있다. 그러면 에이전트는
  *    자기가 본 것을 근거로 확신 있게 틀린 답을 만든다 — 사람이 못 잡는 종류다.
  */
+/**
+ * 🔴 **막다른 길을 남기지 않는다 — 한 곳에서.**
+ *
+ * 장부가 없는 저장소에서 CLI 는 어느 명령이든 이렇게 답한다:
+ *
+ *     장부가 없습니다. 먼저 실행하세요:
+ *       axmap init
+ *
+ * 메시지는 정확한데 **에이전트에게는 셸이 없다.** 부를 수 있는 이름으로 바꿔줘야
+ * 한다. 예전에는 그 변환이 `ax_claim` 안에만 있었고, `ax_check` · `ax_status` ·
+ * `ax_release` · `ax_renew` 는 원문을 그대로 냈다. 하필 `ax_check` 는 설명이
+ * "작업 계획을 세울 때 쓴다" 라 **claim 보다 먼저 불리는 도구**다 — 처음 온
+ * 사람은 고쳐둔 안내를 못 보고 원래의 막다른 길을 먼저 밟았다.
+ *
+ * 그래서 도구마다 복사하지 않고 **길목에서 한 번** 본다. 도구가 늘어나도
+ * 새 도구가 이 안내를 빠뜨릴 수 없고, 다섯 군데가 따로 낡지도 않는다.
+ * 판정하지 않고 **CLI 가 낸 말을 볼 뿐**이라는 점이 중요하다 — 도구 이름
+ * 목록으로 거르면 그 목록이 코드보다 먼저 낡는다.
+ */
+const INIT_HINT = '\n\n→ MCP 에서는 ax_init 을 부르십시오. 그 뒤 이 도구를 다시 시도하면 됩니다.'
+
+function withInitHint(r) {
+  if (r.ok) return r
+  const t = r.text ?? ''
+  if (!t.includes('장부가 없습니다') || t.includes('ax_init')) return r
+  return { ...r, text: t + INIT_HINT }
+}
+
 function callTool(name, args = {}) {
   const switched = syncRepo()
-  const r = dispatch(name, args)
+  const r = withInitHint(dispatch(name, args))
   return switched ? { ...r, text: `${switchNotice(switched)}
 
 ${r.text}` } : r
@@ -682,11 +760,9 @@ function dispatch(name, args = {}) {
             ? `선언 완료. 이 경로들만 수정하십시오.\n${r.out}`
             : r.code === 2
               ? `거부되었습니다. 재시도하지 말고 다른 작업으로 옮기십시오.\n${r.out}`
-              // 🔴 막다른 길을 남기지 않는다. CLI 는 "axmap init 을 실행하라" 고
-              //    말하지만 에이전트에게 셸이 없다. 부를 수 있는 이름으로 바꿔준다.
-              : r.out.includes('장부가 없습니다')
-                ? `${r.out}\n\n→ MCP 에서는 ax_init 을 부르십시오. 그 뒤 이 claim 을 다시 시도하면 됩니다.`
-                : `실패 (exit ${r.code})\n${r.out}`,
+              // "장부가 없습니다" 를 여기서 따로 다루지 않는다. 그 안내는
+              // `withInitHint` 가 길목에서 붙인다 — 다섯 군데가 따로 낡지 않게.
+              : `실패 (exit ${r.code})\n${r.out}`,
       }
     }
     case 'ax_inbox': {
@@ -705,6 +781,17 @@ function dispatch(name, args = {}) {
       //    오류가 없으므로 아무도 실패를 보지 못한다.
       const a = args.id ? ['read', String(args.id)] : ['list', ...(args.all ? ['--all'] : ['--to', AGENT])]
       const r = bus(a)
+
+      // 🔴 여기도 **낸 것만 찍는다.** 목록을 자르지 않으므로 낸 것 전부다.
+      //    이 자리가 비어 있으면 쪽지함을 열어도 배너가 안 줄어든다 — 사람이
+      //    읽었는데 도구는 안 읽었다고 말하는 상태가 되고, 그러면 배너는 배경이 된다.
+      //
+      //    `all` 일 때는 안 찍는다. 남에게 간 쪽지까지 섞여 있어서 그중 가장 큰
+      //    id 로 찍으면 **나에게 온 안 읽은 쪽지가 화면에 뜬 적 없이 묻힌다.**
+      if (r.code === 0 && !args.id && !args.all) {
+        const ids = busRows(r.out).map((s) => s.id).filter(Boolean)
+        if (ids.length) bus(['seen', '--to', AGENT, ...ids])
+      }
       return {
         ok: r.code === 0,
         // 🔴 "쪽지 없음" 을 실패로 내지 않는다. 없는 것과 못 읽은 것은 다르다.
@@ -725,11 +812,33 @@ function dispatch(name, args = {}) {
       // status 를 읽어 겹침을 계산한다. 장부를 바꾸지 않는다.
       const r = cli(['status', '--json'])
       if (r.code !== 0) return { ok: false, text: r.out }
-      let live = { active: [] }
-      try { live = JSON.parse(r.out) } catch { /* 그대로 넘긴다 */ }
+
+      // 🔴 **못 읽은 것을 비어 있는 것으로 답하지 않는다.**
+      //
+      //    예전에는 파싱이 실패하면 `{ active: [] }` 를 그대로 들고 내려갔다.
+      //    그러면 겹침이 0건이 되어 **"겹치지 않습니다. claim 해도 됩니다"** 가
+      //    나간다. 장부를 한 글자도 못 읽은 상태에서 통과를 내주는 것이다.
+      //
+      //    이 도구는 판정을 못 했을 때 막아야 한다. 못 읽었는데 무엇을 claim 할지
+      //    어떻게 아는가 — 답은 "모른다" 이고, 모르는 것의 이름은 "안 겹침" 이 아니다.
+      //
+      //    🔴 `out` 이 아니라 `stdout` 을 판다. 합친 것을 파싱하면 경고 한 줄에
+      //       판정이 무너진다 — 그 사고가 실제로 이 자리에서 났다. `cli` 주석에
+      //       무엇이 붙어서 깨졌는지 적어 두었다.
+      let live = null
+      try { live = JSON.parse(r.stdout) } catch { /* 바로 아래에서 막는다 */ }
+      if (!live || !Array.isArray(live.active)) {
+        return {
+          ok: false,
+          text: '장부를 읽지 못했습니다 — 겹치는지 **판정할 수 없습니다.**\n'
+            + 'claim 하지 마십시오. 못 읽은 것과 비어 있는 것은 다릅니다.\n\n'
+            + `받은 것:\n${r.out}`,
+        }
+      }
+
       const norm = (p) => String(p).replace(/\\/g, '/').replace(/\/+$/, '')
       const hit = []
-      for (const c of live.active ?? []) {
+      for (const c of live.active) {
         if (c.agent === AGENT) continue
         for (const want of paths.map(norm)) {
           for (const held of (c.paths ?? []).map(norm)) {
@@ -739,9 +848,12 @@ function dispatch(name, args = {}) {
           }
         }
       }
+      // 경고는 버리지 않는다. 판정에서 뺐을 뿐 사람은 봐야 한다 —
+      // "원격이 없어 남의 claim 을 못 본다" 는 판정 자체의 한계를 말하고 있다.
+      const note = r.stderr ? `\n\n${r.stderr}` : ''
       return {
         ok: true,
-        text: hit.length ? `겹칩니다:\n${hit.join('\n')}` : '겹치지 않습니다. claim 해도 됩니다.',
+        text: (hit.length ? `겹칩니다:\n${hit.join('\n')}` : '겹치지 않습니다. claim 해도 됩니다.') + note,
       }
     }
     case 'ax_status': {
