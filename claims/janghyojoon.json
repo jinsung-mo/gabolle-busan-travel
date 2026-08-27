@@ -1,16 +1,19 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-484",
-  "intent": "setup.sh 80행이 정의되지 않은 say 를 부르고 set -euo pipefail 때문에 거기서 죽는다 — 리눅스·Git Bash 에서 자가 점검이 한 번도 안 돌았다. 내가 방금 팀에 이 스크립트를 돌리라고 쪽지를 보냈으므로 아침 9시에 다섯 명이 같은 데서 막힌다",
+  "task": "S15P21E201-23",
+  "intent": "빠뜨린 커밋 수습 — 커밋 메시지와 sources.json 이 가리키는 파일 둘이 저장소에 없었다. __pycache__ 도 무시 목록에 없다",
   "actor": "agent",
-  "since": "2026-08-27T16:33:37.086Z",
+  "since": "2026-08-27T16:37:02.719Z",
   "ttlMs": 2700000,
   "paths": [
     "ai",
+    "bigData/.gitignore",
     "bigData/collect/pbf_boundary.py",
+    "bigData/collect/shp_buildings.py",
     "bigData/config/boundary.geojson",
     "bigData/config/sources.json",
     "bigData/docs/WALKABILITY.md",
+    "bigData/process/height-calibrate.mjs",
     "setup.sh"
   ]
 }
