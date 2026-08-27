@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-23",
-  "intent": "온톨로지에 여행 상위 개념을 얹는다 — 지금은 길과 그 환경만 있고 장소·이동·일정·여행자가 한 칸도 없다. 구간 다섯 층이 전부 떠 있는데 그것을 여행자의 하루에 붙일 접착제가 비어 있다",
+  "intent": "실행 지문이 폴더당 한 칸이라 여러 단계가 서로를 지운다 — 재현 불가를 막으려 만든 장치가 자기들끼리 덮고 있다. 파일 이름에 단계를 넣어 근본을 고친다",
   "actor": "agent",
-  "since": "2026-08-27T22:38:21.997Z",
+  "since": "2026-08-27T22:48:15.130Z",
   "ttlMs": 2700000,
   "paths": [
     "bigData/config/ontology.jsonld",
     "bigData/docs/ONTOLOGY.md",
+    "bigData/mlops/manifest.mjs",
     "bigData/test/verify-ontology.mjs"
   ]
 }
