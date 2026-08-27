@@ -1,11 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-31",
-  "intent": "v7 3분할 개정 진행 중 — 실행계획·기획서 완료, 상세설계서 v2 작업 중 (별도 worktree S15P21E201-v7docs)",
+  "intent": "v6 원문 맨 앞에 '이 문서는 v7로 대체됨' 안내 한 덩어리만 추가 — 본문은 안 건드린다",
   "actor": "agent",
-  "since": "2026-08-27T03:32:49.150Z",
+  "since": "2026-08-27T03:37:17.159Z",
   "ttlMs": 2700000,
   "paths": [
+    "docs/LOCAL_ROUTE_6인_개발계획서_및_업무지침서_v6.md",
+    "docs/LOCAL_ROUTE_기능_화면_상세설계서.md",
+    "docs/LOCAL_ROUTE_기획서_v6.md",
     "docs/LOCAL_ROUTE_기획서_v7.md",
     "docs/LOCAL_ROUTE_상세설계서_v2.md",
     "docs/LOCAL_ROUTE_실행계획_v7.md"
