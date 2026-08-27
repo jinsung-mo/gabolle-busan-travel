@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-4",
+  "intent": "chore/axmap-bootstrap 에 origin 3커밋 병합 커밋 완료",
+  "actor": "agent",
+  "since": "2026-08-27T00:01:55.494Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "axmap",
+    "docs/HANDOVER.md"
+  ]
+}
