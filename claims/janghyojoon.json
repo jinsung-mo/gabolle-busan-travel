@@ -1,0 +1,11 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-21",
+  "intent": "/ax-inbox 명령의 낡은 마지막 줄(쪽지는 커밋해야 간다)을 고치고 common/dev 로 머지한다",
+  "actor": "agent",
+  "since": "2026-08-27T05:40:40.078Z",
+  "ttlMs": 2700000,
+  "paths": [
+    ".claude/commands"
+  ]
+}
