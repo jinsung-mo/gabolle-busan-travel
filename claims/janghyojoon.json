@@ -1,0 +1,11 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-33",
+  "intent": "긴급 수정 브랜치로 진미리를 main 의 투표권자 명단에 올린다 — common/dev 경로는 자기 표 배제로 막혀 있다",
+  "actor": "agent",
+  "since": "2026-08-27T07:15:15.555Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "governance/policy.json"
+  ]
+}
