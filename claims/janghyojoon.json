@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-35",
+  "intent": "common 을 버전 축과 파트 사다리에서 뺀다",
+  "actor": null,
+  "since": "2026-08-27T06:06:02.687Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "docs/VERSIONING.md",
+    "src/mrtarget.mjs",
+    "src/version.mjs",
+    "test/mrtarget.test.mjs",
+    "test/version.test.mjs",
+    "tools/version.mjs"
+  ]
+}
