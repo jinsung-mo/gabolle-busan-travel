@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-35",
+  "intent": "쪽지 읽음 표시 재벤더링 커밋 + MCP 배너에 읽음 표시 반영",
+  "actor": "agent",
+  "since": "2026-08-27T06:45:27.985Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "ci/axmap/SOURCE.json",
+    "ci/axmap/bin/axmap.mjs",
+    "ci/axmap/manifest.sha256",
+    "ci/axmap/mcp/server.mjs",
+    "ci/axmap/tools/bus.mjs"
+  ]
+}
