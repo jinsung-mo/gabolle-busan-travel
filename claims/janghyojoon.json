@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-25",
+  "intent": "upstream(main) 의 쪽지함 구현을 우리 배치로 옮겨 심는다 — 내 재구현을 버린다",
+  "actor": "agent",
+  "since": "2026-08-27T02:18:25.215Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "axmap/mcp/server.mjs",
+    "axmap/test",
+    "axmap/tools/bus.mjs"
+  ]
+}
