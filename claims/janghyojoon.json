@@ -9,7 +9,6 @@
     "bigData/data/raw/transit",
     "bigData/process/choice-design.mjs",
     "bigData/process/choice-fit.mjs",
-    "bigData/survey",
-    "docs"
+    "bigData/survey"
   ]
 }
