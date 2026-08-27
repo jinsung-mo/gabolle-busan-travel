@@ -1,0 +1,12 @@
+{
+  "agent": "rleaderjoon-desktop",
+  "task": "S15P21E201-23",
+  "intent": "걷기 요소 데이터 출처 조사 결과를 기록한다",
+  "actor": null,
+  "since": "2026-08-27T01:26:43.511Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/config/sources.json",
+    "bigData/docs/WALKABILITY.md"
+  ]
+}
