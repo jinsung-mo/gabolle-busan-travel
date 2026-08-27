@@ -1,0 +1,13 @@
+{
+  "agent": "rleaderjoon-desktop",
+  "task": "S15P21E201-23",
+  "intent": "쪽지 읽음 표시 기록 — 훅 알림이 매번 전부 찍히는 것을 막는다",
+  "actor": null,
+  "since": "2026-08-27T06:17:41.046Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bin/axmap.mjs",
+    "docs/SPEC.md",
+    "tools/bus.mjs"
+  ]
+}
