@@ -1,15 +1,18 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-23",
-  "intent": "온톨로지 골격(JSON-LD/SKOS) + 건물 추출·층수 가설 검증 + 건물 그림자 + 경치 근사 — 백그라운드 4개 병렬, 전부 새 파일만",
+  "intent": "V-World GIS건물통합정보(부산 472,608동) SHP → ndjson 변환 + 용도별 층당 높이 실측 보정",
   "actor": "agent",
-  "since": "2026-08-27T15:21:29.413Z",
+  "since": "2026-08-27T15:38:44.023Z",
   "ttlMs": 2700000,
   "paths": [
     "bigData/collect/pbf_buildings.py",
+    "bigData/collect/shp_buildings.py",
     "bigData/config/ontology.jsonld",
+    "bigData/data/raw/building",
     "bigData/docs/ONTOLOGY.md",
     "bigData/process/building-audit.mjs",
+    "bigData/process/height-calibrate.mjs",
     "bigData/process/shadow.mjs",
     "bigData/process/vista.mjs",
     "bigData/test/verify-ontology.mjs"
