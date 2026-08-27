@@ -1,9 +1,9 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-23",
-  "intent": "BIMS 분산 수집 코드 커밋 준비 — 원격에 올린다",
+  "intent": "부산 도시철도 접근성: 공공데이터포털 CSV 수집 + OSM 출구 노드와 출입구번호 조인 (신규 파일만)",
   "actor": "agent",
-  "since": "2026-08-27T15:49:46.385Z",
+  "since": "2026-08-27T15:51:55.003Z",
   "ttlMs": 2700000,
   "paths": [
     "bigData/collect/bims-preflight.mjs",
