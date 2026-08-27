@@ -1,15 +1,16 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-23",
-  "intent": "부산 도시철도 — 부산교통공사 CSV 3종 수집 + OSM 출구 778개와 출구번호 조인",
+  "intent": "새 출처 등록 — V-World GIS건물통합정보(CC BY)",
   "actor": "agent",
-  "since": "2026-08-27T15:44:21.699Z",
+  "since": "2026-08-27T15:46:23.170Z",
   "ttlMs": 2700000,
   "paths": [
     "bigData/collect/pbf_buildings.py",
     "bigData/collect/shp_buildings.py",
     "bigData/collect/subway.mjs",
     "bigData/config/ontology.jsonld",
+    "bigData/config/sources.json",
     "bigData/data/raw/building",
     "bigData/data/raw/building/gis-building.ndjson",
     "bigData/data/raw/subway",
