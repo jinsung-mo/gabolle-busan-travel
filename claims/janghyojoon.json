@@ -1,11 +1,12 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-35",
-  "intent": "common 을 버전 축과 파트 사다리에서 뺀다",
-  "actor": null,
-  "since": "2026-08-27T06:06:02.687Z",
-  "ttlMs": 1800000,
+  "intent": "axMap 재벤더링 — common 을 버전 축과 파트 사다리에서 뺀 변경을 사본에 반영",
+  "actor": "agent",
+  "since": "2026-08-27T06:10:03.211Z",
+  "ttlMs": 2700000,
   "paths": [
+    "ci/axmap",
     "docs/VERSIONING.md",
     "src/mrtarget.mjs",
     "src/version.mjs",
