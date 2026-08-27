@@ -6,8 +6,6 @@
   "since": "2026-08-27T08:57:54.977Z",
   "ttlMs": 2700000,
   "paths": [
-    ".claude/commands/ax-ballot.md",
-    ".claude/commands/ax-vote.md",
     "bigData/data/raw/transit",
     "bigData/process/choice-design.mjs",
     "bigData/process/choice-fit.mjs",
