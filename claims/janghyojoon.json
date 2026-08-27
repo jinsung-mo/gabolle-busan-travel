@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-voter-jinmiri",
-  "intent": "훅이 경로를 하나만 박아 브랜치를 옮기면 모든 커밋이 막히는 것을 고친다",
+  "task": "S15P21E201-31",
+  "intent": "v7 3분할 개정 진행 중 — 실행계획·기획서 완료, 상세설계서 v2 작업 중 (별도 worktree S15P21E201-v7docs)",
   "actor": "agent",
-  "since": "2026-08-27T03:30:55.835Z",
-  "ttlMs": 1800000,
+  "since": "2026-08-27T03:32:49.150Z",
+  "ttlMs": 2700000,
   "paths": [
     "docs/LOCAL_ROUTE_기획서_v7.md",
     "docs/LOCAL_ROUTE_상세설계서_v2.md",
