@@ -1,14 +1,17 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-35",
-  "intent": "디자인 시스템 상태가 문서 안에서 어긋난 것을 고친다 — 예승 님이 M3 비교 후 결정으로 바꿨는데 반영이 안 됐다",
+  "task": "S15P21E201-23",
+  "intent": "온톨로지 골격(JSON-LD/SKOS) + 건물 추출·층수 가설 검증 + 건물 그림자 + 경치 근사 — 백그라운드 4개 병렬, 전부 새 파일만",
   "actor": "agent",
-  "since": "2026-08-27T09:01:45.507Z",
+  "since": "2026-08-27T15:21:29.413Z",
   "ttlMs": 2700000,
   "paths": [
-    "bigData/data/raw/transit",
-    "bigData/process/choice-design.mjs",
-    "bigData/process/choice-fit.mjs",
-    "bigData/survey"
+    "bigData/collect/pbf_buildings.py",
+    "bigData/config/ontology.jsonld",
+    "bigData/docs/ONTOLOGY.md",
+    "bigData/process/building-audit.mjs",
+    "bigData/process/shadow.mjs",
+    "bigData/process/vista.mjs",
+    "bigData/test/verify-ontology.mjs"
   ]
 }
