@@ -1,15 +1,19 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-35",
-  "intent": "쪽지 읽음 표시 재벤더링 커밋 + MCP 배너에 읽음 표시 반영",
+  "task": "S15P21E201-25",
+  "intent": "쪽지 읽음 표시를 목록에서 떼어내 그린 것만 찍게 한다",
   "actor": "agent",
-  "since": "2026-08-27T06:45:27.985Z",
-  "ttlMs": 2700000,
+  "since": "2026-08-27T06:57:17.751Z",
+  "ttlMs": 1800000,
   "paths": [
     "ci/axmap/SOURCE.json",
     "ci/axmap/bin/axmap.mjs",
     "ci/axmap/manifest.sha256",
     "ci/axmap/mcp/server.mjs",
-    "ci/axmap/tools/bus.mjs"
+    "ci/axmap/tools/bus.mjs",
+    "docs/SPEC.md",
+    "mcp/server.mjs",
+    "test/mcp.test.mjs",
+    "tools/bus.mjs"
   ]
 }
