@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-31",
-  "intent": "LOCAL_ROUTE v6 문서를 v7 3분할로 개정 — 백엔드 Spring 필수 확정 반영, 실행 규격(브랜치·리뷰·역할·DB·캐시·앱스택)을 새로 씀",
+  "task": "S15P21E201-voter-jinmiri",
+  "intent": "진미리(jinmiri, wlsalfl321@naver.com)를 투표권자 명단에 추가",
   "actor": "agent",
-  "since": "2026-08-27T03:06:07.980Z",
+  "since": "2026-08-27T03:14:59.518Z",
   "ttlMs": 2700000,
   "paths": [
     "docs/LOCAL_ROUTE_기획서_v7.md",
     "docs/LOCAL_ROUTE_상세설계서_v2.md",
-    "docs/LOCAL_ROUTE_실행계획_v7.md"
+    "docs/LOCAL_ROUTE_실행계획_v7.md",
+    "governance/policy.json"
   ]
 }
