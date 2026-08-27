@@ -1,0 +1,11 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-35",
+  "intent": "LOCAL_ROUTE 문서 31 → 32 → 35(v7) 세 브랜치를 common/dev 로 순서대로 머지한다",
+  "actor": "agent",
+  "since": "2026-08-27T05:16:00.985Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs"
+  ]
+}
