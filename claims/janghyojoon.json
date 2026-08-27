@@ -1,11 +1,14 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-35",
-  "intent": "이예승 님이 정한 5건을 v7 문서에 반영한다 — 스토어 포함·Astryx 채택·앱 UI 방향·결측률 재현불가",
+  "task": "S15P21E201-23",
+  "intent": "속성 이름을 sustainedRunMax 로 통일 — ONTOLOGY 4.1 지표명과 한 글자 어긋나 있었다",
   "actor": "agent",
-  "since": "2026-08-27T06:21:36.932Z",
+  "since": "2026-08-27T06:23:50.875Z",
   "ttlMs": 2700000,
   "paths": [
+    "bigData/process/choice-design.mjs",
+    "bigData/process/choice-fit.mjs",
+    "bigData/survey",
     "docs"
   ]
 }
