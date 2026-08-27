@@ -1,0 +1,11 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-36",
+  "intent": "최종 ERD에 사용자 취향·부담 모델 통합",
+  "actor": null,
+  "since": "2026-08-27T06:40:28.193Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "ref/local-route/LOCAL_ROUTE_ERD_사용자취향_부담_제안.dbml"
+  ]
+}
