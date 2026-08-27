@@ -382,6 +382,34 @@ function unreadNotes(root, me) {
 }
 
 /**
+ * 읽음 표시를 찍는다. 규격은 `docs/SPEC.md` §2「읽음 표시」.
+ *
+ * 🔴 **읽기만 하고 쓰지 않던 자리였다.** `unreadNotes` 가 `.axmap-bus-seen.json`
+ *    을 보는데 아무도 안 써서 `seen` 이 늘 빈 문자열이었고, 그래서 `id <= seen`
+ *    이 아무것도 못 걸렀다 — **모든 쪽지가 영원히 안 읽음**이었다. 알림이 매번
+ *    전부를 찍으니 사람은 그것을 배경으로 여기고 안 읽는다. 반쪽짜리 알림은
+ *    없는 알림보다 나쁘다. 2026-08-27 에 훅을 붙이려다 드러났다.
+ *
+ * 🔴 **보여준 것까지만 찍는다.** `printUnread` 는 3건만 출력하므로 3건까지만
+ *    읽음이 된다. 세지만 하고 안 보여준 쪽지를 읽음으로 치면 그 쪽지는
+ *    영영 안 뜬다.
+ *
+ * ⚠️ 조용히 실패한다. 못 찍으면 다음에 한 번 더 뜰 뿐이고, 여기서 죽으면
+ *    claim 이 죽는다. `tools/bus.mjs` 의 `markSeen` 과 같은 규칙이다.
+ */
+function markBusSeen(root, me, id) {
+  if (!me || !id) return
+  const file = path.join(root, '.axmap-bus-seen.json')
+  try {
+    let all = {}
+    try { all = JSON.parse(fs.readFileSync(file, 'utf8')) } catch { /* 처음이다 */ }
+    if ((all[me] ?? '') >= id) return          // 뒤로 가지 않는다
+    all[me] = id
+    fs.writeFileSync(file, JSON.stringify(all, null, 2) + '\n')
+  } catch { /* 조용히 */ }
+}
+
+/**
  * 쪽지를 읽는 명령. **경로를 문자열로 적지 않고 계산한다.**
  *
  * 🔴 `node tools/bus.mjs …` 라고 적혀 있었다. 이 저장소에서는 맞고 **사본에서는
@@ -407,10 +435,13 @@ function printUnread(root, me) {
   let notes = []
   try { notes = unreadNotes(root, me) } catch { return }   // 알림 때문에 claim 이 죽으면 안 된다
   if (!notes.length) return
+  const shown = notes.slice(0, 3)
   console.log('\n  안 읽은 쪽지 ' + notes.length + '건')
-  for (const n of notes.slice(0, 3)) console.log('     ' + n.from + ' — ' + n.subject)
+  for (const n of shown) console.log('     ' + n.from + ' — ' + n.subject)
   if (notes.length > 3) console.log('     … 그 밖에 ' + (notes.length - 3) + '건')
   console.log('     읽기: ' + busReadHint(me) + '   (AI 도구를 쓰면 ax_inbox)')
+  // 보여준 뒤에 찍는다. 위에서 죽으면 안 찍혀야 다음에 다시 뜬다.
+  markBusSeen(root, me, shown.reduce((hi, n) => (n.id > hi ? n.id : hi), ''))
 }
 
 function repoRoot() {
