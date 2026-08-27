@@ -6,7 +6,6 @@
   "since": "2026-08-27T03:30:55.835Z",
   "ttlMs": 1800000,
   "paths": [
-    "bin/axmap.mjs",
     "docs/LOCAL_ROUTE_기획서_v7.md",
     "docs/LOCAL_ROUTE_상세설계서_v2.md",
     "docs/LOCAL_ROUTE_실행계획_v7.md"
