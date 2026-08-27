@@ -392,7 +392,17 @@ function list() {
 
   // 🔴 **찍는 것은 보여준 뒤다.** 위에서 죽으면 안 찍혀야 다음에 다시 뜬다.
   //    규격은 SPEC §2「읽음 표시」— 목록에 뜬 순간이 읽은 순간이다.
-  if (who) markSeen(who, rows.reduce((hi, m) => (m.id > hi ? m.id : hi), ''))
+  //
+  // 🔴 `--no-mark` 는 **목록을 잘라서 보여주는 쪽**을 위한 것이다. MCP 배너는
+  //    받은 줄 중 3건만 그리는데, 여기서 전부를 찍으면 4번째부터는 화면에 뜬
+  //    적도 없이 읽음이 되어 **영영 안 보인다.** 목록을 그대로 다 내보내는 쪽
+  //    (사람이 부른 `list`)은 이 플래그가 필요 없다.
+  //
+  //    규칙 한 줄로 적으면 **그린 쪽이, 그린 것만 찍는다.** 자르는 쪽은
+  //    `--no-mark` 로 읽기만 하고 자기가 그린 id 를 `seen` 에 넘긴다.
+  if (who && !has('--no-mark')) {
+    markSeen(who, rows.reduce((hi, m) => (m.id > hi ? m.id : hi), ''))
+  }
 }
 
 function read(id) {
@@ -412,6 +422,35 @@ function who() {
   } catch (e) { console.error(e.message) }
 }
 
+/**
+ * 읽음 표시를 **주어진 쪽지에만** 찍는다. 규격은 SPEC §2「읽음 표시」.
+ *
+ * 🔴 이것이 따로 있는 이유는 하나다 — **목록을 잘라서 보여주는 쪽이 있기 때문이다.**
+ *    `list` 는 자기가 낸 줄을 전부 알지만, MCP 배너처럼 그중 앞의 몇 줄만 그리는
+ *    쪽은 `list` 에게 "내가 실제로 그린 것" 을 말해줄 방법이 없었다. 그래서
+ *    찍는 일을 목록에서 떼어내 여기로 옮겼다.
+ *
+ * 🔴 `pull()` 을 하지 않는다. 로컬 파일 하나를 쓸 뿐이라 원격을 물을 이유가 없고,
+ *    알림을 그릴 때마다 fetch 가 돌면 배너가 도구를 느리게 만든다.
+ *
+ * 고수위 하나만 들고 있으므로(SPEC §2) 여러 개를 받아도 가장 큰 것만 남는다.
+ * 뒤로 가지 않는지는 `markSeen` 이 본다.
+ */
+function seen() {
+  const ids = []
+  for (let i = 1; i < args.length; i++) {
+    if (args[i] === '--to') { i++; continue }        // 그 다음 것은 id 가 아니다
+    if (args[i].startsWith('--')) continue
+    ids.push(args[i])
+  }
+  if (!ids.length) {
+    console.error(`찍을 쪽지 id 를 주세요.  예:  ${selfCmd()} seen <아이디> [<아이디>…]`)
+    process.exit(1)
+  }
+  markSeen(has('--mine') ? me() : (flag('--to') || me()),
+    ids.reduce((hi, id) => (id > hi ? id : hi), ''))
+}
+
 switch (cmd) {
   case 'post': post({ to: flag('--to'), subject: flag('--subject'), body: stdin() }); break
   case 'reply': {
@@ -423,16 +462,21 @@ switch (cmd) {
   }
   case 'list': list(); break
   case 'read': read(args[1]); break
+  case 'seen': seen(); break
   case 'who': who(); break
   default:
     console.log(`에이전트 쪽지함
 
   ${selfCmd()} post --to <상대> --subject "<제목>" < 본문.md
   ${selfCmd()} list [--to <나>|--mine] [--from <상대>] [--all]
-                   [--throttle <초>] [--quiet-if-empty]
+                   [--unread] [--no-mark] [--throttle <초>] [--quiet-if-empty]
   ${selfCmd()} read <아이디>
+  ${selfCmd()} seen <아이디> [<아이디>…]   보여준 쪽지만 읽음으로 찍는다
   ${selfCmd()} reply <아이디> < 본문.md
   ${selfCmd()} who          지금 누가 무엇을 잡고 있나
+
+목록을 잘라서 보여주는 쪽은 --no-mark 로 읽기만 하고, 자기가 그린 아이디만
+seen 에 넘기세요. 안 그러면 화면에 뜬 적 없는 쪽지가 읽음이 되어 안 보입니다.
 
 AXMAP_AGENT 를 선점과 같은 값으로 두세요.
 쪽지는 고아 브랜치 ${BUS_BRANCH} 로 바로 갑니다 — 커밋도 MR 도 필요 없습니다.`)

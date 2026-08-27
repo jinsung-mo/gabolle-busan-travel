@@ -189,13 +189,35 @@ function bus(args, input = undefined) {
  *    확실히 읽는 것은 자기가 부른 도구의 결과뿐이다. 그래서 그 자리에 붙인다.
  *    무엇을 부르든 — status 든 claim 이든 brief 든 — 보인다.
  *
- * 🔴 매번 원격을 물으면 도구가 느려진다. MCP 서버는 세션 내내 살아 있으므로
- *    프로세스 안에서 시간을 재서 15초에 한 번만 실제로 확인한다. 그 사이에는
- *    직전 결과를 그대로 쓴다. 쪽지가 15초 늦게 보이는 것은 MR 한 사이클을
- *    기다리던 것에 비하면 없는 지연이다.
+ * 🔴 매번 원격을 물으면 도구가 느려진다. 그 조절은 이제 `bus.mjs` 의 `--throttle`
+ *    이 한다 — 시계가 스탬프 파일이라 훅(부를 때마다 새 프로세스)과 이 서버
+ *    (세션 내내 살아 있음)가 **같은 창을 나눠 쓴다.**
+ *
+ *    예전에는 여기서 프로세스 안의 변수로 15초를 쟀다. 그 캐시는 이제 둘 수 없다 —
+ *    아래에서 읽음을 찍기 때문에, 캐시가 남아 있으면 **이미 찍은 쪽지를 다시 그린다.**
+ *    직전 결과를 재사용하는 것과 상태를 바꾸는 것은 같이 못 간다.
+ *
+ * 🔴 **그린 것만 찍는다.** 배너는 3건만 그리므로 3건만 읽음이 된다. `list` 에게
+ *    찍게 하면(= `--unread` 만 주면) 화면에 뜬 적 없는 4번째부터가 읽음이 되어
+ *    영영 안 보인다. 그래서 `--no-mark` 로 읽기만 하고 그린 id 만 `seen` 에 넘긴다.
+ *    조용히 사라지는 쪽으로 틀리면 아무도 못 찾는다.
  */
-let busCheckedAt = 0
-let busCached = ''
+const BANNER_ROWS = 3
+
+/**
+ * 목록 출력에서 (제목 줄, id) 쌍을 뽑는다. `bus list` 는 두 줄이 한 쌍이다 —
+ * 제목 줄에 화살표가 있고 **그 다음 줄이 id** 다.
+ */
+function busRows(out) {
+  const lines = out.split('\n')
+  const rows = []
+  for (let i = 0; i < lines.length; i++) {
+    if (!lines[i].includes('→')) continue
+    rows.push({ line: lines[i].trim(), id: (lines[i + 1] ?? '').trim() })
+  }
+  return rows
+}
+
 function unreadBanner(tool, text) {
   // 지금 쪽지를 읽고 있는 사람에게 "쪽지가 있다" 고 또 말하지 않는다.
   if (tool === 'ax_inbox') return ''
@@ -203,18 +225,21 @@ function unreadBanner(tool, text) {
   //    이미 같은 알림을 찍는다. 이름 목록으로 거르면 CLI 쪽이 알림을 붙이거나
   //    떼는 순간 여기가 조용히 낡는다 — 목록은 언제나 코드보다 먼저 낡는다.
   if (text.includes('안 읽은 쪽지')) return ''
-  const t = Date.now()
-  if (t - busCheckedAt > 15_000) {
-    busCheckedAt = t
-    const r = bus(['list', '--to', AGENT])
-    busCached = r.code === 0 ? r.out : ''
-  }
-  // 목록 줄만 센다. 제목 줄에는 화살표가 있고 id 줄에는 없다.
-  const rows = busCached.split('\n').filter((l) => l.includes('→'))
+
+  const r = bus(['list', '--to', AGENT, '--unread', '--no-mark', '--throttle', '15', '--quiet-if-empty'])
+  if (r.code !== 0) return ''
+  const rows = busRows(r.out)
   if (!rows.length) return ''
-  const head = rows.slice(0, 3).map((l) => '  ' + l.trim()).join('\n')
-  const more = rows.length > 3 ? `\n  … 그 밖에 ${rows.length - 3}건` : ''
-  return `\n\n───── 📬 나에게 온 쪽지 ${rows.length}건 — ax_inbox 로 읽으십시오 ─────\n${head}${more}`
+
+  const shown = rows.slice(0, BANNER_ROWS)
+  const head = shown.map((s) => '  ' + s.line).join('\n')
+  const more = rows.length > shown.length ? `\n  … 그 밖에 ${rows.length - shown.length}건` : ''
+  const banner = `\n\n───── 📬 나에게 온 쪽지 ${rows.length}건 — ax_inbox 로 읽으십시오 ─────\n${head}${more}`
+
+  // 🔴 배너를 다 만든 뒤에 찍는다. 위에서 죽으면 안 찍혀야 다음에 다시 뜬다.
+  const ids = shown.map((s) => s.id).filter(Boolean)
+  if (ids.length) bus(['seen', '--to', AGENT, ...ids])
+  return banner
 }
 
 function cli(args) {
@@ -705,6 +730,17 @@ function dispatch(name, args = {}) {
       //    오류가 없으므로 아무도 실패를 보지 못한다.
       const a = args.id ? ['read', String(args.id)] : ['list', ...(args.all ? ['--all'] : ['--to', AGENT])]
       const r = bus(a)
+
+      // 🔴 여기도 **낸 것만 찍는다.** 목록을 자르지 않으므로 낸 것 전부다.
+      //    이 자리가 비어 있으면 쪽지함을 열어도 배너가 안 줄어든다 — 사람이
+      //    읽었는데 도구는 안 읽었다고 말하는 상태가 되고, 그러면 배너는 배경이 된다.
+      //
+      //    `all` 일 때는 안 찍는다. 남에게 간 쪽지까지 섞여 있어서 그중 가장 큰
+      //    id 로 찍으면 **나에게 온 안 읽은 쪽지가 화면에 뜬 적 없이 묻힌다.**
+      if (r.code === 0 && !args.id && !args.all) {
+        const ids = busRows(r.out).map((s) => s.id).filter(Boolean)
+        if (ids.length) bus(['seen', '--to', AGENT, ...ids])
+      }
       return {
         ok: r.code === 0,
         // 🔴 "쪽지 없음" 을 실패로 내지 않는다. 없는 것과 못 읽은 것은 다르다.
