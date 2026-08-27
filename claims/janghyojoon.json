@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-25",
-  "intent": "쪽지함을 docs/bus 파일에서 axmap/bus 고아 브랜치로 옮긴다 (ax_send·ax_inbox 가 실제로 배달되게)",
+  "intent": "쪽지함을 axmap/bus 고아 브랜치로 옮긴다",
   "actor": "agent",
-  "since": "2026-08-27T01:42:42.893Z",
-  "ttlMs": 2700000,
+  "since": "2026-08-27T01:50:57.267Z",
+  "ttlMs": 1800000,
   "paths": [
     "axmap/bin/axmap.mjs",
     "axmap/mcp/server.mjs",
