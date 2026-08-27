@@ -1,0 +1,11 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-35",
+  "intent": "검토에서 나온 정정 6건을 v7 문서 3종과 DESIGN_SYSTEM.md 에 반영한다 (기능 개수 56→65 등)",
+  "actor": "agent",
+  "since": "2026-08-27T05:43:22.002Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs"
+  ]
+}
