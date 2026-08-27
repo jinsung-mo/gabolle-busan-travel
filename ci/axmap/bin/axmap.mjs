@@ -1504,9 +1504,15 @@ function cmdDoctor(flags) {
   const hookAbs = path.isAbsolute(hookPath) ? hookPath : path.join(root, hookPath)
   if (fs.existsSync(hookAbs) && fs.readFileSync(hookAbs, 'utf8').includes('axmap')) {
     // 훅은 절대 경로를 담는다. 폴더 이름이 바뀌면 사라진 곳을 가리킨다.
+    // 다만 요즘 훅은 그 경로가 없을 때 저장소 안을 한 번 더 본다(cmdHookInstall 참조).
+    // 그래서 박아둔 경로만 보고 빨간불을 켜면 **거짓 경보**가 된다.
     const target = (fs.readFileSync(hookAbs, 'utf8').match(/"([^"]+axmap\.mjs)"/) ?? [])[1]
-    if (target && !fs.existsSync(target)) no('커밋 훅', `가리키는 파일이 없습니다: ${target}\n         axmap hook install 로 다시 심으세요`)
-    else ok('커밋 훅', '심겨 있습니다')
+    const fallbacks = ['ci/axmap/bin/axmap.mjs', 'axmap/bin/axmap.mjs', 'bin/axmap.mjs']
+      .map((rel) => path.join(root, rel))
+      .filter((p) => fs.existsSync(p))
+    if (!target || fs.existsSync(target)) ok('커밋 훅', '심겨 있습니다')
+    else if (fallbacks.length) ok('커밋 훅', `심겨 있습니다 (박아둔 경로 대신 ${path.relative(root, fallbacks[0]).replace(/\\/g, '/')} 를 씁니다)`)
+    else no('커밋 훅', `가리키는 파일이 없습니다 (저장소 안에도 없습니다): ${target}\n         axmap hook install 로 다시 심으세요`)
   } else {
     no('커밋 훅', `없습니다 — claim 하지 않은 파일도 그냥 커밋됩니다\n         axmap hook install`)
   }
@@ -1561,9 +1567,66 @@ function cmdHookInstall() {
   // 검사 대상 저장소가 아니라 이 CLI 자신의 위치를 박는다.
   // axMap 은 검사 대상 저장소 바깥에 설치되어 있을 수 있다.
   const self = fileURLToPath(import.meta.url).replace(/\\/g, '/')
+
+  /**
+   * 🔴 박아둔 경로를 **1순위로 두되 유일한 길로 두지 않는다.**
+   *
+   * 위 주석의 의도(바깥 설치 대응)는 옳다. 그래서 `self` 를 그대로 첫 번째로 둔다.
+   * 그런데 저장소가 갈래마다 axMap 을 다른 자리에 두면 — 원본은 `axmap/`, 벤더링
+   * 사본은 `ci/axmap/` — 브랜치를 옮기는 순간 박아둔 경로가 **사라진다.**
+   *
+   * 문제는 사라졌다는 사실이 아니라 **죽는 방식**이다. 훅은 "검사 실패" 가 아니라
+   * `MODULE_NOT_FOUND` 로 죽고, 0 이 아닌 종료 코드는 곧 커밋 차단이다. 즉
+   * **선점과 무관한 커밋까지 전부 막힌다.** 막히면 사람은 계속 일해야 하므로
+   * `--no-verify` 를 쓰기 시작하고, **그 습관은 훅이 고쳐진 뒤에도 남는다.**
+   * 지금의 고장보다 그것이 비싸다.
+   *
+   * 그래서 넷을 차례로 본다. **배치가 셋이라는 것은 브랜치를 훑어 실측한 것이다**
+   * (2026-08-27 · `git cat-file -e <브랜치>:<경로>`):
+   *
+   *   1. 박아둔 절대 경로        (바깥 설치)
+   *   2. <루트>/ci/axmap/bin     main · common/dev · bigData/dev   ← 현재 표준
+   *   3. <루트>/axmap/bin        chore/axmap-bootstrap · backup/*
+   *   4. <루트>/bin              back/dev · front/dev              ← 옛 배치
+   *
+   * 🔴 4번을 빠뜨리면 **도구가 거기 있는데 못 찾아서 통과한다.** 그건 "설치 안 됨"
+   *    이 아니라 "찾는 목록이 짧음" 이고, 아래 fail-open 의 근거가 성립하지 않는
+   *    경우다. 하필 `back/dev` · `front/dev` 는 BE·FE 가 앞으로 실제로 쓸 갈래다.
+   *
+   * 🔴 셋 다 없으면 **시끄럽게 경고하고 통과시킨다(exit 0).**
+   *
+   *    "도구를 못 찾은 것" 과 "검사가 실패한 것" 은 다르다. 도구가 있는데 선점을
+   *    안 했으면 반드시 막아야 하지만, 도구를 못 찾은 것은 설치 문제다. 설치 문제로
+   *    **선점과 무관한 커밋까지 전부 막으면** 사람은 `--no-verify` 를 쓰기 시작하고,
+   *    그 습관은 훅이 고쳐진 뒤에도 남는다. 그때는 진짜로 아무것도 안 막힌다.
+   *    `ax_inbox` 의 "없는 것과 못 읽은 것은 다르다" 와 같은 결이다.
+   *
+   *    ⚠ 다만 **CI 가 대신 잡아 준다고 말하지 않는다.** 팀 저장소의 `claims` 잡은
+   *      `merge_request_event` 에서만 돌고 `changes:` 목록에 든 폴더만 본다.
+   *      dev 브랜치 직접 push 와 목록 밖 폴더는 그물 밖이다. 그래서 여기서 할 수
+   *      있는 것은 **조용히 넘어가지 않는 것**뿐이고, 문구는 그 사실만 말한다.
+   *      (그물을 넓히는 것은 `.gitlab-ci.yml` 쪽 일이라 여기서 처리하지 않는다.)
+   */
   const body = `#!/bin/sh
-# axMap - claim 하지 않은 파일의 커밋을 막는다
-exec node "${self}" verify
+# axMap - claim 하지 않은 파일의 커밋을 막는다.
+# 경로를 하나만 박지 않는다 — 저장소가 갈래마다 axMap 을 다른 자리에 두기 때문이다
+# (ci/axmap · axmap · bin 세 배치). 자세한 근거는 bin/axmap.mjs 의 cmdHookInstall.
+AX="${self}"
+if [ ! -f "$AX" ]; then
+  ROOT=$(git rev-parse --show-toplevel 2>/dev/null) || ROOT=""
+  for p in "$ROOT/ci/axmap/bin/axmap.mjs" "$ROOT/axmap/bin/axmap.mjs" "$ROOT/bin/axmap.mjs"; do
+    if [ -f "$p" ]; then AX="$p"; break; fi
+  done
+fi
+if [ ! -f "$AX" ]; then
+  echo "" >&2
+  echo "  !!  axMap: 검사 도구를 찾지 못했습니다." >&2
+  echo "      이 커밋은 선점 검사를 거치지 않았습니다." >&2
+  echo "      고치려면 - node <axmap 위치>/bin/axmap.mjs hook install" >&2
+  echo "" >&2
+  exit 0
+fi
+exec node "$AX" verify
 `
 
   /**
