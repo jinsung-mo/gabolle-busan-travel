@@ -1,0 +1,11 @@
+{
+  "agent": "rleaderjoon-desktop",
+  "task": "S15P21E201-23",
+  "intent": "BIMS 스냅샷을 종료 직전 시점까지 갱신한다",
+  "actor": null,
+  "since": "2026-08-27T01:48:38.311Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/data"
+  ]
+}
