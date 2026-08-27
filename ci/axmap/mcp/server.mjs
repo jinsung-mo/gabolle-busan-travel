@@ -115,8 +115,20 @@ const isForeign = () => REPO !== SELF
  *    아무도 돌려보지 않았다. `test/mcp.test.mjs` 가 그 조합을 고정한다.
  */
 const BUS = path.join(SELF, 'tools', 'bus.mjs')
-/** 쪽지의 **내용**은 대상 저장소의 데이터다. 대상이 옮겨가면 이것도 따라간다. */
-const busDir = () => path.join(REPO, 'docs', 'bus')
+
+/**
+ * 🔴 `AXMAP_BUS_DIR` 을 **일부러 넘기지 않는다.**
+ *
+ * 예전에는 여기서 `REPO/docs/bus` 를 넘겼다. 쪽지가 작업 트리에 있었으니 폴더
+ * 하나만 알려주면 됐다. 지금은 쪽지가 고아 브랜치(`axmap/bus`)의 worktree 에
+ * 있고, `bus.mjs` 는 거기에 **커밋하고 push** 해야 한다. 폴더만 넘기면 그 파일은
+ * 자기가 어느 저장소의 worktree 안에 있는지 알 수 없어 push 할 곳을 잃는다 —
+ * 쪽지는 로컬에만 쌓이고 아무에게도 안 간다. 옛 버그의 정확한 재판이다.
+ *
+ * 대신 `cwd` 를 대상 저장소로 준다. `bus.mjs` 가 `git rev-parse` 로 스스로 찾는다.
+ * 프로그램(`SELF`)과 데이터(`REPO`)를 가르는 규칙은 그대로다 — 알려주는 방식만
+ * "폴더를 지정" 에서 "서 있을 자리를 지정" 으로 바뀌었다.
+ */
 /**
  * 에이전트 이름. 기본값이 **없다** — 이유는 이 파일 머리말에 적어 두었다.
  * 요약하면: 모두에게 같은 기본 이름을 주면 여러 사람이 장부에서 한 명이 되고,
@@ -161,12 +173,48 @@ function bus(args, input = undefined) {
     encoding: 'utf8',
     windowsHide: true,
     input,
-    env: { ...process.env, AXMAP_AGENT: AGENT, AXMAP_ACTOR: ACTOR, AXMAP_BUS_DIR: busDir() },
+    env: { ...process.env, AXMAP_AGENT: AGENT, AXMAP_ACTOR: ACTOR, AXMAP_BUS_DIR: '' },
   })
   return {
     code: r.status ?? 1,
     out: [(r.stdout ?? '').trim(), (r.stderr ?? '').trim()].filter(Boolean).join('\n'),
   }
+}
+
+/**
+ * 요청하지 않아도 쪽지를 알린다. **모든 도구 결과 끝에 붙는다.**
+ *
+ * 🔴 왜 MCP 의 알림(notification)이 아닌가. 규격에는 서버가 클라이언트에게 먼저
+ *    말을 거는 통로가 있지만, **에이전트가 그것을 본다는 보장이 없다.** 에이전트가
+ *    확실히 읽는 것은 자기가 부른 도구의 결과뿐이다. 그래서 그 자리에 붙인다.
+ *    무엇을 부르든 — status 든 claim 이든 brief 든 — 보인다.
+ *
+ * 🔴 매번 원격을 물으면 도구가 느려진다. MCP 서버는 세션 내내 살아 있으므로
+ *    프로세스 안에서 시간을 재서 15초에 한 번만 실제로 확인한다. 그 사이에는
+ *    직전 결과를 그대로 쓴다. 쪽지가 15초 늦게 보이는 것은 MR 한 사이클을
+ *    기다리던 것에 비하면 없는 지연이다.
+ */
+let busCheckedAt = 0
+let busCached = ''
+function unreadBanner(tool, text) {
+  // 지금 쪽지를 읽고 있는 사람에게 "쪽지가 있다" 고 또 말하지 않는다.
+  if (tool === 'ax_inbox') return ''
+  // 🔴 도구 이름으로 거르지 않고 **결과를 본다.** `claim` 과 `status` 는 CLI 가
+  //    이미 같은 알림을 찍는다. 이름 목록으로 거르면 CLI 쪽이 알림을 붙이거나
+  //    떼는 순간 여기가 조용히 낡는다 — 목록은 언제나 코드보다 먼저 낡는다.
+  if (text.includes('안 읽은 쪽지')) return ''
+  const t = Date.now()
+  if (t - busCheckedAt > 15_000) {
+    busCheckedAt = t
+    const r = bus(['list', '--to', AGENT])
+    busCached = r.code === 0 ? r.out : ''
+  }
+  // 목록 줄만 센다. 제목 줄에는 화살표가 있고 id 줄에는 없다.
+  const rows = busCached.split('\n').filter((l) => l.includes('→'))
+  if (!rows.length) return ''
+  const head = rows.slice(0, 3).map((l) => '  ' + l.trim()).join('\n')
+  const more = rows.length > 3 ? `\n  … 그 밖에 ${rows.length - 3}건` : ''
+  return `\n\n───── 📬 나에게 온 쪽지 ${rows.length}건 — ax_inbox 로 읽으십시오 ─────\n${head}${more}`
 }
 
 function cli(args) {
@@ -291,7 +339,7 @@ const TOOLS = [
       '다른 에이전트에게 쪽지를 보낸다. 레인 배정, 방향 전환, 상대 코드에서 찾은 결함처럼 '
       + '**상대가 알아야 결정이 달라지는 것**을 보내십시오. 급한 것은 쪽지 대신 '
       + 'ax_claim 의 intent 에 한 줄로 적는 편이 빠릅니다(그건 status 에 바로 보입니다). '
-      + '보낸 쪽지는 커밋해야 상대에게 갑니다.',
+      + '쪽지는 고아 브랜치로 바로 갑니다 — 커밋도 MR 도 필요 없습니다.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -642,7 +690,20 @@ function dispatch(name, args = {}) {
       }
     }
     case 'ax_inbox': {
-      const a = args.id ? ['read', String(args.id)] : ['list', ...(args.all ? ['--all'] : ['--to', ACTOR])]
+      // 🔴 받는 사람은 `AGENT` 다. `ACTOR` 가 아니다.
+      //
+      //    둘 다 문자열이라 자리를 바꿔 넣어도 아무도 못 막는다. 그런데 뜻이 다르다 —
+      //    `AGENT` 는 **장부에 적히는 이름**(git config user.name, 예: `bob`)이고
+      //    `ACTOR` 는 `.mcp.json` 이 넣는 **역할**(`agent`)이다. 사람 이름이 아니다.
+      //
+      //    여기에 `ACTOR` 가 들어가 있어서 서버는 `--to agent` 를 물었고, 그런 이름의
+      //    수신자는 없으므로 **어떤 쪽지도 찾지 못했다.** 2026-08-26 팀 저장소에서
+      //    실제 팀원 쪽지가 이 버그로 묻혀 있었다.
+      //
+      //    보내기는 멀쩡했던 것이 이 버그를 오래 살렸다 — `ax_send` 는 `AGENT` 를
+      //    넘긴다. 보낸 쪽은 성공을 보고 받는 쪽은 "쪽지 없음" 을 본다. 양쪽 다
+      //    오류가 없으므로 아무도 실패를 보지 못한다.
+      const a = args.id ? ['read', String(args.id)] : ['list', ...(args.all ? ['--all'] : ['--to', AGENT])]
       const r = bus(a)
       return {
         ok: r.code === 0,
@@ -657,9 +718,7 @@ function dispatch(name, args = {}) {
       const r = bus(a, String(args.body))
       return {
         ok: r.code === 0,
-        text: r.code === 0
-          ? `${r.out}\n쪽지는 **커밋해야** 상대에게 갑니다. 자기 작업과 함께 올리십시오.`
-          : `보내지 못했습니다.\n${r.out}`,
+        text: r.code === 0 ? r.out : `보내지 못했습니다.\n${r.out}`,
       }
     }
     case 'ax_check': {
@@ -723,7 +782,7 @@ function handle(req) {
   if (method === 'tools/list') return { tools: TOOLS }
   if (method === 'tools/call') {
     const r = callTool(params?.name, params?.arguments ?? {})
-    return { content: [{ type: 'text', text: r.text }], isError: !r.ok }
+    return { content: [{ type: 'text', text: r.text + unreadBanner(params?.name, r.text) }], isError: !r.ok }
   }
   if (method === 'ping') return {}
   return null // 알림이거나 지원하지 않는 메서드
