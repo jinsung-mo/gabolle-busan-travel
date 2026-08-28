@@ -1,0 +1,11 @@
+{
+  "agent": "kojh0124",
+  "task": null,
+  "intent": "이번 주 예비군 참석 및 프로젝트 기획 회의 참여 내용을 개인 TIL로 기록합니다.",
+  "actor": "agent",
+  "since": "2026-08-28T05:29:55.641Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "고지혁_til.md"
+  ]
+}
