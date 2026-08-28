@@ -1,0 +1,21 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-33",
+  "intent": "vote-reason + claim-identity 를 team-sync 에 합침",
+  "actor": null,
+  "session": "6e54e41d-0453-40f0-b7f1-f143921be99d",
+  "since": "2026-08-28T02:17:52.306Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "CLAUDE.md",
+    "README.md",
+    "bin/axmap.mjs",
+    "docs/SPEC.md",
+    "governance",
+    "mcp/README.md",
+    "mcp/server.mjs",
+    "src",
+    "src/protocol.mjs",
+    "test"
+  ]
+}
