@@ -1,0 +1,11 @@
+{
+  "agent": "ahwlstjd57",
+  "task": null,
+  "intent": "til 브랜치의 내 TIL 문서를 고친다 — 중복 작업 교훈 추가",
+  "actor": "agent",
+  "since": "2026-08-28T05:17:26.124Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "모진성_til.md"
+  ]
+}
