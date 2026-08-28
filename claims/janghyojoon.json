@@ -1,0 +1,11 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-23",
+  "intent": "til 브랜치에 내 TIL 을 실제 커밋 이력 기반으로 채운다",
+  "actor": "agent",
+  "since": "2026-08-28T05:40:52.406Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "장효준_til.md"
+  ]
+}
