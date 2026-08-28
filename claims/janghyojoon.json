@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-33",
+  "intent": "자기 표 배제 범위(self_vote) 사본 갱신을 커밋하고 MR 로 올린다",
+  "actor": "agent",
+  "since": "2026-08-28T00:59:15.318Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "ci/axmap",
+    "governance/policy.json"
+  ]
+}
