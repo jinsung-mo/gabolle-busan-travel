@@ -1,11 +1,14 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-33",
-  "intent": "hotfix 브랜치(hotfix/S15P21E201-33-self-vote-tip)를 별도 worktree에서 만든다 — self_vote:tip 정책 + axMap 재벤더링. 메인 체크아웃은 건드리지 않는다",
+  "task": "S15P21E201-23",
+  "intent": "휠체어 경로 판정 데모 — 구간 판정기·경로 산출·카카오 지도 화면·검사기",
   "actor": "agent",
-  "since": "2026-08-28T01:08:02.384Z",
+  "since": "2026-08-28T01:50:41.648Z",
   "ttlMs": 2700000,
   "paths": [
+    "bigData/demo/wheelchair-route",
+    "bigData/process/wheelchair-verdict.mjs",
+    "bigData/test/verify-wheelchair.mjs",
     "ci/axmap",
     "governance/policy.json"
   ]
