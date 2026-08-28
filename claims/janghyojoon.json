@@ -1,14 +1,11 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-23",
-  "intent": "실행 지문이 폴더당 한 칸이라 여러 단계가 서로를 지운다 — 재현 불가를 막으려 만든 장치가 자기들끼리 덮고 있다. 파일 이름에 단계를 넣어 근본을 고친다",
+  "intent": "온톨로지 방향 분석문을 ONTOLOGY.md 와 이름이 겹치지 않게 갈라서 커밋한다",
   "actor": "agent",
-  "since": "2026-08-27T22:48:15.130Z",
+  "since": "2026-08-28T00:26:30.357Z",
   "ttlMs": 2700000,
   "paths": [
-    "bigData/config/ontology.jsonld",
-    "bigData/docs/ONTOLOGY.md",
-    "bigData/mlops/manifest.mjs",
-    "bigData/test/verify-ontology.mjs"
+    "bigData/docs/ACCESS-ROUTE.md"
   ]
 }
