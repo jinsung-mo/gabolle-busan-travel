@@ -1,13 +1,14 @@
 {
   "agent": "agent-selfvote",
   "task": "S15P21E201-33",
-  "intent": "self_vote 정책 옵션 (authors/tip/off)",
+  "intent": "self_vote 정책 옵션",
   "actor": null,
-  "since": "2026-08-28T00:27:26.074Z",
+  "since": "2026-08-28T00:39:26.468Z",
   "ttlMs": 1800000,
   "paths": [
     "governance/GOVERNANCE.md",
     "governance/gate.mjs",
+    "governance/policy.json",
     "src/governance.mjs",
     "test/governance.test.mjs"
   ]
