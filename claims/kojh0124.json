@@ -1,0 +1,11 @@
+{
+  "agent": "kojh0124",
+  "task": null,
+  "intent": "이번 주 예비군 참석 및 프로젝트 기획 회의 참여 내용을 TIL 초안으로 기록합니다.",
+  "actor": "agent",
+  "since": "2026-08-28T05:26:11.558Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "kojh0124_til.md"
+  ]
+}
