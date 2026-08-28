@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-33",
+  "intent": "표에 이유를 요구하는 규칙 + 세션 구별을 사본에 반영",
+  "actor": null,
+  "session": "6e54e41d-0453-40f0-b7f1-f143921be99d",
+  "since": "2026-08-28T05:27:41.728Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "ci/axmap",
+    "governance/policy.json"
+  ]
+}
