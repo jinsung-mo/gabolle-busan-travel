@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-vrg",
+  "intent": "시각 역지오코딩 모듈 — GPS 좌표 주변 후보를 뽑고 사진 증거로 어느 가게인지 고른다. 서버 전제, 로컬 데모 페이지 포함",
+  "actor": "agent",
+  "session": "2772e39d-3e5d-4d46-8ac5-2728926b42dd",
+  "since": "2026-08-29T07:58:23.340Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "visual-geocode"
+  ]
+}
