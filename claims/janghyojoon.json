@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-contributing-rename",
+  "intent": "CLAUDE.md 를 CONTRIBUTING.md 로 옮기고 CLAUDE.md·AGENTS.md 는 포인터만 남긴다. 참조 28곳과 CI 경로 목록 2줄을 함께 고친다",
+  "actor": "agent",
+  "since": "2026-08-30T23:58:17.367Z",
+  "ttlMs": 2700000,
+  "paths": [
+    ".gitlab-ci.yml",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "CONTRIBUTING.md",
+    "README.md",
+    "docs"
+  ]
+}
