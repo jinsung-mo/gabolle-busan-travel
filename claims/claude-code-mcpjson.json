@@ -1,0 +1,15 @@
+{
+  "agent": "claude-code-mcpjson",
+  "task": "S15P21E201-509",
+  "intent": "저장소의 .mcp.json 을 빼고 안내를 npm 설치본 기준으로 고친다",
+  "actor": null,
+  "since": "2026-08-31T08:54:53.706Z",
+  "ttlMs": 1800000,
+  "paths": [
+    ".mcp.json",
+    "CONTRIBUTING.md",
+    "docs/ONBOARDING.md",
+    "setup.ps1",
+    "setup.sh"
+  ]
+}
