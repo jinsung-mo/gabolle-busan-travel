@@ -1,0 +1,11 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-377",
+  "intent": "2026-08-31 세션 인계 — 지금 막혀 있는 것과 다음에 이어서 할 것을 앞머리에 적는다",
+  "actor": "agent",
+  "since": "2026-08-31T08:53:26.429Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/HANDOVER.md"
+  ]
+}
