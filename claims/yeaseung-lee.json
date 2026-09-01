@@ -1,12 +1,13 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-GABOLLE-V11",
-  "intent": "GABOLLE v1.1 데모 인증·동의·동행권한·작업보안 반영",
+  "intent": "GABOLLE v1.1 정밀 위치 실행 수명주기와 배치 신호",
   "actor": null,
-  "since": "2026-09-01T12:23:06.224Z",
+  "since": "2026-09-01T12:31:32.585Z",
   "ttlMs": 3600000,
   "paths": [
     "ref/local-route/server/prisma/migrations/20260901143000_add_user_consent/migration.sql",
+    "ref/local-route/server/prisma/migrations/20260901150000_add_route_execution/migration.sql",
     "ref/local-route/server/prisma/schema.prisma",
     "ref/local-route/server/src/routes/account.ts",
     "ref/local-route/server/src/routes/collaboration.ts",
@@ -18,6 +19,7 @@
     "ref/local-route/web/src/pages/OnboardingPage.tsx",
     "ref/local-route/web/src/pages/auth/AuthPage.tsx",
     "ref/local-route/web/src/pages/me/SettingsPage.tsx",
+    "ref/local-route/web/src/pages/trip/TripNavigatePage.tsx",
     "ref/local-route/web/src/utils/visitor.ts",
     "ref/local-route/web/src/ux-overrides.css"
   ]
