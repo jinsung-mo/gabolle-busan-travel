@@ -4,8 +4,8 @@
   "intent": "Expo 셸을 세운다 - 앱 코드는 frontend/ 에 산다",
   "actor": null,
   "session": "40e644df-a9a3-43a1-b0b9-3850c2f8b63e",
-  "since": "2026-09-01T14:56:41.021Z",
-  "ttlMs": 7200000,
+  "since": "2026-09-01T16:26:24.668Z",
+  "ttlMs": 10800000,
   "paths": [
     "frontend"
   ]
