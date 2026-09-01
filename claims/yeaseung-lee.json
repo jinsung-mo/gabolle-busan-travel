@@ -1,0 +1,11 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-TOGETHER-BACKGROUND",
+  "intent": "함께 탭 중첩 흰 배경 제거와 카드 계층 정돈",
+  "actor": null,
+  "since": "2026-09-01T11:15:51.004Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "ref/local-route/web/src/ux-overrides.css"
+  ]
+}
