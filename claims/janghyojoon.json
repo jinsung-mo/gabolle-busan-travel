@@ -1,11 +1,13 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-23",
-  "intent": "하루 여행 경로를 3D 지도에서 압축 재생하고 SNS 영상으로 뽑는 것이 9일 안에 되는지 판정하는 타당성 문서 신규 작성",
+  "intent": "인기지역 점수 설계 + 버스 온톨로지 확장 설계",
   "actor": "agent",
-  "since": "2026-09-01T00:12:50.503Z",
-  "ttlMs": 2700000,
+  "since": "2026-09-01T00:14:35.429Z",
+  "ttlMs": 1800000,
   "paths": [
+    "bigData/docs/HOTSPOT-SCORE.md",
+    "bigData/docs/ONTOLOGY-BUS.md",
     "bigData/docs/REPLAY-FEASIBILITY.md"
   ]
 }
