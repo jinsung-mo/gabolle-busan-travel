@@ -1,0 +1,18 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-IMAGE-COVERAGE",
+  "intent": "TourAPI 사진 백필과 공통 이미지 폴백으로 누락 제거",
+  "actor": null,
+  "since": "2026-09-01T11:04:41.879Z",
+  "ttlMs": 3600000,
+  "paths": [
+    "ref/local-route/server/scripts/import-gallery-photos.ts",
+    "ref/local-route/server/src/routes/trips.ts",
+    "ref/local-route/server/src/services/placeImages.ts",
+    "ref/local-route/web/src/components/ExperiencePanel.tsx",
+    "ref/local-route/web/src/components/ItemCard.tsx",
+    "ref/local-route/web/src/components/OverviewHub.tsx",
+    "ref/local-route/web/src/components/PlacePhoto.tsx",
+    "ref/local-route/web/src/pages/NowPage.tsx"
+  ]
+}
