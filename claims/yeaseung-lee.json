@@ -1,11 +1,12 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-MOBILE-TOGETHER",
-  "intent": "모바일 전 화면 반응형 보완 및 함께 탭 정보 위계 재설계",
+  "intent": "모바일 상단 언어·계정 컨트롤 축소",
   "actor": null,
-  "since": "2026-09-01T11:25:51.580Z",
+  "since": "2026-09-01T11:26:21.079Z",
   "ttlMs": 5400000,
   "paths": [
+    "ref/local-route/web/src/components/LanguageSwitcher.tsx",
     "ref/local-route/web/src/components/SocialPanel.tsx",
     "ref/local-route/web/src/ux-overrides.css"
   ]
