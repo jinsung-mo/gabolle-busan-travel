@@ -2,6 +2,13 @@
 description: axMap — 다른 에이전트/팀원에게 쪽지를 보낸다
 ---
 
+> ⚠️ 도구 목록에 `ax_send` 가 안 보이면 axMap 이 안 붙은 것이다.
+> **경로를 찾지 말고** 아래를 그대로 쓴다. 본문은 표준입력으로 넣는다.
+>
+>     AXMAP_AGENT=<내 이름> node ci/axmap/tools/bus.mjs post >       --to <상대|all> --subject "<제목>" < 본문.md
+>
+> `AXMAP_AGENT` 를 빼면 "먼저 이름을 정하세요" 라며 거부한다.
+
 `ax_send` 로 쪽지를 보내줘. 내용: $ARGUMENTS
 
 **상대가 알아야 결정이 달라지는 것**만 보낸다 — 레인 배정, 방향 전환,
