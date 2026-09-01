@@ -1,0 +1,11 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-23",
+  "intent": "하루 여행 경로를 3D 지도에서 압축 재생하고 SNS 영상으로 뽑는 것이 9일 안에 되는지 판정하는 타당성 문서 신규 작성",
+  "actor": "agent",
+  "since": "2026-09-01T00:12:50.503Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/docs/REPLAY-FEASIBILITY.md"
+  ]
+}
