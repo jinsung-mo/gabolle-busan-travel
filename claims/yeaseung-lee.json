@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-KAKAO-DOMAIN",
+  "intent": "등록된 카카오 웹 도메인 반영 및 SDK 재시도 안정화",
+  "actor": null,
+  "since": "2026-09-01T11:00:23.786Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "ref/local-route/server/.env",
+    "ref/local-route/web/src/components/KakaoMap.tsx"
+  ]
+}
