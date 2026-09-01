@@ -1,0 +1,11 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-531",
+  "intent": "EC2 서버 인프라(Nginx/Certbot/Docker/Jenkins) 및 GitLab Webhook 셋업 내용 문서화",
+  "actor": "agent",
+  "since": "2026-09-01T08:04:15.470Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/SERVER-SETUP.md"
+  ]
+}
