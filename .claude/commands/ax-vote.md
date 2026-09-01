@@ -29,7 +29,7 @@ description: axMap — 합의 표를 던진다. 던지기 전에 무엇이 바�
 git fetch origin --quiet
 git diff --stat origin/main origin/<브랜치>
 git log --format='%h %an <%ae>%n  %s' origin/main..origin/<브랜치>
-node ci/axmap/governance/gate.mjs --source <브랜치> --target origin/main
+npx -y axmap-cli@latest gate --source <브랜치> --target origin/main
 ```
 
 사람에게 이것을 정리해서 보여준다.
@@ -48,7 +48,7 @@ node ci/axmap/governance/gate.mjs --source <브랜치> --target origin/main
 ### 4. 던진다
 
 ```bash
-node ci/axmap/governance/vote.mjs \
+npx -y axmap-cli@latest vote \
   --branch <브랜치> \
   --sha $(git rev-parse origin/<브랜치>) \
   --vote approve \
@@ -93,7 +93,7 @@ node ci/axmap/governance/vote.mjs \
 ### 5. 세어졌는지 확인한다
 
 ```bash
-node ci/axmap/governance/gate.mjs --source <브랜치> --target origin/main
+npx -y axmap-cli@latest gate --source <브랜치> --target origin/main
 ```
 
 `유효 찬성` 이 하나 늘었는지 본다. 안 늘었으면 **성공했다고 말하지 않는다** —
