@@ -1,11 +1,12 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-33",
-  "intent": "모진성·고지혁을 main 투표권자 명단에 등록",
+  "task": "S15P21E201-23",
+  "intent": "핵심 여행지 점수 설계",
   "actor": "agent",
-  "since": "2026-09-01T00:21:49.357Z",
+  "since": "2026-09-01T00:28:36.030Z",
   "ttlMs": 1800000,
   "paths": [
+    "bigData/docs/HOTSPOT-SCORE.md",
     "bigData/docs/REPLAY-FEASIBILITY.md"
   ]
 }
