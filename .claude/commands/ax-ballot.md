@@ -38,7 +38,7 @@ git ls-tree -r --name-only origin/axmap/votes      # 이미 던져진 표
 ### 3. 각각을 판정한다
 
 ```bash
-node ci/axmap/governance/gate.mjs --source <브랜치> --target origin/main
+npx -y axmap-cli@latest gate --source <브랜치> --target origin/main
 ```
 
 > 🔴 `--target origin/main` 으로 준다. 그냥 `main` 이라고 하면 판정 프로그램이
