@@ -1,12 +1,13 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-533",
-  "intent": "GABOLLE 명칭과 PostgreSQL·인증·개인화·위치·추천 API 계약을 v1.1 문서에 반영",
+  "intent": "claims 감사의 한글 경로 quote 해석 오류 수정",
   "actor": null,
   "session": null,
-  "since": "2026-09-01T11:33:55.734Z",
+  "since": "2026-09-01T11:42:45.217Z",
   "ttlMs": 1800000,
   "paths": [
+    ".gitlab-ci.yml",
     "README.md",
     "backend/README.md",
     "docs/DESIGN_SYSTEM.md",
