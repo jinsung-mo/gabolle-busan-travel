@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-529",
+  "intent": "promote rule 좁히기",
+  "actor": null,
+  "session": "ce6a2972-5254-4900-b84b-30698a95cddf",
+  "since": "2026-09-01T07:17:08.477Z",
+  "ttlMs": 1800000,
+  "paths": [
+    ".gitlab-ci.yml"
+  ]
+}
