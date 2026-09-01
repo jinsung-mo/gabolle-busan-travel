@@ -1,0 +1,11 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-31",
+  "intent": "LOCAL ROUTE 개인화 추천 시스템 계획 반영안 DOCX 커밋 및 푸시",
+  "actor": "agent",
+  "since": "2026-09-01T07:41:28.915Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "LOCAL_ROUTE_개인화_추천시스템_계획반영안.docx"
+  ]
+}
