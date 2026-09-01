@@ -1,0 +1,11 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-23",
+  "intent": "렌터카 면허·알레르기 규칙과 환승 시간창 파라미터를 넣는다",
+  "actor": null,
+  "since": "2026-09-01T03:17:42.503Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/config/ontology.jsonld"
+  ]
+}
