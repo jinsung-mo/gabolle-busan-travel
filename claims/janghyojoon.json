@@ -6,7 +6,6 @@
   "since": "2026-09-01T00:21:49.357Z",
   "ttlMs": 1800000,
   "paths": [
-    "bigData/docs/REPLAY-FEASIBILITY.md",
-    "governance/policy.json"
+    "bigData/docs/REPLAY-FEASIBILITY.md"
   ]
 }
