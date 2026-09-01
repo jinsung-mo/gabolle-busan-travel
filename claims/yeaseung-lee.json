@@ -1,9 +1,9 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-GABOLLE-V11",
-  "intent": "GABOLLE v1.1 정밀 위치 실행 수명주기와 배치 신호",
+  "intent": "7일 지난 원시 위치 자동 삭제",
   "actor": null,
-  "since": "2026-09-01T12:31:32.585Z",
+  "since": "2026-09-01T12:33:15.455Z",
   "ttlMs": 3600000,
   "paths": [
     "ref/local-route/server/prisma/migrations/20260901143000_add_user_consent/migration.sql",
@@ -13,6 +13,7 @@
     "ref/local-route/server/src/routes/collaboration.ts",
     "ref/local-route/server/src/routes/trips.ts",
     "ref/local-route/server/src/services/jobs.ts",
+    "ref/local-route/server/src/workers/privacy-cleanup.ts",
     "ref/local-route/web/src/api/client.ts",
     "ref/local-route/web/src/components/BrandLogo.tsx",
     "ref/local-route/web/src/components/ShareBar.tsx",
