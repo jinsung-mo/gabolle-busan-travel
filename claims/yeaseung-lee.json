@@ -1,0 +1,11 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-KAKAO-TOURAPI-UI",
+  "intent": "카카오맵·TourAPI 실연동 및 신규 화면 전면 UI 정돈",
+  "actor": null,
+  "since": "2026-09-01T10:37:27.793Z",
+  "ttlMs": 7200000,
+  "paths": [
+    "ref/local-route"
+  ]
+}
