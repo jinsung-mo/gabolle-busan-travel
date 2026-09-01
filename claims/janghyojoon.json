@@ -1,11 +1,12 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-23",
-  "intent": "경로 압축 재생·SNS 영상 타당성 문서 작성 (재선점)",
+  "task": "S15P21E201-33",
+  "intent": "모진성·고지혁을 main 투표권자 명단에 등록",
   "actor": "agent",
-  "since": "2026-09-01T00:18:22.559Z",
-  "ttlMs": 2700000,
+  "since": "2026-09-01T00:21:49.357Z",
+  "ttlMs": 1800000,
   "paths": [
-    "bigData/docs/REPLAY-FEASIBILITY.md"
+    "bigData/docs/REPLAY-FEASIBILITY.md",
+    "governance/policy.json"
   ]
 }
