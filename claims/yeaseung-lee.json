@@ -1,0 +1,14 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-534,S15P21E201-535",
+  "intent": "GABOLLE v1.1 변경 분리 커밋 및 common/dev MR",
+  "actor": null,
+  "since": "2026-09-01T21:08:02.446Z",
+  "ttlMs": 5400000,
+  "paths": [
+    "ref/local-route/README.md",
+    "ref/local-route/package.json",
+    "ref/local-route/server",
+    "ref/local-route/web"
+  ]
+}
