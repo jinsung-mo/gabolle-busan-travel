@@ -1,10 +1,10 @@
 {
   "agent": "claude-expo-shell",
   "task": "S15P21E201-319",
-  "intent": "Expo 셸을 세운다 - 앱 코드는 frontend/ 에 산다",
+  "intent": "웹 미리보기로 폴드8 레이아웃을 실제로 검증한다",
   "actor": null,
   "session": "40e644df-a9a3-43a1-b0b9-3850c2f8b63e",
-  "since": "2026-09-01T16:26:24.668Z",
+  "since": "2026-09-01T17:34:49.764Z",
   "ttlMs": 10800000,
   "paths": [
     "frontend"
