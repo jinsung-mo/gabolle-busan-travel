@@ -1,9 +1,9 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-312",
-  "intent": "회원가입·소셜 로그인과 모바일·웹 인증 흐름 및 배포 설정 구현",
+  "intent": "회원가입·소셜 로그인·웹 인증 회귀 테스트 구현",
   "actor": null,
-  "since": "2026-09-02T07:23:09.489Z",
+  "since": "2026-09-02T07:25:34.887Z",
   "ttlMs": 7200000,
   "paths": [
     "backend/.dockerignore",
@@ -18,6 +18,7 @@
     "backend/src/main/resources/application-no-db.properties",
     "backend/src/main/resources/application.properties",
     "backend/src/main/resources/db/migration",
+    "backend/src/test/java/com/gabolle/backend/auth",
     "docs/GABOLLE_BACKEND_AUTH_HANDOFF.md"
   ]
 }
