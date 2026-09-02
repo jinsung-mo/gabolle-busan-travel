@@ -1,12 +1,13 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-575",
-  "intent": "Jenkins 파이프라인을 SCM 기반으로 전환 + MatterMost 빌드 알림 추가",
+  "intent": "Notify 단계에 MatterMost 빌드 알림 연결",
   "actor": null,
   "session": "16acb503-8737-4b5e-9609-8c222334a72b",
-  "since": "2026-09-02T07:44:32.025Z",
+  "since": "2026-09-02T07:44:44.822Z",
   "ttlMs": 1800000,
   "paths": [
-    "backend/Jenkinsfile"
+    "backend/Jenkinsfile",
+    "infra/personalization/Jenkinsfile"
   ]
 }
