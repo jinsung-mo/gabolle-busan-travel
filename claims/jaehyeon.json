@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon",
+  "task": "GABOLLE-ERD-DRAFT",
+  "intent": "GABOLLE v1.1 명세 기반 PostgreSQL Mermaid ERD 초안 작성",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-02T00:44:05.197Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "docs/gabolle/GABOLLE_ERD_초안_v0.1.md"
+  ]
+}
