@@ -1,11 +1,12 @@
 {
   "agent": "ahwlstjd57",
-  "task": "S15P21E201-313",
-  "intent": "일정 버전 스냅샷과 409 충돌 거절 — recommendation·event 는 kojh0124 점유라 itinerary·trip 으로 옮김",
+  "task": "S15P21E201-352",
+  "intent": "event 를 놓아 주셔서 Outbox(-352·354·160) 착수합니다 — -543 이 재사용할 기반. resources/db·test/event 는 그대로 두시면 -313 처럼 메모리 구현으로 먼저 돌립니다",
   "actor": "agent",
-  "since": "2026-09-02T06:33:06.807Z",
+  "since": "2026-09-02T07:04:50.697Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/src/main/java/com/gabolle/backend/event",
     "backend/src/main/java/com/gabolle/backend/itinerary",
     "backend/src/main/java/com/gabolle/backend/trip"
   ]
