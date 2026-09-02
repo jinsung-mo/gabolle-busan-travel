@@ -6,7 +6,6 @@
   "since": "2026-09-02T07:17:26.934Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/src/main/java/com/gabolle/backend/common",
     "backend/src/main/java/com/gabolle/backend/event",
     "backend/src/main/java/com/gabolle/backend/itinerary",
     "backend/src/main/java/com/gabolle/backend/trip"
