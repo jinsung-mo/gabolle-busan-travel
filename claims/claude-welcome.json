@@ -1,11 +1,12 @@
 {
   "agent": "claude-welcome",
   "task": "S15P21E201-537",
-  "intent": "웰컴 화면 영상 카드와 핵심 기능 문구",
+  "intent": "expo-video 의존성 추가 (사람 승인 받음)",
   "actor": null,
-  "since": "2026-09-02T02:40:55.554Z",
+  "since": "2026-09-02T02:45:44.987Z",
   "ttlMs": 1800000,
   "paths": [
-    "frontend/app/index.tsx"
+    "frontend/app/index.tsx",
+    "frontend/package.json"
   ]
 }
