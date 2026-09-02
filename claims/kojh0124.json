@@ -1,16 +1,19 @@
 {
   "agent": "kojh0124",
   "task": "S15P21E201-543",
-  "intent": "S15P21E201-543 커밋 대기 — build.gradle 과 db/migration 이 풀리면 즉시 커밋하고 back/dev 로 MR 올립니다",
+  "intent": "S15P21E201-543 커밋 — Flyway 마이그레이션·testcontainers 의존성·설정. 커밋 직후 즉시 반납합니다",
   "actor": "agent",
-  "since": "2026-09-02T08:07:39.514Z",
+  "since": "2026-09-02T08:13:09.815Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/build.gradle",
     "backend/src/main/java/com/gabolle/backend/common/config",
     "backend/src/main/java/com/gabolle/backend/common/json",
     "backend/src/main/java/com/gabolle/backend/common/privacy",
     "backend/src/main/java/com/gabolle/backend/event",
     "backend/src/main/java/com/gabolle/backend/recommendation",
+    "backend/src/main/resources/application.properties",
+    "backend/src/main/resources/db/migration",
     "backend/src/test/java/com/gabolle/backend/common",
     "backend/src/test/java/com/gabolle/backend/event",
     "backend/src/test/java/com/gabolle/backend/recommendation"
