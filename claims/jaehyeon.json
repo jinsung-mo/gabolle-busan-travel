@@ -1,9 +1,9 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-312",
-  "intent": "회원가입·소셜 로그인·웹 인증 회귀 테스트 구현",
+  "intent": "인증 API 공통 응답 계약 구현",
   "actor": null,
-  "since": "2026-09-02T07:25:34.887Z",
+  "since": "2026-09-02T07:36:54.972Z",
   "ttlMs": 7200000,
   "paths": [
     "backend/.dockerignore",
@@ -13,6 +13,7 @@
     "backend/build.gradle",
     "backend/docker-compose.yml",
     "backend/src/main/java/com/gabolle/backend/auth",
+    "backend/src/main/java/com/gabolle/backend/common/api",
     "backend/src/main/java/com/gabolle/backend/user",
     "backend/src/main/resources/application-dev.properties",
     "backend/src/main/resources/application-no-db.properties",
