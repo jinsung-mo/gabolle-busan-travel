@@ -1,0 +1,11 @@
+{
+  "agent": "claude-welcome",
+  "task": "S15P21E201-welcome",
+  "intent": "웰컴 화면을 문장형으로 재구성",
+  "actor": null,
+  "since": "2026-09-02T01:32:46.946Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/index.tsx"
+  ]
+}
