@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-579",
+  "intent": "실제 롤백 리허설 결과 문서화",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-02T11:20:34.830Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "infra/personalization/README.md"
+  ]
+}
