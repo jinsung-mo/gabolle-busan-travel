@@ -1,14 +1,16 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-579",
-  "intent": "배포/롤백 절차 구현 (문서 12절) - 이미지 SHA 태깅, 롤백 리허설, 장애대응 문서화",
+  "intent": "배포 디렉터리를 git clone 경로로 통일",
   "actor": null,
   "session": "16acb503-8737-4b5e-9609-8c222334a72b",
-  "since": "2026-09-02T11:00:10.407Z",
+  "since": "2026-09-02T11:08:31.233Z",
   "ttlMs": 1800000,
   "paths": [
     "infra/personalization/Jenkinsfile",
     "infra/personalization/README.md",
-    "infra/personalization/compose.yaml"
+    "infra/personalization/compose.yaml",
+    "infra/personalization/scripts/backup-minio.sh",
+    "infra/personalization/scripts/backup-postgres.sh"
   ]
 }
