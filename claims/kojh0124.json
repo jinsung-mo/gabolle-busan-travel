@@ -1,0 +1,11 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-542",
+  "intent": "확정된 추천·개인화 P0 데이터 수집 명세를 BigData 문서로 반영",
+  "actor": "agent",
+  "since": "2026-09-02T02:54:00.245Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/docs/RECOMMENDATION-DATA-COLLECTION-P0.md"
+  ]
+}
