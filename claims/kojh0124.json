@@ -1,0 +1,15 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-543",
+  "intent": "코드리뷰 P1 다섯 건 수정 — 엔진 미구성 시 기동, 스냅샷 필수, UNKNOWN hard/soft 구분, 실패 이벤트·occurred_at, 무점수 후보 순위 제거",
+  "actor": "agent",
+  "since": "2026-09-02T06:52:24.445Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation",
+    "backend/src/main/resources/application.properties",
+    "backend/src/main/resources/db",
+    "backend/src/test/java/com/gabolle/backend/event",
+    "backend/src/test/java/com/gabolle/backend/recommendation"
+  ]
+}
