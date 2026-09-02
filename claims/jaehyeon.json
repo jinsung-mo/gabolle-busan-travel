@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-243",
+  "intent": "Spring Boot 프로젝트 뼈대와 기능별 백엔드 디렉터리 생성",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-02T01:19:00.598Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend"
+  ]
+}
