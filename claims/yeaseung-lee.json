@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-576",
+  "intent": "JWT 서명 키(AIRFLOW__API_AUTH__JWT_SECRET) 컨테이너 간 불일치 수정 - 실제 원인",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-02T09:59:20.545Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "infra/personalization/compose.yaml"
+  ]
+}
