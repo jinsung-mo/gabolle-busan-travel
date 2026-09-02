@@ -1,12 +1,13 @@
 {
   "agent": "kojh0124",
   "task": "S15P21E201-543",
-  "intent": "S15P21E201-543 커밋 — Flyway 마이그레이션·testcontainers 의존성·설정. 커밋 직후 즉시 반납합니다",
+  "intent": "db 프로필에서 EmailSender 빈이 하나도 안 만들어져 컨텍스트가 죽습니다 — ConditionalOnMissingBean 을 결정적 조건으로 바꿉니다 (jaehyeon 님 리뷰 필요)",
   "actor": "agent",
-  "since": "2026-09-02T08:13:09.815Z",
+  "since": "2026-09-02T08:18:16.419Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/build.gradle",
+    "backend/src/main/java/com/gabolle/backend/auth/service/LoggingEmailSender.java",
     "backend/src/main/java/com/gabolle/backend/common/config",
     "backend/src/main/java/com/gabolle/backend/common/json",
     "backend/src/main/java/com/gabolle/backend/common/privacy",
