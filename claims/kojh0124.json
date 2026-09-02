@@ -1,15 +1,16 @@
 {
   "agent": "kojh0124",
   "task": "S15P21E201-543",
-  "intent": "추천 요청·전체 후보·제약 판정·최종 순위를 requestId 로 저장한다 (RecommendationJob·Candidate·Outbox + Flyway 마이그레이션)",
+  "intent": "DB 의존 빈 스위치(gabolle.persistence.enabled)와 추천 버전 설정 자리를 주석으로 남긴다",
   "actor": "agent",
-  "since": "2026-09-02T05:26:26.456Z",
+  "since": "2026-09-02T05:43:04.153Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/build.gradle",
     "backend/src/main/java/com/gabolle/backend/common",
     "backend/src/main/java/com/gabolle/backend/event",
     "backend/src/main/java/com/gabolle/backend/recommendation",
+    "backend/src/main/resources/application.properties",
     "backend/src/main/resources/db",
     "backend/src/test/java/com/gabolle/backend/event",
     "backend/src/test/java/com/gabolle/backend/recommendation",
