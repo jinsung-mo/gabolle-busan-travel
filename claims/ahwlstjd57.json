@@ -1,0 +1,13 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-243",
+  "intent": "추천 요청/응답 DTO 고정(오늘 18:00) · 일정 버전·노출·Outbox 테이블 DDL",
+  "actor": "agent",
+  "since": "2026-09-02T02:58:31.667Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/event",
+    "backend/src/main/java/com/gabolle/backend/recommendation",
+    "backend/src/main/resources/db"
+  ]
+}
