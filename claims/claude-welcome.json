@@ -1,9 +1,9 @@
 {
   "agent": "claude-welcome",
-  "task": "S15P21E201-welcome",
-  "intent": "웰컴 화면을 문장형으로 재구성",
+  "task": "S15P21E201-537",
+  "intent": "웰컴 화면 영상 카드와 핵심 기능 문구",
   "actor": null,
-  "since": "2026-09-02T01:48:04.683Z",
+  "since": "2026-09-02T02:40:55.554Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/index.tsx"
