@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-576",
+  "intent": "LightGBM 네이티브 라이브러리(libgomp1) 의존성 추가",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-02T08:19:21.682Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "infra/personalization/airflow/Dockerfile"
+  ]
+}
