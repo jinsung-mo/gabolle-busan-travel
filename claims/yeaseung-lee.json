@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-573",
+  "intent": "Health Check 재시도 로직 추가 (실제 Job 실행에서 발견한 버그)",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-02T14:39:08.662Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "infra/personalization/Jenkinsfile"
+  ]
+}
