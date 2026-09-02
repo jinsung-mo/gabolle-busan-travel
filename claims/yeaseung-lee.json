@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-576",
+  "intent": "이번 세션에서 찾은 3가지 실제 원인(Postgres 스키마 권한, libgomp1, Airflow 3.x Execution API/JWT)을 문서에 정리",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-02T10:06:19.392Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "docs/SERVER-SETUP.md",
+    "infra/personalization/README.md"
+  ]
+}
