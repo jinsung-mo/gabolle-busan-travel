@@ -1,11 +1,12 @@
 {
   "agent": "claude-welcome",
   "task": "S15P21E201-537",
-  "intent": "expo-video 의존성 추가 (사람 승인 받음)",
+  "intent": "링크된 worktree 에서 장부를 못 찾아 커밋이 막히던 것",
   "actor": null,
-  "since": "2026-09-02T02:45:44.987Z",
+  "since": "2026-09-02T02:59:56.251Z",
   "ttlMs": 1800000,
   "paths": [
+    "ci/axmap/bin/axmap.mjs",
     "frontend/app/index.tsx",
     "frontend/package.json"
   ]
