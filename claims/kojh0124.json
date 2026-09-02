@@ -1,0 +1,12 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-543",
+  "intent": "UNKNOWN 처리를 boolean(hard) 에서 등급(severity) + 제외 기준선으로 바꾼다",
+  "actor": "agent",
+  "since": "2026-09-02T07:41:04.395Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation",
+    "backend/src/test/java/com/gabolle/backend/recommendation"
+  ]
+}
