@@ -7,7 +7,6 @@
   "ttlMs": 2700000,
   "paths": [
     "backend/build.gradle",
-    "backend/src/main/java/com/gabolle/backend/auth/service/LoggingEmailSender.java",
     "backend/src/main/java/com/gabolle/backend/common/config",
     "backend/src/main/java/com/gabolle/backend/common/json",
     "backend/src/main/java/com/gabolle/backend/common/privacy",
