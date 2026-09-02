@@ -1,0 +1,12 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-352",
+  "intent": "common/config/TimeConfig 을 event 안으로 옮깁니다 — 공동 소유에 단독으로 넣은 것을 되돌리고, 이름 붙인 빈으로 바꿔 common/api 의 Clock 과 충돌하지 않게 합니다",
+  "actor": "agent",
+  "since": "2026-09-02T08:45:35.695Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/common/config",
+    "backend/src/main/java/com/gabolle/backend/event"
+  ]
+}
