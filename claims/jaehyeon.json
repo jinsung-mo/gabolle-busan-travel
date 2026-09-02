@@ -1,14 +1,23 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-312",
-  "intent": "회원가입 API 테스트 구현",
+  "intent": "회원가입·소셜 로그인과 모바일·웹 인증 흐름 및 배포 설정 구현",
   "actor": null,
-  "session": null,
-  "since": "2026-09-02T02:41:13.551Z",
+  "since": "2026-09-02T07:23:09.489Z",
   "ttlMs": 7200000,
   "paths": [
+    "backend/.dockerignore",
+    "backend/.env.example",
+    "backend/Dockerfile",
+    "backend/README.md",
+    "backend/build.gradle",
+    "backend/docker-compose.yml",
     "backend/src/main/java/com/gabolle/backend/auth",
     "backend/src/main/java/com/gabolle/backend/user",
-    "backend/src/test/java/com/gabolle/backend/auth"
+    "backend/src/main/resources/application-dev.properties",
+    "backend/src/main/resources/application-no-db.properties",
+    "backend/src/main/resources/application.properties",
+    "backend/src/main/resources/db/migration",
+    "docs/GABOLLE_BACKEND_AUTH_HANDOFF.md"
   ]
 }
