@@ -3,7 +3,7 @@
   "task": "S15P21E201-458",
   "intent": "4단계 여행 조건 라우팅과 영속 상태 기반 구현",
   "actor": null,
-  "since": "2026-09-03T02:31:25.768Z",
+  "since": "2026-09-03T02:31:34.115Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(auth)/age-gate.tsx",
@@ -14,6 +14,7 @@
     "frontend/app/_layout.tsx",
     "frontend/app/index.tsx",
     "frontend/app/plan",
+    "frontend/src/onboarding/OnboardingPreferences.tsx",
     "frontend/src/plan"
   ]
 }
