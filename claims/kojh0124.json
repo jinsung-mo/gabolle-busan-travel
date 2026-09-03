@@ -1,0 +1,11 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-352",
+  "intent": "event_outbox 에 조인 축 컬럼 추가 (request_id·user_id·trip_id·producer·seq) — 모진성 님 요청, request_id 를 정본으로. 마이그레이션 파일 하나만 추가합니다. itineraries 표는 제가 안 만듭니다 (모진성 님 자리)",
+  "actor": "agent",
+  "since": "2026-09-03T02:35:02.177Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/resources/db/migration"
+  ]
+}
