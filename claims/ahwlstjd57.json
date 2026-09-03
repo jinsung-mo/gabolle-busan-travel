@@ -1,0 +1,12 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-313",
+  "intent": "S15P21E201-313 — ItineraryEditController 가 손으로 만들던 응답 봉투(Map.of)를 팀 공용 common/api/ApiResponse 로 교체. DDL·FE 결정과 무관한 부분만",
+  "actor": "agent",
+  "since": "2026-09-03T02:53:26.525Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary",
+    "backend/src/test/java/com/gabolle/backend/itinerary"
+  ]
+}
