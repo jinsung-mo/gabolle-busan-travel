@@ -1,0 +1,14 @@
+{
+  "agent": "codex-web-welcome",
+  "task": "S15P21E201-537",
+  "intent": "Figma 기반 웹·모바일 반응형 웰컴 화면",
+  "actor": null,
+  "since": "2026-09-03T03:14:45.363Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/index.tsx",
+    "frontend/assets/brand/gabolle-logo-figma.png",
+    "frontend/assets/images/welcome-busan.png",
+    "frontend/src/design/tokens.ts"
+  ]
+}
