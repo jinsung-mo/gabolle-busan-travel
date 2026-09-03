@@ -1,0 +1,21 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-352",
+  "intent": "event_outbox envelope 컬럼 저장과 seq 릴레이 정렬 수정 및 테스트",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-03T05:47:10.511Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/event/application/EventIngestService.java",
+    "backend/src/main/java/com/gabolle/backend/event/application/OutboxAppendCommand.java",
+    "backend/src/main/java/com/gabolle/backend/event/application/OutboxRelayService.java",
+    "backend/src/main/java/com/gabolle/backend/event/application/OutboxService.java",
+    "backend/src/main/java/com/gabolle/backend/event/domain/EventOutbox.java",
+    "backend/src/main/java/com/gabolle/backend/event/repository/EventOutboxRepository.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationService.java",
+    "backend/src/test/java/com/gabolle/backend/event/EventIngestServiceTest.java",
+    "backend/src/test/java/com/gabolle/backend/event/OutboxRelayTest.java",
+    "backend/src/test/java/com/gabolle/backend/event/OutboxTransactionIntegrationTest.java"
+  ]
+}
