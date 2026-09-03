@@ -3,11 +3,12 @@
   "task": null,
   "intent": null,
   "actor": null,
-  "since": "2026-09-03T12:43:47.930Z",
+  "since": "2026-09-03T12:43:55.360Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(plan)/constraints.tsx",
     "frontend/app/(plan)/taste.tsx",
-    "frontend/app/(trip)/[id]/result.tsx"
+    "frontend/app/(trip)/[id]/result.tsx",
+    "frontend/app/trips/[id]/recommendations.tsx"
   ]
 }
