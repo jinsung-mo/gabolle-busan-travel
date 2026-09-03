@@ -1,12 +1,14 @@
 {
   "agent": "ahwlstjd57",
-  "task": "S15P21E201-352",
-  "intent": "S15P21E201-352 회귀 둘 고치기 (고지혁 님이 실측으로 찾음) — ① API-07 requestId 필수 검사가 -352 통합 때 사라짐, 응용 계층에 복원 ② seq 컬럼이 실제 조회에 아직 안 쓰임, findByPublishedAtIsNullOrderBySeqAsc 로 교체",
+  "task": "S15P21E201-461",
+  "intent": "S15P21E201-461 — PreferenceSnapshot.dimensions(Map)·TripConstraint 에 answerStatus·scope 를 추가하는 완전한 수정 (고지혁 님 실측: SELECTED/SKIPPED/UNKNOWN 구분 불가). 이미 푸시한 feat/back/S15P21E201-461-trip-query 브랜치에 이어서 커밋",
   "actor": "agent",
-  "since": "2026-09-03T03:08:22.226Z",
+  "since": "2026-09-03T03:14:07.115Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/event",
-    "backend/src/test/java/com/gabolle/backend/event"
+    "backend/src/main/java/com/gabolle/backend/trip",
+    "backend/src/test/java/com/gabolle/backend/event",
+    "backend/src/test/java/com/gabolle/backend/trip"
   ]
 }
