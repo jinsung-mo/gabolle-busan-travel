@@ -6,10 +6,7 @@
   "since": "2026-09-03T01:24:19.117Z",
   "ttlMs": 1800000,
   "paths": [
-    "frontend/app/(auth)/sign-in.tsx",
     "frontend/app/(tabs)/me.tsx",
-    "frontend/package-lock.json",
-    "frontend/package.json",
     "frontend/src/api/client.ts",
     "frontend/src/auth/AuthProvider.tsx",
     "frontend/src/auth/authApi.ts"
