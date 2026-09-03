@@ -1,12 +1,14 @@
 {
   "agent": "ahwlstjd57",
-  "task": "S15P21E201-461",
-  "intent": "S15P21E201-461 여행 생성 — TRIP-01 POST /api/v1/trips. 조건 저장 + 선호 스냅샷 + Idempotency-Key. db/migration 은 안 건드리고 나중에 별도로 요청하겠습니다",
+  "task": "S15P21E201-352",
+  "intent": "S15P21E201-352 Outbox 이중화 제거 — event 패키지에 EventOutboxRepository 인터페이스가 둘(domain/ 제 것, repository/ 고지혁 님 것)이라 수집 API 가 메모리로 갑니다. 제 쪽을 지우고 고지혁 님 JPA 쪽으로 합칩니다. EventType 17종·Producer·VersionRequirement 만 이식. db/migration 은 안 건드립니다(고지혁 님 -554 자리)",
   "actor": "agent",
-  "since": "2026-09-03T01:12:48.032Z",
+  "since": "2026-09-03T01:35:20.880Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/src/main/java/com/gabolle/backend/event",
     "backend/src/main/java/com/gabolle/backend/trip",
+    "backend/src/test/java/com/gabolle/backend/event",
     "backend/src/test/java/com/gabolle/backend/trip"
   ]
 }
