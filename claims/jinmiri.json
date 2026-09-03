@@ -1,14 +1,16 @@
 {
   "agent": "jinmiri",
-  "task": null,
-  "intent": null,
+  "task": "S15P21E201-588",
+  "intent": "추천 결과 API 상태 연결",
   "actor": null,
-  "since": "2026-09-03T14:07:44.907Z",
-  "ttlMs": 1800000,
+  "since": "2026-09-03T14:29:51.621Z",
+  "ttlMs": 3600000,
   "paths": [
     "frontend/app/(plan)/confirm.tsx",
     "frontend/app/(plan)/generating.tsx",
     "frontend/app/plan/generating.tsx",
-    "frontend/src/plan/recommendationJob.ts"
+    "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/src/plan/recommendationJob.ts",
+    "frontend/src/plan/recommendations.ts"
   ]
 }
