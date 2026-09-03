@@ -1,19 +1,14 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-592",
-  "intent": "S-10 일정 조회 고정 버전 충돌 연결",
+  "task": null,
+  "intent": null,
   "actor": null,
-  "since": "2026-09-03T14:43:31.760Z",
-  "ttlMs": 3600000,
+  "session": null,
+  "since": "2026-09-03T23:45:04.714Z",
+  "ttlMs": 1800000,
   "paths": [
-    "frontend/app/(plan)/confirm.tsx",
-    "frontend/app/(plan)/generating.tsx",
-    "frontend/app/(trip)/[id]/result.tsx",
-    "frontend/app/plan/generating.tsx",
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/app/trips/[id]/recommendations.tsx",
-    "frontend/src/plan/itinerary.ts",
-    "frontend/src/plan/recommendationJob.ts",
-    "frontend/src/plan/recommendations.ts"
+    "frontend/src/plan/itinerary.ts"
   ]
 }
