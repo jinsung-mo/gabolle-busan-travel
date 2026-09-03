@@ -1,0 +1,11 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-589",
+  "intent": "여행 조건 4단계 앱·웹 UI와 입력 계약 통합",
+  "actor": null,
+  "since": "2026-09-03T10:31:40.026Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend"
+  ]
+}
