@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-441",
+  "intent": "러너 이중화 완료 및 failover 검증 결과 기록 (2대 등록, 하나 멈춰도 파이프라인 성공 확인)",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-03T11:38:11.845Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "docs/CI.md"
+  ]
+}
