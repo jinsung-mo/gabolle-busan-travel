@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-419",
+  "intent": "MR !104 회원가입 검증 및 인증 API 후속 수정 amend",
+  "actor": null,
+  "since": "2026-09-03T05:09:18.001Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/.env.example",
+    "frontend/app/(auth)/sign-up.tsx",
+    "frontend/src/api/client.ts",
+    "frontend/src/auth/authApi.ts"
+  ]
+}
