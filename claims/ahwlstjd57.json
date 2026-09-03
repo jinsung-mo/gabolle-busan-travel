@@ -1,0 +1,12 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-461",
+  "intent": "S15P21E201-461 — Trip.Status.DELETED 가 DB CHECK(deleted_at 하나로만 삭제 표현)와 안 맞는 버그 수정. deletedAt 필드 추가, markDeleted() 수정. time_window/constraint_key/DIET-HEALTH_DIET 는 팀 답 대기 중이라 안 건드림",
+  "actor": "agent",
+  "since": "2026-09-03T05:58:58.767Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/trip",
+    "backend/src/test/java/com/gabolle/backend/trip"
+  ]
+}
