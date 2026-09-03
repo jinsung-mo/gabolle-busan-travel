@@ -1,0 +1,15 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-438",
+  "intent": "비밀번호 재설정 요청·확정 화면과 API 연결",
+  "actor": null,
+  "since": "2026-09-03T02:01:56.008Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(auth)/forgot-password.tsx",
+    "frontend/app/(auth)/sign-in.tsx",
+    "frontend/app/auth/password/reset.tsx",
+    "frontend/src/api/client.ts",
+    "frontend/src/auth/authApi.ts"
+  ]
+}
