@@ -1,20 +1,14 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-458",
-  "intent": "4단계 여행 조건 라우팅과 영속 상태 기반 구현",
+  "task": "S15P21E201-419",
+  "intent": "회원가입 입력 검증과 API 연결 브랜치 및 MR 정리",
   "actor": null,
-  "since": "2026-09-03T02:31:34.115Z",
+  "since": "2026-09-03T04:54:59.575Z",
   "ttlMs": 1800000,
   "paths": [
-    "frontend/app/(auth)/age-gate.tsx",
-    "frontend/app/(plan)/basics.tsx",
-    "frontend/app/(plan)/confirm.tsx",
-    "frontend/app/(plan)/constraints.tsx",
-    "frontend/app/(plan)/taste.tsx",
-    "frontend/app/_layout.tsx",
-    "frontend/app/index.tsx",
-    "frontend/app/plan",
-    "frontend/src/onboarding/OnboardingPreferences.tsx",
-    "frontend/src/plan"
+    "frontend/app/(auth)/sign-in.tsx",
+    "frontend/app/(auth)/sign-up.tsx",
+    "frontend/src/api/client.ts",
+    "frontend/src/auth/authApi.ts"
   ]
 }
