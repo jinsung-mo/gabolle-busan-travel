@@ -1,0 +1,12 @@
+{
+  "agent": "codex-web-welcome",
+  "task": null,
+  "intent": null,
+  "actor": null,
+  "since": "2026-09-03T05:15:29.082Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/index.tsx",
+    "frontend/src/onboarding/OnboardingPreferences.tsx"
+  ]
+}
