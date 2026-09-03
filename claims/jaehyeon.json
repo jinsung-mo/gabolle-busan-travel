@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon",
+  "task": "LOCAL-LEARNING-LOOP",
+  "intent": "GABOLLE 작업에서 학습형 개발 스킬을 자동 적용하도록 저장소 지침 연결",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-03T05:22:51.093Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "AGENTS.md"
+  ]
+}
