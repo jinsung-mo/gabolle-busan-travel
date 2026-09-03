@@ -1,0 +1,13 @@
+{
+  "agent": "jaehyeon",
+  "task": "auth-restclient-builder",
+  "intent": "Spring Boot 4 OAuth 클라이언트 기동 오류를 해결하기 위해 RestClient Builder 의존성과 설정을 보완한다",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-03T03:08:17.336Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/build.gradle",
+    "backend/src/main/java/com/gabolle/backend/auth/config"
+  ]
+}
