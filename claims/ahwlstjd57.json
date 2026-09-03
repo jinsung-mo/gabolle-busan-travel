@@ -7,8 +7,6 @@
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/event",
-    "backend/src/main/java/com/gabolle/backend/trip",
-    "backend/src/test/java/com/gabolle/backend/event",
-    "backend/src/test/java/com/gabolle/backend/trip"
+    "backend/src/test/java/com/gabolle/backend/event"
   ]
 }
