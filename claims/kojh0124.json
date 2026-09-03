@@ -1,0 +1,12 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-554",
+  "intent": "개인화 입력 스냅샷 PostgreSQL 마이그레이션 — trip · preference_snapshot/answer · constraint_snapshot/answer + recommendation_job 외래키. 엔티티는 만들지 않습니다(461 모진성 님 자리). event 패키지는 안 건드립니다",
+  "actor": "agent",
+  "since": "2026-09-03T01:29:32.069Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/resources/db/migration",
+    "backend/src/test/java/com/gabolle/backend/personalization"
+  ]
+}
