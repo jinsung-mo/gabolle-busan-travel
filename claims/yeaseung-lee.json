@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-583",
+  "intent": "Expo 웹 export를 Nginx로 배포하는 Dockerfile 작성",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-03T02:18:53.129Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/Dockerfile",
+    "frontend/nginx.conf"
+  ]
+}
