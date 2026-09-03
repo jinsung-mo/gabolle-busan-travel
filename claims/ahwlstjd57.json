@@ -1,11 +1,13 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-313",
-  "intent": "feat/back/S15P21E201-313-itinerary-ddl 을 back/dev 로 merge — 19커밋 뒤처져 trip 표 마이그레이션이 없었음. 새로 편집하는 게 아니라 이미 back/dev 에 머지된 내용을 받아오는 merge 커밋 하나",
+  "intent": "feat/back/S15P21E201-313-itinerary-ddl 을 back/dev 로 merge — 19커밋 뒤처져 여러 패키지가 함께 딸려옴. 새 편집 아니라 merge 커밋 완료용, 끝나면 즉시 대부분 반납함",
   "actor": "agent",
-  "since": "2026-09-03T05:12:50.308Z",
+  "since": "2026-09-03T05:13:26.656Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/build.gradle",
+    "backend/src",
     "backend/src/main/java/com/gabolle/backend/trip",
     "backend/src/main/resources/application.properties",
     "backend/src/main/resources/db/migration",
