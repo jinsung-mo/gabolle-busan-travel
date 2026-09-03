@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": null,
+  "intent": null,
+  "actor": null,
+  "since": "2026-09-03T13:55:07.424Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(plan)/confirm.tsx",
+    "frontend/app/(plan)/generating.tsx",
+    "frontend/src/plan/recommendationJob.ts"
+  ]
+}
