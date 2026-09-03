@@ -1,12 +1,13 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-DEPLOY",
-  "intent": "메일 기능 비활성 상태에서 SMTP health가 배포를 DOWN 처리하지 않도록 설정과 회귀 테스트 추가",
+  "intent": "메일 기능 비활성 상태에서 SMTP health가 배포를 DOWN 처리하지 않도록 회귀 테스트 추가",
   "actor": null,
   "session": null,
-  "since": "2026-09-03T03:56:27.604Z",
+  "since": "2026-09-03T03:56:56.659Z",
   "ttlMs": 1800000,
   "paths": [
-    "backend/src/main/resources/application.properties"
+    "backend/src/main/resources/application.properties",
+    "backend/src/test/java/com/gabolle/backend/GabolleBackendApplicationTests.java"
   ]
 }
