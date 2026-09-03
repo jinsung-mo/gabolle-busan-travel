@@ -1,0 +1,18 @@
+{
+  "agent": "codex-login-session",
+  "task": "S15P21E201-422",
+  "intent": "로그인·세션·보호 라우트 구현",
+  "actor": null,
+  "since": "2026-09-03T05:31:57.376Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(auth)/sign-in.tsx",
+    "frontend/app/(plan)/_layout.tsx",
+    "frontend/app/(tabs)/_layout.tsx",
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/app/(trip)/_layout.tsx",
+    "frontend/app/_layout.tsx",
+    "frontend/src/auth/AuthProvider.tsx",
+    "frontend/src/auth/ProtectedRoute.tsx"
+  ]
+}
