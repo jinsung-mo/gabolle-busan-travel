@@ -1,12 +1,11 @@
 {
   "agent": "ahwlstjd57",
-  "task": "S15P21E201-461",
-  "intent": "S15P21E201-461 — PreferenceSnapshot.dimensions(Map)·TripConstraint 에 answerStatus·scope 를 추가하는 완전한 수정 (고지혁 님 실측: SELECTED/SKIPPED/UNKNOWN 구분 불가). 이미 푸시한 feat/back/S15P21E201-461-trip-query 브랜치에 이어서 커밋",
+  "task": "S15P21E201-313",
+  "intent": "feat/back/S15P21E201-313-itinerary-ddl 을 back/dev 로 merge — 19커밋 뒤처져서 trip 표 마이그레이션이 없는 상태였음(고지혁 님 실측). 파일 추가 없이 merge 만",
   "actor": "agent",
-  "since": "2026-09-03T03:14:07.115Z",
+  "since": "2026-09-03T05:12:15.165Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/src/main/java/com/gabolle/backend/event",
-    "backend/src/test/java/com/gabolle/backend/event"
+    "backend/src/main/resources/db/migration"
   ]
 }
