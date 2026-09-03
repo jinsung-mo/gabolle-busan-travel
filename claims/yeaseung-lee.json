@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-6",
+  "intent": "common/dev의 backend/frontend README가 낡은 자리표시자로 남아있어 실제 코드 위치(back/dev, front/dev)를 명확히 정정",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-03T05:30:57.984Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/README.md",
+    "frontend/README.md"
+  ]
+}
