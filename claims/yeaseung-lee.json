@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-201",
+  "intent": "EC2(j15e201a) 백업 서버에 세 번째 러너 등록 및 노트북 둘 다 꺼도 CI 생존 검증 기록",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-03T11:47:05.038Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "docs/CI.md"
+  ]
+}
