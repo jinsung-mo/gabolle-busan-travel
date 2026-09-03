@@ -1,0 +1,15 @@
+{
+  "agent": "jaehyeon",
+  "task": "db-schema-isolation",
+  "intent": "Flyway 충돌 해결을 위한 백엔드 전용 gabolle schema 설정과 로컬 초기화",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-03T02:40:16.206Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/.env.example",
+    "backend/docker-compose.yml",
+    "backend/docker/postgres/init",
+    "backend/src/main/resources/application-dev.properties"
+  ]
+}
