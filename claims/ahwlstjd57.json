@@ -1,0 +1,11 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-313",
+  "intent": "S15P21E201-313 — itineraries · itinerary_versions DDL. 고지혁 님이 db/migration 반납하며 이 자리를 넘겼습니다(2026-09-03 쪽지). 버전은 V20260903123000(고지혁 -352) 보다 뒤로 잡습니다. itinerary_items 는 안 만듭니다 — 도메인에 그 개념이 아직 없습니다",
+  "actor": "agent",
+  "since": "2026-09-03T03:01:35.829Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/resources/db/migration"
+  ]
+}
