@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-422",
+  "intent": "세션 만료 중앙 처리와 로그아웃",
+  "actor": null,
+  "since": "2026-09-03T01:15:29.119Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/src/api/client.ts",
+    "frontend/src/auth/AuthProvider.tsx",
+    "frontend/src/auth/authApi.ts"
+  ]
+}
