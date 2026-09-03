@@ -1,12 +1,14 @@
 {
   "agent": "kojh0124",
-  "task": "S15P21E201-546",
-  "intent": "품질 게이트가 gabolle schema 에서 못 도는 것을 고친다 — raw SQL 이 Hibernate default_schema 를 안 물려받아 public 을 본다. 트랜잭션 범위 SET LOCAL search_path 로 맞춘다 (테이블명 하드코딩 안 함). 박재현 님의 데이터소스 한 줄이 들어오면 이건 무해하게 남는다",
+  "task": "S15P21E201-554",
+  "intent": "554 나머지 절반 — PostgreSQL 16 확정 기록, 262 MySQL 전제 충돌 범위와 종료 판단 근거, 좌표(DOUBLE PRECISION) 결정, 마이그레이션 경로 통일, gabolle schema 와 raw SQL 함정 문서화. 코드 변경 없음",
   "actor": "agent",
-  "since": "2026-09-03T05:25:49.489Z",
+  "since": "2026-09-03T06:06:04.767Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/README.md",
     "backend/src/main/java/com/gabolle/backend/dataquality",
-    "backend/src/test/java/com/gabolle/backend/dataquality"
+    "backend/src/test/java/com/gabolle/backend/dataquality",
+    "docs/DB-STANDARD.md"
   ]
 }
