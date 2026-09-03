@@ -1,0 +1,15 @@
+{
+  "agent": "jaehyeon",
+  "task": "db-schema-isolation",
+  "intent": "PostgreSQL gabolle schema를 Flyway/JPA와 로컬 Compose에 연결해 개인화 public schema와 분리한다",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-03T02:25:08.960Z",
+  "ttlMs": 3600000,
+  "paths": [
+    "backend/.env.example",
+    "backend/docker-compose.yml",
+    "backend/docker/postgres/init",
+    "backend/src/main/resources/application-dev.properties"
+  ]
+}
