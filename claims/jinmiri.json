@@ -1,12 +1,15 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-422",
-  "intent": "세션 만료 중앙 처리와 로그아웃",
+  "intent": "로그인 복귀 경로와 웹 번들 의존성 수정",
   "actor": null,
-  "since": "2026-09-03T01:15:29.119Z",
+  "since": "2026-09-03T01:24:19.117Z",
   "ttlMs": 1800000,
   "paths": [
+    "frontend/app/(auth)/sign-in.tsx",
     "frontend/app/(tabs)/me.tsx",
+    "frontend/package-lock.json",
+    "frontend/package.json",
     "frontend/src/api/client.ts",
     "frontend/src/auth/AuthProvider.tsx",
     "frontend/src/auth/authApi.ts"
