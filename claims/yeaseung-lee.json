@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-64",
+  "intent": "브랜치 다이어그램을 feature/→feat/로 되돌림 — 실행계획_v7 10.2절 결정과 일치시킴",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-03T08:17:25.209Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "README.md"
+  ]
+}
