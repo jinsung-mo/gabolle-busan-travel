@@ -1,14 +1,12 @@
 {
   "agent": "kojh0124",
   "task": "S15P21E201-546",
-  "intent": "개인정보 검사가 currentLat·currentLng 같은 카멜케이스 좌표 키를 못 잡는다 (exact 'lat' 도 fragment 'latitude' 도 안 걸림). 546 작업 내용 4 가 그 규칙이라 정확한 키 목록만 더한다 — fragment 는 안 건드림('lat' 을 조각으로 넣으면 translate·latency 가 걸린다)",
+  "intent": "품질 게이트가 gabolle schema 에서 못 도는 것을 고친다 — raw SQL 이 Hibernate default_schema 를 안 물려받아 public 을 본다. 트랜잭션 범위 SET LOCAL search_path 로 맞춘다 (테이블명 하드코딩 안 함). 박재현 님의 데이터소스 한 줄이 들어오면 이건 무해하게 남는다",
   "actor": "agent",
-  "since": "2026-09-03T03:25:24.690Z",
+  "since": "2026-09-03T05:25:49.489Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/src/main/java/com/gabolle/backend/common/privacy",
     "backend/src/main/java/com/gabolle/backend/dataquality",
-    "backend/src/main/resources/db/migration",
     "backend/src/test/java/com/gabolle/backend/dataquality"
   ]
 }
