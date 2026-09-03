@@ -1,12 +1,13 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-583",
-  "intent": "docker build context에서 node_modules 등 제외",
+  "intent": "frontend Nginx 연결 완료 기록",
   "actor": null,
   "session": "16acb503-8737-4b5e-9609-8c222334a72b",
-  "since": "2026-09-03T02:28:44.539Z",
+  "since": "2026-09-03T02:45:10.297Z",
   "ttlMs": 1800000,
   "paths": [
+    "docs/SERVER-SETUP.md",
     "frontend/.dockerignore",
     "frontend/Dockerfile",
     "frontend/nginx.conf"
