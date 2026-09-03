@@ -1,12 +1,13 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-266",
-  "intent": "back/dev의 backend:build에 postgres service + skipped-test guard 추가 (고지혁 제안, MR !106 후속)",
+  "intent": "backend:build DB service 관련 README 안내 추가",
   "actor": null,
   "session": "16acb503-8737-4b5e-9609-8c222334a72b",
-  "since": "2026-09-03T05:53:53.923Z",
+  "since": "2026-09-03T05:55:03.005Z",
   "ttlMs": 1800000,
   "paths": [
-    ".gitlab-ci.yml"
+    ".gitlab-ci.yml",
+    "backend/README.md"
   ]
 }
