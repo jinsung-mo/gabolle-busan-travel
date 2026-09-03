@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-580",
+  "intent": "mlflow/airflow 4개 서비스에 healthcheck 추가 (13절 gap)",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-03T01:02:54.223Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "infra/personalization/README.md",
+    "infra/personalization/compose.yaml"
+  ]
+}
