@@ -1,0 +1,12 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-352",
+  "intent": "S15P21E201-352 회귀 둘 고치기 (고지혁 님이 실측으로 찾음) — ① API-07 requestId 필수 검사가 -352 통합 때 사라짐, 응용 계층에 복원 ② seq 컬럼이 실제 조회에 아직 안 쓰임, findByPublishedAtIsNullOrderBySeqAsc 로 교체",
+  "actor": "agent",
+  "since": "2026-09-03T03:08:22.226Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/event",
+    "backend/src/test/java/com/gabolle/backend/event"
+  ]
+}
