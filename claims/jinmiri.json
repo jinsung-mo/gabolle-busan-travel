@@ -1,15 +1,18 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-588",
-  "intent": "추천 결과 API 상태 연결",
+  "task": "S15P21E201-592",
+  "intent": "S-10 일정 조회 고정 버전 충돌 연결",
   "actor": null,
-  "since": "2026-09-03T14:29:51.621Z",
+  "since": "2026-09-03T14:43:31.760Z",
   "ttlMs": 3600000,
   "paths": [
     "frontend/app/(plan)/confirm.tsx",
     "frontend/app/(plan)/generating.tsx",
+    "frontend/app/(trip)/[id]/result.tsx",
     "frontend/app/plan/generating.tsx",
+    "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/src/plan/itinerary.ts",
     "frontend/src/plan/recommendationJob.ts",
     "frontend/src/plan/recommendations.ts"
   ]
