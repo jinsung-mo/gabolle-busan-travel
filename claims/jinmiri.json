@@ -4,11 +4,21 @@
   "intent": null,
   "actor": null,
   "session": null,
-  "since": "2026-09-03T23:45:04.714Z",
+  "since": "2026-09-03T23:54:26.511Z",
   "ttlMs": 1800000,
   "paths": [
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/app/_layout.tsx",
+    "frontend/app/index.tsx",
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/src/api/client.ts",
+    "frontend/src/auth/AuthProvider.tsx",
+    "frontend/src/components/LanguageBadge.tsx",
+    "frontend/src/i18n/index.ts",
+    "frontend/src/onboarding/OnboardingPreferences.tsx",
+    "frontend/src/plan/PlanStepHeader.tsx",
+    "frontend/src/plan/PlanWebNav.tsx",
     "frontend/src/plan/itinerary.ts"
   ]
 }
