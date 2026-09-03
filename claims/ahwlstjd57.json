@@ -1,0 +1,13 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-461",
+  "intent": "S15P21E201-461 — Trip 을 InMemory 에서 JPA(DB)로 옮긴다 (M1 판정 전 필수)",
+  "actor": "agent",
+  "since": "2026-09-03T08:07:22.367Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/trip",
+    "backend/src/main/resources/db/migration",
+    "backend/src/test/java/com/gabolle/backend/trip"
+  ]
+}
