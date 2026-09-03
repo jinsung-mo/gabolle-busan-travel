@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-6",
+  "intent": "README.md 브랜치 다이어그램을 docs/git-convention.md 양식(feature/)에 맞춤",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-03T06:04:31.808Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "README.md"
+  ]
+}
