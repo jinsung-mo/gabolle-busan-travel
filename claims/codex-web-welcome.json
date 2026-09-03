@@ -3,7 +3,7 @@
   "task": "S15P21E201-537",
   "intent": "KO EN 선택 로컬 저장 의존성",
   "actor": null,
-  "since": "2026-09-03T03:22:38.419Z",
+  "since": "2026-09-03T03:26:46.176Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/index.tsx",
