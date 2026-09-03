@@ -1,14 +1,19 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-419",
-  "intent": "MR !104 회원가입 검증 및 인증 API 후속 수정 amend",
+  "task": "S15P21E201-586",
+  "intent": "로그인 UI OAuth 게스트 진입 계약 구현",
   "actor": null,
-  "since": "2026-09-03T05:09:18.001Z",
+  "since": "2026-09-03T06:11:29.418Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/.env.example",
-    "frontend/app/(auth)/sign-up.tsx",
-    "frontend/src/api/client.ts",
-    "frontend/src/auth/authApi.ts"
+    "frontend/app/(auth)/sign-in.tsx",
+    "frontend/app/(tabs)/_layout.tsx",
+    "frontend/package-lock.json",
+    "frontend/package.json",
+    "frontend/src/auth/AuthProvider.tsx",
+    "frontend/src/auth/ProtectedRoute.tsx",
+    "frontend/src/auth/authApi.ts",
+    "frontend/src/auth/oauth.ts"
   ]
 }
