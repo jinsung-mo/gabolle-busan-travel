@@ -4,9 +4,11 @@
   "intent": null,
   "actor": null,
   "session": null,
-  "since": "2026-09-03T23:54:26.511Z",
+  "since": "2026-09-03T23:56:24.395Z",
   "ttlMs": 1800000,
   "paths": [
+    "frontend/app/(auth)/age-gate.tsx",
+    "frontend/app/(auth)/sign-in.tsx",
     "frontend/app/(tabs)/me.tsx",
     "frontend/app/_layout.tsx",
     "frontend/app/index.tsx",
