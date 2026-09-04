@@ -1,0 +1,14 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-530",
+  "intent": "CI.md/git-convention.md/실행계획 문서를 실제 상태에 맞춘다 (-530·-374·-388)",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-04T02:17:34.398Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "docs/CI.md",
+    "docs/LOCAL_ROUTE_실행계획_v7.md",
+    "docs/git-convention.md"
+  ]
+}
