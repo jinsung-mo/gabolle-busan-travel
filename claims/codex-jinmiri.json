@@ -1,13 +1,14 @@
 {
   "agent": "codex-jinmiri",
   "task": "S15P21E201-188",
-  "intent": "웹 설정 계정 삭제 2단계 확인 및 세션 정리",
+  "intent": "탈퇴 성공 뒤 기기 내 여행 요약 제거",
   "actor": null,
-  "since": "2026-09-04T22:05:49.114Z",
+  "since": "2026-09-04T22:07:07.884Z",
   "ttlMs": 5400000,
   "paths": [
     "frontend/app/(tabs)/me.tsx",
     "frontend/src/auth/AuthProvider.tsx",
-    "frontend/src/auth/authApi.ts"
+    "frontend/src/auth/authApi.ts",
+    "frontend/src/trip/tripLibrary.ts"
   ]
 }
