@@ -1,0 +1,12 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-554",
+  "intent": "constraint_answer CHECK 분리 (ALLERGY·DIET 는 코드가 정보 전부라 value 강요가 제 결함이었음) + trip.time_window_preset 추가 (프리셋을 버리지 않고 원본 보존). 모진성 님 -461 JPA 매핑을 막고 있어 우선",
+  "actor": "agent",
+  "since": "2026-09-04T00:45:17.798Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/resources/db/migration",
+    "backend/src/test/java/com/gabolle/backend/personalization"
+  ]
+}
