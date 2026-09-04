@@ -7,7 +7,6 @@
   "since": "2026-09-04T23:45:26.159Z",
   "ttlMs": 1800000,
   "paths": [
-    "frontend/src/map/RouteMap.tsx",
     "frontend/tools/verify-android-target-sdk.mjs"
   ]
 }
