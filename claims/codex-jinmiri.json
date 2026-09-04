@@ -1,0 +1,13 @@
+{
+  "agent": "codex-jinmiri",
+  "task": null,
+  "intent": null,
+  "actor": null,
+  "since": "2026-09-04T22:58:08.853Z",
+  "ttlMs": 7200000,
+  "paths": [
+    "docs/ANDROID-BUILD-COMPATIBILITY.md",
+    "frontend/package.json",
+    "frontend/tools"
+  ]
+}
