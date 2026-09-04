@@ -1,15 +1,16 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-327",
-  "intent": null,
+  "task": "S15P21E201-597",
+  "intent": "야간 로고 합성 경계 제거",
   "actor": null,
-  "since": "2026-09-04T13:54:46.175Z",
+  "since": "2026-09-04T14:14:26.159Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
     "frontend/app/(trip)/[id]/share.tsx",
     "frontend/app/festivals.tsx",
     "frontend/app/index.tsx",
+    "frontend/assets/brand/gabolle-logo-night.png",
     "frontend/src/discovery/festivals.ts",
     "frontend/src/trip/collaboration.ts"
   ]
