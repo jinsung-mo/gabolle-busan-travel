@@ -1,9 +1,9 @@
 {
   "agent": "kojh0124",
-  "task": "S15P21E201-554",
-  "intent": "constraint_answer CHECK 분리 (ALLERGY·DIET 는 코드가 정보 전부라 value 강요가 제 결함이었음) + trip.time_window_preset 추가 (프리셋을 버리지 않고 원본 보존). 모진성 님 -461 JPA 매핑을 막고 있어 우선",
+  "task": "S15P21E201-545",
+  "intent": "장소 피처 코드 확정 + 사용자 입력↔장소 코드 대조표 + place 본체 출처·데이터 버전(명세 6.1) + place_feature 유일성. 코드 일치를 자동 검사로 못 박는다. place/place_feature 표 자체는 모진성 님 것이라 ALTER 만 하고 재정의하지 않습니다",
   "actor": "agent",
-  "since": "2026-09-04T00:45:17.798Z",
+  "since": "2026-09-04T01:02:48.375Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/resources/db/migration",
