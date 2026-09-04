@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon-encoding",
+  "task": "S15P21E201-606",
+  "intent": "빌드가 자바 소스를 UTF-8 로 읽도록 build.gradle 에 못 박고 회귀 테스트를 둔다 (jaehyeon 의 두 번째 세션)",
+  "actor": null,
+  "since": "2026-09-04T05:01:36.815Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/build.gradle",
+    "backend/src/test/java/com/gabolle/backend/common/SourceEncodingTest.java"
+  ]
+}
