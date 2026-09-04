@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-175",
+  "intent": "MR !190 반영 후 지도 레이어와 마커 포커스 통합",
+  "actor": null,
+  "since": "2026-09-04T23:26:08.223Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(trip)/[id]/map.tsx",
+    "frontend/src/map/RouteMap.tsx"
+  ]
+}
