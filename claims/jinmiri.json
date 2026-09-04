@@ -1,9 +1,9 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-597",
-  "intent": "피그마 기준 공용 CTA 네이비 정렬",
+  "intent": "하단 내비게이션 활성 상태 UX 개선",
   "actor": null,
-  "since": "2026-09-04T14:46:30.862Z",
+  "since": "2026-09-04T14:53:54.074Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
@@ -17,6 +17,7 @@
     "frontend/assets/brand/gabolle-logo-night.png",
     "frontend/src/components/BrandLogoLink.tsx",
     "frontend/src/components/Button.tsx",
+    "frontend/src/components/TabBar.tsx",
     "frontend/src/discovery/festivals.ts",
     "frontend/src/trip/collaboration.ts",
     "frontend/src/trip/tripLibrary.ts"
