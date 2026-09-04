@@ -1,0 +1,12 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-461",
+  "intent": "S15P21E201-461 — preference_answer·constraint_answer·trip_member·trip_idempotency JPA 마저 만든다 (M1 오늘 판정, 취향 유실 방지)",
+  "actor": "agent",
+  "since": "2026-09-04T01:34:54.978Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/trip",
+    "backend/src/test/java/com/gabolle/backend/trip"
+  ]
+}
