@@ -1,13 +1,14 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-421",
-  "intent": "로그인 연속 실패 차단. local_credential 에 실패 횟수와 잠금 해제 시각 두 칸을 더하고 login 경로에서 세고 잠근다. 마이그레이션은 파일 하나만 잡는다 — 디렉터리는 공용이다.",
+  "intent": "로그인 연속 실패 차단",
   "actor": null,
-  "since": "2026-09-04T07:10:03.733Z",
-  "ttlMs": 10800000,
+  "since": "2026-09-04T07:20:07.328Z",
+  "ttlMs": 7200000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/auth",
     "backend/src/main/resources/db/migration/V20260904071001__login_attempt_limit.sql",
-    "backend/src/test/java/com/gabolle/backend/auth"
+    "backend/src/test/java/com/gabolle/backend/auth",
+    "backend/src/test/java/com/gabolle/testslice"
   ]
 }
