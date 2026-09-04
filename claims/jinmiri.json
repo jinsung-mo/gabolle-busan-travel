@@ -1,9 +1,9 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-466",
-  "intent": "장소 상세과 축제 MR 분리",
+  "task": "S15P21E201-591",
+  "intent": "분리 MR 로고 홈 이동 의존성",
   "actor": null,
-  "since": "2026-09-04T14:30:41.943Z",
+  "since": "2026-09-04T14:32:52.436Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
@@ -15,6 +15,7 @@
     "frontend/app/place/[id].tsx",
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/assets/brand/gabolle-logo-night.png",
+    "frontend/src/components/BrandLogoLink.tsx",
     "frontend/src/discovery/festivals.ts",
     "frontend/src/trip/collaboration.ts",
     "frontend/src/trip/tripLibrary.ts"
