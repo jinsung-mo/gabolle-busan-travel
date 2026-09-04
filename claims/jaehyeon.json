@@ -1,0 +1,13 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-425",
+  "intent": "계정·데이터 일괄 삭제 API. 로그인 수단과 본인 여행·일정·추천 기록은 지우고 계정 행은 개인정보를 비운 채 남긴다 — itinerary_versions.created_by 가 NOT NULL 이라 행을 지우면 남의 일정 이력까지 끌려간다. trip·itinerary 코드는 안 고치고 JPQL 로 행만 지운다.",
+  "actor": null,
+  "since": "2026-09-04T08:00:52.326Z",
+  "ttlMs": 10800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/auth",
+    "backend/src/main/java/com/gabolle/backend/user",
+    "backend/src/test/java/com/gabolle/backend/auth"
+  ]
+}
