@@ -1,14 +1,15 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-597",
-  "intent": "앱 홈·온보딩·인증 복귀·하단 탐색 필수 UX 정리",
+  "intent": "백엔드 미가동 시 앱 보호 화면 개발 전용 시각 미리보기",
   "actor": null,
-  "since": "2026-09-04T03:07:24.632Z",
+  "since": "2026-09-04T04:22:58.616Z",
   "ttlMs": 14400000,
   "paths": [
     "frontend/app",
     "frontend/assets/home",
     "frontend/assets/icons",
+    "frontend/src/auth",
     "frontend/src/components",
     "frontend/src/plan/PlanWebNav.tsx"
   ]
