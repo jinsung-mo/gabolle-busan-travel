@@ -1,0 +1,12 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-461",
+  "intent": "S15P21E201-461 — constraintKey 추가, 알레르기 코드 저장 막힘·hasAnyValue 규칙 수정 (고지혁 님 리뷰)",
+  "actor": "agent",
+  "since": "2026-09-04T01:08:08.486Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/trip",
+    "backend/src/test/java/com/gabolle/backend/trip"
+  ]
+}
