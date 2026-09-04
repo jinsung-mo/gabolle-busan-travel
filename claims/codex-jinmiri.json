@@ -1,14 +1,16 @@
 {
   "agent": "codex-jinmiri",
   "task": "S15P21E201-628",
-  "intent": "웹 챗봇 진입 버튼과 채팅 내 현장 도구 바로가기 복구",
+  "intent": "웹 공통 콘텐츠 폭과 AI 채팅 데스크톱 레이아웃 개선",
   "actor": null,
-  "since": "2026-09-04T22:09:58.803Z",
+  "since": "2026-09-04T22:12:13.005Z",
   "ttlMs": 3600000,
   "paths": [
     "frontend/app/(tabs)/me.tsx",
+    "frontend/app/chat.tsx",
     "frontend/src/auth/AuthProvider.tsx",
     "frontend/src/auth/authApi.ts",
+    "frontend/src/components/Screen.tsx",
     "frontend/src/trip/tripLibrary.ts"
   ]
 }
