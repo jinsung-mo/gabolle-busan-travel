@@ -1,0 +1,11 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-313",
+  "intent": "S15P21E201-313 — MR !152 CI 실패 수정 (NestedTransactionNotSupportedException)",
+  "actor": "agent",
+  "since": "2026-09-04T01:16:20.727Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary"
+  ]
+}
