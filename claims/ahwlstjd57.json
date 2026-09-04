@@ -1,0 +1,12 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-313",
+  "intent": "S15P21E201-313 — Itinerary/ItineraryVersion 을 InMemory 에서 JPA(DB)로 옮긴다",
+  "actor": "agent",
+  "since": "2026-09-04T00:56:24.329Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary",
+    "backend/src/test/java/com/gabolle/backend/itinerary"
+  ]
+}
