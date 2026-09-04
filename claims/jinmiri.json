@@ -1,9 +1,9 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-615",
+  "task": "S15P21E201-616",
   "intent": null,
   "actor": null,
-  "since": "2026-09-04T08:53:15.222Z",
+  "since": "2026-09-04T08:55:31.284Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/.env.example",
@@ -22,6 +22,7 @@
     "frontend/app/field/speak.tsx",
     "frontend/app/field/translate.tsx",
     "frontend/app/index.tsx",
+    "frontend/app/notifications.tsx",
     "frontend/app/oauth/[provider]/callback.tsx",
     "frontend/assets/icon.png",
     "frontend/assets/mascot",
