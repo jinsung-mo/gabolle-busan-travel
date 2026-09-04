@@ -1,11 +1,12 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-592",
-  "intent": "실제 일정 내 여행 목록 저장 재진입 삭제",
+  "task": "S15P21E201-319",
+  "intent": "피드 가짜 사용자 통계 제거 및 안전한 준비 상태",
   "actor": null,
-  "since": "2026-09-04T14:19:49.743Z",
-  "ttlMs": 2700000,
+  "since": "2026-09-04T14:23:36.578Z",
+  "ttlMs": 1800000,
   "paths": [
+    "frontend/app/(tabs)/feed.tsx",
     "frontend/app/(tabs)/home.tsx",
     "frontend/app/(tabs)/trips.tsx",
     "frontend/app/(trip)/[id]/share.tsx",
