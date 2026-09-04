@@ -1,0 +1,11 @@
+{
+  "agent": "codex",
+  "task": "S15P21E201-594",
+  "intent": "HTML 캐시로 이전 번들이 남지 않도록 배포 캐시 정책 수정",
+  "actor": null,
+  "since": "2026-09-04T20:20:38.749Z",
+  "ttlMs": 5400000,
+  "paths": [
+    "frontend/nginx.conf"
+  ]
+}
