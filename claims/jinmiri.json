@@ -3,7 +3,7 @@
   "task": "S15P21E201-615",
   "intent": null,
   "actor": null,
-  "since": "2026-09-04T08:50:50.000Z",
+  "since": "2026-09-04T08:53:15.222Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/.env.example",
@@ -15,6 +15,7 @@
     "frontend/app/(auth)/sign-up.tsx",
     "frontend/app/(onboarding)/permissions.tsx",
     "frontend/app/(tabs)/feed.tsx",
+    "frontend/app/(tabs)/home.tsx",
     "frontend/app/(trip)/[id]/prepare.tsx",
     "frontend/app/+not-found.tsx",
     "frontend/app/chat.tsx",
