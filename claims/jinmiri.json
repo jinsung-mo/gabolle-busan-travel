@@ -3,7 +3,7 @@
   "task": null,
   "intent": null,
   "actor": null,
-  "since": "2026-09-04T00:20:31.490Z",
+  "since": "2026-09-04T00:20:39.515Z",
   "ttlMs": 216000000,
   "paths": [
     "frontend/app/(auth)/age-gate.tsx",
@@ -15,6 +15,7 @@
     "frontend/app/(plan)/taste.tsx",
     "frontend/app/(tabs)/map.tsx",
     "frontend/app/(tabs)/me.tsx",
+    "frontend/app/(tabs)/saved.tsx",
     "frontend/app/(tabs)/trips.tsx",
     "frontend/app/_layout.tsx",
     "frontend/app/index.tsx",
