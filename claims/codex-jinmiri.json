@@ -1,12 +1,14 @@
 {
   "agent": "codex-jinmiri",
   "task": "S15P21E201-628",
-  "intent": "웹 공통 콘텐츠 폭과 AI 채팅 데스크톱 레이아웃 개선",
+  "intent": "AI 챗봇 플로팅 버튼 모바일 위치 및 웹 크기 조정",
   "actor": null,
-  "since": "2026-09-04T22:12:13.005Z",
-  "ttlMs": 3600000,
+  "since": "2026-09-04T22:14:49.936Z",
+  "ttlMs": 1800000,
   "paths": [
+    "frontend/app/(tabs)/home.tsx",
     "frontend/app/(tabs)/me.tsx",
+    "frontend/app/index.tsx",
     "frontend/src/auth/AuthProvider.tsx",
     "frontend/src/auth/authApi.ts",
     "frontend/src/trip/tripLibrary.ts"
