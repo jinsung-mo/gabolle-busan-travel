@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-608",
+  "intent": "README에 문서 상태(초안/확정) 표시 추가",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-04T05:02:08.767Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "docs/gabolle/README.md"
+  ]
+}
