@@ -1,0 +1,11 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-461",
+  "intent": "고지혁 님 제안대로 evidenceStatus·operator 주석을 '유실'이 아니라 '설계상 칸 없음'으로 다듬기",
+  "actor": "agent",
+  "since": "2026-09-04T07:46:08.114Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/trip/infra/JpaTripRepository.java"
+  ]
+}
