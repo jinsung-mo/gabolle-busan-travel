@@ -1,0 +1,11 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-461",
+  "intent": "CI 실측 - preferenceAnswerAndConstraintRoundTrip 이 존재하지 않는 dimension('pace')을 써서 CHECK 위반",
+  "actor": "agent",
+  "since": "2026-09-04T04:47:04.646Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/trip/TripPersistenceIntegrationTest.java"
+  ]
+}
