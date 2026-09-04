@@ -1,13 +1,16 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-188",
-  "intent": "MR !194 타입 오류 수정",
+  "task": "S15P21E201-170",
+  "intent": "MR !196 실행 스크립트와 Android API 36 검증 스크립트 통합",
   "actor": null,
-  "since": "2026-09-04T23:32:53.688Z",
+  "since": "2026-09-04T23:35:00.466Z",
   "ttlMs": 1800000,
   "paths": [
+    "docs/ANDROID-BUILD-COMPATIBILITY.md",
     "frontend/app/(tabs)/me.tsx",
     "frontend/app/(trip)/[id]/map.tsx",
-    "frontend/src/map/RouteMap.tsx"
+    "frontend/package.json",
+    "frontend/src/map/RouteMap.tsx",
+    "frontend/tools/verify-android-target-sdk.mjs"
   ]
 }
