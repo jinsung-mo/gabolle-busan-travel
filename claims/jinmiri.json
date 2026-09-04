@@ -7,9 +7,6 @@
   "since": "2026-09-04T20:54:16.359Z",
   "ttlMs": 1800000,
   "paths": [
-    "docs/DESIGN_TOKENS.md",
-    "frontend/app/(plan)/confirm.tsx",
-    "frontend/app/(plan)/generating.tsx",
-    "frontend/src/plan/recommendationJob.ts"
+    "docs/DESIGN_TOKENS.md"
   ]
 }
