@@ -1,0 +1,11 @@
+{
+  "agent": "jaehyeon-2",
+  "task": "S15P21E201-609",
+  "intent": "소셜 로그인 콜백 착지 화면 하나만 추가한다 (app/oauth 하위 신규 파일)",
+  "actor": null,
+  "since": "2026-09-04T08:00:38.730Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/oauth"
+  ]
+}
