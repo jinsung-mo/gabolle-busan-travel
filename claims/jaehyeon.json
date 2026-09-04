@@ -3,8 +3,8 @@
   "task": "S15P21E201-312",
   "intent": "S15P21E201-312 배포에서 이메일 가입이 끝까지 막혀 있다 — 인증 메일 링크를 처리하는 GET 엔드포인트 추가 + Jenkinsfile 에 SMTP·링크 기본값 주입",
   "actor": null,
-  "since": "2026-09-04T00:44:42.558Z",
-  "ttlMs": 5400000,
+  "since": "2026-09-04T01:14:00.355Z",
+  "ttlMs": 3600000,
   "paths": [
     "backend/Jenkinsfile",
     "backend/src/main/java/com/gabolle/backend/auth",
