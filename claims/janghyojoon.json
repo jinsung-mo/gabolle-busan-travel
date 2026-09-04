@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": null,
+  "intent": "til 브랜치에 8/31~9/4 이번 주 TIL 추가 (내 파일만)",
+  "actor": "agent",
+  "session": "69126f52-af60-466b-9398-62ad4642f7ac",
+  "since": "2026-09-04T02:54:14.868Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "장효준_til.md"
+  ]
+}
