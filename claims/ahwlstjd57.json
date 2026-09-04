@@ -1,11 +1,13 @@
 {
   "agent": "ahwlstjd57",
-  "task": "S15P21E201-461",
-  "intent": "CI 실측 - preferenceAnswerAndConstraintRoundTrip 이 존재하지 않는 dimension('pace')을 써서 CHECK 위반",
+  "task": "S15P21E201-192",
+  "intent": "CI 실측 - RecommendationSliceApplication 에 trip 이 없어 컨텍스트가 안 뜨는 문제 ConditionalOnBean 으로 수정",
   "actor": "agent",
-  "since": "2026-09-04T04:47:04.646Z",
+  "since": "2026-09-04T04:47:40.652Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationJobRunner.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/presentation/RecommendationJobController.java",
     "backend/src/test/java/com/gabolle/backend/trip/TripPersistenceIntegrationTest.java"
   ]
 }
