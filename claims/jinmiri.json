@@ -1,9 +1,9 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-58",
-  "intent": "웹 카카오 지도 번호 마커·경로선과 앱 안전 폴백 구현",
+  "task": "S15P21E201-595",
+  "intent": "Figma APP 01 기준 홈 반응형·카드 캐러셀 정렬",
   "actor": null,
-  "since": "2026-09-04T00:39:09.854Z",
+  "since": "2026-09-04T00:47:54.604Z",
   "ttlMs": 21600000,
   "paths": [
     "frontend/.env.example",
@@ -14,6 +14,7 @@
     "frontend/app/(plan)/constraints.tsx",
     "frontend/app/(plan)/generating.tsx",
     "frontend/app/(plan)/taste.tsx",
+    "frontend/app/(tabs)/home.tsx",
     "frontend/app/(tabs)/map.tsx",
     "frontend/app/(tabs)/me.tsx",
     "frontend/app/(tabs)/saved.tsx",
@@ -23,6 +24,7 @@
     "frontend/app/index.tsx",
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/assets/home",
     "frontend/src/api/client.ts",
     "frontend/src/auth/AuthProvider.tsx",
     "frontend/src/components/BrandLogoLink.tsx",
