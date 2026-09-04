@@ -1,22 +1,15 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-307",
+  "task": "S15P21E201-458",
   "intent": null,
   "actor": null,
-  "since": "2026-09-04T19:36:50.792Z",
+  "since": "2026-09-04T20:12:57.155Z",
   "ttlMs": 1800000,
   "paths": [
-    "frontend/app/(auth)/sign-up.tsx",
+    "frontend/.env.example",
     "frontend/app/_layout.tsx",
-    "frontend/app/index.tsx",
-    "frontend/assets/images/.gitkeep",
-    "frontend/assets/images/welcome-busan.png",
-    "frontend/src/api/client.ts",
     "frontend/src/components/ApiAvailabilityBanner.tsx",
-    "frontend/src/components/LanguageGlyph.tsx",
-    "frontend/src/design/tokens.ts",
-    "frontend/src/onboarding/OnboardingPreferences.tsx",
-    "frontend/src/welcome/WelcomeBackground.tsx",
-    "frontend/src/welcome/welcomeMedia.ts"
+    "frontend/src/components/AppErrorBoundary.tsx",
+    "frontend/src/components/BuildInfoBadge.tsx"
   ]
 }
