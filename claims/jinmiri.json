@@ -1,9 +1,9 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-591",
-  "intent": "분리 MR 로고 홈 이동 의존성",
+  "task": "S15P21E201-597",
+  "intent": "피그마 기준 공용 CTA 네이비 정렬",
   "actor": null,
-  "since": "2026-09-04T14:32:52.436Z",
+  "since": "2026-09-04T14:46:30.862Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
@@ -16,6 +16,7 @@
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/assets/brand/gabolle-logo-night.png",
     "frontend/src/components/BrandLogoLink.tsx",
+    "frontend/src/components/Button.tsx",
     "frontend/src/discovery/festivals.ts",
     "frontend/src/trip/collaboration.ts",
     "frontend/src/trip/tripLibrary.ts"
