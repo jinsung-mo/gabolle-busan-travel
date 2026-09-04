@@ -6,14 +6,12 @@
   "since": "2026-09-04T04:49:08.236Z",
   "ttlMs": 1800000,
   "paths": [
-    "backend/build.gradle",
     "backend/src/main/java/com/gabolle/backend/auth",
     "backend/src/main/java/com/gabolle/backend/common/security",
     "backend/src/main/java/com/gabolle/backend/place",
     "backend/src/main/java/com/gabolle/backend/user",
     "backend/src/main/resources/application-dev.properties",
     "backend/src/test/java/com/gabolle/backend/auth",
-    "backend/src/test/java/com/gabolle/backend/common/SourceEncodingTest.java",
     "backend/src/test/java/com/gabolle/backend/place",
     "backend/src/test/java/com/gabolle/testslice"
   ]
