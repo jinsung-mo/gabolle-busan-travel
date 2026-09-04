@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-23",
+  "intent": "추천 아키텍처·하루 경로 되감기 타당성 문서 2건을 올린다",
+  "actor": null,
+  "since": "2026-09-04T08:59:17.621Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/docs/RECOMMEND-ARCHITECTURE.md",
+    "bigData/docs/REPLAY-FEASIBILITY.md"
+  ]
+}
