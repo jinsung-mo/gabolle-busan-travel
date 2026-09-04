@@ -6,11 +6,7 @@
   "since": "2026-09-04T22:42:40.059Z",
   "ttlMs": 7200000,
   "paths": [
-    "frontend/app/(tabs)/me.tsx",
-    "frontend/app/legal",
-    "frontend/app/privacy.tsx",
     "frontend/package.json",
-    "frontend/src/legal",
     "frontend/tools"
   ]
 }
