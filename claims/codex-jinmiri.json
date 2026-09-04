@@ -7,10 +7,8 @@
   "ttlMs": 3600000,
   "paths": [
     "frontend/app/(tabs)/me.tsx",
-    "frontend/app/chat.tsx",
     "frontend/src/auth/AuthProvider.tsx",
     "frontend/src/auth/authApi.ts",
-    "frontend/src/components/Screen.tsx",
     "frontend/src/trip/tripLibrary.ts"
   ]
 }
