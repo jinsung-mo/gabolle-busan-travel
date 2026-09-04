@@ -1,14 +1,16 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-466",
+  "task": "S15P21E201-327",
   "intent": null,
   "actor": null,
-  "since": "2026-09-04T13:36:41.123Z",
+  "since": "2026-09-04T13:54:46.175Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
+    "frontend/app/(trip)/[id]/share.tsx",
     "frontend/app/festivals.tsx",
     "frontend/app/index.tsx",
-    "frontend/src/discovery/festivals.ts"
+    "frontend/src/discovery/festivals.ts",
+    "frontend/src/trip/collaboration.ts"
   ]
 }
