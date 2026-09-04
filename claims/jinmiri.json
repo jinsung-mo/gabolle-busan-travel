@@ -3,7 +3,7 @@
   "task": null,
   "intent": null,
   "actor": null,
-  "since": "2026-09-04T00:20:05.180Z",
+  "since": "2026-09-04T00:20:14.276Z",
   "ttlMs": 216000000,
   "paths": [
     "frontend/app/(auth)/age-gate.tsx",
@@ -21,6 +21,7 @@
     "frontend/src/api/client.ts",
     "frontend/src/auth/AuthProvider.tsx",
     "frontend/src/components/BrandLogoLink.tsx",
+    "frontend/src/components/EmptyTabScreen.tsx",
     "frontend/src/components/LanguageBadge.tsx",
     "frontend/src/components/TabBar.tsx",
     "frontend/src/i18n/index.ts",
