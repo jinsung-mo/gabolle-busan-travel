@@ -3,10 +3,12 @@
   "task": "S15P21E201-170",
   "intent": "MR !196 실행 스크립트와 Android API 36 검증 스크립트 통합",
   "actor": null,
-  "since": "2026-09-04T23:35:00.466Z",
+  "session": null,
+  "since": "2026-09-04T23:45:26.159Z",
   "ttlMs": 1800000,
   "paths": [
     "docs/ANDROID-BUILD-COMPATIBILITY.md",
+    "docs/DESIGN_TOKENS.md",
     "frontend/app/(tabs)/me.tsx",
     "frontend/app/(trip)/[id]/map.tsx",
     "frontend/package.json",
