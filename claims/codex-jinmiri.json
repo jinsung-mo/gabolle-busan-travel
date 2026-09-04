@@ -1,0 +1,15 @@
+{
+  "agent": "codex-jinmiri",
+  "task": "S15P21E201-211",
+  "intent": "한영 법적 고지 3화면과 설정 진입점 및 오픈소스 목록 생성",
+  "actor": null,
+  "since": "2026-09-04T22:35:55.063Z",
+  "ttlMs": 7200000,
+  "paths": [
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/app/legal",
+    "frontend/app/privacy.tsx",
+    "frontend/package.json",
+    "frontend/tools"
+  ]
+}
