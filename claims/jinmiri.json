@@ -3,9 +3,12 @@
   "task": "S15P21E201-597",
   "intent": null,
   "actor": null,
-  "since": "2026-09-04T08:16:04.621Z",
+  "since": "2026-09-04T08:30:00.341Z",
   "ttlMs": 1800000,
   "paths": [
+    "frontend/.env.example",
+    "frontend/Dockerfile",
+    "frontend/Jenkinsfile",
     "frontend/app.json",
     "frontend/app/(auth)/age-gate.tsx",
     "frontend/app/(auth)/sign-in.tsx",
@@ -15,9 +18,11 @@
     "frontend/app/field/speak.tsx",
     "frontend/app/field/translate.tsx",
     "frontend/app/index.tsx",
+    "frontend/app/oauth/[provider]/callback.tsx",
     "frontend/assets/video",
     "frontend/package-lock.json",
     "frontend/package.json",
+    "frontend/src/auth/oauth.ts",
     "frontend/src/components/ScenicVideo.tsx"
   ]
 }
