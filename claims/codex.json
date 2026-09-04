@@ -1,0 +1,11 @@
+{
+  "agent": "codex",
+  "task": "S15P21E201-597",
+  "intent": "MR !166 최신 front/dev 통합, 충돌 해결, 검증 및 배포",
+  "actor": null,
+  "since": "2026-09-04T20:35:37.639Z",
+  "ttlMs": 10800000,
+  "paths": [
+    "frontend"
+  ]
+}
