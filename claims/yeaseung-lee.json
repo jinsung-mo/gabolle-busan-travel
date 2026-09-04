@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-247",
+  "intent": "스토어 심사 반려 방지 체크리스트 신설",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-04T02:29:40.868Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "docs/STORE-REVIEW-CHECKLIST.md"
+  ]
+}
