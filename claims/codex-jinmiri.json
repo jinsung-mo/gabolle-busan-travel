@@ -3,7 +3,7 @@
   "task": null,
   "intent": null,
   "actor": null,
-  "since": "2026-09-04T23:03:12.573Z",
+  "since": "2026-09-04T23:15:14.252Z",
   "ttlMs": 7200000,
   "paths": [
     ".tmp-s15p21e201-74-permissions/docs/PERMISSION-DEVICE-CHECKLIST.md",
@@ -12,6 +12,7 @@
     ".tmp-s15p21e201-74-permissions/frontend/app/(trip)/[id]/map.tsx",
     ".tmp-s15p21e201-74-permissions/frontend/app/app-intro.tsx",
     ".tmp-s15p21e201-74-permissions/frontend/app/field/translate.tsx",
+    ".tmp-s15p21e201-74-permissions/frontend/app/index.tsx",
     ".tmp-s15p21e201-74-permissions/frontend/src/components/PermissionRationale.tsx"
   ]
 }
