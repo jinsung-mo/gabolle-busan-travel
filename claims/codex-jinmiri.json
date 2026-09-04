@@ -1,12 +1,14 @@
 {
   "agent": "codex-jinmiri",
   "task": "S15P21E201-628",
-  "intent": "AI 챗봇 플로팅 버튼 모바일 위치 및 웹 크기 조정",
+  "intent": "챗봇 가독성 개선과 모바일 위치 미세 조정",
   "actor": null,
-  "since": "2026-09-04T22:14:49.936Z",
+  "since": "2026-09-04T22:18:02.254Z",
   "ttlMs": 1800000,
   "paths": [
+    "frontend/app/(tabs)/home.tsx",
     "frontend/app/(tabs)/me.tsx",
+    "frontend/app/chat.tsx",
     "frontend/src/auth/AuthProvider.tsx",
     "frontend/src/auth/authApi.ts",
     "frontend/src/trip/tripLibrary.ts"
