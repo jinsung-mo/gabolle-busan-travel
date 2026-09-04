@@ -1,12 +1,13 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-461",
-  "intent": "S15P21E201-461 — preference_answer·constraint_answer·trip_member·trip_idempotency JPA 마저 만든다 (M1 오늘 판정, 취향 유실 방지)",
+  "intent": "여행 조건 저장 - preference/constraint/member/idempotency 전체 JPA 영속화 마무리",
   "actor": "agent",
-  "since": "2026-09-04T01:34:54.978Z",
+  "since": "2026-09-04T02:28:13.311Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/trip",
+    "backend/src/main/resources/db/migration",
     "backend/src/test/java/com/gabolle/backend/trip"
   ]
 }
