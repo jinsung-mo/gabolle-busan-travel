@@ -1,0 +1,13 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-598",
+  "intent": "X-User-Id 헤더 인가 우회 수정 - jaehyeon 님 실측 (trip·itinerary 컨트롤러가 헤더로 사용자를 신뢰)",
+  "actor": "agent",
+  "since": "2026-09-04T07:21:37.042Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/common/security",
+    "backend/src/main/java/com/gabolle/backend/itinerary/presentation/ItineraryEditController.java",
+    "backend/src/main/java/com/gabolle/backend/trip/presentation/TripController.java"
+  ]
+}
