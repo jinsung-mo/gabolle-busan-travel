@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-200",
+  "intent": "추천 생성 API·SSE 우선 연결·2초 polling fallback·완료 결과 이동 구현",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-04T20:48:52.630Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(plan)/confirm.tsx",
+    "frontend/app/(plan)/generating.tsx",
+    "frontend/src/plan/recommendationJob.ts"
+  ]
+}
