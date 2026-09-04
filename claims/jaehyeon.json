@@ -1,10 +1,10 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-462",
-  "intent": "place 도메인 조회 API. 엔티티·리포지토리 토대와 이름 검색·갈래 조회·근처·출발지·후보 필터. 표는 이미 있어 스키마는 안 바꾼다. trip·itinerary·editorial 은 손대지 않는다.",
+  "intent": "place 조회 API 다섯 개 (이름 검색·갈래·상세·근처·출발지·후보 필터). 스키마는 안 바꾼다.",
   "actor": null,
-  "since": "2026-09-04T03:54:09.147Z",
-  "ttlMs": 14400000,
+  "since": "2026-09-04T04:11:52.550Z",
+  "ttlMs": 10800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/common/security",
     "backend/src/main/java/com/gabolle/backend/place",
