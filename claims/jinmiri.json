@@ -1,9 +1,9 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-597",
-  "intent": "mobile auth secure session persistence",
+  "intent": "API timeout and actionable network feedback",
   "actor": null,
-  "since": "2026-09-04T05:09:10.576Z",
+  "since": "2026-09-04T07:22:43.870Z",
   "ttlMs": 14400000,
   "paths": [
     "frontend/app",
@@ -12,6 +12,7 @@
     "frontend/assets/icons",
     "frontend/package-lock.json",
     "frontend/package.json",
+    "frontend/src/api",
     "frontend/src/auth",
     "frontend/src/components",
     "frontend/src/plan",
