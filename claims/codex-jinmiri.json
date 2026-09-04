@@ -3,7 +3,7 @@
   "task": "S15P21E201-206",
   "intent": "package-lock 기반 오픈소스 고지 데이터 생성",
   "actor": null,
-  "since": "2026-09-04T22:36:38.807Z",
+  "since": "2026-09-04T22:42:40.059Z",
   "ttlMs": 7200000,
   "paths": [
     "frontend/app/(tabs)/me.tsx",
