@@ -1,17 +1,19 @@
 {
   "agent": "jaehyeon",
-  "task": "S15P21E201-423",
-  "intent": "AppUser 에 이름·언어 수정 메서드를 더한다. JPQL 벌크 UPDATE 우회를 없애려는 것이다.",
+  "task": "S15P21E201-606",
+  "intent": "빌드가 자바 소스를 UTF-8 로 읽도록 build.gradle 에 못 박고 회귀 테스트를 둔다",
   "actor": null,
-  "since": "2026-09-04T04:31:37.335Z",
-  "ttlMs": 7200000,
+  "since": "2026-09-04T04:49:08.236Z",
+  "ttlMs": 1800000,
   "paths": [
+    "backend/build.gradle",
     "backend/src/main/java/com/gabolle/backend/auth",
     "backend/src/main/java/com/gabolle/backend/common/security",
     "backend/src/main/java/com/gabolle/backend/place",
     "backend/src/main/java/com/gabolle/backend/user",
     "backend/src/main/resources/application-dev.properties",
     "backend/src/test/java/com/gabolle/backend/auth",
+    "backend/src/test/java/com/gabolle/backend/common/SourceEncodingTest.java",
     "backend/src/test/java/com/gabolle/backend/place",
     "backend/src/test/java/com/gabolle/testslice"
   ]
