@@ -7,7 +7,6 @@
   "since": "2026-09-04T23:45:26.159Z",
   "ttlMs": 1800000,
   "paths": [
-    "docs/ANDROID-BUILD-COMPATIBILITY.md",
     "frontend/app/(tabs)/me.tsx",
     "frontend/app/(trip)/[id]/map.tsx",
     "frontend/package.json",
