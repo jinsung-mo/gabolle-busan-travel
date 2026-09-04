@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-533",
+  "intent": "GABOLLE v1.1 문서 세트에 EPIC 초안·개발계획서·상세설계서·개인화 인프라 가이드 추가",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-04T04:31:12.461Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "docs/gabolle"
+  ]
+}
