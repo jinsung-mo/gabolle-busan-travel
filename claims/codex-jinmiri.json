@@ -6,9 +6,7 @@
   "since": "2026-09-04T22:14:49.936Z",
   "ttlMs": 1800000,
   "paths": [
-    "frontend/app/(tabs)/home.tsx",
     "frontend/app/(tabs)/me.tsx",
-    "frontend/app/index.tsx",
     "frontend/src/auth/AuthProvider.tsx",
     "frontend/src/auth/authApi.ts",
     "frontend/src/trip/tripLibrary.ts"
