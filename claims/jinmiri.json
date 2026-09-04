@@ -8,7 +8,6 @@
   "ttlMs": 1800000,
   "paths": [
     "docs/ANDROID-BUILD-COMPATIBILITY.md",
-    "docs/DESIGN_TOKENS.md",
     "frontend/app/(tabs)/me.tsx",
     "frontend/app/(trip)/[id]/map.tsx",
     "frontend/package.json",
