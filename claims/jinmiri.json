@@ -1,11 +1,12 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-175",
-  "intent": "MR !190 반영 후 지도 레이어와 마커 포커스 통합",
+  "task": "S15P21E201-188",
+  "intent": "MR !194 타입 오류 수정",
   "actor": null,
-  "since": "2026-09-04T23:26:08.223Z",
-  "ttlMs": 2700000,
+  "since": "2026-09-04T23:32:53.688Z",
+  "ttlMs": 1800000,
   "paths": [
+    "frontend/app/(tabs)/me.tsx",
     "frontend/app/(trip)/[id]/map.tsx",
     "frontend/src/map/RouteMap.tsx"
   ]
