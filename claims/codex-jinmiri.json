@@ -1,12 +1,15 @@
 {
   "agent": "codex-jinmiri",
-  "task": "S15P21E201-188",
-  "intent": "탈퇴 성공 뒤 기기 내 여행 요약 제거",
+  "task": "S15P21E201-628",
+  "intent": "웹 챗봇 진입 버튼과 채팅 내 현장 도구 바로가기 복구",
   "actor": null,
-  "since": "2026-09-04T22:07:07.884Z",
-  "ttlMs": 5400000,
+  "since": "2026-09-04T22:09:58.803Z",
+  "ttlMs": 3600000,
   "paths": [
+    "frontend/app/(tabs)/home.tsx",
     "frontend/app/(tabs)/me.tsx",
+    "frontend/app/chat.tsx",
+    "frontend/app/index.tsx",
     "frontend/src/auth/AuthProvider.tsx",
     "frontend/src/auth/authApi.ts",
     "frontend/src/trip/tripLibrary.ts"
