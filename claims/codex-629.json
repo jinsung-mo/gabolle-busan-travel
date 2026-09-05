@@ -1,0 +1,16 @@
+{
+  "agent": "codex-629",
+  "task": "S15P21E201-629",
+  "intent": "Figma 기반 전역 색상과 인증 화면 아이콘 통일",
+  "actor": null,
+  "since": "2026-09-05T12:47:48.959Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(auth)/age-gate.tsx",
+    "frontend/app/(auth)/sign-in.tsx",
+    "frontend/app/+not-found.tsx",
+    "frontend/app/index.tsx",
+    "frontend/src/components/SocialProviderIcon.tsx",
+    "frontend/src/design/tokens.ts"
+  ]
+}
