@@ -1,0 +1,13 @@
+{
+  "agent": "codex-631",
+  "task": "S15P21E201-631",
+  "intent": null,
+  "actor": null,
+  "since": "2026-09-05T13:08:43.130Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/plan/confirm.tsx",
+    "frontend/src/api/tripApi.ts",
+    "frontend/src/plan/recommendationJob.ts"
+  ]
+}
