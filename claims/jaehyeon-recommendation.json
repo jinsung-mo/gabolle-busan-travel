@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon-recommendation",
+  "task": "S15P21E201-604",
+  "intent": "버전 값이 없어도 기동은 되고 추천 요청만 실패하게 되돌린다 (티켓 완료 기준)",
+  "actor": null,
+  "session": "1a97a6af-8ac3-484d-bf5c-5d7332ac9a7f",
+  "since": "2026-09-05T06:04:40.872Z",
+  "ttlMs": 3600000,
+  "paths": [
+    "backend/src/main/resources/application-dev.properties"
+  ]
+}
