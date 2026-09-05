@@ -1,0 +1,11 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-170",
+  "intent": "API 36 검증 결과로 기획서 11.3 현행화",
+  "actor": null,
+  "since": "2026-09-05T00:36:12.642Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "docs/LOCAL_ROUTE_기획서_v7.md"
+  ]
+}
