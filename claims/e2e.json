@@ -1,0 +1,13 @@
+{
+  "agent": "e2e",
+  "task": "S15P21E201-580",
+  "intent": "미리 계산된 홈/커뮤니티 피드 테이블과 선호 스냅샷 테이블을 만들고, 저장된 줄을 그대로 읽어 주는 조회 API를 붙인다",
+  "actor": "agent",
+  "since": "2026-09-05T13:53:11.605Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/feed",
+    "backend/src/main/resources/db/migration",
+    "backend/src/test/java/com/gabolle/backend/feed"
+  ]
+}
