@@ -1,0 +1,17 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-580",
+  "intent": "미리 계산된 홈/커뮤니티 피드 표와 취향 벡터 표를 만들고 저장된 줄을 그대로 읽는 조회 API 를 붙인다",
+  "actor": null,
+  "session": "69831249-6cbb-401c-8032-8449935baf59",
+  "since": "2026-09-05T14:20:17.068Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/docs",
+    "backend/src/main/java/com/gabolle/backend/feed",
+    "backend/src/main/java/com/gabolle/backend/preference",
+    "backend/src/main/resources/db/migration",
+    "backend/src/test/java/com/gabolle/backend/feed",
+    "backend/src/test/java/com/gabolle/testslice"
+  ]
+}
