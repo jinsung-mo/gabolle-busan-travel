@@ -1,0 +1,13 @@
+{
+  "agent": "codex-630",
+  "task": "S15P21E201-630",
+  "intent": "프로필 사진·이름·언어 편집을 Jira 630 전용 변경으로 분리",
+  "actor": null,
+  "since": "2026-09-05T12:44:27.632Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/package-lock.json",
+    "frontend/package.json"
+  ]
+}
