@@ -1,9 +1,9 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-200",
-  "intent": "완료된 추천 일정 데이터를 여행표 요약에 연결",
+  "task": "S15P21E201-629",
+  "intent": "Figma 팔레트 통일과 관련 화면 UI 마감",
   "actor": null,
-  "since": "2026-09-05T11:33:12.043Z",
+  "since": "2026-09-05T11:33:48.279Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(auth)/age-gate.tsx",
