@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-632",
+  "intent": "머지된 피드 작업의 티켓 참조를 580(무관한 완료 티켓)에서 632 로 바로잡는다",
+  "actor": null,
+  "session": "69831249-6cbb-401c-8032-8449935baf59",
+  "since": "2026-09-05T15:58:12.863Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/docs",
+    "backend/src/main/java/com/gabolle/backend/feed",
+    "backend/src/main/java/com/gabolle/backend/preference",
+    "backend/src/main/resources/db/migration",
+    "backend/src/test/java/com/gabolle/backend/feed"
+  ]
+}
