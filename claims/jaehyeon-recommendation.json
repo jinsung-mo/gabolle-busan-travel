@@ -1,13 +1,14 @@
 {
   "agent": "jaehyeon-recommendation",
   "task": "S15P21E201-604",
-  "intent": "BASELINE 추천 엔진 구현, 일정 항목·구간 표와 생성 경로, 추천 결과·일정 조회 API 둘, 배포 버전 설정 주입",
+  "intent": "새 일정 항목 외래키가 계정 삭제 순서를 깨뜨리는 것 수정",
   "actor": null,
   "session": "1a97a6af-8ac3-484d-bf5c-5d7332ac9a7f",
-  "since": "2026-09-05T04:42:08.710Z",
-  "ttlMs": 14400000,
+  "since": "2026-09-05T05:32:15.970Z",
+  "ttlMs": 10800000,
   "paths": [
     "backend/Jenkinsfile",
+    "backend/src/main/java/com/gabolle/backend/auth/service/AccountDeletionService.java",
     "backend/src/main/java/com/gabolle/backend/itinerary",
     "backend/src/main/java/com/gabolle/backend/place/domain",
     "backend/src/main/java/com/gabolle/backend/recommendation",
