@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-600",
-  "intent": "사본을 axMap 1.1.0 으로 갱신하고 감사 잡에 --checkpoint 를 켠다 (장부가 커질수록 느려지던 것)",
+  "task": "S15P21E201-646",
+  "intent": "해운대 3D 사양 판정 실험",
   "actor": "agent",
-  "since": "2026-09-05T16:52:46.902Z",
-  "ttlMs": 2700000,
+  "since": "2026-09-05T16:53:36.488Z",
+  "ttlMs": 1800000,
   "paths": [
     ".gitlab-ci.yml",
-    "ci/axmap"
+    "ci/axmap",
+    "city3d-spike"
   ]
 }
