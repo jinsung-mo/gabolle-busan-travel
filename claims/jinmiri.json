@@ -8,12 +8,9 @@
   "paths": [
     "frontend/app/(auth)/age-gate.tsx",
     "frontend/app/(auth)/sign-in.tsx",
-    "frontend/app/(plan)/generating.tsx",
     "frontend/app/(tabs)/me.tsx",
     "frontend/app/+not-found.tsx",
     "frontend/app/index.tsx",
-    "frontend/assets/brand/busan-travel-stamp-v1.png",
-    "frontend/assets/brand/busan-travel-stamp-v2.png",
     "frontend/package-lock.json",
     "frontend/package.json",
     "frontend/src/components/SocialProviderIcon.tsx",
