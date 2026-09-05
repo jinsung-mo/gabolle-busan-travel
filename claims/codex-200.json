@@ -7,7 +7,6 @@
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/generating.tsx",
-    "frontend/assets/brand/busan-travel-stamp-v2.png",
     "frontend/assets/brand/busan-travel-stamp-v3-transparent.png",
     "frontend/src/plan/itinerary.ts",
     "frontend/src/plan/recommendations.ts"
