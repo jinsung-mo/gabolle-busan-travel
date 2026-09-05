@@ -47,15 +47,63 @@ export function activeClaims(claims, now) {
 }
 
 /**
- * 아직 효력이 있는 내 claim 을 찾는다. 만료되었으면 null 이다.
+ * 이 레코드를 **내가(이 세션이) 적었는가.**
+ *
+ * 🔴 레코드의 임자는 이름 하나가 아니라 **(이름, 세션) 짝**이다.
+ *
+ *    2026-08-28 사고의 뿌리가 여기였다. 한 PC 에서 AI 도구 창을 둘 띄우면 둘 다
+ *    `git config user.name` 이 같으므로 장부는 둘을 **한 사람**으로 봤고, 레코드가
+ *    이름당 하나뿐이라 **뒤에 온 기록이 앞 세션의 것을 통째로 갈아끼웠다.**
+ *    그래서 B 창의 `release` 하나가 A 창이 잡고 있던 경로까지 함께 풀었다.
+ *
+ *    이름은 **누구인가**이고 세션은 **어느 작업 주체인가**다. 한 사람이 동시에 두
+ *    주체일 수 있다. 그래서 **적는 자리를 세션마다 따로 둔다** — 덮을 자리가
+ *    아예 없으면 덮어쓰기 사고도 없다.
+ *
+ * 세션을 모르는 실행들(세션 개념이 없는 셸, 옛 레코드)은 `null` 이라는 한 자리를
+ * 함께 쓴다. 실행마다 다른 값을 지어내면 자기가 잡은 것을 자기가 못 반납한다.
+ */
+export function isSameSubject(claim, me, session = null) {
+  return claim.agent === me && (claim.session ?? null) === (session ?? null)
+}
+
+/**
+ * 아직 효력이 있는 **이 세션의** claim 을 찾는다. 만료되었으면 null 이다.
  *
  * 만료를 "레코드가 사라짐"이 아니라 "레코드는 남고 효력만 잃음"으로 정의했으므로,
  * 레코드의 존재를 효력으로 착각하면 안 된다.
  * 만료된 내 claim 의 paths 를 다음 claim 에 합치면, 그 사이 남이 정당하게 가져간
  * 경로가 검사 없이 부활한다. 락이 조용히 두 명에게 발급되는 최악의 실패다.
  */
-export function myActiveClaim(claims, me, now) {
-  return activeClaims(claims, now).find((c) => c.agent === me) ?? null
+export function myActiveClaim(claims, me, now, session = null) {
+  return activeClaims(claims, now).find((c) => isSameSubject(c, me, session)) ?? null
+}
+
+/**
+ * 같은 **이름**의, 이 세션이 아닌 다른 세션이 잡고 있는 것들.
+ *
+ * 막기 위한 것이 아니라 **말하기 위한** 것이다. 사고의 피해는 "덮어썼다" 가
+ * 아니라 "덮어썼는데 아무도 몰랐다" 였다. 이제 덮지는 않지만, 같은 이름이
+ * 장부에 두 줄로 서 있다는 사실은 그 자리에서 알려준다.
+ */
+export function otherSessionClaims(claims, me, now, session = null) {
+  return activeClaims(claims, now).filter((c) => c.agent === me && !isSameSubject(c, me, session))
+}
+
+/**
+ * **사람 단위**로 지금 잡고 있는 경로 전부 (세션을 가리지 않는다).
+ *
+ * pre-commit 검사가 쓰는 자리다. 커밋을 하는 것은 세션이 아니라 사람이고,
+ * A 창에서 잡아 B 창에서 커밋하는 것은 이 저장소가 원래 허용하던 흐름이다.
+ * 여기까지 세션으로 좁히면 고치려던 것보다 큰 고장이 된다.
+ */
+export function myActivePaths(claims, me, now) {
+  const out = new Set()
+  for (const c of activeClaims(claims, now)) {
+    if (c.agent !== me) continue
+    for (const p of c.paths ?? []) out.add(normalizePath(p))
+  }
+  return [...out]
 }
 
 /**
@@ -66,12 +114,22 @@ export function myActiveClaim(claims, me, now) {
  *
  * @returns {{ok: boolean, blocks: Array}} blocks 는 막은 이유의 목록
  */
-export function checkOverlap({ requested, claims, me, now }) {
+export function checkOverlap({ requested, claims, me, now, session = null }) {
   const want = requested.map(normalizePath)
   const blocks = []
 
   for (const c of activeClaims(claims, now)) {
-    if (c.agent === me) continue // 내 claim 과는 겹쳐도 된다 (추가 claim)
+    // 🔴 **"내 것" 은 이름이 아니라 (이름, 세션) 짝이다.**
+    //
+    //    예전에는 이름만 봤다. 그래서 한 PC 에서 창을 둘 띄우면 **같은 파일을
+    //    둘 다 잡을 수 있었다** — 겹침을 막으려고 만든 검사가 정작 가장 흔한
+    //    겹침을 통과시킨 것이다. 사람이 자기 창 둘을 헷갈리는 일은 남의 작업과
+    //    부딪히는 일보다 잦다.
+    //
+    //    이름만 봐도 됐던 것은 한 사람에게 줄이 하나뿐이던 시절의 이야기다.
+    //    반납 단위를 세션으로 가르면서 줄이 여럿이 됐으므로 여기도 같이 간다 —
+    //    한쪽만 바꾸면 "따로 적히는데 서로 안 막는" 어중간한 상태가 된다.
+    if (isSameSubject(c, me, session)) continue // 내 줄과는 겹쳐도 된다 (추가 claim)
     for (const w of want) {
       for (const held of (c.paths ?? []).map(normalizePath)) {
         if (pathsOverlap(w, held)) {
@@ -100,26 +158,65 @@ export function checkOverlap({ requested, claims, me, now }) {
 // 검증기가 같은 로직을 다시 구현하면, 검증하는 대상이 제품이 아니라 검증기가 된다.
 // ---------------------------------------------------------------------------
 
+/**
+ * 레코드 하나를 장부에 앉힌다.
+ *
+ * 🔴 **밀어내는 기준이 이름이 아니라 (이름, 세션) 짝이다.** 이름으로 밀어내면
+ *    같은 사람의 다른 창이 적어둔 줄이 여기서 사라진다 — 그것이 이 사고였다.
+ */
 function upsert(claims, record) {
-  return [...claims.filter((c) => c.agent !== record.agent), record].sort((a, b) =>
-    a.agent < b.agent ? -1 : a.agent > b.agent ? 1 : 0,
-  )
+  const rest = claims.filter((c) => !isSameSubject(c, record.agent, record.session ?? null))
+  return sortClaims([...rest, record])
+}
+
+/** 장부의 줄 순서. 이름이 같으면 세션으로 가른다 — 순서가 흔들리면 diff 가 시끄럽다. */
+function sortClaims(claims) {
+  return [...claims].sort((a, b) => {
+    if (a.agent !== b.agent) return a.agent < b.agent ? -1 : 1
+    const x = a.session ?? ''
+    const y = b.session ?? ''
+    return x < y ? -1 : x > y ? 1 : 0
+  })
 }
 
 /**
  * claim 취득. 관문 2 의 판정이 여기서 일어난다.
- * @returns {{ok:true, record, claims, hadExpired}|{ok:false, blocks}}
+ *
+ * 관문 2 가 묻는 것은 하나다 — **남이 잡은 경로와 겹치는가** (`checkOverlap`).
+ * 막히면 **아무것도 쓰지 않고 돌아간다.** 판정이 끝나기 전에는 레코드를 만들지 않는다.
+ *
+ * 🔴 같은 이름의 다른 세션은 **막지 않는다. 대신 자리를 따로 준다.**
+ *    예전에는 여기서 거부했다 — 레코드가 이름당 하나뿐이라 그대로 두면 앞 세션의
+ *    작업·의도·시작 시각이 덮이기 때문이었다. 그런데 거부는 증상만 막았다.
+ *    같은 사람이 창 두 개로 **겹치지 않는 다른 일**을 하는 것까지 통째로 막혀서,
+ *    사람은 도구 밖으로 나가거나 이름을 바꿔 달았다.
+ *
+ *    이제 세션마다 레코드가 따로 적히므로 덮을 자리 자체가 없다. 앞 세션의 줄은
+ *    그대로 서 있고, 이 세션은 자기 줄을 새로 만든다. 다만 **조용히 넘어가지는
+ *    않는다** — 같은 이름의 다른 줄이 있으면 `otherSessions` 로 돌려준다.
+ *
+ * @returns {{ok:true, record, claims, hadExpired, otherSessions}|{ok:false, blocks}}
  */
-export function applyClaim({ claims, me, requested, now, ttlMs, task = null, intent = null, actor = null }) {
+export function applyClaim({
+  claims,
+  me,
+  requested,
+  now,
+  ttlMs,
+  task = null,
+  intent = null,
+  actor = null,
+  session = null,
+}) {
   const want = [...new Set(requested.map(normalizePath))]
 
-  const verdict = checkOverlap({ requested: want, claims, me, now })
+  const verdict = checkOverlap({ requested: want, claims, me, now, session })
   if (!verdict.ok) return { ok: false, blocks: verdict.blocks }
 
-  // 반드시 "효력이 남은" 내 claim 하고만 합친다. 만료된 것과 합치면
+  // 반드시 "효력이 남은 **이 세션의**" claim 하고만 합친다. 만료된 것과 합치면
   // 그 사이 남이 가져간 경로가 관문 2 를 거치지 않고 부활한다.
-  const prev = myActiveClaim(claims, me, now)
-  const hadExpired = !prev && claims.some((c) => c.agent === me)
+  const prev = myActiveClaim(claims, me, now, session)
+  const hadExpired = !prev && claims.some((c) => isSameSubject(c, me, session))
 
   const record = {
     agent: me,
@@ -128,41 +225,99 @@ export function applyClaim({ claims, me, requested, now, ttlMs, task = null, int
     // 누가 잡았는지의 '종류'. 화면에서 사람·AI·백그라운드 에이전트를 색으로 나눈다.
     // 프로토콜 판정에는 쓰이지 않는다 — 표시용 정보다.
     actor: actor ?? prev?.actor ?? null,
+    /**
+     * 이 레코드를 적은 세션. **레코드를 가르는 키의 절반이다** (actor 와 다른 점이다).
+     *
+     * `prev` 는 이미 같은 세션의 것만 찾아온 것이라 여기서 갈릴 일이 없다.
+     * 세션을 모르면 `null` — 그것도 하나의 자리다 (isSameSubject 참고).
+     */
+    session: session ?? null,
     since: new Date(now).toISOString(),
     ttlMs,
     paths: [...new Set([...(prev?.paths ?? []).map(normalizePath), ...want])].sort(),
   }
-  return { ok: true, record, claims: upsert(claims, record), hadExpired }
+  return {
+    ok: true,
+    record,
+    claims: upsert(claims, record),
+    hadExpired,
+    otherSessions: otherSessionClaims(claims, me, now, session),
+  }
 }
 
 /**
  * 반납. drop 이 비어 있으면 전부 반납한다.
  * 만료된 레코드도 반납할 수 있다 (단순 정리이므로 관문 2 가 필요 없다).
+ *
+ * 🔴 **반납의 단위는 세션이다.**
+ *
+ *    `release` 는 경로를 다 빼면 레코드를 지운다. 이름만 보고 지우면 같은 PC 의
+ *    다른 창이 잡고 있던 것까지 함께 풀린다 — 저쪽은 자기가 아직 쥐고 있다고
+ *    믿는데 장부는 비어 있고, 그 자리에 다른 사람이 들어온다. 2026-08-28.
+ *
+ *    그래서 여기서 푸는 것은 **이 세션이 적은 줄뿐**이다. 다른 세션의 것까지
+ *    풀어야 할 때가 있으므로(창이 죽어 두고 간 것 등) 문을 하나 둔다 —
+ *    `allSessions`. 문이 없으면 사람은 시스템 밖으로 나가고, 그때 하는 일은
+ *    장부 파일을 손으로 지우는 것이라 아무 기록도 남지 않는다.
+ *
+ * @returns {{claims, records, removed, unheld, hadNothing, otherSessions}}
+ *   records  경로가 남아 다시 적을 레코드들
+ *   removed  경로가 하나도 안 남아 지울 레코드들
  */
-export function applyRelease({ claims, me, drop }) {
-  const mine = claims.find((c) => c.agent === me)
-  if (!mine) return { claims, record: null, unheld: [], hadNothing: true }
-
-  const held = mine.paths.map(normalizePath)
-  const want = [...new Set(drop.map(normalizePath))]
-  const unheld = want.filter((p) => !held.includes(p))
-  const remaining = want.length ? held.filter((p) => !want.includes(p)) : []
-
-  if (!remaining.length) {
-    return { claims: claims.filter((c) => c.agent !== me), record: null, unheld }
+export function applyRelease({ claims, me, drop, session = null, allSessions = false }) {
+  const mine = claims.filter((c) => (allSessions ? c.agent === me : isSameSubject(c, me, session)))
+  if (!mine.length) {
+    return {
+      claims,
+      records: [],
+      removed: [],
+      unheld: [],
+      hadNothing: true,
+      // 이름은 맞는데 세션이 달라서 못 찾은 것인지를 부르는 쪽이 말할 수 있어야 한다.
+      // 안 그러면 "반납할 게 없다" 를 보고 이름을 고치는 엉뚱한 처방으로 간다.
+      otherSessions: claims.filter((c) => c.agent === me),
+    }
   }
-  const record = { ...mine, paths: remaining }
-  return { claims: upsert(claims, record), record, unheld }
+
+  const want = [...new Set(drop.map(normalizePath))]
+  const heldAll = new Set(mine.flatMap((c) => (c.paths ?? []).map(normalizePath)))
+  const unheld = want.filter((p) => !heldAll.has(p))
+
+  const records = []
+  const removed = []
+  for (const c of mine) {
+    const held = (c.paths ?? []).map(normalizePath)
+    const remaining = want.length ? held.filter((p) => !want.includes(p)) : []
+    if (remaining.length) records.push({ ...c, paths: remaining })
+    else removed.push(c)
+  }
+
+  let next = claims.filter((c) => !mine.includes(c))
+  for (const r of records) next = upsert(next, r)
+  return { claims: sortClaims(next), records, removed, unheld, hadNothing: false, otherSessions: [] }
 }
 
 /**
  * TTL 연장.
  * 만료된 claim 은 연장할 수 없다. renew 는 관문 2 를 거치지 않으므로,
  * 만료 이후를 허용하면 그 사이 남이 가져간 경로를 검사 없이 되찾게 된다.
+ *
+ * 🔴 **늘리는 것도 이 세션의 것뿐이다.** 남의 세션 줄의 수명을 모르고 늘리면
+ *    그 경로는 아무도 안 쓰는데 계속 막혀 있게 된다. 다른 세션의 것을 늘리려면
+ *    `--session <그 세션 id>` 로 그 세션이라고 말하고 늘린다.
+ *
+ *    못 찾았을 때 같은 이름의 다른 줄이 있으면 `otherSessions` 로 알려준다 —
+ *    "claim 이 없다" 와 "세션이 달라 못 찾았다" 는 처방이 다르다.
  */
-export function applyRenew({ claims, me, now, ttlMs }) {
-  const mine = myActiveClaim(claims, me, now)
-  if (!mine) return { ok: false, reason: 'expired-or-missing' }
+export function applyRenew({ claims, me, now, ttlMs, session = null }) {
+  const mine = myActiveClaim(claims, me, now, session)
+  if (!mine) {
+    return {
+      ok: false,
+      reason: 'expired-or-missing',
+      otherSessions: otherSessionClaims(claims, me, now, session),
+    }
+  }
   const record = { ...mine, since: new Date(now).toISOString(), ttlMs }
   return { ok: true, record, claims: upsert(claims, record) }
 }
@@ -255,6 +410,48 @@ export function formatBlocks(blocks, now) {
   lines.push('  - axmap status 로 비어 있는 영역을 확인한다')
   lines.push('  - 점유자의 TTL 만료를 기다린다')
   return lines.join('\n')
+}
+
+/** 세션 id 는 길다. 사람이 두 개를 눈으로 구분할 만큼만 보여준다. */
+export function shortSession(id) {
+  const s = String(id ?? '')
+  if (!s) return '(모름)'
+  return s.length <= 12 ? s : `${s.slice(0, 8)}…${s.slice(-4)}`
+}
+
+/**
+ * "같은 이름의 다른 세션도 뭔가를 잡고 있다" 를 사람과 AI 가 함께 읽는 형태로.
+ *
+ * 🔴 **막는 말이 아니라 알리는 말이다.** 세션마다 레코드가 따로 적히므로 이제
+ *    서로 덮지 않는다. 그래도 말은 한다 — 이 사고의 피해는 "덮어썼다" 가 아니라
+ *    **"덮어썼는데 아무도 몰랐다"** 였다. 막을 이유가 없을 때 할 수 있는 최소한은
+ *    무엇이 일어나고 있는지를 그 자리에서 보여주는 것이다.
+ *
+ * `overlap` 이 있으면 먼저 말한다. 같은 이름이면 겹침 검사가 서로를 막지 않으므로
+ * (`checkOverlap` 의 자기 claim 분기) **같은 파일을 두 창이 동시에 고칠 수 있다.**
+ * 그것만은 사람이 알고 해야 한다.
+ */
+export function formatOtherSessions(others, requested, now) {
+  const want = (requested ?? []).map(normalizePath)
+  const lines = []
+  for (const c of others) {
+    const held = (c.paths ?? []).map(normalizePath)
+    const overlap = want.filter((w) => held.some((h) => pathsOverlap(w, h)))
+    lines.push(
+      `      세션 ${shortSession(c.session)}${c.task ? `  [${c.task}]` : ''}` +
+        `${c.intent ? `  "${c.intent}"` : ''}  경로 ${held.length}개  · ${humanDuration(claimExpiresAt(c) - now)} 남음`,
+    )
+    if (overlap.length) {
+      lines.push(`        🔴 겹칩니다: ${overlap.join(' ')} — 같은 이름이라 겹침 검사가 서로를 막지 않습니다`)
+    }
+  }
+  if (!lines.length) return ''
+  return [
+    '알림: 같은 이름의 다른 세션도 잡고 있는 것이 있습니다.',
+    ...lines,
+    '      장부에는 세션마다 따로 적히므로 서로 덮지 않습니다.',
+    '      release 는 이 세션이 잡은 것만 풉니다 (전부 풀려면 --all-sessions).',
+  ].join('\n')
 }
 
 // ---------------------------------------------------------------------------

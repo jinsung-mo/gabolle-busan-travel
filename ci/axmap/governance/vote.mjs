@@ -4,6 +4,23 @@
  *
  *   node axmap/governance/vote.mjs --branch <소스브랜치> [--sha <커밋>]
  *                                  [--vote approve|reject] [--note "..."] [--force]
+ *                                  [--agent <이름>] [--agent-summary "..."]
+ *
+ * ── 표에는 이유가 있어야 한다 ─────────────────────────────────────────────
+ *
+ * 정책(`governance/policy.json`)에 `vote_note` 가 있으면 `--note` 없이는 표를
+ * 쓰지 않는다. **여기서 막는 것은 친절함이고 진짜 문은 세는 쪽에 있다** —
+ * `git pull` 을 안 한 사람의 옛 `vote.mjs` 는 이 규칙을 모르기 때문이다.
+ * 두 곳이 같은 함수 하나(`voteNoteProblem`)를 부른다.
+ *
+ * 🔴 **칸마다 주인이 다르다.**
+ *
+ *   `note`          사람이 적는다 (`--note`)
+ *   `agent.summary` AI 가 적는다 (`--agent-summary`)
+ *   `agent.id`      부르는 쪽이 적는다 (`--agent`, 없으면 `"none"`)
+ *   `agent.shown`   🔴 **아무도 못 적는다. 이 프로그램이 직접 잰다** —
+ *                   변경량·경로·그 시점의 판정·axMap 사본이 몇 커밋 뒤처졌는지.
+ *                   `committerEmail` 을 못 적게 한 것과 같은 이유다 (아래).
  *
  * GitLab 의 Approve 버튼을 쓰지 않는 이유는 [GOVERNANCE.md](GOVERNANCE.md) 와
  * docs/DECISIONS.md 의 D18 에 있다 — 판정을 GitLab API(**다른 프로그램이 GitLab 에
@@ -46,11 +63,45 @@
 import { spawnSync } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { agentNameError } from '../src/protocol.mjs'
-import { EXIT, DEFAULT_POLICY_PATH } from '../src/governance.mjs'
+import {
+  EXIT, DEFAULT_POLICY_PATH, voteNoteRule, voteNoteProblem,
+} from '../src/governance.mjs'
 
 const VOTES_BRANCH = 'axmap/votes'
 const VOTES_REL = path.join('.axmap', 'votes')
+
+/** 이 파일이 놓인 자리. 팀 저장소에서는 `ci/axmap/governance/` 다. */
+const HERE = path.dirname(fileURLToPath(import.meta.url))
+
+/**
+ * 사본이 놓이는 자리. **저장소 루트 기준**이고 `tools/vendor.mjs` 의 `VENDOR_REL`
+ * 과 같은 값이어야 한다. 여기가 갈리면 표에 적히는 출처가 조용히 비게 된다.
+ */
+const VENDOR_REL = 'ci/axmap'
+
+/**
+ * 벤더링(**남의 저장소 코드를 내 저장소 안에 복사해 두는 것**) 출처가 적힌 파일을
+ * 찾는 순서.
+ *
+ * 🔴 **저장소 루트 쪽을 먼저 본다.** 이 칸이 말하는 것은 "어느 스크립트가 돌았나"
+ *    가 아니라 **"표를 던지는 이 저장소가 어느 사본을 쓰고 있나"** 이기 때문이다.
+ *    개발 중에 axMap 저장소의 스크립트를 팀 저장소에서 직접 돌리더라도, 표에는
+ *    그 팀 저장소의 사본 출처가 적혀야 한다.
+ *
+ * 둘 다 없으면 `{ commit: null, behind: null }` — axMap 저장소 자신에서 돌릴 때가
+ * 그렇다. 사본이 아니니 출처도 없다.
+ */
+const axmapSourceCandidates = () => [
+  path.join(ROOT ?? '.', ...VENDOR_REL.split('/'), 'SOURCE.json'),
+  path.join(HERE, '..', 'SOURCE.json'),
+]
+
+/** 게이트를 미리 한 번 돌려 보는 데 주는 시간. 넘기면 "잴 수 없음" 으로 적는다. */
+const GATE_TIMEOUT_MS = 60_000
+/** 원격에 axMap 이 몇 커밋 앞서 있는지 물어보는 데 주는 시간. */
+const LS_REMOTE_TIMEOUT_MS = 15_000
 
 /** push 가 거부될 때(= 누가 먼저 도착) 다시 해보는 횟수. bin/axmap.mjs 와 같은 값. */
 const MAX_CAS_RETRIES = 5
@@ -83,16 +134,30 @@ function cleanEnv() {
 
 let ROOT = null
 
+/**
+ * git 한 번. `raw` 는 다듬지 않은 stdout 이다 — `-z`(**출력을 NUL 문자로 구분**)
+ * 로 받은 목록은 trim 하면 안 되므로 둘을 따로 돌려준다 (gate.mjs 와 같은 모양).
+ */
 function git(args, opts = {}) {
   const r = spawnSync('git', args, {
     cwd: opts.cwd ?? ROOT ?? undefined,
     input: opts.input,
-    env: cleanEnv(),
+    env: { ...cleanEnv(), ...(opts.env ?? {}) },
     encoding: 'utf8',
     windowsHide: true,
+    maxBuffer: 64 * 1024 * 1024,
+    ...(opts.timeout ? { timeout: opts.timeout } : {}),
   })
-  return { code: r.status ?? 1, out: (r.stdout ?? '').trim(), err: (r.stderr ?? '').trim() }
+  const out = r.stdout ?? ''
+  return { code: r.status ?? 1, out: out.trim(), raw: out, err: (r.stderr ?? '').trim() }
 }
+
+/**
+ * 남의 저장소에 물어볼 때 쓰는 환경. **자격증명을 물어보지 못하게 막는다** —
+ * 안 막으면 표를 던지려던 명령이 로그인 프롬프트에서 멈춰 선다. 못 닿으면
+ * 못 닿은 대로 적으면 되는 자리다 (axMap 이 죽어도 팀은 안 멈춘다).
+ */
+const NO_PROMPT_ENV = { GIT_TERMINAL_PROMPT: '0', GIT_ASKPASS: '', SSH_ASKPASS: '' }
 
 function gitOrDie(args, opts = {}) {
   const r = git(args, opts)
@@ -150,16 +215,26 @@ const HELP = `표를 던진다 — 저장소 안의 파일 하나로
   --branch    표를 줄 브랜치 (필수)
   --sha       그 브랜치의 어느 커밋에 주는가. 생략하면 지금 헤드
   --vote      approve | reject. 생략하면 approve
-  --note      한 줄 메모 (사람이 읽는다)
-  --target    자기 표(G1) 경고를 위해 비교할 브랜치. 생략하면 main
-  --force     자기 표라는 경고를 무릅쓰고 그래도 쓴다
+  --note      🔴 왜 찬성/반대하는가. 사람이 적는다. 정책이 vote_note 를
+              켜 두었으면 이것 없이는 표가 안 써지고, 세는 쪽도 안 센다
+  --agent     이 표를 도운 AI 의 이름. 안 주면 "none"
+  --agent-summary  그 AI 가 요약한 한 줄. 사람의 --note 를 대신하지 않는다
+  --target    자기 표(G1) 경고를 위해 비교할 브랜치. 생략하면 main.
+              변경량(agent.shown)을 재는 기준이기도 하다
+  --force     자기 표라는 경고를 무릅쓰고 그래도 쓴다.
+              🔴 이유(--note) 요구는 --force 로 못 넘긴다
   --remote    원격 이름. 없으면 git config axmap.remote → 유일한 원격 → origin
   --policy    정책 파일의 자리 (저장소 루트 기준). 없으면 AXMAP_POLICY_PATH
-              → ${DEFAULT_POLICY_PATH}. 명단 경고에만 쓴다 (판정은 게이트가 한다)
+              → ${DEFAULT_POLICY_PATH}. 명단 경고와 이유 요구에 쓴다
+              (판정은 언제나 게이트가 한다)
 
   표는 ${VOTES_BRANCH} 브랜치의 votes/<브랜치>/<이름>-<sha8>.json 에 쌓인다.
   reject 는 정족수 계산에 들어가지 않는다 — 이 층은 "찬성이 몇인가" 만 센다.
   다만 판정문에는 반드시 보인다.
+
+  표에는 던질 때 실제로 보였던 것(agent.shown)이 함께 적힌다 — 변경량·경로·
+  그 시점의 판정·axMap 사본이 몇 커밋 뒤처졌는지. 🔴 이 칸은 아무도 못 적는다.
+  이 프로그램이 직접 재서 채운다.
 `
 
 // ---------------------------------------------------------------------------
@@ -316,13 +391,19 @@ function resolvePolicyPath(flags) {
  * 최근 기여자에게 임시 투표권을 주는 것**)로 세질 수 있고, 그 판단은 게이트의
  * 몫이기 때문이다. 여기서 막으면 규칙이 두 군데로 갈라진다.
  */
-function rosterOf(targetName, policyPath) {
+function policyOf(targetName, policyPath) {
   const r = git(['show', `${targetName}:${policyPath}`])
   if (r.code !== 0) return null // 타깃을 모르거나 정책이 아직 없다.
   try {
     const policy = JSON.parse(r.out)
-    return Array.isArray(policy?.voters) ? policy.voters : []
+    return policy && typeof policy === 'object' && !Array.isArray(policy) ? policy : null
   } catch { return null }
+}
+
+/** 정책에서 명단만. 못 읽었으면 `null`, 읽었는데 명단이 없으면 빈 배열이다. */
+function rosterOf(policy) {
+  if (policy === null) return null
+  return Array.isArray(policy.voters) ? policy.voters : []
 }
 
 /** 명단에서 내 email 에 해당하는 줄. email 이 유일 키다 (GOVERNANCE.md). */
@@ -339,6 +420,134 @@ function warnIfNotAVoter(roster, targetName, email) {
     `경고: ${email} 은(는) ${targetName} 의 정책 명단에 없습니다.\n`
     + '  승계가 발동한 경우에만 세집니다. 평소에는 "투표권자가 아님" 으로 안 세집니다.',
   )
+}
+
+// ---------------------------------------------------------------------------
+// 던질 때 실제로 보였던 것 — `agent.shown`
+//
+// 🔴 **이 칸은 아무도 못 적는다. 이 프로그램이 직접 잰다.**
+//    사람이나 AI 가 "3 파일 12 줄 봤다" 라고 적을 수 있으면 그건 측정이 아니라
+//    자기 신고다 — 표에 `committerEmail` 을 못 적게 한 것과 **같은 이유**다
+//    (파일 머리말). 자기 신고는 틀렸을 때 아무 흔적도 안 남긴다.
+//
+//    그래서 플래그가 없다. `--agent` 를 안 줘도 이 칸은 채워진다.
+// ---------------------------------------------------------------------------
+
+/**
+ * `<타깃>...<소스>` 의 변경량. 세 점(`...`)은 **갈림점부터의 차이**다 —
+ * 타깃에 새 커밋이 들어와도 이 표가 보고 있던 양이 흔들리지 않는다.
+ *
+ * `-z` 로 받는 이유: 이 저장소는 주석·문서가 전부 한국어라 파일 이름도 한국어가
+ * 된다. `-z` 가 없으면 git 이 그런 이름에 따옴표를 씌워 돌려주고, 표에는 실제로
+ * 없는 경로가 적힌다 (gate.mjs 의 `changedPaths` 가 같은 이유로 같은 옵션을 쓴다).
+ *
+ * 못 재면 **그럴듯한 0 으로 때우지 않고 `null`** 로 둔다. 0 은 "안 바뀌었다" 는
+ * 뜻이고, 그건 못 잰 것과 완전히 다른 말이다.
+ */
+function measureDiff(targetName, branch) {
+  const unknown = { files: null, insertions: null, deletions: null, paths: null }
+  const r = git(['-c', 'core.quotepath=false', 'diff', '--numstat', '-z', `${targetName}...${branch}`])
+  if (r.code !== 0) return unknown
+
+  const toks = r.raw.split('\0')
+  let files = 0
+  let insertions = 0
+  let deletions = 0
+  const paths = []
+  for (let i = 0; i < toks.length; i++) {
+    const t = toks[i]
+    if (t === '') continue
+    // `<더한 줄>\t<지운 줄>\t<경로>` — 바이너리 파일은 숫자 자리가 `-` 다.
+    const m = /^(\d+|-)\t(\d+|-)\t([\s\S]*)$/.exec(t)
+    if (!m) continue
+    const [, ins, del, tail] = m
+    let p = tail
+    if (tail === '') {
+      // 이름이 바뀐(rename) 파일. `-z` 에서는 옛 이름과 새 이름이 **다음 두
+      // 토큰**으로 따로 온다. 표에는 새 이름을 적는다.
+      p = toks[i + 2] ?? toks[i + 1] ?? ''
+      i += 2
+    }
+    files += 1
+    // 바이너리(`-`)는 줄 수가 없다. 0 으로 더한다 — 파일 수에는 그대로 센다.
+    insertions += ins === '-' ? 0 : Number(ins)
+    deletions += del === '-' ? 0 : Number(del)
+    if (p !== '') paths.push(p)
+  }
+  return { files, insertions, deletions, paths }
+}
+
+/**
+ * **던지기 직전의 판정.** 게이트를 그대로 한 번 돌려 요약 한 줄로 줄인다.
+ *
+ * 🔴 이 표 자신은 아직 없다. 즉 `"미달 1/2"` 는 *"내가 던지기 전에 1표였다"* 는
+ *    뜻이다. 나중에 이 표가 몇 번째였는지를 이력만으로 알 수 있게 하는 값이다.
+ *
+ * 판정문을 다시 해석하지 않고 `--json` 의 `exit`·숫자만 쓴다. 문구를 다듬는
+ * 커밋이 이 칸의 뜻을 바꾸면 안 되기 때문이다 (gate.mjs 의 관례 그대로).
+ * 못 돌리면 `"잴 수 없음"` — 표는 그래도 던져진다.
+ */
+function measureGate(branch, targetName, policyFlag) {
+  const r = spawnSync(process.execPath, [
+    path.join(HERE, 'gate.mjs'),
+    '--source', branch,
+    '--target', targetName,
+    '--json',
+    ...(policyFlag ? ['--policy', policyFlag] : []),
+  ], {
+    cwd: ROOT,
+    env: { ...cleanEnv(), ...NO_PROMPT_ENV },
+    encoding: 'utf8',
+    windowsHide: true,
+    maxBuffer: 64 * 1024 * 1024,
+    timeout: GATE_TIMEOUT_MS,
+  })
+  if (r.error || r.status === null) return '잴 수 없음'
+  let verdict = null
+  try { verdict = JSON.parse(r.stdout ?? '') } catch { return '잴 수 없음' }
+  if (!verdict || typeof verdict !== 'object') return '잴 수 없음'
+  if (verdict.stage === 'policy') return '정책 깨짐'
+  if (verdict.stage === 'undecidable') return '판정 불가'
+  if (!Number.isInteger(verdict.approvals) || !Number.isInteger(verdict.threshold)) return '잴 수 없음'
+  return `${verdict.ok ? '충족' : '미달'} ${verdict.approvals}/${verdict.threshold}`
+}
+
+/**
+ * 이 저장소에 복사돼 있는 axMap 이 **어느 커밋의 사본이고 몇 커밋 뒤처졌는가.**
+ *
+ * 🔴 못 닿으면 `behind: null` 이고 **표는 그대로 던져진다.** axMap 이 잠깐
+ *    죽거나 접근 권한이 만료된 날 팀의 투표가 멈추면 안 된다 — 사본을 두는
+ *    이유(벤더링)와 정확히 같은 이유다.
+ *
+ * 🔴 **여기서 fetch 하지 않는다.** 표를 던지는 명령이 남의 저장소를 통째로
+ *    내려받아 이 저장소의 오브젝트를 불리는 것은 아무도 예상하지 않는 부수효과다.
+ *    그래서 `ls-remote` 로 끝을 물어보고, 셀 수 있을 때만(= 그 이력이 이미 이
+ *    저장소에 있을 때만) 센다. 못 세면 `null` 이다.
+ *    ⚠ 그 결과 "원격에 못 닿음" 과 "닿았지만 셀 수 없음" 이 둘 다 `null` 이다.
+ *      `behind: null` 은 **"뒤처지지 않았다" 가 아니라 "못 쟀다"** 로 읽는다.
+ */
+function measureAxmap() {
+  let src = null
+  for (const p of axmapSourceCandidates()) {
+    try { src = JSON.parse(fs.readFileSync(p, 'utf8')); break } catch { /* 다음 자리 */ }
+  }
+  if (!src) return { commit: null, behind: null }
+
+  const commit = str(src?.source?.commit)
+  const url = str(src?.source?.repository)
+  const branch = str(src?.source?.branch) ?? 'main'
+  if (!commit) return { commit: null, behind: null }
+  if (!url) return { commit, behind: null }
+
+  const ls = git(['ls-remote', url, branch], { env: NO_PROMPT_ENV, timeout: LS_REMOTE_TIMEOUT_MS })
+  if (ls.code !== 0 || !ls.out) return { commit, behind: null }
+  const tip = ls.out.split('\n')[0].split('\t')[0].trim()
+  if (!/^[0-9a-f]{40}$/.test(tip)) return { commit, behind: null }
+  if (tip === commit) return { commit, behind: 0 }
+
+  const n = git(['rev-list', '--count', `${commit}..${tip}`])
+  if (n.code !== 0 || !/^\d+$/.test(n.out)) return { commit, behind: null }
+  return { commit, behind: Number(n.out) }
 }
 
 // ---------------------------------------------------------------------------
@@ -379,6 +588,18 @@ if (voteValue !== 'approve' && voteValue !== 'reject') {
 }
 const note = str(flags.note)
 
+// 시각은 여기서 **한 번** 정한다. 두 군데서 쓰이기 때문이다 — 아래의 이유 요구
+// (시행일 비교)와 표 파일 자신. CAS 재시도마다 바뀌면 같은 표가 매번 다른 내용이
+// 되어, 무엇 때문에 다시 쓰는지가 이력에서 안 보인다.
+const at = new Date().toISOString()
+
+// AI 가 채우는 칸. 🔴 값 없이 `--agent` 만 쓰면 조용히 "none" 으로 떨어뜨리지
+// 않는다 — 이름을 주려다 실패한 것과 안 준 것은 다른 일이다.
+if (flags.agent === true) die('--agent 에는 이름을 붙여야 합니다. 예: --agent claude-opus-5')
+if (flags['agent-summary'] === true) die('--agent-summary 에는 요약을 붙여야 합니다.')
+const agentId = str(flags.agent) ?? 'none'
+const agentSummary = str(flags['agent-summary'])
+
 // 신원. 🔴 안전한 기본값을 두지 않는다 — 이름이 겹치면 두 사람의 표가 같은 파일을
 // 가리키고, 나중에 던진 쪽이 앞의 표를 덮어쓴다.
 let voter = git(['config', 'user.name']).out
@@ -409,7 +630,9 @@ if (!voter) {
  * 명단에 없으면(승계로 들어올 사람) `user.name` 을 그대로 둔다 — 승계로 들어온
  * 사람은 저장소가 이름을 정해 준 적이 없어 게이트도 id 를 대조하지 않는다.
  */
-const roster = rosterOf(targetName, resolvePolicyPath(flags))
+const policyPath = resolvePolicyPath(flags)
+const policy = policyOf(targetName, policyPath)
+const roster = rosterOf(policy)
 const mine = rosterEntry(roster, email)
 if (mine && String(mine.id ?? '').trim() && mine.id !== voter) {
   console.error(`이름을 명단에 맞춥니다: ${voter} → ${mine.id}  (${targetName} 의 정책 기준)`)
@@ -424,6 +647,52 @@ if (nameErr) die(`${nameErr}\n  git config user.name 을 고치세요.`)
 warnIfNotAVoter(roster, targetName, email)
 warnIfSelfVote(branch, targetName, email, flags.force === true)
 
+// ── 이유 없는 표는 여기서 거부한다 ─────────────────────────────────────────
+//
+// 🔴 **이건 문이 아니라 친절함이다.** 진짜 문은 세는 쪽(`src/governance.mjs` 의
+//    `countVotes`)에 있고 CI 에서 돈다. 여기서만 막으면 `git pull` 을 안 한
+//    사람의 옛 `vote.mjs` 가 이 규칙을 모른 채 이유 없는 표를 그냥 쓴다.
+//
+//    두 곳 다 두는 이유는 다르다: 여기서 막으면 **던지기 전에** 알 수 있고,
+//    세는 쪽에서만 막으면 던진 뒤 CI 가 빨개져야 안다. 같은 규칙을 두 번 적는
+//    것이 아니라 **같은 함수 하나**(`voteNoteProblem`)를 두 곳에서 부른다 —
+//    갈리면 던질 때는 통과하고 셀 때는 무효인 표가 생긴다.
+//
+// 🔴 정책을 못 읽었으면(`policy === null`) 아무것도 요구하지 않는다. 여기서
+//    fail-closed 로 막아 봐야 판정이 바뀌지 않고, 정책이 아직 없는 저장소에서
+//    표를 못 던지게 만들 뿐이다. 판정은 언제나 게이트가 한다.
+let noteRule = null
+try {
+  noteRule = voteNoteRule(policy)
+} catch (e) {
+  die(
+    `${targetName} 의 정책(${policyPath})에 적힌 \`vote_note\` 를 읽을 수 없습니다.\n  ${e.message}\n`
+    + '  정책을 고치세요 — 이 상태로는 게이트도 셀 수 없습니다.',
+    e.exit ?? EXIT.UNDECIDABLE,
+  )
+}
+
+const noteBad = voteNoteProblem({ note, at, rule: noteRule })
+if (noteBad) {
+  const min = noteRule.minChars
+  die(
+    (noteBad.reason === 'note-missing'
+      ? `이 저장소는 표에 이유를 요구합니다. --note 없이는 던질 수 없습니다.\n`
+      : `이유가 너무 짧습니다 (${noteBad.detail}).\n`)
+    + `  ${targetName} 의 정책: vote_note.min_chars = ${min}`
+    + `${noteRule.since ? `, since = ${noteRule.since}` : ''}\n\n`
+    + `  다시 이렇게 부르세요:\n`
+    + `    --branch ${branch} --vote ${voteValue} `
+    + `--note "무엇을 확인했고 왜 ${voteValue === 'reject' ? '반대' : '찬성'}하는가"\n\n`
+    + '  🔴 --force 로는 못 넘깁니다. --force 는 자기 표(G1) 경고 전용입니다.\n'
+    + '  이유 없이 쓴 표는 세는 쪽에서도 안 세집니다 — 던졌다고 믿는 동안 아무도 안 셉니다.\n'
+    + (voteValue === 'reject'
+      ? '  반대야말로 이유가 필요합니다. 이유 없는 반대는 무엇을 고쳐야 하는지를 안 남깁니다.'
+      : '  "확인함" 네 글자는 이유가 아니라 서명입니다.'),
+    EXIT.SHORT,
+  )
+}
+
 const remote = resolveRemote(flags)
 if (!remote) {
   console.error(
@@ -435,7 +704,17 @@ if (!remote) {
 ensureVotesWorktree(remote)
 
 const relPath = `votes/${branch}/${voter}-${sha.slice(0, 8)}.json`
-// 시각은 루프 밖에서 한 번 정한다. CAS 재시도마다 바뀌면 같은 표가 매번 다른
+
+// 던질 때 실제로 보였던 것. 재는 것은 언제나 이 프로그램이다 — 플래그가 없다.
+// 🔴 `--agent` 를 안 줘도 잰다. 사람이 혼자 던진 표에도 "그때 무엇이 보였나" 는
+//    남아야 한다. 이 칸이 있어야 나중에 "왜 이걸 통과시켰나" 를 되물을 수 있다.
+const shown = {
+  ...measureDiff(targetName, branch),
+  gate: measureGate(branch, targetName, str(flags.policy)),
+  axmap: measureAxmap(),
+}
+
+// 시각(`at`)은 위에서 한 번 정했다. CAS 재시도마다 바뀌면 같은 표가 매번 다른
 // 내용이 되어, 무엇 때문에 다시 쓰는지가 이력에서 안 보인다.
 const record = {
   voter,
@@ -443,8 +722,13 @@ const record = {
   branch,
   sha,
   vote: voteValue,
-  at: new Date().toISOString(),
+  at,
   ...(note ? { note } : {}),
+  agent: {
+    id: agentId, // --agent 를 안 주면 "none" — 사람이 혼자 던졌다는 뜻이다
+    shown, // 🔴 프로그램이 잰 것. 사람도 AI 도 못 적는다
+    ...(agentSummary ? { summary: agentSummary } : {}),
+  },
   // 🔴 committerEmail 은 여기 없다. 게이트가 git 에서 채운다 (파일 머리말 참고).
 }
 
@@ -477,6 +761,13 @@ for (let attempt = 1; attempt <= MAX_CAS_RETRIES; attempt++) {
   if (p.code === 0) {
     console.log(`표를 던졌습니다: ${relPath}`)
     console.log(`  ${voter} <${email}>  ${voteValue}  ${branch}@${sha.slice(0, 8)}`)
+    // 잰 것을 화면에도 보여준다. 표에만 적고 안 보여주면 던진 사람은 자기 표에
+    // 무엇이 적혔는지 모르고, 모르는 칸은 아무도 안 읽는다.
+    console.log(
+      `  본 것: ${shown.files === null ? '못 쟀음' : `${shown.files}파일 +${shown.insertions}/-${shown.deletions}`}`
+      + `  ·  던지기 직전 판정: ${shown.gate}`
+      + `  ·  axMap 사본: ${shown.axmap.behind === null ? '뒤처짐 못 쟀음' : `${shown.axmap.behind}커밋 뒤`}`,
+    )
     if (voteValue === 'reject') {
       console.log('  reject 는 정족수 계산에 들어가지 않습니다 — 판정문에 보이기만 합니다.')
     }

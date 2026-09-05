@@ -325,6 +325,29 @@ function sourceAuthors(targetRev, sourceRev) {
 }
 
 /**
+ * 소스 브랜치 **맨 위 커밋의 author email.** 정책이 `self_vote: "tip"` 일 때 배제할
+ * 한 사람이다.
+ *
+ * 🔴 `targetRev..sourceRev` 범위가 아니라 `sourceRev` 자신을 본다. 그 커밋이 곧
+ *    표가 묶이는 sha(G3)이고 이번에 머지될 커밋이다. 범위의 "가장 최근" 을 쓰면
+ *    범위가 비었을 때(소스가 타깃보다 앞서지 않을 때) 답이 없어지는데, 배제할
+ *    사람은 그때도 명확하다.
+ *
+ * 🔴 정책을 안 보고 **언제나** 읽는다. 여기서 `self_vote` 를 해석하면 배제 규칙이
+ *    게이트와 판정 층 두 곳에 생기고, 두 곳이 어긋난 날 아무도 못 찾는다.
+ *    게이트는 재료만 모으고 규칙은 `src/governance.mjs` 한 곳에 둔다.
+ */
+function tipAuthor(sourceRev) {
+  const r = git(['log', '-1', '--format=%aE', sourceRev])
+  if (r.code !== 0 || !r.out.trim()) {
+    // 빈 문자열을 그럴듯하게 넘기지 않는다. `"tip"` 이면 판정 층이 판정 불가로
+    // 던지고, 그 밖의 모드에서는 어차피 안 쓰인다 (fail-closed).
+    return null
+  }
+  return r.out.trim()
+}
+
+/**
  * 승계(**투표권자가 모자랄 때 최근 기여자에게 임시 투표권을 주는 것**)용 재료.
  *
  * `deriveVoters` 가 기대하는 모양은 **커밋 하나가 항목 하나**인 `{email, name, at}`
@@ -478,6 +501,7 @@ const policyPath = resolvePolicyPath(flags)
 const policy = readPolicy(targetRev, targetName, policyPath)
 const { base, paths: changed } = changedPaths(targetRev, sourceRev)
 const authorEmails = sourceAuthors(targetRev, sourceRev)
+const tipAuthorEmail = tipAuthor(sourceRev)
 const contributors = contributorsFor(policy, targetRev, sourceRev)
 const votesRef = resolveVotesRef(remote, flags)
 const votes = readVotes(votesRef, sourceName)
@@ -490,6 +514,9 @@ console.error([
   `  갈림점    : ${base}`,
   `  정책      : ${targetName}:${policyPath}   (🔴 타깃에서 읽습니다 — G2)`,
   `  바뀐 파일 : ${changed.length}개`,
+  // 자기 표 배제(G1)가 왜 그렇게 셌는지는 판정문에 안 나온다. 그런데 "던질 수
+  // 있는 사람이 몇 명이었나" 가 미달의 제일 흔한 원인이라 재료에 남겨 둔다.
+  `  자기 표   : self_vote=${policy?.self_vote ?? '(안 적힘 → authors)'}   author ${authorEmails.length}명 · tip ${tipAuthorEmail ?? '(못 읽음)'}`,
   `  표        : ${votesRef ? `${votes.length}장  (${votesRef.from})` : `0장  (${VOTES_BRANCH} 브랜치가 아직 없습니다)`}`,
 ].join('\n'))
 
@@ -505,6 +532,7 @@ const verdict = judge({
   changed,
   votes,
   authorEmails,
+  tipAuthorEmail,
   sha: sourceRev,
   contributors,
   now: Date.now(),

@@ -175,3 +175,90 @@ export function formatPlan(plan) {
   }
   return L.join('\n')
 }
+/**
+ * ── 표의 이유를 머지 커밋에 싣는다 ──────────────────────────────────────────
+ *
+ * 🔴 **왜 GitLab MR 댓글이 아니라 커밋 메시지인가.**
+ *
+ * AI 여러 대가 MR 을 검토하면 의견이 쌓인다. 그 의견을 어디에 두느냐로 이후가
+ * 갈린다. 기본값(MR 댓글)은 세 가지가 나쁘다.
+ *
+ *   1. **git 안에 없다.** clone 해도 안 따라온다. 다음 에이전트가 `git log` 로
+ *      "왜 이렇게 머지됐나" 를 못 읽는다
+ *   2. **플랫폼에 묶인다.** GitLab 을 떠나면 통째로 사라진다
+ *   3. **MR 이 닫히면 아무도 안 본다.** 맥락도 같이 닫힌다
+ *
+ * 이 저장소는 이미 같은 판단을 두 번 했다 — 장부(`axmap/claims`)도 쪽지
+ * (`axmap/bus`)도 서버가 아니라 **고아 브랜치**에 뒀다. 합의의 근거도 같은 자리,
+ * 즉 저장소 안에 남긴다. 트레일러로 적으면 `git log --grep` 과
+ * `git interpret-trailers --parse` 가 그대로 읽는다.
+ *
+ * 🔴 **콜론 앞은 영문이어야 한다.** 2026-08-28 실측 — git 은 그 자리를 사람이
+ *    읽는 이름이 아니라 **기계가 찾는 열쇠**로 본다. 한글이거나 괄호가 섞이면
+ *    그 줄을 트레일러가 아니라 평범한 본문으로 보고 지나친다.
+ *
+ *      Reviewed-by: bob <b@x.com>            → 뽑힌다
+ *      찬성(Reviewed-by): bob <b@x.com>      → 무시된다
+ *      Reviewed-by(찬성): bob <b@x.com>      → 무시된다
+ *      찬성: bob <b@x.com>                   → 무시된다
+ *
+ *    그래서 열쇠는 영문으로 두고 **한글을 값의 맨 앞**에 놓는다. 사람이 눈으로
+ *    읽을 때 먼저 보이는 것은 여전히 '찬성'·'반대' 다.
+ *
+ * 🔴 **반대표도 싣는다.** 반대는 정족수 계산에 안 들어가므로(거부권은 다른 제도다)
+ *    반대가 있어도 머지될 수 있다. 그때 그 반대가 아무 데도 안 남으면, 나중에
+ *    문제가 터졌을 때 **"아무도 몰랐다" 로 기록된다.** 알았던 사람이 있었다는 것이
+ *    남아야 한다.
+ */
+
+/** 트레일러 값에 들어갈 수 있게 한 줄로 만든다. */
+function oneLine(s, max = 200) {
+  const t = String(s ?? '').replace(/\s+/gu, ' ').trim()
+  return t.length > max ? `${t.slice(0, max - 1)}…` : t
+}
+
+/**
+ * 표 한 장을 트레일러 한 줄로.
+ *
+ * 🔴 이유가 비어 있으면 `— …` 를 안 붙인다. 정책이 `vote_note` 를 안 켰으면
+ *    이유가 없는 것이 정상이고, 빈 꼬리를 붙이면 "이유를 안 적었다" 가 아니라
+ *    "이유 칸이 깨졌다" 처럼 보인다.
+ */
+function trailerLine(key, vote, stance) {
+  const who = `${oneLine(vote?.voter, 60) || '?'} <${oneLine(vote?.email, 100) || '?'}>`
+  const note = oneLine(vote?.note)
+  return `${key}: ${stance} — ${who}${note ? ` · ${note}` : ''}`
+}
+
+/**
+ * 판정(`gate.mjs --json` 의 verdict)에서 트레일러 줄들을 만든다.
+ * 판정이 셀 수 없었으면(정책 깨짐·판정 불가) 빈 배열이다 — 없는 것을 지어내지 않는다.
+ */
+export function reviewTrailers(verdict) {
+  const t = verdict?.tally
+  if (!t) return []
+  const out = []
+  for (const v of Array.isArray(t.counted) ? t.counted : []) out.push(trailerLine('Reviewed-by', v, '찬성'))
+  for (const v of Array.isArray(t.rejections) ? t.rejections : []) out.push(trailerLine('Rejected-by', v, '반대'))
+  return out
+}
+
+/**
+ * 봇이 머지할 때 쓸 커밋 메시지. GitLab 의 `merge_commit_message` 로 넘어간다.
+ *
+ * 🔴 첫 줄은 GitLab 기본형(`Merge branch 'A' into 'B'`)을 그대로 쓴다. 사람이
+ *    누른 머지와 봇이 누른 머지가 이력에서 다르게 보이면, 나중에 이력을 훑는
+ *    사람이 **다르게 보이는 것 자체를 신호로 오해한다.** 다른 것은 트레일러뿐이다.
+ *
+ * 🔴 트레일러가 없으면 본문도 안 붙인다 — `null` 을 내서 부르는 쪽이 그 필드를
+ *    아예 안 보내게 한다. 빈 본문을 보내면 GitLab 이 기본 메시지를 덮어쓴다.
+ */
+export function mergeCommitMessage({ source, target, verdict }) {
+  const trailers = reviewTrailers(verdict)
+  if (trailers.length === 0) return null
+  const head = `Merge branch '${source}' into '${target}'`
+  const approvals = verdict?.approvals ?? verdict?.tally?.approvals ?? 0
+  const threshold = verdict?.threshold ?? 0
+  const summary = `정족수 ${approvals}/${threshold} · 판정 커밋 ${String(verdict?.sha ?? '').slice(0, 12)}`
+  return [head, '', summary, '', ...trailers].join('\n')
+}
