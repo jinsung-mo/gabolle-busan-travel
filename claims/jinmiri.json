@@ -1,0 +1,22 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-629",
+  "intent": "Figma 팔레트 통일과 관련 화면 UI 마감",
+  "actor": null,
+  "since": "2026-09-05T11:28:53.797Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(auth)/age-gate.tsx",
+    "frontend/app/(auth)/sign-in.tsx",
+    "frontend/app/(plan)/generating.tsx",
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/app/+not-found.tsx",
+    "frontend/app/index.tsx",
+    "frontend/assets/brand/busan-travel-stamp-v1.png",
+    "frontend/assets/brand/busan-travel-stamp-v2.png",
+    "frontend/package-lock.json",
+    "frontend/package.json",
+    "frontend/src/components/SocialProviderIcon.tsx",
+    "frontend/src/design/tokens.ts"
+  ]
+}
