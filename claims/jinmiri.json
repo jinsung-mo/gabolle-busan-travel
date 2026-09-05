@@ -1,19 +1,12 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-629",
-  "intent": "Figma 팔레트 통일과 관련 화면 UI 마감",
-  "actor": null,
-  "since": "2026-09-05T11:33:48.279Z",
+  "task": "S15P21E201-survey-ux",
+  "intent": "여행 기본정보 설문을 모바일에서 taste/constraints와 같은 단계별(1문항씩) 진행형 UI로 개편",
+  "actor": "agent",
+  "session": "67c3749d-ff3b-4a67-ae17-7af8ef08e9a3",
+  "since": "2026-09-05T23:29:48.851Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/(auth)/age-gate.tsx",
-    "frontend/app/(auth)/sign-in.tsx",
-    "frontend/app/(tabs)/me.tsx",
-    "frontend/app/+not-found.tsx",
-    "frontend/app/index.tsx",
-    "frontend/package-lock.json",
-    "frontend/package.json",
-    "frontend/src/components/SocialProviderIcon.tsx",
-    "frontend/src/design/tokens.ts"
+    "frontend/app/(plan)/basics.tsx"
   ]
 }
