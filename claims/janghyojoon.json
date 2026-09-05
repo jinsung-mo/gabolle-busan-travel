@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-600",
+  "intent": "사본을 axMap 1.1.0 으로 갱신하고 감사 잡에 --checkpoint 를 켠다 (장부가 커질수록 느려지던 것)",
+  "actor": "agent",
+  "since": "2026-09-05T16:52:46.902Z",
+  "ttlMs": 2700000,
+  "paths": [
+    ".gitlab-ci.yml",
+    "ci/axmap"
+  ]
+}
