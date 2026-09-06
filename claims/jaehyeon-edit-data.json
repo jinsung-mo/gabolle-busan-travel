@@ -1,11 +1,12 @@
 {
   "agent": "jaehyeon-edit-data",
   "task": "S15P21E201-249",
-  "intent": "제외·재계산의 데이터층과 배선: itinerary_excluded_place 표(판에 매달림), itinerary_versions.warning_codes, 편집 Job 결과 CHECK 확장, ItineraryContent/Revision 에 exclusions, RecommendationCommand.ItineraryEdit, ItineraryJobController 202",
+  "intent": "appendVersion 4-인자 호출부, 편집 Job 예외 처리기, RecommendationCommand 12번째 인자 컴파일 수정",
   "actor": null,
-  "since": "2026-09-06T12:45:45.074Z",
-  "ttlMs": 10800000,
+  "since": "2026-09-06T13:18:09.670Z",
+  "ttlMs": 1800000,
   "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryEditService.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryRecalculationService.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/domain/ItineraryContent.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/domain/ItineraryExclusion.java",
@@ -14,6 +15,7 @@
     "backend/src/main/java/com/gabolle/backend/itinerary/domain/ItineraryVersion.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/infra",
     "backend/src/main/java/com/gabolle/backend/itinerary/presentation/ItineraryJobController.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/presentation/ItineraryJobExceptionHandler.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/ItineraryEditJobRequest.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationCommand.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationJobRunner.java",
@@ -25,6 +27,8 @@
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryQueryServiceTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryVersionConflictTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryVersionRaceTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/RecommendationEngineMissingIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/RecommendationLoggingIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/recommendation/application/RecommendationJobRunnerTest.java",
     "backend/src/test/java/com/gabolle/backend/recommendation/domain/RecommendationJobTest.java"
   ]
