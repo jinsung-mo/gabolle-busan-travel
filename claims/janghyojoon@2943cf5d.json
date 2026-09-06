@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-23",
+  "intent": "새로 받은 데이터(소상공인 상가정보 부산 CSV)와 승인된 API 3건을 온톨로지에 반영. 실제로 확인한 필드만 적고, 아직 안 받은 것은 expectedFrom 만 갱신한다",
+  "actor": "agent",
+  "session": "0c01633e-384e-4f41-b24e-f382049739a4",
+  "since": "2026-09-06T03:15:45.961Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/config/ontology.jsonld",
+    "bigData/config/sources.json",
+    "bigData/docs/ONTOLOGY.md",
+    "bigData/docs/SOURCES.md"
+  ]
+}
