@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-459",
+  "intent": "일정 계산 성공 후 여행 조건 draft를 지워 다음 여행 생성 때 이전 값이 섞이지 않게 한다",
+  "actor": "agent",
+  "session": "67c3749d-ff3b-4a67-ae17-7af8ef08e9a3",
+  "since": "2026-09-06T00:56:33.586Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/generating.tsx"
+  ]
+}
