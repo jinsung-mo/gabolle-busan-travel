@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon-itinerary",
+  "task": "S15P21E201-662",
+  "intent": "일정 편집이 새 판에 항목·구간을 복사하게 고친다. 고정 응답을 조회와 같은 모양으로, 409 를 팀 공용 봉투로, itinerary_item.locked 를 실제로 저장. itinerary 패키지만 만진다",
+  "actor": null,
+  "since": "2026-09-06T09:46:19.979Z",
+  "ttlMs": 7200000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary",
+    "backend/src/test/java/com/gabolle/backend/itinerary"
+  ]
+}
