@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-655",
+  "intent": "S-12 지금 갈 곳 화면 신규 구현 (/now) + 홈 진입점 추가",
+  "actor": "agent",
+  "session": "67c3749d-ff3b-4a67-ae17-7af8ef08e9a3",
+  "since": "2026-09-06T03:03:31.557Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/now.tsx",
+    "frontend/src/plan/nowRecommendations.ts"
+  ]
+}
