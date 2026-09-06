@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-648",
+  "intent": "큰 파일을 깃 대신 AWS 에서 끌어오게 한다 — 새로 clone 해도 굽지 않고 바로 볼 수 있게",
+  "actor": "agent",
+  "since": "2026-09-06T23:39:38.207Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "city3d-spike/.gitignore",
+    "city3d-spike/public/index.html",
+    "city3d-spike/public/three-test.html"
+  ]
+}
