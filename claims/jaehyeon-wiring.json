@@ -1,0 +1,19 @@
+{
+  "agent": "jaehyeon-wiring",
+  "task": "S15P21E201-664",
+  "intent": "여행 생성의 timeWindow(09:00-18:00) 를 time_window_start/end 로, transport 취향을 travel_modes 로 배선. 순수 함수 TimeWindows·TravelModes + TripCreationService + 400 번역",
+  "actor": null,
+  "since": "2026-09-06T11:22:20.298Z",
+  "ttlMs": 10800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/trip/application/TripCreationService.java",
+    "backend/src/main/java/com/gabolle/backend/trip/domain/TimeWindows.java",
+    "backend/src/main/java/com/gabolle/backend/trip/domain/TravelModes.java",
+    "backend/src/main/java/com/gabolle/backend/trip/presentation/TripExceptionHandler.java",
+    "backend/src/test/java/com/gabolle/backend/trip/TimeWindowsTest.java",
+    "backend/src/test/java/com/gabolle/backend/trip/TravelModesTest.java",
+    "backend/src/test/java/com/gabolle/backend/trip/TripCreationTest.java",
+    "backend/src/test/java/com/gabolle/backend/trip/TripPersistenceIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/trip/TripTimeWindowWiringIntegrationTest.java"
+  ]
+}
