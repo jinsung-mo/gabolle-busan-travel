@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-460",
+  "intent": "최종 확인 화면에 이동 시간대 요약과 알레르기/식단 안전 가정 금지 문구를 추가",
+  "actor": "agent",
+  "session": "67c3749d-ff3b-4a67-ae17-7af8ef08e9a3",
+  "since": "2026-09-06T01:01:19.774Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/confirm.tsx"
+  ]
+}
