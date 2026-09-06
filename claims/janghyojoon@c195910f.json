@@ -1,14 +1,15 @@
 {
   "agent": "janghyojoon",
-  "task": "city3d-spike",
-  "intent": "EC2 에 올릴 정적 배포 꾸러미를 만드는 스크립트",
+  "task": "S15P21E201-657",
+  "intent": "바다에 파도를 넣는다 — 커스텀 레이어 + 셰이더, 라이브러리 없음",
   "actor": "agent",
   "session": "6e390a41-0a19-45ff-ba86-e6caf039acc6",
-  "since": "2026-09-06T02:50:43.505Z",
+  "since": "2026-09-06T03:10:17.846Z",
   "ttlMs": 2700000,
   "paths": [
     "city3d-spike/build-dist.mjs",
     "city3d-spike/public/index.html",
+    "city3d-spike/public/sea.mjs",
     "city3d-spike/public/sun.mjs",
     "city3d-spike/sun-check.mjs"
   ]
