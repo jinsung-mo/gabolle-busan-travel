@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": null,
+  "intent": "데스크톱 계획 화면 레이아웃 붕괴 및 i18n 누락 수정 (사용자 리포트)",
+  "actor": "agent",
+  "session": "67c3749d-ff3b-4a67-ae17-7af8ef08e9a3",
+  "since": "2026-09-06T04:58:33.899Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/taste.tsx",
+    "frontend/src/plan/PlanDesktopShell.tsx"
+  ]
+}
