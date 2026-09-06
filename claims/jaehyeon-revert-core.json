@@ -3,7 +3,7 @@
   "task": "S15P21E201-284",
   "intent": "편집 응답 끝에 revertedFromVersion 칸",
   "actor": null,
-  "since": "2026-09-06T13:30:14.801Z",
+  "since": "2026-09-06T13:32:09.135Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryEditService.java",
