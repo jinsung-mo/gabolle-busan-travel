@@ -1,0 +1,20 @@
+{
+  "agent": "jaehyeon-edit-core",
+  "task": "S15P21E201-249",
+  "intent": "제외·재계산의 핵심: 하루만 다시 채우는 revise/publish, 편집 Job 0건=성공, CAS 실패 → Job FAILED, 통합 테스트",
+  "actor": null,
+  "since": "2026-09-06T12:45:45.080Z",
+  "ttlMs": 10800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/domain/ItineraryWarningCodes.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationCodes.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationJobWorker.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationRecorder.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationService.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/port",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryDraftServiceTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryRecalculationIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/support/FakeItineraryDraftPort.java"
+  ]
+}
