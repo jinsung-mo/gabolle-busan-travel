@@ -1,12 +1,13 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-427",
-  "intent": "최종 확인 화면 날짜 표기를 언어별로 로케일 포맷팅",
+  "intent": "기본정보 단계 진행 표시 문구 영어 번역 누락 수정",
   "actor": "agent",
   "session": "67c3749d-ff3b-4a67-ae17-7af8ef08e9a3",
-  "since": "2026-09-06T01:31:00.726Z",
+  "since": "2026-09-06T01:33:16.352Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/(plan)/basics.tsx",
     "frontend/app/(plan)/confirm.tsx"
   ]
 }
