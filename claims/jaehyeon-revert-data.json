@@ -3,7 +3,7 @@
   "task": "S15P21E201-284",
   "intent": "되돌리기 데이터층: Operation.REVERT + reverted_from_version 마이그레이션, 판 목록 조회 GET /versions, DTO, 인메모리·JPA 구현",
   "actor": null,
-  "since": "2026-09-06T13:26:12.962Z",
+  "since": "2026-09-06T13:32:14.226Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
