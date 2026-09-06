@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-657",
+  "intent": "파도 효과를 뺀다 — 물 폴리곤 깨짐이 계속 나와 얻는 것보다 잃는 것이 크다",
+  "actor": "agent",
+  "session": "6e390a41-0a19-45ff-ba86-e6caf039acc6",
+  "since": "2026-09-06T04:41:46.318Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "city3d-spike/public/index.html"
+  ]
+}
