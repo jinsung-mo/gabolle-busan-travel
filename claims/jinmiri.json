@@ -1,12 +1,13 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-442",
-  "intent": "여행 기분(여유롭게/균형있게/알차게) 3카드 선택 추가",
+  "intent": "최종 확인 요약에 여행 기분(paceLevel) 반영",
   "actor": "agent",
   "session": "67c3749d-ff3b-4a67-ae17-7af8ef08e9a3",
-  "since": "2026-09-06T02:01:59.831Z",
+  "since": "2026-09-06T02:04:07.655Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/(plan)/confirm.tsx",
     "frontend/app/(plan)/taste.tsx",
     "frontend/src/plan/PlanProvider.tsx"
   ]
