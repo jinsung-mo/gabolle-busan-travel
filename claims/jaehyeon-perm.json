@@ -1,0 +1,15 @@
+{
+  "agent": "jaehyeon-perm",
+  "task": "S15P21E201-224",
+  "intent": "일정 접근 권한 판정. TripQueryService.View 에 요청자 role 추가, ItineraryAccess 로 비회원 404 / VIEWER 403 판정, 편집 경로에 requireEditor, 응답에 myRole·canEdit",
+  "actor": null,
+  "since": "2026-09-06T11:22:12.494Z",
+  "ttlMs": 10800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary",
+    "backend/src/main/java/com/gabolle/backend/trip/application/TripQueryService.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary",
+    "backend/src/test/java/com/gabolle/backend/trip/TripControllerGetTest.java",
+    "backend/src/test/java/com/gabolle/backend/trip/TripQueryServiceTest.java"
+  ]
+}
