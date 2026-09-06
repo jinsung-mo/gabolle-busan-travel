@@ -1,11 +1,12 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-592",
-  "intent": "일정 편집 API(제외/재계산/되돌리기/판목록) 연결 — S15P21E201-592",
+  "task": "S15P21E201-661",
+  "intent": "모바일 온보딩 인트로 화면 잔여 한글 i18n 수정",
   "actor": "agent",
-  "since": "2026-09-06T23:49:41.376Z",
+  "since": "2026-09-06T23:55:58.341Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/app-intro.tsx",
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/src/plan/itinerary.ts"
   ]
