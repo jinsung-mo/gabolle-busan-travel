@@ -1,0 +1,15 @@
+{
+  "agent": "jaehyeon-revert-core",
+  "task": "S15P21E201-284",
+  "intent": "되돌리기 핵심: 최신 판의 baseVersion 내용을 REVERT 판으로 복사, 되돌릴 것 없음 422, POST /revert, 통합 테스트",
+  "actor": null,
+  "since": "2026-09-06T13:26:20.450Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryEditService.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/presentation/ItineraryEditController.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/presentation/ItineraryExceptionHandler.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/RevertRequest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryRevertIntegrationTest.java"
+  ]
+}
