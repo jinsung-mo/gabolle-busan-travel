@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
   "task": "city3d-spike",
-  "intent": "진짜 태양 위치 + 건물 그림자 + 창문 무늬·색 다양화·야경을 넣는다",
+  "intent": "EC2 에 올릴 정적 배포 꾸러미를 만드는 스크립트",
   "actor": "agent",
   "session": "6e390a41-0a19-45ff-ba86-e6caf039acc6",
-  "since": "2026-09-06T02:23:53.590Z",
+  "since": "2026-09-06T02:50:43.505Z",
   "ttlMs": 2700000,
   "paths": [
+    "city3d-spike/build-dist.mjs",
     "city3d-spike/public/index.html",
     "city3d-spike/public/sun.mjs",
     "city3d-spike/sun-check.mjs"
