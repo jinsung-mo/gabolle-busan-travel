@@ -1,0 +1,17 @@
+{
+  "agent": "jinmiri",
+  "task": null,
+  "intent": "전체 화면 잔여 한글(i18n 누락) 및 데스크톱 레이아웃 점검·수정",
+  "actor": "agent",
+  "session": "67c3749d-ff3b-4a67-ae17-7af8ef08e9a3",
+  "since": "2026-09-06T05:06:23.869Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(auth)/age-gate.tsx",
+    "frontend/app/(plan)/basics.tsx",
+    "frontend/app/(plan)/confirm.tsx",
+    "frontend/app/(plan)/constraints.tsx",
+    "frontend/app/(plan)/generating.tsx",
+    "frontend/app/index.tsx"
+  ]
+}
