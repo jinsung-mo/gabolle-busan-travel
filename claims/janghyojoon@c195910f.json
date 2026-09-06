@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-657",
+  "intent": "확대할 때 깜빡이는 문제 — 그림자 통째 교체와 바다 판의 깊이 싸움을 고친다",
+  "actor": "agent",
+  "session": "6e390a41-0a19-45ff-ba86-e6caf039acc6",
+  "since": "2026-09-06T03:25:23.621Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "city3d-spike/public/index.html",
+    "city3d-spike/public/sea.mjs"
+  ]
+}
