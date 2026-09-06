@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-657",
+  "intent": "낮은 확대 단계의 성긴 물 폴리곤을 걸러낸다 — 이동 중 바다가 육지를 덮었다 말았다 하는 원인",
+  "actor": "agent",
+  "session": "6e390a41-0a19-45ff-ba86-e6caf039acc6",
+  "since": "2026-09-06T04:18:18.642Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "city3d-spike/public/index.html"
+  ]
+}
