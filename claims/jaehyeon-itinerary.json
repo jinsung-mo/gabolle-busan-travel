@@ -1,0 +1,11 @@
+{
+  "agent": "jaehyeon-itinerary",
+  "task": "S15P21E201-632",
+  "intent": "배포 502 원인. 이미 적용된 마이그레이션의 첫 줄 주석이 바뀌어 Flyway 체크섬이 어긋났다. 적용된 바이트 그대로 되돌리는 한 줄",
+  "actor": null,
+  "since": "2026-09-06T10:51:33.986Z",
+  "ttlMs": 3600000,
+  "paths": [
+    "backend/src/main/resources/db/migration/V20260905140000__precomputed_feed.sql"
+  ]
+}
