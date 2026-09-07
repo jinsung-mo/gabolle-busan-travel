@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-703",
+  "intent": "마이그레이션 버전 역행 검사 CI 잡 추가",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-07T07:16:45.023Z",
+  "ttlMs": 900000,
+  "paths": [
+    ".gitlab-ci.yml"
+  ]
+}
