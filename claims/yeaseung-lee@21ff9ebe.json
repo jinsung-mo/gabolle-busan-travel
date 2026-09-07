@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-680",
+  "intent": "allow_failure 추가 — 게이트가 자기 MR을 막는 문제 수정",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-07T05:20:16.704Z",
+  "ttlMs": 900000,
+  "paths": [
+    ".gitlab-ci.yml"
+  ]
+}
