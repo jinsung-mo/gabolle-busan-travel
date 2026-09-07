@@ -1,0 +1,13 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-548",
+  "intent": "S15P21E201-548 다양성 재정렬(MMR)과 기여 축 기반 추천 이유 — original_rank/final_rank 를 가르고 파라미터·지표를 기록한다",
+  "actor": "agent",
+  "session": "7f85fd9b-c478-437f-a54a-f0e52fd72bc4",
+  "since": "2026-09-07T07:55:00.490Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation",
+    "backend/src/test/java/com/gabolle/backend/recommendation"
+  ]
+}
