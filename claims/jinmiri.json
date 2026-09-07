@@ -1,0 +1,21 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-136",
+  "intent": "i18n-check.mjs 검출 잔여 한글 정리 1차 — 공용 컴포넌트/프로바이더",
+  "actor": "agent",
+  "since": "2026-09-07T02:30:46.472Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/auth/AuthProvider.tsx",
+    "frontend/src/components/AppErrorBoundary.tsx",
+    "frontend/src/components/DateFieldInput.tsx",
+    "frontend/src/components/DongbaekMascot.tsx",
+    "frontend/src/components/PermissionRationale.tsx",
+    "frontend/src/components/TabBar.tsx",
+    "frontend/src/map/RouteMap.tsx",
+    "frontend/src/onboarding/OnboardingPreferences.tsx",
+    "frontend/src/plan/PlanProvider.tsx",
+    "frontend/src/plan/PlanStepHeader.tsx",
+    "frontend/src/plan/PlanWebNav.tsx"
+  ]
+}
