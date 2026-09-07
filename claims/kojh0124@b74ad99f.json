@@ -1,15 +1,16 @@
 {
   "agent": "kojh0124",
   "task": "S15P21E201-555",
-  "intent": "S15P21E201-555 Editor's Pick 기준선 — 발행본 표·도메인과 FallbackMode/SourceMode 구분값 (1/2)",
+  "intent": "S15P21E201-555 — Pick 표 둘 + recommendation_job·candidate 에 source_mode 추가와 fallback_mode CHECK 확장",
   "actor": "agent",
   "session": "7f85fd9b-c478-437f-a54a-f0e52fd72bc4",
-  "since": "2026-09-07T05:34:22.143Z",
+  "since": "2026-09-07T05:40:42.737Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/editorial",
     "backend/src/main/java/com/gabolle/backend/recommendation/domain/FallbackMode.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/domain/SourceMode.java",
-    "backend/src/main/resources/db/migration/V20260907150000__editorial_pick.sql"
+    "backend/src/main/resources/db/migration/V20260907150000__editorial_pick.sql",
+    "backend/src/main/resources/db/migration/V20260907150000__editorial_pick_and_source_mode.sql"
   ]
 }
