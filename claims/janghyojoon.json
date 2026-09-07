@@ -1,9 +1,9 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-163",
-  "intent": "빌드 때 EXPO_PUBLIC 키가 비어 있으면 경고를 내게 배선한다",
+  "task": "backup-visual-geocode",
+  "intent": "어느 브랜치에도 없던 시각 역지오코딩 실험 폴더를 유실 방지용 backup 브랜치로 보관한다 (비밀값 .env 제외)",
   "actor": "agent",
-  "since": "2026-09-07T15:50:25.046Z",
+  "since": "2026-09-07T15:57:06.111Z",
   "ttlMs": 2700000,
   "paths": [
     "city3d-spike/public/index.html",
@@ -13,6 +13,7 @@
     "frontend/docs",
     "frontend/package.json",
     "frontend/src/map",
-    "frontend/tools"
+    "frontend/tools",
+    "visual-geocode"
   ]
 }
