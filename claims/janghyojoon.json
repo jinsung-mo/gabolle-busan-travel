@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "backup-visual-geocode",
-  "intent": "어느 브랜치에도 없던 시각 역지오코딩 실험 폴더를 유실 방지용 backup 브랜치로 보관한다 (비밀값 .env 제외)",
+  "task": "backup-gabolle-doc",
+  "intent": "어느 브랜치에도 없던 온톨로지·분산 보고서를 유실 방지용 backup 브랜치로 보관한다",
   "actor": "agent",
-  "since": "2026-09-07T15:57:06.111Z",
+  "since": "2026-09-07T15:59:33.330Z",
   "ttlMs": 2700000,
   "paths": [
     "city3d-spike/public/index.html",
+    "docs/gabolle",
     "frontend/.env.example",
     "frontend/Dockerfile",
     "frontend/app/(trip)/[id]/map.tsx",
