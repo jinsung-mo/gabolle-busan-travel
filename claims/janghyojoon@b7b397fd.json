@@ -7,16 +7,6 @@
   "since": "2026-09-07T09:05:21.029Z",
   "ttlMs": 1800000,
   "paths": [
-    "city3d-spike/bridge-details.mjs",
-    "city3d-spike/bridges.mjs",
-    "city3d-spike/public/actors.mjs",
-    "city3d-spike/public/bridge-details.geojson",
-    "city3d-spike/public/bridge-specs.mjs",
-    "city3d-spike/public/bridges.geojson",
-    "city3d-spike/public/bridges3d.mjs",
-    "city3d-spike/public/index.html",
-    "city3d-spike/public/shade.mjs",
-    "city3d-spike/public/sun.mjs",
     "docs/FOOD-RANKING-EVAL.md",
     "eval/food-ranking"
   ]
