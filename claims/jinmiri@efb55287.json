@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-136",
+  "intent": "i18n 스윕 16 - 여행 기록·준비 화면 tx() 누락 수정",
+  "actor": null,
+  "session": "67c3749d-ff3b-4a67-ae17-7af8ef08e9a3",
+  "since": "2026-09-07T13:50:43.283Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(trip)/[id]/log.tsx",
+    "frontend/app/(trip)/[id]/prepare.tsx"
+  ]
+}
