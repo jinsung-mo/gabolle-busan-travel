@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-680",
+  "intent": "Spring Boot 4.0.0→4.0.8 패치 — HIGH 취약점 39건 정리 시도",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-07T07:47:06.850Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/build.gradle",
+    "backend/gradle.lockfile"
+  ]
+}
