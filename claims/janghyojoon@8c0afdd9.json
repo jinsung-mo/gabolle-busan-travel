@@ -4,7 +4,7 @@
   "intent": "장소·피처 적재 코드",
   "actor": null,
   "session": "88981cee-a809-432d-94de-70c3b88ac265",
-  "since": "2026-09-07T11:46:58.202Z",
+  "since": "2026-09-07T11:53:45.222Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/place/api/PlaceCandidateRequest.java",
