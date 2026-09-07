@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-586",
+  "intent": "로그인 후 returnTo 유실 버그 수정 - 이메일 인증 왕복에서도 원래 자리로 복귀",
+  "actor": "agent",
+  "since": "2026-09-07T07:14:13.063Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(auth)/sign-in.tsx",
+    "frontend/src/auth/pendingReturnTo.ts"
+  ]
+}
