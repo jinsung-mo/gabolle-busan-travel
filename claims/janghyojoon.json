@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-685",
+  "intent": "랜드마크 실사화",
+  "actor": null,
+  "since": "2026-09-07T01:50:55.401Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "city3d-spike/bridges.mjs",
+    "city3d-spike/public/index.html"
+  ]
+}
