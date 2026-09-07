@@ -3,8 +3,8 @@
   "task": "S15P21E201-33",
   "intent": "투표 슬래시 명령을 모든 브랜치에 둔다",
   "actor": null,
-  "since": "2026-09-07T02:56:40.124Z",
-  "ttlMs": 1800000,
+  "since": "2026-09-07T03:00:07.881Z",
+  "ttlMs": 3600000,
   "paths": [
     ".claude/commands",
     "city3d-spike/.gitignore",
