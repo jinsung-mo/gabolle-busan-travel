@@ -5,9 +5,11 @@ description: axMap — 나에게 온 쪽지를 읽는다. 이미 읽은 지난 �
 > ⚠️ 도구 목록에 `ax_inbox` 가 안 보이면 axMap 이 안 붙은 것이다.
 > **경로를 찾지 말고** 아래를 그대로 쓴다.
 >
->     나에게 온 것  node ci/axmap/tools/bus.mjs list
->     전부         node ci/axmap/tools/bus.mjs list --all
->     본문 하나     node ci/axmap/tools/bus.mjs read <아이디>
+>     나에게 온 것  axmap bus list
+>     전부         axmap bus list --all
+>     본문 하나     axmap bus read <아이디>
+>
+> 명령을 못 찾으면 `npm i -g axmap-cli` 를 한 번 한다 — 저장소 안에는 사본이 없다.
 >
 > 아래 표의 `{ }` 인자는 MCP 도구용이다. CLI 로 갈 때는 이 세 줄로 갈음한다.
 

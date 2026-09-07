@@ -5,9 +5,11 @@ description: axMap — 작업을 마치고 반납한다
 > ⚠️ 도구 목록에 `ax_` 가 안 보이면 axMap 이 안 붙은 것이다.
 > **경로를 찾지 말고** 아래를 그대로 쓴다.
 >
->     node ci/axmap/bin/axmap.mjs status
->     node ci/axmap/bin/axmap.mjs release
->     node ci/axmap/bin/axmap.mjs renew
+>     axmap status
+>     axmap release
+>     axmap renew
+>
+> 명령을 못 찾으면 `npm i -g axmap-cli` 를 한 번 한다 — 저장소 안에는 사본이 없다.
 
 1. 지금 잡고 있는 것을 `ax_status` 로 확인
 2. 작업이 정말 끝났으면 `ax_release`
