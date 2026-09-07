@@ -1,12 +1,21 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-526",
-  "intent": "사본 걷어낸 뒤 팀원 대처 설명서",
-  "actor": null,
+  "intent": "벤더링 사본 제거를 main·front/dev·back/dev·bigData/dev·map/dev 로 퍼뜨린다",
+  "actor": "agent",
   "session": "5d4cf699-c86d-473e-a1f5-a201bee8f3af",
-  "since": "2026-09-07T03:44:40.849Z",
-  "ttlMs": 5400000,
+  "since": "2026-09-07T03:53:11.382Z",
+  "ttlMs": 2700000,
   "paths": [
-    "docs/AXMAP-사본을-걷어낸-뒤.md"
+    ".gitlab-ci.yml",
+    ".mcp.json",
+    "CLAUDE.md",
+    "ci",
+    "docs/AXMAP-사본을-걷어낸-뒤.md",
+    "docs/CI.md",
+    "docs/HANDOVER.md",
+    "docs/ONBOARDING.md",
+    "setup.ps1",
+    "setup.sh"
   ]
 }
