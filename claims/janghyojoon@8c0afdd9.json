@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-732",
-  "intent": "예산 입력 방식",
+  "task": "S15P21E201-526",
+  "intent": "폴더 그림이 ci/ 실제 내용과 어긋난 것을 맞춘다",
   "actor": null,
   "session": "88981cee-a809-432d-94de-70c3b88ac265",
-  "since": "2026-09-07T14:49:38.599Z",
+  "since": "2026-09-07T14:56:18.106Z",
   "ttlMs": 1800000,
   "paths": [
+    "CONTRIBUTING.md",
     "frontend/app/(plan)/basics.tsx",
     "frontend/src/plan/tripBasics.ts"
   ]
