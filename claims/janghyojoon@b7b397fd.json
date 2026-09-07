@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-706",
-  "intent": "해·그림자를 오늘 기준 실시간으로 바꾸고(일출/일몰·드래그 중 갱신·그늘 띠), 교량 교각·행어를 더한다",
+  "task": "S15P21E201-705",
+  "intent": "라운드3 — 미쉐린/블루리본/블로그100/백년가게 정답지로 재판정",
   "actor": "agent",
   "session": "5d4cf699-c86d-473e-a1f5-a201bee8f3af",
-  "since": "2026-09-07T08:16:09.043Z",
-  "ttlMs": 2700000,
+  "since": "2026-09-07T08:36:06.252Z",
+  "ttlMs": 1800000,
   "paths": [
+    "bigData/data/truth",
     "city3d-spike/bridge-details.mjs",
     "city3d-spike/public/actors.mjs",
     "city3d-spike/public/bridge-details.geojson",
@@ -14,6 +15,8 @@
     "city3d-spike/public/bridges3d.mjs",
     "city3d-spike/public/index.html",
     "city3d-spike/public/shade.mjs",
-    "city3d-spike/public/sun.mjs"
+    "city3d-spike/public/sun.mjs",
+    "docs/FOOD-RANKING-EVAL.md",
+    "eval/food-ranking"
   ]
 }
