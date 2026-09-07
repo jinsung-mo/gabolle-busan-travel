@@ -1,15 +1,16 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-685",
-  "intent": "랜드마크 실사화 — 산출물과 새 스크립트",
+  "task": "S15P21E201-49",
+  "intent": "식당·카페 온톨로지 재설계 설계 문서 — 평판을 어디에 담을지",
   "actor": null,
-  "since": "2026-09-07T02:03:30.526Z",
+  "since": "2026-09-07T02:07:57.010Z",
   "ttlMs": 1800000,
   "paths": [
     "city3d-spike/bridges.mjs",
     "city3d-spike/landmarks.mjs",
     "city3d-spike/public/bridges.geojson",
     "city3d-spike/public/index.html",
-    "city3d-spike/public/landmarks.geojson"
+    "city3d-spike/public/landmarks.geojson",
+    "docs/ONTOLOGY-FOOD-REDESIGN.md"
   ]
 }
