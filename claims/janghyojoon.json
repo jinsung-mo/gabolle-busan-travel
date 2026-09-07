@@ -9,7 +9,6 @@
     "city3d-spike/.gitignore",
     "city3d-spike/build-dist.mjs",
     "city3d-spike/public/config.example.js",
-    "city3d-spike/public/index.html",
-    "governance/policy.json"
+    "city3d-spike/public/index.html"
   ]
 }
