@@ -1,0 +1,13 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-218",
+  "intent": "일정 상세 조회 응답에 warningCodes 추가 - 완료 기준 마지막 남은 항목",
+  "actor": "agent",
+  "session": "fb7b8860-5c03-4b80-bd4e-4c47b25b1865",
+  "since": "2026-09-07T05:19:44.700Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/ItineraryDetailResponse.java"
+  ]
+}
