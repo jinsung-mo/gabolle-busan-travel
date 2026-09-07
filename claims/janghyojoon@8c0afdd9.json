@@ -4,7 +4,7 @@
   "intent": "동의 토글과 이벤트 전송",
   "actor": null,
   "session": "88981cee-a809-432d-94de-70c3b88ac265",
-  "since": "2026-09-07T10:42:50.725Z",
+  "since": "2026-09-07T10:49:50.437Z",
   "ttlMs": 1800000,
   "paths": [
     "docs/COLDSTART-THREE-QUESTIONS.md",
