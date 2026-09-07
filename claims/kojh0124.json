@@ -1,12 +1,12 @@
 {
   "agent": "kojh0124",
-  "task": "S15P21E201-545",
-  "intent": "장소 피처 코드 확정 + 사용자 입력↔장소 코드 대조표 + place 본체 출처·데이터 버전(명세 6.1) + place_feature 유일성. 코드 일치를 자동 검사로 못 박는다. place/place_feature 표 자체는 모진성 님 것이라 ALTER 만 하고 재정의하지 않습니다",
+  "task": "S15P21E201-666",
+  "intent": "안전 피처를 ESTIMATED 로 저장 못 하게 CHECK 하나를 더하고 검사 둘을 붙인다",
   "actor": "agent",
-  "since": "2026-09-04T01:02:48.375Z",
+  "since": "2026-09-07T00:30:49.607Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/src/main/resources/db/migration",
-    "backend/src/test/java/com/gabolle/backend/personalization"
+    "backend/src/main/resources/db/migration/V20260904030000__place_feature_safety_never_estimated.sql",
+    "backend/src/test/java/com/gabolle/backend/personalization/PlaceFeatureCodeMapTest.java"
   ]
 }
