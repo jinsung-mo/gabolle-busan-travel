@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-231",
+  "intent": "긴급: Health Check 타임아웃이 실제 기동 시간보다 짧아 배포가 항상 FAILURE로 보고됨",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-07T03:35:18.743Z",
+  "ttlMs": 1200000,
+  "paths": [
+    "backend/Jenkinsfile"
+  ]
+}
