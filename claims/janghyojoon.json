@@ -1,14 +1,15 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-33",
-  "intent": "투표 슬래시 명령을 모든 브랜치에 둔다",
+  "task": "S15P21E201-49",
+  "intent": "행동 데이터 0 상태의 식당 순위 설계 문서",
   "actor": null,
-  "since": "2026-09-07T03:00:07.881Z",
-  "ttlMs": 3600000,
+  "since": "2026-09-07T03:06:30.918Z",
+  "ttlMs": 1800000,
   "paths": [
     "city3d-spike/.gitignore",
     "city3d-spike/build-dist.mjs",
     "city3d-spike/public/config.example.js",
-    "city3d-spike/public/index.html"
+    "city3d-spike/public/index.html",
+    "docs/FOOD-RANKING-ARCHITECTURE.md"
   ]
 }
