@@ -6,7 +6,6 @@
   "since": "2026-09-07T03:00:07.881Z",
   "ttlMs": 3600000,
   "paths": [
-    ".claude/commands",
     "city3d-spike/.gitignore",
     "city3d-spike/build-dist.mjs",
     "city3d-spike/public/config.example.js",
