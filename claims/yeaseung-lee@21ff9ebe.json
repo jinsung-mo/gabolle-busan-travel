@@ -9,11 +9,6 @@
   "paths": [
     ".gitlab-ci.yml",
     "backend/build.gradle",
-    "backend/src/main/java/com/gabolle/backend/auth/config/HmacJwtAuthenticationFilter.java",
-    "backend/src/main/java/com/gabolle/backend/user/domain/AppUser.java",
-    "backend/src/main/java/com/gabolle/backend/user/domain/UserRole.java",
-    "backend/src/main/resources/db/migration/V20260907120000__app_user_role.sql",
-    "backend/src/test/java/com/gabolle/backend/auth/config/HmacJwtAuthenticationFilterTest.java",
     "frontend/package.json"
   ]
 }
