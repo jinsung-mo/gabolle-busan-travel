@@ -5,7 +5,9 @@ description: axMap — 다른 에이전트/팀원에게 쪽지를 보낸다
 > ⚠️ 도구 목록에 `ax_send` 가 안 보이면 axMap 이 안 붙은 것이다.
 > **경로를 찾지 말고** 아래를 그대로 쓴다. 본문은 표준입력으로 넣는다.
 >
->     AXMAP_AGENT=<내 이름> node ci/axmap/tools/bus.mjs post >       --to <상대|all> --subject "<제목>" < 본문.md
+>     AXMAP_AGENT=<내 이름> axmap bus post >       --to <상대|all> --subject "<제목>" < 본문.md
+>
+> 명령을 못 찾으면 `npm i -g axmap-cli` 를 한 번 한다 — 저장소 안에는 사본이 없다.
 >
 > `AXMAP_AGENT` 를 빼면 "먼저 이름을 정하세요" 라며 거부한다.
 

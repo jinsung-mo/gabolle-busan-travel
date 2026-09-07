@@ -5,9 +5,11 @@ description: axMap — 이 저장소에서 일을 시작한다 (브리핑 → �
 > ⚠️ 도구 목록에 `ax_` 가 안 보이면 axMap 이 안 붙은 것이다.
 > **경로를 찾지 말고** 아래를 그대로 쓴다.
 >
->     쪽지 보기  node ci/axmap/tools/bus.mjs list
->     장부 보기  node ci/axmap/bin/axmap.mjs status
->     선점      node ci/axmap/bin/axmap.mjs claim <경로> --task <티켓> --intent "<한 줄>"
+>     쪽지 보기  axmap bus list
+>     장부 보기  axmap status
+>     선점      axmap claim <경로> --task <티켓> --intent "<한 줄>"
+>
+> 명령을 못 찾으면 `npm i -g axmap-cli` 를 한 번 한다 — 저장소 안에는 사본이 없다.
 >
 > `ax_brief` 는 CLI 에 짝이 없다. 대신 `CONTRIBUTING.md` 와 `docs/` 를 읽는다.
 
