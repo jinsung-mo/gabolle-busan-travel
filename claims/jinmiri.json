@@ -1,14 +1,15 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-586",
-  "intent": "같은 returnTo 유실 버그를 oauth-signup/link 화면에도 반영",
+  "intent": "회원가입 화면도 returnTo 를 저장해 이메일 인증 왕복에서 유실 안 되게",
   "actor": "agent",
-  "since": "2026-09-07T07:14:58.054Z",
+  "since": "2026-09-07T07:15:31.826Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(auth)/oauth-link.tsx",
     "frontend/app/(auth)/oauth-signup.tsx",
     "frontend/app/(auth)/sign-in.tsx",
+    "frontend/app/(auth)/sign-up.tsx",
     "frontend/src/auth/pendingReturnTo.ts"
   ]
 }
