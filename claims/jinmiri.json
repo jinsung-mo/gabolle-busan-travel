@@ -1,0 +1,16 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-586",
+  "intent": "소셜 로그인 2단계(SIGNUP_REQUIRED/LINK_REQUIRED) 화면 연결",
+  "actor": "agent",
+  "since": "2026-09-07T05:46:59.959Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(auth)/oauth-link.tsx",
+    "frontend/app/(auth)/oauth-signup.tsx",
+    "frontend/app/(auth)/sign-in.tsx",
+    "frontend/src/api/client.ts",
+    "frontend/src/auth/authApi.ts",
+    "frontend/src/auth/oauth.ts"
+  ]
+}
