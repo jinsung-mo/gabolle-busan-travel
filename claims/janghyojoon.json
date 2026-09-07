@@ -1,0 +1,11 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-33",
+  "intent": "모진성·고지혁을 파트 dev 투표권자 명단에 올린다",
+  "actor": null,
+  "since": "2026-09-07T02:39:51.430Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "governance/policy.json"
+  ]
+}
