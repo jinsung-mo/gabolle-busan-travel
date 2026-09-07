@@ -1,13 +1,14 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-212",
-  "intent": "추천 결과 화면(지금 갈 곳/추천 코스) i18n 적용 — 영어 모드 잔여 한글 제거",
+  "intent": "getApiLanguage() 추가 — 추천 화면 i18n에서 사용",
   "actor": "agent",
-  "since": "2026-09-07T01:49:40.726Z",
+  "since": "2026-09-07T01:57:44.664Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/now.tsx",
     "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/src/api/client.ts",
     "frontend/src/plan/nowRecommendations.ts",
     "frontend/src/plan/recommendations.ts"
   ]
