@@ -1,0 +1,12 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-188",
+  "intent": "EntityScan에 story.domain 추가 - AccountDeletionIntegrationTest CI 실패 수정",
+  "actor": "agent",
+  "session": "fb7b8860-5c03-4b80-bd4e-4c47b25b1865",
+  "since": "2026-09-07T07:46:48.075Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/testslice/AuthSliceApplication.java"
+  ]
+}
