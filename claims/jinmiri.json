@@ -1,0 +1,11 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-136",
+  "intent": "-136 i18n 스윕 배치7: taste.tsx (31건)",
+  "actor": "agent",
+  "since": "2026-09-07T04:49:04.429Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/taste.tsx"
+  ]
+}
