@@ -6,9 +6,6 @@
   "since": "2026-09-07T08:20:51.579Z",
   "ttlMs": 1800000,
   "paths": [
-    ".claude/commands/ax-ballot.md",
-    ".claude/commands/ax-vote.md",
-    "ci/axmap",
     "docs/FOOD-RANKING-ARCHITECTURE.md",
     "docs/FOOD-RANKING-EVAL.md",
     "docs/ONTOLOGY-FOOD-REDESIGN.md",
