@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-199",
+  "intent": "-199 후속: 추천 결과 응답의 placeCount/estimatedTravelMinutes(백엔드 -604 머지) 프론트에 반영",
+  "actor": "agent",
+  "since": "2026-09-07T03:26:41.496Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/src/plan/recommendations.ts"
+  ]
+}
