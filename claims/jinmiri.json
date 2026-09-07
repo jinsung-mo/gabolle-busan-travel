@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-465",
+  "intent": "jaehyeon 님 축제 API 계약 확정(경로/쿼리파라미터/nameKo 폴백) 반영 + i18n",
+  "actor": "agent",
+  "since": "2026-09-07T08:06:42.259Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/festivals.tsx",
+    "frontend/src/discovery/festivals.ts"
+  ]
+}
