@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-706",
+  "intent": "주요 교량·고가를 실제 제원으로 입체화하고 이동수단(보행자·버스·승용차) 애니메이션을 넣는다",
+  "actor": "agent",
+  "session": "5d4cf699-c86d-473e-a1f5-a201bee8f3af",
+  "since": "2026-09-07T08:11:57.902Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "city3d-spike/public/actors.mjs",
+    "city3d-spike/public/bridge-specs.mjs",
+    "city3d-spike/public/bridges3d.mjs",
+    "city3d-spike/public/index.html"
+  ]
+}
