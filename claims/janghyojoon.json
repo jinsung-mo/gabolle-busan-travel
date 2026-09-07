@@ -7,14 +7,12 @@
   "ttlMs": 2700000,
   "paths": [
     "city3d-spike/public/index.html",
-    "docs/gabolle",
     "frontend/.env.example",
     "frontend/Dockerfile",
     "frontend/app/(trip)/[id]/map.tsx",
     "frontend/docs",
     "frontend/package.json",
     "frontend/src/map",
-    "frontend/tools",
-    "visual-geocode"
+    "frontend/tools"
   ]
 }
