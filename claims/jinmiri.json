@@ -6,8 +6,6 @@
   "since": "2026-09-07T02:49:20.533Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/now.tsx",
-    "frontend/app/trips/[id]/recommendations.tsx",
     "frontend/src/api/client.ts",
     "frontend/src/auth/AuthProvider.tsx",
     "frontend/src/components/AppErrorBoundary.tsx",
@@ -15,7 +13,6 @@
     "frontend/src/components/DongbaekMascot.tsx",
     "frontend/src/components/PermissionRationale.tsx",
     "frontend/src/components/TabBar.tsx",
-    "frontend/src/i18n/index.ts",
     "frontend/src/map/RouteMap.tsx",
     "frontend/src/onboarding/OnboardingPreferences.tsx",
     "frontend/src/plan/PlanProvider.tsx",
