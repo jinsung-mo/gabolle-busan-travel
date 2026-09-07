@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-712",
+  "intent": "후보 풀 합집합 + 배포 채점기 첫 채점",
+  "actor": null,
+  "session": "88981cee-a809-432d-94de-70c3b88ac265",
+  "since": "2026-09-07T11:00:57.440Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "docs/FOOD-RANKING-EVAL.md",
+    "eval/food-ranking"
+  ]
+}
