@@ -1,0 +1,15 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-658",
+  "intent": "MR !222 리베이스 재시도 - claims 감사 통과용 재선점",
+  "actor": null,
+  "session": "67c3749d-ff3b-4a67-ae17-7af8ef08e9a3",
+  "since": "2026-09-07T13:02:19.935Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/now.tsx",
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/src/components/Skeleton.tsx"
+  ]
+}
