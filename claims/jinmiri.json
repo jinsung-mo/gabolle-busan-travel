@@ -1,11 +1,12 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-136",
-  "intent": "-136 i18n 스윕 배치7: taste.tsx (31건)",
+  "intent": "-136 관련 실측 버그: foodConflicts.ts 가 .ts 파일이라 i18n-check.mjs 스캔 대상 밖(.tsx만 검사) — 영어 모드에서 음식/알레르기 라벨이 전부 한글로 나오는 걸 taste.tsx 검증 중 직접 발견, 같이 수정",
   "actor": "agent",
-  "since": "2026-09-07T04:49:04.429Z",
+  "since": "2026-09-07T04:52:20.053Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/(plan)/taste.tsx"
+    "frontend/app/(plan)/taste.tsx",
+    "frontend/src/plan/foodConflicts.ts"
   ]
 }
