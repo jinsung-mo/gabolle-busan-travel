@@ -1,28 +1,13 @@
 {
   "agent": "jaehyeon",
-  "task": "S15P21E201-254",
-  "intent": "back/dev 를 브랜치에 따라잡는 머지 커밋 (내 수정 아님, 곧 반납)",
+  "task": "S15P21E201-467",
+  "intent": "축제 겹침 검증·일정 포함 여부 통합과 커밋",
   "actor": null,
   "session": "59f5a6a7-88d8-412f-8bea-d8ff30e82dda",
-  "since": "2026-09-07T14:37:50.353Z",
-  "ttlMs": 900000,
+  "since": "2026-09-07T15:00:10.133Z",
+  "ttlMs": 7200000,
   "paths": [
-    "backend/src/main/java/com/gabolle/backend/auth",
-    "backend/src/main/java/com/gabolle/backend/auth/config",
-    "backend/src/main/java/com/gabolle/backend/common/privacy",
-    "backend/src/main/java/com/gabolle/backend/common/security",
-    "backend/src/main/java/com/gabolle/backend/itinerary",
-    "backend/src/main/java/com/gabolle/backend/moderation",
-    "backend/src/main/java/com/gabolle/backend/place",
-    "backend/src/main/java/com/gabolle/backend/story",
-    "backend/src/main/java/com/gabolle/backend/user",
-    "backend/src/main/resources/application-dev.properties",
-    "backend/src/test/java/com/gabolle/backend/auth",
-    "backend/src/test/java/com/gabolle/backend/common",
-    "backend/src/test/java/com/gabolle/backend/itinerary",
-    "backend/src/test/java/com/gabolle/backend/moderation",
-    "backend/src/test/java/com/gabolle/backend/place",
-    "backend/src/test/java/com/gabolle/backend/security",
-    "backend/src/test/java/com/gabolle/backend/story"
+    "backend/src/main/java/com/gabolle/backend",
+    "backend/src/test/java/com/gabolle/backend"
   ]
 }
