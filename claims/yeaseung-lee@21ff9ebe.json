@@ -1,17 +1,19 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-686",
-  "intent": "ADMIN Role 도입 (SecurityConfig.java는 jaehyeon 점유 중이라 제외)",
+  "intent": "ADMIN Role 도입 커밋",
   "actor": null,
   "session": "16acb503-8737-4b5e-9609-8c222334a72b",
-  "since": "2026-09-07T02:10:59.502Z",
-  "ttlMs": 2700000,
+  "since": "2026-09-07T02:27:41.011Z",
+  "ttlMs": 1800000,
   "paths": [
     ".gitlab-ci.yml",
     "backend/build.gradle",
     "backend/src/main/java/com/gabolle/backend/auth/config/HmacJwtAuthenticationFilter.java",
     "backend/src/main/java/com/gabolle/backend/user/domain/AppUser.java",
     "backend/src/main/java/com/gabolle/backend/user/domain/UserRole.java",
+    "backend/src/main/resources/db/migration/V20260907120000__app_user_role.sql",
+    "backend/src/test/java/com/gabolle/backend/auth/config/HmacJwtAuthenticationFilterTest.java",
     "frontend/package.json"
   ]
 }
