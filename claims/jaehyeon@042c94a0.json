@@ -1,0 +1,22 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-294",
+  "intent": "동행자 협업 묶음 — 초대(-294·-299)·참여자 관리(-320)·공유 링크(-330·-332)·복제(-338). 표 trip_invite·trip_share_link·trip_seed_place, 경로 아홉",
+  "actor": null,
+  "session": "59f5a6a7-88d8-412f-8bea-d8ff30e82dda",
+  "since": "2026-09-07T01:47:50.197Z",
+  "ttlMs": 21600000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/auth/config/SecurityConfig.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary",
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter",
+    "backend/src/main/java/com/gabolle/backend/share",
+    "backend/src/main/java/com/gabolle/backend/trip",
+    "backend/src/main/resources/db/migration/V20260907040000__trip_collaboration.sql",
+    "backend/src/test/java/com/gabolle/backend/itinerary",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter",
+    "backend/src/test/java/com/gabolle/backend/share",
+    "backend/src/test/java/com/gabolle/backend/trip",
+    "backend/src/test/java/com/gabolle/testslice"
+  ]
+}
