@@ -1,9 +1,9 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-658",
-  "intent": "!222(스켈레톤 UI)가 front/dev 대비 10커밋 밀려서 생긴 리베이스 충돌 해소 — 내 -212 i18n 머지가 원인",
+  "intent": "recommendations.tsx 무한루프 버그 근본 원인 — useI18n().tx 가 매 렌더 새 함수라 useCallback deps 에 넣으면 무한 리렌더. tx 메모이즈로 수정",
   "actor": "agent",
-  "since": "2026-09-07T02:47:14.347Z",
+  "since": "2026-09-07T02:49:20.533Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/now.tsx",
@@ -15,6 +15,7 @@
     "frontend/src/components/DongbaekMascot.tsx",
     "frontend/src/components/PermissionRationale.tsx",
     "frontend/src/components/TabBar.tsx",
+    "frontend/src/i18n/index.ts",
     "frontend/src/map/RouteMap.tsx",
     "frontend/src/onboarding/OnboardingPreferences.tsx",
     "frontend/src/plan/PlanProvider.tsx",
