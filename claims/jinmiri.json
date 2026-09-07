@@ -1,0 +1,11 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-136",
+  "intent": "-136 i18n 스윕 배치2: confirm.tsx (77건, 최대 건수 파일)",
+  "actor": "agent",
+  "since": "2026-09-07T03:09:26.372Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/confirm.tsx"
+  ]
+}
