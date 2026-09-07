@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-136",
+  "intent": "i18n sweep-14 - 현장 번역 도구 화면",
+  "actor": null,
+  "session": "67c3749d-ff3b-4a67-ae17-7af8ef08e9a3",
+  "since": "2026-09-07T08:37:43.722Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/field/translate.tsx"
+  ]
+}
