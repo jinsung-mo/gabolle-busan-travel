@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-694",
+  "intent": "추천 순위를 TourAPI 음식점 목록으로 채점하는 평가 장치와 시도 기록",
+  "actor": "agent",
+  "session": "5d4cf699-c86d-473e-a1f5-a201bee8f3af",
+  "since": "2026-09-07T03:27:44.588Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/FOOD-RANKING-EVAL.md",
+    "eval/food-ranking"
+  ]
+}
