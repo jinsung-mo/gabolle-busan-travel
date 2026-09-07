@@ -1,14 +1,17 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-163",
-  "intent": "지도가 안 뜨는 이유를 화면에 드러내고, 3D 화면으로 가는 문을 낸다 (front/dev + map/dev 두 MR)",
+  "intent": "빌드 때 EXPO_PUBLIC 키가 비어 있으면 경고를 내게 배선한다",
   "actor": "agent",
-  "since": "2026-09-07T15:46:57.699Z",
+  "since": "2026-09-07T15:50:25.046Z",
   "ttlMs": 2700000,
   "paths": [
     "city3d-spike/public/index.html",
+    "frontend/.env.example",
+    "frontend/Dockerfile",
     "frontend/app/(trip)/[id]/map.tsx",
     "frontend/docs",
+    "frontend/package.json",
     "frontend/src/map",
     "frontend/tools"
   ]
