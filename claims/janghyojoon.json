@@ -1,9 +1,9 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-725",
-  "intent": "도보 스케일 파사드 — 항공사진 페이드아웃·낮용 파사드 무늬·횡단보도·1층 상가띠·프레임 비용 재측정",
+  "task": "S15P21E201-635",
+  "intent": "적재 어휘를 앱 어휘로 — CUISINE_TAG/INTEREST_TAG 를 앱이 보내는 코드로 바꾼다",
   "actor": "agent",
-  "since": "2026-09-07T11:57:36.942Z",
+  "since": "2026-09-07T12:12:44.238Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/place/api/PlaceCandidateRequest.java",
@@ -21,6 +21,7 @@
     "backend/src/main/resources/application.properties",
     "backend/src/main/resources/db/migration",
     "backend/src/test/java/com/gabolle/backend/place",
+    "backend/src/test/java/com/gabolle/backend/place/SbizPlaceLoaderIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/recommendation/adapter",
     "backend/src/test/resources",
     "city3d-spike/public/index.html",
