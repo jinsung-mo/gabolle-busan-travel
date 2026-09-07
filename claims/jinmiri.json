@@ -1,11 +1,13 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-136",
-  "intent": "-136 i18n sweep 배치1: RouteMap.tsx tx() 적용 + client.ts getApiLanguage export 추가",
+  "task": "S15P21E201-658",
+  "intent": "!222(스켈레톤 UI)가 front/dev 대비 10커밋 밀려서 생긴 리베이스 충돌 해소 — 내 -212 i18n 머지가 원인",
   "actor": "agent",
-  "since": "2026-09-07T02:39:17.648Z",
+  "since": "2026-09-07T02:47:14.347Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/now.tsx",
+    "frontend/app/trips/[id]/recommendations.tsx",
     "frontend/src/api/client.ts",
     "frontend/src/auth/AuthProvider.tsx",
     "frontend/src/components/AppErrorBoundary.tsx",
