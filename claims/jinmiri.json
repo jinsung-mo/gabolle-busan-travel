@@ -1,0 +1,11 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-136",
+  "intent": "-136 i18n 스윕 배치5: itinerary.tsx (43건)",
+  "actor": "agent",
+  "since": "2026-09-07T03:41:13.979Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/trips/[id]/itinerary.tsx"
+  ]
+}
