@@ -29,8 +29,22 @@ import { planBump, latestVersion, formatVersion } from '../src/version.mjs'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 
+/**
+ * 🔴 git 은 **서 있는 저장소**에서 부른다. 프로그램이 있는 폴더가 아니다.
+ *
+ *    예전에는 `cwd: ROOT` 였다. 저장소 안에 사본을 두고 쓸 때는 그게 맞았다 —
+ *    사본이 곧 저장소 안이었기 때문이다. **npm 으로 설치하면 틀린다.**
+ *    `node_modules/axmap-cli/` 에서 git 을 부르게 되고, 거기는 저장소가 아니라서
+ *    "not a git repository" 로 죽는다. 실측: 설치본으로 `version next` → 종료 코드 1.
+ *
+ *    쪽지함이 이미 같은 실수를 했다 — 프로그램 위치로 데이터를 찾다가 "쪽지가
+ *    있어도 없다" 고 답했다 (tools/bus.mjs 의 주석). 같은 답을 쓴다: 위치를
+ *    묻지 말고 **서 있는 곳**에게 묻는다.
+ */
+const REPO = process.cwd()
+
 function git(args) {
-  const r = spawnSync('git', args, { cwd: ROOT, encoding: 'utf8', windowsHide: true })
+  const r = spawnSync('git', args, { cwd: REPO, encoding: 'utf8', windowsHide: true })
   return { code: r.status ?? 1, out: (r.stdout ?? '').trim(), err: (r.stderr ?? '').trim() }
 }
 
@@ -79,6 +93,15 @@ if (cmd === 'next' || cmd === 'bump') {
   const branch = currentBranch()
   let plan
   try { plan = planBump(branch, tags()) } catch (e) { die(e.message) }
+
+  // 🔴 제품이 아닌 파트는 여기서 끝난다. **종료 코드 0 이다** — 고장이 아니라
+  //    해당 없음이다. 1 을 주면 CI 가 빨개지고, 그러면 문서를 고칠 때마다
+  //    누군가 "왜 빨간가" 를 다시 찾는다.
+  if (plan.skip) {
+    console.log(`브랜치 ${branch}  →  버전 없음`)
+    console.log(`  ${plan.reason}`)
+    process.exit(0)
+  }
 
   const label = { main: 'major (한 주치를 main 으로)', func: 'minor (하루치를 func 로)', dev: 'patch (dev 작업)' }[plan.level]
   console.log(`브랜치 ${branch}  →  ${label}`)

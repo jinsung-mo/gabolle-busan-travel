@@ -22,7 +22,11 @@
  *    그대로 쓴 것과 같은 이유다.
  */
 
-import { levelOf } from './version.mjs'
+import { levelOf, partOf, isNonProductPart } from './version.mjs'
+
+// 🔴 `partOf` 는 `version.mjs` 로 옮겼다. 여기서 다시 내보내는 것은 이미 이 모듈에서
+//    가져다 쓰는 곳(`src/promote.mjs`, `test/mrtarget.test.mjs`)을 깨지 않기 위해서다.
+export { partOf }
 
 /**
  * 종료 코드. 선점 프로토콜·거버넌스와 같은 관례다.
@@ -85,12 +89,6 @@ function isHotfix(branch) {
   return /^hotfix\//.test(branch)
 }
 
-/** `front/dev` → `front`. 슬래시가 없으면 `null`. */
-export function partOf(branch) {
-  const i = String(branch ?? '').lastIndexOf('/')
-  return i < 0 ? null : branch.slice(0, i)
-}
-
 /**
  * 이 브랜치가 무엇인지 사람이 읽는 말로.
  *
@@ -120,8 +118,13 @@ export function allowedTargetsOf(branch) {
   if (RESERVED.has(name)) return '없다 — 도구가 직접 쓰는 브랜치라 MR 로 합치지 않는다'
   switch (levelOf(name)) {
     case 'main': return '없다 — 최상위가 종점이다'
-    case 'func': return '최상위 `main`'
+    case 'func':
+      return isNonProductPart(name)
+        ? '없다 — 이 파트에는 파트 브랜치 단계가 없다. `<파트>/dev` 에서 바로 올린다'
+        : '최상위 `main`'
     case 'dev': {
+      // 제품이 아닌 파트는 파트 단계를 건너뛴다 — 갈 곳이 최상위뿐이다.
+      if (isNonProductPart(name)) return '최상위 `main` — 이 파트에는 파트 브랜치 단계가 없다'
       const part = partOf(name)
       return part ? `같은 파트의 \`${part}/main\` (= \`${part}/func\`)` : '같은 파트의 파트 브랜치'
     }
@@ -179,6 +182,27 @@ export function checkTarget(source, target) {
 
   // 파트 dev → 같은 파트의 파트 브랜치.
   if (from === 'dev') {
+    // 🔴 제품이 아닌 파트(`common` 등)에는 파트 브랜치 단계가 **없다.**
+    //
+    //    `<파트>/main` 의 뜻은 "이 파트의 릴리스 후보" 다. 릴리스할 제품이 없는
+    //    파트에는 그 자리가 비어 있고, 비어 있는 칸을 지나가라고 요구하면 사다리가
+    //    **막다른 길**이 된다 — 2026-08-27 에 실제로 그랬다. 팀 문서가 `common/dev`
+    //    까지 올라온 뒤, `common/main` 이 없어서 `main` 으로 갈 길이 사라졌다.
+    //    그래서 문서는 clone 하면 딸려오는 `main` 에 영영 못 들어갔다.
+    //
+    //    🔴 **통과가 늘어난다.** 그 대가를 알고 늘린다 — `main` 으로 가는 MR 은
+    //    `governance` 가 정족수를 요구하므로 표 없이는 여전히 못 간다.
+    //    사다리가 지키려던 것("아래 관문을 지난 것만 위로")은 그대로 있고,
+    //    없는 칸을 요구하지 않을 뿐이다.
+    if (isNonProductPart(s)) {
+      if (to === 'main') return good('제품이 아닌 파트의 개발 브랜치 → 최상위 (파트 단계가 없다)')
+      return bad(
+        'nonproduct-must-target-top',
+        `\`${partOf(s)}\` 는 제품 코드가 없는 파트라 **파트 브랜치 단계가 없습니다.**\n` +
+          '  문서·CI·공용 설정 자리이고, 버전도 갖지 않습니다.\n' +
+          '  최상위 `main` 으로 바로 올립니다.',
+      )
+    }
     if (to !== 'func') {
       return bad(
         'dev-must-target-part',
@@ -200,6 +224,16 @@ export function checkTarget(source, target) {
 
   // 파트 브랜치 → 최상위.
   if (from === 'func') {
+    // 🔴 제품이 아닌 파트에 파트 브랜치가 있다는 것 자체가 실수다. 막고 알린다 —
+    //    조용히 통과시키면 `common/main` 이 다시 생기고, 그 브랜치는 아무도
+    //    무엇에 쓰는지 모른 채 사다리 한 칸을 더 만든다.
+    if (isNonProductPart(s)) {
+      return bad(
+        'nonproduct-has-no-part-branch',
+        `\`${s}\` 는 만들지 않습니다 — \`${partOf(s)}\` 에는 파트 브랜치 단계가 없습니다.\n` +
+          '  `<파트>/dev` 에서 최상위 `main` 으로 바로 올립니다.',
+      )
+    }
     if (to === 'main') return good('파트 브랜치 → 최상위')
     return bad('part-must-target-main', `\`${s}\` 는 최상위 \`main\` 으로만 올립니다.`)
   }

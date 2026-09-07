@@ -50,6 +50,44 @@ export function levelOf(branch) {
   return null
 }
 
+/**
+ * `front/dev` → `front`. 슬래시가 없으면 `null`.
+ *
+ * 🔴 `mrtarget.mjs` 가 여기서 **가져다 쓴다.** 거기서 다시 만들면 한 저장소에
+ *    파트 판정이 둘이 되고, `levelOf` 를 공유하기로 한 이유가 그대로 무너진다.
+ */
+export function partOf(branch) {
+  const i = String(branch ?? '').lastIndexOf('/')
+  return i < 0 ? null : branch.slice(0, i)
+}
+
+/**
+ * 제품 코드가 없는 파트 — **버전을 올리지 않고, 파트 브랜치 단계도 없다.**
+ *
+ * ── 왜 예외가 필요한가 ──────────────────────────────────────────────────────
+ *
+ * `levelOf` 는 이름의 **마지막 칸만** 본다. 그래서 `common/main` 은 파트 브랜치로
+ * 읽히고 minor 를, `common` 의 내용이 최상위 `main` 에 들어가면 major 를 올린다.
+ * 그런데 `common` 에 들어 있는 것은 문서·CI·공용 설정이다. **제품이 아니다.**
+ * 문서 오타 하나를 고쳤다고 제품 버전이 오르면 그 숫자는 아무것도 가리키지 않는다 —
+ * 이 파일 머리말이 "달력으로 올리면 아무 일도 안 한 날에도 올라간다" 며 날짜 방식을
+ * 버린 것과 **똑같은 이유**다.
+ *
+ * 그리고 파트 브랜치 단계(`<파트>/main`)의 뜻은 "이 파트의 릴리스 후보" 다.
+ * 릴리스할 제품이 없는 파트에는 그 자리가 없다. 그래서 `common/dev` 는
+ * **최상위 `main` 으로 바로 간다** (`mrtarget.mjs` 가 그 판정을 한다).
+ *
+ * 🔴 **이름 목록이지 규칙이 아니다.** 파트가 제품인지 아닌지는 코드가 알 수 없다.
+ *    새 파트를 여기 넣는 것은 팀의 결정이고, 넣는 순간 그 파트는 버전을 갖지 않는다.
+ */
+export const NON_PRODUCT_PARTS = new Set(['common'])
+
+/** 이 브랜치가 제품이 아닌 파트에 속하는가. */
+export function isNonProductPart(branch) {
+  const p = partOf(branch)
+  return p !== null && NON_PRODUCT_PARTS.has(p)
+}
+
 /** 단계 → 올릴 자리. */
 const PART = { main: 'major', func: 'minor', dev: 'patch' }
 
@@ -118,6 +156,18 @@ export function latestVersion(tags) {
  * @returns {{level: string, from: string|null, next: string, tag: string}}
  */
 export function planBump(branch, tags) {
+  // 🔴 제품이 아닌 파트는 **버전을 안 갖는다.** 던지지 않고 skip 을 준다 —
+  //    던지면 `common/dev` 에 push 할 때마다 CI 의 version 잡이 빨개지고,
+  //    그건 "고칠 것이 있다" 는 뜻이 아니라 "여긴 버전이 없다" 는 뜻이다.
+  //    고장과 해당 없음을 같은 색으로 칠하면 사람이 둘을 구분하지 못한다.
+  if (isNonProductPart(branch)) {
+    return {
+      level: levelOf(branch),
+      skip: true,
+      part: partOf(branch),
+      reason: `${partOf(branch)} 은 제품 코드가 없는 파트라 버전을 올리지 않습니다.`,
+    }
+  }
   const level = levelOf(branch)
   if (!level) {
     throw new Error(

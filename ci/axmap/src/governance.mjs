@@ -24,6 +24,7 @@
  * ── 이 층이 지키는 성질 (G1~G5) ──────────────────────────────────────────
  *
  *   G1  자기 표는 세지 않는다 — 소스 브랜치 커밋의 author 인 사람의 표는 무효
+ *       (누구까지를 "author" 로 볼지는 정책의 `self_vote` 가 정한다. 기본은 전부)
  *   G2  정책은 언제나 **타깃 브랜치**에서 읽는다 (이 파일의 밖 — 게이트의 책임)
  *   G3  표는 커밋(sha)에 묶인다 — 헤드가 바뀌면 효력을 잃는다. 사라지지는 않는다
  *   G4  한 사람은 한 표 — email 이 유일 키다
@@ -104,6 +105,220 @@ const isInt = (v) => Number.isInteger(v)
 const isStr = (v) => typeof v === 'string' && v.trim() !== ''
 
 // ---------------------------------------------------------------------------
+// 자기 표 배제(G1)의 **범위** — 정책의 `self_vote`
+// ---------------------------------------------------------------------------
+
+/**
+ * `self_vote` 에 적을 수 있는 값. **G1 을 끄는 스위치가 아니라 범위를 정하는 값**이다.
+ *
+ *   `"authors"`  소스 브랜치의 **모든** 커밋 author 를 배제한다 — 지금까지의 동작
+ *   `"tip"`      소스 브랜치 **맨 위 커밋(tip)의 author 한 명만** 배제한다.
+ *                맨 위 커밋은 표가 묶이는 sha 자신이다 (G3), 즉 "이번에 머지될
+ *                커밋을 만든 사람" 이다
+ *   `"off"`      아무도 배제하지 않는다
+ *
+ * 🔴 **필드가 없으면 `"authors"` 다.** 이 옵션이 없던 시절에 쓰던 저장소의 판정이
+ *    조용히 바뀌면 안 된다. 거버넌스에서 조용한 변화는 우회로와 구분되지 않는다.
+ *
+ * 🔴 **왜 필요했나 — 실측.** 오래 쌓는 `<파트>/dev` 브랜치에서는 시간이 갈수록
+ *    커밋한 사람이 늘어 던질 수 있는 사람이 0 으로 수렴한다. 팀 저장소의
+ *    `common/dev` 는 투표권자 4명 중 3명이 커밋해서 **던질 수 있는 사람 1명 <
+ *    필요 2표** 였다. 이건 "아직 표가 모자라다"(미달)가 아니라 **영구히 잠긴 것**
+ *    이고, 표를 더 모아도 풀리지 않는다.
+ *
+ * 🔴 그래도 `"off"` 를 기본으로 두지 않는 이유: G1 이 실제로 막는 것은 **"혼자
+ *    올리고 혼자 통과"** 하나다. `"tip"` 은 그것을 여전히 막는다 — 머지될 커밋을
+ *    만든 사람은 못 던진다. `"off"` 는 그 마지막 한 겹까지 없앤다.
+ */
+export const SELF_VOTE_MODES = ['authors', 'tip', 'off']
+
+/** `self_vote` 를 안 적어 두었을 때의 값. **바꾸면 기존 저장소의 판정이 바뀐다.** */
+export const DEFAULT_SELF_VOTE = 'authors'
+
+const selfVoteList = () => SELF_VOTE_MODES.map((m) => `"${m}"`).join(' · ')
+
+/** 값 하나가 `self_vote` 로 성립하는가. 없는 것(`undefined`/`null`)은 성립으로 친다. */
+const isSelfVoteValue = (v) => v === undefined || v === null || (typeof v === 'string' && SELF_VOTE_MODES.includes(v))
+
+/**
+ * 정책에서 자기 표 배제 범위를 읽는다. **없으면 기본값, 이상하면 던진다.**
+ *
+ * 🔴 이상한 값을 조용히 기본값으로 떨어뜨리지 않는다. 오타 하나가 배제 범위를
+ *    바꾸면 그건 "표가 모자란다" 가 아니라 **틀린 답을 자신 있게 낸 것**이다.
+ *    정상 경로에서는 `validatePolicy` 가 먼저 잡으므로 여기까지 오지 않는다 —
+ *    이 함수의 throw 는 정책 검증을 건너뛰고 부르는 쪽을 위한 마지막 문이다.
+ */
+export function selfVoteMode(policy) {
+  const raw = policy?.self_vote
+  if (raw === undefined || raw === null) return DEFAULT_SELF_VOTE
+  if (!isSelfVoteValue(raw)) {
+    throw new GovernanceError(
+      `\`self_vote\` 는 ${selfVoteList()} 중 하나여야 합니다: ${JSON.stringify(raw)}`,
+      { code: 'self-vote-invalid' },
+    )
+  }
+  return raw
+}
+
+/**
+ * 이번 판정에서 **표를 못 던지는 사람들**의 email 집합 (비교용으로 접은 값).
+ *
+ * 🔴 **`majorityThreshold`(분모)와 `countVotes`(분자)가 이 함수 하나만 쓴다.**
+ *    둘이 다른 기준으로 세면 "필요한 표" 와 "센 표" 의 분모가 어긋나고, 그때는
+ *    아무 에러 없이 판정만 틀린다 — 이 층에서 제일 나쁜 실패 모양이다.
+ *
+ * @param {string}   mode           `selfVoteMode()` 가 돌려준 값
+ * @param {string[]} authorEmails   소스 브랜치 커밋들의 author email
+ * @param {string|null} tipAuthorEmail 맨 위 커밋의 author email (`"tip"` 에서만 쓴다)
+ */
+function excludedAuthors(mode, authorEmails, tipAuthorEmail) {
+  if (mode === 'off') return new Set()
+  if (mode === 'tip') {
+    if (!isStr(tipAuthorEmail)) {
+      // 맨 위 커밋의 author 를 모르면 **누구를 빼야 하는지 자체를 모른다.**
+      // 미달이 아니라 판정 불가다 (G5 — 못 세면 통과가 아니다).
+      throw new GovernanceError(
+        'self_vote 가 "tip" 인데 소스 브랜치 맨 위 커밋의 author email 을 받지 못했습니다.\n'
+        + '  누구를 빼야 하는지 모르면 세지 않습니다 (G1).',
+        { code: 'tip-author-missing' },
+      )
+    }
+    return new Set([fold(tipAuthorEmail)])
+  }
+  return new Set(authorEmails.map(fold))
+}
+
+/**
+ * `authorEmails` 가 배제에 쓸 만한 모양인가. **`"off"` 일 때만 없어도 된다.**
+ *
+ * 🔴 이 가드를 `"tip"` 에서도 유지하는 이유: `"tip"` 은 배제 범위를 좁힐 뿐
+ *    G1 을 끄지 않는다. 소스에 새 커밋이 하나도 없는(= author 를 못 모은) 상태는
+ *    `"tip"` 에서도 여전히 "셀 수 없는" 상태다 — 그때 무엇을 머지하는지 자체가
+ *    불분명하다.
+ */
+const authorsUsable = (authorEmails) =>
+  Array.isArray(authorEmails) && authorEmails.length > 0 && authorEmails.every(isStr)
+
+// ---------------------------------------------------------------------------
+// 표에 이유를 요구한다 — 정책의 `vote_note` (선택 필드)
+// ---------------------------------------------------------------------------
+
+/**
+ * `vote_note` — **"이유 없는 표는 안 센다"** 를 정책이 켜는 자리.
+ *
+ * ```json
+ * "vote_note": { "min_chars": 20, "since": "2026-09-01" }
+ * ```
+ *
+ * | 칸 | |
+ * |---|---|
+ * | `min_chars` | `note` 를 몇 글자 이상 적어야 하는가. 안 적으면 `1`(= 뭐든 한 글자) |
+ * | `since` | **시행일.** 이 시각 **이후**에 던져진 표(`at` 기준)에만 요구한다 |
+ *
+ * 🔴 **필드가 없으면 아무것도 요구하지 않는다.** `self_vote` 와 같은 불변식이다 —
+ *    이 옵션이 없던 시절의 저장소가 판정이 조용히 바뀌는 것을 겪으면 안 된다.
+ *    거버넌스에서 조용한 변화는 우회로와 구분되지 않는다.
+ *
+ * 🔴 **`since` 가 있는 이유는 소급 금지 하나다.** 이미 던져진 표는 그때의 규칙으로
+ *    유효해야 한다. 규칙을 바꾸는 순간 지난 표가 무효가 되면, 그건 규칙을 고치는
+ *    사람이 **남의 표를 지울 수 있다**는 뜻이 된다. `since` 를 안 적으면 시행일
+ *    제한이 없다(= 모든 표에 요구) — 새 저장소가 처음부터 켜는 경우다.
+ *
+ * 🔴 **왜 세는 쪽에도 두는가.** 쓰는 쪽(`governance/vote.mjs`)만 막으면
+ *    `git pull` 을 안 한 사람의 옛 `vote.mjs` 가 이 규칙을 모른 채 이유 없는 표를
+ *    그냥 쓴다. 쓰는 쪽의 거부는 **친절함**이고, 진짜 문은 CI 에서 도는 이 층이다.
+ */
+export const DEFAULT_VOTE_NOTE_MIN_CHARS = 1
+
+/**
+ * `vote_note` 를 읽어 규칙 하나로 만든다. **문제는 모아서 돌려준다** —
+ * `validatePolicy` 가 한 번에 다 보여줄 수 있게 (그 함수의 관례 그대로).
+ *
+ * @returns {{rule: {minChars:number, sinceMs:number|null, since:string|null}|null,
+ *            problems: Array<{code:string,message:string}>}}
+ */
+function parseVoteNote(raw) {
+  const problems = []
+  const bad = (code, message) => problems.push({ code, message })
+
+  if (raw === undefined || raw === null) return { rule: null, problems }
+  if (typeof raw !== 'object' || Array.isArray(raw)) {
+    bad('vote-note-malformed', `\`vote_note\` 는 객체여야 합니다 (안 적으면 이유를 요구하지 않습니다): ${JSON.stringify(raw)}`)
+    return { rule: null, problems }
+  }
+
+  let minChars = DEFAULT_VOTE_NOTE_MIN_CHARS
+  if (raw.min_chars !== undefined && raw.min_chars !== null) {
+    if (!isInt(raw.min_chars) || raw.min_chars < 1) {
+      // 0 은 "길이 제한 없음" 이 아니라 **규칙이 꺼진 것**이다. 끄고 싶으면
+      // `vote_note` 자체를 지우는 것이 정직하고, 그건 정책 diff 에 남는다.
+      bad('vote-note-min-chars', `\`vote_note.min_chars\` 는 1 이상의 정수여야 합니다 (안 적으면 ${DEFAULT_VOTE_NOTE_MIN_CHARS}): ${JSON.stringify(raw.min_chars)}`)
+    } else {
+      minChars = raw.min_chars
+    }
+  }
+
+  let sinceMs = null
+  if (raw.since !== undefined && raw.since !== null) {
+    if (!isStr(raw.since)) {
+      bad('vote-note-since', `\`vote_note.since\` 는 시각 문자열이어야 합니다: ${JSON.stringify(raw.since)}`)
+    } else {
+      const t = Date.parse(raw.since)
+      if (Number.isNaN(t)) {
+        // 못 읽는 시행일을 "제한 없음" 으로 떨어뜨리지 않는다. 오타 하나가
+        // 지난 표 전부를 무효로 만들 수 있는 자리다 (G5 와 같은 이유).
+        bad('vote-note-since', `\`vote_note.since\` 를 시각으로 읽을 수 없습니다: ${JSON.stringify(raw.since)}`)
+      } else {
+        sinceMs = t
+      }
+    }
+  }
+
+  if (problems.length) return { rule: null, problems }
+  return { rule: { minChars, sinceMs, since: raw.since ?? null }, problems }
+}
+
+/**
+ * 정책에서 이유 규칙을 읽는다. **없으면 `null`(요구 안 함), 이상하면 던진다.**
+ *
+ * `selfVoteMode` 와 같은 모양이다 — 정상 경로에서는 `validatePolicy` 가 먼저
+ * 잡으므로 여기까지 오지 않는다. 이 throw 는 정책 검증을 건너뛰고 부르는 쪽을
+ * 위한 마지막 문이다.
+ */
+export function voteNoteRule(policy) {
+  const { rule, problems } = parseVoteNote(policy?.vote_note)
+  if (problems.length) {
+    throw new GovernanceError(problems.map((p) => p.message).join('\n'), { code: problems[0].code })
+  }
+  return rule
+}
+
+/**
+ * 표 한 장이 이유 규칙을 어겼는가. **안 어겼으면 `null`.**
+ *
+ * 🔴 쓰는 쪽(`governance/vote.mjs`)과 세는 쪽(`countVotes`)이 **이 함수 하나**를
+ *    쓴다. 두 곳이 길이를 다르게 세면, 던질 때는 통과하고 셀 때는 무효가 되는
+ *    표가 생긴다 — 던진 사람은 던졌다고 믿고 아무도 안 센다.
+ *
+ * 길이는 **앞뒤 공백을 뗀 뒤의 코드 포인트 수**다. 공백으로 길이를 채우는 것을
+ * 이유로 치지 않기 위해서다. 이모지 하나는 한 글자로 센다.
+ *
+ * @param {{note:*, at:*, rule:object|null}} args `at` 은 표에 적힌 시각(소급 금지용)
+ * @returns {{reason:'note-missing'|'note-short', detail:string|null}|null}
+ */
+export function voteNoteProblem({ note, at, rule }) {
+  if (!rule) return null
+  // 소급 금지 — 시행일 **이전**에 던져진 표는 그때의 규칙으로 유효하다.
+  if (rule.sinceMs !== null && toMs(at, 'votes[].at') < rule.sinceMs) return null
+
+  const text = typeof note === 'string' ? note.trim() : ''
+  if (text === '') return { reason: 'note-missing', detail: null }
+  const n = [...text].length
+  if (n < rule.minChars) return { reason: 'note-short', detail: `${n}자 — 최소 ${rule.minChars}자` }
+  return null
+}
+
+// ---------------------------------------------------------------------------
 // 과반(majority) 문턱
 // ---------------------------------------------------------------------------
 
@@ -137,21 +352,35 @@ const thresholdRank = (v) => (v === MAJORITY ? Infinity : v)
 /**
  * 과반 문턱을 실제 숫자로 만든다.
  *
+ * 🔴 세 번째 인자는 **기본값이 있다.** 두 인자로 부르던 기존 호출은 `"authors"` 로
+ *    돌아가므로 판정이 바뀌지 않는다. 새 옵션을 넣는 것이 옛 저장소의 답을 바꾸면
+ *    안 된다는 것이 이 변경의 첫 번째 불변식이다.
+ *
  * @param {Array} voters 정책 명단. 승계로 들어온 사람은 넣지 않는다 (위 주석)
  * @param {string[]} authorEmails 소스 브랜치 커밋의 author email
+ * @param {{selfVote?: string, tipAuthorEmail?: string|null}} [opts]
+ *        `selfVote` 는 `selfVoteMode(policy)` 가 돌려준 값을 그대로 넣는다 —
+ *        `countVotes` 와 **같은 값**이어야 분자와 분모가 어긋나지 않는다
  */
-export function majorityThreshold(voters, authorEmails) {
+export function majorityThreshold(voters, authorEmails, { selfVote = DEFAULT_SELF_VOTE, tipAuthorEmail = null } = {}) {
   if (!Array.isArray(voters) || voters.length === 0) {
     throw new GovernanceError('정책에 투표권자가 없어 과반을 셀 수 없습니다.', { exit: EXIT.POLICY_BROKEN, code: 'voters-missing' })
   }
-  if (!Array.isArray(authorEmails) || authorEmails.length === 0 || !authorEmails.every(isStr)) {
+  if (!isSelfVoteValue(selfVote) || selfVote === undefined || selfVote === null) {
+    // 부르는 쪽이 이상한 값을 줬다. 안전한 값으로 치환하면 분모가 조용히 틀린다.
+    throw new GovernanceError(
+      `\`self_vote\` 는 ${selfVoteList()} 중 하나여야 합니다: ${JSON.stringify(selfVote)}`,
+      { code: 'self-vote-invalid' },
+    )
+  }
+  if (selfVote !== 'off' && !authorsUsable(authorEmails)) {
     // 작성자를 모르면 분모를 정할 수 없다. 미달이 아니라 판정 불가다 (G5).
     throw new GovernanceError(
       '과반을 세려면 소스 브랜치 커밋의 author email 이 필요합니다. 작성자를 못 빼면 문턱이 틀립니다.',
       { code: 'authors-missing' },
     )
   }
-  const authors = new Set(authorEmails.map(fold))
+  const authors = excludedAuthors(selfVote, authorEmails, tipAuthorEmail)
   const eligible = voters.filter((v) => !authors.has(fold(v?.email)))
   // 명단이 전부 작성자라도 **0 으로 내려가지 않는다.** 문턱 0 은 문턱이 아니라
   // 이 층이 없는 것이다. 그때는 승계로 들어온 남이 한 표를 줘야 통과한다.
@@ -225,11 +454,19 @@ export function validatePolicy(policy, { policyPath = DEFAULT_POLICY_PATH } = {}
   }
 
   // ── 투표권자 ──────────────────────────────────────────────────────────
+  //
+  // 🔴 **명단은 없어도 된다.** 비어 있는 것은 "투표권자가 없다" 가 아니라
+  //    **"저장소에 커밋한 사람이 곧 명단이다"** 라는 뜻이다 (`deriveVoters`).
+  //    손으로 적는 명단은 이메일 한 글자만 틀려도 그 사람이 영영 표를 못 던지는데,
+  //    틀렸다는 사실은 표가 모자랄 때까지 안 보인다. 적을 것이 없으면 틀릴 것도 없다.
+  //
+  //    적어 두는 길은 남긴다 — 저장소에 커밋하지 않는 사람에게 표를 주려면
+  //    커밋 이력으로는 표현할 수 없기 때문이다.
   const voters = policy.voters
   let voterCount = null
-  if (!Array.isArray(voters) || voters.length === 0) {
-    add('voters-missing', '`voters` 가 비어 있습니다. 투표권자가 없으면 셀 수 있는 것이 없습니다.')
-  } else {
+  if (voters != null && !Array.isArray(voters)) {
+    add('voters-malformed', `\`voters\` 가 배열이 아닙니다: ${JSON.stringify(voters)}`)
+  } else if (Array.isArray(voters) && voters.length > 0) {
     voterCount = voters.length
     const seenId = new Map()
     const seenEmail = new Map()
@@ -260,7 +497,16 @@ export function validatePolicy(policy, { policyPath = DEFAULT_POLICY_PATH } = {}
     }
     const t = holder.threshold
     // `"majority"` 는 명단에서 계산되는 값이라 여기서 상한을 따질 것이 없다.
-    if (t === MAJORITY) return t
+    if (t === MAJORITY) {
+      // 🔴 분모가 없으면 과반은 셀 수 없다. 명단을 안 둔 저장소에서는 투표권자가
+      //    커밋과 함께 늘어나므로, 같은 MR 이 어제와 오늘 다른 문턱을 갖는다.
+      //    그건 문턱이 아니다.
+      if (voterCount === null) {
+        add('majority-without-roster', `\`${label}.threshold\` 가 "majority" 인데 \`voters\` 명단이 없습니다. 과반은 고정된 분모가 있어야 셉니다 — 숫자로 적거나 명단을 두세요.`)
+        return null
+      }
+      return t
+    }
     if (!isInt(t) || t < 1) {
       // 정족수 0 은 정족수가 아니라 **이 층이 없는 것**이다. 그렇게 하고 싶으면
       // CI 잡을 지우는 것이 정직하고, 그건 이력에 남는다. 조용히 0 으로 두면
@@ -346,6 +592,31 @@ export function validatePolicy(policy, { policyPath = DEFAULT_POLICY_PATH } = {}
         }
       }
     })
+  }
+
+  // ── 자기 표 배제 범위 (선택 필드) ─────────────────────────────────────
+  //
+  // 🔴 **판정 불가(1)로 올린다. 깨진 정책(4)이 아니다.**
+  //    threshold 가 이상한 것은 "정책이 틀리게 적혀 있다" 지만, `self_vote` 가
+  //    이상한 것은 **누구를 빼야 하는지 자체를 모른다** 는 뜻이다. 그 상태에서
+  //    센 숫자는 미달인지 충족인지조차 알 수 없다 — G5(못 세면 통과가 아니다)가
+  //    말하는 바로 그 자리다. 조용히 기본값으로 떨어뜨리는 것이 최악이다.
+  if (!isSelfVoteValue(policy.self_vote)) {
+    add(
+      'self-vote-invalid',
+      `\`self_vote\` 는 ${selfVoteList()} 중 하나여야 합니다 (안 적으면 "${DEFAULT_SELF_VOTE}"): ${JSON.stringify(policy.self_vote)}`,
+      EXIT.UNDECIDABLE,
+    )
+  }
+
+  // ── 표에 이유를 요구하는 규칙 (선택 필드) ──────────────────────────────
+  //
+  // 🔴 `self_vote` 와 **같은 자리·같은 등급**이다. 판정 불가(1)로 올리고 깨진
+  //    정책(4)으로 올리지 않는 이유도 같다: 이 값이 이상하면 **어떤 표가 유효한지
+  //    자체를 모른다.** 그 상태에서 센 숫자는 미달인지 충족인지조차 알 수 없다
+  //    (G5 — 못 세면 통과가 아니다).
+  for (const p of parseVoteNote(policy.vote_note).problems) {
+    add(p.code, p.message, EXIT.UNDECIDABLE)
   }
 
   // ── 승계 설정 ────────────────────────────────────────────────────────
@@ -482,8 +753,14 @@ export function rulesFor(paths, policy, { majority = null } = {}) {
 // ---------------------------------------------------------------------------
 
 /**
- * 유효 투표권자를 정한다. 살아 있는 사람이 필요 표보다 적으면 **승계**가 돈다.
+ * 유효 투표권자를 정한다. 길이 둘이다.
  *
+ * 🔴 **명단(`policy.voters`)이 비어 있으면 저장소에 커밋한 사람이 곧 명단이다.**
+ *    최근 `window_days` 안에 커밋한 사람 **전원**이 투표권자가 된다. 상위 몇 명으로
+ *    자르지 않는다 — 자르는 것은 승계(빈자리를 임시로 메우는 것)의 일이고, 여기서는
+ *    그 사람들이 명단 자체이기 때문이다.
+ *
+ * 명단이 있으면: 살아 있는 사람이 필요 표보다 적을 때 **승계**가 돈다.
  * 승계 = 최근 `window_days` 안에 커밋한 author 상위 `top` 명이 임시 투표권을 갖는 것.
  *
  * 🔴 **승계가 발동한 사실은 반드시 출력에 드러난다** (`formatVerdict` 가 찍는다).
@@ -504,10 +781,7 @@ export function rulesFor(paths, policy, { majority = null } = {}) {
  * @param {number|null} [args.threshold] 이번 MR 의 필요 표. 없으면 `default.threshold`
  */
 export function deriveVoters({ policy, contributors, now, threshold = null }) {
-  const base = policy?.voters
-  if (!Array.isArray(base) || base.length === 0) {
-    throw new GovernanceError('정책에 투표권자가 없습니다.', { exit: EXIT.POLICY_BROKEN, code: 'voters-missing' })
-  }
+  const base = Array.isArray(policy?.voters) ? policy.voters : []
   const need = threshold ?? policy?.default?.threshold
   if (!isInt(need) || need < 1) {
     throw new GovernanceError(`필요 표를 정할 수 없습니다: ${JSON.stringify(need)}`, { exit: EXIT.POLICY_BROKEN, code: 'threshold-unresolved' })
@@ -518,9 +792,6 @@ export function deriveVoters({ policy, contributors, now, threshold = null }) {
   const topN = isInt(cfg.top) ? cfg.top : DEFAULT_SUCCESSION.top
   const nowMs = toMs(now, 'now')
   const since = nowMs - windowDays * 86400000
-
-  const roster = base.map((v) => ({ id: v.id, email: v.email, via: 'policy' }))
-  const byEmail = new Set(roster.map((v) => fold(v.email)))
 
   /** 창 안에 커밋이 있는 사람. `contributors` 를 못 받았으면 판단을 미룬다. */
   const recent = new Map() // fold(email) -> {email, name, commits, lastAt}
@@ -540,6 +811,46 @@ export function deriveVoters({ policy, contributors, now, threshold = null }) {
     }
   }
 
+  /**
+   * 커밋 수 → 최근순 → email 순. 마지막 두 단계는 **결과를 결정론적으로** 만들기
+   * 위한 것이다. 같은 입력에 다른 답이 나오는 거버넌스는 못 쓴다.
+   */
+  const byActivity = (a, b) =>
+    (b.commits - a.commits) || (b.lastAt - a.lastAt) || (fold(a.email) < fold(b.email) ? -1 : 1)
+
+  // 🔴 명단이 없으면 **저장소에 커밋한 사람이 곧 명단이다.**
+  //    승계는 돌지 않는다 — 메울 빈자리가 없다. 여기 들어오는 사람은 전부 창 안에
+  //    커밋이 있으므로 `alive` 와 같은 목록이다.
+  if (base.length === 0) {
+    if (!Array.isArray(contributors)) {
+      // 이력을 못 받은 것을 "커밋한 사람이 없다" 로 읽으면 살아 있는 저장소가
+      // 죽은 것으로 보인다. 못 세면 통과가 아니다 (G5).
+      throw new GovernanceError(
+        '명단이 없어 기여 이력으로 투표권자를 정해야 하는데 이력을 받지 못했습니다 (contributors=null).',
+        { code: 'contributors-missing' },
+      )
+    }
+    const derived = [...recent.values()]
+      .sort(byActivity)
+      .map((c) => ({ id: c.name ?? c.email, email: c.email, via: 'contributors', commits: c.commits }))
+    return {
+      voters: derived,
+      base: [],
+      alive: derived,
+      succeeded: [],
+      triggered: false,
+      derived: true,
+      need,
+      short: Math.max(0, need - derived.length),
+      // `top` 은 null 이다 — 여기서는 자르지 않았다. 숫자를 넣어 두면 읽는 쪽이
+      // "상위 몇 명만 들어왔다" 고 잘못 읽는다.
+      window: { days: windowDays, since: new Date(since).toISOString(), top: null },
+    }
+  }
+
+  const roster = base.map((v) => ({ id: v.id, email: v.email, via: 'policy' }))
+  const byEmail = new Set(roster.map((v) => fold(v.email)))
+
   const alive = roster.filter((v) => recent.has(fold(v.email)))
   const triggered = alive.length < need
 
@@ -556,9 +867,7 @@ export function deriveVoters({ policy, contributors, now, threshold = null }) {
     }
     succeeded = [...recent.values()]
       .filter((c) => !byEmail.has(fold(c.email)))
-      // 커밋 수 → 최근순 → email 순. 마지막 두 단계는 **결과를 결정론적으로**
-      // 만들기 위한 것이다. 같은 입력에 다른 답이 나오는 거버넌스는 못 쓴다.
-      .sort((a, b) => (b.commits - a.commits) || (b.lastAt - a.lastAt) || (fold(a.email) < fold(b.email) ? -1 : 1))
+      .sort(byActivity)
       .slice(0, topN)
       .map((c) => ({ id: c.name ?? c.email, email: c.email, via: 'succession', commits: c.commits }))
   }
@@ -571,6 +880,7 @@ export function deriveVoters({ policy, contributors, now, threshold = null }) {
     alive,
     succeeded,
     triggered,
+    derived: false,
     need,
     // 승계로도 못 채운 몫. 0 이 아니면 이 저장소는 **막혀 있다.**
     // 탈출구를 만들지 않는다 — 오픈소스에서 그 상태의 정답은 fork 다.
@@ -599,6 +909,9 @@ export const REASONS = {
   'self-vote': '자기 표 (G1)',
   'future-dated': '미래 시각으로 적힌 표',
   duplicate: '같은 사람의 두 번째 표 (G4)',
+  // 🔴 정책이 `vote_note` 를 켰을 때만 난다. 안 켰으면 이 사유는 존재하지 않는다.
+  'note-missing': '이유(note)를 안 적은 표 — 정책이 이유를 요구한다',
+  'note-short': '이유(note)가 정책의 최소 길이보다 짧음',
 }
 
 /** 시계가 조금 어긋난 것까지 위조로 몰지 않는다. 하루면 충분히 넉넉하다. */
@@ -614,9 +927,11 @@ const FUTURE_TOLERANCE_MS = 24 * 60 * 60 * 1000
  * @param {number|string} args.now
  * @param {Array|null} [args.voters]  `deriveVoters` 결과. 없으면 `policy.voters`
  * @param {string|null} [args.branch] 소스 브랜치 이름. 주면 표의 branch 와 대조한다
+ * @param {string|null} [args.tipAuthorEmail] 맨 위 커밋의 author email.
+ *        `self_vote: "tip"` 일 때만 쓰이고, 그때는 **없으면 판정 불가**다
  * @returns {{approvals:number, counted:Array, rejections:Array, invalid:Array}}
  */
-export function countVotes({ policy, votes, authorEmails, sha, now, voters = null, branch = null }) {
+export function countVotes({ policy, votes, authorEmails, sha, now, voters = null, branch = null, tipAuthorEmail = null }) {
   const roster = voters ?? policy?.voters ?? null
   if (!Array.isArray(roster) || roster.length === 0) {
     throw new GovernanceError('투표권자 명단이 없습니다.', { exit: EXIT.POLICY_BROKEN, code: 'voters-missing' })
@@ -632,7 +947,14 @@ export function countVotes({ policy, votes, authorEmails, sha, now, voters = nul
   if (!SHA_RE.test(fold(sha))) {
     throw new GovernanceError(`머지 대상 커밋(sha)을 읽을 수 없습니다: ${JSON.stringify(sha)}`, { code: 'sha-missing' })
   }
-  if (!Array.isArray(authorEmails) || authorEmails.length === 0 || !authorEmails.every(isStr)) {
+  // 🔴 배제 범위는 **정책에서 읽는다.** `majorityThreshold` 에는 `judge` 가 같은
+  //    `selfVoteMode(policy)` 결과를 넘긴다 — 분자와 분모가 같은 값을 보게 하는
+  //    자리가 여기 하나뿐이어야 한다.
+  const selfVote = selfVoteMode(policy)
+  // 🔴 이유 규칙도 **정책에서** 읽는다. 없으면 `null` 이고 아무 표도 이 사유로
+  //    떨어지지 않는다 — 이 필드가 없던 저장소의 판정은 그대로다.
+  const noteRule = voteNoteRule(policy)
+  if (selfVote !== 'off' && !authorsUsable(authorEmails)) {
     // 자기 표를 못 거르면(G1) 셀 자격이 없다. 미달이 아니라 판정 불가다.
     throw new GovernanceError(
       '소스 브랜치 커밋의 author email 을 받지 못했습니다. 자기 표를 걸러낼 수 없으면 세지 않습니다 (G1).',
@@ -641,7 +963,7 @@ export function countVotes({ policy, votes, authorEmails, sha, now, voters = nul
   }
 
   const nowMs = toMs(now, 'now')
-  const authors = new Set(authorEmails.map(fold))
+  const authors = excludedAuthors(selfVote, authorEmails, tipAuthorEmail)
   const byEmail = new Map(roster.map((v) => [fold(v.email), v]))
 
   const counted = []
@@ -661,9 +983,10 @@ export function countVotes({ policy, votes, authorEmails, sha, now, voters = nul
 
     const voter = byEmail.get(email)
     if (!voter) { bad('not-a-voter'); continue }
-    // 정책에 적힌 사람은 id 까지 맞아야 한다. 승계로 들어온 사람은 정책에 id 가
-    // 없으므로(이름을 저장소가 정해 준 적이 없다) email 만 본다.
-    if (voter.via !== 'succession' && fold(voter.id) !== fold(v.voter)) {
+    // 정책에 적힌 사람은 id 까지 맞아야 한다. 커밋 이력에서 나온 사람(승계·명단
+    // 없음)은 정책에 id 가 없으므로 — 이름을 저장소가 정해 준 적이 없다 —
+    // email 만 본다. git 의 표시 이름은 사람마다 PC 마다 흔들린다.
+    if (voter.via !== 'succession' && voter.via !== 'contributors' && fold(voter.id) !== fold(v.voter)) {
       bad('identity-mismatch', `명단은 ${voter.id}`); continue
     }
 
@@ -672,6 +995,12 @@ export function countVotes({ policy, votes, authorEmails, sha, now, voters = nul
 
     if (authors.has(email)) { bad('self-vote'); continue } // G1
     if (toMs(v.at, 'votes[].at') > nowMs + FUTURE_TOLERANCE_MS) { bad('future-dated', v.at); continue }
+    // 🔴 이유 없는 표는 **찬성이든 반대든** 안 센다. 반대야말로 이유가 필요하다 —
+    //    이유 없는 반대는 판정문에 "누군가 막고 있다" 만 남기고 무엇을 고쳐야
+    //    하는지는 안 남긴다. 그리고 duplicate(G4)보다 **먼저** 본다: 이유 없는
+    //    첫 표가 `seen` 을 차지하면, 뒤에 온 제대로 된 표가 중복으로 떨어진다.
+    const noteBad = voteNoteProblem({ note: v.note, at: v.at, rule: noteRule })
+    if (noteBad) { bad(noteBad.reason, noteBad.detail); continue }
     if (seen.has(email)) { bad('duplicate', `이미 센 표: ${seen.get(email).voter}`); continue } // G4
 
     seen.set(email, v)
@@ -710,6 +1039,15 @@ function readVote(raw) {
   if (raw.branch !== undefined && !isStr(raw.branch)) {
     throw new GovernanceError(`표의 branch 가 문자열이 아닙니다: ${JSON.stringify(raw.branch)}`, { code: 'vote-malformed' })
   }
+  // 🔴 `note` 는 **비어 있어도 여기서 던지지 않는다.** 빈 이유는 "표가 깨졌다"
+  //    (판정 전체 중단)가 아니라 "이 표는 안 센다"(무효표 한 장)여야 한다.
+  //    여기서 던지면 이유를 안 적은 표 한 장이 MR 전체를 판정 불가로 만든다.
+  //    문자열이 **아닌 것**만 깨진 것으로 친다 — 그건 손으로 쓴 오류다.
+  if (raw.note !== undefined && raw.note !== null && typeof raw.note !== 'string') {
+    throw new GovernanceError(`표의 note 가 문자열이 아닙니다: ${JSON.stringify(raw.note)}`, { code: 'vote-malformed' })
+  }
+  // `agent` 는 검사하지 않는다. 판정에 안 쓰이고, 모양이 늘어날 자리이기 때문이다
+  // — 여기서 모양을 고정하면 필드가 하나 늘 때마다 옛 게이트가 표를 깨진 것으로 본다.
   return raw
 }
 
@@ -727,19 +1065,26 @@ function readVote(raw) {
  */
 export function judge({
   policy, changed, votes, authorEmails, sha, contributors = null, now, branch = null, policyPath = DEFAULT_POLICY_PATH,
+  tipAuthorEmail = null,
 }) {
   const v = validatePolicy(policy, { policyPath })
   if (!v.ok) {
     return { exit: v.exit, ok: false, stage: 'policy', problems: v.problems }
   }
   try {
+    // 🔴 배제 범위를 **여기서 한 번** 읽어 분모 쪽에 넘긴다. 분자 쪽(`countVotes`)은
+    //    같은 `policy` 로 같은 함수를 다시 부르므로 두 값은 갈라질 수 없다.
+    //    갈라지면 "필요한 표" 와 "센 표" 의 분모가 어긋나 판정만 조용히 틀린다.
+    const selfVote = selfVoteMode(policy)
     // 🔴 과반은 **정책 명단에서 작성자를 뺀 수**로 센다. 승계로 들어온 사람은
     //    분모에 안 들어간다 — 모자라서 부른 사람이 문턱을 같이 올리면 안 된다.
     //    그래서 이 계산이 `deriveVoters` 보다 먼저 온다.
-    const majority = usesMajority(policy) ? majorityThreshold(policy.voters, authorEmails) : null
+    const majority = usesMajority(policy)
+      ? majorityThreshold(policy.voters, authorEmails, { selfVote, tipAuthorEmail })
+      : null
     const need = rulesFor(changed, policy, { majority })
     const roster = deriveVoters({ policy, contributors, now, threshold: need.threshold })
-    const tally = countVotes({ policy, votes, authorEmails, sha, now, voters: roster.voters, branch })
+    const tally = countVotes({ policy, votes, authorEmails, sha, now, voters: roster.voters, branch, tipAuthorEmail })
     const ok = tally.approvals >= need.threshold
     return {
       exit: ok ? EXIT.OK : EXIT.SHORT,
@@ -811,6 +1156,13 @@ export function formatVerdict(verdict) {
     }
   }
   if (tally.counted.length || tally.rejections.length || tally.invalid.length) L.push('')
+
+  // 🔴 명단 없이 정해진 투표권자도 조용히 지나가지 않는다. **누가 표를 던질 수
+  //    있는가는 판정의 절반**이고, 그것이 커밋 이력에서 나왔다면 더 그렇다.
+  if (roster.derived) {
+    L.push(`  명단 없음 — 최근 ${roster.window.days}일 안에 커밋한 ${roster.voters.length}명이 투표권자입니다.`)
+    for (const c of roster.voters) L.push(`     · ${c.id} <${c.email}>  커밋 ${c.commits}`)
+  }
 
   // 🔴 승계는 조용히 발동하지 않는다. 이 줄을 지우면 승계가 우회로가 된다.
   if (roster.triggered) {

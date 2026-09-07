@@ -46,7 +46,7 @@
 import { spawnSync } from 'node:child_process'
 import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
-import { planPromotions, formatPlan, describeStep, STEPS } from '../src/promote.mjs'
+import { planPromotions, formatPlan, describeStep, mergeCommitMessage, STEPS } from '../src/promote.mjs'
 
 /** 이 도구의 종료 코드. */
 export const EXIT = { OK: 0, ERROR: 1, POLICY_BROKEN: 4 }
@@ -54,8 +54,15 @@ export const EXIT = { OK: 0, ERROR: 1, POLICY_BROKEN: 4 }
 /** 게이트의 종료 코드. `src/governance.mjs` 의 EXIT 과 같은 값이다. */
 const GATE = { OK: 0, UNDECIDABLE: 1, SHORT: 2, POLICY_BROKEN: 4 }
 
-/** `axmap/` 폴더. 호출 위치에 기대지 않는다 (tools/version.mjs 와 같은 방식). */
+/** `axmap/` 폴더. **프로그램**을 찾을 때만 쓴다 (옆에 있는 gate.mjs 같은 것). */
 const AXMAP = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
+
+/**
+ * 🔴 git 은 **서 있는 저장소**에서 부른다. 프로그램이 있는 폴더가 아니다.
+ *    npm 으로 설치하면 그 폴더는 `node_modules/axmap-cli/` 이고 저장소가 아니다.
+ *    근거는 tools/version.mjs 의 같은 자리 주석.
+ */
+const REPO = process.cwd()
 
 // ---------------------------------------------------------------------------
 // 인자 — `--k v` · `--k=v` · `--k`(=true). gate.mjs 의 parseArgs 와 같은 규칙.
@@ -123,7 +130,7 @@ function defaultGit(args) {
   const env = { ...process.env }
   for (const k of ['GIT_DIR', 'GIT_WORK_TREE', 'GIT_COMMON_DIR', 'GIT_INDEX_FILE',
     'GIT_OBJECT_DIRECTORY', 'GIT_ALTERNATE_OBJECT_DIRECTORIES', 'GIT_PREFIX']) delete env[k]
-  const r = spawnSync('git', args, { cwd: AXMAP, env, encoding: 'utf8', windowsHide: true })
+  const r = spawnSync('git', args, { cwd: REPO, env, encoding: 'utf8', windowsHide: true })
   return { code: r.status ?? 1, out: (r.stdout ?? '').trim(), err: (r.stderr ?? '').trim() }
 }
 
@@ -142,7 +149,7 @@ function defaultGate({ source, target }) {
   const r = spawnSync(
     process.execPath,
     [path.join(AXMAP, 'governance', 'gate.mjs'), '--source', source, '--target', target, '--json'],
-    { cwd: AXMAP, encoding: 'utf8', windowsHide: true },
+    { cwd: REPO, encoding: 'utf8', windowsHide: true },
   )
   let verdict = null
   try { verdict = JSON.parse(r.stdout ?? '') } catch { verdict = null }
@@ -469,10 +476,18 @@ export async function run(argv, io = {}) {
       }
 
       // 4. 머지. 🔴 sha 를 반드시 싣는다 (CAS).
+      //
+      // 🔴 표의 이유를 **머지 커밋 본문**에 싣는다 (src/promote.mjs 의 근거 참고).
+      //    MR 댓글에 두면 clone 에 안 따라오고 GitLab 을 떠나면 사라진다. 트레일러로
+      //    적으면 `git log --grep` 과 `git interpret-trailers --parse` 가 읽는다.
+      //    표가 하나도 없으면 null 이고, 그때는 필드를 아예 안 보내 GitLab 기본
+      //    메시지를 그대로 쓴다 — 빈 문자열을 보내면 기본 메시지를 덮어쓴다.
+      const message = mergeCommitMessage({ source, target, verdict })
       const merged = await gl('PUT', `/merge_requests/${mr.iid}/merge`, {
         body: {
           // 판정할 때 본 그 커밋. 지금 MR 헤드가 다르면 GitLab 이 409 로 거부한다.
           sha: verdict.sha,
+          ...(message ? { merge_commit_message: message } : {}),
           // 🔴 판정 시점과 머지 시점을 벌리지 않는다. 벌어진 사이에 들어온 커밋이
           //    옛 표로 머지되는 것이 이 파일이 막으려는 사고 전부다.
           merge_when_pipeline_succeeds: false,
