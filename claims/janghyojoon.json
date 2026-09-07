@@ -1,0 +1,11 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-700",
+  "intent": "smoke 안에 타입 검사 넣기",
+  "actor": null,
+  "since": "2026-09-07T07:19:51.572Z",
+  "ttlMs": 1800000,
+  "paths": [
+    ".gitlab-ci.yml"
+  ]
+}
