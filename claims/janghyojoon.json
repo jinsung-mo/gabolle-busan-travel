@@ -1,11 +1,15 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-704",
-  "intent": "G1(자기 표 배제) 예외 — 유효 투표권자가 정족수에 못 미치면 자기 표를 센다",
+  "task": "S15P21E201-705",
+  "intent": "부산 식당·카페 선정 모델 재평가 — 상가정보 후보 풀로 교체하고 문서 3종을 bigData/dev 로 올린다",
   "actor": null,
-  "since": "2026-09-07T08:00:23.912Z",
+  "since": "2026-09-07T08:05:56.320Z",
   "ttlMs": 1800000,
   "paths": [
-    "ci/axmap"
+    "ci/axmap",
+    "docs/FOOD-RANKING-ARCHITECTURE.md",
+    "docs/FOOD-RANKING-EVAL.md",
+    "docs/ONTOLOGY-FOOD-REDESIGN.md",
+    "eval/food-ranking"
   ]
 }
