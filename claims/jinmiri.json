@@ -1,11 +1,12 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-658",
-  "intent": "recommendations.tsx 무한루프 버그 근본 원인 — useI18n().tx 가 매 렌더 새 함수라 useCallback deps 에 넣으면 무한 리렌더. tx 메모이즈로 수정",
+  "task": "S15P21E201-691",
+  "intent": "S15P21E201-691 — 웹 랜딩 로그인 상태 미반영 + 401 즉시 로그아웃(refresh 재시도 없음) 수정",
   "actor": "agent",
-  "since": "2026-09-07T02:49:20.533Z",
+  "since": "2026-09-07T03:01:48.465Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/index.tsx",
     "frontend/src/api/client.ts",
     "frontend/src/auth/AuthProvider.tsx",
     "frontend/src/components/AppErrorBoundary.tsx",
