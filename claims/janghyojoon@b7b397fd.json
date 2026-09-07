@@ -4,8 +4,8 @@
   "intent": "정답지 예외 주석 추가",
   "actor": "agent",
   "session": "5d4cf699-c86d-473e-a1f5-a201bee8f3af",
-  "since": "2026-09-07T08:57:29.104Z",
-  "ttlMs": 1200000,
+  "since": "2026-09-07T09:05:21.029Z",
+  "ttlMs": 1800000,
   "paths": [
     ".gitignore",
     "bigData/.gitignore",
