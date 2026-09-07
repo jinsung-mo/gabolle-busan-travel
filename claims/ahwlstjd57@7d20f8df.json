@@ -1,13 +1,15 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-604",
-  "intent": "REC-04 결과 응답에 placeCount·estimatedTravelMinutes 추가 (진미리 님 요청)",
+  "intent": "placeCount·estimatedTravelMinutes 추가에 따른 기존 테스트 시그니처 수정",
   "actor": "agent",
   "session": "fb7b8860-5c03-4b80-bd4e-4c47b25b1865",
-  "since": "2026-09-07T02:57:40.930Z",
+  "since": "2026-09-07T02:59:27.646Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationResultQueryService.java",
-    "backend/src/main/java/com/gabolle/backend/recommendation/presentation/dto/RecommendationResultResponse.java"
+    "backend/src/main/java/com/gabolle/backend/recommendation/presentation/dto/RecommendationResultResponse.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/RecommendationResultAuthorizationTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/application/RecommendationResultQueryServiceTest.java"
   ]
 }
