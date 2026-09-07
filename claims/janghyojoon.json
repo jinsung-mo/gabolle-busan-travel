@@ -1,11 +1,12 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-688",
-  "intent": "항공사진 얹기",
+  "task": "S15P21E201-33",
+  "intent": "투표 슬래시 명령을 모든 브랜치에 둔다",
   "actor": null,
-  "since": "2026-09-07T02:51:23.133Z",
-  "ttlMs": 3600000,
+  "since": "2026-09-07T02:56:40.124Z",
+  "ttlMs": 1800000,
   "paths": [
+    ".claude/commands",
     "city3d-spike/.gitignore",
     "city3d-spike/build-dist.mjs",
     "city3d-spike/public/config.example.js",
