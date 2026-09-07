@@ -7,10 +7,6 @@
   "since": "2026-09-07T09:05:21.029Z",
   "ttlMs": 1800000,
   "paths": [
-    ".gitignore",
-    "bigData/.gitignore",
-    "bigData/data/truth",
-    "bigData/data/truth/raw",
     "city3d-spike/bridge-details.mjs",
     "city3d-spike/bridges.mjs",
     "city3d-spike/public/actors.mjs",
@@ -22,7 +18,6 @@
     "city3d-spike/public/shade.mjs",
     "city3d-spike/public/sun.mjs",
     "docs/FOOD-RANKING-EVAL.md",
-    "docs/MAP-WALKING-SCALE.md",
     "eval/food-ranking"
   ]
 }
