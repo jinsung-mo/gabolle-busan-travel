@@ -1,0 +1,12 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-188",
+  "intent": "계정 삭제 미리보기 응답 DTO 신규 파일",
+  "actor": "agent",
+  "session": "fb7b8860-5c03-4b80-bd4e-4c47b25b1865",
+  "since": "2026-09-07T02:38:32.432Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/auth/api/AccountDeletionPreviewResponse.java"
+  ]
+}
