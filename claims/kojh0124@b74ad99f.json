@@ -1,0 +1,12 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-547",
+  "intent": "S15P21E201-547 취향 차원별 가중치 — preferenceAlignment 를 그룹 예산으로 두고 5개 차원 상대 가중치와 정규화 계산을 설정에 넣는다",
+  "actor": "agent",
+  "session": "7f85fd9b-c478-437f-a54a-f0e52fd72bc4",
+  "since": "2026-09-07T02:56:30.546Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation/config/BaselineEngineProperties.java"
+  ]
+}
