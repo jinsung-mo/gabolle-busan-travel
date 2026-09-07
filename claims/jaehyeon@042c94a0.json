@@ -7,7 +7,6 @@
   "since": "2026-09-07T14:37:50.353Z",
   "ttlMs": 900000,
   "paths": [
-    ".gitlab-ci.yml",
     "backend/src/main/java/com/gabolle/backend/auth",
     "backend/src/main/java/com/gabolle/backend/auth/config",
     "backend/src/main/java/com/gabolle/backend/common/privacy",
