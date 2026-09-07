@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-526",
+  "intent": "사본 걷어낸 뒤 팀원 대처 설명서",
+  "actor": null,
+  "session": "5d4cf699-c86d-473e-a1f5-a201bee8f3af",
+  "since": "2026-09-07T03:44:40.849Z",
+  "ttlMs": 5400000,
+  "paths": [
+    "docs/AXMAP-사본을-걷어낸-뒤.md"
+  ]
+}
