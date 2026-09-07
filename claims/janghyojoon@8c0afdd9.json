@@ -7,7 +7,6 @@
   "since": "2026-09-07T14:56:18.106Z",
   "ttlMs": 1800000,
   "paths": [
-    "CONTRIBUTING.md",
     "frontend/app/(plan)/basics.tsx",
     "frontend/src/plan/tripBasics.ts"
   ]
