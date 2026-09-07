@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-703",
+  "intent": "backend:migration-order 잡이 git 설치를 지워놓고 git 을 불러 exit 127 로 죽는 것을 고친다",
+  "actor": null,
+  "session": "88981cee-a809-432d-94de-70c3b88ac265",
+  "since": "2026-09-07T10:30:05.745Z",
+  "ttlMs": 1800000,
+  "paths": [
+    ".gitlab-ci.yml"
+  ]
+}
