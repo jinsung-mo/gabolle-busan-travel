@@ -8,16 +8,6 @@
   "paths": [
     "frontend/app/index.tsx",
     "frontend/src/api/client.ts",
-    "frontend/src/auth/AuthProvider.tsx",
-    "frontend/src/components/AppErrorBoundary.tsx",
-    "frontend/src/components/DateFieldInput.tsx",
-    "frontend/src/components/DongbaekMascot.tsx",
-    "frontend/src/components/PermissionRationale.tsx",
-    "frontend/src/components/TabBar.tsx",
-    "frontend/src/map/RouteMap.tsx",
-    "frontend/src/onboarding/OnboardingPreferences.tsx",
-    "frontend/src/plan/PlanProvider.tsx",
-    "frontend/src/plan/PlanStepHeader.tsx",
-    "frontend/src/plan/PlanWebNav.tsx"
+    "frontend/src/auth/AuthProvider.tsx"
   ]
 }
