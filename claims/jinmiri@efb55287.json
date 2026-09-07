@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-586",
+  "intent": "MR !331 front/dev 최신화(리베이스)",
+  "actor": null,
+  "session": "67c3749d-ff3b-4a67-ae17-7af8ef08e9a3",
+  "since": "2026-09-07T13:29:19.974Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(auth)/oauth-link.tsx",
+    "frontend/app/(auth)/oauth-signup.tsx",
+    "frontend/app/(auth)/sign-in.tsx"
+  ]
+}
