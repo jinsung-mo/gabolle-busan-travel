@@ -4,7 +4,7 @@
   "intent": "축제를 일정에 더하기 — 그 날 마지막에 고정된 항목으로",
   "actor": null,
   "session": "59f5a6a7-88d8-412f-8bea-d8ff30e82dda",
-  "since": "2026-09-07T07:28:31.868Z",
+  "since": "2026-09-07T07:34:49.510Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryEditService.java",
