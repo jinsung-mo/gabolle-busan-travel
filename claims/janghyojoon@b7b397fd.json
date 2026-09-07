@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-705",
-  "intent": "정답지 4종과 도보 스케일 조사 문서를 올린다",
+  "intent": "정답지 예외 주석 추가",
   "actor": "agent",
   "session": "5d4cf699-c86d-473e-a1f5-a201bee8f3af",
-  "since": "2026-09-07T08:54:16.598Z",
-  "ttlMs": 1800000,
+  "since": "2026-09-07T08:57:29.104Z",
+  "ttlMs": 1200000,
   "paths": [
     ".gitignore",
+    "bigData/.gitignore",
     "bigData/data/truth",
     "bigData/data/truth/raw",
     "city3d-spike/bridge-details.mjs",
