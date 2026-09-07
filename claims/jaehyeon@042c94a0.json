@@ -1,10 +1,10 @@
 {
   "agent": "jaehyeon",
-  "task": "S15P21E201-217",
-  "intent": "택시 카드 통합 — Accept-Language 배선과 언어 판정 공용화",
+  "task": "S15P21E201-473",
+  "intent": "8갈래 고정 통합",
   "actor": null,
   "session": "59f5a6a7-88d8-412f-8bea-d8ff30e82dda",
-  "since": "2026-09-07T07:37:20.774Z",
+  "since": "2026-09-07T07:42:42.424Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryEditService.java",
