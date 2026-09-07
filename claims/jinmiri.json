@@ -6,7 +6,6 @@
   "since": "2026-09-06T23:55:58.341Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/app-intro.tsx",
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/src/plan/itinerary.ts"
   ]
