@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-736",
+  "intent": "캐시 히트 실측을 위한 최소 커밋 — 병합 안 함, 확인 후 브랜치 삭제",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-07T18:15:13.610Z",
+  "ttlMs": 900000,
+  "paths": [
+    "backend/README.md"
+  ]
+}
