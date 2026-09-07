@@ -1,13 +1,15 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-706",
-  "intent": "남항대교의 없는 주탑을 지우고 교각·행어를 더한다 (실측 제원 기준)",
+  "task": "S15P21E201-705",
+  "intent": "정답지 4종과 도보 스케일 조사 문서를 올린다",
   "actor": "agent",
   "session": "5d4cf699-c86d-473e-a1f5-a201bee8f3af",
-  "since": "2026-09-07T08:50:35.281Z",
-  "ttlMs": 2700000,
+  "since": "2026-09-07T08:54:16.598Z",
+  "ttlMs": 1800000,
   "paths": [
+    ".gitignore",
     "bigData/data/truth",
+    "bigData/data/truth/raw",
     "city3d-spike/bridge-details.mjs",
     "city3d-spike/bridges.mjs",
     "city3d-spike/public/actors.mjs",
@@ -19,6 +21,7 @@
     "city3d-spike/public/shade.mjs",
     "city3d-spike/public/sun.mjs",
     "docs/FOOD-RANKING-EVAL.md",
+    "docs/MAP-WALKING-SCALE.md",
     "eval/food-ranking"
   ]
 }
