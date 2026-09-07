@@ -1,14 +1,17 @@
 {
   "agent": "kojh0124",
   "task": "S15P21E201-555",
-  "intent": "S15P21E201-555 — Pick 표 둘 + recommendation_job·candidate 에 source_mode 추가와 fallback_mode CHECK 확장",
+  "intent": "S15P21E201-555 (2/2) 폴백 배선 — Pick 을 CandidateAssembler 의 고정순서 경로로 태워 하드 제약 판정과 후보 기록을 그대로 받게 한다",
   "actor": "agent",
   "session": "7f85fd9b-c478-437f-a54a-f0e52fd72bc4",
-  "since": "2026-09-07T05:40:42.737Z",
+  "since": "2026-09-07T05:45:53.101Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/editorial",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application",
     "backend/src/main/java/com/gabolle/backend/recommendation/domain/FallbackMode.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/domain/RecommendationCandidate.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/domain/RecommendationJob.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/domain/SourceMode.java",
     "backend/src/main/resources/db/migration/V20260907150000__editorial_pick.sql",
     "backend/src/main/resources/db/migration/V20260907150000__editorial_pick_and_source_mode.sql"
