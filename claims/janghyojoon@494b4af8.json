@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-760",
-  "intent": "조사 결과는 다시 만들 수 없으므로 예외로 커밋한다",
+  "intent": "조사 결과 첫 커밋",
   "actor": null,
   "session": "7d5736a3-7cb4-4990-abb8-2038f13e755f",
-  "since": "2026-09-08T16:43:57.798Z",
+  "since": "2026-09-08T16:44:31.106Z",
   "ttlMs": 1800000,
   "paths": [
-    "bigData/.gitignore"
+    "bigData/.gitignore",
+    "bigData/research/data/results"
   ]
 }
