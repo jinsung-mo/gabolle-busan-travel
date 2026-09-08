@@ -23,6 +23,35 @@
   떠야 하는 페이지라서 그렇다.
 -->
 <style>
+  /* ── 글꼴 ──────────────────────────────────────────────────────────────────
+     🔴 CDN 에서 안 받는다. 이 페이지는 **인터넷이 죽은 날에도 떠야 하는 페이지**라
+        바깥 주소에 매달리면 존재 이유가 없어진다. 글꼴 파일도 같은 서버,
+        같은 폴더 아래(`status/fonts/`)에 두고 상대경로로 부른다.
+
+     넣은 굵기는 이 페이지가 실제로 쓰는 넷뿐이다 — 400(본문) · 600(표 머리)
+     · 700(제목·굵은 글씨) · 800(큰 숫자). 안 쓰는 굵기는 안 받는다.
+     파일은 한글 상용 글자만 남긴 부분집합(subset)이라 하나에 260KB 남짓이다.
+
+     `font-display: swap` — 글꼴이 늦게 와도 **글자를 먼저 보여주고** 뒤에
+     바꿔 끼운다. 안 넣으면 최대 3초간 화면이 빈 채로 있는다.
+     `local(...)` 은 이미 PC 에 깔린 사람은 안 받고 넘어가라는 뜻이다. */
+  @font-face {
+    font-family: "Pretendard"; font-style: normal; font-weight: 400; font-display: swap;
+    src: local("Pretendard Regular"), url("fonts/Pretendard-Regular.subset.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Pretendard"; font-style: normal; font-weight: 600; font-display: swap;
+    src: local("Pretendard SemiBold"), url("fonts/Pretendard-SemiBold.subset.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Pretendard"; font-style: normal; font-weight: 700; font-display: swap;
+    src: local("Pretendard Bold"), url("fonts/Pretendard-Bold.subset.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Pretendard"; font-style: normal; font-weight: 800; font-display: swap;
+    src: local("Pretendard ExtraBold"), url("fonts/Pretendard-ExtraBold.subset.woff2") format("woff2");
+  }
+
   :root {
     --bg: #f6f7f9;      --card: #ffffff;    --ink: #16181d;
     --dim: #5b6472;     --faint: #8b95a5;   --line: #e3e7ed;
@@ -95,13 +124,18 @@
   .svc-msg { margin-left: auto; font-size: 13px; color: var(--dim); }
   .svc-what { font-size: 12.5px; color: var(--faint); margin-top: 3px; }
 
-  /* ── 90일 막대 ── */
-  .bars { display: flex; gap: 2px; height: 32px; margin: 12px 0 6px; align-items: stretch; }
-  .bar { flex: 1 1 0; min-width: 0; border-radius: 2px; background: var(--none); cursor: default; }
+  /* ── 7일 막대 ──────────────────────────────────────────────────────────────
+     🔴 칸이 90개에서 7개로 줄면 칸 하나가 화면 너비의 1/7 이 된다. 그대로 두면
+        막대가 아니라 **색 덩어리**로 보인다. 그래서 줄 전체의 폭을 460px 로 묶고
+        틈을 2px→4px 로 벌린다. 좁은 화면에서는 max-width 가 안 걸려 저절로 줄어든다.
+        축(7일 전 … 오늘)도 같은 폭이라야 막대와 끝이 맞는다. */
+  .bars { display: flex; gap: 4px; height: 30px; margin: 12px 0 6px; align-items: stretch;
+          max-width: 460px; }
+  .bar { flex: 1 1 0; min-width: 0; border-radius: 3px; background: var(--none); cursor: default; }
   .bar.ok { background: var(--ok); } .bar.slow { background: var(--slow); }
   .bar.down { background: var(--down); } .bar.none { background: var(--none); opacity: .55; }
   .bar:hover { outline: 2px solid var(--ink); outline-offset: 1px; }
-  .axis { display: flex; font-size: 11.5px; color: var(--faint); }
+  .axis { display: flex; font-size: 11.5px; color: var(--faint); max-width: 460px; }
   .axis .mid { flex: 1; text-align: center; }
   .axis .right { text-align: right; }
 
@@ -216,13 +250,22 @@
       month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" }) + " (한국 시간)";
   }
 
-  // ── 90일 가동 막대 ────────────────────────────────────────────────────────
+  // ── 7일 가동 막대 ─────────────────────────────────────────────────────────
   //
   // 하루에 한 칸이다. 그 날 한 번이라도 멈췄으면 빨갛고, 느렸으면 노랗다.
   // 🔴 표본이 없는 날은 회색으로 남긴다 — 초록으로 칠하면 "그 날 잘 돌았다" 는
   //    거짓말이 된다. 이 페이지를 켠 날부터 칸이 차기 시작한다.
-  function barsHtml(days) {
-    if (!Array.isArray(days) || !days.length) return "";
+  //
+  // 🔴 **화면만 7일이고 보관은 그대로 90일이다.** status.json 에는 여전히 90일이
+  //    들어 있고, 여기서 마지막 SHOW_DAYS 칸만 잘라 그린다. 보관을 줄이면 이미
+  //    쌓인 날이 지워지고 되돌릴 수 없다 — 적게 보여주는 것은 언제든 되돌릴 수
+  //    있지만, 안 모은 날은 나중에 만들 수 없다.
+  const SHOW_DAYS = 7;
+
+  function barsHtml(all) {
+    if (!Array.isArray(all) || !all.length) return "";
+    // 뒤가 오늘이다. 데이터가 7일치도 없으면 있는 만큼만 그린다.
+    const days = all.slice(-SHOW_DAYS);
     const cells = days.map((d) => {
       const st = d.state || "none";
       const tip = st === "none"
@@ -238,7 +281,7 @@
       : "아직 아무 날도 못 쟀습니다";
 
     return `<div class="bars">${cells}</div>
-      <div class="axis"><span>90일 전</span><span class="mid">${esc(right)}</span><span class="right">오늘</span></div>`;
+      <div class="axis"><span>${days.length}일 전</span><span class="mid">${esc(right)}</span><span class="right">오늘</span></div>`;
   }
 
   // ── MR 검사 속도 줄에 붙는 자세한 값 ──────────────────────────────────────

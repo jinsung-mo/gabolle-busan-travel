@@ -765,7 +765,13 @@ function foldIntoDaily(daily, nowIso, states, cpu) {
   return daily;
 }
 
-/** 화면에 그릴 90칸짜리 막대. 표본이 없는 날은 회색으로 남긴다 — 채우지 않는다. */
+/**
+ * 하루에 한 칸짜리 막대를 KEEP_DAYS(90)칸 만들어 준다.
+ * 🔴 **화면은 이 중 마지막 7칸만 그린다** (uptime.html 의 SHOW_DAYS). 보관을
+ *    같이 줄이지 않은 이유는 하나다 — 적게 보여주는 것은 언제든 되돌릴 수 있지만,
+ *    안 모은 날은 나중에 만들 수 없다.
+ * 표본이 없는 날은 회색으로 남긴다 — 채우지 않는다.
+ */
 function daysForPage(daily, svcId) {
   const out = [];
   const today = new Date();
