@@ -1,0 +1,12 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-736",
+  "intent": "TIL 업데이트 취소(되돌리기)",
+  "actor": null,
+  "session": "fb7b8860-5c03-4b80-bd4e-4c47b25b1865",
+  "since": "2026-09-08T05:27:56.434Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "모진성_til.md"
+  ]
+}
