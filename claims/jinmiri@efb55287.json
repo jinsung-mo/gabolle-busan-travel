@@ -1,13 +1,15 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-738",
-  "intent": "내 여행 목록을 서버 API로 교체(jaehyeon 님 FE 계약)",
+  "intent": "내 여행 목록 서버 API 전환에 맞춰 로컬 기억 로직 제거·계정삭제 개수 표시를 서버값으로 교체",
   "actor": null,
   "session": "67c3749d-ff3b-4a67-ae17-7af8ef08e9a3",
-  "since": "2026-09-08T03:23:22.299Z",
+  "since": "2026-09-08T03:25:07.342Z",
   "ttlMs": 1800000,
   "paths": [
+    "frontend/app/(tabs)/me.tsx",
     "frontend/app/(tabs)/trips.tsx",
+    "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/src/trip/trips.ts"
   ]
 }
