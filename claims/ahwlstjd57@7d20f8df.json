@@ -1,10 +1,10 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-709",
-  "intent": "SPEND_PROFILE 취향 차원 + USER/TRIP 스냅샷 API",
+  "intent": "테스트 추가",
   "actor": null,
   "session": "fb7b8860-5c03-4b80-bd4e-4c47b25b1865",
-  "since": "2026-09-08T07:30:48.533Z",
+  "since": "2026-09-08T07:32:45.446Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/event/domain/EventType.java",
@@ -21,6 +21,9 @@
     "backend/src/main/java/com/gabolle/backend/trip/presentation/dto/SpendProfileAnswerInput.java",
     "backend/src/main/java/com/gabolle/backend/trip/presentation/dto/SpendProfileResponse.java",
     "backend/src/main/resources/db/migration",
-    "backend/src/test/java/com/gabolle/backend/personalization/PlaceFeatureCodeMapTest.java"
+    "backend/src/test/java/com/gabolle/backend/personalization/PlaceFeatureCodeMapTest.java",
+    "backend/src/test/java/com/gabolle/backend/trip/application/SpendProfileServiceTest.java",
+    "backend/src/test/java/com/gabolle/backend/trip/presentation/SpendProfileControllerTest.java",
+    "backend/src/test/java/com/gabolle/backend/trip/presentation/dto/CreateTripRequestMapperTest.java"
   ]
 }
