@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-645",
+  "intent": "심도 기본 켜기 확정 + 지도 문제 A~D 조사 캡처",
+  "actor": null,
+  "session": "7d5736a3-7cb4-4990-abb8-2038f13e755f",
+  "since": "2026-09-08T15:17:12.344Z",
+  "ttlMs": 7200000,
+  "paths": [
+    "city3d-spike"
+  ]
+}
