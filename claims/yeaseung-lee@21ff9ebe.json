@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-750",
+  "intent": "airflow-api-server 메모리 한도 1g→2g",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-08T07:16:52.391Z",
+  "ttlMs": 900000,
+  "paths": [
+    "infra/personalization/compose.yaml"
+  ]
+}
