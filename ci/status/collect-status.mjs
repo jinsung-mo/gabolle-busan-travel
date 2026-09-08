@@ -93,12 +93,29 @@ const GITLAB_HOST = 'lab.ssafy.com';
 const GITLAB_PROJECT = 1444066;
 
 // 이력 보관 기간
-const KEEP_DAYS = 90;          // 가동 막대 90일
+//
+// 🔴 가동 막대의 칸 하나는 **하루가 아니라 4시간**이다. 하루로 뭉치면 "어제
+//    잠깐 죽었다" 가 하루 전체를 빨갛게 만들고, 언제 죽었는지는 영영 못 본다.
+//    4시간이면 하루가 6칸이라 오전·오후·새벽이 갈린다.
+const SLOT_HOURS = 4;                          // 칸 하나가 몇 시간인가
+const SLOTS_PER_DAY = 24 / SLOT_HOURS;         // 하루 6칸
+const KEEP_DAYS = 90;                          // 보관 90일
+const KEEP_SLOTS = KEEP_DAYS * SLOTS_PER_DAY;  // = 540칸. 이만큼 디스크에 쌓는다
+
+// 🔴 **쌓는 것과 내보내는 것이 다르다.** 540칸을 서비스 넷마다 status.json 에
+//    실으면 파일이 100KB 를 넘고, 그것을 30초마다 모두가 다시 받는다. 화면이
+//    쓰는 것은 7일치뿐이라 **내보낼 때 잘라서 싣는다.** 디스크의 540칸은 그대로다 —
+//    적게 보여주는 것은 되돌릴 수 있지만, 안 모은 것은 못 되돌리기 때문이다.
+const PAGE_DAYS = 7;                           // 화면이 보여주는 기간
+const PAGE_SLOTS = PAGE_DAYS * SLOTS_PER_DAY;  // = 42칸
+
 const KEEP_SAMPLES = 70;       // 1분 표본. 최근 1시간(60개)을 덮고 조금 여유
 const KEEP_INCIDENTS = 60;     // 장애 이력
 const WINDOW_MIN = 60;         // "최근 1시간"
 
-const SCHEMA = 1;
+// 🔴 이력 파일의 **판(版)** 번호. 칸의 단위가 바뀌면(1: 하루 → 2: 4시간) 옛
+//    파일은 못 쓴다. 이 번호가 다르면 가동 이력을 버리고 처음부터 쌓는다.
+const SCHEMA = 2;
 
 // ── 인자 ─────────────────────────────────────────────────────────────────────
 
@@ -740,9 +757,27 @@ const dayKey = (d) => {
   return kst.toISOString().slice(0, 10);
 };
 
-function foldIntoDaily(daily, nowIso, states, cpu) {
-  const key = dayKey(new Date(nowIso));
-  const day = (daily.days[key] ??= { svc: {}, cpu: { n: 0, ratioSum: 0, ratioMax: 0, busySum: 0, busyN: 0, busyMax: 0 } });
+/**
+ * 4시간 칸의 이름. `2026-09-08T12` 는 **한국 시간** 9월 8일 12시부터 16시 전까지다.
+ *
+ * 🔴 경계를 **한국 시간으로** 자른다. 서버는 UTC 라서 그냥 자르면 칸이 한국 시간
+ *    09시·13시·17시에서 끊긴다 — 사람이 못 읽는 눈금이다. (이 팀은 알림 시각에서
+ *    같은 함정에 한 번 빠진 적이 있다: cron 은 20:00 인데 알림은 05:00 에 갔다.)
+ * 🔴 시각을 두 자리로 채우는 것이 중요하다. `T08` < `T12` 라야 글자 순서로
+ *    정렬했을 때 시간 순서가 되고, 오래된 칸부터 버리는 것이 맞아떨어진다.
+ */
+const slotKey = (d) => {
+  const kst = new Date(d.getTime() + 9 * 3600 * 1000);
+  const h = Math.floor(kst.getUTCHours() / SLOT_HOURS) * SLOT_HOURS;
+  return `${kst.toISOString().slice(0, 10)}T${String(h).padStart(2, '0')}`;
+};
+
+/** 칸 이름에서 날짜만 (`2026-09-08T12` → `2026-09-08`). CPU 의 "오늘" 을 셀 때 쓴다. */
+const slotDay = (key) => key.slice(0, 10);
+
+function foldIntoSlots(hist, nowIso, states, cpu) {
+  const key = slotKey(new Date(nowIso));
+  const day = (hist.slots[key] ??= { svc: {}, cpu: { n: 0, ratioSum: 0, ratioMax: 0, busySum: 0, busyN: 0, busyMax: 0 } });
   for (const s of SERVICES) {
     const st = states[s.id];
     const b = (day.svc[s.id] ??= { ok: 0, slow: 0, down: 0, unknown: 0, latSum: 0, latN: 0 });
@@ -759,37 +794,55 @@ function foldIntoDaily(daily, nowIso, states, cpu) {
     day.cpu.busySum += cpu.busyPct;
     if (cpu.busyPct > day.cpu.busyMax) day.cpu.busyMax = cpu.busyPct;
   }
-  // 🔴 90일을 넘기면 오래된 날부터 버린다. 안 버리면 파일이 영원히 자란다.
-  const keys = Object.keys(daily.days).sort();
-  while (keys.length > KEEP_DAYS) delete daily.days[keys.shift()];
-  return daily;
+  // 🔴 540칸(90일)을 넘기면 오래된 칸부터 버린다. 안 버리면 파일이 영원히 자란다.
+  const keys = Object.keys(hist.slots).sort();
+  while (keys.length > KEEP_SLOTS) delete hist.slots[keys.shift()];
+  return hist;
 }
 
 /**
- * 하루에 한 칸짜리 막대를 KEEP_DAYS(90)칸 만들어 준다.
- * 🔴 **화면은 이 중 마지막 7칸만 그린다** (uptime.html 의 SHOW_DAYS). 보관을
- *    같이 줄이지 않은 이유는 하나다 — 적게 보여주는 것은 언제든 되돌릴 수 있지만,
- *    안 모은 날은 나중에 만들 수 없다.
- * 표본이 없는 날은 회색으로 남긴다 — 채우지 않는다.
+ * 화면에 실을 막대. **4시간짜리 칸을 PAGE_SLOTS(42)개** — 곧 7일치를 준다.
+ * 맨 뒤가 지금 들어 있는 칸이고 앞으로 갈수록 과거다.
+ *
+ * 🔴 디스크에는 540칸이 있는데 여기서 42칸만 잘라 내보낸다 (KEEP_SLOTS 옆 설명).
+ * 🔴 표본이 없는 칸도 `none` 으로 **자리를 만들어 준다.** 지우면 막대가 짧아져서
+ *    "이 페이지는 원래 이만큼만 본다" 는 눈금이 사라진다. 회색으로 남긴다 —
+ *    초록으로 칠하면 "그때 잘 돌았다" 는 거짓말이 된다.
  */
-function daysForPage(daily, svcId) {
+function slotsForPage(hist, svcId, now = new Date()) {
   const out = [];
-  const today = new Date();
-  for (let i = KEEP_DAYS - 1; i >= 0; i--) {
-    const d = new Date(today.getTime() - i * 86400000);
-    const key = dayKey(d);
-    const b = daily.days[key]?.svc?.[svcId];
-    if (!b) { out.push({ d: key, state: 'none', up: null, n: 0 }); continue; }
+  const cur = new Date(now.getTime());
+  for (let i = PAGE_SLOTS - 1; i >= 0; i--) {
+    const key = slotKey(new Date(cur.getTime() - i * SLOT_HOURS * 3600 * 1000));
+    const b = hist.slots[key]?.svc?.[svcId];
+    if (!b) { out.push({ t: key, state: 'none', up: null, n: 0 }); continue; }
     const n = b.ok + b.slow + b.down + b.unknown;
     const measured = b.ok + b.slow + b.down;
     const state = b.down > 0 ? 'down' : b.slow > 0 ? 'slow' : measured > 0 ? 'ok' : 'none';
     out.push({
-      d: key, state, n,
+      t: key, state, n,
       up: measured ? Math.round((b.ok / measured) * 1000) / 10 : null,
       avgMs: b.latN ? Math.round(b.latSum / b.latN) : null,
     });
   }
   return out;
+}
+
+/**
+ * 오늘(한국 시간) 하루의 CPU 를 되돌린다. 칸이 4시간이 되면서 "오늘" 은 한 칸이
+ * 아니라 **여섯 칸을 합친 것**이 됐다. 합치지 않고 지금 칸만 보면 "오늘 최고" 가
+ * 새벽 4시마다 0 으로 되돌아간다.
+ */
+function todayCpu(hist, now) {
+  const today = dayKey(now);
+  let n = 0, ratioSum = 0, ratioMax = 0;
+  for (const [key, slot] of Object.entries(hist.slots)) {
+    if (slotDay(key) !== today || !slot.cpu?.n) continue;
+    n += slot.cpu.n;
+    ratioSum += slot.cpu.ratioSum;
+    if (slot.cpu.ratioMax > ratioMax) ratioMax = slot.cpu.ratioMax;
+  }
+  return n ? { max: ratioMax, avg: ratioSum / n } : null;
 }
 
 // ── 장애 이력 ────────────────────────────────────────────────────────────────
@@ -961,22 +1014,51 @@ function selfTest() {
   eq('0.5% 밑은 잡음이라 버린다', ps.rows.some((r) => r.raw === 'sshd'), false);
   eq('러너에 한국어 설명을 붙인다', labelProcess('gitlab-runner'), 'GitLab 러너 (CI 를 돌리는 프로그램)');
 
-  console.log('\n── 이력 — 무한히 자라면 안 된다 ──────────────────────────────');
-  const daily = { days: {} };
-  const states = Object.fromEntries(SERVICES.map((s) => [s.id, { state: 'ok', latencyMs: 10 }]));
-  for (let i = 0; i < 120; i++) {
-    const d = new Date(Date.now() - (119 - i) * 86400000).toISOString();
-    foldIntoDaily(daily, d, states, { ratio: 1.0 + i / 100, busyPct: 50 });
-  }
-  eq(`🔴 ${KEEP_DAYS}일을 넘기면 오래된 날부터 버린다`, Object.keys(daily.days).length, KEEP_DAYS);
-  eq('버리는 것은 늘 가장 오래된 날이다', Object.keys(daily.days).sort()[KEEP_DAYS - 1], dayKey(new Date()));
-  eq('막대는 90칸이다', daysForPage(daily, 'frontend-app').length, KEEP_DAYS);
-  eq('표본이 없는 날은 채우지 않는다 (none 으로 남긴다)', daysForPage({ days: {} }, 'frontend-app')[0].state, 'none');
+  console.log('\n── 4시간 칸 — 경계가 한국 시간이라야 한다 ────────────────────');
+  // 🔴 서버는 UTC 다. 아래 시각은 전부 UTC 로 적었고, 괄호 안이 한국 시간이다.
+  eq('한국 시간 자정은 새 칸의 시작이다 (UTC 15:00 = KST 다음날 00:00)',
+     slotKey(new Date('2026-09-07T15:00:00Z')), '2026-09-08T00');
+  eq('한국 시간 03:59 는 아직 00시 칸이다', slotKey(new Date('2026-09-07T18:59:00Z')), '2026-09-08T00');
+  eq('🔴 한국 시간 04:00 에 칸이 넘어간다 (UTC 19:00)', slotKey(new Date('2026-09-07T19:00:00Z')), '2026-09-08T04');
+  eq('한국 시간 23:59 는 마지막 20시 칸이다', slotKey(new Date('2026-09-08T14:59:00Z')), '2026-09-08T20');
+  eq('하루는 여섯 칸이다', SLOTS_PER_DAY, 6);
+  eq('🔴 글자 순서가 곧 시간 순서다 (T08 < T12 — 두 자리로 채웠기 때문)',
+     ['2026-09-08T12', '2026-09-08T08', '2026-09-08T00'].sort(),
+     ['2026-09-08T00', '2026-09-08T08', '2026-09-08T12']);
 
-  const oneDay = { days: { [dayKey(new Date())]: { svc: { 'backend-app': { ok: 90, slow: 5, down: 5, unknown: 0, latSum: 900, latN: 90 } }, cpu: { n: 0, ratioSum: 0, ratioMax: 0, busySum: 0, busyN: 0, busyMax: 0 } } } };
-  const bar = daysForPage(oneDay, 'backend-app').at(-1);
-  eq('한 번이라도 멈췄으면 그 날은 빨갛다', bar.state, 'down');
+  console.log('\n── 이력 — 무한히 자라면 안 된다 ──────────────────────────────');
+  const hist = { slots: {} };
+  const states = Object.fromEntries(SERVICES.map((s) => [s.id, { state: 'ok', latencyMs: 10 }]));
+  const SLOT_MS = SLOT_HOURS * 3600 * 1000;
+  for (let i = 0; i < KEEP_SLOTS + 60; i++) {
+    const d = new Date(Date.now() - (KEEP_SLOTS + 59 - i) * SLOT_MS).toISOString();
+    foldIntoSlots(hist, d, states, { ratio: 1.0 + i / 1000, busyPct: 50 });
+  }
+  eq(`🔴 ${KEEP_SLOTS}칸(90일)을 넘기면 오래된 칸부터 버린다`, Object.keys(hist.slots).length, KEEP_SLOTS);
+  eq('버리는 것은 늘 가장 오래된 칸이다', Object.keys(hist.slots).sort().at(-1), slotKey(new Date()));
+  eq('🔴 화면에 싣는 것은 42칸(7일)뿐이다 — 540칸을 다 실으면 파일이 부푼다',
+     slotsForPage(hist, 'frontend-app').length, PAGE_SLOTS);
+  eq('표본이 없는 칸도 자리는 만든다 (none 으로 남긴다)',
+     slotsForPage({ slots: {} }, 'frontend-app')[0].state, 'none');
+  eq('빈 이력이어도 42칸이 다 나온다 (화면이 안 깨진다)',
+     slotsForPage({ slots: {} }, 'frontend-app').length, PAGE_SLOTS);
+
+  const oneSlot = { slots: { [slotKey(new Date())]: { svc: { 'backend-app': { ok: 90, slow: 5, down: 5, unknown: 0, latSum: 900, latN: 90 } }, cpu: { n: 0, ratioSum: 0, ratioMax: 0, busySum: 0, busyN: 0, busyMax: 0 } } } };
+  const bar = slotsForPage(oneSlot, 'backend-app').at(-1);
+  eq('한 번이라도 멈췄으면 그 칸은 빨갛다', bar.state, 'down');
   eq('가동률은 정상 표본 비율이다 (90/100)', bar.up, 90);
+
+  // 🔴 "오늘 최고" 는 여섯 칸을 합쳐야 한다. 지금 칸만 보면 네 시간마다 0 이 된다.
+  const now6 = new Date();
+  const today = dayKey(now6);
+  const cpuHist = { slots: {
+    [today + 'T00']: { svc: {}, cpu: { n: 10, ratioSum: 10, ratioMax: 3.0, busySum: 0, busyN: 0, busyMax: 0 } },
+    [today + 'T04']: { svc: {}, cpu: { n: 10, ratioSum: 20, ratioMax: 1.0, busySum: 0, busyN: 0, busyMax: 0 } },
+  } };
+  eq('🔴 오늘 최고는 여섯 칸 중 가장 큰 것이다 (지금 칸만 보지 않는다)',
+     todayCpu(cpuHist, now6).max, 3.0);
+  eq('오늘 평균은 칸을 합쳐서 낸다 ((10+20)/20)', todayCpu(cpuHist, now6).avg, 1.5);
+  eq('한 번도 못 쟀으면 0 이 아니라 없음이다', todayCpu({ slots: {} }, now6), null);
 
   console.log('\n── 장애 이력 — 한 번 튄 것으로 열지 않는다 ───────────────────');
   const store = { incidents: [] };
@@ -1012,10 +1094,23 @@ async function main() {
     loadMaskFile();
 
     const stateStore = readJson(join(dataDir, 'samples.json'), { schema: SCHEMA, samples: [], prevTicks: null, gitlab: null });
-    const daily = readJson(join(dataDir, 'daily.json'), { schema: SCHEMA, days: {} });
+    const hist = readJson(join(dataDir, 'daily.json'), { schema: SCHEMA, slots: {} });
     const incidents = readJson(join(dataDir, 'incidents.json'), { schema: SCHEMA, incidents: [] });
     if (!Array.isArray(stateStore.samples)) stateStore.samples = [];
-    if (!daily.days || typeof daily.days !== 'object') daily.days = {};
+    // 🔴 **옛 일별 기록을 4시간 칸으로 쪼개지 않는다.**
+    //
+    //    하루가 "정상" 이었다는 것이 여섯 칸이 다 정상이었다는 뜻은 아니다. 나눠서
+    //    채우면 **없는 정보를 지어내는 것**이고, 그렇게 만든 초록 칸은 진짜 초록과
+    //    구별되지 않는다. 이 페이지의 규칙은 처음부터 하나였다 — **빈칸이 지어낸
+    //    숫자보다 낫다.** 그래서 버리고 처음부터 다시 쌓는다.
+    if (hist.schema !== SCHEMA) {
+      const lost = Object.keys(hist.days || {}).length;
+      warn(`가동 막대를 하루 단위에서 4시간 단위로 바꿔서 옛 기록 ${lost}일치를 버리고 처음부터 다시 쌓습니다. 하루짜리 기록은 4시간 칸으로 나눌 수 없습니다 — 나눠 채우면 없는 것을 지어내는 것이기 때문입니다.`);
+      hist.schema = SCHEMA;
+      hist.slots = {};
+      delete hist.days;
+    }
+    if (!hist.slots || typeof hist.slots !== 'object') hist.slots = {};
     if (!Array.isArray(incidents.incidents)) incidents.incidents = [];
 
     // ── 잰다 ──────────────────────────────────────────────────────────────
@@ -1096,7 +1191,7 @@ async function main() {
     stateStore.prevTicks = cpu.ticks;
     stateStore.gitlab = gl;
 
-    foldIntoDaily(daily, nowIso, states, cpu);
+    foldIntoSlots(hist, nowIso, states, cpu);
     updateIncidents(incidents, stateStore.samples, states, nowIso);
 
     // ── 결과 파일 ─────────────────────────────────────────────────────────
@@ -1108,6 +1203,9 @@ async function main() {
       generatedAt: nowIso,
       host: hostname(),
       intervalSec: 60,
+      // 막대 칸 하나가 몇 시간인가. 화면이 이 값으로 눈금 글씨를 만든다 —
+      // 여기서 4를 6으로 바꾸면 화면도 따라온다. 숫자를 두 군데 적지 않는다.
+      slotHours: SLOT_HOURS,
       overall: {
         state: cpuBad ? worse(overall, cpu.state) : overall,
         // 화면 맨 위 한 줄. 사람이 3초 안에 읽을 것이라 문장으로 쓴다.
@@ -1122,7 +1220,8 @@ async function main() {
       services: SERVICES.map((s) => ({
         id: s.id, name: s.name, what: s.what, kind: s.kind,
         ...states[s.id],
-        days: daysForPage(daily, s.id),
+        // 4시간짜리 42칸 (7일). 칸의 단위는 위 slotHours 가 알려 준다.
+        slots: slotsForPage(hist, s.id, now),
       })),
       cpu: {
         state: cpu.state,
@@ -1134,8 +1233,8 @@ async function main() {
         source: cpu.source,
         // 오늘 하루의 최고점. 사람이 "아까 튀었나" 를 알아야 지금 값이 뜻이 생긴다.
         // 🔴 한 번도 못 쟀으면 0 이 아니라 null 이다. 0 은 "한가하다" 는 거짓말이다.
-        todayMaxRatio: (() => { const d = daily.days[dayKey(now)]?.cpu; return d && d.n ? round(d.ratioMax, 2) : null; })(),
-        todayAvgRatio: (() => { const d = daily.days[dayKey(now)]?.cpu; return d && d.n ? round(d.ratioSum / d.n, 2) : null; })(),
+        todayMaxRatio: (() => { const t = todayCpu(hist, now); return t ? round(t.max, 2) : null; })(),
+        todayAvgRatio: (() => { const t = todayCpu(hist, now); return t ? round(t.avg, 2) : null; })(),
       },
       topCpu: rollupTop(stateStore.samples),
       incidents: incidents.incidents.slice().reverse().map((i) => ({
@@ -1154,7 +1253,7 @@ async function main() {
     }
 
     writeJsonAtomic(join(dataDir, 'samples.json'), stateStore);
-    writeJsonAtomic(join(dataDir, 'daily.json'), daily);
+    writeJsonAtomic(join(dataDir, 'daily.json'), hist);
     writeJsonAtomic(join(dataDir, 'incidents.json'), incidents);
     writeJsonAtomic(outPath, out);
     log(`\n썼습니다 ${outPath}  (${out.overall.headline}${warnings.length ? ` · 경고 ${warnings.length}건` : ''})`);
