@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-357",
+  "intent": "S15P21E201-357 배포 실패 핫픽스 — gabolle.privacy.cleanup.cron 플레이스홀더 미해결로 기동 실패 (BeanCreationException) 수정",
+  "actor": "agent",
+  "session": "81eedc0d-9708-4af2-8581-b195ba96ce86",
+  "since": "2026-09-08T09:53:40.746Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/resources/application.properties",
+    "backend/src/test/java/com/gabolle/testslice/PrivacySliceApplication.java"
+  ]
+}
