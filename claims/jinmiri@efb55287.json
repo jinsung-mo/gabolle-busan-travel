@@ -1,14 +1,15 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-121",
-  "intent": "여행 삭제/나가기 버튼 복구 (백엔드 DELETE /trips/{id} 확인됨)",
+  "intent": "동행자 여행 나가기 API 추가",
   "actor": null,
   "session": "67c3749d-ff3b-4a67-ae17-7af8ef08e9a3",
-  "since": "2026-09-08T06:54:02.500Z",
-  "ttlMs": 2700000,
+  "since": "2026-09-08T06:57:11.223Z",
+  "ttlMs": 1800000,
   "paths": [
     "frontend/app/(tabs)/trips.tsx",
     "frontend/src/layout/breakpoints.ts",
+    "frontend/src/trip/collaboration.ts",
     "frontend/src/trip/trips.ts"
   ]
 }
