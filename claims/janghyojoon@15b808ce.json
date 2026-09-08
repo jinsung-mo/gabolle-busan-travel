@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-705",
-  "intent": "행안부 인허가 수집기",
+  "task": "S15P21E201-526",
+  "intent": "ai/dev 의 4절 낡은 검사 명령 정정",
   "actor": null,
   "session": "2b785703-4b5c-4af1-8e71-74d73fb63100",
-  "since": "2026-09-08T08:20:28.658Z",
+  "since": "2026-09-08T08:31:33.281Z",
   "ttlMs": 1800000,
   "paths": [
+    "CLAUDE.md",
     "bigData/collect/localdata-permits.mjs",
     "bigData/config/sources.json",
     "bigData/docs/PERMITS.md"
