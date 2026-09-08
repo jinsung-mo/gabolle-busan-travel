@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-136",
+  "intent": "i18n-check.mjs의 tx() 간접 참조(오브젝트 필드·튜플) 오탐 수정",
+  "actor": null,
+  "session": "67c3749d-ff3b-4a67-ae17-7af8ef08e9a3",
+  "since": "2026-09-08T02:07:49.544Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/tools/i18n-check.mjs"
+  ]
+}
