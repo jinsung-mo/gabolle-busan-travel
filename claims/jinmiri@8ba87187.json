@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-277",
+  "intent": "일정 항목 순서 변경(드래그) 화면 — reorder API 연동",
+  "actor": "agent",
+  "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
+  "since": "2026-09-08T23:40:52.150Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/src/plan/itinerary.ts"
+  ]
+}
