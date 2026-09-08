@@ -1,12 +1,13 @@
 {
   "agent": "jaehyeon",
-  "task": "S15P21E201-254",
-  "intent": "back/dev 따라잡기 머지 (곧 반납)",
+  "task": "S15P21E201-225",
+  "intent": "운영자 이메일 설정을 배포에 전달하는 줄 추가",
   "actor": null,
   "session": "59f5a6a7-88d8-412f-8bea-d8ff30e82dda",
-  "since": "2026-09-08T00:31:36.492Z",
-  "ttlMs": 1800000,
+  "since": "2026-09-08T00:43:20.267Z",
+  "ttlMs": 2700000,
   "paths": [
-    "backend"
+    "backend",
+    "backend/Jenkinsfile"
   ]
 }
