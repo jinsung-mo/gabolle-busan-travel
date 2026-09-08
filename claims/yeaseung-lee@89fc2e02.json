@@ -1,0 +1,16 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-367",
+  "intent": "S15P21E201-367/-213 — 사진 오브젝트 스토리지 S3(MinIO) 구현체 추가, StoragePort 두 번째 구현",
+  "actor": "agent",
+  "session": "81eedc0d-9708-4af2-8581-b195ba96ce86",
+  "since": "2026-09-08T12:19:47.309Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/Jenkinsfile",
+    "backend/build.gradle",
+    "backend/src/main/java/com/gabolle/backend/story/storage",
+    "backend/src/main/resources/application.properties",
+    "backend/src/test/java/com/gabolle/backend/story/storage"
+  ]
+}
