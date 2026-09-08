@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-701",
-  "intent": "가동 상태 페이지",
+  "task": "S15P21E201-705",
+  "intent": "정답지 무게 결정 기록",
   "actor": null,
   "session": "2b785703-4b5c-4af1-8e71-74d73fb63100",
-  "since": "2026-09-08T07:53:11.725Z",
+  "since": "2026-09-08T08:08:20.196Z",
   "ttlMs": 1800000,
   "paths": [
+    "bigData/data/truth",
     "ci/status/README.md",
     "ci/status/collect-status.mjs",
     "ci/status/install-status.sh",
