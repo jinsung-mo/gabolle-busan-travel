@@ -7,7 +7,6 @@
   "since": "2026-09-08T00:08:10.987Z",
   "ttlMs": 600000,
   "paths": [
-    ".gitlab-ci.yml",
     "backend"
   ]
 }
