@@ -1,0 +1,16 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-91",
+  "intent": "하루 안 방문 순서 변경 + 시각 재배치",
+  "actor": null,
+  "session": "d6d0a397-8e24-4407-93cb-b2f2cb19416b",
+  "since": "2026-09-08T12:30:27.176Z",
+  "ttlMs": 10800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryEditService.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/domain/ItineraryRevision.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/presentation",
+    "backend/src/test/java/com/gabolle/backend/itinerary",
+    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java"
+  ]
+}
