@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-357",
+  "intent": "배포 파이프라인 감사 후 발견 — :previous 롤백 태그가 검증 전에 덮어써지는 구조적 버그 수정 + PrivacyCleanupScheduler cron 플레이스홀더에 인라인 기본값 추가(방어)",
+  "actor": "agent",
+  "session": "81eedc0d-9708-4af2-8581-b195ba96ce86",
+  "since": "2026-09-08T11:29:09.299Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/Jenkinsfile",
+    "backend/src/main/java/com/gabolle/backend/privacy/application/PrivacyCleanupScheduler.java"
+  ]
+}
