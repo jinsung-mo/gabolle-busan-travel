@@ -1,13 +1,15 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-758",
-  "intent": "2000곳 선정과 조사 대기열",
+  "task": "S15P21E201-759",
+  "intent": "피사계 심도를 기본으로 켠다",
   "actor": null,
   "session": "7d5736a3-7cb4-4990-abb8-2038f13e755f",
-  "since": "2026-09-08T15:46:57.351Z",
-  "ttlMs": 7200000,
+  "since": "2026-09-08T15:52:18.134Z",
+  "ttlMs": 1800000,
   "paths": [
     "bigData/process",
-    "bigData/research"
+    "bigData/research",
+    "city3d-spike/public/dof-probe.mjs",
+    "city3d-spike/public/index.html"
   ]
 }
