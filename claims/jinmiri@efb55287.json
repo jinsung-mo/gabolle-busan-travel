@@ -1,0 +1,17 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-163",
+  "intent": "지도 fallback 메시지 브랜치 이어받아 리베이스·머지",
+  "actor": null,
+  "session": "67c3749d-ff3b-4a67-ae17-7af8ef08e9a3",
+  "since": "2026-09-08T01:04:08.535Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/Dockerfile",
+    "frontend/app/(trip)/[id]/map.tsx",
+    "frontend/package.json",
+    "frontend/src/map/RouteMap.tsx",
+    "frontend/src/map/city3d.ts",
+    "frontend/tools/check-public-env.mjs"
+  ]
+}
