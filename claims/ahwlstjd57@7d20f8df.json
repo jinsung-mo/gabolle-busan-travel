@@ -1,0 +1,16 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-709",
+  "intent": "SPEND_PROFILE 취향 차원 추가 + USER/TRIP 스냅샷 API",
+  "actor": null,
+  "session": "fb7b8860-5c03-4b80-bd4e-4c47b25b1865",
+  "since": "2026-09-08T07:18:46.231Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/preference/domain/TasteDimension.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/config/PreferenceAlignmentWeights.java",
+    "backend/src/main/java/com/gabolle/backend/trip/application/PreferenceDefaultsService.java",
+    "backend/src/main/java/com/gabolle/backend/trip/domain/PreferenceDimensions.java",
+    "backend/src/main/java/com/gabolle/backend/trip/presentation/TripController.java"
+  ]
+}
