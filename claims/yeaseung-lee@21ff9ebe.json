@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-737",
+  "intent": "backend:migration-order 가 back/main에 db/migration 폴더 없을 때 조용히 죽는 버그 수정",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-08T00:05:16.663Z",
+  "ttlMs": 1200000,
+  "paths": [
+    ".gitlab-ci.yml"
+  ]
+}
