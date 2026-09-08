@@ -1,0 +1,12 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-160-placeholder",
+  "intent": "readValue 파싱 실패 시 안전하지 않게 값을 조용히 넣는 문제 수정",
+  "actor": null,
+  "session": "fb7b8860-5c03-4b80-bd4e-4c47b25b1865",
+  "since": "2026-09-08T06:59:02.298Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/service/PlaceCandidateQueryService.java"
+  ]
+}
