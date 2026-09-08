@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-254",
+  "intent": "back/dev 따라잡기(-680 Spring Boot 4.0.8)와 -730 중복 정리",
+  "actor": null,
+  "session": "59f5a6a7-88d8-412f-8bea-d8ff30e82dda",
+  "since": "2026-09-08T00:07:13.472Z",
+  "ttlMs": 5400000,
+  "paths": [
+    "backend"
+  ]
+}
