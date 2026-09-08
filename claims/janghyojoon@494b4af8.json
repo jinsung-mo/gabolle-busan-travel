@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-760",
+  "intent": "2000곳 선정과 조사 대기열",
+  "actor": null,
+  "session": "7d5736a3-7cb4-4990-abb8-2038f13e755f",
+  "since": "2026-09-08T16:14:57.083Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/package.json",
+    "bigData/process",
+    "bigData/research"
+  ]
+}
