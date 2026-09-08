@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-369",
+  "intent": "main 을 common/dev 에 합치고 브랜치 이름 3칸 수정을 살린다",
+  "actor": null,
+  "session": "2b785703-4b5c-4af1-8e71-74d73fb63100",
+  "since": "2026-09-08T08:54:28.528Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "CONTRIBUTING.md"
+  ]
+}
