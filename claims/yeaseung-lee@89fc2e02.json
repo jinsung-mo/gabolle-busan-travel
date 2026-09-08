@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-367",
+  "intent": "MR !404 backend:dependency-scan이 새로 HIGH 2건을 잡았다 — io.minio:minio@8.5.17 자체(GHSA-h7rh-xfpj-hpcm)와 그 전이 의존성 bcprov-jdk18on@1.78.1(GHSA-574f-3g2m-x479). minio 8.6.0 + bcprov-jdk18on 명시 고정으로 해결",
+  "actor": "agent",
+  "session": "81eedc0d-9708-4af2-8581-b195ba96ce86",
+  "since": "2026-09-08T13:56:03.602Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/build.gradle",
+    "backend/gradle.lockfile"
+  ]
+}
