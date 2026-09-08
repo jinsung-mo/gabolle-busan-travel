@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-367",
+  "intent": "MR !404 CI 재실패 수정 — @Container 정적 필드가 클래스 로딩 시점에 생성자를 돌려 ExecutionCondition보다 먼저 도커를 찾는다. TestDatabase처럼 지연 생성으로 바꾼다",
+  "actor": "agent",
+  "session": "81eedc0d-9708-4af2-8581-b195ba96ce86",
+  "since": "2026-09-08T13:26:54.756Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/story/S3FileStorageTest.java"
+  ]
+}
