@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-168",
+  "intent": "S15P21E201-168 완료 — 스토어 계정 담당자·개설 정보를 실행계획 10.1절 결정 목록에 기록, -165/-162 완료 기준(가입 종류·개설일) 반영",
+  "actor": "agent",
+  "session": "81eedc0d-9708-4af2-8581-b195ba96ce86",
+  "since": "2026-09-08T13:22:41.888Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/LOCAL_ROUTE_실행계획_v7.md"
+  ]
+}
