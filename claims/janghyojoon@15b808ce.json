@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-705",
+  "intent": "!320 충돌 해소 — 정답지 주석 두 판을 합친다",
+  "actor": null,
+  "session": "2b785703-4b5c-4af1-8e71-74d73fb63100",
+  "since": "2026-09-08T03:22:19.888Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/.gitignore"
+  ]
+}
