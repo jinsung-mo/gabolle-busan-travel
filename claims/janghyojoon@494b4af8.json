@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-701",
+  "intent": "가동 막대를 4시간 칸으로 (하루 6칸, 7일 42칸)",
+  "actor": null,
+  "session": "7d5736a3-7cb4-4990-abb8-2038f13e755f",
+  "since": "2026-09-08T14:20:02.374Z",
+  "ttlMs": 7200000,
+  "paths": [
+    "ci/status"
+  ]
+}
