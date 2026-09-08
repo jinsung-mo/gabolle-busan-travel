@@ -7,16 +7,6 @@
   "since": "2026-09-08T06:52:09.018Z",
   "ttlMs": 3600000,
   "paths": [
-    "frontend/app/(plan)/basics.tsx",
-    "frontend/app/(tabs)/home.tsx",
-    "frontend/app/+not-found.tsx",
-    "frontend/app/app-intro.tsx",
-    "frontend/app/chat.tsx",
-    "frontend/app/festivals.tsx",
-    "frontend/app/index.tsx",
-    "frontend/app/place/[id].tsx",
-    "frontend/src/layout/breakpoints.ts",
-    "frontend/src/plan/PlanDesktopShell.tsx",
-    "frontend/tools/breakpoint-check.mjs"
+    "frontend/src/layout/breakpoints.ts"
   ]
 }
