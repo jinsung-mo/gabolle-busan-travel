@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-688",
-  "intent": "도보 원근감 — 심도 가능성 조사",
+  "task": "S15P21E201-754",
+  "intent": "설문 구조를 5칸 자유 배치로 바꾼다",
   "actor": null,
   "session": "7d5736a3-7cb4-4990-abb8-2038f13e755f",
-  "since": "2026-09-08T13:46:58.817Z",
+  "since": "2026-09-08T13:55:43.823Z",
   "ttlMs": 7200000,
   "paths": [
-    "city3d-spike"
+    "city3d-spike",
+    "survey-recommend"
   ]
 }
