@@ -1,0 +1,12 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-751",
+  "intent": "test 태스크에 클래스별 소요시간 로깅 추가",
+  "actor": null,
+  "session": "fb7b8860-5c03-4b80-bd4e-4c47b25b1865",
+  "since": "2026-09-08T07:49:12.424Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/build.gradle"
+  ]
+}
