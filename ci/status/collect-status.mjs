@@ -485,7 +485,30 @@ function labelContainer(raw) {
     if (name.toLowerCase().includes(p.toLowerCase())) return { label: '가려진 작업', fold: '가려진 작업' };
   }
   for (const g of FOLD_GROUPS) if (g.re.test(name)) return { label: g.label, fold: g.label };
-  for (const [re, label] of LABELS) if (re.test(name)) return { label, fold: null };
+
+  // 🔴 도커 컴포즈는 컨테이너 이름을 `<프로젝트>-<서비스>-<번호>` 로 짓는다.
+  //    이 서버의 실제 이름이 `local-route-personalization-airflow-worker-1` 인데,
+  //    위 LABELS 는 `^airflow` 로 시작을 못 박아 두어 하나도 안 맞았다. 그래서
+  //    Airflow·MLflow·MinIO·PostgreSQL·Redis 가 전부 "모르는 이름" 으로 가려졌다
+  //    (2026-09-08 서버에서 실측).
+  //
+  //    그래서 **앞 낱말을 하나씩 떼면서** 다시 맞춰 본다. 위 이름은 네 번째 시도
+  //    `airflow-worker-1` 에서 맞는다. 끝의 번호도 떼고 한 번 더 본다.
+  //
+  //    🔴 이렇게 느슨하게 해도 노출이 늘지 않는다 — 오히려 준다. 맞으면 원래
+  //    이름이 **이름표로 통째로 바뀌기** 때문이다. 못 맞은 것만 아래에서 가려진다.
+  //    사람 아이디가 들어가는 bims 는 이 줄보다 위(FOLD_GROUPS)에서 이미 묶인다.
+  const parts = name.split('-');
+  for (let i = 0; i < parts.length && i < 6; i++) {
+    const tail = parts.slice(i).join('-');
+    // 🔴 끝 번호를 뗀 것을 **먼저** 본다. 안 그러면 `airflow-scheduler-1` 이
+    //    구체적인 `^airflow[-_]?scheduler$` 대신 뭉뚱그린 `^airflow.*$` 에 먼저
+    //    걸려, "Airflow 스케줄러" 가 될 것이 "Airflow" 가 된다 (자체 검사로 잡았다).
+    for (const cand of [tail.replace(/-\d+$/, ''), tail]) {
+      if (!cand) continue;
+      for (const [re, label] of LABELS) if (re.test(cand)) return { label, fold: null };
+    }
+  }
 
   if (showUnknownNames) return { label: name, fold: null };
 
@@ -891,6 +914,24 @@ function selfTest() {
   eq('🔴 두 번째 아이디도 같은 이름표 (합쳐진다)', labelContainer('bims-janghyojoon').label, 'bims 수집기');
   eq('아는 낱말은 남긴다', labelContainer('airflow-worker-1').label, 'Airflow 일꾼 (실제 작업)');
   eq('🔴 모르는 낱말은 가린다 (사람 이름일 수 있다)', labelContainer('weird-minsu-box').label, '*-*-* (모르는 이름이라 가렸습니다)');
+
+  // 🔴 2026-09-08 서버 실측 — 도커 컴포즈가 붙인 `<프로젝트>-` 접두사 때문에
+  //    아래 다섯이 전부 "모르는 이름" 으로 가려지고 있었다. 진짜 이름 그대로 넣는다.
+  eq('컴포즈 접두사가 붙어도 Airflow 일꾼',
+    labelContainer('local-route-personalization-airflow-worker-1').label, 'Airflow 일꾼 (실제 작업)');
+  eq('컴포즈 접두사가 붙어도 Airflow 스케줄러',
+    labelContainer('local-route-personalization-airflow-scheduler-1').label, 'Airflow 스케줄러 (작업 시각표)');
+  eq('접두사 + 두 낱말 서비스 이름 (dag-processor)',
+    labelContainer('local-route-personalization-airflow-dag-processor-1').label, 'Airflow (작업 스케줄러)');
+  eq('컴포즈 접두사가 붙어도 MLflow',
+    labelContainer('local-route-personalization-mlflow-1').label, 'MLflow (모델 기록)');
+  eq('컴포즈 접두사가 붙어도 PostgreSQL',
+    labelContainer('local-route-personalization-postgres-1').label, 'PostgreSQL (데이터베이스)');
+  eq('컴포즈 접두사가 붙어도 MinIO',
+    labelContainer('local-route-personalization-minio-1').label, 'MinIO (파일 저장소)');
+  // 🔴 느슨하게 맞춰도 사람 아이디는 여전히 안 샌다 — bims 는 그 앞에서 묶인다
+  eq('bims 는 접두사가 붙어도 묶인다', labelContainer('bims-rleaderjoon').label, 'bims 수집기');
+  eq('🔴 모르는 이름은 여전히 가린다', labelContainer('some-minsu-thing').label, '*-*-* (모르는 이름이라 가렸습니다)');
   const leaked = rows.map((r) => labelContainer(r.raw).label).join(' ');
   eq('🔴 어떤 이름표에도 아이디가 안 남았다', /rleaderjoon|janghyojoon|minsu/.test(leaked), false);
 
