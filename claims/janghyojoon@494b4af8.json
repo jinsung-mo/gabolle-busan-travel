@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-760",
+  "intent": "다른 컴퓨터가 이어받게 대기열 상태를 커밋한다",
+  "actor": null,
+  "session": "7d5736a3-7cb4-4990-abb8-2038f13e755f",
+  "since": "2026-09-08T23:12:57.701Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/.gitignore",
+    "bigData/research/HANDOVER.md",
+    "bigData/research/data/results"
+  ]
+}
