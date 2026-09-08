@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-331",
+  "intent": "인허가·상가정보·관광공사를 같은 가게로 잇는다",
+  "actor": null,
+  "session": "7d5736a3-7cb4-4990-abb8-2038f13e755f",
+  "since": "2026-09-08T12:31:16.723Z",
+  "ttlMs": 5400000,
+  "paths": [
+    "bigData/package.json",
+    "bigData/process/place-link.mjs"
+  ]
+}
