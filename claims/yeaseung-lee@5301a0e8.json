@@ -1,12 +1,13 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-575",
-  "intent": "배포 실패 전면 검토(사용자 요청) — CI가 dev/db 프로필로 전체 앱 컨텍스트를 한 번도 안 띄운다는 구조적 간극을 발견(오늘의 RouteOptimizerAvailabilityCheck Jackson2/3 사고가 정확히 이 틈으로 새나갔다). 슬라이스 앱이 아니라 GabolleBackendApplication 전체를 dev 프로필+진짜 Postgres로 띄우는 컨텍스트 테스트를 새로 추가",
+  "intent": "일시적 검증용 — DevProfileApplicationContextTest가 오늘 사고를 실제로 잡아내는지 증명하려고 Jackson2 import를 잠깐 되돌렸다가 바로 git checkout으로 원복한다 (커밋 안 함)",
   "actor": "agent",
   "session": "457356ec-ae76-4c2f-a904-3b988e4058a9",
-  "since": "2026-09-08T23:00:14.771Z",
+  "since": "2026-09-08T23:07:08.918Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/src/test/java/com/gabolle/backend/DevProfileApplicationContextTest.java"
+    "backend/src/test/java/com/gabolle/backend/DevProfileApplicationContextTest.java",
+    "backend/src/test/java/com/gabolle/backend/optimizer/RouteOptimizerAvailabilityCheckTest.java"
   ]
 }
