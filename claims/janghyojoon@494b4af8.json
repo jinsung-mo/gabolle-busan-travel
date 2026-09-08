@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-688",
+  "intent": "도보 원근감 — 심도 가능성 조사",
+  "actor": null,
+  "session": "7d5736a3-7cb4-4990-abb8-2038f13e755f",
+  "since": "2026-09-08T13:46:58.817Z",
+  "ttlMs": 7200000,
+  "paths": [
+    "city3d-spike"
+  ]
+}
