@@ -23,6 +23,35 @@
   떠야 하는 페이지라서 그렇다.
 -->
 <style>
+  /* ── 글꼴 ──────────────────────────────────────────────────────────────────
+     🔴 CDN 에서 안 받는다. 이 페이지는 **인터넷이 죽은 날에도 떠야 하는 페이지**라
+        바깥 주소에 매달리면 존재 이유가 없어진다. 글꼴 파일도 같은 서버,
+        같은 폴더 아래(`status/fonts/`)에 두고 상대경로로 부른다.
+
+     넣은 굵기는 이 페이지가 실제로 쓰는 넷뿐이다 — 400(본문) · 600(표 머리)
+     · 700(제목·굵은 글씨) · 800(큰 숫자). 안 쓰는 굵기는 안 받는다.
+     파일은 한글 상용 글자만 남긴 부분집합(subset)이라 하나에 260KB 남짓이다.
+
+     `font-display: swap` — 글꼴이 늦게 와도 **글자를 먼저 보여주고** 뒤에
+     바꿔 끼운다. 안 넣으면 최대 3초간 화면이 빈 채로 있는다.
+     `local(...)` 은 이미 PC 에 깔린 사람은 안 받고 넘어가라는 뜻이다. */
+  @font-face {
+    font-family: "Pretendard"; font-style: normal; font-weight: 400; font-display: swap;
+    src: local("Pretendard Regular"), url("fonts/Pretendard-Regular.subset.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Pretendard"; font-style: normal; font-weight: 600; font-display: swap;
+    src: local("Pretendard SemiBold"), url("fonts/Pretendard-SemiBold.subset.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Pretendard"; font-style: normal; font-weight: 700; font-display: swap;
+    src: local("Pretendard Bold"), url("fonts/Pretendard-Bold.subset.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Pretendard"; font-style: normal; font-weight: 800; font-display: swap;
+    src: local("Pretendard ExtraBold"), url("fonts/Pretendard-ExtraBold.subset.woff2") format("woff2");
+  }
+
   :root {
     --bg: #f6f7f9;      --card: #ffffff;    --ink: #16181d;
     --dim: #5b6472;     --faint: #8b95a5;   --line: #e3e7ed;
@@ -95,13 +124,22 @@
   .svc-msg { margin-left: auto; font-size: 13px; color: var(--dim); }
   .svc-what { font-size: 12.5px; color: var(--faint); margin-top: 3px; }
 
-  /* ── 90일 막대 ── */
-  .bars { display: flex; gap: 2px; height: 32px; margin: 12px 0 6px; align-items: stretch; }
+  /* ── 7일 막대 — 칸 하나가 4시간, 하루 6칸, 모두 42칸 ───────────────────────
+     🔴 42칸이 고르게 늘어서면 **어디가 어제고 어디가 오늘인지 못 읽는다.** 그래서
+        하루씩 묶고(.day) 묶음 사이만 넓게 벌린다. 선을 긋지 않고 간격으로만 가른다 —
+        이 페이지의 색은 정상·느림·멈춤 셋뿐이고, 눈금 하나 때문에 그 약속을
+        깨면 색이 무슨 뜻인지가 흐려진다.
+     🔴 묶음의 flex-grow 는 **칸 수에 비례**한다. 맨 앞과 맨 뒤 하루는 잘려서
+        4칸·2칸일 수 있는데, 묶음마다 같은 폭을 주면 그 날의 칸만 뚱뚱해진다. */
+  .bars { display: flex; gap: 7px; height: 30px; margin: 12px 0 6px; align-items: stretch; }
+  .day { display: flex; gap: 1px; min-width: 0; }
   .bar { flex: 1 1 0; min-width: 0; border-radius: 2px; background: var(--none); cursor: default; }
   .bar.ok { background: var(--ok); } .bar.slow { background: var(--slow); }
   .bar.down { background: var(--down); } .bar.none { background: var(--none); opacity: .55; }
   .bar:hover { outline: 2px solid var(--ink); outline-offset: 1px; }
   .axis { display: flex; font-size: 11.5px; color: var(--faint); }
+  /* 좁은 화면에서는 칸이 5px 남짓이 된다. 날 사이 간격까지 넓으면 칸이 더 깎인다. */
+  @media (max-width: 640px) { .bars { gap: 4px; height: 26px; } }
   .axis .mid { flex: 1; text-align: center; }
   .axis .right { text-align: right; }
 
@@ -216,29 +254,67 @@
       month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" }) + " (한국 시간)";
   }
 
-  // ── 90일 가동 막대 ────────────────────────────────────────────────────────
+  // ── 7일 가동 막대 — 칸 하나가 4시간이다 ───────────────────────────────────
   //
-  // 하루에 한 칸이다. 그 날 한 번이라도 멈췄으면 빨갛고, 느렸으면 노랗다.
-  // 🔴 표본이 없는 날은 회색으로 남긴다 — 초록으로 칠하면 "그 날 잘 돌았다" 는
-  //    거짓말이 된다. 이 페이지를 켠 날부터 칸이 차기 시작한다.
-  function barsHtml(days) {
-    if (!Array.isArray(days) || !days.length) return "";
-    const cells = days.map((d) => {
-      const st = d.state || "none";
-      const tip = st === "none"
-        ? `${d.d} — 잰 것이 없습니다`
-        : `${d.d} — ${STATE_TEXT[st]}${d.up != null ? ` · 정상 ${d.up}%` : ""}${d.n ? ` · 표본 ${d.n}개` : ""}`;
-      return `<div class="bar ${st}" title="${esc(tip)}"></div>`;
+  // 칸 하나가 4시간이고 하루가 6칸(00·04·08·12·16·20시), 7일이면 42칸이다.
+  // 그 4시간 안에 한 번이라도 멈췄으면 빨갛고, 느렸으면 노랗다.
+  //
+  // 🔴 하루 한 칸이던 것을 잘게 나눈 이유는 하나다 — 하루로 뭉치면 **점심에
+  //    2분 끊긴 것과 온종일 죽어 있던 것이 똑같이 빨간 칸 하나**가 된다.
+  // 🔴 표본이 없는 칸은 회색으로 남긴다 — 초록으로 칠하면 "그때 잘 돌았다" 는
+  //    거짓말이 된다. 이 페이지를 켠 때부터 칸이 차기 시작한다.
+  // 🔴 **화면은 7일이고 보관은 90일(540칸)이다.** 수집기가 디스크에는 540칸을
+  //    쌓고 status.json 에는 42칸만 싣는다. 540칸을 다 실으면 파일이 100KB 를
+  //    넘고 그것을 30초마다 모두가 다시 받는다. 적게 보여주는 것은 언제든
+  //    되돌릴 수 있지만, 안 모은 것은 나중에 만들 수 없다.
+  const SHOW_SLOTS = 42;          // 7일 × 6칸
+  let slotHours = 4;              // status.json 이 알려 준다 (render 에서 채운다)
+
+  /** `2026-09-08T12` → `09-08 12–16시(한국 시간)`. 서버는 UTC 지만 칸은 한국 시간으로 잘려 있다. */
+  function slotLabel(t) {
+    if (typeof t !== "string" || t.length < 13) return String(t ?? "");
+    const from = Number(t.slice(11, 13));
+    const to = from + slotHours;
+    return `${t.slice(5, 10)} ${t.slice(11, 13)}–${String(to).padStart(2, "0")}시(한국 시간)`;
+  }
+
+  function barsHtml(all) {
+    if (!Array.isArray(all) || !all.length) return "";
+    // 뒤가 지금이다. 칸이 42개보다 적어도 있는 만큼만 그린다 — 안 깨진다.
+    const slots = all.slice(-SHOW_SLOTS);
+
+    // 같은 날끼리 묶는다. 맨 앞·맨 뒤 하루는 잘려서 6칸이 안 될 수 있다.
+    const groups = [];
+    for (const sl of slots) {
+      const day = String(sl.t ?? "").slice(0, 10);
+      if (!groups.length || groups.at(-1).day !== day) groups.push({ day, cells: [] });
+      groups.at(-1).cells.push(sl);
+    }
+
+    const bars = groups.map((g) => {
+      const cells = g.cells.map((d) => {
+        const st = d.state || "none";
+        const tip = st === "none"
+          ? `${slotLabel(d.t)} — 잰 것이 없습니다`
+          // "정상 · 정상 100%" 처럼 같은 말이 두 번 나오지 않게 표본 쪽으로 묶는다.
+          : `${slotLabel(d.t)} — ${STATE_TEXT[st]}${d.n ? ` · 표본 ${d.n}개` : ""}${d.up != null ? ` 중 ${d.up}% 정상` : ""}`;
+        return `<div class="bar ${st}" title="${esc(tip)}"></div>`;
+      }).join("");
+      // flex-grow 를 칸 수로 준다 — 잘린 하루의 칸만 뚱뚱해지지 않게.
+      return `<div class="day" style="flex:${g.cells.length} 1 0">${cells}</div>`;
     }).join("");
 
-    const measured = days.filter((d) => d.state !== "none");
-    const okDays = measured.filter((d) => d.state === "ok").length;
+    const measured = slots.filter((d) => d.state !== "none");
+    const okSlots = measured.filter((d) => d.state === "ok").length;
     const right = measured.length
-      ? `잰 ${measured.length}일 중 ${okDays}일 정상`
-      : "아직 아무 날도 못 쟀습니다";
+      ? `잰 ${measured.length}칸(${slotHours}시간씩) 중 ${okSlots}칸 정상`
+      : `아직 아무 칸도 못 쟀습니다 — 칸 하나가 ${slotHours}시간입니다`;
 
-    return `<div class="bars">${cells}</div>
-      <div class="axis"><span>90일 전</span><span class="mid">${esc(right)}</span><span class="right">오늘</span></div>`;
+    // 칸 수를 날로 되돌린다. 42칸이면 7일, 두 칸뿐이면 1일.
+    const spanDays = Math.max(1, Math.ceil(slots.length / (24 / slotHours)));
+
+    return `<div class="bars">${bars}</div>
+      <div class="axis"><span>${spanDays}일 전</span><span class="mid">${esc(right)}</span><span class="right">지금</span></div>`;
   }
 
   // ── MR 검사 속도 줄에 붙는 자세한 값 ──────────────────────────────────────
@@ -281,7 +357,7 @@
           <span class="svc-msg">${right}</span>
         </div>
         <div class="svc-what">${esc(s.what || "")}</div>
-        ${barsHtml(s.days)}
+        ${barsHtml(s.slots)}
         ${s.kind === "mr" ? mrDetail(s.mr) : ""}
       </div>`;
   }
@@ -389,6 +465,9 @@
 
   // ── 그리기 ────────────────────────────────────────────────────────────────
   function render(d) {
+    // 칸이 몇 시간짜리인지는 수집기가 정한다. 화면이 4를 손으로 적어 두면
+    // 수집기에서 6으로 바꾼 날 눈금 글씨만 거짓말이 된다.
+    if (Number.isFinite(d.slotHours) && d.slotHours > 0) slotHours = d.slotHours;
     const st = (d.overall && d.overall.state) || "unknown";
     const b = $("banner");
     b.className = "banner " + st;

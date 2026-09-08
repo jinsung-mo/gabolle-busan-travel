@@ -58,6 +58,9 @@ for f in uptime.html collect-status.mjs; do
   [ -f "$HERE/$f" ] || die "$HERE/$f 가 없습니다. 저장소 안에서 돌리고 있는지 보세요."
 done
 
+# 글꼴은 없어도 페이지는 뜬다 — 시스템 글꼴로 떨어질 뿐이다. 그래서 멈추지 않고 알린다.
+[ -d "$HERE/fonts" ] || echo "   ⚠ $HERE/fonts 가 없습니다 — 글꼴이 시스템 것으로 떨어집니다"
+
 # docker 와 ps 는 없어도 설치는 된다 — 그 칸만 "아직 안 잼" 이 된다.
 if ! command -v docker >/dev/null; then
   echo "   ⚠ docker 가 없습니다 — '최근 1시간 CPU 최다' 의 컨테이너 표가 빕니다"
@@ -85,6 +88,14 @@ install -o "$RUN_USER" -g "$RUN_USER" -m 644 "$HERE/uptime.html" "$WWW/index.htm
 install -m 755 "$HERE/collect-status.mjs" "$LIB/collect-status.mjs"
 echo "   $WWW/index.html   ← uptime.html"
 echo "   $LIB/collect-status.mjs"
+
+# 🔴 글꼴은 CDN 에서 안 받는다. 이 페이지는 인터넷이 죽은 날에도 떠야 해서,
+#    글꼴 파일도 같은 서버에 놓고 상대경로(fonts/…)로 부른다.
+if [ -d "$HERE/fonts" ]; then
+  install -d -o "$RUN_USER" -g "$RUN_USER" -m 755 "$WWW/fonts"
+  install -o "$RUN_USER" -g "$RUN_USER" -m 644 "$HERE"/fonts/* "$WWW/fonts/"
+  echo "   $WWW/fonts/       ← $(ls "$HERE/fonts"/*.woff2 2>/dev/null | wc -l)개 글꼴 + 라이선스"
+fi
 
 # 가릴 이름 목록 — 없으면 빈 것을 만들어 둔다. 나중에 여기 한 줄씩 넣는다.
 if [ ! -f "$MASK" ]; then
