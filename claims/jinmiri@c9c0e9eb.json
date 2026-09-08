@@ -1,0 +1,19 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-280",
+  "intent": "S15P21E201-280: 화면 폭 경계값 9종을 599/1023/1439 3종으로 표준화 — 공용 breakpoints 모듈 추가 + 산발적 width 임계값(900/1100/760) 이관 + 검사 스크립트",
+  "actor": "agent",
+  "session": "f2417295-b283-416f-b02d-7944936cd7b2",
+  "since": "2026-09-08T08:53:19.546Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/basics.tsx",
+    "frontend/app/+not-found.tsx",
+    "frontend/app/festivals.tsx",
+    "frontend/app/place/[id].tsx",
+    "frontend/package.json",
+    "frontend/src/layout",
+    "frontend/src/plan/PlanDesktopShell.tsx",
+    "frontend/tools/check-breakpoints.mjs"
+  ]
+}
