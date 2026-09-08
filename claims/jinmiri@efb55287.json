@@ -1,12 +1,14 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-280",
-  "intent": "화면 폭 경계값 599/1023/1439 통일 + 검사 스크립트",
+  "task": "S15P21E201-121",
+  "intent": "여행 삭제/나가기 버튼 복구 (백엔드 DELETE /trips/{id} 확인됨)",
   "actor": null,
   "session": "67c3749d-ff3b-4a67-ae17-7af8ef08e9a3",
-  "since": "2026-09-08T06:52:09.018Z",
-  "ttlMs": 3600000,
+  "since": "2026-09-08T06:54:02.500Z",
+  "ttlMs": 2700000,
   "paths": [
-    "frontend/src/layout/breakpoints.ts"
+    "frontend/app/(tabs)/trips.tsx",
+    "frontend/src/layout/breakpoints.ts",
+    "frontend/src/trip/trips.ts"
   ]
 }
