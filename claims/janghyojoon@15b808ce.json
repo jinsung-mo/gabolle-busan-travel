@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-751",
+  "intent": "backend :test 안을 클래스별 시간으로 들여다본다",
+  "actor": null,
+  "session": "2b785703-4b5c-4af1-8e71-74d73fb63100",
+  "since": "2026-09-08T07:28:25.313Z",
+  "ttlMs": 1800000,
+  "paths": [
+    ".gitlab-ci.yml"
+  ]
+}
