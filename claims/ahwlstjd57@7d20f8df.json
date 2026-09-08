@@ -4,7 +4,7 @@
   "intent": "테스트 추가",
   "actor": null,
   "session": "fb7b8860-5c03-4b80-bd4e-4c47b25b1865",
-  "since": "2026-09-08T07:32:45.446Z",
+  "since": "2026-09-08T07:35:17.578Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/event/domain/EventType.java",
