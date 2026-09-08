@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-751",
+  "intent": "Check Stack State의 wc -l 오탐 수정",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-08T07:41:03.632Z",
+  "ttlMs": 900000,
+  "paths": [
+    "infra/personalization/Jenkinsfile"
+  ]
+}
