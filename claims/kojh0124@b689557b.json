@@ -1,10 +1,10 @@
 {
   "agent": "kojh0124",
   "task": "S15P21E201-MLOPS-P1",
-  "intent": "MLOps Phase 1 — 취향 벡터 접기 배치: /internal 배치 API(공유 토큰) + taste_vector_build DAG",
+  "intent": "MLOps Phase 1 — 취향 벡터 접기 통합 테스트 (표시 멱등성·판 교체)",
   "actor": "agent",
   "session": "2c4adb41-2bd5-434e-bccd-f1a12477dddc",
-  "since": "2026-09-08T06:00:54.579Z",
+  "since": "2026-09-08T06:12:29.426Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/.env.example",
@@ -14,6 +14,8 @@
     "backend/src/main/java/com/gabolle/backend/preference",
     "backend/src/main/resources/application-dev.properties",
     "backend/src/main/resources/application.properties",
+    "backend/src/test/java/com/gabolle/backend/batch",
+    "backend/src/test/java/com/gabolle/testslice/BatchSliceApplication.java",
     "mlops"
   ]
 }
