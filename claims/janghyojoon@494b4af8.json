@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-331",
-  "intent": "인허가 좌표를 EPSG:5174 에서 WGS84 로 바꾸고, 상가정보의 같은 가게와 거리로 검증한다",
+  "intent": "20m 오차 정정 — 손 오차가 아니라 변환 변수 계통 오차였다",
   "actor": null,
   "session": "7d5736a3-7cb4-4990-abb8-2038f13e755f",
-  "since": "2026-09-08T12:23:42.200Z",
-  "ttlMs": 5400000,
+  "since": "2026-09-08T12:29:41.518Z",
+  "ttlMs": 3600000,
   "paths": [
+    "bigData/docs/PERMITS.md",
     "bigData/package.json",
     "bigData/process/permits-wgs84.mjs"
   ]
