@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-238",
+  "intent": "기록 카드 클릭 시 상세 화면으로 이동하는 기능 추가",
+  "actor": null,
+  "session": "67c3749d-ff3b-4a67-ae17-7af8ef08e9a3",
+  "since": "2026-09-08T02:38:05.051Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(tabs)/feed.tsx",
+    "frontend/src/social/stories.ts"
+  ]
+}
