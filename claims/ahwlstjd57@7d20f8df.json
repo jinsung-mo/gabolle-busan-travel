@@ -4,7 +4,7 @@
   "intent": "ArchUnit 레이어링 규칙 도입 + README 확정 구조 반영",
   "actor": null,
   "session": "fb7b8860-5c03-4b80-bd4e-4c47b25b1865",
-  "since": "2026-09-08T06:19:10.277Z",
+  "since": "2026-09-08T06:20:05.951Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/README.md",
