@@ -1,15 +1,17 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-179",
-  "intent": "일정 구간에 실제 이동시간·거리를 채우고 추정 여부를 표시",
+  "intent": "일정이 쓰는 이동시간 포트 구현체",
   "actor": null,
   "session": "d6d0a397-8e24-4407-93cb-b2f2cb19416b",
-  "since": "2026-09-08T14:21:17.227Z",
+  "since": "2026-09-08T14:22:19.261Z",
   "ttlMs": 14400000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary",
+    "backend/src/main/java/com/gabolle/backend/route",
     "backend/src/main/resources/db/migration",
     "backend/src/test/java/com/gabolle/backend/itinerary",
-    "backend/src/test/java/com/gabolle/backend/recommendation"
+    "backend/src/test/java/com/gabolle/backend/recommendation",
+    "backend/src/test/java/com/gabolle/backend/route"
   ]
 }
