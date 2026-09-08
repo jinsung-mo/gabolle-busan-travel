@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-672",
+  "intent": "인증 필요 경로가 실수로 열렸는지 보는 역방향 검사 (!317 에서 살림)",
+  "actor": null,
+  "session": "59f5a6a7-88d8-412f-8bea-d8ff30e82dda",
+  "since": "2026-09-08T00:28:48.591Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/security"
+  ]
+}
