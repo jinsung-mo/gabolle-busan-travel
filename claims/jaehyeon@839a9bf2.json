@@ -1,0 +1,26 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-738",
+  "intent": "내 여행 목록 조회와 세션 미사용 만료 단축",
+  "actor": null,
+  "session": "d6d0a397-8e24-4407-93cb-b2f2cb19416b",
+  "since": "2026-09-08T02:23:55.405Z",
+  "ttlMs": 10800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/auth/config/AuthProperties.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/application",
+    "backend/src/main/java/com/gabolle/backend/itinerary/infra/ItineraryJpaRepository.java",
+    "backend/src/main/java/com/gabolle/backend/trip/application/TripQueryService.java",
+    "backend/src/main/java/com/gabolle/backend/trip/application/port",
+    "backend/src/main/java/com/gabolle/backend/trip/domain/TripRepository.java",
+    "backend/src/main/java/com/gabolle/backend/trip/infra/InMemoryTripRepository.java",
+    "backend/src/main/java/com/gabolle/backend/trip/infra/JpaTripRepository.java",
+    "backend/src/main/java/com/gabolle/backend/trip/infra/TripJpaRepository.java",
+    "backend/src/main/java/com/gabolle/backend/trip/infra/TripMemberJpaRepository.java",
+    "backend/src/main/java/com/gabolle/backend/trip/presentation/TripController.java",
+    "backend/src/main/java/com/gabolle/backend/trip/presentation/dto",
+    "backend/src/main/resources/application-dev.properties",
+    "backend/src/test/java/com/gabolle/backend/auth",
+    "backend/src/test/java/com/gabolle/backend/trip"
+  ]
+}
