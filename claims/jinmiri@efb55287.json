@@ -1,14 +1,15 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-238",
-  "intent": "다른 사용자 프로필 화면 신설 + 피드에서 작성자→프로필 이동",
+  "intent": "다른 사용자 프로필 화면 신설",
   "actor": null,
   "session": "67c3749d-ff3b-4a67-ae17-7af8ef08e9a3",
-  "since": "2026-09-08T05:41:02.807Z",
+  "since": "2026-09-08T05:41:16.560Z",
   "ttlMs": 3600000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
     "frontend/app/feed/[id].tsx",
+    "frontend/app/user/[id].tsx",
     "frontend/src/social/stories.ts"
   ]
 }
