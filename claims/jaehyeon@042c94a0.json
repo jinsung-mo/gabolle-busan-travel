@@ -1,12 +1,13 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-254",
-  "intent": "back/dev 따라잡기(-680 Spring Boot 4.0.8)와 -730 중복 정리",
+  "intent": "back/dev 따라잡기 머지 커밋에 포함됨 (내 수정 아님, 곧 반납)",
   "actor": null,
   "session": "59f5a6a7-88d8-412f-8bea-d8ff30e82dda",
-  "since": "2026-09-08T00:07:13.472Z",
-  "ttlMs": 5400000,
+  "since": "2026-09-08T00:08:10.987Z",
+  "ttlMs": 600000,
   "paths": [
+    ".gitlab-ci.yml",
     "backend"
   ]
 }
