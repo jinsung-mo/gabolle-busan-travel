@@ -1,12 +1,13 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-749",
-  "intent": "readValue 파싱 실패 값을 안전하게 처리",
+  "intent": "readValue 파싱 실패 안전 처리 테스트",
   "actor": null,
   "session": "fb7b8860-5c03-4b80-bd4e-4c47b25b1865",
-  "since": "2026-09-08T07:03:50.954Z",
+  "since": "2026-09-08T07:05:10.861Z",
   "ttlMs": 1800000,
   "paths": [
-    "backend/src/main/java/com/gabolle/backend/place/service/PlaceCandidateQueryService.java"
+    "backend/src/main/java/com/gabolle/backend/place/service/PlaceCandidateQueryService.java",
+    "backend/src/test/java/com/gabolle/backend/place/PlaceCandidateQueryServiceTest.java"
   ]
 }
