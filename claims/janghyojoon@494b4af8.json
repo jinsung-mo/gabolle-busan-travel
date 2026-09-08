@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-760",
+  "intent": "출처를 블로그·카페까지 넓힌다",
+  "actor": null,
+  "session": "7d5736a3-7cb4-4990-abb8-2038f13e755f",
+  "since": "2026-09-08T22:19:16.595Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/research/PROMPT.md"
+  ]
+}
