@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-705",
+  "intent": "행안부 인허가 수집기",
+  "actor": null,
+  "session": "2b785703-4b5c-4af1-8e71-74d73fb63100",
+  "since": "2026-09-08T08:43:41.162Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/collect/localdata-permits.mjs",
+    "bigData/config/sources.json",
+    "bigData/docs/PERMITS.md"
+  ]
+}
