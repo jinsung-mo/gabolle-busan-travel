@@ -1,14 +1,15 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-760",
-  "intent": "조사원이 검색 없이 done 을 부르는 것을 막는 관문",
+  "intent": "관문 두 개의 시험",
   "actor": null,
   "session": "7d5736a3-7cb4-4990-abb8-2038f13e755f",
-  "since": "2026-09-08T16:33:05.414Z",
+  "since": "2026-09-08T16:42:07.844Z",
   "ttlMs": 1800000,
   "paths": [
     "bigData/research/README.md",
     "bigData/research/audit.mjs",
-    "bigData/research/queue.mjs"
+    "bigData/research/queue.mjs",
+    "bigData/research/queue.test.mjs"
   ]
 }
