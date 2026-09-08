@@ -7,7 +7,6 @@
   "since": "2026-09-08T05:31:50.974Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/place/[id].tsx",
-    "frontend/src/discovery/places.ts"
+    "frontend/app/place/[id].tsx"
   ]
 }
