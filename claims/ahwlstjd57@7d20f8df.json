@@ -1,14 +1,15 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-160",
-  "intent": "GET /api/v1/analytics/kpis 정책 등록",
+  "intent": "GET /api/v1/analytics/kpis 신설",
   "actor": null,
   "session": "fb7b8860-5c03-4b80-bd4e-4c47b25b1865",
-  "since": "2026-09-08T05:42:25.766Z",
+  "since": "2026-09-08T05:42:50.705Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/event/application/AnalyticsQueryService.java",
     "backend/src/main/java/com/gabolle/backend/event/presentation/AnalyticsController.java",
+    "backend/src/main/java/com/gabolle/backend/event/presentation/AnalyticsExceptionHandler.java",
     "backend/src/main/java/com/gabolle/backend/event/presentation/dto/AnalyticsKpiResponse.java",
     "backend/src/main/java/com/gabolle/backend/event/repository/EventOutboxRepository.java",
     "backend/src/test/java/com/gabolle/backend/event/AnalyticsControllerTest.java",
