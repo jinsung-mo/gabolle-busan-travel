@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-701",
+  "intent": "상태 페이지 이름표가 컴포즈 접두사 때문에 안 붙던 것",
+  "actor": null,
+  "session": "2b785703-4b5c-4af1-8e71-74d73fb63100",
+  "since": "2026-09-08T08:42:54.650Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "ci/status"
+  ]
+}
