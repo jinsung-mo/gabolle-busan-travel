@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-786",
-  "intent": "CI 를 파트별로 쪼개는 절차 문서",
+  "task": "S15P21E201-760",
+  "intent": "조사 결과 저장",
   "actor": null,
   "session": "7f25f57f-7040-4aea-aea3-c02ff7d76bd9",
-  "since": "2026-09-09T06:34:33.334Z",
-  "ttlMs": 1800000,
+  "since": "2026-09-09T06:35:18.039Z",
+  "ttlMs": 900000,
   "paths": [
     ".gitlab-ci.yml",
+    "bigData/research/data",
     "ci",
     "docs/CI-SPLIT.md"
   ]
