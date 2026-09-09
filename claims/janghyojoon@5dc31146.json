@@ -1,0 +1,27 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-770",
+  "intent": "bigData/main 에 main 을 합친다 (승격 준비)",
+  "actor": null,
+  "session": "7f25f57f-7040-4aea-aea3-c02ff7d76bd9",
+  "since": "2026-09-09T06:00:23.341Z",
+  "ttlMs": 900000,
+  "paths": [
+    ".claude",
+    ".gitlab-ci.yml",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "CONTRIBUTING.md",
+    "README.md",
+    "backend",
+    "ci",
+    "docs",
+    "frontend",
+    "infra",
+    "ref",
+    "setup.ps1",
+    "setup.sh",
+    "survey-place",
+    "survey-recommend"
+  ]
+}
