@@ -199,6 +199,24 @@ governance:
       changes: ['frontend/**/*', 'backend/**/*', 'ci/**/*', 'governance/**/*',
                 'docs/**/*', '.gitlab-ci.yml', 'CONTRIBUTING.md', 'CLAUDE.md', 'AGENTS.md', 'setup.sh', 'setup.ps1']
 
+# bigData 파트 검증.
+#
+# axmap 과 따로 두는 이유: 서로 죽는 방식이 다르다. axmap 은 화면이 죽고,
+# bigData 는 "그럴듯한 숫자" 가 죽는다 — 경사 기준선이 틀리면 없는 언덕이 생기는데
+# 문법 검사도 단위 테스트도 전부 초록이다. verify 가 보정 불변식을 들고 있다.
+#
+# data/ 는 커밋되지 않으므로 CI 에는 원본이 없다. verify 는 데이터가 없으면
+# 해당 검사를 건너뛰고 통과한다 — clone 직후에도 돌아야 하기 때문이다.
+verify:bigdata:
+  stage: verify
+  script:
+    - npm --prefix bigData run verify
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes: [bigData/**/*]
+    - if: $CI_COMMIT_BRANCH =~ /(^|\/)(main|func|dev)$/
+      changes: [bigData/**/*]
+
 # ── 버전 ────────────────────────────────────────────────────────────────────
 #
 # dev 에 들어오면 patch, func 에 들어오면 minor, main 에 들어오면 major.
@@ -248,6 +266,13 @@ version:
       git remote set-url origin "https://oauth2:${AXMAP_BOT_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git"
       git config user.name  "axmap-bot"
       git config user.email "axmap-bot@noreply.${CI_SERVER_HOST}"
+      # 🔴 S15P21E201-741 — bigData/main 의 태그 push 가 "This repository is
+      #    configured for Git LFS but 'git-lfs' was not found" 로 계속 죽었다.
+      #    이 저장소 어느 브랜치의 .gitattributes 에도 LFS 선언이 없다(실측,
+      #    2026-09-08) — 훅은 러너 작업 폴더에 남은 잔여물이고, 이미지에
+      #    git-lfs 가 없어 그 훅이 실행되는 순간 무조건 죽는다. 이 잡의 태그
+      #    push 는 어떤 pre-push 훅도 필요 없으니 통째로 끈다.
+      git config core.hooksPath /dev/null
       npx -y axmap-cli@$AXMAP_VERSION version bump --branch "$CI_COMMIT_BRANCH" --push
   rules:
     # MR 에서는 올리지 않는다. 머지되어 브랜치에 들어온 것만 버전을 갖는다.
