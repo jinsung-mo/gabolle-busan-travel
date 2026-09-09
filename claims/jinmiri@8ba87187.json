@@ -1,0 +1,16 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-435",
+  "intent": "리베이스로 생긴 새 커밋 시각을 claim 감사에 맞춰 다시 정리 (S15P21E201-435)",
+  "actor": "agent",
+  "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
+  "since": "2026-09-09T05:48:19.297Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/basics.tsx",
+    "frontend/src/map/RouteMap.tsx",
+    "frontend/src/plan/PlanProvider.tsx",
+    "frontend/src/plan/origins.ts",
+    "frontend/src/plan/tripBasics.ts"
+  ]
+}
