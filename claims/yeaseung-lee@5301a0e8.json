@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-575",
+  "intent": "MR !414 근본 원인 확정(고지혁 MR !425과 합의) — 내 DevProfileApplicationContextTest가 만든 gabolle schema를 안 지워서 이후 컨텍스트의 $user search_path 해석이 바뀌는 부작용을 냈다. @AfterAll 정리 추가 + DB-STANDARD.md의 이제 틀린 문장 정정",
+  "actor": "agent",
+  "session": "457356ec-ae76-4c2f-a904-3b988e4058a9",
+  "since": "2026-09-09T01:08:54.663Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/DevProfileApplicationContextTest.java",
+    "docs/DB-STANDARD.md"
+  ]
+}
