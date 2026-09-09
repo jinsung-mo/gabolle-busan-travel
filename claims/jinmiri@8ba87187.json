@@ -1,12 +1,13 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-234",
-  "intent": "S15P21E201-234 rebase 후 재푸시",
+  "task": "S15P21E201-283",
+  "intent": "S15P21E201-283 7개 폭에서 가로 스크롤 자동 검사 스크립트 작성",
   "actor": "agent",
   "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
-  "since": "2026-09-09T08:58:24.484Z",
+  "since": "2026-09-09T23:56:34.094Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/trips/[id]/itinerary.tsx"
+    "frontend/package.json",
+    "frontend/tools/check-responsive.mjs"
   ]
 }
