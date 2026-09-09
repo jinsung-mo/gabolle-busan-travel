@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-362",
+  "intent": "개인정보 정리 배치의 기준선 경계 검사 — 설정값이 실제로 쓰이는지 확인",
+  "actor": null,
+  "session": "18c1e1e9-b8ab-439c-b5f9-6375694a221c",
+  "since": "2026-09-09T11:50:36.634Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/privacy"
+  ]
+}
