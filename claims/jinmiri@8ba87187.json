@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-215",
+  "intent": "여행 기록 카드에 신고 진입점·사유 선택 붙이기 (S15P21E201-215)",
+  "actor": "agent",
+  "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
+  "since": "2026-09-09T05:33:32.967Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/feed.tsx",
+    "frontend/src/components/ReportModal.tsx",
+    "frontend/src/social/stories.ts"
+  ]
+}
