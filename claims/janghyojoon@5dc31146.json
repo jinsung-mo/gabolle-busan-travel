@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-23",
-  "intent": "부산 추천 설문 페이지 구현",
+  "task": "S15P21E201-760",
+  "intent": "조사 결과 저장",
   "actor": "agent",
   "session": "7f25f57f-7040-4aea-aea3-c02ff7d76bd9",
-  "since": "2026-09-09T01:08:07.940Z",
-  "ttlMs": 2700000,
+  "since": "2026-09-09T01:11:57.382Z",
+  "ttlMs": 1200000,
   "paths": [
+    "bigData/research/data/results",
     "bigData/survey/places/assets",
     "bigData/survey/places/index.html"
   ]
