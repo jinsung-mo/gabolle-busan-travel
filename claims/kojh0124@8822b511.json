@@ -1,0 +1,12 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-749",
+  "intent": "place_feature 값 파싱 실패가 상세 응답에서 VERIFIED+null 로 나가던 것을 고친다 (749 가 후보 경로만 고쳐 남은 세 번째 자리)",
+  "actor": "agent",
+  "session": "310e7d2c-ef27-44e1-a71b-71ff40f8aca3",
+  "since": "2026-09-09T01:11:29.669Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/service/PlaceDetailService.java"
+  ]
+}
