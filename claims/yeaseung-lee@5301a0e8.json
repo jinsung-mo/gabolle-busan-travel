@@ -1,12 +1,14 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-779",
-  "intent": "S15P21E201-779 — 기능 테스트 공통 하네스(FunctionalJourneyTest+AuthedClient) 구현 + 증명용 시나리오 1건",
+  "intent": "S15P21E201-779 — 하네스에 필요한 spring-boot-resttestclient 테스트 의존성 추가",
   "actor": "agent",
   "session": "457356ec-ae76-4c2f-a904-3b988e4058a9",
-  "since": "2026-09-09T08:56:00.525Z",
+  "since": "2026-09-09T09:39:32.296Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/build.gradle",
+    "backend/gradle.lockfile",
     "backend/src/test/java/com/gabolle/backend/functional"
   ]
 }
