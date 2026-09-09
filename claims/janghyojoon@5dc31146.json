@@ -1,12 +1,14 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-760",
-  "intent": "조사 결과 저장",
+  "task": "S15P21E201-754",
+  "intent": "핸드오프 디자인 적용 + 웰컴 3장 추가 — 사진/글꼴 자산",
   "actor": null,
   "session": "7f25f57f-7040-4aea-aea3-c02ff7d76bd9",
-  "since": "2026-09-09T01:44:27.468Z",
-  "ttlMs": 900000,
+  "since": "2026-09-09T01:50:58.516Z",
+  "ttlMs": 1800000,
   "paths": [
+    "survey-recommend/assets",
+    "survey-recommend/fonts",
     "survey-recommend/index.html"
   ]
 }
