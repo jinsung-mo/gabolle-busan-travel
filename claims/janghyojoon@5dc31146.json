@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-771",
+  "intent": "설문 응답 DB 를 백업 대상에 넣는다",
+  "actor": null,
+  "session": "7f25f57f-7040-4aea-aea3-c02ff7d76bd9",
+  "since": "2026-09-09T04:36:26.126Z",
+  "ttlMs": 2400000,
+  "paths": [
+    "infra/personalization/scripts/backup-postgres.sh"
+  ]
+}
