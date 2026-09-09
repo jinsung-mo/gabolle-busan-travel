@@ -1,0 +1,15 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-463",
+  "intent": "가고 싶은 장소 검색+추가/삭제+25km 경고 구현",
+  "actor": "agent",
+  "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
+  "since": "2026-09-09T01:49:09.258Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/taste.tsx",
+    "frontend/src/discovery/places.ts",
+    "frontend/src/plan/PlanProvider.tsx",
+    "frontend/src/utils/geo.ts"
+  ]
+}
