@@ -1,10 +1,10 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-456",
-  "intent": "숙소 후보 조회 API와 여행 이용 조건(영어메뉴/해외카드/혼밥우선/숙소/최대환승) 저장",
+  "intent": "Trip 도메인/엔티티에 숙소·이용조건 칸을 추가하며 매핑 갱신",
   "actor": "agent",
   "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
-  "since": "2026-09-09T01:16:56.409Z",
+  "since": "2026-09-09T01:17:31.969Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/place/api/PlaceQueryController.java",
@@ -14,6 +14,7 @@
     "backend/src/main/java/com/gabolle/backend/place/service/PlaceSearchService.java",
     "backend/src/main/java/com/gabolle/backend/trip/application/TripCreationService.java",
     "backend/src/main/java/com/gabolle/backend/trip/domain/Trip.java",
+    "backend/src/main/java/com/gabolle/backend/trip/infra/JpaTripRepository.java",
     "backend/src/main/java/com/gabolle/backend/trip/infra/TripJpaEntity.java",
     "backend/src/main/java/com/gabolle/backend/trip/presentation/dto/CreateTripRequest.java",
     "backend/src/main/java/com/gabolle/backend/trip/presentation/dto/CreateTripRequestMapper.java",
