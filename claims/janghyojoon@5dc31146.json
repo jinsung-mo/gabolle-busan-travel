@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-786",
+  "intent": "빈 파트 파일이 include 를 무효로 만드는 것을 고친다",
+  "actor": null,
+  "session": "7f25f57f-7040-4aea-aea3-c02ff7d76bd9",
+  "since": "2026-09-09T07:56:30.395Z",
+  "ttlMs": 900000,
+  "paths": [
+    "ci",
+    "docs"
+  ]
+}
