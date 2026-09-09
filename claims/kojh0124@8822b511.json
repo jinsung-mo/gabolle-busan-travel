@@ -1,0 +1,17 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-772",
+  "intent": "MLOps Phase 1 조각 1 — 기계용 내부 배치 API 문(/internal/v1, X-Internal-Token)을 back/dev 로 올린다",
+  "actor": "agent",
+  "session": "310e7d2c-ef27-44e1-a71b-71ff40f8aca3",
+  "since": "2026-09-09T03:02:43.713Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/.env.example",
+    "backend/src/main/java/com/gabolle/backend/auth/config/SecurityConfig.java",
+    "backend/src/main/java/com/gabolle/backend/batch/config",
+    "backend/src/main/java/com/gabolle/backend/batch/security",
+    "backend/src/main/resources/application.properties",
+    "backend/src/test/java/com/gabolle/backend/batch/security"
+  ]
+}
