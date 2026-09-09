@@ -1,0 +1,15 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-435",
+  "intent": "출발지 검색+선택+지도 미리보기 구현 (GET /api/v1/origins 연동)",
+  "actor": "agent",
+  "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
+  "since": "2026-09-09T01:30:59.474Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/basics.tsx",
+    "frontend/src/plan/PlanProvider.tsx",
+    "frontend/src/plan/origins.ts",
+    "frontend/src/plan/tripBasics.ts"
+  ]
+}
