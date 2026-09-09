@@ -1,12 +1,13 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-709",
-  "intent": "S15P21E201-709 — Flyway 마이그레이션 버전 충돌 수정 (병합된 다른 티켓들에 밀림)",
+  "intent": "S15P21E201-709 — back/dev 재최신화 병합 커밋 (마이그레이션 버전 충돌 수정 위해)",
   "actor": "agent",
   "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
-  "since": "2026-09-09T08:28:24.159Z",
+  "since": "2026-09-09T08:29:33.539Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend",
     "backend/src/main/resources/db/migration"
   ]
 }
