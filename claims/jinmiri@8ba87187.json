@@ -1,13 +1,14 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-204",
-  "intent": "기록 작성 사진 업로드 전 크기 축소·위치정보 제거 (S15P21E201-204)",
+  "intent": "expo-image-manipulator 설치로 인한 lockfile 갱신 (S15P21E201-204)",
   "actor": "agent",
   "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
-  "since": "2026-09-09T05:21:42.277Z",
+  "since": "2026-09-09T05:22:24.345Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/feed/compose.tsx",
+    "frontend/package-lock.json",
     "frontend/package.json",
     "frontend/src/social/imageResize.ts"
   ]
