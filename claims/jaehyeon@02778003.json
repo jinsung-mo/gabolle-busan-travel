@@ -1,0 +1,14 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-268",
+  "intent": "순서 바꾸기 응답에 영업시간 경고 자리 만들기",
+  "actor": null,
+  "session": "18c1e1e9-b8ab-439c-b5f9-6375694a221c",
+  "since": "2026-09-09T08:32:11.200Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application",
+    "backend/src/main/java/com/gabolle/backend/itinerary/presentation",
+    "backend/src/test/java/com/gabolle/backend/itinerary"
+  ]
+}
