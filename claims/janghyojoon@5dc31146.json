@@ -7,7 +7,6 @@
   "since": "2026-09-09T01:43:57.013Z",
   "ttlMs": 900000,
   "paths": [
-    "bigData/research/data",
     "survey-recommend/index.html"
   ]
 }
