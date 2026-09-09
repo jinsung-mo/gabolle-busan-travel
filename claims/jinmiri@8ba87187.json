@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-222",
+  "intent": "택시 목적지 카드 화면 (S15P21E201-222) 구현",
+  "actor": "agent",
+  "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
+  "since": "2026-09-09T02:48:01.022Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/place/[id].tsx",
+    "frontend/app/taxi-card",
+    "frontend/src/discovery/taxiCard.ts"
+  ]
+}
