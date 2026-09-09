@@ -8,7 +8,6 @@
   "ttlMs": 1200000,
   "paths": [
     "bigData/warehouse",
-    "docs/26.09.09",
     "survey-recommend"
   ]
 }
