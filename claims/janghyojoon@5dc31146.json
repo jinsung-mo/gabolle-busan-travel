@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-754",
-  "intent": "사진을 따로 내주게 고쳐 index.html 을 되돌린다",
+  "task": "S15P21E201-760",
+  "intent": "조사 결과를 DB·모델용 형태로 변환",
   "actor": null,
   "session": "7f25f57f-7040-4aea-aea3-c02ff7d76bd9",
-  "since": "2026-09-09T02:13:57.383Z",
+  "since": "2026-09-09T02:16:38.994Z",
   "ttlMs": 1800000,
   "paths": [
+    "bigData/warehouse",
     "survey-recommend"
   ]
 }
