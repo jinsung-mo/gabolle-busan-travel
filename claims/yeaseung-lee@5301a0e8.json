@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-784",
+  "intent": "S15P21E201-784 — 상태 수집기 자기측정 버그 수정(ps 자기 PID 제외) + 메모리/스왑 수집 추가",
+  "actor": "agent",
+  "session": "457356ec-ae76-4c2f-a904-3b988e4058a9",
+  "since": "2026-09-09T05:19:10.730Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "ci/status/collect-status.mjs"
+  ]
+}
