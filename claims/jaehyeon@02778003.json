@@ -1,15 +1,17 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-193",
-  "intent": "일정 생성 진행률을 단계마다 올리고 SSE 로 밀어 보낸다",
+  "intent": "진행률 단계 보고와 SSE 통로 — 새 경로 인가 정책 등록과 워커 생성자 변경 반영 포함",
   "actor": null,
   "session": "18c1e1e9-b8ab-439c-b5f9-6375694a221c",
-  "since": "2026-09-09T10:13:30.871Z",
+  "since": "2026-09-09T10:39:35.783Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/recommendation/application",
     "backend/src/main/java/com/gabolle/backend/recommendation/domain",
     "backend/src/main/java/com/gabolle/backend/recommendation/presentation",
-    "backend/src/test/java/com/gabolle/backend/recommendation"
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryRecalculationIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation",
+    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java"
   ]
 }
