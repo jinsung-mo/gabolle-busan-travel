@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-760",
+  "intent": "조사 결과 2,356개를 bigData/dev 로 올리는 MR",
+  "actor": null,
+  "session": "cddc49c2-0820-4c08-a49d-73e2e797dadd",
+  "since": "2026-09-09T23:54:10.567Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/research"
+  ]
+}
