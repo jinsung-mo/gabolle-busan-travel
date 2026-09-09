@@ -7,7 +7,6 @@
   "since": "2026-09-09T01:13:28.543Z",
   "ttlMs": 900000,
   "paths": [
-    "bigData/research/data",
     "bigData/research/data/results",
     "bigData/survey/places/assets",
     "bigData/survey/places/index.html"
