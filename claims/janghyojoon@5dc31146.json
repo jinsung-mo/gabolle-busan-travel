@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-23",
-  "intent": "부산 추천 설문 사진 5장",
-  "actor": null,
+  "intent": "부산 추천 설문 페이지 구현",
+  "actor": "agent",
   "session": "7f25f57f-7040-4aea-aea3-c02ff7d76bd9",
-  "since": "2026-09-09T01:07:27.026Z",
-  "ttlMs": 1800000,
+  "since": "2026-09-09T01:08:07.940Z",
+  "ttlMs": 2700000,
   "paths": [
-    "bigData/survey/places/assets"
+    "bigData/survey/places/assets",
+    "bigData/survey/places/index.html"
   ]
 }
