@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-760",
-  "intent": "조사 결과 저장",
+  "task": "S15P21E201-769",
+  "intent": "MM 공지 초안 둘",
   "actor": null,
   "session": "7f25f57f-7040-4aea-aea3-c02ff7d76bd9",
-  "since": "2026-09-09T01:34:37.578Z",
-  "ttlMs": 900000,
+  "since": "2026-09-09T01:41:41.599Z",
+  "ttlMs": 1200000,
   "paths": [
+    "docs/26.09.09",
     "survey-recommend/index.html"
   ]
 }
