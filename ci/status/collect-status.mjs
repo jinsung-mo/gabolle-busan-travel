@@ -403,14 +403,64 @@ function collectCpu(prevTicks) {
   };
 }
 
+// ── 메모리 (S15P21E201-784) ──────────────────────────────────────────────────
+//
+// 🔴 이때까지 이 수집기는 메모리를 아예 안 쟀다. CPU 경합처럼 보이는 응답 지연이
+//    사실 JVM GC 압박이나 스왑 때문일 수 있는데, 그걸 밖에서는 가릴 방법이 없었다
+//    (jaehyeon, 2026-09-09 — S15P21E201-784).
+//
+// 🔴 MemFree 가 아니라 MemAvailable 을 쓴다. MemFree 는 리눅스가 디스크 캐시로
+//    쓰고 있는 만큼을 그대로 "빈 것" 에서 빼서 보여준다 — 캐시는 새 프로세스가
+//    뜨면 즉시 내줄 수 있는 메모리인데도 MemFree 만 보면 서버가 항상 메모리가
+//    없는 것처럼 보인다. MemAvailable 은 커널이 "지금 새 프로세스 하나가 더
+//    뜬다면 실제로 쓸 수 있는 양" 을 이미 계산해서 준다.
+export function parseMeminfo(text) {
+  const grab = (key) => {
+    const m = String(text).match(new RegExp(`^${key}:\\s+(\\d+)\\s*kB`, 'm'));
+    return m ? Number(m[1]) : null;
+  };
+  const totalKb = grab('MemTotal');
+  if (totalKb == null) return null;
+  const availKb = grab('MemAvailable');
+  const swapTotalKb = grab('SwapTotal');
+  const swapFreeKb = grab('SwapFree');
+  const usedKb = availKb == null ? null : totalKb - availKb;
+  const swapUsedKb = (swapTotalKb == null || swapFreeKb == null) ? null : swapTotalKb - swapFreeKb;
+  const toMb = (kb) => (kb == null ? null : Math.round(kb / 1024));
+  return {
+    totalMb: toMb(totalKb),
+    usedMb: toMb(usedKb),
+    availableMb: toMb(availKb),
+    usedPct: (usedKb != null && totalKb) ? round((usedKb / totalKb) * 100, 1) : null,
+    swapTotalMb: toMb(swapTotalKb),
+    swapUsedMb: toMb(swapUsedKb),
+  };
+}
+
+function readMemory() {
+  const txt = readProc('meminfo');
+  if (txt) { const v = parseMeminfo(txt); if (v) return v; }
+  warn(`메모리를 못 읽었습니다 (이 기계에 ${procDir}/meminfo 가 없습니다) — 메모리 칸은 "아직 안 잼" 으로 둡니다.`);
+  return null;
+}
+
 // ── ④ 최근 1시간 CPU 를 많이 먹은 작업 ───────────────────────────────────────
+
+// 🔴 이번 수집 사이클에 이 수집기 자신이 띄운 프로세스의 PID 들 — 자기 자신
+//    (process.pid) 으로 미리 채워 둔다. sampleProcesses() 가 ps 결과에서 이
+//    PID 들을 뺀다 — 안 빼면 수집기 자신과 그것이 부른 docker stats·ps 가
+//    "컨테이너 밖에서 CPU 를 가장 많이 먹는 작업" 표의 상위권에 매번 올라간다
+//    (실측, S15P21E201-784 — Node.js 프로그램 평균 107.9%·docker 93.9%·ps 33.9%,
+//    전부 수집기 자신이었다. 이 표를 근거로 다른 것을 손대면 엉뚱한 걸 건드린다).
+const spawnedPids = new Set([process.pid]);
 
 function run(cmd, args, timeoutMs) {
   return new Promise((resolve) => {
-    execFile(cmd, args, { timeout: timeoutMs, maxBuffer: 4 * 1024 * 1024, windowsHide: true }, (err, stdout) => {
+    const child = execFile(cmd, args, { timeout: timeoutMs, maxBuffer: 4 * 1024 * 1024, windowsHide: true }, (err, stdout) => {
       if (err) return resolve({ ok: false, error: err.code === 'ENOENT' ? `${cmd} 명령이 없습니다` : (err.killed ? `${cmd} 가 ${timeoutMs}ms 안에 안 끝났습니다` : String(err.message).split('\n')[0]), out: '' });
       resolve({ ok: true, error: null, out: String(stdout) });
     });
+    if (child.pid) spawnedPids.add(child.pid);
   });
 }
 
@@ -597,23 +647,31 @@ export function isContainerCgroup(cg) {
   return /(?:\/docker\/|docker-|cri-containerd-|containerd-|libpod-|crio-)[0-9a-f]{8,}|\/kubepods/i.test(String(cg));
 }
 
-export function parsePs(text, hasCgroup) {
+/**
+ * @param {Set<number>} excludePids 이 PID 들은 아예 안 센다 — 수집기 자신과
+ *   이번 사이클에 그것이 띄운 자식(ps 자신·docker stats)이 여기 들어온다.
+ *   ps 가 자기 자신을 찍는 순간에도 살아 있으므로 comm 이름(예: "ps")만
+ *   보고 걸러서는 못 뺀다 — PID 로 걸러야 한다.
+ */
+export function parsePs(text, hasCgroup, excludePids = new Set()) {
   const outside = new Map();
   let sawCgroup = false;
   for (const line of String(text).split('\n').slice(0, 400)) {
     const t = line.trim();
     if (!t) continue;
-    const m = t.match(/^([\d.]+)\s+(\S+)(?:\s+(.*))?$/);
+    const m = t.match(/^(\d+)\s+([\d.]+)\s+(\S+)(?:\s+(.*))?$/);
     if (!m) continue;
-    const pct = Number(m[1]);
+    const pid = Number(m[1]);
+    if (excludePids.has(pid)) continue;
+    const pct = Number(m[2]);
     if (!Number.isFinite(pct) || pct < 0.5) continue;   // 0.5% 밑은 잡음이다
-    const cg = m[3] || '';
+    const cg = m[4] || '';
     if (hasCgroup && cg) {
       sawCgroup = true;
       // 컨테이너 안이면 건너뛴다 — ④의 컨테이너 표에서 이미 세고 있다.
       if (isContainerCgroup(cg)) continue;
     }
-    outside.set(m[2], (outside.get(m[2]) || 0) + pct);
+    outside.set(m[3], (outside.get(m[3]) || 0) + pct);
   }
   return {
     sawCgroup,
@@ -622,15 +680,19 @@ export function parsePs(text, hasCgroup) {
 }
 
 async function sampleProcesses() {
-  let r = await run('ps', ['-eo', 'pcpu,comm,cgroup', '--sort=-pcpu', '--no-headers'], 10000);
+  let r = await run('ps', ['-eo', 'pid,pcpu,comm,cgroup', '--sort=-pcpu', '--no-headers'], 10000);
   let hasCgroup = true;
   if (!r.ok) {
-    r = await run('ps', ['-eo', 'pcpu,comm', '--sort=-pcpu', '--no-headers'], 10000);
+    r = await run('ps', ['-eo', 'pid,pcpu,comm', '--sort=-pcpu', '--no-headers'], 10000);
     hasCgroup = false;
   }
   if (!r.ok) { warn(`프로세스별 CPU 를 못 읽었습니다 — ${r.error}`); return null; }
 
-  const { sawCgroup, rows } = parsePs(r.out, hasCgroup);
+  // 🔴 이 run('ps', …) 호출 자신의 PID 가 위에서 이미 spawnedPids 에 들어갔다
+  //    (execFile 이 프로세스를 띄우자마자, 그 프로세스가 자기 자신을 찍기 전에).
+  //    그래서 아래 exclude 는 "이전 사이클의 docker stats" 뿐 아니라 "지금 이
+  //    ps 명령 자신" 까지 이미 걸러낸다.
+  const { sawCgroup, rows } = parsePs(r.out, hasCgroup, spawnedPids);
   if (hasCgroup && !sawCgroup) warn('ps 가 cgroup 칸을 안 줘서 컨테이너 안팎을 못 갈랐습니다 — 프로세스 표에 컨테이너 안의 것도 섞입니다.');
   return rows;
 }
@@ -956,6 +1018,23 @@ function selfTest() {
   eq('한 번만 재면 사용률은 없다 (0% 라고 우기지 않는다)', busyPercent(null, t2), null);
   eq('눈금이 되감겼으면(재부팅) 사용률은 없다', busyPercent(t2, t1), null);
 
+  console.log('\n── 메모리 계산 (S15P21E201-784) ────────────────────────────────');
+  const mem = parseMeminfo([
+    'MemTotal:       16777216 kB',
+    'MemFree:         2000000 kB',
+    'MemAvailable:    4194304 kB',
+    'Buffers:          300000 kB',
+    'Cached:          8000000 kB',
+    'SwapTotal:       2097152 kB',
+    'SwapFree:         524288 kB',
+  ].join('\n'));
+  eq('MemTotal 을 MB 로 (16GiB)', mem.totalMb, 16384);
+  eq('MemAvailable 을 MB 로 (4GiB)', mem.availableMb, 4096);
+  eq('🔴 쓴 양은 Total-Available 이다 (Total-Free 가 아니다 — 캐시를 쓴 것처럼 안 보이게)', mem.usedMb, 12288);
+  eq('쓴 비율', mem.usedPct, 75);
+  eq('스왑도 Total-Free 로 (2GiB 중 512MiB 비어 있으니 1536MiB 씀)', mem.swapUsedMb, 1536);
+  eq('MemTotal 이 없으면(형식이 다르면) 아예 null', parseMeminfo('엉뚱한 내용'), null);
+
   console.log('\n── ④ 컨테이너 이름 — 사람 이름이 새면 안 된다 ────────────────');
   const rows = parseDockerStats([
     'gabolle-backend\t312.44%',
@@ -997,22 +1076,30 @@ function selfTest() {
   console.log('\n── ④ 컨테이너 밖 프로세스 — GitLab 러너를 놓치면 안 된다 ─────');
   // 컨테이너 번호는 실제로 64자리 16진수다. 짧게 줄여 쓰면 검사가 거짓으로 통과한다.
   const CID = 'a3f19c04b8e27d5610fa4b9c8e7d2f0134ab56cd78ef90126734bc8de9f01a2b';
-  const ps = parsePs([
-    ` 91.3 gitlab-runner  0::/system.slice/gitlab-runner.service`,
-    ` 88.0 java           0::/system.slice/docker-${CID}.scope`,
-    ` 12.5 node           12:cpu:/docker/${CID}`,
-    `  7.2 dockerd        0::/system.slice/docker.service`,
-    `  6.0 gitlab-runner  0::/system.slice/gitlab-runner.service`,
-    `  0.1 sshd           0::/system.slice/ssh.service`,
-  ].join('\n'), true);
+  const psText = [
+    ` 101 91.3 gitlab-runner  0::/system.slice/gitlab-runner.service`,
+    ` 202 88.0 java           0::/system.slice/docker-${CID}.scope`,
+    ` 303 12.5 node           12:cpu:/docker/${CID}`,
+    ` 404  7.2 dockerd        0::/system.slice/docker.service`,
+    ` 105  6.0 gitlab-runner  0::/system.slice/gitlab-runner.service`,
+    ` 606  0.1 sshd           0::/system.slice/ssh.service`,
+    // S15P21E201-784 — 수집기 자신(node)과 이번 사이클에 그것이 부른 ps 자신이다.
+    // PID 로 빼야 한다는 것을 증명하려고 comm 이름은 진짜 프로세스와 겹치게 뒀다.
+    ` 900 40.0 node           0::/system.slice/collect-status.service`,
+    ` 901 30.0 ps             0::/system.slice/collect-status.service`,
+  ].join('\n');
+  const ps = parsePs(psText, true);
+  const psExcluded = parsePs(psText, true, new Set([900, 901]));
   eq('🔴 systemd 로 도는 GitLab 러너를 잡는다', ps.rows[0].raw, 'gitlab-runner');
   eq('같은 이름은 더한다 (91.3 + 6.0)', ps.rows[0].pct, 97.3);
-  eq('🔴 컨테이너 안의 java·node 는 뺀다 (컨테이너 표에서 이미 센다)', ps.rows.map((r) => r.raw), ['gitlab-runner', 'dockerd']);
+  eq('🔴 컨테이너 안의 java·node 는 뺀다 (컨테이너 표에서 이미 센다)', ps.rows.map((r) => r.raw), ['gitlab-runner', 'node', 'ps', 'dockerd']);
   eq('🔴 도커 엔진 자신은 컨테이너가 아니다 (docker.service 에 번호가 없다)', isContainerCgroup('0::/system.slice/docker.service'), false);
   eq('컨테이너는 번호로 알아본다 (cgroup v2)', isContainerCgroup(`0::/system.slice/docker-${CID}.scope`), true);
   eq('컨테이너는 번호로 알아본다 (cgroup v1)', isContainerCgroup(`12:cpu:/docker/${CID}`), true);
   eq('0.5% 밑은 잡음이라 버린다', ps.rows.some((r) => r.raw === 'sshd'), false);
   eq('러너에 한국어 설명을 붙인다', labelProcess('gitlab-runner'), 'GitLab 러너 (CI 를 돌리는 프로그램)');
+  eq('🔴 excludePids 에 든 PID 는 comm 이 겹쳐도(node·ps) 뺀다 — 수집기 자기측정 방지',
+    psExcluded.rows.map((r) => r.raw), ['gitlab-runner', 'dockerd']);
 
   console.log('\n── 4시간 칸 — 경계가 한국 시간이라야 한다 ────────────────────');
   // 🔴 서버는 UTC 다. 아래 시각은 전부 UTC 로 적었고, 괄호 안이 한국 시간이다.
@@ -1121,8 +1208,10 @@ async function main() {
       sampleProcesses(),
     ]);
     const cpu = collectCpu(stateStore.prevTicks);
+    const memory = readMemory();
     log(`프로브  프론트 ${front.state}(${front.ms}ms) · 백엔드 ${back.state}(${back.ms}ms)`);
     log(`CPU     부하 ${cpu.load1 ?? '?'} / ${cpu.cores ?? '?'}코어 = ${cpu.ratio ?? '?'}`);
+    log(`메모리  ${memory ? `${memory.usedMb}MB / ${memory.totalMb}MB (${memory.usedPct}%)` : '못 잼'}`);
 
     // GitLab 은 N 분에 한 번만. 나머지 시간은 지난번 것을 그대로 쓴다.
     let gl = stateStore.gitlab;
@@ -1236,6 +1325,17 @@ async function main() {
         todayMaxRatio: (() => { const t = todayCpu(hist, now); return t ? round(t.max, 2) : null; })(),
         todayAvgRatio: (() => { const t = todayCpu(hist, now); return t ? round(t.avg, 2) : null; })(),
       },
+      // S15P21E201-784 — 이때까지 없었다. CPU 만 보고 "경합이 원인이다" 고
+      // 단정하지 못하게, 메모리·스왑도 같이 내보낸다. 못 쟀으면 null이지
+      // 0으로 지어내지 않는다(위 "지어내지 않는다" 원칙과 같다).
+      memory: memory ? {
+        totalMb: memory.totalMb,
+        usedMb: memory.usedMb,
+        availableMb: memory.availableMb,
+        usedPct: memory.usedPct,
+        swapTotalMb: memory.swapTotalMb,
+        swapUsedMb: memory.swapUsedMb,
+      } : null,
       topCpu: rollupTop(stateStore.samples),
       incidents: incidents.incidents.slice().reverse().map((i) => ({
         name: i.name, worst: i.worst, startedAt: i.startedAt, endedAt: i.endedAt,
