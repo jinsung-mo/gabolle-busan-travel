@@ -1,0 +1,1430 @@
+<title>가볼레 CI 상태판</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+
+<style>
+/* ───────────────────────────────────────────────────────────────────────────
+   토큰. 밝은 화면이 기본값이고, 어두운 화면은 토큰만 다시 정의한다.
+   ─────────────────────────────────────────────────────────────────────────── */
+:root {
+  --ground:      #EEF1F2;
+  --panel:       #FFFFFF;
+  --panel-sunk:  #E7ECEE;
+  --ink:         #12181B;
+  --ink-2:       #3A474D;
+  --muted:       #5A696F;
+  --faint:       #8A989E;
+  --rule:        #CFD8DB;
+  --rule-soft:   #E1E7E9;
+  --accent:      #8A3F63;
+  --accent-soft: #EFE0E8;
+  --ok:          #146B45;
+  --ok-soft:     #DBEDE4;
+  --warn:        #8A5600;
+  --warn-soft:   #F4E7CE;
+  --bad:         #A8291F;
+  --bad-soft:    #F6DFDC;
+  --idle:        #6B7A81;
+  --idle-soft:   #E3E9EB;
+  --bar:         #9FB2B9;
+  --shadow:      0 1px 0 rgba(18,24,27,.05);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground:      #101416;
+    --panel:       #171D20;
+    --panel-sunk:  #0C1012;
+    --ink:         #E2E9EB;
+    --ink-2:       #B6C4C9;
+    --muted:       #8B9CA3;
+    --faint:       #6C7C83;
+    --rule:        #262F33;
+    --rule-soft:   #1D2528;
+    --accent:      #DD93B3;
+    --accent-soft: #37222C;
+    --ok:          #4EC48C;
+    --ok-soft:     #163024;
+    --warn:        #E4AC48;
+    --warn-soft:   #322611;
+    --bad:         #F2897E;
+    --bad-soft:    #37201D;
+    --idle:        #7A8990;
+    --idle-soft:   #1E2528;
+    --bar:         #4A5C63;
+    --shadow:      0 1px 0 rgba(0,0,0,.3);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground:      #101416;
+  --panel:       #171D20;
+  --panel-sunk:  #0C1012;
+  --ink:         #E2E9EB;
+  --ink-2:       #B6C4C9;
+  --muted:       #8B9CA3;
+  --faint:       #6C7C83;
+  --rule:        #262F33;
+  --rule-soft:   #1D2528;
+  --accent:      #DD93B3;
+  --accent-soft: #37222C;
+  --ok:          #4EC48C;
+  --ok-soft:     #163024;
+  --warn:        #E4AC48;
+  --warn-soft:   #322611;
+  --bad:         #F2897E;
+  --bad-soft:    #37201D;
+  --idle:        #7A8990;
+  --idle-soft:   #1E2528;
+  --bar:         #4A5C63;
+  --shadow:      0 1px 0 rgba(0,0,0,.3);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: "IBM Plex Sans KR", system-ui, -apple-system, "Malgun Gothic", sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.mono, code, kbd {
+  font-family: "IBM Plex Mono", "IBM Plex Sans KR", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 22px 88px;
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+/* ── 샘플 경고 — 지우기 어렵게 ──────────────────────────────────────────── */
+#sampleBar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bad);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: .04em;
+  padding: 7px 22px;
+  font-size: 12.5px;
+  display: none;
+  box-shadow: 0 2px 0 rgba(0,0,0,.14);
+}
+body.is-sample #sampleBar { display: block; }
+body.is-sample .wrap {
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0 26px,
+    color-mix(in srgb, var(--bad) 7%, transparent) 26px 30px
+  );
+}
+body.is-sample .dur::after { content: " ≈샘플"; color: var(--bad); font-size: 9.5px; letter-spacing: .02em; }
+
+/* ── 머리 ──────────────────────────────────────────────────────────────── */
+.masthead { padding-top: 30px; display: flex; flex-direction: column; gap: 10px; }
+.masthead h1 {
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.masthead h1 .tick { color: var(--accent); }
+.masthead .sub { color: var(--muted); font-size: 13px; max-width: 64ch; }
+.metaline {
+  display: flex; flex-wrap: wrap; gap: 6px 20px;
+  font-size: 11.5px; color: var(--muted);
+  border-top: 1px solid var(--rule); padding-top: 9px;
+}
+.metaline b { color: var(--ink-2); font-weight: 600; }
+
+/* ── 블록 ──────────────────────────────────────────────────────────────── */
+section { display: flex; flex-direction: column; gap: 13px; }
+.eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--accent);
+}
+.eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.eyebrow .n { color: var(--faint); font-weight: 500; letter-spacing: .08em; }
+.lede { color: var(--muted); font-size: 12.5px; margin: -4px 0 0; max-width: 78ch; }
+
+/* ── 데이터 상태 ────────────────────────────────────────────────────────── */
+.datastate {
+  border: 1px solid var(--rule);
+  background: var(--panel);
+  border-radius: 3px;
+  padding: 18px 20px;
+  display: flex; flex-direction: column; gap: 14px;
+  box-shadow: var(--shadow);
+}
+.datastate.empty { border-color: var(--warn); border-left-width: 4px; }
+.datastate.live  { border-left: 4px solid var(--ok); }
+.datastate.sample{ border-left: 4px solid var(--bad); }
+.datastate h2 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
+.datastate p { margin: 0; color: var(--muted); font-size: 13px; max-width: 74ch; }
+.steps { margin: 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 9px; counter-reset: s; }
+.steps li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; font-size: 13px; align-items: start; }
+.steps li::before {
+  counter-increment: s; content: counter(s);
+  font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 600;
+  color: var(--accent); background: var(--accent-soft);
+  width: 20px; height: 20px; border-radius: 2px;
+  display: grid; place-items: center; margin-top: 1px;
+}
+pre.cmd {
+  margin: 6px 0 0; padding: 9px 11px;
+  background: var(--panel-sunk); border: 1px solid var(--rule-soft); border-radius: 2px;
+  font-family: "IBM Plex Mono", monospace; font-size: 11.5px; line-height: 1.7;
+  overflow-x: auto; color: var(--ink-2);
+}
+pre.cmd .c { color: var(--faint); }
+
+.dropzone {
+  border: 1.5px dashed var(--rule);
+  border-radius: 3px; padding: 16px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+  background: var(--panel-sunk);
+  transition: border-color .12s, background .12s;
+}
+.dropzone.hot { border-color: var(--accent); background: var(--accent-soft); }
+.dropzone .dz-text { font-size: 12.5px; color: var(--muted); flex: 1; min-width: 200px; }
+
+button {
+  font-family: inherit; font-size: 12.5px; font-weight: 600;
+  padding: 6px 13px; border-radius: 2px; cursor: pointer;
+  border: 1px solid var(--rule); background: var(--panel); color: var(--ink);
+  transition: border-color .12s, color .12s;
+}
+button:hover { border-color: var(--accent); color: var(--accent); }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+button.primary:hover { color: #fff; filter: brightness(1.08); }
+button.ghost { background: transparent; color: var(--muted); }
+button[disabled] { opacity: .45; cursor: not-allowed; }
+
+/* ── 판단 줄 ───────────────────────────────────────────────────────────── */
+.advice { display: flex; flex-direction: column; gap: 1px; }
+.advice-row {
+  display: grid; grid-template-columns: 92px 1fr;
+  gap: 14px; align-items: baseline;
+  padding: 9px 12px; background: var(--panel);
+  border-left: 3px solid var(--idle);
+  font-size: 13px;
+}
+.advice-row + .advice-row { border-top: 1px solid var(--rule-soft); }
+.advice-row.sev-bad  { border-left-color: var(--bad); }
+.advice-row.sev-warn { border-left-color: var(--warn); }
+.advice-row.sev-ok   { border-left-color: var(--ok); }
+.advice-row .tag {
+  font-family: "IBM Plex Mono", monospace; font-size: 10.5px; font-weight: 600;
+  letter-spacing: .02em; text-transform: uppercase; color: var(--muted);
+  white-space: nowrap;
+}
+.advice-row.sev-bad .tag  { color: var(--bad); }
+.advice-row.sev-warn .tag { color: var(--warn); }
+.advice-row.sev-ok .tag   { color: var(--ok); }
+.advice-row .txt { color: var(--ink-2); }
+.advice-row .txt b { color: var(--ink); font-weight: 600; }
+.advice-row .txt .then { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+.advice-row a { color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; }
+.advice-row a:hover { opacity: .75; }
+
+/* ── 표 ────────────────────────────────────────────────────────────────── */
+.tablewrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 3px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; min-width: 760px; }
+th {
+  font-family: "IBM Plex Mono", monospace; font-size: 10px; font-weight: 600;
+  letter-spacing: .04em; text-transform: uppercase; color: var(--faint);
+  text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--rule);
+  white-space: nowrap; background: var(--panel);
+}
+td { padding: 8px 12px; border-bottom: 1px solid var(--rule-soft); font-size: 13px; vertical-align: middle; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr.pick { cursor: pointer; }
+tbody tr.pick:hover { background: var(--panel-sunk); }
+tbody tr.sel { background: var(--accent-soft); }
+tbody tr.sel td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.ref { font-family: "IBM Plex Mono", monospace; font-weight: 500; white-space: nowrap; }
+.ref .part { color: var(--muted); }
+.dur { font-family: "IBM Plex Mono", monospace; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.dim { color: var(--faint); }
+
+.pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: "IBM Plex Mono", monospace; font-size: 10.5px; font-weight: 600;
+  letter-spacing: .04em; padding: 2px 7px; border-radius: 2px; white-space: nowrap;
+}
+.pill .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex: none; }
+.pill.s-success  { color: var(--ok);   background: var(--ok-soft); }
+.pill.s-failed   { color: var(--bad);  background: var(--bad-soft); }
+.pill.s-running  { color: var(--warn); background: var(--warn-soft); }
+.pill.s-pending  { color: var(--warn); background: var(--warn-soft); }
+.pill.s-canceled { color: var(--idle); background: var(--idle-soft); }
+.pill.s-skipped  { color: var(--idle); background: var(--idle-soft); }
+.pill.s-manual   { color: var(--idle); background: var(--idle-soft); }
+.pill.s-none     { color: var(--idle); background: var(--idle-soft); }
+
+.trend { font-size: 11.5px; font-family: "IBM Plex Mono", monospace; white-space: nowrap; }
+.trend.up   { color: var(--bad); }
+.trend.down { color: var(--ok); }
+.trend.flat { color: var(--faint); }
+
+/* ── 잡 막대 ───────────────────────────────────────────────────────────── */
+.jobs { display: flex; flex-direction: column; gap: 2px; }
+.jobrow {
+  display: grid;
+  grid-template-columns: minmax(140px, 196px) minmax(88px, 132px) 56px 72px 1fr 62px;
+  gap: 11px; align-items: center;
+  padding: 6px 12px; background: var(--panel);
+  border: 1px solid var(--rule-soft); border-radius: 2px;
+}
+.jobrow .jname { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.jobrow .jstage { font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
+.track { height: 12px; background: var(--panel-sunk); border-radius: 2px; overflow: hidden; }
+.track > i { display: block; height: 100%; background: var(--bar); border-radius: 0 4px 4px 0; min-width: 3px; }
+.track > i.f-failed { background: var(--bad); }
+.track > i.f-warn   { background: var(--warn); }
+.track > i.f-idle   { background: var(--idle); opacity: .45; }
+.jobrow .jdur { text-align: right; font-family: "IBM Plex Mono", monospace; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.jobhead {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px;
+  font-size: 12.5px; color: var(--muted);
+}
+.jobhead b { color: var(--ink); font-family: "IBM Plex Mono", monospace; font-weight: 600; font-size: 13px; }
+.jobhead a { color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; }
+
+/* ── 구성 표 ───────────────────────────────────────────────────────────── */
+.cfg td, .cfg th { padding: 7px 10px; }
+.cfg .cell { text-align: center; font-family: "IBM Plex Mono", monospace; font-size: 11px; }
+.cfg .yes-mr  { color: var(--accent); font-weight: 600; }
+.cfg .yes-br  { color: var(--ok); font-weight: 600; }
+.cfg .yes-sc  { color: var(--warn); font-weight: 600; }
+.cfg .no      { color: var(--rule); }
+.cfg .rowlabel { font-family: "IBM Plex Mono", monospace; font-size: 12px; white-space: nowrap; }
+.cfg .heavy { color: var(--bad); }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 11.5px; color: var(--muted); }
+.legend span b { font-family: "IBM Plex Mono", monospace; }
+.legend .k-mr b { color: var(--accent); }
+.legend .k-br b { color: var(--ok); }
+.legend .k-sc b { color: var(--warn); }
+
+/* ── 사전 ──────────────────────────────────────────────────────────────── */
+.gloss { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 0; border: 1px solid var(--rule); border-radius: 3px; background: var(--panel); overflow: hidden; }
+.gloss dl { margin: 0; display: contents; }
+.gitem { padding: 10px 14px; border-bottom: 1px solid var(--rule-soft); }
+.gitem dt { font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 600; color: var(--ink); }
+.gitem dd { margin: 2px 0 0; font-size: 12.5px; color: var(--muted); }
+.gitem dd em { font-style: normal; color: var(--bad); font-weight: 600; }
+
+/* ── 러너 ──────────────────────────────────────────────────────────────── */
+.runners { display: flex; flex-direction: column; gap: 8px; }
+.runner {
+  border: 1px solid var(--rule); border-radius: 3px; background: var(--panel);
+  padding: 11px 14px; display: flex; flex-direction: column; gap: 9px;
+}
+.runner.hot { border-left: 4px solid var(--bad); }
+.runner.near { border-left: 4px solid var(--warn); }
+.runner.calm { border-left: 4px solid var(--ok); }
+.runner.unknown { border-left: 4px solid var(--idle); }
+.rtop { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; }
+.rname { font-family: "IBM Plex Mono", monospace; font-size: 13.5px; font-weight: 600; }
+.rfact { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.rfact b { color: var(--ink); font-family: "IBM Plex Mono", monospace; font-weight: 600; font-variant-numeric: tabular-nums; }
+.rfact.absent b { color: var(--faint); font-weight: 400; }
+.rmeter { display: grid; grid-template-columns: 1fr 92px; gap: 12px; align-items: center; }
+.rtrack {
+  position: relative; height: 14px; border-radius: 2px;
+  background: var(--panel-sunk); overflow: hidden;
+}
+.rtrack > i { display: block; height: 100%; border-radius: 0 4px 4px 0; background: var(--ok); }
+.rtrack > i.near { background: var(--warn); }
+.rtrack > i.hot  { background: var(--bad); }
+/* 1.0 = 정원. 눈금 하나만 둔다 — 이 선을 넘으면 줄을 서고 있다는 뜻이다. */
+.rtrack > u {
+  position: absolute; top: -2px; bottom: -2px; left: 50%; width: 2px;
+  background: var(--ink); opacity: .55;
+}
+.rratio { font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
+.rratio.hot { color: var(--bad); }
+.rratio.near { color: var(--warn); }
+.rratio.calm { color: var(--ok); }
+.rratio.none { color: var(--faint); font-weight: 400; }
+/* 눈금 글자를 트랙과 같은 격자에 올려 "1.0" 이 실제 눈금 아래에 오게 한다. */
+.rscale { display: grid; grid-template-columns: 1fr 92px; gap: 12px; margin-top: -5px; }
+.rscale > span { display: flex; justify-content: space-between; font-size: 10px; color: var(--faint); font-family: "IBM Plex Mono", monospace; }
+.rscale > span > i { font-style: normal; }
+.rscale > span > i.mid { color: var(--ink-2); font-weight: 600; }
+.rform { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; padding-top: 8px; border-top: 1px dashed var(--rule-soft); }
+.rform label { font-size: 11.5px; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+.rform input {
+  width: 74px; font-family: "IBM Plex Mono", monospace; font-size: 12px;
+  padding: 3px 6px; border: 1px solid var(--rule); border-radius: 2px;
+  background: var(--panel-sunk); color: var(--ink);
+}
+.rform input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.rform .hint { font-size: 11px; color: var(--faint); }
+.measure-note {
+  border: 1px solid var(--warn); border-left-width: 4px; border-radius: 3px;
+  background: var(--panel); padding: 12px 14px; font-size: 12.5px; color: var(--ink-2);
+  display: flex; flex-direction: column; gap: 7px;
+}
+.measure-note b { color: var(--ink); }
+
+/* ── 동시 실행 ↔ 소요시간 ──────────────────────────────────────────────── */
+.cc { display: flex; flex-direction: column; gap: 12px; }
+.ccjob { border: 1px solid var(--rule); border-radius: 3px; background: var(--panel); padding: 11px 14px; }
+.cchead { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px; margin-bottom: 8px; }
+.cchead .n { font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 600; }
+.cchead .verdict {
+  font-size: 10.5px; font-weight: 600; padding: 2px 7px; border-radius: 2px;
+  font-family: "IBM Plex Mono", monospace;
+}
+.cchead .verdict.neighbor { color: var(--bad); background: var(--bad-soft); }
+.cchead .verdict.self { color: var(--ok); background: var(--ok-soft); }
+.cchead .cnt { font-size: 11.5px; color: var(--faint); font-family: "IBM Plex Mono", monospace; }
+.ccrow { display: grid; grid-template-columns: 78px 1fr 62px 44px; gap: 10px; align-items: center; padding: 3px 0; }
+.ccrow .cclabel { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+.ccrow .cctrack { height: 11px; background: var(--panel-sunk); border-radius: 2px; overflow: hidden; }
+.ccrow .cctrack > i { display: block; height: 100%; background: var(--bar); border-radius: 0 4px 4px 0; min-width: 3px; }
+.ccrow .cctrack > i.worst { background: var(--bad); }
+.ccrow .ccdur { text-align: right; font-family: "IBM Plex Mono", monospace; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.ccrow .ccn { text-align: right; font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--faint); }
+
+.jobrow .jrunner {
+  font-family: "IBM Plex Mono", monospace; font-size: 10.5px; color: var(--muted);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.jobrow .jrunner.none { color: var(--rule); }
+
+.cited {
+  border: 1px solid var(--rule); border-left: 3px solid var(--accent); border-radius: 3px;
+  background: var(--panel); padding: 12px 14px; font-size: 12.5px; color: var(--ink-2);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.cited .src { font-size: 11px; color: var(--faint); font-family: "IBM Plex Mono", monospace; }
+.cited table { min-width: 0; width: auto; }
+.cited td { padding: 3px 14px 3px 0; border: none; font-size: 12.5px; }
+.cited td.k { color: var(--muted); }
+.cited td.v { font-family: "IBM Plex Mono", monospace; font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 600; }
+
+footer { border-top: 1px solid var(--rule); padding-top: 14px; font-size: 11.5px; color: var(--faint); display: flex; flex-direction: column; gap: 5px; }
+footer code { background: var(--panel-sunk); padding: 1px 5px; border-radius: 2px; }
+
+.hidden { display: none !important; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+@media (max-width: 780px) {
+  .jobrow { grid-template-columns: 1fr 60px; row-gap: 5px; }
+  .jobrow .jstage, .jobrow .track, .jobrow .jrunner { grid-column: 1 / -1; }
+  .ccrow { grid-template-columns: 62px 1fr 56px 38px; gap: 8px; }
+  .rmeter { grid-template-columns: 1fr 78px; }
+}
+</style>
+
+<div id="sampleBar">■ 샘플입니다 — 아래 숫자는 실제 파이프라인에서 잰 것이 아니라 화면 모양을 보려고 지어낸 값입니다. 판단에 쓰지 마세요.</div>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <h1><span class="tick">▌</span> 가볼레 CI 상태판</h1>
+    <p class="sub">
+      파이프라인(<b>코드를 올릴 때마다 GitLab 이 자동으로 돌리는 검사 묶음</b>)이 어느 브랜치에서
+      얼마나 걸리는지, 어느 잡(<b>파이프라인이 돌리는 작업 하나</b>)이 시간을 먹는지를 한 화면에서 본다.
+    </p>
+    <div class="metaline mono">
+      <span>저장소 <b>s15-bigdata-dist-sub1/S15P21E201</b></span>
+      <span>데이터 <b id="mSource">없음</b></span>
+      <span>수집 시각 <b id="mWhen">—</b></span>
+      <span>브랜치 <b id="mCount">—</b></span>
+      <span id="mShared" class="hidden">팀 공유 <b>켜짐</b></span>
+    </div>
+  </header>
+
+  <!-- ── 1. 데이터 상태 ─────────────────────────────────────────────── -->
+  <section>
+    <div class="eyebrow"><span class="n">01</span> 데이터</div>
+    <div class="datastate empty" id="dataState">
+      <h2 id="dsTitle">아직 데이터 없음 — <code class="mono">ci-stats.mjs</code> 를 먼저 돌리세요</h2>
+      <p id="dsBody">
+        이 저장소는 비공개라 <b>토큰 없이는 파이프라인 기록을 한 줄도 못 받습니다.</b>
+        인증 없이 GitLab API 를 치면 404 가 옵니다(없다는 뜻이 아니라 “너에게는 없다”는 뜻입니다).
+        그래서 이 페이지는 숫자를 지어내지 않고 비워 둡니다.
+      </p>
+      <ol class="steps" id="dsSteps">
+        <li><div>
+          <b>토큰을 만든다.</b> GitLab → 아바타 → Preferences → Access Tokens → Add new token.
+          scope 는 <code class="mono">read_api</code> 하나면 됩니다(읽기 전용 — 아무것도 안 고칩니다).
+        </div></li>
+        <li><div>
+          <b>수집 스크립트를 돌린다.</b> 이 페이지와 같이 받은 <code class="mono">ci-stats.mjs</code> 가 있는 폴더에서.
+          <pre class="cmd"><span class="c"># PowerShell</span>
+$env:GITLAB_TOKEN = "glpat-…"
+node ci-stats.mjs
+
+<span class="c"># bash / Git Bash</span>
+GITLAB_TOKEN=glpat-… node ci-stats.mjs</pre>
+        </div></li>
+        <li><div>
+          <b>생긴 <code class="mono">ci-status.json</code> 을 아래에 끌어다 놓는다.</b>
+          그 순간 이 화면이 실제 숫자로 채워집니다.
+        </div></li>
+      </ol>
+      <div class="dropzone" id="dropzone">
+        <span class="dz-text" id="dzText">여기로 <b>ci-status.json</b> 을 끌어다 놓거나, 아무 곳에나 붙여넣기(Ctrl+V) 하세요.</span>
+        <button type="button" id="btnPick">파일 고르기</button>
+        <button type="button" class="ghost" id="btnSample">샘플로 화면만 보기</button>
+        <button type="button" class="primary hidden" id="btnShare">팀과 공유</button>
+        <button type="button" class="ghost hidden" id="btnClear">지우기</button>
+        <input type="file" id="filePick" accept=".json,application/json" class="hidden">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 2. 지금 봐야 할 것 ─────────────────────────────────────────── -->
+  <section>
+    <div class="eyebrow"><span class="n">02</span> 지금 봐야 할 것</div>
+    <p class="lede">위쪽이 더 급한 것입니다. 각 줄 끝의 <b>→</b> 뒤가 다음에 열어 볼 자리입니다.</p>
+    <div class="advice" id="advice"></div>
+  </section>
+
+  <!-- ── 3. 브랜치 ──────────────────────────────────────────────────── -->
+  <section id="secBranches">
+    <div class="eyebrow"><span class="n">03</span> 브랜치별 최근 파이프라인</div>
+    <p class="lede">
+      줄을 누르면 아래 <b>04</b> 에 그 브랜치의 잡별 소요시간이 펼쳐집니다.
+      <b>추세</b> 는 최근 3회 평균을 그 앞 3회 평균과 견준 것입니다 — 막대는 왼쪽이 옛날, 오른쪽이 최근.
+    </p>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th>브랜치</th><th>최신 상태</th><th class="num">소요</th>
+            <th class="num">대기</th><th>최근 추세</th><th class="num">Δ</th>
+            <th class="num">실패</th><th>커밋</th><th>언제</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="branchBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── 4. 잡 ─────────────────────────────────────────────────────── -->
+  <section id="secJobs">
+    <div class="eyebrow"><span class="n">04</span> 잡별 소요시간</div>
+    <p class="lede">막대 길이는 그 파이프라인에서 <b>가장 오래 걸린 잡</b>을 100 으로 잡은 상대값입니다. 파이프라인이 왜 느린지는 거의 항상 맨 위 한두 줄에 있습니다.</p>
+    <div class="jobhead" id="jobHead"></div>
+    <div class="jobs" id="jobBody"></div>
+  </section>
+
+  <!-- ── 5. 러너 ───────────────────────────────────────────────────── -->
+  <section id="secRunners">
+    <div class="eyebrow"><span class="n">05</span> 러너 — 검사를 실제로 돌리는 기계</div>
+    <p class="lede">
+      <b>러너(runner)</b> 는 CI 검사를 실제로 돌리는 서버입니다. <b>동시 실행 슬롯</b>(config.toml 의
+      <code class="mono">concurrent</code>)은 그 서버가 한 번에 몇 개의 잡을 집어 가는지를 정합니다.
+      슬롯이 코어 수만큼 열려 있으면, 정원이 차는 순간 잡들이 <b>서로를 느리게 만듭니다.</b>
+    </p>
+    <div class="measure-note">
+      <div>🔴 <b>load average · 코어 수 · 동시 슬롯 수는 GitLab API 에 없습니다.</b>
+        러너 서버 안에서만 나오는 값이라 이 페이지가 알아낼 방법이 없습니다. 지어내지 않고 비워 둡니다.</div>
+      <div>서버에서 이 한 줄을 돌리고, 나온 값을 아래 칸에 넣으세요.</div>
+      <pre class="cmd">nproc; cat /proc/loadavg; grep -i '^concurrent' /etc/gitlab-runner/config.toml</pre>
+      <div><b>load average</b> — 서버가 얼마나 밀려 있는지를 나타내는 숫자. <b>코어 수로 나눈 값이 1.0 을 넘으면
+        줄을 서고 있다</b>는 뜻입니다. 4코어에서 4.0 은 정원, 28.7 은 정원의 7배가 대기 중이라는 뜻입니다.</div>
+    </div>
+    <div class="runners" id="runnerBody"></div>
+  </section>
+
+  <!-- ── 6. 동시 실행 ↔ 소요시간 ───────────────────────────────────── -->
+  <section id="secConc">
+    <div class="eyebrow"><span class="n">06</span> 동시 실행 수 ↔ 잡 소요시간</div>
+    <p class="lede">
+      같은 잡이 <b>혼자 돌 때</b>와 <b>이웃과 함께 돌 때</b> 얼마나 달랐는지입니다. 옆으로 갈수록 그 잡이 도는 동안
+      같은 러너에서 함께 돌던 잡이 많았다는 뜻입니다 — 아래로 갈수록 막대가 길어지면 <b>느린 원인은 그 잡 자신이 아니라 이웃</b>입니다.
+      성공한 잡의 중앙값이고, <code class="mono">n</code> 은 표본 수입니다.
+    </p>
+    <div class="cc" id="concBody"></div>
+    <div class="cited">
+      <div><b>다른 조사에서 나온 실측</b> — 이 페이지가 잰 것이 아니라, 넘겨받은 값입니다.</div>
+      <table><tbody>
+        <tr><td class="k">러너 구성</td><td class="v">j15e201-base 4코어·슬롯 4 · EC2 4코어·슬롯 1 · SSAFY 공유 러너 0대</td></tr>
+        <tr><td class="k">frontend:build 동시 3개</td><td class="v">130초 · load 0.67</td></tr>
+        <tr><td class="k">frontend:build 동시 4개</td><td class="v">247초 · load 28.7</td></tr>
+        <tr><td class="k">EC2 러너</td><td class="v">load 2.2 — 놀고 있음</td></tr>
+      </tbody></table>
+      <div class="src">4코어 서버에 슬롯이 4개라 정원이 차면 서로를 정확히 2배 느리게 만든다.
+        위 표는 이 페이지가 받은 데이터가 아니므로 03·04·05·06 의 숫자와 섞이지 않습니다.</div>
+    </div>
+  </section>
+
+  <!-- ── 7. 구성 (토큰 없이도 확인된 것) ─────────────────────────────── -->
+  <section>
+    <div class="eyebrow"><span class="n">07</span> 어느 브랜치에서 무엇이 도는가 — git 실측</div>
+    <p class="lede">
+      아래는 <b>토큰 없이 확인한 것</b>입니다. 2026-09-08 에 각 브랜치의
+      <code class="mono">.gitlab-ci.yml</code> 을 <code class="mono">git show &lt;브랜치&gt;:.gitlab-ci.yml</code> 로 직접 읽었습니다.
+      소요시간(초)은 여기 없습니다 — 그건 위 <b>03·04·06</b> 이고 토큰이 필요합니다.
+    </p>
+    <div class="tablewrap">
+      <table class="cfg" id="cfgTable"></table>
+    </div>
+    <div class="legend">
+      <span class="k-mr"><b>MR</b> — 머지 리퀘스트 파이프라인에서만 돈다</span>
+      <span class="k-br"><b>BR</b> — 브랜치에 커밋이 들어오면 돈다</span>
+      <span class="k-sc"><b>SC</b> — 스케줄(정해진 시각)에만 돈다</span>
+      <span><b class="mono" style="color:var(--rule)">·</b> — 그 브랜치에 없다</span>
+    </div>
+  </section>
+
+  <!-- ── 8. 사전 ───────────────────────────────────────────────────── -->
+  <section>
+    <div class="eyebrow"><span class="n">08</span> 잡이 무엇을 하는가</div>
+    <div class="gloss" id="gloss"></div>
+  </section>
+
+  <footer>
+    <div>이 페이지는 <code>ci-status.json</code> 만 읽어 그립니다. 그 파일이 없으면 아무 숫자도 그리지 않습니다 — 빈칸이 지어낸 숫자보다 낫습니다.</div>
+    <div>수집: <code>node ci-stats.mjs --help</code> · 브랜치 지정 <code>--branches=back/dev</code> · 잡 단위 추세까지 <code>--jobs=all</code></div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // ══════════════════════════════════════════════════════════════════════
+  // 저장소에서 직접 읽은 것 (2026-09-08, git show <브랜치>:.gitlab-ci.yml)
+  // 여기 있는 것은 "무엇이 도는가" 이고, "얼마나 걸리는가" 가 아니다.
+  // ══════════════════════════════════════════════════════════════════════
+  var CFG_BRANCHES = ["main", "front/main", "front/dev", "back/main", "back/dev",
+                      "bigData/dev", "map/dev", "common/dev"];
+
+  // MR = 머지 리퀘스트에서만 · BR = 브랜치 커밋에서 · SC = 스케줄에서 · null = 없음
+  var CFG_JOBS = [
+    { job: "frontend:smoke",           heavy: true,  on: { "front/main": "MR", "front/dev": "MR" },
+      note: "npm ci → tsc → expo export → 크로미움으로 실제 열어 보기" },
+    { job: "backend:build",            heavy: true,  on: { "back/dev": "MR" },
+      note: "PostgreSQL 컨테이너를 띄우고 gradlew build" },
+    { job: "frontend:dependency-scan", heavy: false, on: { "front/main": "MR", "front/dev": "MR" },
+      note: "npm audit — 심각도 high 이상" },
+    { job: "backend:dependency-scan",  heavy: false, on: { "back/dev": "MR" },
+      note: "osv-scanner. 지금은 allow_failure(빨개져도 머지를 막지 않음)" },
+    { job: "backend:migration-order",  heavy: false, on: { "back/dev": "MR" },
+      note: "DB 마이그레이션 번호가 뒤엉켰는지" },
+    { job: "verify:bigdata",           heavy: false, on: { "bigData/dev": "MR·BR" },
+      note: "bigData/ 가 바뀔 때만" },
+    { job: "claims",                   heavy: false, on: { "main": "MR", "front/main": "MR", "front/dev": "MR", "back/main": "MR", "back/dev": "MR", "bigData/dev": "MR", "map/dev": "MR", "common/dev": "MR·BR" },
+      note: "선점 없이 고친 파일이 들어왔는가" },
+    { job: "claims:checkpoint",        heavy: false, on: { "back/dev": "BR" },
+      note: "장부를 접어 두어 다음 검사를 짧게 만든다" },
+    { job: "mr:gates",                 heavy: false, on: { "main": "MR", "front/main": "MR", "front/dev": "MR", "back/main": "MR", "back/dev": "MR", "bigData/dev": "MR", "map/dev": "MR", "common/dev": "MR" },
+      note: "무엇이 걸리고 무엇이 건너뛰어졌는지 찍는다" },
+    { job: "verify:mr-target",         heavy: false, on: { "main": "MR", "front/main": "MR", "front/dev": "MR", "back/main": "MR", "back/dev": "MR", "bigData/dev": "MR", "map/dev": "MR", "common/dev": "MR" },
+      note: "MR 이 한 칸씩만 올라가는가" },
+    { job: "governance",               heavy: false, on: { "main": "MR", "front/main": "MR", "front/dev": "MR", "back/main": "MR", "back/dev": "MR", "bigData/dev": "MR", "map/dev": "MR", "common/dev": "MR" },
+      note: "정족수를 채웠는가 (dev 로 가는 MR 에는 안 건다)" },
+    { job: "version",                  heavy: false, on: { "main": "BR", "front/main": "BR", "front/dev": "BR", "back/main": "BR", "back/dev": "BR", "bigData/dev": "BR", "map/dev": "BR", "common/dev": "BR" },
+      note: "머지된 것에 버전 태그를 붙인다" },
+    { job: "jira",                     heavy: false, on: { "common/dev": "BR" },
+      note: "커밋의 Jira 키로 티켓 상태를 옮긴다" },
+    { job: "promote",                  heavy: false, on: { "main": "SC", "front/main": "SC", "front/dev": "SC", "back/main": "SC", "back/dev": "SC", "bigData/dev": "SC", "map/dev": "SC", "common/dev": "SC" },
+      note: "봇이 단계를 올린다 (dev → 파트 → main)" },
+    { job: "vote:recheck",             heavy: false, on: { "common/dev": "SC" },
+      note: "표가 모자라 멈춘 MR 을 다시 세어 본다" },
+    { job: "ci:vendor",                heavy: false, on: { "back/main": "MR" },
+      note: "옛 벤더링 검사. 다른 브랜치는 npm 판으로 옮겼는데 여기만 남아 있다" }
+  ];
+
+  var GLOSSARY = [
+    ["frontend:smoke", "프론트 화면이 <em>실제로 뜨는지</em> 본다. npm ci → 타입 검사 → expo export(웹 번들 만들기) → 크로미움으로 열어 글자가 그려졌는지·콘솔에 error 가 없는지. 이 저장소에서 가장 무거운 잡이다."],
+    ["backend:build", "PostgreSQL 컨테이너를 띄우고 <code>gradlew build</code>. 끝나고 <em>건너뛴 테스트가 하나라도 있으면 일부러 빨갛게</em> 만든다 — DB 가 안 뜬 날 테스트가 전부 건너뛰고도 초록이 되는 것을 막는 장치."],
+    ["claims", "선점(누가 어느 파일을 고치는 중인지 미리 적어 두는 것) 없이 고쳐진 파일이 들어왔는지 장부를 처음부터 재생해 본다."],
+    ["verify:mr-target", "MR 이 사다리를 한 칸씩만 올라가는지. 기능 브랜치 → 파트 dev → 파트 브랜치 → main. 건너뛰면 막는다."],
+    ["governance", "정족수(통과에 필요한 최소 찬성 수)를 채웠는지. <code>dev</code> 로 가는 MR 에는 안 건다 — 진짜 관문은 dev 에서 나갈 때다."],
+    ["mr:gates", "아무 MR 에서나 도는 아주 싼 잡. 잡이 하나도 안 돌면 파이프라인 자체가 안 생기고, 그러면 오히려 머지를 못 하게 되는 것을 막는다."],
+    ["version", "머지된 브랜치 단계에 맞춰 버전 태그를 붙인다. dev→patch, 파트→minor, main→major."],
+    ["promote", "봇이 단계를 올린다. 스케줄에서만 돈다. 표가 모자라면 아무것도 안 하고 초록으로 끝난다 — 그건 고장이 아니다."],
+    ["dependency-scan", "쓰고 있는 라이브러리에 알려진 취약점이 있는지 조회한다. 프론트는 npm audit, 백은 osv-scanner."],
+    ["allow_failure", "그 잡이 빨개져도 <em>머지를 막지는 않는</em> 설정. 지금 <code>backend:dependency-scan</code> 이 이 상태다."]
+  ];
+
+  // 페이지가 이해하는 파일 형태는 ci-stats.mjs 가 내는 것 하나뿐이다.
+  var SAMPLE = {
+    schema: 2, source: "sample", generatedAt: null,
+    projectPath: "s15-bigdata-dist-sub1/S15P21E201",
+    projectUrl: "https://lab.ssafy.com/s15-bigdata-dist-sub1/S15P21E201",
+    perBranch: 8, jobsMode: "latest", branches: [], warnings: [],
+    // 러너 이름만 실제 것을 쓰고 숫자는 전부 지어낸 값이다. 화면 모양 확인용.
+    runners: [
+      { id: 11, name: "j15e201-base", online: true, runningNow: 4, cores: 4, slots: 4, load1: 28.7, loadMeasuredAt: "샘플" },
+      { id: 12, name: "ec2-runner", online: true, runningNow: 0, cores: 4, slots: 1, load1: 2.2, loadMeasuredAt: "샘플" }
+    ],
+    jobWindow: { requested: 250, count: 0, jobs: [] },
+    concurrency: [
+      { name: "frontend:smoke", total: 21, buckets: [
+        { concurrent: 1, n: 5, medianSec: 402, minSec: 388, maxSec: 419 },
+        { concurrent: 3, n: 9, medianSec: 511, minSec: 470, maxSec: 560 },
+        { concurrent: 4, n: 7, medianSec: 803, minSec: 742, maxSec: 903 }] },
+      { name: "backend:build", total: 14, buckets: [
+        { concurrent: 1, n: 6, medianSec: 178, minSec: 166, maxSec: 190 },
+        { concurrent: 3, n: 5, medianSec: 186, minSec: 174, maxSec: 201 },
+        { concurrent: 4, n: 3, medianSec: 349, minSec: 322, maxSec: 371 }] },
+      { name: "claims", total: 32, buckets: [
+        { concurrent: 1, n: 12, medianSec: 36, minSec: 31, maxSec: 44 },
+        { concurrent: 3, n: 13, medianSec: 38, minSec: 33, maxSec: 46 },
+        { concurrent: 4, n: 7, medianSec: 41, minSec: 35, maxSec: 49 }] }
+    ]
+  };
+  (function buildSample() {
+    var spec = [
+      ["front/dev",   "failed",  [412, 398, 505, 611, 690, 742, 861, 903], [["frontend:smoke","verify","failed",640],["frontend:dependency-scan","verify","success",148],["claims","verify","success",41],["verify:mr-target","verify","success",19],["mr:gates","verify","success",12],["governance","verify","skipped",null]]],
+      ["back/dev",    "success", [268, 255, 271, 249, 262, 258, 244, 251], [["backend:build","verify","success",186],["backend:dependency-scan","verify","failed",44],["backend:migration-order","verify","success",22],["claims","verify","success",38],["verify:mr-target","verify","success",18],["mr:gates","verify","success",11]]],
+      ["main",        "success", [64, 61, 70, 66, 63, 68, 62, 65],         [["claims","verify","success",39],["verify:mr-target","verify","success",17],["governance","verify","success",26],["mr:gates","verify","success",11]]],
+      ["front/main",  "success", [520, 511, 498, 530, 515, 505, 512, 508], [["frontend:smoke","verify","success",402],["frontend:dependency-scan","verify","success",139],["claims","verify","success",37]]],
+      ["back/main",   "success", [88, 91, 85, 90, 86, 89, 84, 87],         [["ci:vendor","verify","success",29],["claims","verify","success",36],["mr:gates","verify","success",10]]],
+      ["bigData/dev", "success", [131, 140, 128, 136, 133, 129, 138, 134], [["verify:bigdata","verify","success",96],["claims","verify","success",35],["mr:gates","verify","success",11]]],
+      ["map/dev",     "running", [58, 62, 55, 60, 57, 61, 59, null],       [["claims","verify","success",34],["verify:mr-target","verify","running",null],["mr:gates","verify","success",10]]],
+      ["common/dev",  "success", [72, 75, 70, 78, 71, 74, 69, 73],         [["claims","verify","success",33],["jira","release","success",14],["mr:gates","verify","success",10]]]
+    ];
+    var now = Date.now();
+    SAMPLE.generatedAt = new Date(now).toISOString();
+    spec.forEach(function (row) {
+      var ref = row[0], status = row[1], durs = row[2], jobs = row[3];
+      var pipes = durs.slice().reverse().map(function (d, i) {
+        return {
+          id: 900000 + Math.round(Math.random() * 9000), ref: ref,
+          shortSha: Math.random().toString(16).slice(2, 10),
+          status: i === 0 ? status : (i === 3 ? "failed" : "success"),
+          source: "merge_request_event",
+          webUrl: SAMPLE.projectUrl + "/-/pipelines",
+          createdAt: new Date(now - i * 5.5 * 3600 * 1000).toISOString(),
+          durationSec: d, queuedSec: i === 0 ? 6 : 3, jobs: null
+        };
+      });
+      pipes[0].jobs = jobs.map(function (j, k) {
+        var jid = 500000 + SAMPLE.jobWindow.jobs.length;
+        // 무거운 잡은 슬롯 4개짜리 러너에, 가벼운 것은 번갈아 — 샘플이므로 규칙은 임의다.
+        var onBase = j[3] === null || j[3] > 30 || k % 2 === 0;
+        var peak = onBase ? (j[3] > 300 ? 4 : 3) : 1;
+        SAMPLE.jobWindow.jobs.push({ id: jid, name: j[0], concurrentPeak: peak });
+        SAMPLE.jobWindow.count = SAMPLE.jobWindow.jobs.length;
+        return { id: jid, name: j[0], stage: j[1], status: j[2], durationSec: j[3],
+                 allowFailure: j[0] === "backend:dependency-scan", failureReason: j[2] === "failed" ? "script_failure" : null,
+                 webUrl: SAMPLE.projectUrl + "/-/jobs",
+                 runnerId: onBase ? 11 : 12, runnerName: onBase ? "j15e201-base" : "ec2-runner" };
+      });
+      SAMPLE.branches.push({ ref: ref, found: true, error: null, pipelines: pipes });
+    });
+  })();
+
+  // ══════════════════════════════════════════════════════════════════════
+  // 상태
+  // ══════════════════════════════════════════════════════════════════════
+  var state = { data: null, mode: "empty", selected: null, db: null, dbDoc: null, facts: {} };
+  var $ = function (id) { return document.getElementById(id); };
+
+  // ── 형식 ──────────────────────────────────────────────────────────────
+  function fmtDur(s) {
+    if (s === null || s === undefined || isNaN(s)) return "—";
+    s = Math.round(s);
+    if (s < 60) return s + "초";
+    var m = Math.floor(s / 60), r = s % 60;
+    return m + "분 " + (r < 10 ? "0" : "") + r + "초";
+  }
+  function fmtAgo(iso) {
+    if (!iso) return "—";
+    var d = new Date(iso);
+    if (isNaN(d)) return "—";
+    var mins = Math.round((Date.now() - d.getTime()) / 60000);
+    if (mins < 1) return "방금";
+    if (mins < 60) return mins + "분 전";
+    var h = Math.round(mins / 60);
+    if (h < 24) return h + "시간 전";
+    return Math.round(h / 24) + "일 전";
+  }
+  function esc(s) {
+    return String(s === null || s === undefined ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+  function refHtml(ref) {
+    var i = String(ref).lastIndexOf("/");
+    if (i === -1) return '<span class="ref">' + esc(ref) + "</span>";
+    return '<span class="ref"><span class="part">' + esc(ref.slice(0, i + 1)) + "</span>" + esc(ref.slice(i + 1)) + "</span>";
+  }
+  function statusPill(s) {
+    var label = { success: "통과", failed: "실패", running: "도는 중", pending: "대기", canceled: "취소",
+                  skipped: "건너뜀", manual: "수동", created: "만들어짐" }[s] || (s || "없음");
+    var cls = ["success", "failed", "running", "pending", "canceled", "skipped", "manual"].indexOf(s) >= 0 ? s : "none";
+    return '<span class="pill s-' + cls + '"><span class="dot"></span>' + esc(label) + "</span>";
+  }
+
+  // ── 스파크라인 ────────────────────────────────────────────────────────
+  // 한 브랜치의 소요시간 한 줄. 계열이 하나라 범례가 없다 — 줄 왼쪽의
+  // 브랜치 이름이 곧 계열 이름이다. 끝점만 상태 색으로 강조한다.
+  function sparkline(durs, latestStatus) {
+    var W = 118, H = 26, PAD = 3;
+    var pts = durs.map(function (d, i) { return { i: i, v: d }; }).filter(function (p) { return typeof p.v === "number"; });
+    if (pts.length < 2) return '<span class="dim mono" style="font-size:11px">기록 부족</span>';
+    var max = Math.max.apply(null, pts.map(function (p) { return p.v; }));
+    var min = Math.min.apply(null, pts.map(function (p) { return p.v; }));
+    var span = Math.max(1, max - min);
+    var n = durs.length - 1;
+    var x = function (i) { return PAD + (i / Math.max(1, n)) * (W - PAD * 2); };
+    var y = function (v) { return H - PAD - ((v - min) / span) * (H - PAD * 2); };
+    var d = pts.map(function (p, k) { return (k ? "L" : "M") + x(p.i).toFixed(1) + " " + y(p.v).toFixed(1); }).join(" ");
+    var area = d + " L" + x(pts[pts.length - 1].i).toFixed(1) + " " + (H - PAD) + " L" + x(pts[0].i).toFixed(1) + " " + (H - PAD) + " Z";
+    var last = pts[pts.length - 1];
+    var endColor = latestStatus === "failed" ? "var(--bad)" : latestStatus === "success" ? "var(--ok)" : "var(--warn)";
+    return '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="최근 소요시간 추이">' +
+      '<title>' + pts.map(function (p) { return fmtDur(p.v); }).join(" → ") + "</title>" +
+      '<path d="' + area + '" fill="var(--bar)" opacity=".16" stroke="none"></path>' +
+      '<path d="' + d + '" fill="none" stroke="var(--bar)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>' +
+      '<circle cx="' + x(last.i).toFixed(1) + '" cy="' + y(last.v).toFixed(1) + '" r="3.2" fill="' + endColor + '"></circle>' +
+      "</svg>";
+  }
+
+  function trendOf(durs) {
+    var vals = durs.filter(function (d) { return typeof d === "number"; });
+    if (vals.length < 4) return null;
+    var recent = vals.slice(-3), before = vals.slice(-6, -3);
+    if (!before.length) return null;
+    var avg = function (a) { return a.reduce(function (s, v) { return s + v; }, 0) / a.length; };
+    var pct = ((avg(recent) - avg(before)) / avg(before)) * 100;
+    return { pct: pct, recent: avg(recent), before: avg(before) };
+  }
+
+  // ══════════════════════════════════════════════════════════════════════
+  // 러너 — 서버에서 직접 잰 값을 담아 두는 곳
+  //
+  // 🔴 코어 수·동시 슬롯 수·load average 는 GitLab API 에 없다. 사람이 서버에서
+  //    재서 넣어야 나온다. 그래서 여기 넣은 값은 이 브라우저에만 남는다.
+  // ══════════════════════════════════════════════════════════════════════
+  var FACTS_KEY = "ci-status.runnerFacts.v1";
+  function loadFacts() {
+    try { return JSON.parse(localStorage.getItem(FACTS_KEY) || "{}") || {}; }
+    catch (e) { return {}; }
+  }
+  function saveFacts(f) {
+    try { localStorage.setItem(FACTS_KEY, JSON.stringify(f)); } catch (e) { /* 사생활 모드 */ }
+  }
+  function factsFor(r) {
+    var local = state.facts[r.name] || state.facts[String(r.id)] || {};
+    // 수집 스크립트가 --runner-facts 로 실어 온 값이 기본, 화면에서 넣은 값이 우선.
+    return {
+      cores: num(local.cores, r.cores),
+      slots: num(local.slots, r.slots),
+      load1: num(local.load1, r.load1),
+      measuredAt: local.measuredAt || r.loadMeasuredAt || null,
+      fromPage: local.cores != null || local.slots != null || local.load1 != null
+    };
+  }
+  function num(a, b) {
+    return (typeof a === "number" && !isNaN(a)) ? a : ((typeof b === "number" && !isNaN(b)) ? b : null);
+  }
+
+  function renderRunners() {
+    var box = $("runnerBody");
+    var runners = (state.data && state.data.runners) || [];
+    if (!runners.length) {
+      box.innerHTML = '<div class="runner unknown"><div class="rtop"><span class="dim">' +
+        (state.data
+          ? "러너 목록을 못 받았습니다. 토큰에 <code>read_api</code> 가 켜져 있는지, 프로젝트에 붙은 러너가 있는지 보세요."
+          : "데이터가 없어 비워 둡니다. 위 <b>01</b> 을 보세요.") +
+        "</span></div></div>";
+      return;
+    }
+    box.innerHTML = runners.map(function (r) {
+      var f = factsFor(r);
+      var ratio = (f.load1 != null && f.cores) ? f.load1 / f.cores : null;
+      var cls = ratio == null ? "unknown" : ratio > 1 ? "hot" : ratio > 0.8 ? "near" : "calm";
+      // 눈금(1.0 = 정원)이 트랙의 절반에 오도록 최대 2.0 으로 자른다. 넘으면 꽉 채우고
+      // 정확한 숫자는 옆에 글자로 남긴다 — 막대는 눈짐작용이고 숫자가 근거다.
+      var pct = ratio == null ? 0 : Math.min(100, (ratio / 2) * 100);
+      var full = (f.slots != null && r.runningNow != null && r.runningNow >= f.slots);
+      return '<div class="runner ' + cls + '" data-runner="' + esc(r.name) + '">' +
+        '<div class="rtop">' +
+          '<span class="rname">' + esc(r.name) + "</span>" +
+          statusPill(r.online === false ? "canceled" : r.online === true ? "success" : "none")
+            .replace("통과", "온라인").replace("취소", "꺼짐").replace("없음", "상태 모름") +
+          '<span class="rfact' + (f.cores == null ? " absent" : "") + '">코어 <b>' + (f.cores == null ? "안 잼" : f.cores) + "</b></span>" +
+          '<span class="rfact' + (f.slots == null ? " absent" : "") + '">동시 슬롯 <b>' + (f.slots == null ? "안 잼" : f.slots) + "</b></span>" +
+          '<span class="rfact">지금 도는 잡 <b>' + (r.runningNow == null ? "—" : r.runningNow) + "</b>" +
+            (full ? ' <span style="color:var(--bad);font-weight:600">정원</span>' : "") + "</span>" +
+          '<span class="rfact' + (f.load1 == null ? " absent" : "") + '">load <b>' + (f.load1 == null ? "안 잼" : f.load1) + "</b></span>" +
+          (f.measuredAt ? '<span class="rfact absent">잰 시각 <b>' + esc(f.measuredAt) + "</b></span>" : "") +
+        "</div>" +
+        '<div class="rmeter">' +
+          '<div class="rtrack" title="' + (ratio == null ? "load 를 아직 안 쟀습니다" : "load " + f.load1 + " ÷ 코어 " + f.cores + " = " + ratio.toFixed(2)) + '">' +
+            '<i class="' + (cls === "unknown" ? "" : cls) + '" style="width:' + pct.toFixed(1) + '%"></i><u></u>' +
+          "</div>" +
+          '<span class="rratio ' + (ratio == null ? "none" : cls) + '">' +
+            (ratio == null ? "load ÷ 코어 ?" : ratio.toFixed(2) + "×") + "</span>" +
+        "</div>" +
+        '<div class="rscale"><span><i>0</i><i class="mid">1.0 정원</i><i>2.0+</i></span><span></span></div>' +
+        '<div class="rform">' +
+          '<span class="hint">서버에서 잰 값 →</span>' +
+          '<label>코어 <input type="number" min="1" step="1" data-f="cores" value="' + (f.cores == null ? "" : f.cores) + '" placeholder="nproc"></label>' +
+          '<label>동시 슬롯 <input type="number" min="1" step="1" data-f="slots" value="' + (f.slots == null ? "" : f.slots) + '" placeholder="concurrent"></label>' +
+          '<label>load <input type="number" min="0" step="0.01" data-f="load1" value="' + (f.load1 == null ? "" : f.load1) + '" placeholder="/proc/loadavg"></label>' +
+          '<span class="hint">' + (
+            f.fromPage ? "이 브라우저에 저장됨"
+            : (f.cores != null || f.slots != null || f.load1 != null) ? "수집 스크립트가 실어 온 값 (--runner-facts)"
+            : "아직 안 넣었습니다 — 넣으면 이 브라우저에만 저장됩니다"
+          ) + "</span>" +
+        "</div>" +
+        "</div>";
+    }).join("");
+
+    Array.prototype.forEach.call(box.querySelectorAll(".runner"), function (card) {
+      var key = card.getAttribute("data-runner");
+      Array.prototype.forEach.call(card.querySelectorAll("input[data-f]"), function (inp) {
+        inp.addEventListener("change", function () {
+          var f = state.facts[key] || (state.facts[key] = {});
+          var v = inp.value.trim();
+          if (v === "") delete f[inp.getAttribute("data-f")];
+          else f[inp.getAttribute("data-f")] = Number(v);
+          f.measuredAt = new Date().toLocaleString("ko-KR", { hour12: false });
+          saveFacts(state.facts);
+          renderRunners(); renderAdvice();
+        });
+      });
+    });
+  }
+
+  // ── 동시 실행 ↔ 소요시간 ─────────────────────────────────────────────
+  function renderConcurrency() {
+    var box = $("concBody");
+    var cc = (state.data && state.data.concurrency) || [];
+    if (!cc.length) {
+      box.innerHTML = '<div class="ccjob"><span class="dim">' +
+        (state.data
+          ? "동시 실행 표본이 모자랍니다. <code>node ci-stats.mjs --job-window=500</code> 으로 더 넓게 훑어 보세요."
+          : "데이터가 없어 비워 둡니다. 위 <b>01</b> 을 보세요.") + "</span></div>";
+      return;
+    }
+    box.innerHTML = cc.slice(0, 8).map(function (j) {
+      var maxMed = Math.max.apply(null, j.buckets.map(function (b) { return b.medianSec; }));
+      var minMed = Math.min.apply(null, j.buckets.map(function (b) { return b.medianSec; }));
+      // 동시 실행이 늘 때 1.5배 넘게 느려졌으면 '이웃 탓' 으로 본다.
+      var lowest = j.buckets[0], highest = j.buckets[j.buckets.length - 1];
+      var neighbor = j.buckets.length >= 2 && highest.medianSec >= lowest.medianSec * 1.5;
+      return '<div class="ccjob">' +
+        '<div class="cchead"><span class="n">' + esc(j.name) + "</span>" +
+          (j.buckets.length < 2
+            ? '<span class="cnt">동시 실행이 한 가지뿐이라 비교 못 함</span>'
+            : neighbor
+              ? '<span class="verdict neighbor">이웃 탓 — ' + (highest.medianSec / lowest.medianSec).toFixed(1) + "배</span>"
+              : '<span class="verdict self">자기 탓 — 동시 실행과 무관</span>') +
+          '<span class="cnt">표본 ' + j.total + "개</span></div>" +
+        j.buckets.map(function (b) {
+          var w = Math.max(2, (b.medianSec / maxMed) * 100);
+          return '<div class="ccrow">' +
+            '<span class="cclabel">동시 ' + b.concurrent + "개</span>" +
+            '<span class="cctrack" title="' + esc(j.name + " · 동시 " + b.concurrent + "개 · 중앙값 " + fmtDur(b.medianSec) + " · 최소 " + fmtDur(b.minSec) + " 최대 " + fmtDur(b.maxSec)) + '">' +
+              '<i class="' + (b.medianSec === maxMed && maxMed > minMed ? "worst" : "") + '" style="width:' + w.toFixed(1) + '%"></i></span>' +
+            '<span class="ccdur">' + fmtDur(b.medianSec) + "</span>" +
+            '<span class="ccn">n' + b.n + "</span>" +
+            "</div>";
+        }).join("") +
+        "</div>";
+    }).join("");
+  }
+
+  // ══════════════════════════════════════════════════════════════════════
+  // 그리기
+  // ══════════════════════════════════════════════════════════════════════
+  function render() {
+    renderDataState();
+    var b = pickBranch();               // 표에 표시할 선택 줄을 먼저 정한다
+    state.selected = b ? b.ref : null;
+    renderBranches();
+    renderJobs();
+    renderRunners();
+    renderConcurrency();
+    renderAdvice();
+  }
+
+  function renderDataState() {
+    var el = $("dataState"), d = state.data;
+    document.body.classList.toggle("is-sample", state.mode === "sample");
+    el.className = "datastate " + state.mode;
+    $("btnShare").classList.toggle("hidden", !(state.db && state.mode === "live"));
+    $("btnClear").classList.toggle("hidden", state.mode === "empty");
+    $("btnSample").classList.toggle("hidden", state.mode !== "empty");
+    $("dsSteps").classList.toggle("hidden", state.mode !== "empty");
+
+    if (state.mode === "empty") {
+      $("dsTitle").innerHTML = '아직 데이터 없음 — <code class="mono">ci-stats.mjs</code> 를 먼저 돌리세요';
+      $("dsBody").innerHTML = '이 저장소는 비공개라 <b>토큰 없이는 파이프라인 기록을 한 줄도 못 받습니다.</b> 인증 없이 GitLab API 를 치면 404 가 옵니다(없다는 뜻이 아니라 “너에게는 없다”는 뜻입니다). 그래서 이 페이지는 숫자를 지어내지 않고 비워 둡니다.';
+      $("mSource").textContent = "없음";
+      $("mWhen").textContent = "—";
+      $("mCount").textContent = "—";
+      return;
+    }
+    if (state.mode === "sample") {
+      $("dsTitle").textContent = "샘플입니다 — 실제로 잰 숫자가 아닙니다";
+      $("dsBody").innerHTML = "화면 모양을 보려고 지어낸 값입니다. <b>어떤 판단에도 쓰지 마세요.</b> 실제 숫자는 <code class=\"mono\">ci-stats.mjs</code> 를 돌려야 나옵니다.";
+      $("mSource").textContent = "샘플 (지어낸 값)";
+    } else {
+      $("dsTitle").textContent = "실측 데이터를 읽었습니다";
+      var w = (d.warnings || []).length;
+      $("dsBody").innerHTML = "GitLab API 에서 브랜치마다 최근 " + esc(d.perBranch || "?") + "회까지 받았습니다." +
+        (w ? " <b style=\"color:var(--warn)\">경고 " + w + "건</b>: " + esc((d.warnings || []).join(" / ")) : "");
+      $("mSource").textContent = "실측 · " + (d.tokenSource || "gitlab-api");
+    }
+    $("mWhen").textContent = (d.generatedAt ? fmtAgo(d.generatedAt) : "—") +
+      (d.generatedAt ? " (" + new Date(d.generatedAt).toLocaleString("ko-KR", { hour12: false }) + ")" : "");
+    $("mCount").textContent = (d.branches || []).filter(function (b) { return b.found; }).length + " / " + (d.branches || []).length;
+  }
+
+  function renderBranches() {
+    var tb = $("branchBody");
+    if (!state.data) {
+      tb.innerHTML = '<tr><td colspan="10" class="dim" style="padding:22px 12px">데이터가 없어 비워 둡니다. 위 <b>01</b> 을 보세요.</td></tr>';
+      return;
+    }
+    var rows = state.data.branches.map(function (b) {
+      if (!b.found) {
+        return '<tr><td>' + refHtml(b.ref) + '</td><td colspan="9" class="dim">' + esc(b.error || "데이터 없음") + "</td></tr>";
+      }
+      var p = b.pipelines[0];
+      var durs = b.pipelines.slice().reverse().map(function (x) { return x.durationSec; });
+      var t = trendOf(durs);
+      var fails = b.pipelines.filter(function (x) { return x.status === "failed"; }).length;
+      var tcls = t ? (t.pct > 12 ? "up" : t.pct < -12 ? "down" : "flat") : "flat";
+      var ttxt = t ? (t.pct > 0 ? "+" : "") + t.pct.toFixed(0) + "%" : "—";
+      return '<tr class="pick' + (state.selected === b.ref ? " sel" : "") + '" data-ref="' + esc(b.ref) + '" tabindex="0">' +
+        "<td>" + refHtml(b.ref) + "</td>" +
+        "<td>" + statusPill(p.status) + "</td>" +
+        '<td class="num dur">' + fmtDur(p.durationSec) + "</td>" +
+        '<td class="num dur dim">' + fmtDur(p.queuedSec) + "</td>" +
+        "<td>" + sparkline(durs, p.status) + "</td>" +
+        '<td class="num"><span class="trend ' + tcls + '">' + ttxt + "</span></td>" +
+        (fails
+          ? '<td class="num mono" style="color:var(--bad)">'
+          : '<td class="num mono dim">') + fails + "/" + b.pipelines.length + "</td>" +
+        '<td class="mono dim" style="font-size:11.5px">' + esc(p.shortSha || "") + "</td>" +
+        '<td class="dim" style="font-size:12px;white-space:nowrap">' + esc(fmtAgo(p.createdAt)) + "</td>" +
+        '<td><a href="' + esc(p.webUrl || "#") + '" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-size:11.5px">열기 ↗</a></td>' +
+        "</tr>";
+    });
+    tb.innerHTML = rows.join("");
+    Array.prototype.forEach.call(tb.querySelectorAll("tr.pick"), function (tr) {
+      tr.addEventListener("click", function (e) {
+        if (e.target.tagName === "A") return;
+        state.selected = tr.getAttribute("data-ref"); render();
+        $("secJobs").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      tr.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); tr.click(); }
+      });
+    });
+  }
+
+  function pickBranch() {
+    if (!state.data) return null;
+    var found = state.data.branches.filter(function (b) { return b.found; });
+    if (!found.length) return null;
+    if (state.selected) {
+      var hit = found.filter(function (b) { return b.ref === state.selected; })[0];
+      if (hit) return hit;
+    }
+    // 아무것도 안 골랐으면 빨간 것을, 그것도 없으면 가장 오래 걸린 것을 편다.
+    var failed = found.filter(function (b) { return b.pipelines[0] && b.pipelines[0].status === "failed"; })[0];
+    if (failed) return failed;
+    return found.slice().sort(function (a, c) {
+      return (c.pipelines[0].durationSec || 0) - (a.pipelines[0].durationSec || 0);
+    })[0];
+  }
+
+  /** 이 잡이 도는 동안 같은 러너에서 함께 돌던 잡의 수. 훑어 둔 창에 있을 때만 나온다. */
+  function concurrentFor(job) {
+    var w = state.data && state.data.jobWindow && state.data.jobWindow.jobs;
+    if (!w || !job.id) return null;
+    for (var i = 0; i < w.length; i++) if (w[i].id === job.id) return w[i].concurrentPeak || null;
+    return null;
+  }
+
+  function renderJobs() {
+    var head = $("jobHead"), body = $("jobBody");
+    var b = pickBranch();
+    if (!b) {
+      head.innerHTML = "";
+      body.innerHTML = '<div class="jobrow"><span class="dim">데이터가 없어 비워 둡니다.</span></div>';
+      return;
+    }
+    var pipe = b.pipelines.filter(function (p) { return p.jobs && p.jobs.length; })[0] || b.pipelines[0];
+
+    if (!pipe.jobs || !pipe.jobs.length) {
+      head.innerHTML = "<b>" + esc(b.ref) + "</b><span>이 브랜치는 잡 목록을 못 받았습니다.</span>";
+      body.innerHTML = '<div class="jobrow"><span class="dim">잡 목록 없음 — <code>ci-stats.mjs</code> 를 다시 돌리거나 <code>--jobs=all</code> 을 주세요.</span></div>';
+      return;
+    }
+    var sum = pipe.jobs.reduce(function (s, j) { return s + (j.durationSec || 0); }, 0);
+    var max = Math.max.apply(null, pipe.jobs.map(function (j) { return j.durationSec || 0; }).concat([1]));
+    head.innerHTML =
+      "<b>" + esc(b.ref) + "</b>" +
+      "<span>파이프라인 " + statusPill(pipe.status) + "</span>" +
+      "<span>전체 " + '<span class="dur">' + fmtDur(pipe.durationSec) + "</span></span>" +
+      "<span>잡 합계 " + '<span class="dur">' + fmtDur(sum) + "</span></span>" +
+      "<span>" + esc({ merge_request_event: "MR 파이프라인", push: "브랜치 파이프라인", schedule: "스케줄" }[pipe.source] || pipe.source || "") + "</span>" +
+      "<span>" + esc(fmtAgo(pipe.createdAt)) + "</span>" +
+      (pipe.webUrl ? '<a href="' + esc(pipe.webUrl) + '" target="_blank" rel="noopener">GitLab 에서 열기 ↗</a>' : "");
+
+    body.innerHTML = pipe.jobs.map(function (j) {
+      var w = j.durationSec ? Math.max(2, (j.durationSec / max) * 100) : 0;
+      var fill = j.status === "failed" ? (j.allowFailure ? "f-warn" : "f-failed")
+               : (j.status === "skipped" || j.status === "manual" || j.status === "canceled") ? "f-idle" : "";
+      var share = sum ? Math.round(((j.durationSec || 0) / sum) * 100) : 0;
+      // 🔴 어느 러너에서 돌았는지. 러너마다 슬롯 수가 달라 같은 잡도 시간이 다르다.
+      var rn = j.runnerName || (j.runnerId ? "runner-" + j.runnerId : null);
+      var conc = concurrentFor(j);
+      return '<div class="jobrow">' +
+        '<span class="jname" title="' + esc(j.name) + '">' + esc(j.name) + (j.allowFailure ? ' <span class="dim" style="font-size:10px">(막지 않음)</span>' : "") + "</span>" +
+        '<span class="jrunner' + (rn ? "" : " none") + '" title="' + esc(rn ? "러너 " + rn + (conc ? " · 이 잡이 도는 동안 같은 러너에서 " + conc + "개가 함께 돌았습니다" : "") : "어느 러너에서 돌았는지 기록이 없습니다") + '">' +
+          (rn ? esc(rn) + (conc ? " ·" + conc + "개" : "") : "러너 ?") + "</span>" +
+        '<span class="jstage">' + esc(j.stage || "") + "</span>" +
+        "<span>" + statusPill(j.status) + "</span>" +
+        '<span class="track" title="' + esc(j.name + " · " + fmtDur(j.durationSec) + " · 이 파이프라인의 " + share + "%") + '"><i class="' + fill + '" style="width:' + w.toFixed(1) + '%"></i></span>' +
+        '<span class="jdur">' + fmtDur(j.durationSec) + "</span>" +
+        "</div>";
+    }).join("");
+  }
+
+  // ── 판단 줄 ──────────────────────────────────────────────────────────
+  function renderAdvice() {
+    var out = [];
+
+    if (state.data) {
+      var found = state.data.branches.filter(function (b) { return b.found; });
+
+      // 1) 빨간 것 — 어느 잡에서 죽었나 + 링크
+      found.forEach(function (b) {
+        var p = b.pipelines[0];
+        if (!p || p.status !== "failed") return;
+        var killer = (p.jobs || []).filter(function (j) { return j.status === "failed" && !j.allowFailure; })[0];
+        out.push({
+          sev: "bad", tag: "실패",
+          html: "<b>" + esc(b.ref) + "</b> 의 최신 파이프라인이 실패했습니다" +
+            (killer ? " — <b>" + esc(killer.name) + "</b> 에서 죽었습니다 (" + fmtDur(killer.durationSec) + ")" : "") +
+            '<span class="then">→ ' + (killer && killer.webUrl
+              ? '<a href="' + esc(killer.webUrl) + '" target="_blank" rel="noopener">그 잡의 로그를 엽니다 ↗</a>'
+              : '<a href="' + esc(p.webUrl) + '" target="_blank" rel="noopener">파이프라인을 엽니다 ↗</a>') + "</span>"
+        });
+      });
+
+      // 2) 시간을 가장 많이 먹는 잡
+      var heaviest = null;
+      found.forEach(function (b) {
+        var p = b.pipelines.filter(function (x) { return x.jobs && x.jobs.length; })[0];
+        if (!p) return;
+        var sum = p.jobs.reduce(function (s, j) { return s + (j.durationSec || 0); }, 0);
+        p.jobs.forEach(function (j) {
+          if (j.durationSec && (!heaviest || j.durationSec > heaviest.dur)) {
+            heaviest = { ref: b.ref, name: j.name, dur: j.durationSec, share: sum ? Math.round(j.durationSec / sum * 100) : 0, url: p.webUrl };
+          }
+        });
+      });
+      if (heaviest) {
+        out.push({
+          sev: heaviest.dur >= 300 ? "warn" : "info", tag: "가장 무거움",
+          html: "가장 오래 먹는 잡은 <b>" + esc(heaviest.name) + "</b> (" + esc(heaviest.ref) + ") — <b>" + fmtDur(heaviest.dur) +
+            "</b>, 그 파이프라인의 " + heaviest.share + "%" +
+            '<span class="then">→ 먼저 <b>06</b> 에서 그 잡이 <b>혼자 돌 때도</b> 그만큼 걸렸는지 보세요. 이웃 탓이면 러너 슬롯 문제입니다(<b>05</b>). 자기 탓이면 <b>07</b> 에서 그 잡이 MR 에서만 도는지 확인하세요.</span>'
+        });
+      }
+
+      // 3) 느려지는 브랜치
+      found.forEach(function (b) {
+        var durs = b.pipelines.slice().reverse().map(function (x) { return x.durationSec; });
+        var t = trendOf(durs);
+        if (!t || t.pct < 25) return;
+        out.push({
+          sev: "warn", tag: "느려짐",
+          html: "<b>" + esc(b.ref) + "</b> 가 느려지고 있습니다 — 최근 3회 평균 <b>" + fmtDur(t.recent) +
+            "</b>, 그 앞 3회는 " + fmtDur(t.before) + " (+" + t.pct.toFixed(0) + "%)" +
+            '<span class="then">→ 위 <b>03</b> 에서 그 줄을 눌러 잡별 막대를 보세요. 늘어난 시간은 보통 한 잡에 몰려 있습니다.</span>'
+        });
+      });
+
+      // 3.5) 러너가 밀려 있는가 — load ÷ 코어 가 1.0 을 넘으면 줄을 서고 있다
+      ((state.data && state.data.runners) || []).forEach(function (r) {
+        var f = factsFor(r);
+        if (f.load1 == null || !f.cores) return;
+        var ratio = f.load1 / f.cores;
+        if (ratio <= 1) return;
+        out.push({
+          sev: "bad", tag: "러너 과부하",
+          html: "러너 <b>" + esc(r.name) + "</b> 가 밀려 있습니다 — load " + f.load1 + " ÷ 코어 " + f.cores +
+            " = <b>" + ratio.toFixed(2) + "×</b>. 1.0 을 넘으면 잡들이 서로를 기다리는 중입니다." +
+            '<span class="then">→ 이 서버의 동시 슬롯을 ' + (f.slots != null ? "<b>" + f.slots + "개</b>에서 " : "") +
+            "줄이면(<code>/etc/gitlab-runner/config.toml</code> 의 <code>concurrent</code>) 잡 하나하나는 빨라집니다. " +
+            "코어 수보다 슬롯이 적어야 서로를 느리게 만들지 않습니다.</span>"
+        });
+      });
+
+      // 3.6) 놀고 있는 러너가 있는데 다른 하나가 꽉 찼다
+      var rs = ((state.data && state.data.runners) || []).map(function (r) {
+        var f = factsFor(r);
+        return { r: r, f: f, ratio: (f.load1 != null && f.cores) ? f.load1 / f.cores : null };
+      });
+      var busy = rs.filter(function (x) { return x.ratio != null && x.ratio > 1; });
+      var idle = rs.filter(function (x) { return x.ratio != null && x.ratio < 0.8; });
+      if (busy.length && idle.length) {
+        out.push({
+          sev: "warn", tag: "쏠림",
+          html: "<b>" + esc(busy[0].r.name) + "</b> 는 꽉 찼는데 <b>" + esc(idle[0].r.name) + "</b> 는 놀고 있습니다 (" +
+            busy[0].ratio.toFixed(2) + "× vs " + idle[0].ratio.toFixed(2) + "×)." +
+            '<span class="then">→ 일이 한 서버로 쏠리는 이유는 보통 <b>태그</b>입니다. 잡에 태그가 없으면 ' +
+            "<code>run_untagged</code> 가 켜진 러너만 집어 갑니다. 노는 러너의 슬롯을 늘리거나 태그를 맞추세요.</span>"
+        });
+      }
+
+      // 3.7) 이웃 탓으로 느려진 잡
+      ((state.data && state.data.concurrency) || []).forEach(function (j) {
+        if (j.buckets.length < 2) return;
+        var lo = j.buckets[0], hi = j.buckets[j.buckets.length - 1];
+        if (hi.medianSec < lo.medianSec * 1.5) return;
+        out.push({
+          sev: "warn", tag: "이웃 탓",
+          html: "<b>" + esc(j.name) + "</b> 는 혼자 돌 때 " + fmtDur(lo.medianSec) + " 인데 동시 " + hi.concurrent +
+            "개일 때 <b>" + fmtDur(hi.medianSec) + "</b> 입니다 — " + (hi.medianSec / lo.medianSec).toFixed(1) + "배." +
+            '<span class="then">→ 이 잡을 손보는 것은 헛일입니다. 느린 원인은 잡이 아니라 <b>같은 서버에서 함께 도는 이웃</b>입니다 — 위 <b>05</b> 의 동시 슬롯 수를 보세요.</span>'
+        });
+      });
+
+      // 4) 러너 대기
+      found.forEach(function (b) {
+        var p = b.pipelines[0];
+        if (!p || !p.queuedSec || p.queuedSec < 60) return;
+        out.push({
+          sev: "warn", tag: "대기",
+          html: "<b>" + esc(b.ref) + "</b> 는 검사 자체보다 <b>러너를 기다린 시간</b>이 깁니다 — 대기 " + fmtDur(p.queuedSec) +
+            '<span class="then">→ 이건 코드 문제가 아닙니다. 러너(검사를 실제로 돌리는 컴퓨터)가 모자라거나 꺼져 있습니다 — Settings → CI/CD → Runners.</span>'
+        });
+      });
+
+      if (!out.length) {
+        out.push({ sev: "ok", tag: "이상 없음", html: "받은 범위 안에서는 빨간 파이프라인도, 25% 넘게 느려진 브랜치도 없습니다." });
+      }
+    }
+
+    // 언제나 붙는 것 — 넘겨받은 실측. 이 페이지가 잰 것이 아니라 출처를 밝힌다.
+    out.push({
+      sev: "warn", tag: "받은 실측",
+      html: "<b>파이프라인이 느린 진짜 원인은 잡이 아니라 서로입니다.</b> 러너는 자체 서버 2대뿐이고(SSAFY 공유 러너 0대), " +
+        "<code>j15e201-base</code> 는 <b>4코어에 동시 슬롯이 4개</b>입니다 — 정원이 차면 서로를 정확히 2배 느리게 만듭니다." +
+        '<span class="then">→ 실측: <code>frontend:build</code> 가 동시 3개일 때 <b>130초</b>·load 0.67, 동시 4개가 되면 <b>247초</b>·load <b>28.7</b>. ' +
+        "EC2 러너는 슬롯 1개에 load 2.2 로 놀고 있습니다. 다른 조사에서 나온 값이라 아래 <b>05·06</b> 과 섞지 않았습니다.</span>"
+    });
+    out.push({
+      sev: "info", tag: "실측·git",
+      html: "<b>Expo 빌드가 두 번 돌던 것은 이미 고쳐져 있습니다.</b> <code>expo export</code> 만 하던 <code>frontend:build</code> 잡을 지우고 " +
+        "<code>frontend:smoke</code> 안으로 합쳤습니다 — <code>npm ci</code> 2번·<code>expo export</code> 2번이던 것이 각각 1번이 됐고, 타입 검사가 새로 붙었습니다." +
+        '<span class="then">→ 다만 <code>npm ci</code> 한 번이 69~112초라고 저장소에 실측이 적혀 있습니다(커밋 S15P21E201-700). 지금도 프론트 MR 에서 가장 무거운 잡은 <code>frontend:smoke</code> 입니다.</span>'
+    });
+    out.push({
+      sev: "info", tag: "실측·git",
+      html: "<b>무거운 잡은 전부 MR 파이프라인에서만 돕니다.</b> <code>frontend:smoke</code>·<code>backend:build</code> 둘 다 " +
+        "<code>merge_request_event</code> 조건이 걸려 있어, dev 브랜치에 머지된 뒤 도는 파이프라인에는 나타나지 않습니다." +
+        '<span class="then">→ 그래서 “back/dev 가 느린가”는 <b>브랜치 파이프라인이 아니라 MR 파이프라인</b>을 봐야 답이 나옵니다. 브랜치 쪽에는 <code>claims:checkpoint</code>·<code>version</code> 만 남습니다.</span>'
+    });
+    out.push({
+      sev: "warn", tag: "실측·git",
+      html: "<b>back/main 만 옛 구성에 남아 있습니다.</b> 다른 브랜치는 axMap 을 npm 판으로 옮겼는데 back/main 에는 아직 <code>ci:vendor</code>(사본 검사) 잡이 있습니다." +
+        '<span class="then">→ back/dev 를 back/main 으로 올릴 때 이 차이가 부딪힐 수 있습니다. 아래 <b>07</b> 표의 맨 아랫줄.</span>'
+    });
+
+    $("advice").innerHTML = out.map(function (a) {
+      return '<div class="advice-row sev-' + a.sev + '"><span class="tag">' + esc(a.tag) + '</span><span class="txt">' + a.html + "</span></div>";
+    }).join("");
+  }
+
+  // ── 구성 표 · 사전 ────────────────────────────────────────────────────
+  function renderConfig() {
+    var head = "<thead><tr><th>잡</th>" + CFG_BRANCHES.map(function (b) {
+      return '<th style="text-align:center">' + esc(b) + "</th>";
+    }).join("") + "<th>하는 일</th></tr></thead>";
+    var body = "<tbody>" + CFG_JOBS.map(function (row) {
+      var cells = CFG_BRANCHES.map(function (b) {
+        var v = row.on[b];
+        if (!v) return '<td class="cell no">·</td>';
+        var cls = v.indexOf("MR") === 0 ? "yes-mr" : v === "BR" ? "yes-br" : "yes-sc";
+        return '<td class="cell ' + cls + '">' + esc(v) + "</td>";
+      }).join("");
+      return "<tr><td class=\"rowlabel" + (row.heavy ? " heavy" : "") + "\">" + (row.heavy ? "● " : "") + esc(row.job) + "</td>" +
+        cells + '<td class="dim" style="font-size:12px">' + esc(row.note) + "</td></tr>";
+    }).join("") + "</tbody>";
+    $("cfgTable").innerHTML = head + body;
+  }
+  function renderGloss() {
+    $("gloss").innerHTML = "<dl>" + GLOSSARY.map(function (g) {
+      return '<div class="gitem"><dt>' + esc(g[0]) + "</dt><dd>" + g[1] + "</dd></div>";
+    }).join("") + "</dl>";
+  }
+
+  // ══════════════════════════════════════════════════════════════════════
+  // 파일 읽기 · 저장
+  // ══════════════════════════════════════════════════════════════════════
+  function looksValid(o) {
+    return o && typeof o === "object" && Array.isArray(o.branches);
+  }
+  function adopt(obj, mode) {
+    if (!looksValid(obj)) {
+      $("dzText").innerHTML = '<b style="color:var(--bad)">이 파일은 ci-status.json 이 아닙니다.</b> <code>branches</code> 배열이 없습니다. <code>node ci-stats.mjs</code> 가 만든 파일을 주세요.';
+      return false;
+    }
+    state.data = obj;
+    state.mode = mode || (obj.source === "sample" ? "sample" : "live");
+    state.selected = null;
+    $("dzText").innerHTML = state.mode === "sample"
+      ? "샘플을 보고 있습니다. 실제 숫자는 <b>ci-stats.mjs</b> 를 돌려야 나옵니다."
+      : "읽었습니다. 다른 파일을 놓으면 바뀝니다.";
+    render();
+    return true;
+  }
+  function readFile(file) {
+    var r = new FileReader();
+    r.onload = function () {
+      try { adopt(JSON.parse(r.result), null); }
+      catch (e) { $("dzText").innerHTML = '<b style="color:var(--bad)">JSON 을 못 읽었습니다.</b> ' + esc(e.message); }
+    };
+    r.readAsText(file);
+  }
+
+  // 팀 공유 — 스냅샷을 줄여서 저장한다. 문서 하나는 256 KiB 를 못 넘는다.
+  function compact(d) {
+    return {
+      schema: d.schema, source: d.source, generatedAt: d.generatedAt,
+      projectPath: d.projectPath, projectUrl: d.projectUrl, defaultBranch: d.defaultBranch,
+      perBranch: d.perBranch, jobsMode: d.jobsMode, tokenSource: d.tokenSource,
+      warnings: (d.warnings || []).slice(0, 20),
+      runners: d.runners || [],
+      concurrency: d.concurrency || [],
+      // 잡 창은 통째로 넣으면 커진다. 잡별 러너·동시 실행 표시에 필요한 세 칸만 남긴다.
+      jobWindow: d.jobWindow ? {
+        requested: d.jobWindow.requested, count: d.jobWindow.count,
+        jobs: (d.jobWindow.jobs || []).map(function (j) {
+          return { id: j.id, name: j.name, concurrentPeak: j.concurrentPeak };
+        })
+      } : null,
+      branches: (d.branches || []).map(function (b) {
+        return {
+          ref: b.ref, found: b.found, error: b.error,
+          pipelines: (b.pipelines || []).map(function (p) {
+            return {
+              id: p.id, ref: p.ref, shortSha: p.shortSha, status: p.status, source: p.source,
+              webUrl: p.webUrl, createdAt: p.createdAt, durationSec: p.durationSec, queuedSec: p.queuedSec,
+              jobs: p.jobs ? p.jobs.map(function (j) {
+                return { id: j.id, name: j.name, stage: j.stage, status: j.status, durationSec: j.durationSec,
+                         allowFailure: j.allowFailure, failureReason: j.failureReason, webUrl: j.webUrl,
+                         runnerId: j.runnerId, runnerName: j.runnerName };
+              }) : null
+            };
+          })
+        };
+      })
+    };
+  }
+
+  // ══════════════════════════════════════════════════════════════════════
+  // 붙이기
+  // ══════════════════════════════════════════════════════════════════════
+  state.facts = loadFacts();
+  renderConfig();
+  renderGloss();
+  render();
+
+  $("btnPick").addEventListener("click", function () { $("filePick").click(); });
+  $("filePick").addEventListener("change", function (e) { if (e.target.files[0]) readFile(e.target.files[0]); });
+  $("btnSample").addEventListener("click", function () { adopt(JSON.parse(JSON.stringify(SAMPLE)), "sample"); });
+  $("btnClear").addEventListener("click", function () {
+    state.data = null; state.mode = "empty"; state.selected = null;
+    $("dzText").innerHTML = "여기로 <b>ci-status.json</b> 을 끌어다 놓거나, 아무 곳에나 붙여넣기(Ctrl+V) 하세요.";
+    render();
+  });
+
+  var dz = $("dropzone");
+  ["dragenter", "dragover"].forEach(function (t) {
+    document.addEventListener(t, function (e) { e.preventDefault(); dz.classList.add("hot"); });
+  });
+  ["dragleave", "drop"].forEach(function (t) {
+    document.addEventListener(t, function (e) { e.preventDefault(); if (t === "dragleave" && e.relatedTarget) return; dz.classList.remove("hot"); });
+  });
+  document.addEventListener("drop", function (e) {
+    e.preventDefault();
+    var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+    if (f) readFile(f);
+  });
+  document.addEventListener("paste", function (e) {
+    var txt = e.clipboardData && e.clipboardData.getData("text");
+    if (!txt || txt.length < 20) return;
+    try { var o = JSON.parse(txt); if (looksValid(o)) { e.preventDefault(); adopt(o, null); } } catch (err) { /* 그냥 붙여넣기였다 */ }
+  });
+
+  // 같은 폴더에 파일을 두고 열었을 때를 위해 한 번 시도한다. 없으면 조용히 넘어간다.
+  fetch("ci-status.json", { cache: "no-store" })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (o) { if (o && !state.data) adopt(o, null); })
+    .catch(function () {});
+
+  // ── 팀 공유(있으면) — 한 사람이 올리면 나머지가 같은 것을 본다 ────────
+  if (window.claude && typeof window.claude.use === "function") {
+    window.claude.use("db").then(function (db) {
+      if (!db) return;
+      state.db = db;
+      state.dbDoc = db.doc("snapshots/latest");
+      $("mShared").classList.remove("hidden");
+      $("btnShare").classList.toggle("hidden", state.mode !== "live");
+      try {
+        state.dbDoc.onSnapshot(function (snap) {
+          if (!snap || !snap.exists || !snap.data || !snap.data.json) return;
+          if (state.mode === "sample") return;           // 샘플을 보는 중이면 덮지 않는다
+          try {
+            var o = JSON.parse(snap.data.json);
+            if (state.data && state.data.generatedAt === o.generatedAt) return;
+            adopt(o, "live");
+            $("dzText").innerHTML = "팀이 공유한 스냅샷을 읽었습니다 — 수집 " + esc(fmtAgo(o.generatedAt)) + ".";
+          } catch (e) { /* 깨진 문서는 무시한다 */ }
+        }, function () { /* 구독 실패 — 페이지는 파일만으로도 돈다 */ });
+      } catch (e) { /* 같음 */ }
+    }).catch(function () {});
+  }
+
+  $("btnShare").addEventListener("click", function () {
+    if (!state.dbDoc || !state.data || state.mode !== "live") return;
+    var btn = $("btnShare");
+    var json = JSON.stringify(compact(state.data));
+    if (json.length > 240000) {
+      $("dzText").innerHTML = '<b style="color:var(--bad)">공유하기에 너무 큽니다.</b> <code>node ci-stats.mjs --per-branch=6</code> 로 다시 받아 주세요.';
+      return;
+    }
+    btn.disabled = true; btn.textContent = "저장 중…";
+    state.dbDoc.set({ json: json, generatedAt: state.data.generatedAt, savedAt: new Date().toISOString() })
+      .then(function () {
+        btn.textContent = "공유했습니다";
+        $("dzText").innerHTML = "이 스냅샷을 저장했습니다. 이제 이 페이지를 여는 팀원은 같은 숫자를 봅니다.";
+        setTimeout(function () { btn.disabled = false; btn.textContent = "팀과 공유"; }, 2500);
+      })
+      .catch(function (err) {
+        btn.disabled = false; btn.textContent = "팀과 공유";
+        $("dzText").innerHTML = '<b style="color:var(--bad)">저장하지 못했습니다.</b> ' + esc((err && err.code) || "") + " " + esc((err && err.message) || "");
+      });
+  });
+})();
+</script>
