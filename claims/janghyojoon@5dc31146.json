@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-754",
-  "intent": "핸드오프 디자인 적용 + 웰컴 3장 추가",
+  "task": "S15P21E201-769",
+  "intent": "말투·용어 지적 기록",
   "actor": null,
   "session": "7f25f57f-7040-4aea-aea3-c02ff7d76bd9",
-  "since": "2026-09-09T01:30:53.789Z",
+  "since": "2026-09-09T01:31:04.622Z",
   "ttlMs": 1800000,
   "paths": [
+    "docs/26.09.09",
     "survey-recommend/index.html"
   ]
 }
