@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-755",
+  "intent": "순서를 바꾼 뒤 그날 구간의 이동시간을 다시 채운다 — 구간 만드는 코드를 생성·편집이 같이 쓰게 뺀다",
+  "actor": null,
+  "session": "18c1e1e9-b8ab-439c-b5f9-6375694a221c",
+  "since": "2026-09-09T05:13:13.529Z",
+  "ttlMs": 7200000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary"
+  ]
+}
