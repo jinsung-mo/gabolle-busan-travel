@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-786",
-  "intent": "CI 설정을 파트별로 쪼개는 뼈대",
+  "intent": "CI 를 파트별로 쪼개는 절차 문서",
   "actor": null,
   "session": "7f25f57f-7040-4aea-aea3-c02ff7d76bd9",
-  "since": "2026-09-09T06:30:23.802Z",
+  "since": "2026-09-09T06:34:33.334Z",
   "ttlMs": 1800000,
   "paths": [
     ".gitlab-ci.yml",
-    "ci"
+    "ci",
+    "docs/CI-SPLIT.md"
   ]
 }
