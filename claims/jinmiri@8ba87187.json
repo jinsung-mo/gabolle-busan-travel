@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-644",
-  "intent": "아이콘 자리 이모지 12종을 자체 제작 SVG/PNG 아이콘으로 교체",
+  "intent": "PermissionRationale icon prop을 이모지 문자열→이미지로 변경",
   "actor": "agent",
   "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
-  "since": "2026-09-09T01:10:05.688Z",
+  "since": "2026-09-09T01:11:50.072Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(auth)/forgot-password.tsx",
@@ -16,6 +16,7 @@
     "frontend/app/field/speak.tsx",
     "frontend/app/field/translate.tsx",
     "frontend/app/notifications.tsx",
-    "frontend/assets/icons/common"
+    "frontend/assets/icons/common",
+    "frontend/src/components/PermissionRationale.tsx"
   ]
 }
