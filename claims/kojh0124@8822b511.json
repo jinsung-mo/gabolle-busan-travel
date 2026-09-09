@@ -4,7 +4,7 @@
   "intent": "EventQualityGateTest.honorsConfiguredSchema 가 CI에서 recommendation_exposure 를 못 찾는 원인을 재현하고 고친다 (이예승 MR !414 차단 해제)",
   "actor": "agent",
   "session": "310e7d2c-ef27-44e1-a71b-71ff40f8aca3",
-  "since": "2026-09-09T00:31:22.850Z",
+  "since": "2026-09-09T00:50:19.370Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/dataquality/EventQualityGate.java",
