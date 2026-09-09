@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-760",
-  "intent": "조사 결과 저장",
+  "task": "S15P21E201-769",
+  "intent": "지적 기록 추가",
   "actor": null,
   "session": "7f25f57f-7040-4aea-aea3-c02ff7d76bd9",
-  "since": "2026-09-09T02:43:36.843Z",
-  "ttlMs": 900000,
+  "since": "2026-09-09T02:46:05.826Z",
+  "ttlMs": 1200000,
   "paths": [
     "bigData/warehouse",
+    "docs/26.09.09",
     "survey-recommend"
   ]
 }
