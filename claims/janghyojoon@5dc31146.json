@@ -7,7 +7,6 @@
   "since": "2026-09-09T02:21:00.202Z",
   "ttlMs": 900000,
   "paths": [
-    "bigData/research/data",
     "bigData/warehouse"
   ]
 }
