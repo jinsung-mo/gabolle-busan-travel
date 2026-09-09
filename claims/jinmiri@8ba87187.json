@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-ladder-2026-09-09",
-  "intent": "front/dev ← front/main 오늘 사다리 승격 병합 마무리 커밋 (backend/tools 는 ahwlstjd57 작업 중이라 제외)",
+  "intent": "front/dev ← front/main 사다리 병합 마무리 커밋 (누락된 backend dotfile들)",
   "actor": "agent",
   "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
-  "since": "2026-09-09T08:53:18.539Z",
+  "since": "2026-09-09T08:53:57.920Z",
   "ttlMs": 2700000,
   "paths": [
     ".claude",
@@ -15,6 +15,10 @@
     "CLAUDE.md",
     "CONTRIBUTING.md",
     "README.md",
+    "backend/.dockerignore",
+    "backend/.env.example",
+    "backend/.gitattributes",
+    "backend/.gitignore",
     "backend/Dockerfile",
     "backend/Jenkinsfile",
     "backend/README.md",
