@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": null,
+  "intent": "front/dev — version 잡 태그 push 경합 실패에 재시도 루프 추가 (스톱갭, rleaderjoon에 axmap-cli 근본수정 요청함)",
+  "actor": "agent",
+  "session": "457356ec-ae76-4c2f-a904-3b988e4058a9",
+  "since": "2026-09-09T05:42:57.383Z",
+  "ttlMs": 2700000,
+  "paths": [
+    ".gitlab-ci.yml"
+  ]
+}
