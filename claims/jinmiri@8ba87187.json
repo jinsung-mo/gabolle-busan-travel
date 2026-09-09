@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-246",
+  "intent": "본인 프로필 보기에 프로필 수정 버튼 추가 (S15P21E201-246)",
+  "actor": "agent",
+  "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
+  "since": "2026-09-09T05:54:26.831Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/user/[id].tsx"
+  ]
+}
