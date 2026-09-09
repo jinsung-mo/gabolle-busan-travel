@@ -1,12 +1,30 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-760",
-  "intent": "조사 결과 2,356개를 bigData/dev 로 올리는 MR",
+  "intent": "bigData/dev 를 조사 브랜치에 받아오는 머지 커밋 (짧게 잡고 즉시 반납)",
   "actor": null,
   "session": "cddc49c2-0820-4c08-a49d-73e2e797dadd",
-  "since": "2026-09-09T23:54:10.567Z",
+  "since": "2026-09-09T23:55:53.640Z",
   "ttlMs": 1800000,
   "paths": [
-    "bigData/research"
+    ".claude",
+    ".gitlab-ci.yml",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "CONTRIBUTING.md",
+    "README.md",
+    "backend",
+    "bigData/research",
+    "ci",
+    "city3d-spike",
+    "docs",
+    "frontend/README.md",
+    "governance",
+    "infra",
+    "ref",
+    "setup.ps1",
+    "setup.sh",
+    "survey-place",
+    "survey-recommend"
   ]
 }
