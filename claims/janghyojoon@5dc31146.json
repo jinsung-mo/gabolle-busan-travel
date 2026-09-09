@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-23",
+  "intent": "부산 추천 설문 페이지 구현 — 커밋",
+  "actor": "agent",
+  "session": "7f25f57f-7040-4aea-aea3-c02ff7d76bd9",
+  "since": "2026-09-09T01:22:06.268Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/survey/places"
+  ]
+}
