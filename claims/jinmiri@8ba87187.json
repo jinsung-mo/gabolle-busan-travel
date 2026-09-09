@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-228",
+  "intent": "기록 상세 화면 완성 (S15P21E201-228): 실제 조회 API·장소 카드·신고·삭제",
+  "actor": "agent",
+  "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
+  "since": "2026-09-09T06:02:29.973Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/feed/[id].tsx",
+    "frontend/src/social/stories.ts"
+  ]
+}
