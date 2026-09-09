@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-ladder-2026-09-09",
-  "intent": "front/dev ← front/main 오늘 사다리 승격 병합 (janghyojoon 재개 신호에 따른 작업)",
+  "task": "S15P21E201-234",
+  "intent": "S15P21E201-234 일정 화면에 전체/날짜별 보기 탭과 day URL 파라미터 추가",
   "actor": "agent",
   "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
-  "since": "2026-09-09T08:26:07.519Z",
+  "since": "2026-09-09T08:48:09.132Z",
   "ttlMs": 2700000,
   "paths": [
     ".claude",
@@ -17,6 +17,7 @@
     "README.md",
     "docs",
     "frontend",
+    "frontend/app/trips/[id]/itinerary.tsx",
     "ref",
     "setup.ps1",
     "setup.sh",
