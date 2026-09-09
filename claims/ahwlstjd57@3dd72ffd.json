@@ -1,0 +1,13 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-303",
+  "intent": "익명 출입증 발급 API와 X-Session-Token 검증 필터",
+  "actor": "agent",
+  "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
+  "since": "2026-09-09T01:12:06.799Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/auth",
+    "backend/src/main/resources/db/migration/V20260909021000__anonymous_session.sql"
+  ]
+}
