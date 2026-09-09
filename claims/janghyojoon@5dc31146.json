@@ -4,7 +4,7 @@
   "intent": "조사 결과 저장",
   "actor": null,
   "session": "7f25f57f-7040-4aea-aea3-c02ff7d76bd9",
-  "since": "2026-09-09T06:35:18.039Z",
+  "since": "2026-09-09T06:35:24.711Z",
   "ttlMs": 900000,
   "paths": [
     ".gitlab-ci.yml",
