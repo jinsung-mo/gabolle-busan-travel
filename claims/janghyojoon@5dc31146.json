@@ -4,9 +4,10 @@
   "intent": "조사 결과 저장",
   "actor": null,
   "session": "7f25f57f-7040-4aea-aea3-c02ff7d76bd9",
-  "since": "2026-09-09T02:21:00.202Z",
+  "since": "2026-09-09T02:32:01.790Z",
   "ttlMs": 900000,
   "paths": [
+    "bigData/research/data",
     "bigData/warehouse"
   ]
 }
