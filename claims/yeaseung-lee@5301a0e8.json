@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-768",
+  "intent": "S15P21E201-768 — vote:recheck 잡의 준비 과정(apk add git bash, npm view)이 실제 작업(표 세기, 몇 초)보다 훨씬 오래 걸린다(13~24초 실측). vote:recheck 는 git 만 필요하고 bash·npm view 는 안 쓴다(ci/vote-recheck.mjs 확인 — spawnSync 로 git/npx 직접 호출, 쉘 안 씀). 이 잡 전용 before_script 로 좁힌다",
+  "actor": "agent",
+  "session": "457356ec-ae76-4c2f-a904-3b988e4058a9",
+  "since": "2026-09-09T01:53:35.325Z",
+  "ttlMs": 2700000,
+  "paths": [
+    ".gitlab-ci.yml"
+  ]
+}
