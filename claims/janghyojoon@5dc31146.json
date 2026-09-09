@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-769",
-  "intent": "말투·용어 지적 기록",
+  "task": "S15P21E201-760",
+  "intent": "조사 결과 저장",
   "actor": null,
   "session": "7f25f57f-7040-4aea-aea3-c02ff7d76bd9",
-  "since": "2026-09-09T01:31:04.622Z",
-  "ttlMs": 1800000,
+  "since": "2026-09-09T01:32:07.449Z",
+  "ttlMs": 900000,
   "paths": [
+    "bigData/research/data",
     "survey-recommend/index.html"
   ]
 }
