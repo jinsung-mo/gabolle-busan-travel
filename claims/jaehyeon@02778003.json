@@ -1,0 +1,13 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-788",
+  "intent": "정책 표를 데이터로 빼내 전 경로 인가를 실제 HTTP 로 점검하고, 핵심 경로 응답 본문 계약 검사를 더한다(-789 함께)",
+  "actor": null,
+  "session": "18c1e1e9-b8ab-439c-b5f9-6375694a221c",
+  "since": "2026-09-09T10:48:58.337Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/functional",
+    "backend/src/test/java/com/gabolle/backend/security"
+  ]
+}
