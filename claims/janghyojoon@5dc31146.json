@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-760",
-  "intent": "조사 결과 저장",
+  "task": "S15P21E201-754",
+  "intent": "전화번호 항목 추가와 문구 수정",
   "actor": null,
   "session": "7f25f57f-7040-4aea-aea3-c02ff7d76bd9",
-  "since": "2026-09-09T02:32:01.790Z",
-  "ttlMs": 900000,
+  "since": "2026-09-09T02:36:55.398Z",
+  "ttlMs": 1800000,
   "paths": [
-    "bigData/warehouse"
+    "bigData/warehouse",
+    "survey-recommend"
   ]
 }
