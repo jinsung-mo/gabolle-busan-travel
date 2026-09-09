@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-198",
-  "intent": "기록 작성 화면 완료 기준 보완 (S15P21E201-198): 위치정보 안내·공개 시점 선택·재시도·초안 유지",
+  "intent": "기록 작성 화면 완료 기준 보완 (S15P21E201-198)",
   "actor": "agent",
   "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
-  "since": "2026-09-09T03:26:47.552Z",
+  "since": "2026-09-09T05:06:09.822Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/feed/compose.tsx",
