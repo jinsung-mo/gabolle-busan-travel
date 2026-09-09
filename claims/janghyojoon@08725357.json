@@ -1,12 +1,12 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-760",
-  "intent": "부산 음식점 조사 남은 418곳 — haiku 조사원 8명 투입",
+  "intent": "조사 100% 완료분 커밋 + 인계 문서 실측 갱신",
   "actor": "agent",
   "session": "cf7709c3-2ce5-449b-ad9b-4e3aeaafc9ad",
-  "since": "2026-09-09T22:25:11.165Z",
+  "since": "2026-09-09T23:34:05.826Z",
   "ttlMs": 2700000,
   "paths": [
-    "bigData/research/data"
+    "bigData/research"
   ]
 }
