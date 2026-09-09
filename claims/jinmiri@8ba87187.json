@@ -1,0 +1,24 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-ladder-2026-09-09",
+  "intent": "front/main ← origin/main 오늘 사다리 승격 병합 (327커밋 받아오기, .gitlab-ci.yml만 손으로 병합) — janghyojoon 재개 신호에 따른 작업",
+  "actor": "agent",
+  "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
+  "since": "2026-09-09T08:22:24.801Z",
+  "ttlMs": 2700000,
+  "paths": [
+    ".claude",
+    ".gitattributes",
+    ".gitignore",
+    ".gitlab-ci.yml",
+    "backend",
+    "bigData",
+    "ci",
+    "city3d-spike",
+    "docs",
+    "eval",
+    "frontend",
+    "governance",
+    "infra"
+  ]
+}
