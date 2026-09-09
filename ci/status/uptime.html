@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>가볼래 — 가동 상태</title>
+<!--
+  가동 상태 페이지 (S15P21E201-701)
+
+  이 파일은 **혼자서는 아무 숫자도 모른다.** 같은 폴더의 `status.json` 을 읽어서
+  그린다. 그 파일은 운영 서버 안에서 cron 이 1분마다 부르는
+  `collect-status.mjs` 가 만든다. 설치 절차는 ci/status/README.md 6절.
+
+  🔴 저장소에서 이 파일의 이름은 `uptime.html` 이지만, 서버에서는
+     `/srv/gabolle/www/status/index.html` 이 된다. 옆의 `index.html` 은
+     그것과 다른 페이지(CI 파이프라인 대시보드)이고 서버에서는 `/status/ci/` 에 있다.
+
+  🔴 이 페이지는 로그인 없이 누구나 본다. 사람 이름·커밋 번호·브랜치 이름·토큰을
+     넣지 않는다. 컨테이너 이름은 수집기가 이미 가리고 온다.
+
+  라이브러리를 하나도 안 받는다 — 파일 하나로 끝난다. CI 나 인터넷이 죽은 날에도
+  떠야 하는 페이지라서 그렇다.
+-->
+<style>
+  /* ── 글꼴 ──────────────────────────────────────────────────────────────────
+     🔴 CDN 에서 안 받는다. 이 페이지는 **인터넷이 죽은 날에도 떠야 하는 페이지**라
+        바깥 주소에 매달리면 존재 이유가 없어진다. 글꼴 파일도 같은 서버,
+        같은 폴더 아래(`status/fonts/`)에 두고 상대경로로 부른다.
+
+     넣은 굵기는 이 페이지가 실제로 쓰는 넷뿐이다 — 400(본문) · 600(표 머리)
+     · 700(제목·굵은 글씨) · 800(큰 숫자). 안 쓰는 굵기는 안 받는다.
+     파일은 한글 상용 글자만 남긴 부분집합(subset)이라 하나에 260KB 남짓이다.
+
+     `font-display: swap` — 글꼴이 늦게 와도 **글자를 먼저 보여주고** 뒤에
+     바꿔 끼운다. 안 넣으면 최대 3초간 화면이 빈 채로 있는다.
+     `local(...)` 은 이미 PC 에 깔린 사람은 안 받고 넘어가라는 뜻이다. */
+  @font-face {
+    font-family: "Pretendard"; font-style: normal; font-weight: 400; font-display: swap;
+    src: local("Pretendard Regular"), url("fonts/Pretendard-Regular.subset.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Pretendard"; font-style: normal; font-weight: 600; font-display: swap;
+    src: local("Pretendard SemiBold"), url("fonts/Pretendard-SemiBold.subset.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Pretendard"; font-style: normal; font-weight: 700; font-display: swap;
+    src: local("Pretendard Bold"), url("fonts/Pretendard-Bold.subset.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Pretendard"; font-style: normal; font-weight: 800; font-display: swap;
+    src: local("Pretendard ExtraBold"), url("fonts/Pretendard-ExtraBold.subset.woff2") format("woff2");
+  }
+
+  :root {
+    --bg: #f6f7f9;      --card: #ffffff;    --ink: #16181d;
+    --dim: #5b6472;     --faint: #8b95a5;   --line: #e3e7ed;
+    --ok: #1f9d55;      --slow: #d98207;    --down: #d64545;   --none: #d6dbe3;
+    --okbg: #eaf6ef;    --slowbg: #fdf3e3;  --downbg: #fdeceb; --nonebg: #f0f2f5;
+    --accent: #2f6fd0;
+    --radius: 10px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121418;     --card: #1a1d23;   --ink: #e8ebf0;
+      --dim: #9aa4b2;    --faint: #6f7987;  --line: #2a2f38;
+      --ok: #46c07a;     --slow: #e0a13c;   --down: #e86a6a;   --none: #333944;
+      --okbg: #17301f;   --slowbg: #2e2513; --downbg: #331b1b; --nonebg: #22262e;
+      --accent: #6aa3f0;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
+    font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 28px 18px 70px; }
+  h1 { font-size: 20px; margin: 0; font-weight: 700; letter-spacing: -0.01em; }
+  h2 { font-size: 15px; margin: 30px 0 10px; font-weight: 700; }
+  .mono { font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, monospace; }
+  a { color: var(--accent); }
+
+  /* ── 맨 위 ── */
+  .top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+  .top .sub { color: var(--dim); font-size: 13px; }
+
+  .banner {
+    display: flex; align-items: center; gap: 14px;
+    border-radius: var(--radius); padding: 18px 20px; margin-bottom: 8px;
+    border: 1px solid var(--line); background: var(--card);
+  }
+  .banner.ok      { background: var(--okbg);   border-color: color-mix(in srgb, var(--ok) 35%, transparent); }
+  .banner.slow    { background: var(--slowbg); border-color: color-mix(in srgb, var(--slow) 40%, transparent); }
+  .banner.down    { background: var(--downbg); border-color: color-mix(in srgb, var(--down) 40%, transparent); }
+  .banner.unknown { background: var(--nonebg); }
+  .banner .dot { width: 13px; height: 13px; border-radius: 50%; flex: none; }
+  .banner .txt { font-size: 18px; font-weight: 700; }
+  .banner .when { margin-left: auto; font-size: 12.5px; color: var(--dim); text-align: right; }
+
+  .dot.ok { background: var(--ok); } .dot.slow { background: var(--slow); }
+  .dot.down { background: var(--down); } .dot.unknown, .dot.none { background: var(--faint); }
+
+  .stale {
+    border-radius: var(--radius); padding: 12px 16px; margin-bottom: 14px;
+    background: var(--downbg); border: 1px solid var(--down); font-size: 13.5px;
+  }
+
+  /* ── 서비스 줄 ── */
+  .group { color: var(--faint); font-size: 12px; font-weight: 700; letter-spacing: .04em;
+           margin: 22px 0 8px; text-transform: uppercase; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
+  .svc { padding: 16px 18px; border-bottom: 1px solid var(--line); }
+  .svc:last-child { border-bottom: 0; }
+  .svc-head { display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; }
+  .svc-name { font-weight: 650; }
+  .pill { font-size: 11.5px; font-weight: 700; padding: 2px 9px; border-radius: 999px;
+          border: 1px solid transparent; white-space: nowrap; }
+  .pill.ok { color: var(--ok); background: var(--okbg); border-color: color-mix(in srgb, var(--ok) 30%, transparent); }
+  .pill.slow { color: var(--slow); background: var(--slowbg); border-color: color-mix(in srgb, var(--slow) 35%, transparent); }
+  .pill.down { color: var(--down); background: var(--downbg); border-color: color-mix(in srgb, var(--down) 35%, transparent); }
+  .pill.unknown { color: var(--faint); background: var(--nonebg); border-color: var(--line); }
+  .svc-msg { margin-left: auto; font-size: 13px; color: var(--dim); }
+  .svc-what { font-size: 12.5px; color: var(--faint); margin-top: 3px; }
+
+  /* ── 7일 막대 — 칸 하나가 4시간, 하루 6칸, 모두 42칸 ───────────────────────
+     🔴 42칸이 고르게 늘어서면 **어디가 어제고 어디가 오늘인지 못 읽는다.** 그래서
+        하루씩 묶고(.day) 묶음 사이만 넓게 벌린다. 선을 긋지 않고 간격으로만 가른다 —
+        이 페이지의 색은 정상·느림·멈춤 셋뿐이고, 눈금 하나 때문에 그 약속을
+        깨면 색이 무슨 뜻인지가 흐려진다.
+     🔴 묶음의 flex-grow 는 **칸 수에 비례**한다. 맨 앞과 맨 뒤 하루는 잘려서
+        4칸·2칸일 수 있는데, 묶음마다 같은 폭을 주면 그 날의 칸만 뚱뚱해진다. */
+  .bars { display: flex; gap: 7px; height: 30px; margin: 12px 0 6px; align-items: stretch; }
+  .day { display: flex; gap: 1px; min-width: 0; }
+  .bar { flex: 1 1 0; min-width: 0; border-radius: 2px; background: var(--none); cursor: default; }
+  .bar.ok { background: var(--ok); } .bar.slow { background: var(--slow); }
+  .bar.down { background: var(--down); } .bar.none { background: var(--none); opacity: .55; }
+  .bar:hover { outline: 2px solid var(--ink); outline-offset: 1px; }
+  .axis { display: flex; font-size: 11.5px; color: var(--faint); }
+  /* 좁은 화면에서는 칸이 5px 남짓이 된다. 날 사이 간격까지 넓으면 칸이 더 깎인다. */
+  @media (max-width: 640px) { .bars { gap: 4px; height: 26px; } }
+  .axis .mid { flex: 1; text-align: center; }
+  .axis .right { text-align: right; }
+
+  /* ── CPU ── */
+  .cpu { display: grid; grid-template-columns: minmax(200px, 260px) 1fr; gap: 20px; padding: 18px; }
+  @media (max-width: 640px) { .cpu { grid-template-columns: 1fr; } }
+  .big { font-size: 46px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; }
+  .big.ok { color: var(--ok); } .big.slow { color: var(--slow); }
+  .big.down { color: var(--down); } .big.unknown { color: var(--faint); font-size: 26px; }
+  .big-cap { font-size: 12.5px; color: var(--dim); margin-top: 2px; }
+  .gauge { height: 9px; border-radius: 999px; background: var(--nonebg); overflow: hidden;
+           margin: 12px 0 6px; position: relative; border: 1px solid var(--line); }
+  .gauge > i { display: block; height: 100%; border-radius: 999px; }
+  .gauge .mark { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--ink); opacity: .55; }
+  .kv { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; font-size: 13.5px; align-content: start; }
+  .kv dt { color: var(--dim); } .kv dd { margin: 0; }
+
+  /* ── 표 ── */
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+  th { color: var(--faint); font-weight: 600; font-size: 12px; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: 0; }
+  .track { height: 7px; border-radius: 999px; background: var(--accent); opacity: .8; min-width: 2px; }
+
+  .empty { padding: 16px 18px; color: var(--faint); font-size: 13.5px; }
+  .note { font-size: 12.5px; color: var(--faint); margin-top: 8px; }
+  .warns { margin-top: 10px; padding: 12px 16px; border-radius: var(--radius);
+           background: var(--slowbg); border: 1px solid color-mix(in srgb, var(--slow) 35%, transparent);
+           font-size: 12.5px; }
+  .warns li { margin: 3px 0; }
+  footer { margin-top: 34px; padding-top: 16px; border-top: 1px solid var(--line);
+           font-size: 12.5px; color: var(--faint); }
+  footer p { margin: 6px 0; }
+  details summary { cursor: pointer; color: var(--dim); font-size: 13px; }
+  details[open] summary { margin-bottom: 8px; }
+  .jobs { font-size: 12.5px; color: var(--dim); margin-top: 6px; }
+  .jobs span { display: inline-block; margin-right: 14px; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <h1>가볼래 — 가동 상태</h1>
+    <span class="sub">지금 되나? 를 3초 안에 답하는 페이지입니다</span>
+  </div>
+
+  <div id="stale"></div>
+  <div id="banner" class="banner unknown">
+    <span class="dot unknown"></span>
+    <span class="txt">읽는 중…</span>
+    <span class="when"></span>
+  </div>
+
+  <div id="body"></div>
+
+  <footer>
+    <p><b>이 페이지를 읽는 법</b></p>
+    <p>· <b>MR</b>(Merge Request — <i>내가 고친 코드를 팀 코드에 합쳐 달라는 요청</i>)을 열면
+       자동 검사가 돕니다. <b>MR 검사 속도</b>는 그 검사가 다 끝날 때까지
+       <b>사람이 실제로 기다리는 시간</b>입니다 — 검사 하나하나의 시간이 아니라 전부입니다.</p>
+    <p>· <b>실제 배포</b>는 서버 안에서 프론트·백엔드를 직접 두드려 본 결과입니다.
+       바깥에서 부르지 않고 서버 안에서 부르므로, 느릴 때 인터넷 탓인지 프로그램 탓인지가 갈립니다.</p>
+    <p>· <b>부하</b>(load average — <i>CPU 를 쓰려고 줄 서 있는 작업의 평균 개수</i>)는
+       코어 수로 나눠야 뜻이 생깁니다. <b>1.0 이 눈금</b>입니다 — 코어 수만큼 줄이 섰다는 뜻이고,
+       그보다 크면 기다리는 작업이 생깁니다.</p>
+    <p>· 못 잰 것은 <b>“아직 안 잼”</b>이라고 씁니다. <b>빈칸이 지어낸 숫자보다 낫습니다.</b></p>
+    <p id="foot-src"></p>
+  </footer>
+</div>
+
+<script>
+(() => {
+  "use strict";
+
+  const STATE_TEXT = { ok: "정상", slow: "느림", down: "멈춤", unknown: "아직 안 잼", none: "표본 없음" };
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  const nf = (v, d = 1) => (v == null || !isFinite(v) ? null : Number(v).toFixed(d).replace(/\.0+$/, ""));
+
+  /** 초를 사람이 읽는 말로. 205 -> "3분 25초" */
+  function dur(sec) {
+    if (sec == null || !isFinite(sec)) return "아직 안 잼";
+    const s = Math.round(sec);
+    if (s < 60) return s + "초";
+    const m = Math.floor(s / 60), r = s % 60;
+    if (m < 60) return r ? `${m}분 ${r}초` : `${m}분`;
+    const h = Math.floor(m / 60);
+    return `${h}시간 ${m % 60}분`;
+  }
+
+  function ago(iso) {
+    if (!iso) return "아직 안 잼";
+    const ms = Date.now() - Date.parse(iso);
+    if (!isFinite(ms)) return "아직 안 잼";
+    if (ms < 45000) return "방금";
+    const m = Math.round(ms / 60000);
+    if (m < 60) return `${m}분 전`;
+    const h = Math.round(m / 60);
+    if (h < 24) return `${h}시간 전`;
+    return `${Math.round(h / 24)}일 전`;
+  }
+
+  function kstTime(iso) {
+    if (!iso) return "";
+    const d = new Date(iso);
+    if (isNaN(d)) return "";
+    return d.toLocaleString("ko-KR", { timeZone: "Asia/Seoul", hour12: false,
+      month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" }) + " (한국 시간)";
+  }
+
+  // ── 7일 가동 막대 — 칸 하나가 4시간이다 ───────────────────────────────────
+  //
+  // 칸 하나가 4시간이고 하루가 6칸(00·04·08·12·16·20시), 7일이면 42칸이다.
+  // 그 4시간 안에 한 번이라도 멈췄으면 빨갛고, 느렸으면 노랗다.
+  //
+  // 🔴 하루 한 칸이던 것을 잘게 나눈 이유는 하나다 — 하루로 뭉치면 **점심에
+  //    2분 끊긴 것과 온종일 죽어 있던 것이 똑같이 빨간 칸 하나**가 된다.
+  // 🔴 표본이 없는 칸은 회색으로 남긴다 — 초록으로 칠하면 "그때 잘 돌았다" 는
+  //    거짓말이 된다. 이 페이지를 켠 때부터 칸이 차기 시작한다.
+  // 🔴 **화면은 7일이고 보관은 90일(540칸)이다.** 수집기가 디스크에는 540칸을
+  //    쌓고 status.json 에는 42칸만 싣는다. 540칸을 다 실으면 파일이 100KB 를
+  //    넘고 그것을 30초마다 모두가 다시 받는다. 적게 보여주는 것은 언제든
+  //    되돌릴 수 있지만, 안 모은 것은 나중에 만들 수 없다.
+  const SHOW_SLOTS = 42;          // 7일 × 6칸
+  let slotHours = 4;              // status.json 이 알려 준다 (render 에서 채운다)
+
+  /** `2026-09-08T12` → `09-08 12–16시(한국 시간)`. 서버는 UTC 지만 칸은 한국 시간으로 잘려 있다. */
+  function slotLabel(t) {
+    if (typeof t !== "string" || t.length < 13) return String(t ?? "");
+    const from = Number(t.slice(11, 13));
+    const to = from + slotHours;
+    return `${t.slice(5, 10)} ${t.slice(11, 13)}–${String(to).padStart(2, "0")}시(한국 시간)`;
+  }
+
+  function barsHtml(all) {
+    if (!Array.isArray(all) || !all.length) return "";
+    // 뒤가 지금이다. 칸이 42개보다 적어도 있는 만큼만 그린다 — 안 깨진다.
+    const slots = all.slice(-SHOW_SLOTS);
+
+    // 같은 날끼리 묶는다. 맨 앞·맨 뒤 하루는 잘려서 6칸이 안 될 수 있다.
+    const groups = [];
+    for (const sl of slots) {
+      const day = String(sl.t ?? "").slice(0, 10);
+      if (!groups.length || groups.at(-1).day !== day) groups.push({ day, cells: [] });
+      groups.at(-1).cells.push(sl);
+    }
+
+    const bars = groups.map((g) => {
+      const cells = g.cells.map((d) => {
+        const st = d.state || "none";
+        const tip = st === "none"
+          ? `${slotLabel(d.t)} — 잰 것이 없습니다`
+          // "정상 · 정상 100%" 처럼 같은 말이 두 번 나오지 않게 표본 쪽으로 묶는다.
+          : `${slotLabel(d.t)} — ${STATE_TEXT[st]}${d.n ? ` · 표본 ${d.n}개` : ""}${d.up != null ? ` 중 ${d.up}% 정상` : ""}`;
+        return `<div class="bar ${st}" title="${esc(tip)}"></div>`;
+      }).join("");
+      // flex-grow 를 칸 수로 준다 — 잘린 하루의 칸만 뚱뚱해지지 않게.
+      return `<div class="day" style="flex:${g.cells.length} 1 0">${cells}</div>`;
+    }).join("");
+
+    const measured = slots.filter((d) => d.state !== "none");
+    const okSlots = measured.filter((d) => d.state === "ok").length;
+    const right = measured.length
+      ? `잰 ${measured.length}칸(${slotHours}시간씩) 중 ${okSlots}칸 정상`
+      : `아직 아무 칸도 못 쟀습니다 — 칸 하나가 ${slotHours}시간입니다`;
+
+    // 칸 수를 날로 되돌린다. 42칸이면 7일, 두 칸뿐이면 1일.
+    const spanDays = Math.max(1, Math.ceil(slots.length / (24 / slotHours)));
+
+    return `<div class="bars">${bars}</div>
+      <div class="axis"><span>${spanDays}일 전</span><span class="mid">${esc(right)}</span><span class="right">지금</span></div>`;
+  }
+
+  // ── MR 검사 속도 줄에 붙는 자세한 값 ──────────────────────────────────────
+  function mrDetail(mr) {
+    if (!mr || !mr.measured) return "";
+    const jobs = (mr.jobs || []).map((j) =>
+      `<span><b>${esc(j.name)}</b> ${dur(j.medianSec)}</span>`).join("");
+    return `
+      <div class="jobs">
+        <span>중앙값 <b>${dur(mr.wallMedianSec)}</b></span>
+        <span>열에 아홉은 <b>${dur(mr.wallP90Sec)}</b> 안에</span>
+        <span>가장 느렸던 것 <b>${dur(mr.wallMaxSec)}</b></span>
+        <span>최근 <b>${mr.samples}건</b> 기준</span>
+      </div>
+      <div class="jobs">검사별 중앙값 — ${jobs || "아직 안 잼"}</div>
+      <div class="note">
+        최근 ${mr.samples}건 중 검사를 통과한 것은 ${mr.successRate}% 입니다.
+        <b>빨간 검사로 이 줄의 상태를 내리지는 않습니다</b> — 검사가 빨간 것은 대개
+        올린 코드가 틀린 것이지 검사 장치가 고장 난 것이 아니기 때문입니다.
+        ${mr.slowOverSec ? `이 줄은 중앙값이 ${dur(mr.slowOverSec)}를 넘으면 “느림”이 됩니다.` : ""}
+      </div>`;
+  }
+
+  function svcHtml(s) {
+    const st = s.state || "unknown";
+    let right = "";
+    if (s.kind === "deploy") {
+      right = s.latencyMs != null && st !== "down"
+        ? `${s.latencyMs}ms 만에 대답했습니다`
+        : esc(s.message || "아직 안 잼");
+    } else {
+      right = esc(s.message || "아직 안 잼");
+    }
+    return `
+      <div class="svc">
+        <div class="svc-head">
+          <span class="dot ${st}"></span>
+          <span class="svc-name">${esc(s.name)}</span>
+          <span class="pill ${st}">${STATE_TEXT[st] || st}</span>
+          <span class="svc-msg">${right}</span>
+        </div>
+        <div class="svc-what">${esc(s.what || "")}</div>
+        ${barsHtml(s.slots)}
+        ${s.kind === "mr" ? mrDetail(s.mr) : ""}
+      </div>`;
+  }
+
+  // ── ③ 지금 CPU ────────────────────────────────────────────────────────────
+  function cpuHtml(c) {
+    if (!c || c.ratio == null) {
+      return `<div class="card"><div class="empty">
+        <b>CPU 를 아직 안 쟀습니다.</b>
+        ${esc(c && c.source ? "" : "수집기가 서버 안에서 돌아야 이 칸이 찹니다 — 서버 밖에서는 못 읽는 값입니다.")}
+      </div></div>`;
+    }
+    const st = c.state || "unknown";
+    // 눈금 1.0 을 화면의 55% 자리에 둔다. 1.0 을 넘는 것이 한눈에 보이게.
+    const pos = Math.min(100, (c.ratio / 1.0) * 55);
+    const color = st === "down" ? "var(--down)" : st === "slow" ? "var(--slow)" : "var(--ok)";
+    const line = (k, v) => v == null ? "" : `<dt>${k}</dt><dd>${v}</dd>`;
+
+    return `<div class="card"><div class="cpu">
+      <div>
+        <div class="big ${st}">${nf(c.ratio, 2)}<span style="font-size:20px;font-weight:600">배</span></div>
+        <div class="big-cap">
+          부하 <b>${nf(c.load1, 2)}</b> ÷ <b>${c.cores ?? "?"}</b>코어
+        </div>
+        <div class="gauge">
+          <i style="width:${pos}%;background:${color}"></i>
+          <span class="mark" style="left:55%" title="눈금 1.0 — 코어 수만큼 줄이 섰다는 뜻"></span>
+        </div>
+        <div class="note">
+          검은 눈금이 <b>1.0</b> 입니다. 여기를 넘으면 CPU 를 쓰려고 <b>기다리는 작업이 생깁니다.</b>
+          ${c.ratio >= 1 ? " 지금 넘었습니다." : ""}
+        </div>
+      </div>
+      <dl class="kv">
+        ${line("지금 사용률", c.busyPct != null
+            ? `<b>${nf(c.busyPct, 1)}%</b> <span class="note">CPU 가 놀지 않고 일한 비율입니다. 부하와 다릅니다 — 100% 라도 줄이 안 길면 문제가 아닙니다.</span>`
+            : `<span style="color:var(--faint)">아직 안 잼 — ${esc(c.busyPctNote || "")}</span>`)}
+        ${line("1분 / 5분 / 15분 부하", `${nf(c.load1, 2)} / ${nf(c.load5, 2)} / ${nf(c.load15, 2)}
+            <span class="note">코어로 나누면 ${nf(c.ratio, 2)} / ${nf(c.ratio5, 2)} / ${nf(c.ratio15, 2)} 배.
+            뒤가 앞보다 작으면 지금 막 올라간 것이고, 크면 내려오는 중입니다.</span>`)}
+        ${line("지금 도는 작업 수", c.runningProcs != null ? `${c.runningProcs}개` : null)}
+        ${line("오늘 최고", c.todayMaxRatio != null
+            ? `${nf(c.todayMaxRatio, 2)}배 <span class="note">(오늘 평균 ${nf(c.todayAvgRatio, 2)}배)</span>` : null)}
+      </dl>
+    </div></div>`;
+  }
+
+  // ── ④ 최근 1시간 CPU 최다 ─────────────────────────────────────────────────
+  function topTable(rows, why, caption) {
+    if (!rows || !rows.length) {
+      return `<div class="empty"><b>${esc(caption)}</b> — 아직 안 잼${why ? `: ${esc(why)}` : ""}</div>`;
+    }
+    const max = Math.max(...rows.map((r) => r.avgPct || 0), 1);
+    return `
+      <table>
+        <thead><tr>
+          <th>${esc(caption)}</th>
+          <th class="num">평균</th><th class="num">최고</th><th style="width:34%"></th>
+        </tr></thead>
+        <tbody>${rows.map((r) => `
+          <tr>
+            <td>${esc(r.label)}</td>
+            <td class="num"><b>${nf(r.avgPct, 1)}%</b></td>
+            <td class="num" style="color:var(--dim)">${nf(r.maxPct, 1)}%</td>
+            <td><div class="track" style="width:${Math.max(2, (r.avgPct / max) * 100)}%"></div></td>
+          </tr>`).join("")}
+        </tbody>
+      </table>`;
+  }
+
+  function topHtml(t) {
+    if (!t || !t.measured) {
+      return `<div class="card"><div class="empty">
+        <b>아직 안 잼.</b> ${esc(t && t.why ? t.why : "표본이 쌓이면 나옵니다.")}
+      </div></div>`;
+    }
+    return `<div class="card">
+      ${topTable(t.containers, t.containersWhy, "컨테이너 (도커로 띄운 것)")}
+      ${topTable(t.processes, t.processesWhy, "컨테이너 밖 프로그램 (CI 러너 같은 것)")}
+      <div class="empty" style="border-top:1px solid var(--line)">
+        최근 <b>${t.windowMin}분</b> 동안 <b>${t.samples}번</b> 재서 평균을 냈습니다.
+        <b>100% 는 코어 하나를 다 쓴 것</b>이라, 여러 코어를 쓰면 100% 를 넘습니다.
+        재는 사이에 잠깐 뜬 것은 평균이 낮게 나오니 <b>최고</b> 칸을 같이 보세요.
+        <br>이름에 사람이 드러나는 것은 묶어서 보여줍니다 — 이 페이지는 누구나 보기 때문입니다.
+      </div>
+    </div>`;
+  }
+
+  function incidentsHtml(list) {
+    if (!list || !list.length) {
+      return `<div class="card"><div class="empty">기록된 장애가 없습니다.
+        (표본 <b>두 번 연속</b>으로 정상이 아닐 때만 적습니다 — 잠깐 튄 것까지 적으면 이력이 잡음이 됩니다.)</div></div>`;
+    }
+    return `<div class="card"><table>
+      <thead><tr><th>무엇이</th><th>언제부터</th><th>얼마나</th><th>상태</th></tr></thead>
+      <tbody>${list.slice(0, 20).map((i) => `
+        <tr>
+          <td>${esc(i.name)}</td>
+          <td>${esc(kstTime(i.startedAt))}</td>
+          <td>${esc(dur(i.minutes * 60))}</td>
+          <td><span class="pill ${i.endedAt ? "ok" : i.worst}">${i.endedAt ? "복구됨" : "진행 중 · " + (STATE_TEXT[i.worst] || i.worst)}</span></td>
+        </tr>`).join("")}
+      </tbody></table></div>`;
+  }
+
+  // ── 그리기 ────────────────────────────────────────────────────────────────
+  function render(d) {
+    // 칸이 몇 시간짜리인지는 수집기가 정한다. 화면이 4를 손으로 적어 두면
+    // 수집기에서 6으로 바꾼 날 눈금 글씨만 거짓말이 된다.
+    if (Number.isFinite(d.slotHours) && d.slotHours > 0) slotHours = d.slotHours;
+    const st = (d.overall && d.overall.state) || "unknown";
+    const b = $("banner");
+    b.className = "banner " + st;
+    b.innerHTML = `
+      <span class="dot ${st}"></span>
+      <span class="txt">${esc((d.overall && d.overall.headline) || "아직 안 잼")}</span>
+      <span class="when">${esc(ago(d.generatedAt))} 잼<br>${esc(kstTime(d.generatedAt))}</span>`;
+
+    // 🔴 수집기가 죽으면 이 페이지는 낡은 초록을 계속 보여준다. 그게 가장 나쁘다.
+    //    그래서 파일이 오래됐으면 맨 위에 크게 알린다.
+    const ageMin = (Date.now() - Date.parse(d.generatedAt)) / 60000;
+    $("stale").innerHTML = isFinite(ageMin) && ageMin > 5
+      ? `<div class="stale">🔴 <b>아래 숫자는 ${esc(ago(d.generatedAt))}의 것입니다.</b>
+           수집기는 1분마다 돌아야 합니다. 서버에서 멈췄을 수 있습니다 —
+           <span class="mono">systemctl status cron</span> 과
+           <span class="mono">/var/log/gabolle-status.log</span> 를 보세요.</div>`
+      : "";
+
+    const deploy = (d.services || []).filter((s) => s.kind === "deploy");
+    const mr = (d.services || []).filter((s) => s.kind === "mr");
+
+    $("body").innerHTML = `
+      <div class="group">실제 배포 — 지금 뜨나</div>
+      <div class="card">${deploy.map(svcHtml).join("")}</div>
+
+      <div class="group">MR 검사 속도 — 코드를 올리면 얼마나 기다리나</div>
+      <div class="card">${mr.map(svcHtml).join("")}</div>
+      ${d.mrFetchedAt ? `<div class="note">GitLab 을 ${esc(ago(d.mrFetchedAt))} 봤습니다.</div>` : ""}
+
+      <h2>지금 CPU</h2>
+      ${cpuHtml(d.cpu)}
+
+      <h2>최근 1시간 동안 CPU 를 가장 많이 쓴 작업</h2>
+      ${topHtml(d.topCpu)}
+
+      <h2>장애 이력</h2>
+      ${incidentsHtml(d.incidents)}
+
+      ${(d.warnings && d.warnings.length) ? `<div class="warns">
+        <b>수집기가 못 잰 것</b> — 숨기지 않고 그대로 적습니다.
+        <ul>${d.warnings.map((w) => `<li>${esc(w)}</li>`).join("")}</ul>
+      </div>` : ""}`;
+
+    $("foot-src").innerHTML =
+      `이 페이지는 <span class="mono">status.json</span> 만 읽어 그립니다. 그 파일은 운영 서버 안에서
+       1분마다 도는 <span class="mono">collect-status.mjs</span> 가 만듭니다.
+       ${d.host ? `서버 <span class="mono">${esc(d.host)}</span> · ` : ""}30초마다 저절로 새로 읽습니다.`;
+  }
+
+  function fail(msg) {
+    $("banner").className = "banner unknown";
+    $("banner").innerHTML = `<span class="dot unknown"></span><span class="txt">아직 안 잼</span>`;
+    $("body").innerHTML = `<div class="card"><div class="empty">
+      <b>${esc(msg)}</b><br><br>
+      이 페이지는 같은 폴더의 <span class="mono">status.json</span> 을 읽습니다.
+      그 파일은 운영 서버 안에서 <span class="mono">collect-status.mjs</span> 가 1분마다 만듭니다.
+      아직 설치 전이라면 <span class="mono">ci/status/README.md</span> 6절을 보세요.
+    </div></div>`;
+  }
+
+  async function load() {
+    try {
+      const res = await fetch("status.json", { cache: "no-store" });
+      if (!res.ok) return fail(`status.json 을 못 읽었습니다 (HTTP ${res.status}).`);
+      const d = await res.json();
+      if (!d || !Array.isArray(d.services)) return fail("status.json 의 모양이 다릅니다 (services 배열이 없습니다).");
+      render(d);
+    } catch (err) {
+      fail("status.json 을 못 읽었습니다: " + err.message);
+    }
+  }
+
+  load();
+  setInterval(load, 30000);
+  // 다른 탭에 있다 돌아오면 곧바로 새로 읽는다. 30초를 기다리지 않게.
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) load(); });
+})();
+</script>
+</body>
+</html>
