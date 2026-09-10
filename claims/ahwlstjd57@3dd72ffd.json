@@ -1,0 +1,13 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-317",
+  "intent": "S15P21E201-317 — 필수 약관 동의 누락으로 실패하던 테스트 고정 수정",
+  "actor": "agent",
+  "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
+  "since": "2026-09-10T02:12:14.346Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/auth/AnonymousTripClaimIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/auth/SignupRollsBackOnAnonymousTripClaimFailureIntegrationTest.java"
+  ]
+}
