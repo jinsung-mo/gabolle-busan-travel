@@ -1,12 +1,13 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-816",
-  "intent": "가입·로그아웃 본문의 원시 boolean 을 Boolean 으로 바꿔, 키를 빼도 이유가 응답에 남게 한다. OAuthSignupRequest 가 이미 쓰는 모양을 그대로 따른다.",
+  "intent": "가입·로그아웃 본문의 원시 boolean 을 Boolean 으로 바꾼다. 컨트롤러는 새 접근자(xxxOrFalse)를 부르도록 한 줄씩 바뀐다.",
   "actor": null,
   "session": "64380390-10d0-4ac5-9dcb-5e4d7cb13b25",
-  "since": "2026-09-10T10:03:31.317Z",
+  "since": "2026-09-10T10:08:28.243Z",
   "ttlMs": 1800000,
   "paths": [
+    "backend/src/main/java/com/gabolle/backend/auth/api/AuthController.java",
     "backend/src/main/java/com/gabolle/backend/auth/api/LocalSignupRequest.java",
     "backend/src/main/java/com/gabolle/backend/auth/api/LogoutRequest.java",
     "backend/src/test/java/com/gabolle/backend/functional/SignupContractFunctionalTest.java"
