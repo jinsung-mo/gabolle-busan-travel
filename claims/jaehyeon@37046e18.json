@@ -1,0 +1,17 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-808",
+  "intent": "추천 엔진이 어떤 컨텍스트에서도 안 붙는다. dev 프로필 전체 앱에서도 없어 운영도 같은 상태다. 조건 평가 시점을 안 타는 방식으로 배선을 바꾸고, place 를 안 올리는 추천 슬라이스와 대역 엔진을 쓰는 기존 검사가 함께 서게 만든다.",
+  "actor": null,
+  "session": "64380390-10d0-4ac5-9dcb-5e4d7cb13b25",
+  "since": "2026-09-10T07:33:35.112Z",
+  "ttlMs": 5400000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation",
+    "backend/src/test/java/com/gabolle/backend/DevProfileApplicationContextTest.java",
+    "backend/src/test/java/com/gabolle/backend/functional",
+    "backend/src/test/java/com/gabolle/backend/itinerary",
+    "backend/src/test/java/com/gabolle/backend/recommendation",
+    "backend/src/test/java/com/gabolle/testslice"
+  ]
+}
