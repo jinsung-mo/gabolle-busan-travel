@@ -195,11 +195,19 @@ frontend:e2e:
     GABOLLE_WEB_REFRESH_COOKIE_SAME_SITE: Lax
     GABOLLE_SERVICE_VERSION: e2e-ci
     GABOLLE_DEPLOYMENT_ENVIRONMENT: e2e
-    # 🔴 2026-09-11 — IPv6(::1) 짐작은 틀렸다. 127.0.0.1로 고정해도 똑같이
-    #    실패했다(파이프라인 188573) — 진짜 원인은 아래 "git checkout FETCH_HEAD"
-    #    줄의 실측 참고. 127.0.0.1은 해가 되지 않으니 그대로 둔다(로컬 루프백을
-    #    DNS 없이 직접 가리키는 것 자체는 여전히 더 안전하다).
-    EXPO_PUBLIC_API_BASE_URL: http://127.0.0.1:8080
+    # 🔴 2026-09-11 정정 — 바로 위 "해가 되지 않는다"는 틀렸다. 127.0.0.1로 고정한
+    #    뒤(파이프라인 188579) 로그인 자체는 200으로 성공했는데, 로그인 직후 앱이
+    #    보내는 조용한 갱신 요청(POST /auth/web/refresh)이 401로 돌아와 도로
+    #    로그아웃 상태가 됐다 — 최종 확인 화면에 "이 조건으로 일정 만들기"가 아니라
+    #    "로그인하고 일정 만들기"가 떴다. Playwright trace의 네트워크 로그를 보니
+    #    원인이 SameSite=Lax 쿠키였다: 로그인 응답이 심는 gabolle_refresh_token
+    #    쿠키는 Lax라 "동일 사이트(site)"가 아닌 요청에는 브라우저가 아예 안
+    #    붙인다. "localhost"와 "127.0.0.1"은 둘 다 루프백을 가리켜도 사이트
+    #    판정에서는 **다른 site**다(포트만 다른 것과 다르다 — 호스트 이름 자체가
+    #    다르다). frontend(localhost:3000)는 그대로인데 backend만 127.0.0.1로
+    #    바꾼 것이 정확히 이 어긋남을 만들었다 — 바꾸기 전(둘 다 localhost, 포트만
+    #    다름)에는 같은 site라 문제가 없었다. localhost로 되돌린다.
+    EXPO_PUBLIC_API_BASE_URL: http://localhost:8080
     # 🔴 기본값 12초(client.ts) 그대로 두면, npm ci + expo export가 도는 동안
     #    JVM이 첫 실제 요청의 지연 초기화를 못 끝냈을 때 타임아웃이 먼저 끊고
     #    "서버 응답이 늦어…"로 죽는다. 이 잡 전용으로만 넉넉히 둔다 — 앱 기본값도,
