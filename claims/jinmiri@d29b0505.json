@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-214",
+  "intent": "S15P21E201-214: 경로 화면에 현재 위치 점 표시",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-10T16:07:22.506Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(trip)/[id]/map.tsx",
+    "frontend/src/map/RouteMap.tsx"
+  ]
+}
