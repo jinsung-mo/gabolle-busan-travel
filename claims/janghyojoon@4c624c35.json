@@ -7,10 +7,7 @@
   "since": "2026-09-10T02:17:36.584Z",
   "ttlMs": 2700000,
   "paths": [
-    "bigData/data/staged/place-priceband.ndjson",
-    "bigData/process",
     "bigData/process/choice-design.mjs",
-    "bigData/research/HANDOVER.md",
     "survey-recommend"
   ]
 }
