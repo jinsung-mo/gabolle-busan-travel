@@ -7,16 +7,7 @@
   "since": "2026-09-10T06:09:16.327Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/(tabs)/feed.tsx",
-    "frontend/app/(tabs)/trips.tsx",
-    "frontend/app/_layout.tsx",
-    "frontend/app/collection",
-    "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/package.json",
-    "frontend/src/collection",
-    "frontend/src/components/TabBar.tsx",
-    "frontend/src/plan/itinerary.ts",
-    "frontend/src/social/stories.ts",
     "frontend/tools/check-responsive.mjs"
   ]
 }
