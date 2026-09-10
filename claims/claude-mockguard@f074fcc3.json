@@ -1,0 +1,13 @@
+{
+  "agent": "claude-mockguard",
+  "task": "S15P21E201-717",
+  "intent": "목업 화면에서 나가는 행동 이벤트를 막는다 — 없는 장소 번호가 서버에 쌓인다",
+  "actor": null,
+  "session": "05b6e63e-09fb-466a-9169-5c7aa2018459",
+  "since": "2026-09-10T14:19:13.135Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/place/[id].tsx"
+  ]
+}
