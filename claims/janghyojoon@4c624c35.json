@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-760",
+  "intent": "가격대 낱말을 3단으로 정규화하는 파생 산출물",
+  "actor": "agent",
+  "session": "cddc49c2-0820-4c08-a49d-73e2e797dadd",
+  "since": "2026-09-10T02:10:49.390Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/process"
+  ]
+}
