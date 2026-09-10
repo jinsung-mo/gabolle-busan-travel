@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-23",
-  "intent": "경사 수준을 실측 분포의 분위수로 바꾼다",
+  "task": "S15P21E201-754",
+  "intent": "개인화 3문항 페이지를 앞에 붙인다",
   "actor": "agent",
   "session": "cddc49c2-0820-4c08-a49d-73e2e797dadd",
-  "since": "2026-09-10T02:11:03.751Z",
+  "since": "2026-09-10T02:11:40.491Z",
   "ttlMs": 1800000,
   "paths": [
     "bigData/process",
-    "bigData/process/choice-design.mjs"
+    "bigData/process/choice-design.mjs",
+    "survey-recommend"
   ]
 }
