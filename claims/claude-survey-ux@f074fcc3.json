@@ -1,0 +1,12 @@
+{
+  "agent": "claude-survey-ux",
+  "task": "S15P21E201-survey-ux",
+  "intent": "설문 UX 두 곳 — 경향조사 안내 문구, 한 곳 더 적기 자동 확장",
+  "actor": null,
+  "session": "05b6e63e-09fb-466a-9169-5c7aa2018459",
+  "since": "2026-09-10T14:01:05.421Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "survey-recommend/index.html"
+  ]
+}
