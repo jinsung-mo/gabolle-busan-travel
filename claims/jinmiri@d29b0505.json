@@ -1,0 +1,24 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-642",
+  "intent": "S15P21E201-642: 토큰 밖 직접 색상값을 색상 토큰으로 교체",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-10T21:31:40.124Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(auth)/age-gate.tsx",
+    "frontend/app/(auth)/sign-in.tsx",
+    "frontend/app/(onboarding)/permissions.tsx",
+    "frontend/app/(plan)/generating.tsx",
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/app/app-intro.tsx",
+    "frontend/app/feed/[id].tsx",
+    "frontend/app/place/[id].tsx",
+    "frontend/app/taxi-card/[id].tsx",
+    "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/app/user/[id].tsx",
+    "frontend/src/components/DateFieldInput.web.tsx",
+    "frontend/src/legal/LegalDocumentScreen.tsx"
+  ]
+}
