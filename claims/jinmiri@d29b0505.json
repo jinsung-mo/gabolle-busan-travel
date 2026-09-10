@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-478",
+  "intent": "S15P21E201-478/-141: 장소 상세 알레르기·식단 확인 필요 안내",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-10T17:03:56.036Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/place/[id].tsx",
+    "frontend/src/discovery/places.ts"
+  ]
+}
