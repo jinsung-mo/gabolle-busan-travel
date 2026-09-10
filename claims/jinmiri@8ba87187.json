@@ -1,13 +1,14 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-283",
-  "intent": "S15P21E201-283 7개 폭에서 가로 스크롤 자동 검사 스크립트 작성",
+  "task": "S15P21E201-791",
+  "intent": "S15P21E201-791 출발지 좌표 null 고정 버그 수정 push·MR",
   "actor": "agent",
   "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
-  "since": "2026-09-09T23:56:34.094Z",
+  "since": "2026-09-10T00:30:29.427Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/package.json",
+    "frontend/src/api/tripApi.ts",
     "frontend/tools/check-responsive.mjs"
   ]
 }
