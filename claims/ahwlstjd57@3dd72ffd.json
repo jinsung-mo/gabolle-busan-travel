@@ -1,10 +1,10 @@
 {
   "agent": "ahwlstjd57",
-  "task": "S15P21E201-802",
-  "intent": "S15P21E201-802 — assistant API 커밋 (SDK 의존성·설정·라우트 인가 등록 포함)",
+  "task": "S15P21E201-366",
+  "intent": "S15P21E201-366 — MR!484 back/dev 충돌 해소: 이미 back/dev에 있는 event 스캔 중복분 정리(rebase)",
   "actor": "agent",
   "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
-  "since": "2026-09-10T06:27:22.731Z",
+  "since": "2026-09-10T06:32:03.412Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/build.gradle",
@@ -12,6 +12,8 @@
     "backend/src/main/java/com/gabolle/backend/assistant",
     "backend/src/main/resources/application-dev.properties",
     "backend/src/test/java/com/gabolle/backend/assistant",
-    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java"
+    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java",
+    "backend/src/test/java/com/gabolle/testslice/AuthSliceApplication.java",
+    "backend/src/test/java/com/gabolle/testslice/PrivacySliceApplication.java"
   ]
 }
