@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-775",
+  "intent": "S15P21E201-775 e2e 잡 — Chromium이 localhost를 ::1로 풀어 백엔드(IPv4만 listen) 호출이 전부 실패하는 문제 수정",
+  "actor": "agent",
+  "session": "311ec94e-6435-4653-937e-be461e074acd",
+  "since": "2026-09-10T21:50:40.574Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "ci/parts/frontend.yml"
+  ]
+}
