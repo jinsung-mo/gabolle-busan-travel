@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-754",
+  "intent": "북적임 질문 추가와 응답시간 흠 수정",
+  "actor": "agent",
+  "session": "cddc49c2-0820-4c08-a49d-73e2e797dadd",
+  "since": "2026-09-10T07:02:03.123Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "survey-recommend"
+  ]
+}
