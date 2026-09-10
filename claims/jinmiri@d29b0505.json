@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-791",
+  "intent": "배포 docker build 에 EXPO_PUBLIC_KAKAO_MAP_JS_KEY build-arg 가 빠진 것을 추가 (jaehyeon 제보, -791 재현 보고와 얽힌 건)",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-10T08:55:04.571Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/Jenkinsfile"
+  ]
+}
