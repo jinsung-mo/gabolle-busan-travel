@@ -1,15 +1,18 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-775",
-  "intent": "S15P21E201-775 — Playwright E2E(로그인→여행 기본정보→추천 요청) 도입",
+  "intent": "S15P21E201-775 Playwright E2E 코어 여정 테스트 + CORS 관련 CI 잡 추가",
   "actor": "agent",
   "session": "311ec94e-6435-4653-937e-be461e074acd",
-  "since": "2026-09-10T18:10:41.860Z",
+  "since": "2026-09-10T18:30:21.014Z",
   "ttlMs": 2700000,
   "paths": [
     "ci/parts/frontend.yml",
+    "frontend/.gitignore",
+    "frontend/jest.config.js",
     "frontend/package-lock.json",
     "frontend/package.json",
+    "frontend/playwright.config.ts",
     "frontend/tests",
     "frontend/tools/e2e-seed-user.mjs"
   ]
