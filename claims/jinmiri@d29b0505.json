@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "field-tools-ux-cleanup",
-  "intent": "현장 도구·메뉴판 번역·현장 말하기 진입점을 하나로 통합하고, 말하기 화면을 장소 카테고리 문장(PlacePhraseModal과 동일 데이터)으로 교체",
+  "intent": "PlacePhraseModal/현장 말하기 화면이 공유할 문장 목록 컴포넌트 신설",
   "actor": "agent",
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-10T08:21:56.402Z",
+  "since": "2026-09-10T08:22:20.827Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
@@ -12,6 +12,7 @@
     "frontend/app/field/speak.tsx",
     "frontend/app/field/translate.tsx",
     "frontend/src/assistant/intent.ts",
+    "frontend/src/components/PlacePhraseBrowser.tsx",
     "frontend/src/components/PlacePhraseModal.tsx"
   ]
 }
