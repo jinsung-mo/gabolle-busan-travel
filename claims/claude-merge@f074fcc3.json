@@ -1,0 +1,13 @@
+{
+  "agent": "claude-merge",
+  "task": "S15P21E201-717",
+  "intent": "행동 로그 MR !326 의 충돌을 푼다 — front/dev 를 받아들이고 이벤트 호출만 다시 얹는다",
+  "actor": null,
+  "session": "05b6e63e-09fb-466a-9169-5c7aa2018459",
+  "since": "2026-09-10T11:43:54.043Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/app/place/[id].tsx"
+  ]
+}
