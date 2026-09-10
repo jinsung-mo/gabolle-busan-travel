@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-754",
+  "intent": "개인화 3문항 페이지를 앞에 붙인다",
+  "actor": null,
+  "session": "cddc49c2-0820-4c08-a49d-73e2e797dadd",
+  "since": "2026-09-10T02:31:00.433Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "survey-recommend"
+  ]
+}
