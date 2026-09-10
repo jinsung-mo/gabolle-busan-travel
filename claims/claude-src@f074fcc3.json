@@ -1,0 +1,12 @@
+{
+  "agent": "claude-src",
+  "task": "S15P21E201-331",
+  "intent": "TourAPI 수집 숫자를 오늘 실측으로 정정하고 공정위 가맹정보 두 건을 등록한다",
+  "actor": null,
+  "session": "05b6e63e-09fb-466a-9169-5c7aa2018459",
+  "since": "2026-09-10T16:12:03.262Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/config/sources.json"
+  ]
+}
