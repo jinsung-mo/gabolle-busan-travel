@@ -1,12 +1,13 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-775",
-  "intent": "S15P21E201-775 Playwright E2E 코어 여정 테스트 + CORS 관련 CI 잡 추가",
+  "intent": "S15P21E201-775 진행 중 발견한 CORS 헤더 누락 버그 수정 (X-Session-Token, Idempotency-Key)",
   "actor": "agent",
   "session": "311ec94e-6435-4653-937e-be461e074acd",
-  "since": "2026-09-10T18:30:21.014Z",
+  "since": "2026-09-10T18:31:10.667Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/src/main/java/com/gabolle/backend/auth/config/SecurityConfig.java",
     "ci/parts/frontend.yml",
     "frontend/.gitignore",
     "frontend/jest.config.js",
