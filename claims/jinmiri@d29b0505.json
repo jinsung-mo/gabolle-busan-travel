@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-271",
+  "intent": "S15P21E201-271 완료 기준 반영 — 24시간 넘은 신고를 빨간색으로 강조하고 맨 위에 고정",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-10T11:33:06.106Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/admin/story-reports.tsx"
+  ]
+}
