@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-760",
+  "intent": "규정 밖 칸 정리와 신뢰도 확인",
+  "actor": "agent",
+  "session": "cddc49c2-0820-4c08-a49d-73e2e797dadd",
+  "since": "2026-09-10T08:05:41.242Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/research"
+  ]
+}
