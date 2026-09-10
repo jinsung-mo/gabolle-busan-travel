@@ -1,10 +1,10 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-709",
-  "intent": "S15P21E201-709 — back/dev 재최신화 병합 커밋 (내 변경분 외 나머지는 기존 커밋)",
+  "intent": "S15P21E201-709 — back/dev 재최신화 병합 커밋 마무리",
   "actor": "agent",
   "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
-  "since": "2026-09-10T02:17:22.405Z",
+  "since": "2026-09-10T02:32:30.699Z",
   "ttlMs": 2700000,
   "paths": [
     ".claude",
@@ -16,6 +16,7 @@
     "CONTRIBUTING.md",
     "README.md",
     "backend",
+    "bigData",
     "ci",
     "city3d-spike",
     "eval",
@@ -25,6 +26,7 @@
     "ref",
     "setup.ps1",
     "setup.sh",
-    "survey-place"
+    "survey-place",
+    "survey-recommend"
   ]
 }
