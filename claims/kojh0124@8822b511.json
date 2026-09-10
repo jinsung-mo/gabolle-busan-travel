@@ -1,12 +1,12 @@
 {
   "agent": "kojh0124",
   "task": "S15P21E201-787",
-  "intent": "MR !459 를 새 back/dev 에 맞춘다 — 코스테마 블록과 취향벡터 블록이 파일 끝에서 부딪힌 것을 둘 다 살려 푼다",
+  "intent": "MR !459 CI 실패 수정 — /internal/v1 경로 둘을 인가 정책 표에 등록하고 INTERNAL_ONLY 정책을 더한다",
   "actor": "agent",
   "session": "310e7d2c-ef27-44e1-a71b-71ff40f8aca3",
-  "since": "2026-09-10T00:33:12.433Z",
+  "since": "2026-09-10T02:48:18.401Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/src/main/resources/application.properties"
+    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java"
   ]
 }
