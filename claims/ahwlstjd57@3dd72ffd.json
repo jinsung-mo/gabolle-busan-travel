@@ -4,7 +4,7 @@
   "intent": "S15P21E201-709 — back/dev 재최신화 병합 커밋 마무리",
   "actor": "agent",
   "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
-  "since": "2026-09-10T02:32:30.699Z",
+  "since": "2026-09-10T02:33:19.412Z",
   "ttlMs": 2700000,
   "paths": [
     ".claude",
@@ -19,6 +19,7 @@
     "bigData",
     "ci",
     "city3d-spike",
+    "docs",
     "eval",
     "frontend/README.md",
     "governance",
