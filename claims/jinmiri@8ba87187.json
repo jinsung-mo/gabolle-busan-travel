@@ -1,14 +1,15 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-406",
-  "intent": "S15P21E201-406 — 방문 시각 지난 장소 카드에 다녀오셨나요 버튼 + 평가 모달. 백엔드 PlaceReview API(S15P21E201-408) 이미 있어서 착수",
+  "intent": "ItineraryItemDto에 placeId 필드 추가 (S15P21E201-406 리뷰 연동에 필요, 백엔드엔 이미 있음)",
   "actor": "agent",
   "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
-  "since": "2026-09-10T07:53:28.617Z",
+  "since": "2026-09-10T07:55:29.637Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/src/components/PlaceReviewModal.tsx",
+    "frontend/src/plan/itinerary.ts",
     "frontend/src/review/placeReviews.ts"
   ]
 }
