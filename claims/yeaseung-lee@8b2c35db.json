@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-780",
-  "intent": "S15P21E201-780 — 핵심 여정 기능 테스트: 회원가입→로그인→여행 생성→추천→일정 편집",
+  "intent": "S15P21E201-780 — 핵심 여정 기능 테스트 커밋",
   "actor": "agent",
   "session": "311ec94e-6435-4653-937e-be461e074acd",
-  "since": "2026-09-10T13:47:47.079Z",
+  "since": "2026-09-10T14:49:58.160Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/test/java/com/gabolle/backend/functional/CoreJourneyFunctionalTest.java"
