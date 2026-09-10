@@ -1,14 +1,19 @@
 {
   "agent": "claude-merge",
   "task": "S15P21E201-717",
-  "intent": "낡은 경고문 정정 — 서버가 이제 받는다",
+  "intent": "MR !326 리베이스 — front/dev 위로 옮기고 낡은 경고문 정정",
   "actor": null,
   "session": "05b6e63e-09fb-466a-9169-5c7aa2018459",
-  "since": "2026-09-10T11:46:25.181Z",
+  "since": "2026-09-10T11:50:03.229Z",
   "ttlMs": 1800000,
   "paths": [
+    "frontend/app/(tabs)/home.tsx",
     "frontend/app/(tabs)/me.tsx",
+    "frontend/app/(trip)/[id]/checkin.tsx",
     "frontend/app/place/[id].tsx",
-    "frontend/src/analytics/appEvents.ts"
+    "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/src/analytics/appEvents.ts",
+    "frontend/src/auth/authApi.ts",
+    "frontend/src/personalization/behaviorConsent.ts"
   ]
 }
