@@ -1,0 +1,14 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-826",
+  "intent": "목록 근거(미쉐린·블루리본·백년가게 등)를 POPULARITY_SCORE 피처로 넣는다. 지금 점수 가중치의 60%가 죽어 있어 추천이 사실상 가까운 순이다.",
+  "actor": null,
+  "session": "64380390-10d0-4ac5-9dcb-5e4d7cb13b25",
+  "since": "2026-09-10T14:27:01.374Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/loader",
+    "backend/src/test/java/com/gabolle/backend/place",
+    "backend/src/test/resources/research"
+  ]
+}
