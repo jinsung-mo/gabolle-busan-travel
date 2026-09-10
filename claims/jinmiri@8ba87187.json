@@ -1,12 +1,13 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-283",
-  "intent": "반응형 체크 스크립트(S15P21E201-283) — 페이지 크래시 시에도 검사를 계속하도록 하드닝",
+  "task": "S15P21E201-761",
+  "intent": "S15P21E201-761 — 마이페이지 스크롤 안 되는 버그 수정 (ScrollView contentContainerStyle에 flex:1이 들어가 있었음)",
   "actor": "agent",
   "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
-  "since": "2026-09-10T06:09:16.327Z",
+  "since": "2026-09-10T06:12:10.539Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/(tabs)/me.tsx",
     "frontend/package.json",
     "frontend/tools/check-responsive.mjs"
   ]
