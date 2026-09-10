@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-807",
+  "intent": "S15P21E201-807: 온보딩 세 질문(SPEND_PROFILE) 화면",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-10T23:46:05.844Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(onboarding)/spend-profile.tsx",
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/src/onboarding/spendProfile.ts"
+  ]
+}
