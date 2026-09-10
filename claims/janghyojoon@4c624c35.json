@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-754",
-  "intent": "장소 칸 추가 버튼과 고지문 마무리",
+  "intent": "고지문 P4~P10 남은 칸 채우기",
   "actor": "agent",
   "session": "cddc49c2-0820-4c08-a49d-73e2e797dadd",
-  "since": "2026-09-10T08:06:15.295Z",
+  "since": "2026-09-10T08:06:23.293Z",
   "ttlMs": 2700000,
   "paths": [
     "bigData/research",
+    "docs/SURVEY-CONSENT.md",
     "survey-recommend"
   ]
 }
