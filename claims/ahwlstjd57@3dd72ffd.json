@@ -1,14 +1,15 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-366",
-  "intent": "기상청 단기예보 조회 API 신규 구현 (S15P21E201-366)",
+  "intent": "GET /api/v1/weather 를 인가 정책 표에 AUTHENTICATED_ONLY 로 등록 (S15P21E201-366)",
   "actor": "agent",
   "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
-  "since": "2026-09-10T03:33:29.702Z",
+  "since": "2026-09-10T03:34:13.055Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/weather",
     "backend/src/main/resources/application-dev.properties",
+    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java",
     "backend/src/test/java/com/gabolle/backend/weather"
   ]
 }
