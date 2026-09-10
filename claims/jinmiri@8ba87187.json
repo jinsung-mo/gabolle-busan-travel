@@ -1,12 +1,15 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-761",
-  "intent": "웹 랜딩 페이지 상단 네비에 피드 링크 추가 (사용자 요청)",
+  "task": "S15P21E201-771",
+  "intent": "S15P21E201-771 — 현장 도구 화면 3종 UX 버그 정리 (TTS 재생 경쟁조건, 알림 토글 스위치화, 번역 카드 안내 문구/순서)",
   "actor": "agent",
   "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
-  "since": "2026-09-10T06:15:13.475Z",
+  "since": "2026-09-10T06:26:27.073Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/(onboarding)/permissions.tsx",
+    "frontend/app/field/speak.tsx",
+    "frontend/app/field/translate.tsx",
     "frontend/package.json",
     "frontend/tools/check-responsive.mjs"
   ]
