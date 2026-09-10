@@ -226,7 +226,10 @@ frontend:e2e:
     #    같은 무거운 경로를 여기서 한 번 미리 태워서, 뒤이은 npm ci + expo export
     #    (CPU를 몇십 초간 다 쓴다) 동안 JVM이 그 초기화까지 끝내 두게 한다.
     #    실패해도 무시한다 — 이건 데이터가 아니라 JIT/캐시를 데우는 것뿐이다.
-    - curl -s -o /dev/null -X POST http://localhost:8080/api/v1/auth/signup -H "Content-Type: application/json" -d '{"email":"warmup-discard@example.com","password":"WarmupOnly1234!","displayName":"warmup","language":"KO","ageGateAccepted":true,"consents":{"TERMS_OF_SERVICE":true,"PRIVACY_POLICY":true}}' || true
+    - |
+      curl -s -o /dev/null -X POST http://localhost:8080/api/v1/auth/signup \
+        -H "Content-Type: application/json" \
+        -d '{"email":"warmup-discard@example.com","password":"WarmupOnly1234!","displayName":"warmup","language":"KO","ageGateAccepted":true,"consents":{"TERMS_OF_SERVICE":true,"PRIVACY_POLICY":true}}' || true
     - cd ../frontend
     - npm ci --cache .npm --prefer-offline
     - npx expo export --platform web
