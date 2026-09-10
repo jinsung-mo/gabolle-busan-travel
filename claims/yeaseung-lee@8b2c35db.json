@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-798",
+  "intent": "S15P21E201-798 후속 긴급 수정 — airflow-api-server cpus 0.5가 콜드스타트 때 크래시루프를 일으킨 것 실측, 1.0으로 올림",
+  "actor": "agent",
+  "session": "311ec94e-6435-4653-937e-be461e074acd",
+  "since": "2026-09-10T06:25:44.176Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "infra/personalization/compose.yaml"
+  ]
+}
