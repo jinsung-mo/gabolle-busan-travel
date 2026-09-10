@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-798",
+  "intent": "S15P21E201-798 두 번째 재발 — airflow-api-server가 1.0에서도 실제 배포마다 반복적으로 크래시루프에 빠짐. 2.0으로 재상향 + 헬스체크 여유 확대",
+  "actor": "agent",
+  "session": "311ec94e-6435-4653-937e-be461e074acd",
+  "since": "2026-09-10T08:43:04.878Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "infra/personalization/Jenkinsfile",
+    "infra/personalization/compose.yaml"
+  ]
+}
