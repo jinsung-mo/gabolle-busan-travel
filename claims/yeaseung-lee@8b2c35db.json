@@ -4,7 +4,7 @@
   "intent": "S15P21E201-782 — 사진·스토리·피드·신고·모더레이션 여정 기능 테스트, AuthedClient에 multipart 지원 추가",
   "actor": "agent",
   "session": "311ec94e-6435-4653-937e-be461e074acd",
-  "since": "2026-09-10T16:16:05.342Z",
+  "since": "2026-09-10T16:21:03.605Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/test/java/com/gabolle/backend/functional/StoryModerationJourneyFunctionalTest.java",
