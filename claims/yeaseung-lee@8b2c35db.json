@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-241",
+  "intent": "S15P21E201-241 — MR!538 리베이스로 app.json 충돌 해결",
+  "actor": "agent",
+  "session": "311ec94e-6435-4653-937e-be461e074acd",
+  "since": "2026-09-10T13:34:29.240Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app.json"
+  ]
+}
