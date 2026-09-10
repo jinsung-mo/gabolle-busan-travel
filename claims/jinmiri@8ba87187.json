@@ -1,12 +1,13 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-406",
-  "intent": "ItineraryItemDto에 placeId 필드 추가 (S15P21E201-406 리뷰 연동에 필요, 백엔드엔 이미 있음)",
+  "intent": "ItineraryItemDto에 placeId 필수 필드 추가로 깨진 미리보기 목업 데이터 수정 (S15P21E201-406)",
   "actor": "agent",
   "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
-  "since": "2026-09-10T07:55:29.637Z",
+  "since": "2026-09-10T07:57:42.342Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/(plan)/generating.tsx",
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/src/components/PlaceReviewModal.tsx",
     "frontend/src/plan/itinerary.ts",
