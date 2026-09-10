@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-760",
+  "intent": "조사 결과에서 다른 서비스 별점 숫자를 지운다",
+  "actor": "agent",
+  "session": "cddc49c2-0820-4c08-a49d-73e2e797dadd",
+  "since": "2026-09-10T06:09:06.254Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/research"
+  ]
+}
