@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-754",
+  "intent": "짝 비교 문항을 얹는다",
+  "actor": null,
+  "session": "cddc49c2-0820-4c08-a49d-73e2e797dadd",
+  "since": "2026-09-10T03:01:22.484Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "survey-recommend"
+  ]
+}
