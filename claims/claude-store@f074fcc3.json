@@ -1,0 +1,12 @@
+{
+  "agent": "claude-store",
+  "task": "S15P21E201-812",
+  "intent": "앱 식별자 com.donbulle.gabolle 확정 — 최소 빌드의 선행 조건",
+  "actor": null,
+  "session": "05b6e63e-09fb-466a-9169-5c7aa2018459",
+  "since": "2026-09-10T10:37:08.668Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app.json"
+  ]
+}
