@@ -195,14 +195,10 @@ frontend:e2e:
     GABOLLE_WEB_REFRESH_COOKIE_SAME_SITE: Lax
     GABOLLE_SERVICE_VERSION: e2e-ci
     GABOLLE_DEPLOYMENT_ENVIRONMENT: e2e
-    # 🔴 2026-09-11 실측 — "localhost"가 아니라 IPv4 리터럴을 명시한다. serve(프론트,
-    #    3000번)의 접속 로그는 브라우저(Chromium)가 "localhost"를 ::1(IPv6)로 풀어
-    #    붙는다는 것을 직접 보여줬다("HTTP ... ::1 GET /sign-in") — 반면 백엔드
-    #    헬스체크(curl)·워밍업(curl)·시드 스크립트(Node)는 전부 성공했는데, 이
-    #    셋은 이 컨테이너에서 "localhost"를 IPv4로 푼다. 백엔드(내장 Tomcat)가
-    #    IPv6 루프백은 안 받고 있다면, 정확히 "프론트는 뜨는데 백엔드 호출만
-    #    전부 서버에 연결할 수 없어요로 죽는" 증상이 된다(파이프라인 188568 실측).
-    #    127.0.0.1을 박아 이 모호함 자체를 없앤다.
+    # 🔴 2026-09-11 — IPv6(::1) 짐작은 틀렸다. 127.0.0.1로 고정해도 똑같이
+    #    실패했다(파이프라인 188573) — 진짜 원인은 아래 "git checkout FETCH_HEAD"
+    #    줄의 실측 참고. 127.0.0.1은 해가 되지 않으니 그대로 둔다(로컬 루프백을
+    #    DNS 없이 직접 가리키는 것 자체는 여전히 더 안전하다).
     EXPO_PUBLIC_API_BASE_URL: http://127.0.0.1:8080
     # 🔴 기본값 12초(client.ts) 그대로 두면, npm ci + expo export가 도는 동안
     #    JVM이 첫 실제 요청의 지연 초기화를 못 끝냈을 때 타임아웃이 먼저 끊고
@@ -219,6 +215,21 @@ frontend:e2e:
     #    반대(크로미움이 없다)다. 둘 다 필요해서 이 잡 안에서 JDK만 얹는다.
     - apt-get update -qq && apt-get install -y -qq openjdk-17-jdk-headless postgresql-client
     - cd backend
+    # 🔴 2026-09-11 실측 — 세 번의 스케줄 실행이 전부 같은 자리(로그인)에서
+    #    "서버에 연결할 수 없어요"로 죽었다. 원인은 IPv6도 자원 경합도 아니었다 —
+    #    Playwright trace의 콘솔 로그가 실제 CORS 에러를 그대로 남겼다:
+    #    "Request header field x-session-token is not allowed by
+    #    Access-Control-Allow-Headers in preflight response." 이건 S15P21E201-775가
+    #    back/dev에 이미 고친 바로 그 버그다 — 그런데 **이 잡은 front/dev 체크아웃의
+    #    backend/ 를 그대로 쓴다.** front/dev 와 back/dev 는 서로 다른 브랜치라
+    #    promote(파트 dev → 파트 main, CLAUDE.md 2절)가 돌기 전까지는 서로의
+    #    백엔드 변경을 안 받는다 — 그래서 이 잡은 이미 고쳐진 CORS 버그를 매번
+    #    다시 재현하고 있었다. 프론트 E2E가 실제로 검증해야 하는 것은 "지금 이
+    #    프론트가 지금 운영에 가장 가까운 백엔드와 맞물리는가"이지 front/dev 에
+    #    우연히 박제된 백엔드 스냅샷이 아니다 — 그래서 back/dev HEAD로 backend/
+    #    를 덮어쓰고 그걸로 띄운다.
+    - git fetch --depth 1 origin back/dev
+    - git checkout FETCH_HEAD -- .
     - chmod +x gradlew
     - until pg_isready -h postgres -U gabolle; do sleep 1; done
     - nohup ./gradlew bootRun --args="--spring.profiles.active=dev --spring.flyway.create-schemas=true" > /tmp/backend.log 2>&1 &
