@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": null,
+  "intent": "TabBar 위치 버그 수정 — feed/home 화면에서 TabBar가 스크롤 콘텐츠 안에 있어 짧은 화면에서 하단 고정 안 됨 + 600px 이상 폭에서 상단 가로 바로 전환 (breakpoints.ts 기존 스펙 구현)",
+  "actor": "agent",
+  "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
+  "since": "2026-09-10T06:46:35.786Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/feed.tsx",
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/src/components/TabBar.tsx"
+  ]
+}
