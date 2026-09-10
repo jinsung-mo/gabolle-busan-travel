@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": null,
+  "intent": "사용자 요청: 소셜 로그인 버튼 순서를 구글·애플·카카오·네이버로 변경 (외국인 관광객 대상 앱이라 글로벌 계정 우선)",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-10T13:43:31.160Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(auth)/sign-in.tsx"
+  ]
+}
