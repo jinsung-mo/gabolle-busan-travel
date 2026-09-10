@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-599",
-  "intent": "S15P21E201-599 — 신고 검토(운영자) 화면 신설, 백엔드 AdminModerationController 연결",
+  "intent": "S15P21E201-599 커밋",
   "actor": "agent",
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-10T10:44:01.941Z",
+  "since": "2026-09-10T10:46:03.748Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/admin",
