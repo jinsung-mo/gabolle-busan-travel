@@ -1,15 +1,18 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-sns-course-feed",
-  "intent": "SNS 피드 코스 중심 전환 + 하단 탭 5개(피드 추가) + 부슐랭 진입점",
+  "task": "S15P21E201-buschelin",
+  "intent": "부슐랭(개인 장소 컬렉션) 신규 기능 — 로컬 저장 기반 리스트 CRUD",
   "actor": "agent",
   "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
-  "since": "2026-09-10T05:39:30.085Z",
+  "since": "2026-09-10T05:41:37.781Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
     "frontend/app/(tabs)/trips.tsx",
+    "frontend/app/_layout.tsx",
+    "frontend/app/collection",
     "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/src/collection",
     "frontend/src/components/TabBar.tsx",
     "frontend/src/plan/itinerary.ts",
     "frontend/src/social/stories.ts"
