@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-754",
-  "intent": "고지문의 정해야 함 세 칸을 채운다",
+  "intent": "앱은 셋 · 설문은 넷인 이유를 한 절로 남긴다",
   "actor": "agent",
   "session": "cddc49c2-0820-4c08-a49d-73e2e797dadd",
-  "since": "2026-09-10T07:05:51.433Z",
+  "since": "2026-09-10T07:26:10.598Z",
   "ttlMs": 2700000,
   "paths": [
+    "docs/COLDSTART-THREE-QUESTIONS.md",
     "docs/SURVEY-CONSENT.md",
     "survey-recommend"
   ]
