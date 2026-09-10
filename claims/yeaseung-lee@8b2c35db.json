@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-798",
+  "intent": "S15P21E201-798 — 컨테이너 9개(personalization 스택)에 cpus 상한 추가",
+  "actor": "agent",
+  "session": "311ec94e-6435-4653-937e-be461e074acd",
+  "since": "2026-09-10T05:36:58.397Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "infra/personalization/compose.yaml"
+  ]
+}
