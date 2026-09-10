@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-378",
+  "intent": "S15P21E201-378 — 여행 준비 화면 날씨 위젯을 하드코딩 대신 실제 GET /api/v1/weather로 교체",
+  "actor": "agent",
+  "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
+  "since": "2026-09-10T07:21:00.764Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(trip)/[id]/prepare.tsx",
+    "frontend/src/trip/weather.ts"
+  ]
+}
