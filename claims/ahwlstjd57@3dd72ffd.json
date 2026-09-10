@@ -1,12 +1,13 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-317",
-  "intent": "S15P21E201-317 — trip 표에 owner_type NOT NULL 추가로 깨진 테스트 픽스처 INSERT 수정",
+  "intent": "S15P21E201-317 — owner_type 기본값을 유지해 저장소 전역 raw SQL 테스트 픽스처 파손을 막는다",
   "actor": "agent",
   "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
-  "since": "2026-09-10T01:59:12.268Z",
+  "since": "2026-09-10T02:00:21.776Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/src/main/resources/db/migration/V20260909140000__trip_anonymous_owner.sql",
     "backend/src/test/java/com/gabolle/backend/auth/AccountDeletionIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/share/ShareLinkIntegrationTest.java",
     "backend/src/test/java/com/gabolle/testslice/AuthSliceApplication.java",
