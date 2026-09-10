@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-754",
+  "intent": "Dockerfile 이 places.json·design.mjs 를 컨테이너에 안 넣어 앱이 502 로 죽던 것",
+  "actor": null,
+  "session": "cddc49c2-0820-4c08-a49d-73e2e797dadd",
+  "since": "2026-09-10T06:55:54.363Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "survey-recommend/Dockerfile"
+  ]
+}
