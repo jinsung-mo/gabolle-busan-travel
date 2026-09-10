@@ -1,15 +1,16 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-827",
-  "intent": "고른 갈래에 맞는 장소가 하나도 없으면 VERSION_UNRESOLVED 로 실패한다. 원인과 무관한 코드라 사용자도 우리도 이유를 못 읽는다. 정직한 코드로 바꾼다.",
+  "intent": "후보 0곳을 예외로 바꾸면서 이 검사의 빈 응답 stub 이 그 예외에 걸린다. 재는 대상은 요청의 상한이므로 후보 하나를 넣어 준다.",
   "actor": null,
   "session": "64380390-10d0-4ac5-9dcb-5e4d7cb13b25",
-  "since": "2026-09-10T21:47:21.073Z",
+  "since": "2026-09-10T21:51:57.599Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineRecommendationEngine.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationCodes.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationService.java",
-    "backend/src/test/java/com/gabolle/backend/functional/RecommendationWithRealPlacesFunctionalTest.java"
+    "backend/src/test/java/com/gabolle/backend/functional/RecommendationWithRealPlacesFunctionalTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineRecommendationEngineCandidateCutTest.java"
   ]
 }
