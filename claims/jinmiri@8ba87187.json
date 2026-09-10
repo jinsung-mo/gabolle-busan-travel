@@ -1,13 +1,13 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-786",
-  "intent": "frontend 잡을 파트 파일로 옮긴다 (janghyojoon 요청)",
+  "task": "S15P21E201-314",
+  "intent": "S15P21E201-314 지연 경고·예상 도착 시각·재계획을 일정 화면에 표시",
   "actor": "agent",
   "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
-  "since": "2026-09-10T01:19:32.543Z",
+  "since": "2026-09-10T05:19:12.009Z",
   "ttlMs": 2700000,
   "paths": [
-    ".gitlab-ci.yml",
-    "ci/parts/frontend.yml"
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/src/plan/itinerary.ts"
   ]
 }
