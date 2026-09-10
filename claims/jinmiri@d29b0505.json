@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-814",
+  "intent": "S15P21E201-814 — 0절을 2026-09-10 기준으로 재실측해 갱신 (계정삭제·약관 화면 닫힌 것으로, 권한 문구는 여전히 열림)",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-10T11:10:46.861Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/STORE-REVIEW-CHECKLIST.md"
+  ]
+}
