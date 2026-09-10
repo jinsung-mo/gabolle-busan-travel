@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": null,
+  "intent": "홈 화면 AI 챗봇 버튼 위치 수정 (하단 탭 바로 위로) — S15P21E201-806 세션 claim 만료돼 재확보, 그쪽 WIP는 stash로 보존함(codex-ui-upgrade-S15P21E201-806-wip-claim-expired)",
+  "actor": "agent",
+  "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
+  "since": "2026-09-10T07:45:55.030Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx"
+  ]
+}
