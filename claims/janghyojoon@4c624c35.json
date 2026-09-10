@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-754",
+  "intent": "common/dev 를 받아오는 머지 커밋 (짧게 잡고 즉시 반납)",
+  "actor": null,
+  "session": "cddc49c2-0820-4c08-a49d-73e2e797dadd",
+  "since": "2026-09-10T08:36:11.056Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "survey-recommend"
+  ]
+}
