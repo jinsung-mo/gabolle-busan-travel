@@ -1,0 +1,12 @@
+{
+  "agent": "claude-maprec",
+  "task": "S15P21E201-791",
+  "intent": "지도가 살아났다 — 원인이 2번이었음을 문서 맨 위에 적는다",
+  "actor": null,
+  "session": "05b6e63e-09fb-466a-9169-5c7aa2018459",
+  "since": "2026-09-10T16:32:03.399Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/docs/MAP-RECOVERY.md"
+  ]
+}
