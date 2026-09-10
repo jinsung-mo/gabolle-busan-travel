@@ -1,13 +1,14 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-761",
-  "intent": "S15P21E201-761 — 마이페이지 스크롤 안 되는 버그 수정 (ScrollView contentContainerStyle에 flex:1이 들어가 있었음)",
+  "intent": "웹 랜딩 페이지 상단 네비에 피드 링크 추가 (사용자 요청)",
   "actor": "agent",
   "session": "4f5bf8d7-0970-4031-8c00-77f1382b151b",
-  "since": "2026-09-10T06:12:10.539Z",
+  "since": "2026-09-10T06:15:13.475Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/me.tsx",
+    "frontend/app/index.tsx",
     "frontend/package.json",
     "frontend/tools/check-responsive.mjs"
   ]
