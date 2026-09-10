@@ -1,12 +1,14 @@
 {
   "agent": "jinmiri",
   "task": "apple-login",
-  "intent": "Apple 로그인 — provider 라벨 Record에 apple 누락 보완",
+  "intent": "Apple 로그인 재도입 팀 결정(2026-09-10) 반영 — S15P21E201-602 결정을 뒤집는 문서 갱신",
   "actor": "agent",
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-10T10:35:54.659Z",
+  "since": "2026-09-10T10:40:55.446Z",
   "ttlMs": 2700000,
   "paths": [
+    "docs/STORE-REVIEW-CHECKLIST.md",
+    "docs/TERMS-OF-SERVICE.md",
     "frontend/app/(auth)/oauth-link.tsx",
     "frontend/app/(auth)/sign-in.tsx",
     "frontend/app/(auth)/sign-up.tsx",
