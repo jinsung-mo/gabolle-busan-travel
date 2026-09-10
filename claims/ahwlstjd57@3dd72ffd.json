@@ -12,8 +12,6 @@
     "backend/src/main/java/com/gabolle/backend/assistant",
     "backend/src/main/resources/application-dev.properties",
     "backend/src/test/java/com/gabolle/backend/assistant",
-    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java",
-    "backend/src/test/java/com/gabolle/testslice/AuthSliceApplication.java",
-    "backend/src/test/java/com/gabolle/testslice/PrivacySliceApplication.java"
+    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java"
   ]
 }
