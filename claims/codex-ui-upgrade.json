@@ -1,0 +1,19 @@
+{
+  "agent": "codex-ui-upgrade",
+  "task": "S15P21E201-806",
+  "intent": "출시 전 공통 내비게이션과 홈·피드·내 여행·부슐랭·마이 화면의 시각 체계 및 사용자 문구 통일",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-10T07:05:59.803Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(tabs)/_layout.tsx",
+    "frontend/app/(tabs)/feed.tsx",
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/app/(tabs)/trips.tsx",
+    "frontend/app/collection/index.tsx",
+    "frontend/src/components/TabBar.tsx",
+    "frontend/src/design/tokens.ts"
+  ]
+}
