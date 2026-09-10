@@ -1,0 +1,30 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-643",
+  "intent": "S15P21E201-643: eyebrow 라벨 13곳을 한국어(tx)로 바꾸고 공용 Eyebrow 부품으로 통일",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-10T12:59:06.935Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(auth)/age-gate.tsx",
+    "frontend/app/(auth)/sign-in.tsx",
+    "frontend/app/(auth)/sign-up.tsx",
+    "frontend/app/(tabs)/feed.tsx",
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/app/(tabs)/saved.tsx",
+    "frontend/app/(tabs)/trips.tsx",
+    "frontend/app/(trip)/[id]/checkin.tsx",
+    "frontend/app/(trip)/[id]/log.tsx",
+    "frontend/app/(trip)/[id]/prepare.tsx",
+    "frontend/app/(trip)/[id]/share.tsx",
+    "frontend/app/+not-found.tsx",
+    "frontend/app/app-intro.tsx",
+    "frontend/app/chat.tsx",
+    "frontend/app/explore.tsx",
+    "frontend/app/festivals.tsx",
+    "frontend/app/field/speak.tsx",
+    "frontend/app/index.tsx",
+    "frontend/src/legal/LegalDocumentScreen.tsx"
+  ]
+}
