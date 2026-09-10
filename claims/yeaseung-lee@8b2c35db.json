@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-775",
+  "intent": "S15P21E201-775 e2e — CI 환경에서 전체 여정이 기본 30초 테스트 타임아웃을 넘겨 마지막 단계에서 끊기던 것을 늘린다",
+  "actor": "agent",
+  "session": "311ec94e-6435-4653-937e-be461e074acd",
+  "since": "2026-09-10T22:07:20.267Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/playwright.config.ts"
+  ]
+}
