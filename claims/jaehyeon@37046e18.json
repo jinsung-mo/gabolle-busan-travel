@@ -1,0 +1,15 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-137",
+  "intent": "감춰진 기록의 구멍 둘을 막는다. (1) 운영자가 감춘 기록을 작성자가 계속 수정할 수 있다 — 지우는 것은 열어 두되 고치는 것은 막는다. (2) 감춰진 기록의 참여자 목록이 아무 로그인 사용자에게 이름째로 나간다.",
+  "actor": null,
+  "session": "64380390-10d0-4ac5-9dcb-5e4d7cb13b25",
+  "since": "2026-09-10T02:35:29.193Z",
+  "ttlMs": 5400000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/moderation",
+    "backend/src/main/java/com/gabolle/backend/story",
+    "backend/src/test/java/com/gabolle/backend/moderation",
+    "backend/src/test/java/com/gabolle/backend/story"
+  ]
+}
