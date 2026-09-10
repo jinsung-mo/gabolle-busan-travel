@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-775",
+  "intent": "S15P21E201-775 e2e — 127.0.0.1 고정이 SameSite=Lax 리프레시 쿠키를 cross-site로 만들어 로그인 직후 조용히 로그아웃되던 자기 회귀 버그 되돌리기",
+  "actor": "agent",
+  "session": "311ec94e-6435-4653-937e-be461e074acd",
+  "since": "2026-09-10T22:17:53.099Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "ci/parts/frontend.yml"
+  ]
+}
