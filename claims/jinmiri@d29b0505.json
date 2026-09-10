@@ -1,0 +1,16 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-261",
+  "intent": "S15P21E201-261: 언어 스위처를 루트 레이아웃에 떠 있는 배지로 추가해 모든 화면에 상시 노출한다 (기존 개별 화면 3곳의 인라인 배지는 제거)",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-10T13:26:59.192Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(trip)/[id]/prepare.tsx",
+    "frontend/app/_layout.tsx",
+    "frontend/app/legal/open-source.tsx",
+    "frontend/src/components/GlobalLanguageBadge.tsx",
+    "frontend/src/legal/LegalDocumentScreen.tsx"
+  ]
+}
