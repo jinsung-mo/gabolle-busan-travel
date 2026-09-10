@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-795",
+  "intent": "Copernicus GLO-30 을 받아 고도 교차검증",
+  "actor": null,
+  "session": "cddc49c2-0820-4c08-a49d-73e2e797dadd",
+  "since": "2026-09-10T04:10:03.214Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/collect/copernicus-dem.mjs",
+    "bigData/config/sources.json",
+    "bigData/process/dem-crosscheck.mjs",
+    "bigData/process/geotiff.mjs"
+  ]
+}
