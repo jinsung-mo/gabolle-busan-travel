@@ -7,9 +7,6 @@
   "since": "2026-09-10T06:26:27.073Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/(onboarding)/permissions.tsx",
-    "frontend/app/field/speak.tsx",
-    "frontend/app/field/translate.tsx",
     "frontend/package.json",
     "frontend/tools/check-responsive.mjs"
   ]
