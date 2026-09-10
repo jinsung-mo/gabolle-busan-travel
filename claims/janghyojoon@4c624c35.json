@@ -1,13 +1,16 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-795",
-  "intent": "가짜 혹을 걸러내고 경사 수준을 다시 뽑는다",
+  "intent": "가짜 혹 필터 + 값 범위 검사를 DEM 읽는 자리에 넣는다",
   "actor": null,
   "session": "cddc49c2-0820-4c08-a49d-73e2e797dadd",
-  "since": "2026-09-10T03:16:45.405Z",
+  "since": "2026-09-10T03:33:55.483Z",
   "ttlMs": 1800000,
   "paths": [
+    "bigData/process/calibrate-slope.mjs",
     "bigData/process/choice-design.mjs",
+    "bigData/process/dem-clean.mjs",
+    "bigData/process/slope.mjs",
     "survey-recommend"
   ]
 }
