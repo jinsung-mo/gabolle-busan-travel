@@ -1,12 +1,13 @@
 {
   "agent": "jinmiri",
   "task": "apple-login",
-  "intent": "Apple 로그인 프런트 추가 — oauth.ts provider 설정, 로그인/가입 화면 소셜 버튼, 콜백 라벨",
+  "intent": "Apple 로그인 — provider 라벨 Record에 apple 누락 보완",
   "actor": "agent",
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-10T10:33:08.556Z",
+  "since": "2026-09-10T10:35:54.659Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/(auth)/oauth-link.tsx",
     "frontend/app/(auth)/sign-in.tsx",
     "frontend/app/(auth)/sign-up.tsx",
     "frontend/app/oauth/[provider]/callback.tsx",
