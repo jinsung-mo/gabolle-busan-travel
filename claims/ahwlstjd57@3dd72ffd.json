@@ -1,12 +1,13 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-709",
-  "intent": "S15P21E201-709 — SpendProfileService가 요구하는 EventIngestService를 StorySliceApplication 스캔 범위에 추가",
+  "intent": "S15P21E201-709 — TripSliceApplication도 EventIngestService 누락으로 같은 문제",
   "actor": "agent",
   "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
-  "since": "2026-09-10T01:35:15.278Z",
+  "since": "2026-09-10T01:36:04.677Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/src/test/java/com/gabolle/testslice/StorySliceApplication.java"
+    "backend/src/test/java/com/gabolle/testslice/StorySliceApplication.java",
+    "backend/src/test/java/com/gabolle/testslice/TripSliceApplication.java"
   ]
 }
