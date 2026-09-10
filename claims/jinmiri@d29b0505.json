@@ -1,12 +1,13 @@
 {
   "agent": "jinmiri",
   "task": "apple-login",
-  "intent": "jaehyeon님 백엔드 Apple 구현(back/dev 699c9ae2, -825)과 맞춰 프런트 redirect_uri/scope 단순화 — form_post 특수 경로 제거",
+  "intent": "주석 정정 — Apple도 별도 백엔드 경유 없이 바로 여기로 옴",
   "actor": "agent",
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-10T10:53:46.244Z",
+  "since": "2026-09-10T10:55:14.811Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/oauth/[provider]/callback.tsx",
     "frontend/src/auth/oauth.ts"
   ]
 }
