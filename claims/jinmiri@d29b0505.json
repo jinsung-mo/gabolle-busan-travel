@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-302",
+  "intent": "S15P21E201-302: 초대 링크(/invite/:token) 수락 화면",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-10T15:54:29.125Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/invite/[token].tsx",
+    "frontend/src/trip/collaboration.ts"
+  ]
+}
