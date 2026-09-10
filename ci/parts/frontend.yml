@@ -145,3 +145,76 @@ frontend:smoke:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       changes: ['frontend/**/*']
+
+# ── 실사용자 흐름 E2E — 로그인 → 여행 기본정보 → 추천 요청 (S15P21E201-775) ─────────
+#
+# 위 frontend:smoke는 "화면에 글자가 그려졌는가·콘솔에 에러가 없는가"만 본다
+# (S15P21E201-252 재발 방지용, 백엔드 없는 환경). 이 잡은 다르다 — 실제 백엔드를
+# 이 잡 안에서 띄우고, 로그인부터 추천 요청까지 실제로 눌러 본다.
+#
+# 🔴 MR마다 안 돌리고 예약(schedule)으로만 돈다. 이 저장소는 이미 한 번
+# frontend:build를 지웠다(위 주석 참고) — Metro 번들러 두 개가 동시에 돌면 러너가
+# 서로를 밀어냈기 때문이다. 이 잡은 그보다 훨씬 무겁다(백엔드 JVM 기동 + 프론트
+# 번들링 + 브라우저) — MR마다 돌리면 같은 문제가 더 크게 재발한다. ticket이 스스로
+# "MR에서는 무겁다면 스케줄로 뺄지 결정"이라고 열어 둔 길이 이것이다.
+#
+# 🔴 spring.flyway.create-schemas=false(운영 안전장치, application-dev.properties
+# 12행 주석)를 명령줄 인자로 뒤집는다 — 이 잡의 DB는 매번 새로 뜨는 이 잡 전용
+# postgres 서비스라 "운영 DB에 실수로 스키마를 만드는" 위험이 아예 없다. psql
+# 클라이언트를 이미지에 새로 깔지 않고 넘어가는 이유가 이것이다.
+frontend:e2e:
+  stage: verify
+  image: mcr.microsoft.com/playwright:v1.62.1-noble
+  services:
+    - name: postgres:16-alpine
+      alias: postgres
+  variables:
+    POSTGRES_DB: gabolle_e2e
+    POSTGRES_USER: gabolle
+    POSTGRES_PASSWORD: gabolle_ci
+    GABOLLE_DB_URL: jdbc:postgresql://postgres:5432/gabolle_e2e
+    GABOLLE_DB_USERNAME: gabolle
+    GABOLLE_DB_PASSWORD: gabolle_ci
+    GABOLLE_DB_SCHEMA: e2etest
+    GABOLLE_JWT_SECRET: e2e-only-secret-not-used-anywhere-else
+    GABOLLE_CORS_ALLOWED_ORIGINS: http://localhost:3000
+    GABOLLE_WEB_REFRESH_COOKIE_SECURE: "false"
+    GABOLLE_WEB_REFRESH_COOKIE_SAME_SITE: Lax
+    GABOLLE_SERVICE_VERSION: e2e-ci
+    GABOLLE_DEPLOYMENT_ENVIRONMENT: e2e
+    EXPO_PUBLIC_API_BASE_URL: http://localhost:8080
+    E2E_DB_URL: "postgres://gabolle:gabolle_ci@postgres:5432/gabolle_e2e?options=-csearch_path%3De2etest"
+    E2E_BASE_URL: http://localhost:3000
+    GRADLE_USER_HOME: $CI_PROJECT_DIR/.gradle-home
+  before_script: []
+  script:
+    # 🔴 이 이미지(mcr.microsoft.com/playwright)는 크로미움은 있어도 JDK가 없다 —
+    #    backend:build가 쓰는 eclipse-temurin 이미지를 통째로 못 쓰는 이유는 그
+    #    반대(크로미움이 없다)다. 둘 다 필요해서 이 잡 안에서 JDK만 얹는다.
+    - apt-get update -qq && apt-get install -y -qq openjdk-17-jdk-headless postgresql-client
+    - cd backend
+    - chmod +x gradlew
+    - until pg_isready -h postgres -U gabolle; do sleep 1; done
+    - nohup ./gradlew bootRun --args="--spring.profiles.active=dev --spring.flyway.create-schemas=true" > /tmp/backend.log 2>&1 &
+    - |
+      for i in $(seq 1 60); do
+        code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/api/v1/auth/me || echo 000)
+        [ "$code" = "401" ] && break
+        sleep 3
+      done
+      if [ "$code" != "401" ]; then echo "🔴 백엔드가 안 떴다 — 로그:"; cat /tmp/backend.log; exit 1; fi
+    - cd ../frontend
+    - npm ci --cache .npm --prefer-offline
+    - npx expo export --platform web
+    - npx serve dist -l 3000 -s &
+    - sleep 2
+    - node tools/e2e-seed-user.mjs > /tmp/seed.env
+    - export $(cat /tmp/seed.env | xargs)
+    - npx playwright test
+  artifacts:
+    when: on_failure
+    paths:
+      - frontend/test-results/
+    expire_in: 7 days
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_KIND == "e2e"
