@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-241",
-  "intent": "S15P21E201-241 — expo-image-picker 사진 접근 목적 문구 플러그인 설정 추가 (앱스토어 심사 필수)",
+  "intent": "-241 커밋",
   "actor": "agent",
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-10T11:13:54.904Z",
+  "since": "2026-09-10T11:14:42.044Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app.json"
