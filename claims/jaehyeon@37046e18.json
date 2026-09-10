@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-825",
+  "intent": "애플이 scope 를 요청하면 form_post 를 요구해 요청을 거절한다. 애플에만 scope 를 안 보내도록 고친다.",
+  "actor": null,
+  "session": "64380390-10d0-4ac5-9dcb-5e4d7cb13b25",
+  "since": "2026-09-10T14:09:29.416Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/auth/oauth.ts"
+  ]
+}
