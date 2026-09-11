@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-133",
+  "intent": "S15P21E201-133: 저장 목록 카드에 로컬 점수 유무·알레르기 확인 필요 배지 추가",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-11T00:16:37.824Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/saved.tsx"
+  ]
+}
