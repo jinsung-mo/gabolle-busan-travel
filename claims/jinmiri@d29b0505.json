@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-248",
+  "intent": "S15P21E201-248: 종료된 여행에 추억 지도(방문 경로+사진 마커) 카드를 여행 준비 탭에 추가",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-11T01:20:18.343Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(trip)/[id]/prepare.tsx",
+    "frontend/src/social/stories.ts"
+  ]
+}
