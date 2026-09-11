@@ -10,7 +10,6 @@
     "frontend/app/feed/[id].tsx",
     "frontend/app/feed/[id]/coauthors.tsx",
     "frontend/app/story-invite/[token].tsx",
-    "frontend/app/story/[id]/coauthors.tsx",
     "frontend/src/api/client.ts",
     "frontend/src/social/storyCoauthors.ts",
     "frontend/src/trip/collaboration.ts"
