@@ -1,0 +1,16 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-549",
+  "intent": "건강 제약 동의도 실제로 검사한다 — 정밀 위치와 같은 가드로 (S15P21E201-549)",
+  "actor": "agent",
+  "session": "430cfdb6-fec3-4cce-8b6c-61dd417f1973",
+  "since": "2026-09-11T01:54:08.578Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/review/application/VisitVerificationService.java",
+    "backend/src/main/java/com/gabolle/backend/trip/application/TripCreationService.java",
+    "backend/src/main/java/com/gabolle/backend/user",
+    "backend/src/test/java/com/gabolle/backend/trip",
+    "backend/src/test/java/com/gabolle/backend/user"
+  ]
+}
