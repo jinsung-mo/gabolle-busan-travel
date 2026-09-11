@@ -1,10 +1,10 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-852",
-  "intent": "정규화한 영업시간 출력을 staged 에 커밋한다. 백엔드 적재기가 배포 호스트에서 인자로 받아 읽는 입력이라 저장소에 있어야 한다.",
+  "intent": "마이그레이션 갈래 목록이 줄어들지 않는 것을 검사로 못 박는다.",
   "actor": null,
   "session": "8f77c891-3d5d-4dd1-ad65-9a20c59623fc",
-  "since": "2026-09-11T07:21:32.886Z",
+  "since": "2026-09-11T07:30:44.708Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryOpeningHoursChecker.java",
@@ -23,6 +23,7 @@
     "backend/src/test/java/com/gabolle/backend/place/PlaceCandidateQueryServiceTest.java",
     "backend/src/test/java/com/gabolle/backend/place/loader/OpeningHoursLoaderTest.java",
     "backend/src/test/java/com/gabolle/backend/place/loader/OpeningHoursReaderTest.java",
+    "backend/src/test/java/com/gabolle/backend/place/migration/PlaceFeatureTypeConstraintTest.java",
     "backend/src/test/java/com/gabolle/backend/place/service/OpeningHoursValueTest.java",
     "bigData/.gitignore",
     "bigData/data/staged/opening-hours.ndjson"
