@@ -1,0 +1,12 @@
+{
+  "agent": "claude-survey-0911",
+  "task": "S15P21E201-851",
+  "intent": "짝 비교 v3 를 실제 설문에 올린다",
+  "actor": null,
+  "session": "56f35003-8b32-44b9-9f76-62b61bdc35be",
+  "since": "2026-09-11T06:18:04.272Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "survey-recommend"
+  ]
+}
