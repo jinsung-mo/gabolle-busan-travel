@@ -1,13 +1,14 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-846,S15P21E201-845",
-  "intent": "S15P21E201-846 동행자 초대 URL 버그 수정 + S15P21E201-845 기록 공동 작성 프론트 화면",
+  "task": "S15P21E201-845",
+  "intent": "S15P21E201-845 기록 공동 작성 참여자 화면 (경로 정정: story/[id] 아님 feed/[id])",
   "actor": "agent",
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-11T02:47:08.999Z",
+  "since": "2026-09-11T02:54:54.378Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/feed/[id].tsx",
+    "frontend/app/feed/[id]/coauthors.tsx",
     "frontend/app/story-invite/[token].tsx",
     "frontend/app/story/[id]/coauthors.tsx",
     "frontend/src/api/client.ts",
