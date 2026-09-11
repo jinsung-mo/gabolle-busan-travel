@@ -1,0 +1,12 @@
+{
+  "agent": "claude-survey-0911",
+  "task": "S15P21E201-842",
+  "intent": "짝 비교 v3 설계",
+  "actor": null,
+  "session": "56f35003-8b32-44b9-9f76-62b61bdc35be",
+  "since": "2026-09-11T02:20:40.056Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "survey-recommend/design-v3.mjs"
+  ]
+}
