@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-800",
+  "intent": "S15P21E201-800 인증된 ZAP 재스캔 결과를 취약점 보고서에 이어 붙인다",
+  "actor": "agent",
+  "session": "311ec94e-6435-4653-937e-be461e074acd",
+  "since": "2026-09-11T01:29:40.602Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/VULNERABILITY-REPORT.md"
+  ]
+}
