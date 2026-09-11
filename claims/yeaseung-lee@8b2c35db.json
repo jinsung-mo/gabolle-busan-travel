@@ -1,12 +1,14 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-811",
-  "intent": "S15P21E201-811 세 배포 파이프라인이 겹치지 않도록 상호 배제 락 추가",
+  "intent": "S15P21E201-811 세 배포 파이프라인이 겹치지 않도록 상호 배제 락 추가 (frontend·infra)",
   "actor": "agent",
   "session": "311ec94e-6435-4653-937e-be461e074acd",
-  "since": "2026-09-11T01:41:50.338Z",
+  "since": "2026-09-11T01:43:06.728Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/Jenkinsfile"
+    "backend/Jenkinsfile",
+    "frontend/Jenkinsfile",
+    "infra/personalization/Jenkinsfile"
   ]
 }
