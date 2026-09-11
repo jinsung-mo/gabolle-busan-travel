@@ -12,9 +12,6 @@
     "backend/docker-compose.yml",
     "backend/gradle.lockfile",
     "backend/src/main/java/com/gabolle/backend/assistant",
-    "backend/src/test/java/com/gabolle/backend/assistant",
-    "frontend/app/chat.tsx",
-    "frontend/src/assistant/assistantApi.ts",
-    "frontend/src/assistant/intent.ts"
+    "backend/src/test/java/com/gabolle/backend/assistant"
   ]
 }
