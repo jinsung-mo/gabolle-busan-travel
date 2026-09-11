@@ -145,3 +145,136 @@ frontend:smoke:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       changes: ['frontend/**/*']
+
+# ── 실사용자 흐름 E2E — 로그인 → 여행 기본정보 → 추천 요청 (S15P21E201-775) ─────────
+#
+# 위 frontend:smoke는 "화면에 글자가 그려졌는가·콘솔에 에러가 없는가"만 본다
+# (S15P21E201-252 재발 방지용, 백엔드 없는 환경). 이 잡은 다르다 — 실제 백엔드를
+# 이 잡 안에서 띄우고, 로그인부터 추천 요청까지 실제로 눌러 본다.
+#
+# 🔴 MR마다 안 돌리고 예약(schedule)으로만 돈다. 이 저장소는 이미 한 번
+# frontend:build를 지웠다(위 주석 참고) — Metro 번들러 두 개가 동시에 돌면 러너가
+# 서로를 밀어냈기 때문이다. 이 잡은 그보다 훨씬 무겁다(백엔드 JVM 기동 + 프론트
+# 번들링 + 브라우저) — MR마다 돌리면 같은 문제가 더 크게 재발한다. ticket이 스스로
+# "MR에서는 무겁다면 스케줄로 뺄지 결정"이라고 열어 둔 길이 이것이다.
+#
+# 🔴 spring.flyway.create-schemas=false(운영 안전장치, application-dev.properties
+# 12행 주석)를 명령줄 인자로 뒤집는다 — 이 잡의 DB는 매번 새로 뜨는 이 잡 전용
+# postgres 서비스라 "운영 DB에 실수로 스키마를 만드는" 위험이 아예 없다. psql
+# 클라이언트를 이미지에 새로 깔지 않고 넘어가는 이유가 이것이다.
+#
+# 🔴 2026-09-11 실측 — 스케줄을 처음 켠 첫 실행이 로그인 단계에서
+#    "서버에 연결할 수 없어요"(ApiUnavailableError, client.ts)로 실패했다
+#    (파이프라인 188557 · 잡 513302). 같은 컨테이너 하나가 postgres·백엔드
+#    JVM(bootRun, JIT 미완료)·Metro 번들링·크로미움을 전부 동시에 떠안는 구조라,
+#    "헬스체크(단순 401)는 통과했지만 그 뒤 npm ci + expo export(약 100초짜리
+#    CPU 작업)가 도는 동안 JVM이 첫 실제 요청(로그인)의 Hibernate 지연 초기화를
+#    미처 못 끝내 응답이 소켓 단에서 막혔다"는 쪽에 무게를 둔다 — 로그에 백엔드
+#    쪽 에러가 없고(로그를 못 받아 뒀던 것도 원인 — 이번에 고친다), CORS 설정도
+#    코드로 확인했을 때 이상이 없었다.
+#
+#    아래 세 가지로 완화한다. 그래도 다시 나면 백엔드 로그(이제 아티팩트로
+#    남는다)를 먼저 본다 — 자원 경합이 아니라 다른 원인일 수 있다.
+frontend:e2e:
+  stage: verify
+  image: mcr.microsoft.com/playwright:v1.62.1-noble
+  services:
+    - name: postgres:16-alpine
+      alias: postgres
+  variables:
+    POSTGRES_DB: gabolle_e2e
+    POSTGRES_USER: gabolle
+    POSTGRES_PASSWORD: gabolle_ci
+    GABOLLE_DB_URL: jdbc:postgresql://postgres:5432/gabolle_e2e
+    GABOLLE_DB_USERNAME: gabolle
+    GABOLLE_DB_PASSWORD: gabolle_ci
+    GABOLLE_DB_SCHEMA: e2etest
+    GABOLLE_JWT_SECRET: e2e-only-secret-not-used-anywhere-else
+    GABOLLE_CORS_ALLOWED_ORIGINS: http://localhost:3000
+    GABOLLE_WEB_REFRESH_COOKIE_SECURE: "false"
+    GABOLLE_WEB_REFRESH_COOKIE_SAME_SITE: Lax
+    GABOLLE_SERVICE_VERSION: e2e-ci
+    GABOLLE_DEPLOYMENT_ENVIRONMENT: e2e
+    # 🔴 2026-09-11 정정 — 바로 위 "해가 되지 않는다"는 틀렸다. 127.0.0.1로 고정한
+    #    뒤(파이프라인 188579) 로그인 자체는 200으로 성공했는데, 로그인 직후 앱이
+    #    보내는 조용한 갱신 요청(POST /auth/web/refresh)이 401로 돌아와 도로
+    #    로그아웃 상태가 됐다 — 최종 확인 화면에 "이 조건으로 일정 만들기"가 아니라
+    #    "로그인하고 일정 만들기"가 떴다. Playwright trace의 네트워크 로그를 보니
+    #    원인이 SameSite=Lax 쿠키였다: 로그인 응답이 심는 gabolle_refresh_token
+    #    쿠키는 Lax라 "동일 사이트(site)"가 아닌 요청에는 브라우저가 아예 안
+    #    붙인다. "localhost"와 "127.0.0.1"은 둘 다 루프백을 가리켜도 사이트
+    #    판정에서는 **다른 site**다(포트만 다른 것과 다르다 — 호스트 이름 자체가
+    #    다르다). frontend(localhost:3000)는 그대로인데 backend만 127.0.0.1로
+    #    바꾼 것이 정확히 이 어긋남을 만들었다 — 바꾸기 전(둘 다 localhost, 포트만
+    #    다름)에는 같은 site라 문제가 없었다. localhost로 되돌린다.
+    EXPO_PUBLIC_API_BASE_URL: http://localhost:8080
+    # 🔴 기본값 12초(client.ts) 그대로 두면, npm ci + expo export가 도는 동안
+    #    JVM이 첫 실제 요청의 지연 초기화를 못 끝냈을 때 타임아웃이 먼저 끊고
+    #    "서버 응답이 늦어…"로 죽는다. 이 잡 전용으로만 넉넉히 둔다 — 앱 기본값도,
+    #    다른 환경도 안 건드린다.
+    EXPO_PUBLIC_API_TIMEOUT_MS: "30000"
+    E2E_DB_URL: "postgres://gabolle:gabolle_ci@postgres:5432/gabolle_e2e?options=-csearch_path%3De2etest"
+    E2E_BASE_URL: http://localhost:3000
+    GRADLE_USER_HOME: $CI_PROJECT_DIR/.gradle-home
+  before_script: []
+  script:
+    # 🔴 이 이미지(mcr.microsoft.com/playwright)는 크로미움은 있어도 JDK가 없다 —
+    #    backend:build가 쓰는 eclipse-temurin 이미지를 통째로 못 쓰는 이유는 그
+    #    반대(크로미움이 없다)다. 둘 다 필요해서 이 잡 안에서 JDK만 얹는다.
+    - apt-get update -qq && apt-get install -y -qq openjdk-17-jdk-headless postgresql-client
+    - cd backend
+    # 🔴 2026-09-11 실측 — 세 번의 스케줄 실행이 전부 같은 자리(로그인)에서
+    #    "서버에 연결할 수 없어요"로 죽었다. 원인은 IPv6도 자원 경합도 아니었다 —
+    #    Playwright trace의 콘솔 로그가 실제 CORS 에러를 그대로 남겼다:
+    #    "Request header field x-session-token is not allowed by
+    #    Access-Control-Allow-Headers in preflight response." 이건 S15P21E201-775가
+    #    back/dev에 이미 고친 바로 그 버그다 — 그런데 **이 잡은 front/dev 체크아웃의
+    #    backend/ 를 그대로 쓴다.** front/dev 와 back/dev 는 서로 다른 브랜치라
+    #    promote(파트 dev → 파트 main, CLAUDE.md 2절)가 돌기 전까지는 서로의
+    #    백엔드 변경을 안 받는다 — 그래서 이 잡은 이미 고쳐진 CORS 버그를 매번
+    #    다시 재현하고 있었다. 프론트 E2E가 실제로 검증해야 하는 것은 "지금 이
+    #    프론트가 지금 운영에 가장 가까운 백엔드와 맞물리는가"이지 front/dev 에
+    #    우연히 박제된 백엔드 스냅샷이 아니다 — 그래서 back/dev HEAD로 backend/
+    #    를 덮어쓰고 그걸로 띄운다.
+    - git fetch --depth 1 origin back/dev
+    - git checkout FETCH_HEAD -- .
+    - chmod +x gradlew
+    - until pg_isready -h postgres -U gabolle; do sleep 1; done
+    - nohup ./gradlew bootRun --args="--spring.profiles.active=dev --spring.flyway.create-schemas=true" > /tmp/backend.log 2>&1 &
+    - |
+      for i in $(seq 1 60); do
+        code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/api/v1/auth/me || echo 000)
+        [ "$code" = "401" ] && break
+        sleep 3
+      done
+      if [ "$code" != "401" ]; then echo "🔴 백엔드가 안 떴다 — 로그:"; cat /tmp/backend.log; exit 1; fi
+    # 🔴 워밍업 — 위 헬스체크(/auth/me)는 보안 필터만 타고 끝나는 가벼운 401이라
+    #    Hibernate 지연 초기화를 안 건드린다. 실제 여정의 첫 요청(회원가입)과
+    #    같은 무거운 경로를 여기서 한 번 미리 태워서, 뒤이은 npm ci + expo export
+    #    (CPU를 몇십 초간 다 쓴다) 동안 JVM이 그 초기화까지 끝내 두게 한다.
+    #    실패해도 무시한다 — 이건 데이터가 아니라 JIT/캐시를 데우는 것뿐이다.
+    - |
+      curl -s -o /dev/null -X POST http://localhost:8080/api/v1/auth/signup \
+        -H "Content-Type: application/json" \
+        -d '{"email":"warmup-discard@example.com","password":"WarmupOnly1234!","displayName":"warmup","language":"KO","ageGateAccepted":true,"consents":{"TERMS_OF_SERVICE":true,"PRIVACY_POLICY":true}}' || true
+    - cd ../frontend
+    - npm ci --cache .npm --prefer-offline
+    - npx expo export --platform web
+    - npx serve dist -l 3000 -s &
+    - sleep 2
+    - node tools/e2e-seed-user.mjs > /tmp/seed.env
+    - export $(cat /tmp/seed.env | xargs)
+    - npx playwright test
+  after_script:
+    # 🔴 실패 원인이 백엔드 쪽일 때 이걸 못 받아 두면 다음에도 똑같이 추측만
+    #    한다(2026-09-11, 첫 스케줄 실행 실패 때 실제로 이것 때문에 못 봤다).
+    #    아티팩트 경로(frontend/test-results/)는 이미 있으니 그 안에 같이 담는다.
+    - mkdir -p frontend/test-results
+    - cp /tmp/backend.log frontend/test-results/backend.log 2>/dev/null || true
+  artifacts:
+    when: on_failure
+    paths:
+      - frontend/test-results/
+    expire_in: 7 days
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_KIND == "e2e"
