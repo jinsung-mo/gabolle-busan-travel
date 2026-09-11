@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-859",
+  "intent": "휠체어 경사 임계의 근거를 채운다 — 값은 안 바꾼다",
+  "actor": null,
+  "session": "ab827ae5-46bd-4972-b821-b33c8b30c957",
+  "since": "2026-09-11T13:04:57.271Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/config/ontology.jsonld"
+  ]
+}
