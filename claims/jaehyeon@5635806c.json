@@ -1,0 +1,13 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-854",
+  "intent": "관광공사 비음식 328곳을 새 장소로 적재한다. id 는 contentid 에서 계산하고 상가업소번호 기반 id 와 겹치지 않는 것을 검사로 못 박는다. category 는 원천 대분류(cat1)가 앱 낱말과 맞는 것만 넣고 레포츠·숙박은 비운다.",
+  "actor": null,
+  "session": "8f77c891-3d5d-4dd1-ad65-9a20c59623fc",
+  "since": "2026-09-11T06:29:20.456Z",
+  "ttlMs": 9000000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/loader",
+    "backend/src/test/java/com/gabolle/backend/place"
+  ]
+}
