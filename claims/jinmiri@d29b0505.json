@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-850",
+  "intent": "영문 TourAPI 수집기 추가 - 장소 이름/소개 번역용",
+  "actor": null,
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-11T05:35:18.441Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/collect/tourapi-en.mjs",
+    "bigData/config/sources.json"
+  ]
+}
