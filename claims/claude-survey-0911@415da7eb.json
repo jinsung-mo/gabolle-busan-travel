@@ -1,0 +1,14 @@
+{
+  "agent": "claude-survey-0911",
+  "task": "S15P21E201-839",
+  "intent": "시제품 삭제와 링크 정리",
+  "actor": null,
+  "session": "56f35003-8b32-44b9-9f76-62b61bdc35be",
+  "since": "2026-09-11T01:49:08.910Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "docs/SURVEY-CONSENT.md",
+    "survey-place",
+    "survey-recommend/README.md"
+  ]
+}
