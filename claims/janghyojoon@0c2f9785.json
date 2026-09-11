@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-241",
+  "intent": "겹침 경고 실제 동작 확인",
+  "actor": null,
+  "session": "69b35186-050b-4b7f-879a-c46a590d0d25",
+  "since": "2026-09-11T00:32:24.259Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app.json"
+  ]
+}
