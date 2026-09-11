@@ -1,0 +1,12 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-549",
+  "intent": "경계값 검사의 둘째 사용자에게도 정밀 위치 동의를 준다",
+  "actor": "agent",
+  "session": "430cfdb6-fec3-4cce-8b6c-61dd417f1973",
+  "since": "2026-09-11T05:47:57.280Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/review/VisitVerificationIntegrationTest.java"
+  ]
+}
