@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-848",
+  "intent": "Health Check 재시도 예산 400초->900초로 늘림",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-11T03:38:03.729Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "infra/personalization/Jenkinsfile"
+  ]
+}
