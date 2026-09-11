@@ -21,9 +21,6 @@
     "backend/src/test/java/com/gabolle/backend/functional",
     "backend/src/test/java/com/gabolle/backend/moderation",
     "backend/src/test/java/com/gabolle/backend/security",
-    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java",
-    "bigData/.gitignore",
-    "bigData/config/sources.json",
-    "bigData/data/raw/tourapi"
+    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java"
   ]
 }
