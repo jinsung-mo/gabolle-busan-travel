@@ -1,0 +1,15 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-830",
+  "intent": "S15P21E201-830: 웹에서 소셜 로그인을 팝업 대신 전체 페이지 이동 방식으로 바꿔 모바일 팝업 차단을 피한다",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-11T01:33:26.537Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(auth)/sign-in.tsx",
+    "frontend/app/oauth/[provider]/callback.tsx",
+    "frontend/src/auth/oauth.ts",
+    "frontend/src/auth/pendingReturnTo.ts"
+  ]
+}
