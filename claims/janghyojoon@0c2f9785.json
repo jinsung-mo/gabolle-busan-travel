@@ -1,12 +1,12 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-331",
-  "intent": "중간 저장·이어받기·일일한도 구분",
+  "intent": "무장애 수집기에도 중간 저장·이어받기·한도 구분",
   "actor": null,
   "session": "69b35186-050b-4b7f-879a-c46a590d0d25",
-  "since": "2026-09-11T01:24:24.182Z",
+  "since": "2026-09-11T01:55:46.901Z",
   "ttlMs": 1800000,
   "paths": [
-    "bigData/collect/tourapi.mjs"
+    "bigData/collect/tourapi-barrier-free.mjs"
   ]
 }
