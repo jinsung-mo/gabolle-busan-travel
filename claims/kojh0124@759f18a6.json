@@ -1,0 +1,14 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-549",
+  "intent": "CI 실패 수정 — 동의 가드 도입으로 깨진 슬라이스 스캔과 픽스처",
+  "actor": "agent",
+  "session": "430cfdb6-fec3-4cce-8b6c-61dd417f1973",
+  "since": "2026-09-11T05:29:44.540Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/functional",
+    "backend/src/test/java/com/gabolle/backend/review",
+    "backend/src/test/java/com/gabolle/testslice"
+  ]
+}
