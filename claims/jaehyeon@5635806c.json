@@ -1,0 +1,14 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-833",
+  "intent": "애플의 form_post 결과를 받는 서버 경로 추가(POST /api/v1/auth/oauth/apple/form-post). 받은 code/state 를 설정에 박힌 화면 주소로만 리다이렉트한다. 이메일은 서명된 id_token 에서 이미 읽고 있어 계정 판정은 안 건드린다.",
+  "actor": null,
+  "session": "8f77c891-3d5d-4dd1-ad65-9a20c59623fc",
+  "since": "2026-09-11T01:20:30.213Z",
+  "ttlMs": 10800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/auth",
+    "backend/src/main/resources/application-dev.properties",
+    "backend/src/test/java/com/gabolle/backend/functional"
+  ]
+}
