@@ -1,0 +1,13 @@
+{
+  "agent": "claude-survey-0911",
+  "task": "S15P21E201-839",
+  "intent": "깨진 링크 정리",
+  "actor": null,
+  "session": "56f35003-8b32-44b9-9f76-62b61bdc35be",
+  "since": "2026-09-11T01:49:51.195Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "docs/SURVEY-CONSENT.md",
+    "survey-recommend/README.md"
+  ]
+}
