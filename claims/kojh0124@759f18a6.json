@@ -1,0 +1,13 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-549",
+  "intent": "CI 잔여 실패 둘 — 슬라이스 user 스캔, 이벤트 주체 계정 생성",
+  "actor": "agent",
+  "session": "430cfdb6-fec3-4cce-8b6c-61dd417f1973",
+  "since": "2026-09-11T05:50:48.245Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/event/OutboxTransactionIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/testslice/RecommendationEngineAbsentSliceApplication.java"
+  ]
+}
