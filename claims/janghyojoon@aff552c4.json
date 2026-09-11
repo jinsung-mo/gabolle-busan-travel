@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-861",
+  "intent": "조사된 가격대를 place_feature 로 옮긴다 — 유명세 절반은 뺀다",
+  "actor": null,
+  "session": "ab827ae5-46bd-4972-b821-b33c8b30c957",
+  "since": "2026-09-11T14:31:59.308Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/loader/PlaceFeatureLoader.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/PlaceFeatureLoaderRunner.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/PlaceFeatureNdjsonReader.java",
+    "backend/src/test/java/com/gabolle/backend/place/PlaceFeatureLoaderIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/place/PlaceFeatureLoaderTest.java"
+  ]
+}
