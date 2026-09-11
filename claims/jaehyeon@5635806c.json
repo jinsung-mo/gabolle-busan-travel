@@ -1,0 +1,15 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-858",
+  "intent": "순서 바꾸기에만 실리던 영업시간 판정을 장소 더하기·재계획·고정·해제·되돌리기 응답에도 싣는다. 판정기에 여러 날을 한 번에 보는 checkAll 을 더한다.",
+  "actor": null,
+  "session": "8f77c891-3d5d-4dd1-ad65-9a20c59623fc",
+  "since": "2026-09-11T08:36:28.791Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryEditService.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryOpeningHoursChecker.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/presentation/ItineraryEditController.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/ItineraryEditResponse.java"
+  ]
+}
