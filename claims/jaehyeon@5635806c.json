@@ -1,10 +1,10 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-852",
-  "intent": "영업시간 적재와 판정. 🔴 앞서 디렉터리로 걸었던 것을 파일로 좁혔다 — 장효준의 feat/back/place-feature-link 가 같은 place/loader 에 다른 파일을 넣고 있어서 통째로 막지 않는다.",
+  "intent": "정규화한 영업시간 출력을 staged 에 커밋한다. 백엔드 적재기가 배포 호스트에서 인자로 받아 읽는 입력이라 저장소에 있어야 한다.",
   "actor": null,
   "session": "8f77c891-3d5d-4dd1-ad65-9a20c59623fc",
-  "since": "2026-09-11T07:18:03.332Z",
+  "since": "2026-09-11T07:21:32.886Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryOpeningHoursChecker.java",
@@ -23,6 +23,8 @@
     "backend/src/test/java/com/gabolle/backend/place/PlaceCandidateQueryServiceTest.java",
     "backend/src/test/java/com/gabolle/backend/place/loader/OpeningHoursLoaderTest.java",
     "backend/src/test/java/com/gabolle/backend/place/loader/OpeningHoursReaderTest.java",
-    "backend/src/test/java/com/gabolle/backend/place/service/OpeningHoursValueTest.java"
+    "backend/src/test/java/com/gabolle/backend/place/service/OpeningHoursValueTest.java",
+    "bigData/.gitignore",
+    "bigData/data/staged/opening-hours.ndjson"
   ]
 }
