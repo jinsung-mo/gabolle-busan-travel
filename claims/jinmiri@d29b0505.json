@@ -1,12 +1,13 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-terminal-i18n-signup",
-  "intent": "회원가입 언어 선택이 실제 화면 언어에 반영되지 않는 버그 수정",
+  "intent": "OAuth 회원가입 언어 선택도 같은 버그 수정",
   "actor": null,
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-11T13:42:40.406Z",
+  "since": "2026-09-11T13:43:13.755Z",
   "ttlMs": 1800000,
   "paths": [
+    "frontend/app/(auth)/oauth-signup.tsx",
     "frontend/app/(auth)/sign-up.tsx"
   ]
 }
