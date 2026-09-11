@@ -1,15 +1,16 @@
 {
   "agent": "kojh0124",
   "task": "S15P21E201-549",
-  "intent": "행동 개인화 OFF·초기화를 실제로 반영한다 — 수집·적재·탈퇴 경로 전부",
+  "intent": "행동 신호 이벤트 목록을 EventType 으로 옮긴다 — 수집 차단·초기화·적재가 같은 목록을 본다",
   "actor": "agent",
   "session": "430cfdb6-fec3-4cce-8b6c-61dd417f1973",
-  "since": "2026-09-11T00:24:23.839Z",
+  "since": "2026-09-11T00:25:13.646Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/auth/service/AccountDeletionService.java",
     "backend/src/main/java/com/gabolle/backend/batch/application/TasteVectorFoldService.java",
     "backend/src/main/java/com/gabolle/backend/event/application/EventIngestService.java",
+    "backend/src/main/java/com/gabolle/backend/event/domain/EventType.java",
     "backend/src/main/java/com/gabolle/backend/event/presentation",
     "backend/src/main/java/com/gabolle/backend/user",
     "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java"
