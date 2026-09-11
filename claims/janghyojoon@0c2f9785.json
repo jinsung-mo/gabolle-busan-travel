@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-331",
+  "intent": "MR !555 충돌 해소·숫자 오늘 실측으로",
+  "actor": null,
+  "session": "69b35186-050b-4b7f-879a-c46a590d0d25",
+  "since": "2026-09-11T06:12:08.250Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/config/sources.json"
+  ]
+}
