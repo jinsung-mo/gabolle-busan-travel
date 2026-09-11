@@ -1,0 +1,12 @@
+{
+  "agent": "claude-rulesplit-0911",
+  "task": "S15P21E201-800",
+  "intent": "팀 저장소 CLAUDE.md 최소화",
+  "actor": null,
+  "session": "56f35003-8b32-44b9-9f76-62b61bdc35be",
+  "since": "2026-09-11T00:59:22.011Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "CLAUDE.md"
+  ]
+}
