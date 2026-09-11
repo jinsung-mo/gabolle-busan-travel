@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-777",
+  "intent": "S15P21E201-777 실기기(Galaxy S10)로 처음 검증 — 키보드가 이름 입력칸을 가리는 실기기 전용 문제 수정",
+  "actor": "agent",
+  "session": "311ec94e-6435-4653-937e-be461e074acd",
+  "since": "2026-09-11T00:39:20.072Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/.maestro/signup.yaml",
+    "frontend/README.md"
+  ]
+}
