@@ -1,0 +1,13 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-829",
+  "intent": "여행에 달린 기록을 조회하는 경로(GET /api/v1/trips/{tripId}/stories)를 story 모듈에 추가한다. 열람 판정은 기존 StoryVisibilityPolicy 를 그대로 지나가고, 조정 중인 기록은 제외한다. trip 모듈과 auth 는 건드리지 않는다.",
+  "actor": null,
+  "session": "43b97537-a068-4664-b11b-5942ef9774ac",
+  "since": "2026-09-11T01:23:09.974Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/story",
+    "backend/src/test/java/com/gabolle/backend/story"
+  ]
+}
