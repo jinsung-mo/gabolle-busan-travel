@@ -1,10 +1,10 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-802",
-  "intent": "S15P21E201-802 — 챗봇 화면이 로컬 정규식 대신 실제 백엔드 /api/v1/assistant/messages를 호출하도록 연결",
+  "intent": "S15P21E201-802 — 챗봇 API 연결용 신규 파일",
   "actor": "agent",
   "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
-  "since": "2026-09-11T03:09:44.531Z",
+  "since": "2026-09-11T03:18:07.480Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/.env.example",
@@ -14,6 +14,7 @@
     "backend/src/main/java/com/gabolle/backend/assistant",
     "backend/src/test/java/com/gabolle/backend/assistant",
     "frontend/app/chat.tsx",
+    "frontend/src/assistant/assistantApi.ts",
     "frontend/src/assistant/intent.ts"
   ]
 }
