@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-map-night-scene",
+  "intent": "밤 장면의 빈 발밑을 채운다 — 물가 보행로를 OSM 에서 뽑아 조명 띠로 놓는다",
+  "actor": "agent",
+  "session": "7ea42c63-52b2-4749-a3b5-ff821de049bf",
+  "since": "2026-09-11T15:02:12.737Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "city3d-spike/promenade.mjs",
+    "city3d-spike/public/night-scene.html"
+  ]
+}
