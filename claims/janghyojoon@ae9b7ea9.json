@@ -1,0 +1,22 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-flow",
+  "intent": "가동 상태 페이지 하단에 데이터 흐름도 추가 — 파트별 조각 파일을 모아 그리고, 증거 파일 유무로 끊긴 경로를 표시한다",
+  "actor": "agent",
+  "session": "7ea42c63-52b2-4749-a3b5-ff821de049bf",
+  "since": "2026-09-12T02:37:45.498Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "ai/dataflow.json",
+    "backend/dataflow.json",
+    "bigData/dataflow.json",
+    "ci/status/flow",
+    "ci/status/install-status.sh",
+    "ci/status/uptime.html",
+    "eval/dataflow.json",
+    "frontend/dataflow.json",
+    "infra/dataflow.json",
+    "survey-place/dataflow.json",
+    "survey-recommend/dataflow.json"
+  ]
+}
