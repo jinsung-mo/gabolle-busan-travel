@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-813",
+  "intent": "고아 데모 화면(edit.tsx) 정리 및 prepare.tsx 깨진 링크 수정",
+  "actor": null,
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-12T12:38:19.494Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(trip)/[id]/edit.tsx",
+    "frontend/app/(trip)/[id]/prepare.tsx"
+  ]
+}
