@@ -1,15 +1,17 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-335",
-  "intent": "공유된 일정 보기 화면(-335)과 내 조건으로 새 여행 만들기(-340/-164) 구현",
+  "intent": "공유 일정 보기 화면 신규 파일",
   "actor": null,
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-12T11:28:50.445Z",
-  "ttlMs": 2400000,
+  "since": "2026-09-12T11:35:13.262Z",
+  "ttlMs": 1200000,
   "paths": [
     "frontend/app/(trip)/[id]/share.tsx",
+    "frontend/app/s/[token].tsx",
     "frontend/src/api/tripApi.ts",
     "frontend/src/plan/PlanProvider.tsx",
-    "frontend/src/plan/recommendationJob.ts"
+    "frontend/src/plan/recommendationJob.ts",
+    "frontend/src/share/sharedItinerary.ts"
   ]
 }
