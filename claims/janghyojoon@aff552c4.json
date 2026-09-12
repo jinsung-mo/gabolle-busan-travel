@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-881",
+  "intent": "사진을 바꿨는데 서버 허용 목록을 안 고쳤다 — 목록을 맞추고 시작할 때 대조한다",
+  "actor": "agent",
+  "session": "ab827ae5-46bd-4972-b821-b33c8b30c957",
+  "since": "2026-09-12T13:47:06.170Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "survey-recommend/server.mjs"
+  ]
+}
