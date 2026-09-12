@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-user-bugreport",
+  "intent": "내가 원하는 한국어 문장을 직접 입력해 들을 수 있는 기능 추가",
+  "actor": null,
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-12T01:27:08.939Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/field/speak.tsx"
+  ]
+}
