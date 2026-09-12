@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-875",
+  "intent": "2차 3단계 — 짝 비교를 좌우 표로, top_was → left_was (마이그레이션 0008), form_version 8, 공용 머리줄을 앱 바+진행 막대로",
+  "actor": "agent",
+  "session": "ab827ae5-46bd-4972-b821-b33c8b30c957",
+  "since": "2026-09-12T11:56:48.291Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "survey-recommend/README.md",
+    "survey-recommend/index.html",
+    "survey-recommend/migrations",
+    "survey-recommend/schema.sql",
+    "survey-recommend/server.mjs"
+  ]
+}
