@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-865",
-  "intent": "상태 페이지 데이터 흐름도 커밋 — 조각 파일과 그리는 코드, 설치·CI 연결",
+  "intent": "데이터 흐름 조각 검사 잡을 common 파트 파일에 넣는다 (뿌리 대신 — 뿌리는 파트 승격마다 충돌한다)",
   "actor": "agent",
   "session": "7ea42c63-52b2-4749-a3b5-ff821de049bf",
-  "since": "2026-09-12T03:01:39.968Z",
+  "since": "2026-09-12T03:02:23.796Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitignore",
@@ -12,6 +12,7 @@
     "ai/dataflow.json",
     "backend/dataflow.json",
     "bigData/dataflow.json",
+    "ci/parts/common.yml",
     "ci/status/flow",
     "ci/status/install-status.sh",
     "ci/status/uptime.html",
