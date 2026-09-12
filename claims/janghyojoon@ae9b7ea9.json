@@ -1,15 +1,15 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-865",
-  "intent": "머지로 딸려 오는 남의 작업 — 내가 고치는 것이 아니라 common/dev 를 받아오는 중이다",
+  "intent": "지워진 survey-place 를 조각 파일이 되살려 놨다 — 지우고, 짝 비교를 실제 자리인 survey-recommend 로 옮긴다",
   "actor": "agent",
   "session": "7ea42c63-52b2-4749-a3b5-ff821de049bf",
-  "since": "2026-09-12T03:36:16.943Z",
+  "since": "2026-09-12T05:21:40.562Z",
   "ttlMs": 2700000,
   "paths": [
-    ".gitlab-ci.yml",
-    "infra/personalization/compose.yaml",
-    "survey-recommend/design-v3.mjs",
-    "survey-recommend/index.html"
+    "bigData/dataflow.json",
+    "eval/dataflow.json",
+    "survey-place/dataflow.json",
+    "survey-recommend/dataflow.json"
   ]
 }
