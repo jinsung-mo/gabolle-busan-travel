@@ -1,12 +1,24 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-flow",
-  "intent": "데이터 흐름 조각 검사 잡 추가 — 조각이 없는 칸을 가리키거나 증거 경로가 틀리면 MR 에서 빨개지게",
+  "task": "S15P21E201-865",
+  "intent": "상태 페이지 데이터 흐름도 커밋 — 조각 파일과 그리는 코드, 설치·CI 연결",
   "actor": "agent",
   "session": "7ea42c63-52b2-4749-a3b5-ff821de049bf",
-  "since": "2026-09-12T02:54:41.922Z",
+  "since": "2026-09-12T03:01:39.968Z",
   "ttlMs": 2700000,
   "paths": [
-    ".gitlab-ci.yml"
+    ".gitignore",
+    ".gitlab-ci.yml",
+    "ai/dataflow.json",
+    "backend/dataflow.json",
+    "bigData/dataflow.json",
+    "ci/status/flow",
+    "ci/status/install-status.sh",
+    "ci/status/uptime.html",
+    "eval/dataflow.json",
+    "frontend/dataflow.json",
+    "infra/dataflow.json",
+    "survey-place/dataflow.json",
+    "survey-recommend/dataflow.json"
   ]
 }
