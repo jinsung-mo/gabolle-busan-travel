@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-872",
+  "intent": "eas.json 설정(ascAppId·appVersionSource 등)을 커밋해서 재현 가능하게 만든다",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-12T10:52:52.564Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/eas.json"
+  ]
+}
