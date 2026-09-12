@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-470",
+  "intent": "기념품샵 지도+거리순 목록 전용 화면(P-19) 신설 — 마지막 방문지 기준",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-12T13:08:48.840Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(trip)/[id]/prepare.tsx",
+    "frontend/app/(trip)/[id]/souvenirs.tsx",
+    "frontend/src/discovery/lastVisitedPlace.ts"
+  ]
+}
