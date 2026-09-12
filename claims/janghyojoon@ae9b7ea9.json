@@ -1,15 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-865",
-  "intent": "지워진 survey-place 를 조각 파일이 되살려 놨다 — 지우고, 짝 비교를 실제 자리인 survey-recommend 로 옮긴다",
+  "task": "S15P21E201-885",
+  "intent": "설문 마감을 9/14 → 9/18(금) 로 늘리고 추첨을 9/19(토) 로 옮기는 문구 두 군데를 고친다",
   "actor": "agent",
   "session": "7ea42c63-52b2-4749-a3b5-ff821de049bf",
-  "since": "2026-09-12T05:21:40.562Z",
+  "since": "2026-09-12T15:16:26.028Z",
   "ttlMs": 2700000,
   "paths": [
-    "bigData/dataflow.json",
-    "eval/dataflow.json",
-    "survey-place/dataflow.json",
-    "survey-recommend/dataflow.json"
+    "docs/SURVEY-CONSENT.md",
+    "survey-recommend/index.html"
   ]
 }
