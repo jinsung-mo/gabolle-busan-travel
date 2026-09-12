@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-866",
+  "intent": "MinIO 가 도커 허브에서 사라져 backend:build 가 전부 죽는다 — 같은 태그를 quay.io 에서 받게 주소만 바꾼다",
+  "actor": "agent",
+  "session": "7ea42c63-52b2-4749-a3b5-ff821de049bf",
+  "since": "2026-09-12T03:20:21.490Z",
+  "ttlMs": 2700000,
+  "paths": [
+    ".gitlab-ci.yml",
+    "infra/personalization/compose.yaml"
+  ]
+}
