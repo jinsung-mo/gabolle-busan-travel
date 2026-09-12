@@ -1,15 +1,16 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-user-bugreport",
-  "intent": "홈 화면 버그 리포트 대응 — 언어배지/알림종 겹침, 카드 이미지 용량",
+  "intent": "느리게 버튼 눌러도 보통 버튼 UI가 바뀌는 버그 수정",
   "actor": null,
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-12T00:49:13.567Z",
+  "since": "2026-09-12T00:50:05.855Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
     "frontend/assets/home/gamcheon.png",
     "frontend/assets/home/gwangalli.png",
-    "frontend/assets/home/haeundae.png"
+    "frontend/assets/home/haeundae.png",
+    "frontend/src/components/PlacePhraseBrowser.tsx"
   ]
 }
