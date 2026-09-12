@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-flow",
+  "intent": "데이터 흐름 조각 검사 잡 추가 — 조각이 없는 칸을 가리키거나 증거 경로가 틀리면 MR 에서 빨개지게",
+  "actor": "agent",
+  "session": "7ea42c63-52b2-4749-a3b5-ff821de049bf",
+  "since": "2026-09-12T02:54:41.922Z",
+  "ttlMs": 2700000,
+  "paths": [
+    ".gitlab-ci.yml"
+  ]
+}
