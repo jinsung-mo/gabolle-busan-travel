@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-883",
+  "intent": "사진과 안 맞는 캡션 둘 · 옛 버튼 이름이 남은 주석 다섯",
+  "actor": "agent",
+  "session": "ab827ae5-46bd-4972-b821-b33c8b30c957",
+  "since": "2026-09-12T14:13:24.762Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "survey-recommend/index.html"
+  ]
+}
