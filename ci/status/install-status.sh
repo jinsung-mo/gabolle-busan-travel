@@ -97,6 +97,34 @@ if [ -d "$HERE/fonts" ]; then
   echo "   $WWW/fonts/       ← $(ls "$HERE/fonts"/*.woff2 2>/dev/null | wc -l)개 글꼴 + 라이선스"
 fi
 
+# ── 데이터 흐름도 ────────────────────────────────────────────────────────────
+#
+# 그릴 내용은 파트마다 흩어진 `dataflow.json` 에 있다. 브라우저는 그것들을 직접
+# 못 읽으므로(서버에 저장소가 통째로 있지 않다) **여기서 한 번 모아** 페이지 옆에
+# `flow/graph.json` 으로 떨어뜨린다.
+#
+# 🔴 모으는 김에 **확인도 한다.** 조각이 "이 파일이 증거다" 라고 적어 둔 경로가
+#    실제로 없으면 그 길은 끊긴 것으로 그려진다. 조각 자체가 잘못됐으면
+#    (없는 칸을 가리키거나, 모르는 단계를 쓰거나) 종료 코드 1 로 멈춘다.
+#
+# 🔴 흐름도가 없어도 설치는 계속된다. 이 페이지의 본래 일은 "지금 되나" 에 답하는
+#    것이고, 그림 하나 때문에 그 일을 못 하게 되면 안 된다.
+say "2-1. 데이터 흐름도를 모읍니다"
+if [ -f "$HERE/flow/build-flow.mjs" ]; then
+  install -d -o "$RUN_USER" -g "$RUN_USER" -m 755 "$WWW/flow"
+  if node "$HERE/flow/build-flow.mjs" --out="$WWW/flow/graph.json"; then
+    chown "$RUN_USER":"$RUN_USER" "$WWW/flow/graph.json"
+    chmod 644 "$WWW/flow/graph.json"
+    install -o "$RUN_USER" -g "$RUN_USER" -m 644 "$HERE/flow/flow.js" "$WWW/flow/flow.js"
+    echo "   $WWW/flow/"
+  else
+    echo "   ⚠ 흐름 조각에 문제가 있어 그림은 건너뜁니다. 페이지의 나머지는 그대로 뜹니다."
+    echo "     고치려면:  node ci/status/flow/build-flow.mjs --check"
+  fi
+else
+  echo "   ⚠ $HERE/flow/ 가 없습니다 — 흐름도 칸만 안내문으로 뜹니다"
+fi
+
 # 가릴 이름 목록 — 없으면 빈 것을 만들어 둔다. 나중에 여기 한 줄씩 넣는다.
 if [ ! -f "$MASK" ]; then
   cat > "$MASK" <<'EOF'
