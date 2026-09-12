@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-875",
+  "intent": "0008 마이그레이션 검증 결과를 파일 머리말에 적는다 — 빈 DB 두 길 대조 차이 0줄, 두 번 돌려도 통과, 옛 값 보존",
+  "actor": "agent",
+  "session": "ab827ae5-46bd-4972-b821-b33c8b30c957",
+  "since": "2026-09-12T12:00:36.256Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "survey-recommend/migrations"
+  ]
+}
