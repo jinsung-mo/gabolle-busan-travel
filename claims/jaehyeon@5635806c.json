@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-854",
+  "intent": "운영 적재 절차를 저장소에 올린다. 지금까지 워크스페이스 로컬에만 있어서 이어받는 사람이 못 본다.",
+  "actor": null,
+  "session": "8f77c891-3d5d-4dd1-ad65-9a20c59623fc",
+  "since": "2026-09-12T00:54:45.207Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/docs/PLACE-DATA-LOAD.md"
+  ]
+}
