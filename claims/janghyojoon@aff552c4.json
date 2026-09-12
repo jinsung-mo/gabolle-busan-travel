@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": null,
+  "intent": "다 끝난 문제의 기록 95개를 걷어낸다 (axmap 저장소)",
+  "actor": "agent",
+  "session": "ab827ae5-46bd-4972-b821-b33c8b30c957",
+  "since": "2026-09-12T15:01:39.878Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs"
+  ]
+}
