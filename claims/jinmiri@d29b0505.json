@@ -1,11 +1,11 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-ux-audit",
-  "intent": "언어 배지 겹침 방지 — 나머지 header/nav 화면 마무리",
+  "intent": "언어 배지 겹침 방지 주석 추가",
   "actor": null,
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-12T10:09:37.603Z",
-  "ttlMs": 1800000,
+  "since": "2026-09-12T10:13:36.565Z",
+  "ttlMs": 900000,
   "paths": [
     "frontend/app/(auth)/age-gate.tsx",
     "frontend/app/(auth)/oauth-link.tsx",
@@ -28,6 +28,7 @@
     "frontend/app/notifications.tsx",
     "frontend/app/now.tsx",
     "frontend/app/place/[id].tsx",
-    "frontend/app/trips/[id]/recommendations.tsx"
+    "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/src/components/GlobalLanguageBadge.tsx"
   ]
 }
