@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-878",
+  "intent": "본 화면을 갈래 여덟 아코디언에서 「한 번에 한 곳」 카드로 바꾼다",
+  "actor": "agent",
+  "session": "ab827ae5-46bd-4972-b821-b33c8b30c957",
+  "since": "2026-09-12T12:57:59.821Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "survey-recommend/index.html"
+  ]
+}
