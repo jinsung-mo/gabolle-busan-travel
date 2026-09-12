@@ -1,12 +1,13 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-user-bugreport",
-  "intent": "느리게 버튼 눌러도 보통 버튼 UI가 바뀌는 버그 수정",
+  "intent": "일정 생성 실패 시 번역 키가 그대로 사용자에게 노출되는 버그 수정",
   "actor": null,
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-12T00:50:05.855Z",
+  "since": "2026-09-12T00:56:15.044Z",
   "ttlMs": 1800000,
   "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation/presentation/RecommendationJobExceptionHandler.java",
     "frontend/app/(tabs)/home.tsx",
     "frontend/assets/home/gamcheon.png",
     "frontend/assets/home/gwangalli.png",
