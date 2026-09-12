@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-872",
+  "intent": "Universal Links 콜백이 안 열리던 원인 수정 — openAuthSessionAsync에 preferUniversalLinks:true 추가",
+  "actor": "agent",
+  "session": "311ec94e-6435-4653-937e-be461e074acd",
+  "since": "2026-09-12T12:13:04.797Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/auth/oauth.ts"
+  ]
+}
