@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-ux-audit",
+  "intent": "언어 배지·건너뛰기 버튼 겹침 수정",
+  "actor": null,
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-12T10:01:25.815Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/app-intro.tsx"
+  ]
+}
