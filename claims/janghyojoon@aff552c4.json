@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-867",
+  "intent": "설문 참여 범위를 20대~70대로 좁힌다 (문서 쪽). index.html 은 다른 세션이 머지로 잡고 있어 풀리면 이어서 한다",
+  "actor": "agent",
+  "session": "ab827ae5-46bd-4972-b821-b33c8b30c957",
+  "since": "2026-09-12T03:42:17.955Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/SURVEY-CONSENT.md",
+    "survey-recommend/README.md"
+  ]
+}
