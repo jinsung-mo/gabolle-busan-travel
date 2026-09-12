@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-879",
+  "intent": "웰컴 사진 크로스페이드 · 둘째 화면 사진 교체 · 담기 버튼 문구",
+  "actor": "agent",
+  "session": "ab827ae5-46bd-4972-b821-b33c8b30c957",
+  "since": "2026-09-12T13:37:33.527Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "survey-recommend/assets",
+    "survey-recommend/index.html"
+  ]
+}
