@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-886",
+  "intent": "설문 모집 글·고지 숫자를 지금 설문(6분 · 8쌍 · 스타일 4 · 장소 5~10 · 경품 추첨)에 맞춘다. 문서 한 파일만",
+  "actor": "agent",
+  "session": "7ea42c63-52b2-4749-a3b5-ff821de049bf",
+  "since": "2026-09-12T15:34:06.033Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/SURVEY-CONSENT.md"
+  ]
+}
