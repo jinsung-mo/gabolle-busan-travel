@@ -1,0 +1,15 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-user-bugreport",
+  "intent": "홈 화면 버그 리포트 대응 — 언어배지/알림종 겹침, 카드 이미지 용량",
+  "actor": null,
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-12T00:49:13.567Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/assets/home/gamcheon.png",
+    "frontend/assets/home/gwangalli.png",
+    "frontend/assets/home/haeundae.png"
+  ]
+}
