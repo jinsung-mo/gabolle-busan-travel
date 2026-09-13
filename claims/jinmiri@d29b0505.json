@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-900",
+  "intent": "S15P21E201-900 MR !708 리뷰 반영: 지금 갈 곳 히어로칩 제거",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-13T09:02:40.077Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/index.tsx"
+  ]
+}
