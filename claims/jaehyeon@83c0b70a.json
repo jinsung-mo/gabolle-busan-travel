@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon",
+  "task": null,
+  "intent": "배포 범위 문서의 영업시간·무장애 숫자를 실측으로 바꾼다",
+  "actor": null,
+  "session": "870f156d-5a8d-4082-8aab-28ac4fc805ea",
+  "since": "2026-09-13T09:39:50.063Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "ref/release/2026-09-13-최초-배포-기능-범위.md"
+  ]
+}
