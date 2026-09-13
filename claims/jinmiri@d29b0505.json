@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-907",
+  "intent": "S15P21E201-907: 음성 통역·카메라 번역 카드 제거, 카메라 권한 선언 정리",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-13T12:49:09.651Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app.json",
+    "frontend/app/field/translate.tsx"
+  ]
+}
