@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-904",
+  "intent": "DB 검사에서 나온 실패 여섯을 고친다 — 사전 강제를 두 갈래로 좁히고 시험이 진짜 낱말을 쓰게 한다",
+  "actor": "agent",
+  "session": "bebc8716-e747-4186-90b8-3b9464f0744b",
+  "since": "2026-09-13T12:17:55.675Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place",
+    "backend/src/main/resources/db/migration",
+    "backend/src/test/java/com/gabolle/backend/personalization/PlaceFeatureCodeMapTest.java",
+    "backend/src/test/java/com/gabolle/backend/place"
+  ]
+}
