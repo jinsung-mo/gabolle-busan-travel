@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-901",
+  "intent": "S15P21E201-901: 부슐랭 리스트 화면에 기기 저장 안내 문구 추가",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-13T08:47:36.805Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/collection/index.tsx"
+  ]
+}
