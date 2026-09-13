@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon",
+  "task": null,
+  "intent": "배포 범위 문서를 적재 완료 기준으로 정리한다 — 본문에서 진행 중 표시를 빼고 확인 경계는 맨 아래로 모은다",
+  "actor": null,
+  "session": "870f156d-5a8d-4082-8aab-28ac4fc805ea",
+  "since": "2026-09-13T08:01:14.954Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "ref/release/2026-09-13-최초-배포-기능-범위.md"
+  ]
+}
