@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-900",
+  "intent": "S15P21E201-900: 최초 배포에서 지금 갈 곳·축제·기념품샵 진입점 감추기",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-13T08:36:42.669Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/(trip)/[id]/prepare.tsx",
+    "frontend/app/index.tsx"
+  ]
+}
