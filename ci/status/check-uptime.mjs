@@ -167,6 +167,15 @@ ok2("고운 파일이 없으면 단추를 안 보여준다", spanPickHtml() === 
 // 고운 파일이 있을 때
 useFine(fineFile, 5);
 const dayS = trendHtml({ id: "frontend-app", kind: "deploy", slots: holed });
+// 🔴 **배포 직후**: 고운 칸은 288개가 다 있는데 잰 것은 하나뿐이다. 그대로 하루를
+//    그리면 점 하나로는 안 그려서 **곡선이 통째로 사라진다**. 실제로 그랬다.
+const 갓배포 = { ...fineFile, services: fineFile.services.map((s) => ({
+  ...s, slots: s.slots.map((d, i) => (i === 287 ? d : { ...d, state: "none", up: null, avgMs: null })) })) };
+useFine(갓배포, 5); useSpan("day");
+const fresh = trendHtml({ id: "frontend-app", kind: "deploy", slots: holed });
+ok2("🔴 갓 배포해 잰 칸이 하나뿐이면 곡선이 사라지지 않는다 (7일로 그린다)",
+    fresh !== '' && fresh.includes('최근 <b>7일</b>'));
+useFine(fineFile, 5);
 ok2("하루를 고르면 글씨가 '24시간' 이다", /최근 <b>24시간<\/b>/.test(dayS));
 ok2("하루 곡선은 288칸을 그린다", (dayS.match(/<title>/g) || []).length === 288);
 ok2("고운 칸은 분까지 말한다", /\d\d:\d\d–\d\d:\d\d/.test(dayS));

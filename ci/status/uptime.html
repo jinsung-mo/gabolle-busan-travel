@@ -515,8 +515,13 @@
    * **실제로 그린 것**을 적어야 한다.
    */
   function pickSlots(fineSlots, coarse) {
-    if (span === "day" && fine && Array.isArray(fineSlots) && fineSlots.length > 1) {
-      return { slots: fineSlots.slice(-dayCount()), day: true };
+    // 🔴 **칸이 있는 것과 잰 것이 있는 것은 다르다.** 고운 층은 쌓기 시작한
+    //    날부터 찬다 — 배포 직후에는 288칸이 다 있지만 잰 칸은 하나뿐이다.
+    //    그대로 하루를 그리면 **곡선이 통째로 사라진다**(점 하나로는 안 그리므로).
+    //    잰 칸이 둘도 안 되면 7일로 그리고, 글씨도 "최근 7일" 이라고 적는다.
+    if (span === "day" && fine && Array.isArray(fineSlots)) {
+      const 잰칸 = fineSlots.filter((s) => s && s.state !== "none").length;
+      if (잰칸 >= 2) return { slots: fineSlots.slice(-dayCount()), day: true };
     }
     return { slots: Array.isArray(coarse) ? coarse.slice(-SHOW_SLOTS) : [], day: false };
   }
