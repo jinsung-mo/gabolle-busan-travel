@@ -1,0 +1,13 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-902",
+  "intent": "하루 장소 수 상한이 마지막 날에 안 걸려 1일 여행에 10곳이 들어가는 것을 고친다",
+  "actor": null,
+  "session": "870f156d-5a8d-4082-8aab-28ac4fc805ea",
+  "since": "2026-09-13T10:19:58.298Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryDraftServiceTest.java"
+  ]
+}
