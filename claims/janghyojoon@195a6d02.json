@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": null,
+  "intent": "설문 「알려진 정도」 줄 문구를 「현지인에게 유명 ↔ SNS 에서 유명」 으로 고친다 — 한쪽만 유명이라 취향이 아니라 좋고 나쁨을 고르게 돼 있었다",
+  "actor": "agent",
+  "session": "bebc8716-e747-4186-90b8-3b9464f0744b",
+  "since": "2026-09-13T02:14:27.852Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "survey-recommend/index.html"
+  ]
+}
