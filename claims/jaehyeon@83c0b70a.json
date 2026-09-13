@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon",
+  "task": null,
+  "intent": "배포 범위 문서를 다시 쓴다 — 자료를 기다리는 기능과 뺄 기능을 섞어 둬서 오해를 만들었다. 묶음을 나누고 짧게 줄인다",
+  "actor": null,
+  "session": "870f156d-5a8d-4082-8aab-28ac4fc805ea",
+  "since": "2026-09-13T06:54:26.231Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "ref/release/2026-09-13-최초-배포-기능-범위.md"
+  ]
+}
