@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-909",
+  "intent": "S15P21E201-909: 챗봇이 안내하는 지금갈곳·축제·메뉴판번역 경로 정리",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-13T13:24:42.386Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/chat.tsx",
+    "frontend/src/assistant/intent.ts"
+  ]
+}
