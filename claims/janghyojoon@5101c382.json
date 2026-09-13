@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-917",
+  "intent": "추세 곡선을 common/dev 위에 올려 커밋·푸시하고 서버에 배포한다",
+  "actor": "agent",
+  "session": "b05d89a1-a5b5-478c-bb30-964f70d78614",
+  "since": "2026-09-13T23:35:52.425Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "ci/status/README.md",
+    "ci/status/check-uptime.mjs",
+    "ci/status/collect-status.mjs",
+    "ci/status/uptime.html"
+  ]
+}
