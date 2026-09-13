@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-915",
+  "intent": "취향 답 CATEGORY 낱말을 사전으로 막는 방아쇠 추가 + 시험의 가짜 낱말 정리",
+  "actor": "agent",
+  "session": "ec7012d3-7a18-4f2c-802e-230bd01a40bd",
+  "since": "2026-09-13T16:02:23.121Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/resources/db/migration",
+    "backend/src/test/java/com/gabolle/backend/personalization/PersonalizationInputSchemaTest.java",
+    "backend/src/test/java/com/gabolle/backend/trip/TripCreateAppPayloadIntegrationTest.java"
+  ]
+}
