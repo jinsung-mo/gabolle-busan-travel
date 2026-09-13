@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-904",
+  "intent": "장소 표식 한 칸에 든 두 사전을 가른다 — 온보딩 여섯 갈래를 CATEGORY_TAG 로 옮기고, 허용 단어를 조회표+외래키로 강제하고, 검사를 단어 수준까지 내린다",
+  "actor": "agent",
+  "session": "bebc8716-e747-4186-90b8-3b9464f0744b",
+  "since": "2026-09-13T11:59:38.527Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place",
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateTranslator.java",
+    "backend/src/main/resources/db/migration",
+    "backend/src/test/java/com/gabolle/backend/personalization/PlaceFeatureCodeMapTest.java"
+  ]
+}
