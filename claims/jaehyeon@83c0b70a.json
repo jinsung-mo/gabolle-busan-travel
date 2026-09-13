@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon",
+  "task": null,
+  "intent": "최초 배포 기능 범위 문서 — 브랜치 코드와 운영 서버를 대조해 지금 되는 것과 안 되는 것을 갈라 ref/ 에 남긴다",
+  "actor": null,
+  "session": "870f156d-5a8d-4082-8aab-28ac4fc805ea",
+  "since": "2026-09-13T06:20:39.450Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "ref/release/2026-09-13-최초-배포-기능-범위.md"
+  ]
+}
