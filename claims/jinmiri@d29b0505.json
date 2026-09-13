@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-912",
+  "intent": "여행 준비 화면 날씨가 항상 실패하는 진짜 원인(tripId를 itineraryId 자리에 넘김) 수정",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-13T15:38:01.040Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(trip)/[id]/prepare.tsx",
+    "frontend/app/(trip)/[id]/souvenirs.tsx"
+  ]
+}
