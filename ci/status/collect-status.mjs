@@ -106,6 +106,17 @@ const KEEP_SLOTS = KEEP_DAYS * SLOTS_PER_DAY;  // = 540칸. 이만큼 디스크�
 //    실으면 파일이 100KB 를 넘고, 그것을 30초마다 모두가 다시 받는다. 화면이
 //    쓰는 것은 7일치뿐이라 **내보낼 때 잘라서 싣는다.** 디스크의 540칸은 그대로다 —
 //    적게 보여주는 것은 되돌릴 수 있지만, 안 모은 것은 못 되돌리기 때문이다.
+// 🔴 **층이 둘이다.** 위의 4시간 칸은 "이번 주에 나빠지고 있나" 에 답하고,
+//    아래 5분 칸은 "오늘 무슨 일이 있었나" 에 답한다. 다른 질문이라 둘 다 있다.
+//
+//    5분인 이유: **재는 주기가 1분**이라 1분 칸은 평균이 아니라 날것 한 번이다.
+//    한 번 튄 값이 그대로 봉우리가 된다. 5분이면 다섯 번을 평균내 추세가 매끄럽다.
+//    짧은 사고를 놓칠 걱정은 안 해도 된다 — 그건 막대와 장애 이력이 한다
+//    (장애는 나쁜 표본 **두 번 연속**이면 열린다).
+const FINE_MIN = 5;                            // 고운 칸 하나가 몇 분인가
+const FINE_PAGE = (24 * 60) / FINE_MIN;        // = 288칸. 화면이 보여주는 하루
+const FINE_KEEP = FINE_PAGE + 12;              // 디스크에는 한 시간 더. 시계가 밀려도 안 빈다
+
 const PAGE_DAYS = 7;                           // 화면이 보여주는 기간
 const PAGE_SLOTS = PAGE_DAYS * SLOTS_PER_DAY;  // = 42칸
 
@@ -158,6 +169,10 @@ collect-status.mjs — 가동 상태 수집기 (S15P21E201-701)
 }
 
 const outPath = String(arg('out', '/srv/gabolle/www/status/status.json'));
+// 🔴 **고운 층은 따로 나간다.** 같은 파일에 담으면 5분에 한 번만 바뀌는 것을
+//    30초마다 모두가 다시 받는다 — 열 번 중 아홉 번은 똑같은 것을 받는 셈이다.
+//    나눠 두면 화면이 이 파일만 5분에 한 번 받는다.
+const finePath = outPath.replace(/\.json$/, '') + '-fine.json';
 const dataDir = String(arg('data-dir', '/srv/gabolle/status-data'));
 const frontendUrl = String(arg('frontend-url', 'http://localhost:3000/'));
 const backendUrl = String(arg('backend-url', 'http://localhost:8080/actuator/health'));
@@ -384,7 +399,7 @@ function collectCpu(prevTicks) {
 
   // 🔴 눈금은 1.0 이다. 코어 수만큼 줄이 서 있다는 뜻.
   let state = 'unknown';
-  if (ratio != null) state = ratio >= 1.5 ? 'down' : ratio >= 1.0 ? 'slow' : 'ok';
+  if (ratio != null) state = cpuState(ratio);
 
   return {
     state,
@@ -834,31 +849,64 @@ const slotKey = (d) => {
   return `${kst.toISOString().slice(0, 10)}T${String(h).padStart(2, '0')}`;
 };
 
+/** 🔴 눈금은 1.0 이다 — 코어 수만큼 줄이 서 있다는 뜻. 지금 값과 지난 칸이
+ *  같은 눈금을 써야 한다. 두 군데에 따로 적으면 한쪽만 고친 날 서로 다른 말을 한다. */
+const cpuState = (r) => (r >= 1.5 ? 'down' : r >= 1.0 ? 'slow' : 'ok');
+
+/**
+ * 고운 칸의 이름. `2026-09-14T08:35` — 굵은 칸(`2026-09-14T08`)보다 분이 더 붙는다.
+ * 길이로 둘을 가를 수 있어서 화면이 눈금 글씨를 알아서 고른다.
+ */
+const fineKey = (d) => {
+  const kst = new Date(d.getTime() + 9 * 3600 * 1000);
+  const m = Math.floor(kst.getUTCMinutes() / FINE_MIN) * FINE_MIN;
+  return `${kst.toISOString().slice(0, 13)}:${String(m).padStart(2, '0')}`;
+};
+
 /** 칸 이름에서 날짜만 (`2026-09-08T12` → `2026-09-08`). CPU 의 "오늘" 을 셀 때 쓴다. */
 const slotDay = (key) => key.slice(0, 10);
 
-function foldIntoSlots(hist, nowIso, states, cpu) {
-  const key = slotKey(new Date(nowIso));
-  const day = (hist.slots[key] ??= { svc: {}, cpu: { n: 0, ratioSum: 0, ratioMax: 0, busySum: 0, busyN: 0, busyMax: 0 } });
+/** 빈 칸 하나. 두 층이 같은 모양을 쓴다 — 읽는 코드를 한 벌로 두려고. */
+const blankBucket = () => ({ svc: {}, cpu: { n: 0, ratioSum: 0, ratioMax: 0, busySum: 0, busyN: 0, busyMax: 0 } });
+
+/** 표본 하나를 칸 하나에 더한다. */
+function foldInto(bucket, states, cpu) {
   for (const s of SERVICES) {
     const st = states[s.id];
-    const b = (day.svc[s.id] ??= { ok: 0, slow: 0, down: 0, unknown: 0, latSum: 0, latN: 0 });
+    const b = (bucket.svc[s.id] ??= { ok: 0, slow: 0, down: 0, unknown: 0, latSum: 0, latN: 0 });
     b[st.state] = (b[st.state] || 0) + 1;
     if (typeof st.latencyMs === 'number') { b.latSum += st.latencyMs; b.latN++; }
   }
   if (cpu.ratio != null) {
-    day.cpu.n++;
-    day.cpu.ratioSum += cpu.ratio;
-    if (cpu.ratio > day.cpu.ratioMax) day.cpu.ratioMax = cpu.ratio;
+    bucket.cpu.n++;
+    bucket.cpu.ratioSum += cpu.ratio;
+    if (cpu.ratio > bucket.cpu.ratioMax) bucket.cpu.ratioMax = cpu.ratio;
   }
   if (cpu.busyPct != null) {
-    day.cpu.busyN++;
-    day.cpu.busySum += cpu.busyPct;
-    if (cpu.busyPct > day.cpu.busyMax) day.cpu.busyMax = cpu.busyPct;
+    bucket.cpu.busyN++;
+    bucket.cpu.busySum += cpu.busyPct;
+    if (cpu.busyPct > bucket.cpu.busyMax) bucket.cpu.busyMax = cpu.busyPct;
   }
-  // 🔴 540칸(90일)을 넘기면 오래된 칸부터 버린다. 안 버리면 파일이 영원히 자란다.
-  const keys = Object.keys(hist.slots).sort();
-  while (keys.length > KEEP_SLOTS) delete hist.slots[keys.shift()];
+}
+
+/** 오래된 칸부터 버린다. 안 버리면 파일이 영원히 자란다. */
+function trimBuckets(map, keep) {
+  const keys = Object.keys(map).sort();
+  while (keys.length > keep) delete map[keys.shift()];
+}
+
+/**
+ * 같은 표본을 **두 층에 같이** 접는다 — 굵은 칸(4시간)과 고운 칸(5분).
+ *
+ * 🔴 한 번 잰 것을 두 번 세는 게 아니다. 같은 값을 **다른 크기로 두 번 접을 뿐**이다.
+ *    나중에 고운 층에서 굵은 층을 다시 만들 수는 없다 — 고운 층은 하루만 남기므로.
+ */
+function foldIntoSlots(hist, nowIso, states, cpu) {
+  const now = new Date(nowIso);
+  foldInto(hist.slots[slotKey(now)] ??= blankBucket(), states, cpu);
+  foldInto((hist.fine ??= {})[fineKey(now)] ??= blankBucket(), states, cpu);
+  trimBuckets(hist.slots, KEEP_SLOTS);
+  trimBuckets(hist.fine, FINE_KEEP);
   return hist;
 }
 
@@ -871,24 +919,75 @@ function foldIntoSlots(hist, nowIso, states, cpu) {
  *    "이 페이지는 원래 이만큼만 본다" 는 눈금이 사라진다. 회색으로 남긴다 —
  *    초록으로 칠하면 "그때 잘 돌았다" 는 거짓말이 된다.
  */
-function slotsForPage(hist, svcId, now = new Date()) {
+/**
+ * 칸 하나를 화면이 읽을 줄로 바꾼다. **굵은 층과 고운 층이 같은 함수를 쓴다** —
+ * 두 벌로 적으면 한쪽만 고친 날 같은 그림이 층마다 다른 말을 하게 된다.
+ *
+ * 🔴 칸의 상태는 **그 시간의 최악**이다. 한 번이라도 멈췄으면 멈춤이다.
+ *    평균으로 매기면 잠깐 끊긴 것이 희석돼 사라진다.
+ * 🔴 표본이 없으면 0 이 아니라 **없음**이다. 0 은 "그때 괜찮았다" 는 거짓말이다.
+ */
+function svcRow(key, b) {
+  if (!b) return { t: key, state: 'none', up: null, n: 0, avgMs: null };
+  const n = b.ok + b.slow + b.down + b.unknown;
+  const measured = b.ok + b.slow + b.down;
+  return {
+    t: key, n,
+    state: b.down > 0 ? 'down' : b.slow > 0 ? 'slow' : measured > 0 ? 'ok' : 'none',
+    up: measured ? Math.round((b.ok / measured) * 1000) / 10 : null,
+    avgMs: b.latN ? Math.round(b.latSum / b.latN) : null,
+  };
+}
+
+/** 같은 것을 CPU 로. 칸의 상태는 역시 **그 시간의 최고**로 매긴다. */
+function cpuRow(key, c) {
+  if (!c || !c.n) return { t: key, state: 'none', avg: null, max: null, n: 0 };
+  return {
+    t: key, n: c.n,
+    avg: round(c.ratioSum / c.n, 2),
+    max: round(c.ratioMax, 2),
+    state: cpuState(c.ratioMax),
+  };
+}
+
+/**
+ * 지금부터 뒤로 걸으며 칸을 줍는다. 없는 칸도 **자리를 만들어 준다** —
+ * 지우면 그림이 짧아져서 "이 페이지는 원래 이만큼만 본다" 는 눈금이 사라진다.
+ *
+ * 🔴 뒤로만 걷는다. 앞으로 올 칸은 안 싣는다.
+ */
+function walkBack(now, count, stepMs, keyOf, pick) {
   const out = [];
-  const cur = new Date(now.getTime());
-  for (let i = PAGE_SLOTS - 1; i >= 0; i--) {
-    const key = slotKey(new Date(cur.getTime() - i * SLOT_HOURS * 3600 * 1000));
-    const b = hist.slots[key]?.svc?.[svcId];
-    if (!b) { out.push({ t: key, state: 'none', up: null, n: 0 }); continue; }
-    const n = b.ok + b.slow + b.down + b.unknown;
-    const measured = b.ok + b.slow + b.down;
-    const state = b.down > 0 ? 'down' : b.slow > 0 ? 'slow' : measured > 0 ? 'ok' : 'none';
-    out.push({
-      t: key, state, n,
-      up: measured ? Math.round((b.ok / measured) * 1000) / 10 : null,
-      avgMs: b.latN ? Math.round(b.latSum / b.latN) : null,
-    });
-  }
+  for (let i = count - 1; i >= 0; i--) out.push(pick(keyOf(new Date(now.getTime() - i * stepMs))));
   return out;
 }
+
+const SLOT_MS = SLOT_HOURS * 3600 * 1000;
+const FINE_MS = FINE_MIN * 60 * 1000;
+
+/**
+ * 화면에 실을 막대. **4시간짜리 칸을 PAGE_SLOTS(42)개** — 곧 7일치를 준다.
+ * 🔴 디스크에는 540칸이 있는데 여기서 42칸만 잘라 내보낸다 (KEEP_SLOTS 옆 설명).
+ */
+const slotsForPage = (hist, svcId, now = new Date()) =>
+  walkBack(now, PAGE_SLOTS, SLOT_MS, slotKey, (k) => svcRow(k, hist.slots[k]?.svc?.[svcId]));
+
+/**
+ * 화면에 실을 CPU 칸. 서비스 막대와 같은 42칸을 쓴다.
+ *
+ * 🔴 **새로 모으는 것이 하나도 없다.** 이 값들은 디스크에 540칸(90일)씩 쌓여 있었는데
+ *    내보내지 않아서 화면은 "지금" 하나만 보여 줬다. 꺼내기만 하면 지난 기간이 통째로
+ *    따라온다 — 안 모은 것은 못 만들지만, 모아 둔 것은 늦게라도 꺼낸다.
+ */
+const cpuSlotsForPage = (hist, now = new Date()) =>
+  walkBack(now, PAGE_SLOTS, SLOT_MS, slotKey, (k) => cpuRow(k, hist.slots[k]?.cpu));
+
+/** 고운 층 — **5분짜리 칸을 288개**, 곧 하루치. 별도 파일로 나간다. */
+const fineSlotsForPage = (hist, svcId, now = new Date()) =>
+  walkBack(now, FINE_PAGE, FINE_MS, fineKey, (k) => svcRow(k, hist.fine?.[k]?.svc?.[svcId]));
+
+const fineCpuSlotsForPage = (hist, now = new Date()) =>
+  walkBack(now, FINE_PAGE, FINE_MS, fineKey, (k) => cpuRow(k, hist.fine?.[k]?.cpu));
 
 /**
  * 오늘(한국 시간) 하루의 CPU 를 되돌린다. 칸이 4시간이 되면서 "오늘" 은 한 칸이
@@ -1147,6 +1246,60 @@ function selfTest() {
   eq('오늘 평균은 칸을 합쳐서 낸다 ((10+20)/20)', todayCpu(cpuHist, now6).avg, 1.5);
   eq('한 번도 못 쟀으면 0 이 아니라 없음이다', todayCpu({ slots: {} }, now6), null);
 
+  // 🔴 화면에 실을 CPU 칸. **디스크에 있던 것을 꺼내기만 한다** — 여기가 틀리면
+  //    추세 곡선이 조용히 엉뚱한 높이를 그린다. 오류는 안 난다.
+  const SLOT_MS2 = SLOT_HOURS * 3600 * 1000;
+  const barsHist = { slots: {
+    [slotKey(new Date(now6.getTime() - SLOT_MS2))]:
+      { svc: {}, cpu: { n: 10, ratioSum: 10, ratioMax: 3.0, busySum: 0, busyN: 0, busyMax: 0 } },
+    [slotKey(new Date(now6.getTime() - SLOT_MS2 * 2))]:
+      { svc: {}, cpu: { n: 10, ratioSum: 20, ratioMax: 1.0, busySum: 0, busyN: 0, busyMax: 0 } },
+  } };
+  const cpuBars = cpuSlotsForPage(barsHist, now6);
+  eq('CPU 칸도 42개가 다 나온다 (화면이 안 깨진다)', cpuBars.length, PAGE_SLOTS);
+  eq('못 잰 칸은 0 이 아니라 없음이다 (0 은 "한가했다" 는 거짓말이다)', cpuBars[0].avg, null);
+  const measured = cpuBars.filter((b) => b.state !== 'none');
+  eq('잰 칸만 값이 있다', measured.length, 2);
+  eq('칸 평균은 더한 것을 횟수로 나눈 것이다 (10/10)', measured.at(-1).avg, 1);
+  eq('🔴 칸의 상태는 그 네 시간의 **최고**로 매긴다 (평균으로 매기면 치솟은 것이 희석된다)',
+     measured.at(-1).state, 'down');
+  eq('같은 눈금을 쓴다 — 1.0 은 "느림" 이다', measured.at(-2).state, 'slow');
+  eq('🔴 앞으로 올 칸은 안 싣는다 (42칸은 뒤로만 걷는다)',
+     cpuSlotsForPage({ slots: { [slotKey(new Date(now6.getTime() + SLOT_MS2))]:
+       { svc: {}, cpu: { n: 5, ratioSum: 5, ratioMax: 1, busySum: 0, busyN: 0, busyMax: 0 } } } }, now6)
+       .filter((b) => b.state !== 'none').length, 0);
+
+  console.log('\n── 고운 층 — 5분 칸 하루치 ─────────────────────────────────');
+
+  // 🔴 같은 표본이 **두 층에 같이** 들어가야 한다. 한쪽만 들어가면 그림 하나가
+  //    조용히 비고, 오류는 안 난다.
+  const both = { slots: {}, fine: {} };
+  const t0 = new Date();
+  const mkStates = (st) => Object.fromEntries(SERVICES.map((s) => [s.id, { state: st, latencyMs: 100 }]));
+  foldIntoSlots(both, t0.toISOString(), mkStates('ok'), { ratio: 0.5, busyPct: null });
+  eq('굵은 칸에 들어갔다', Object.keys(both.slots).length, 1);
+  eq('고운 칸에도 같이 들어갔다', Object.keys(both.fine).length, 1);
+  eq('고운 칸 이름에는 분이 붙는다 (길이로 층을 가른다)',
+     Object.keys(both.fine)[0].length, 16);
+  eq('굵은 칸 이름에는 안 붙는다', Object.keys(both.slots)[0].length, 13);
+
+  // 5분 안에 여러 번 재면 **같은 칸**에 쌓인다. 칸이 늘어나면 접는 뜻이 없다.
+  foldIntoSlots(both, new Date(t0.getTime() + 60000).toISOString(), mkStates('ok'), { ratio: 0.5, busyPct: null });
+  const sameKey = fineKey(t0) === fineKey(new Date(t0.getTime() + 60000));
+  if (sameKey) eq('같은 5분 안이면 같은 칸에 쌓인다', Object.keys(both.fine).length, 1);
+  else eq('5분 경계를 넘었으면 칸이 하나 늘어난다', Object.keys(both.fine).length, 2);
+
+  eq('고운 층은 하루치를 내보낸다', fineSlotsForPage(both, 'backend-app', t0).length, FINE_PAGE);
+  eq('288칸이 곧 하루다', (FINE_PAGE * FINE_MIN) / 60, 24);
+  eq('빈 이력이어도 288칸이 다 나온다 (화면이 안 깨진다)',
+     fineSlotsForPage({ slots: {}, fine: {} }, 'backend-app', t0).filter((b) => b.state === 'none').length,
+     FINE_PAGE);
+  eq('CPU 도 하루치가 나온다', fineCpuSlotsForPage(both, t0).length, FINE_PAGE);
+
+  // 🔴 디스크에는 하루보다 조금 더 쌓아야 한다. 딱 맞게 두면 시계가 조금만 밀려도
+  //    맨 앞 칸이 비어서 그림 왼쪽 끝이 회색이 된다.
+  eq('디스크에는 화면보다 더 쌓는다', FINE_KEEP > FINE_PAGE, true);
+
   console.log('\n── 장애 이력 — 한 번 튄 것으로 열지 않는다 ───────────────────');
   const store = { incidents: [] };
   const mk = (st) => ({ t: Math.round(Date.now() / 1000), svc: { 'backend-app': st } });
@@ -1324,6 +1477,8 @@ async function main() {
         // 🔴 한 번도 못 쟀으면 0 이 아니라 null 이다. 0 은 "한가하다" 는 거짓말이다.
         todayMaxRatio: (() => { const t = todayCpu(hist, now); return t ? round(t.max, 2) : null; })(),
         todayAvgRatio: (() => { const t = todayCpu(hist, now); return t ? round(t.avg, 2) : null; })(),
+        // 4시간짜리 칸 42개 — 화면이 이걸로 추세 곡선을 그린다 (cpuSlotsForPage 설명).
+        slots: cpuSlotsForPage(hist, now),
       },
       // S15P21E201-784 — 이때까지 없었다. CPU 만 보고 "경합이 원인이다" 고
       // 단정하지 못하게, 메모리·스왑도 같이 내보낸다. 못 쟀으면 null이지
@@ -1355,8 +1510,20 @@ async function main() {
     writeJsonAtomic(join(dataDir, 'samples.json'), stateStore);
     writeJsonAtomic(join(dataDir, 'daily.json'), hist);
     writeJsonAtomic(join(dataDir, 'incidents.json'), incidents);
+    // 고운 층 — 5분 칸 하루치. 굵은 층(status.json)과 **같은 시각을 다른 크기로** 접은 것이다.
+    const fine = {
+      schema: SCHEMA,
+      generatedAt: nowIso,
+      // 칸 하나가 몇 분인가. 화면이 이 값으로 눈금 글씨를 만든다 —
+      // 여기서 5를 10으로 바꾸면 화면도 따라온다. 숫자를 두 군데 적지 않는다.
+      fineMinutes: FINE_MIN,
+      services: SERVICES.map((s) => ({ id: s.id, slots: fineSlotsForPage(hist, s.id, now) })),
+      cpu: { slots: fineCpuSlotsForPage(hist, now) },
+    };
     writeJsonAtomic(outPath, out);
+    writeJsonAtomic(finePath, fine);
     log(`\n썼습니다 ${outPath}  (${out.overall.headline}${warnings.length ? ` · 경고 ${warnings.length}건` : ''})`);
+    log(`썼습니다 ${finePath}  (${FINE_MIN}분 칸 ${FINE_PAGE}개 = 하루치)`);
   } finally {
     if (!dryRun) releaseLock();
   }

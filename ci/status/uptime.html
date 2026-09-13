@@ -85,6 +85,17 @@
   /* ── 맨 위 ── */
   .top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
   .top .sub { color: var(--dim); font-size: 13px; }
+  /* 곡선 기간 전환. **막대는 언제나 7일**이라 단추에 "곡선" 이라고 적는다 —
+     안 적으면 막대까지 하루로 바뀐 줄 알고 회색 칸을 고장으로 읽는다 */
+  .span-pick { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--faint); }
+  .span-pick .btns { display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+  .span-pick button {
+    font: inherit; font-weight: 600; padding: 4px 13px; border: 0; cursor: pointer;
+    background: var(--card); color: var(--dim);
+  }
+  .span-pick button + button { border-left: 1px solid var(--line); }
+  .span-pick button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+  .span-pick button:hover:not([aria-pressed="true"]) { background: var(--nonebg); }
 
   .banner {
     display: flex; align-items: center; gap: 14px;
@@ -141,7 +152,43 @@
   /* 좁은 화면에서는 칸이 5px 남짓이 된다. 날 사이 간격까지 넓으면 칸이 더 깎인다. */
   @media (max-width: 640px) { .bars { gap: 4px; height: 26px; } }
   .axis .mid { flex: 1; text-align: center; }
-  .axis .right { text-align: right; }
+  .axis .right { text-align: right; margin-left: auto; }
+
+  /* ── 추세 곡선 — 막대와 같은 칸을 쓰지만 접는 방법이 다르다 ────────────────
+     막대는 그 4시간의 **최악**을 색으로 말한다 ("언제 부러졌나").
+     곡선은 그 4시간의 **평균**을 높이로 말한다 ("얼마나 힘들었나").
+     둘은 서로를 대신하지 못한다 — 평균만 남기면 점심에 2분 끊긴 사고가
+     99.2% 근처의 얕은 흠집으로 뭉개져서, 막대를 4시간으로 쪼갠 이유가 사라진다.
+
+     🔴 선 굵기에 non-scaling-stroke 를 준다. 이 그림은 가로만 늘려 채우는데
+        (preserveAspectRatio="none") 그러면 선도 같이 뚱뚱해진다. 글씨는 아예
+        그림 안에 넣지 않는다 — 가로로 늘어나 찌그러진다. 눈금 글씨는 HTML 이다. */
+  .trend { margin: 14px 0 2px; }
+  .trend-head { display: flex; gap: 12px; flex-wrap: wrap; font-size: 11.5px;
+                color: var(--faint); margin-bottom: 5px; }
+  .trend-head b { color: var(--dim); }
+  .trend-head .r { margin-left: auto; text-align: right; }
+  .trend svg { display: block; width: 100%; height: 92px; }
+  .trend path, .trend line, .trend circle { vector-effect: non-scaling-stroke; }
+  .trend .zero { stroke: var(--line); stroke-width: 1.5; }
+  .trend .grid { stroke: var(--line); stroke-width: 1; opacity: .6; }
+  .trend .gap  { fill: var(--none); opacity: .3; }
+  .trend .ln-ms   { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+  .trend .ln-fail { fill: none; stroke: var(--down);   stroke-width: 1.6; }
+  .trend .over { stroke: var(--accent); stroke-width: 2.4; opacity: .85; }
+  /* CPU: 면이 4시간 평균, 선이 그 4시간의 최고. 선이 하나뿐이라 헷갈리지 않는다 */
+  .trend .ln-peak { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+  .trend .dot-peak, .trend .dot-cpuavg { fill: var(--accent); }
+  /* 뜻이 있는 높이에만 긋는 가로줄 (CPU 의 1.0). 눈금선보다 흐리게 — 주인공이 아니다 */
+  .trend .ref { stroke: var(--ink); stroke-width: 1; opacity: .3; stroke-dasharray: 4 3; }
+  /* 아래로 파이는 것이 없는 그림은 그만큼 낮다. 빈 자리를 남기지 않는다 */
+  .trend.up-only svg { height: 64px; }
+  @media (max-width: 640px) { .trend.up-only svg { height: 52px; } }
+  .trend .dot-ms   { fill: var(--accent); }
+  .trend .dot-fail { fill: var(--down); }
+  .trend .hit { fill: transparent; }
+  .trend .hit:hover { fill: var(--ink); opacity: .07; }
+  @media (max-width: 640px) { .trend svg { height: 74px; } }
 
   /* ── CPU ── */
   .cpu { display: grid; grid-template-columns: minmax(200px, 260px) 1fr; gap: 20px; padding: 18px; }
@@ -156,6 +203,8 @@
   .gauge .mark { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--ink); opacity: .55; }
   .kv { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; font-size: 13.5px; align-content: start; }
   .kv dt { color: var(--dim); } .kv dd { margin: 0; }
+  .cpu-trend { padding: 0 18px 14px; }
+  .cpu-trend:empty { display: none; }
 
   /* ── 표 ── */
   table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
@@ -274,6 +323,7 @@
   <div class="top">
     <h1>가볼래 — 가동 상태</h1>
     <span class="sub">지금 되나? 를 3초 안에 답하는 페이지입니다</span>
+    <div id="span-pick" class="span-pick"></div>
   </div>
 
   <div id="stale"></div>
@@ -322,6 +372,7 @@
   "use strict";
 
   const STATE_TEXT = { ok: "정상", slow: "느림", down: "멈춤", unknown: "아직 안 잼", none: "표본 없음" };
+
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -378,6 +429,14 @@
   /** `2026-09-08T12` → `09-08 12–16시(한국 시간)`. 서버는 UTC 지만 칸은 한국 시간으로 잘려 있다. */
   function slotLabel(t) {
     if (typeof t !== "string" || t.length < 13) return String(t ?? "");
+    // 고운 칸(`2026-09-14T08:35`)은 굵은 칸(`2026-09-14T08`)보다 길다. 길이로 가른다 —
+    // 어느 층인지를 따로 들고 다니지 않아도 되고, 틀릴 자리가 하나 줄어든다.
+    if (t.length >= 16) {
+      const mins = Number(t.slice(11, 13)) * 60 + Number(t.slice(14, 16)) + fineMinutes;
+      const hh = String(Math.floor(mins / 60) % 24).padStart(2, "0");
+      const mm = String(mins % 60).padStart(2, "0");
+      return `${t.slice(5, 10)} ${t.slice(11, 16)}–${hh}:${mm}(한국 시간)`;
+    }
     const from = Number(t.slice(11, 13));
     const to = from + slotHours;
     return `${t.slice(5, 10)} ${t.slice(11, 13)}–${String(to).padStart(2, "0")}시(한국 시간)`;
@@ -422,6 +481,329 @@
       <div class="axis"><span>${spanDays}일 전</span><span class="mid">${esc(right)}</span><span class="right">지금</span></div>`;
   }
 
+  // ── 추세 곡선 — 막대 위에 한 줄 더 ────────────────────────────────────────
+  //
+  // 막대와 **같은 42칸**을 쓰는데 접는 방법이 다르다. 막대는 그 4시간의 최악을
+  // 색으로 말하고("언제 부러졌나"), 곡선은 그 4시간의 평균을 높이로 말한다
+  // ("얼마나 힘들었나"). 막대는 색이 셋뿐이라 **"아직 정상이지만 점점 느려지는
+  // 중"** 을 보여줄 방법이 없다. 그래서 지우지 않고 위에 한 줄을 더 얹는다.
+  //
+  // 🔴 점 사이를 부드럽게 휘게 하지 않는다. 칸 간격이 4시간이라 곡선으로 이으면
+  //    **재지 않은 중간값을 그려 넣는 것**이 된다. 곧은 선으로만 잇는다.
+  // 🔴 한 번도 못 잰 칸은 선을 끊고 그 자리를 회색으로 덮는다. 이어 그리면
+  //    "그때도 이만했다" 는 거짓말이 된다 — 막대가 회색을 남기는 것과 같은 이유다.
+  // 🔴 위로 솟으면 느려진 것(평균 응답 시간), 아래로 파이면 틀린 것(정상 비율이
+  //    100% 에 못 미친 만큼). **아래가 평평하면 그 기간엔 한 번도 안 틀렸다.**
+  // ── 층이 둘이다 ──────────────────────────────────────────────────────────
+  //
+  // 🔴 **굵은 층(4시간 · 7일)은 status.json 에, 고운 층(5분 · 하루)은 별도 파일에** 있다.
+  //    나눠 둔 이유는 하나다 — 고운 층은 5분에 한 번만 바뀌는데 같은 파일에 담으면
+  //    30초마다 모두가 다시 받는다. 열 번 중 아홉 번은 똑같은 것을 받는 셈이다.
+  // 🔴 고운 파일이 **없어도 페이지는 그대로 뜬다.** 서버에 아직 새 수집기가 안 올라간
+  //    동안이 있다. 그때는 단추가 안 보이고 7일 곡선만 나온다 — 빈칸이 낫다.
+  let fine = null;             // 고운 층. 못 받으면 null
+  let fineMinutes = 5;         // 고운 칸 하나가 몇 분인가. 파일이 알려 준다
+  let span = "day";            // 곡선이 보여주는 기간: "day" 또는 "week"
+  let lastData = null;         // 단추를 눌렀을 때 다시 그리려고 들고 있는다
+
+  const dayCount = () => Math.round((24 * 60) / fineMinutes);
+
+  /**
+   * 이 곡선이 쓸 칸. 고운 층이 있고 "하루" 를 골랐으면 고운 것을 준다.
+   * **어느 층을 썼는지도 같이 돌려준다** — 글씨에 기간을 적어야 하는데, 고운 파일이
+   * 없으면 "하루" 를 골라 놓고도 7일이 그려지기 때문이다. 고른 것이 아니라
+   * **실제로 그린 것**을 적어야 한다.
+   */
+  function pickSlots(fineSlots, coarse) {
+    if (span === "day" && fine && Array.isArray(fineSlots) && fineSlots.length > 1) {
+      return { slots: fineSlots.slice(-dayCount()), day: true };
+    }
+    return { slots: Array.isArray(coarse) ? coarse.slice(-SHOW_SLOTS) : [], day: false };
+  }
+
+  const svcFine = (id) => ((fine && fine.services) || []).find((x) => x.id === id)?.slots;
+  const spanWord = (day) => (day ? `최근 <b>24시간</b>` : `최근 <b>7일</b>`);
+
+  /**
+   * 기간 전환 단추. **고운 층이 없으면 아예 안 보인다** — 누를 수 없는 단추를
+   * 보여 주면 "고장인가" 를 묻게 된다. 없는 것은 없는 채로 둔다.
+   *
+   * 🔴 "곡선 기간" 이라고 적는다. **막대는 언제나 7일**이라, 안 적으면 막대까지
+   *    하루로 바뀐 줄 알고 왼쪽 회색 칸을 고장으로 읽는다.
+   */
+  function spanPickHtml() {
+    if (!fine) return "";
+    const b = (k, label) => `<button type="button" data-span="${k}" aria-pressed="${span === k}">${label}</button>`;
+    return `<span>곡선 기간</span><span class="btns">${b("day", "하루")}${b("week", "7일")}</span>`;
+  }
+
+  const TREND = { w: 1000, zero: 56, bot: 36 };
+
+  /** 값이 이어지는 구간만 골라 낸다. 중간에 못 잰 칸이 있으면 거기서 끊긴다. */
+  function trendRuns(vals) {
+    const out = []; let cur = null;
+    vals.forEach((v, i) => {
+      if (v == null) { cur = null; return; }
+      if (!cur) { cur = []; out.push(cur); }
+      cur.push(i);
+    });
+    return out;
+  }
+
+  /**
+   * 눈금 꼭대기를 정한다.
+   *
+   * 🔴 **가장 큰 값에 맞추지 않는다.** 한 번 크게 튄 칸이 있으면 나머지 전부가
+   *    바닥에 눌려 평평해지고, 그러면 곡선을 넣은 이유가 사라진다 (막대가 못
+   *    보여주던 "아직 정상이지만 점점 느려지는 중" 이 안 보인다). 그래서 스무 칸
+   *    중 열아홉이 담기는 높이에 맞추고, 넘치는 칸은 꼭대기에 눌러 담은 뒤
+   *    **눌렀다고 그림과 글씨로 밝힌다.**
+   * 🔴 눈금을 휘게(로그·제곱근) 하지는 않는다 — 그러면 "두 배 높으면 두 배" 가
+   *    거짓이 되고, 그건 눈에 안 보이는 거짓말이라 더 나쁘다.
+   */
+  function trendCeil(seen, floor) {
+    const min = Math.max(floor || 0, 1e-6);
+    if (!seen.length) return min;
+    const s = [...seen].sort((a, b) => a - b);
+    const i = (s.length - 1) * 0.95, lo = Math.floor(i), hi = Math.ceil(i);
+    const p95 = s[lo] + (s[hi] - s[lo]) * (i - lo);
+    return Math.max(Math.min(Math.max(...seen) * 1.15, p95 * 1.15), min);
+  }
+
+  /**
+   * 추세 곡선 한 장을 그린다. 서비스 줄과 CPU 가 **같은 이 함수**를 쓴다 —
+   * 두 벌로 만들면 한쪽만 고친 날 두 그림이 서로 다른 약속을 지키게 된다.
+   *
+   * 🔴 점 사이를 부드럽게 휘게 하지 않는다. 칸 간격이 4시간이라 곡선으로 이으면
+   *    **재지 않은 중간값을 그려 넣는 것**이 된다. 곧은 선으로만 잇는다.
+   * 🔴 한 번도 못 잰 칸은 선을 끊고 그 자리를 회색으로 덮는다. 이어 그리면
+   *    "그때도 이만했다" 는 거짓말이 된다 — 막대가 회색을 남기는 것과 같은 이유다.
+   *
+   * o = {
+   *   id, slots,                      칸 (t 로 날을 가르고 state 로 빈 곳을 안다)
+   *   up:   { max, series: [{ v, cls, fill, mark }] },   위로 솟는 것
+   *   down: { max, series: [...] } | null,               아래로 파이는 것
+   *   refAt,                          가로 기준선 (CPU 의 1.0 같은 것)
+   *   head: { left, right, alt },     그림 위 글씨. 그림 안에 글씨를 넣으면
+   *                                   가로로만 늘어나 찌그러진다
+   *   tip: (slot, i) => string,       칸에 마우스를 올렸을 때 할 말
+   * }
+   */
+  function trendSvg(o) {
+    const slots = o.slots, n = slots.length;
+    const W = TREND.w, ZERO = TREND.zero;
+    const BOT = o.down ? TREND.bot : 8, H = ZERO + BOT;
+    const step = W / n;
+    const cx = (i) => step * (i + 0.5);   // 점은 칸 한가운데에 찍는다
+
+    // 천장을 4 가 아니라 10 에 둔다 — 위쪽 여섯 칸은 **눌러 담았다는 표**의 자리다.
+    // 표가 곡선과 겹치면 눌린 꼭대기가 그냥 평평한 꼭대기로 읽힌다.
+    const yUp = (v) => ZERO - Math.min(v / o.up.max, 1) * (ZERO - 10);
+    const yDn = (v) => ZERO + Math.min(v / (o.down ? o.down.max : 1), 1) * (BOT - 4);
+
+    // 그라디언트 이름은 문서 안에서 겹치면 안 된다 — 그림마다 다른 이름을 준다.
+    const gid = String(o.id || "x").replace(/[^a-z0-9_-]/gi, "");
+    const colorOf = (cls) => ({ ms: "accent", fail: "down", cpuavg: "accent", peak: "accent" }[cls] || cls);
+
+    let defs = "", body = "", overs = "";
+    const lane = (spec, y, down) => {
+      if (!spec) return;
+      for (const s of spec.series) {
+        if (s.fill) {
+          defs += `<linearGradient id="g-${s.cls}-${gid}" x1="0" y1="${down ? 1 : 0}" x2="0" y2="${down ? 0 : 1}">`
+               +  `<stop offset="0%" style="stop-color: var(--${colorOf(s.cls)}); stop-opacity: .45"/>`
+               +  `<stop offset="100%" style="stop-color: var(--${colorOf(s.cls)}); stop-opacity: .04"/>`
+               +  `</linearGradient>`;
+        }
+        for (const g of trendRuns(s.v)) {
+          if (g.length === 1) {
+            // 앞뒤가 끊긴 칸 하나. 선으로는 아무것도 안 그려지므로 점을 찍는다.
+            body += `<circle class="dot-${s.cls}" cx="${cx(g[0]).toFixed(1)}" cy="${y(s.v[g[0]]).toFixed(1)}" r="1.8"/>`;
+            continue;
+          }
+          const line = g.map((i, k) => `${k ? "L" : "M"}${cx(i).toFixed(1)},${y(s.v[i]).toFixed(1)}`).join("");
+          // 🔴 앞 조각이 숫자로 끝나고 뒤 조각이 숫자로 시작하면 **두 수가 한 수로
+          //    붙는다** (…,56 + 131.0 → 56131.0). 사이에 명령 글자 L 을 넣어 가른다.
+          if (s.fill) {
+            body += `<path class="area" fill="url(#g-${s.cls}-${gid})" `
+                 +  `d="M${cx(g[0]).toFixed(1)},${ZERO}L${line.slice(1)}L${cx(g.at(-1)).toFixed(1)},${ZERO}Z"/>`;
+          }
+          if (!s.noLine) body += `<path class="ln-${s.cls}" d="${line}"/>`;
+        }
+        if (s.mark) {
+          overs += s.v.map((v, i) => (v != null && v > spec.max
+            ? `<line class="over" x1="${cx(i).toFixed(1)}" y1="1" x2="${cx(i).toFixed(1)}" y2="7"/>`
+            : "")).join("");
+        }
+      }
+    };
+    lane(o.up, yUp, false);
+    lane(o.down, yDn, true);
+
+    // 한 번도 못 잰 칸은 회색으로 덮는다. 이어진 것끼리 한 덩어리로 묶어 그린다.
+    let gaps = "", runStart = -1;
+    for (let i = 0; i <= n; i++) {
+      const none = i < n && slots[i].state === "none";
+      if (none && runStart < 0) runStart = i;
+      if (!none && runStart >= 0) {
+        gaps += `<rect class="gap" x="${(step * runStart).toFixed(1)}" y="0" width="${(step * (i - runStart)).toFixed(1)}" height="${H}"/>`;
+        runStart = -1;
+      }
+    }
+
+    // 날이 바뀌는 자리에 옅은 세로줄.
+    let grid = "";
+    for (let i = 1; i < n; i++) {
+      if (String(slots[i].t).slice(0, 10) !== String(slots[i - 1].t).slice(0, 10)) {
+        grid += `<line class="grid" x1="${(step * i).toFixed(1)}" y1="0" x2="${(step * i).toFixed(1)}" y2="${H}"/>`;
+      }
+    }
+
+    // 가로 기준선. CPU 의 1.0 처럼 "여기를 넘으면 뜻이 달라지는" 높이가 있을 때만.
+    const ref = (o.refAt != null && o.refAt <= o.up.max)
+      ? `<line class="ref" x1="0" y1="${yUp(o.refAt).toFixed(1)}" x2="${W}" y2="${yUp(o.refAt).toFixed(1)}"/>`
+      : "";
+
+    // 칸마다 투명한 판을 덮어 마우스를 올리면 그 칸의 값을 말하게 한다.
+    const hits = slots.map((d, i) =>
+      `<rect class="hit" x="${(step * i).toFixed(1)}" y="0" width="${step.toFixed(1)}" height="${H}"><title>${esc(o.tip(d, i))}</title></rect>`
+    ).join("");
+
+    return `<div class="trend${o.down ? "" : " up-only"}">
+      <div class="trend-head">
+        <span>${o.head.left}</span>
+        ${o.head.right ? `<span class="r">${o.head.right}</span>` : ""}
+      </div>
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="${esc(o.head.alt || "추세")}">
+        <!-- 🔴 stop-color 를 **속성으로** 쓰면 var(...) 가 조용히 무시돼 면이 안 칠해진다.
+             style 로 써야 CSS 규칙이 되어 산다. 밝은/어두운 화면을 따라가려면 필요하다. -->
+        <defs>${defs}</defs>
+        ${gaps}${grid}${ref}${overs}
+        ${body}
+        <line class="zero" x1="0" y1="${ZERO}" x2="${W}" y2="${ZERO}"/>
+        ${hits}
+      </svg>
+      ${o.axis || ""}
+    </div>`;
+  }
+
+  // ── 서비스 줄의 추세 곡선 — 막대 위에 한 줄 더 ────────────────────────────
+  //
+  // 막대와 **같은 42칸**을 쓰는데 접는 방법이 다르다. 막대는 그 4시간의 최악을
+  // 색으로 말하고("언제 부러졌나"), 곡선은 그 4시간의 평균을 높이로 말한다
+  // ("얼마나 힘들었나"). 막대는 색이 셋뿐이라 **"아직 정상이지만 점점 느려지는
+  // 중"** 을 보여줄 방법이 없다. 그래서 지우지 않고 위에 한 줄을 더 얹는다.
+  //
+  // 🔴 위로 솟으면 느려진 것(평균 응답 시간), 아래로 파이면 틀린 것(정상 비율이
+  //    100% 에 못 미친 만큼). **아래가 평평하면 그 기간엔 한 번도 안 틀렸다.**
+  function trendHtml(s) {
+    // MR 검사 속도 줄은 시간별 이력을 안 모은다. 지금 중앙값만 매번 새로 계산하고
+    // 버리므로 그릴 점이 없다. 없는 것을 없다고 적는다 — 빈칸이 지어낸 선보다 낫다.
+    if (s.kind === "mr") {
+      return `<div class="note">이 줄은 아직 추세 곡선이 없습니다 —
+        시간별 이력을 모으지 않아 <b>지금의 중앙값</b>만 알 수 있습니다.</div>`;
+    }
+
+    const { slots: all, day } = pickSlots(svcFine(s.id), s.slots);
+    if (all.length < 2) return "";
+
+    const ms   = all.map((d) => (typeof d.avgMs === "number" ? d.avgMs : null));
+    const fail = all.map((d) => (d.up == null ? null : Math.round((100 - d.up) * 10) / 10));
+    const msSeen = ms.filter((v) => v != null);
+    // 점 하나로는 추세가 아니다. 막대만 두고 그림은 안 그린다.
+    if (msSeen.length < 2) return "";
+
+    const maxMs = Math.max(...msSeen);
+    const topMax = trendCeil(msSeen, 1);
+    const clipped = msSeen.filter((v) => v > topMax);
+
+    const failSeen = fail.filter((v) => v != null);
+    const maxFail = failSeen.length ? Math.max(...failSeen) : 0;
+    // 🔴 아래쪽 눈금은 **최소 5%** 로 잡는다. 0.4% 틀린 것을 바닥까지 파 놓으면
+    //    작은 흠집이 재난처럼 보인다. 대신 완벽했던 기간은 평평하게 남는다.
+    const botMax = Math.max(maxFail, 5);
+    // 🔴 틀린 게 **0 인 구간에는 선을 긋지 않는다.** 0 도 값이라 이으면 바닥에
+    //    빨간 줄이 길게 깔리는데, 아무 일도 없었던 기간에 경고색을 칠하는 셈이다.
+    //    다만 파인 곳 **양옆의 0 하나씩은 남긴다** — 그게 없으면 파인 자리가
+    //    바닥에서 솟은 점 하나가 되어 얼마나 파였는지 읽히지 않는다.
+    const failLine = fail.map((v, i) =>
+      (v === 0 && !(fail[i - 1] > 0) && !(fail[i + 1] > 0)) ? null : v);
+
+    return trendSvg({
+      id: s.id, slots: all,
+      up: { max: topMax, series: [{ v: ms, cls: "ms", fill: true, mark: true }] },
+      // 🔴 한 번도 안 틀렸으면 아래쪽은 **아예 안 그린다.** 0 을 선으로 그리면
+      //    눈금선 위에 빨간 줄이 겹쳐서, 틀린 게 없는데 틀린 것처럼 보인다.
+      down: { max: botMax, series: maxFail > 0 ? [{ v: failLine, cls: "fail", fill: true }] : [] },
+      head: {
+        alt: "4시간마다의 평균 응답 시간과 틀린 비율",
+        left: `${spanWord(day)} · 위로 솟은 것은 <b>평균 응답 시간</b> — ${clipped.length
+          ? `눈금 꼭대기 <b>${Math.round(topMax)}ms</b> · 가장 느렸던 칸 <b>${maxMs}ms</b>(꼭대기에 눌러 담고 표를 찍었습니다)`
+          : `가장 느렸던 칸 <b>${maxMs}ms</b>`}`,
+        right: maxFail > 0
+          ? `아래로 파인 곳은 <b>틀린 비율</b> — 가장 깊었던 칸 <b>${nf(maxFail)}%</b>`
+          : `아래가 평평합니다 — 이 기간엔 <b>한 번도 안 틀렸습니다</b>`,
+      },
+      // 🔴 곡선이 하루인데 **바로 아래 막대는 언제나 7일**이다. 둘의 회색 구간이
+      //    서로 다른 자리에 생기는데, 눈금 글씨가 없으면 어긋난 것처럼 보인다.
+      //    기간이 같을 때(7일)는 안 붙인다 — 바로 아래 막대가 같은 말을 이미 한다.
+      axis: day
+        ? `<div class="axis"><span>24시간 전</span><span class="right">지금</span></div>`
+        : "",
+      tip: (d, i) => {
+        const parts = [];
+        if (ms[i] != null) parts.push(`평균 ${ms[i]}ms`);
+        if (d.up != null) parts.push(`정상 ${d.up}%`);
+        return d.state === "none"
+          ? `${slotLabel(d.t)} — 잰 것이 없습니다`
+          : `${slotLabel(d.t)} — ${parts.join(" · ") || "잰 값이 없습니다"}`;
+      },
+    });
+  }
+
+  // ── CPU 추세 곡선 ─────────────────────────────────────────────────────────
+  //
+  // 🔴 이 값들은 **새로 모은 것이 하나도 없다.** 4시간마다의 평균과 최고가 진작부터
+  //    서버 디스크에 쌓여 있었는데 내보내지 않아서, 화면은 "지금" 하나만 보여 줬다.
+  //    수집기가 꺼내기 시작하자 지난 기간이 통째로 따라왔다.
+  // 🔴 면은 **그 4시간의 평균**, 위의 선은 **그 4시간의 최고**다. 둘을 같이 그려야
+  //    "잠깐 튀었다" 와 "내내 힘들었다" 가 갈린다 — 평균만 보면 30분 치솟은 것이
+  //    네 시간에 희석돼 사라진다.
+  function cpuTrendHtml(c) {
+    const { slots: all, day } = pickSlots(fine && fine.cpu && fine.cpu.slots, c && c.slots);
+    if (all.length < 2) return "";
+    const avg = all.map((d) => (typeof d.avg === "number" ? d.avg : null));
+    const max = all.map((d) => (typeof d.max === "number" ? d.max : null));
+    const seen = max.filter((v) => v != null);
+    if (seen.length < 2) return "";
+
+    // 🔴 꼭대기를 적어도 1.25 로 둔다. 1.0 이 **뜻이 있는 높이**(코어 수만큼 줄이
+    //    섰다)라, 한가한 기간에도 그 선이 화면 안에 있어야 지금 값이 뜻을 가진다.
+    //    1.1 이 아니라 1.25 인 이유는 **그 선 위에 자리를 남기기 위해서**다 — 꼭 맞게
+    //    잡으면 1.0 을 살짝 넘은 것과 크게 넘은 것이 둘 다 천장에 붙어 같아 보인다.
+    const top = trendCeil(seen, 1.25);
+    const peak = Math.max(...seen);
+
+    return trendSvg({
+      id: "cpu", slots: all, refAt: 1,
+      up: { max: top, series: [
+        // 평균은 **면으로만** 그린다. 선까지 그으면 선이 둘이 되어 어느 것이 최고인지 흐려진다.
+        { v: avg, cls: "cpuavg", fill: true, noLine: true },
+        { v: max, cls: "peak", fill: false, mark: true },
+      ] },
+      down: null,
+      head: {
+        alt: "4시간마다의 평균 부하와 최고 부하",
+        left: `${spanWord(day)} · 면은 <b>칸 평균</b>, 위의 선은 <b>그 칸의 최고</b> — 가장 높았던 칸 <b>${nf(peak, 2)}</b>`
+          + (peak > top ? `(눈금 꼭대기 <b>${nf(top, 2)}</b> 에 눌러 담고 표를 찍었습니다)` : ""),
+        right: `가로줄이 <b>1.0</b> — 코어 수만큼 줄이 선 높이입니다`,
+      },
+      tip: (d) => (d.state === "none"
+        ? `${slotLabel(d.t)} — 잰 것이 없습니다`
+        : `${slotLabel(d.t)} — 평균 ${nf(d.avg, 2)} · 최고 ${nf(d.max, 2)}`),
+    });
+  }
+
   // ── MR 검사 속도 줄에 붙는 자세한 값 ──────────────────────────────────────
   function mrDetail(mr) {
     if (!mr || !mr.measured) return "";
@@ -462,6 +844,7 @@
           <span class="svc-msg">${right}</span>
         </div>
         <div class="svc-what">${esc(s.what || "")}</div>
+        ${trendHtml(s)}
         ${barsHtml(s.slots)}
         ${s.kind === "mr" ? mrDetail(s.mr) : ""}
       </div>`;
@@ -507,7 +890,11 @@
         ${line("오늘 최고", c.todayMaxRatio != null
             ? `${nf(c.todayMaxRatio, 2)}배 <span class="note">(오늘 평균 ${nf(c.todayAvgRatio, 2)}배)</span>` : null)}
       </dl>
-    </div></div>`;
+    </div>
+    <!-- 🔴 곡선은 게이지 **아래**, 같은 카드 안에 둔다. 위의 큰 숫자는 "지금" 이고
+         곡선은 "그동안" 이라, 떨어뜨려 놓으면 같은 것을 말한다는 게 안 보인다. -->
+    <div class="cpu-trend">${cpuTrendHtml(c)}</div>
+  </div>`;
   }
 
   // ── ④ 최근 1시간 CPU 최다 ─────────────────────────────────────────────────
@@ -570,6 +957,8 @@
 
   // ── 그리기 ────────────────────────────────────────────────────────────────
   function render(d) {
+    lastData = d;                       // 단추를 눌렀을 때 다시 그리려고
+    $("span-pick").innerHTML = spanPickHtml();
     // 칸이 몇 시간짜리인지는 수집기가 정한다. 화면이 4를 손으로 적어 두면
     // 수집기에서 6으로 바꾼 날 눈금 글씨만 거짓말이 된다.
     if (Number.isFinite(d.slotHours) && d.slotHours > 0) slotHours = d.slotHours;
@@ -633,6 +1022,25 @@
     </div></div>`;
   }
 
+  /**
+   * 고운 층을 읽는다. **없어도 아무 일도 안 난다** — 서버에 새 수집기가 아직 안
+   * 올라갔거나, 올라간 뒤 첫 5분 동안은 파일이 없다. 그때는 7일 곡선만 나온다.
+   *
+   * 🔴 실패를 조용히 삼키되 **거짓으로 채우지는 않는다.** fine 을 null 로 두면
+   *    단추가 사라지고 글씨도 "최근 7일" 이라고 적힌다 — 화면이 거짓말을 안 한다.
+   */
+  async function loadFine() {
+    try {
+      const res = await fetch("status-fine.json", { cache: "no-store" });
+      if (!res.ok) { fine = null; return; }
+      const f = await res.json();
+      fine = (f && Array.isArray(f.services)) ? f : null;
+      if (fine && Number.isFinite(f.fineMinutes) && f.fineMinutes > 0) fineMinutes = f.fineMinutes;
+    } catch {
+      fine = null;
+    }
+  }
+
   async function load() {
     try {
       const res = await fetch("status.json", { cache: "no-store" });
@@ -645,10 +1053,27 @@
     }
   }
 
-  load();
+  // 🔴 **두 파일을 다른 주기로 받는다.** "지금" 은 1분마다 바뀌니 30초마다,
+  //    고운 이력은 5분에 한 번만 바뀌니 5분마다. 같은 주기로 받으면 열 번 중
+  //    아홉 번은 똑같은 것을 다시 받는다 — 점을 늘리는 값을 거기서 다 쓴다.
+  const FINE_EVERY = 5 * 60 * 1000;
+
+  function redraw() { if (lastData) render(lastData); }
+
+  loadFine().then(load);                 // 처음 한 번은 고운 것을 받고 나서 그린다
   setInterval(load, 30000);
+  setInterval(() => loadFine().then(redraw), FINE_EVERY);
+
   // 다른 탭에 있다 돌아오면 곧바로 새로 읽는다. 30초를 기다리지 않게.
   document.addEventListener("visibilitychange", () => { if (!document.hidden) load(); });
+
+  // 기간 단추. 자료를 다시 받지 않고 **들고 있던 것으로 다시 그린다.**
+  $("span-pick").addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-span]");
+    if (!b || b.dataset.span === span) return;
+    span = b.dataset.span;
+    redraw();
+  });
 })();
 </script>
 
