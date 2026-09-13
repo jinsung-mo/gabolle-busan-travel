@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": null,
+  "intent": "5분 칸 하루치를 새 파일로 모으고, 화면에 하루/7일 전환을 붙인다",
+  "actor": "agent",
+  "session": "b05d89a1-a5b5-478c-bb30-964f70d78614",
+  "since": "2026-09-13T23:23:57.391Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "ci/status/README.md",
+    "ci/status/check-uptime.mjs",
+    "ci/status/collect-status.mjs",
+    "ci/status/install-status.sh",
+    "ci/status/uptime.html"
+  ]
+}
