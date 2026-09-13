@@ -1,0 +1,13 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-899",
+  "intent": "갈래가 빈 장소를 추천 후보에서 항상 뺀다 — 취향을 건너뛰면 호텔·레지던스가 일정에 낀다",
+  "actor": null,
+  "session": "870f156d-5a8d-4082-8aab-28ac4fc805ea",
+  "since": "2026-09-13T08:22:30.723Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/service/PlaceCandidateQueryService.java",
+    "backend/src/test/java/com/gabolle/backend/place/PlaceCandidateQueryServiceTest.java"
+  ]
+}
