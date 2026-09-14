@@ -1,16 +1,17 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-146",
-  "intent": "관광공사 사진(firstimage)을 place.photo_url 에 채운다 — 저작권유형(cpyrhtDivCd)이 Type1 인 것만",
+  "intent": "TourApiPlaceLoader 의 Type1/Type3 사진 저작권 필터링을 실제 DB로 검증하는 새 통합 테스트",
   "actor": "agent",
   "session": "1244ad40-8ab9-4acc-8b52-8225cb9d3a6a",
-  "since": "2026-09-14T22:25:10.479Z",
+  "since": "2026-09-14T22:27:50.558Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/place/domain/Place.java",
     "backend/src/main/java/com/gabolle/backend/place/loader/TourApiPlaceLoader.java",
     "backend/src/main/java/com/gabolle/backend/place/loader/TourApiPlaceReader.java",
     "backend/src/main/java/com/gabolle/backend/place/loader/TourApiPlaceRow.java",
+    "backend/src/test/java/com/gabolle/backend/place/TourApiPlaceLoaderIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/place/loader/ExploreFacetLoaderTest.java",
     "backend/src/test/java/com/gabolle/backend/place/loader/TourApiPlaceReaderTest.java"
   ]
