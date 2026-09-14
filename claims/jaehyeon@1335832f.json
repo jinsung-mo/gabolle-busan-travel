@@ -1,12 +1,13 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-894",
-  "intent": "여행에 안 묶인 갈래 열람 기록 경로를 열고 근처 장소 응답에 사진 유무를 싣는다 — 전역 탐색 화면이 기록을 못 남겨 막혀 있다",
+  "intent": "여행에 안 묶인 갈래 열람 기록 경로를 새로 만든다 (S15P21E201-894)",
   "actor": "agent",
   "session": "c61c9806-a49e-4a8c-a2a9-b07538e95f10",
-  "since": "2026-09-14T04:53:03.180Z",
+  "since": "2026-09-14T04:54:29.792Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/api/FacetViewController.java",
     "backend/src/main/java/com/gabolle/backend/place/api/NearbyPlaceItem.java",
     "backend/src/main/java/com/gabolle/backend/place/domain/PlaceFacetView.java",
     "backend/src/main/java/com/gabolle/backend/place/service/PlaceFacetViewService.java",
