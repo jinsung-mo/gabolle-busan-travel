@@ -1,12 +1,13 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-863",
-  "intent": "축제 수집본 판독 규칙을 DB 없이 재는 단위 검사 (S15P21E201-863)",
+  "intent": "적재 절차에 축제 회차 단계를 더한다 (S15P21E201-863)",
   "actor": "agent",
   "session": "c61c9806-a49e-4a8c-a2a9-b07538e95f10",
-  "since": "2026-09-14T05:15:33.049Z",
+  "since": "2026-09-14T05:16:51.770Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/docs/PLACE-DATA-LOAD.md",
     "backend/src/main/java/com/gabolle/backend/place/domain/PlaceEventPeriod.java",
     "backend/src/main/java/com/gabolle/backend/place/loader/FestivalPeriodLoader.java",
     "backend/src/main/java/com/gabolle/backend/place/loader/FestivalPeriodLoaderRunner.java",
