@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-959",
+  "intent": "계정 취향 다섯 저장 경로를 만든다 (S15P21E201-959)",
+  "actor": "agent",
+  "session": "4ae90fd3-cbf7-4280-994e-aec53a6fb4ae",
+  "since": "2026-09-14T16:11:38.871Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/trip/application/TasteProfileService.java",
+    "backend/src/main/java/com/gabolle/backend/trip/presentation/TasteProfileController.java",
+    "backend/src/main/java/com/gabolle/backend/trip/presentation/dto/TasteProfileDto.java"
+  ]
+}
