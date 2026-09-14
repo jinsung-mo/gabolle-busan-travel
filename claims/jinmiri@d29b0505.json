@@ -1,12 +1,13 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-924",
-  "intent": "홈 카드 사진이 카드 크기가 아니라 원본 픽셀 크기로 렌더링돼 왼쪽 위만 잘려 보이는 버그 수정",
+  "task": "S15P21E201-925",
+  "intent": "실기기 리포트: 웰컴 화면 배경 영상 화질 나쁨 → 정적 사진으로 복귀",
   "actor": "agent",
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-14T02:28:19.306Z",
+  "since": "2026-09-14T02:42:39.962Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/(tabs)/home.tsx"
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/index.tsx"
   ]
 }
