@@ -1,0 +1,14 @@
+{
+  "agent": "yeaseung-lee",
+  "task": null,
+  "intent": "공공데이터(기상청 단기예보·관광공사 TourAPI) 출처표시 문구를 설정 화면에 추가한다 — 공공저작물 제1유형 라이선스 조건",
+  "actor": "agent",
+  "session": "311ec94e-6435-4653-937e-be461e074acd",
+  "since": "2026-09-14T02:16:30.573Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/app/legal/data-sources.tsx",
+    "frontend/src/legal/legalContent.ts"
+  ]
+}
