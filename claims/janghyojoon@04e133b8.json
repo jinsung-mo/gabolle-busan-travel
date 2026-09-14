@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-953",
+  "intent": "피드 탭 되살린 변경을 작업 브랜치에 커밋한다",
+  "actor": "agent",
+  "session": "4ae90fd3-cbf7-4280-994e-aec53a6fb4ae",
+  "since": "2026-09-14T11:28:32.724Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/index.tsx",
+    "frontend/src/components/TabBar.tsx"
+  ]
+}
