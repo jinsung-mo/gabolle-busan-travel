@@ -1,12 +1,13 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-863",
-  "intent": "축제 기간을 place_event_period 에 넣는 적재기를 만든다 — 표가 비어 있어 축제 화면이 예시 일정을 보여주고 있다",
+  "intent": "축제 기간 엔티티에 적재용 팩토리를 더한다 — 지금은 이 표에 행을 만드는 길이 없다 (S15P21E201-863)",
   "actor": "agent",
   "session": "c61c9806-a49e-4a8c-a2a9-b07538e95f10",
-  "since": "2026-09-14T05:12:20.023Z",
+  "since": "2026-09-14T05:12:59.692Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/domain/PlaceEventPeriod.java",
     "backend/src/main/java/com/gabolle/backend/place/loader/FestivalPeriodLoader.java",
     "backend/src/main/java/com/gabolle/backend/place/loader/FestivalPeriodLoaderRunner.java",
     "backend/src/main/java/com/gabolle/backend/place/loader/FestivalPeriodReader.java",
