@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-929",
+  "intent": "익명 세션 발급 fetch 타임아웃 추가",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-14T03:53:04.628Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/api/client.ts"
+  ]
+}
