@@ -1,0 +1,19 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-247",
+  "intent": "MR 761(common/dev→main) 병합 충돌 해결 — main을 common/dev에 합쳐 STORE-REVIEW-CHECKLIST.md 최신본 유지, 실제 편집 아님(병합 일괄 반영)",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-14T06:23:52.093Z",
+  "ttlMs": 1200000,
+  "paths": [
+    ".gitlab-ci.yml",
+    "CONTRIBUTING.md",
+    "backend",
+    "bigData",
+    "docs",
+    "frontend",
+    "governance",
+    "infra"
+  ]
+}
