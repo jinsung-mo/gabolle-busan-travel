@@ -1,0 +1,13 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-947",
+  "intent": "event_outbox.request_id 배타 규칙을 DB CHECK 제약으로도 지킨다 — S15P21E201-947",
+  "actor": "agent",
+  "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
+  "since": "2026-09-14T08:31:23.256Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/resources/db/migration/V20260914070000__event_outbox_request_id_constraint.sql",
+    "backend/src/test/java/com/gabolle/backend/event/OutboxTransactionIntegrationTest.java"
+  ]
+}
