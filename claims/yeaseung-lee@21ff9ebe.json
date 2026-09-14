@@ -1,0 +1,14 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-940",
+  "intent": "쓰지 않는 expo-camera 의존성 제거 — 병합 매니페스트에 CAMERA 권한이 남던 문제",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-14T06:28:09.387Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/package-lock.json",
+    "frontend/package.json",
+    "frontend/src/legal/openSourceNotices.generated.ts"
+  ]
+}
