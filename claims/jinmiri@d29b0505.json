@@ -1,13 +1,14 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-926",
-  "intent": "실기기 리포트: 하단 탭바가 safe-area 하단 인셋을 반영 안 해서 안드로이드 시스템 내비게이션 바에 가려지는 문제 수정",
+  "task": "S15P21E201-928",
+  "intent": "iOS에서 온보딩 화면 스와이프가 막히는 문제 — 수동 snap 로직을 pagingEnabled로 교체",
   "actor": "agent",
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-14T02:48:15.653Z",
+  "since": "2026-09-14T02:50:54.353Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
+    "frontend/app/app-intro.tsx",
     "frontend/app/index.tsx",
     "frontend/src/components/TabBar.tsx"
   ]
