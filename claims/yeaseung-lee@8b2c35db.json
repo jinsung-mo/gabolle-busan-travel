@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-285",
+  "intent": "S15P21E201-285 — 기상청 서비스 키를 배포 파이프라인에 연결한다 (GABOLLE_KMA_SERVICE_KEY)",
+  "actor": "agent",
+  "session": "311ec94e-6435-4653-937e-be461e074acd",
+  "since": "2026-09-14T00:57:52.300Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/Jenkinsfile"
+  ]
+}
