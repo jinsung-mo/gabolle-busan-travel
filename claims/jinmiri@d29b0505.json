@@ -1,13 +1,14 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-925",
-  "intent": "실기기 리포트: 웰컴 화면 배경 영상 화질 나쁨 → 정적 사진으로 복귀",
+  "task": "S15P21E201-926",
+  "intent": "실기기 리포트: 하단 탭바가 safe-area 하단 인셋을 반영 안 해서 안드로이드 시스템 내비게이션 바에 가려지는 문제 수정",
   "actor": "agent",
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-14T02:42:39.962Z",
+  "since": "2026-09-14T02:48:15.653Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
-    "frontend/app/index.tsx"
+    "frontend/app/index.tsx",
+    "frontend/src/components/TabBar.tsx"
   ]
 }
