@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-639",
+  "intent": "빈칸만 채우면 첫 답에 영구히 갇힌다 — 고친 값이 계정에도 반영되게 바꾼다",
+  "actor": "agent",
+  "session": "1c50007f-cd97-4342-bcec-351170013b57",
+  "since": "2026-09-14T15:36:44.228Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/trip/application/PreferenceDefaultsService.java",
+    "backend/src/main/java/com/gabolle/backend/trip/application/TripCreationService.java",
+    "backend/src/test/java/com/gabolle/backend/trip/PreferenceDefaultsOverlayTest.java"
+  ]
+}
