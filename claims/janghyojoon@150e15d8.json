@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-932",
+  "intent": "S15P21E201-932: 완료 화면 제목의 「세 군데」를 실제로 낸 곳 수로 채운다",
+  "actor": "agent",
+  "session": "90c9144e-09ee-4ad6-8a76-0e3048b1e674",
+  "since": "2026-09-14T03:10:00.133Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "survey-recommend/index.html"
+  ]
+}
