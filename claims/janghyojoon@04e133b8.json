@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-오늘진단",
+  "intent": "오늘 앱 최소기능(추천·피드·지도) 진단 자료 폴더를 만든다 — NotebookLM 용",
+  "actor": "agent",
+  "session": "4ae90fd3-cbf7-4280-994e-aec53a6fb4ae",
+  "since": "2026-09-14T10:07:17.610Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/26.09.14-앱-최소기능-진단"
+  ]
+}
