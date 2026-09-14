@@ -1,0 +1,17 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-69",
+  "intent": "S15P21E201-69 일정 생성 SSE 진행률 — 백엔드 스트림 엔드포인트",
+  "actor": "agent",
+  "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
+  "since": "2026-09-14T05:03:28.043Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationJobWorker.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationProgressListener.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/presentation/RecommendationJobController.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/presentation/RecommendationProgressSseBroadcaster.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryRecalculationIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/RecommendationResultAuthorizationTest.java"
+  ]
+}
