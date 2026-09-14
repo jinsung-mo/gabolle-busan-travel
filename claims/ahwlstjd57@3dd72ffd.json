@@ -1,0 +1,15 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-278",
+  "intent": "S15P21E201-278/-315/-328 장소 데이터 품질 조회(채움률 기준선·번역 품질·안전정보 출처)",
+  "actor": "agent",
+  "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
+  "since": "2026-09-14T05:30:53.389Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/docs/PLACE-DATA-QUALITY.md",
+    "backend/src/main/java/com/gabolle/backend/dataquality/PlaceCompletenessReport.java",
+    "backend/src/main/java/com/gabolle/backend/dataquality/PlaceDataQualityService.java",
+    "backend/src/test/java/com/gabolle/backend/dataquality/PlaceDataQualityServiceTest.java"
+  ]
+}
