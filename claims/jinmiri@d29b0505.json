@@ -1,13 +1,20 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-933",
-  "intent": "전역 언어 배지 제거 — 웰컴·마이페이지에 이미 자체 전환 UI가 있어 중복이고, 여러 화면 겹침 버그의 원인이었음",
+  "task": "S15P21E201-934",
+  "intent": "로고를 고화질 파일(gabolle-logo-hd.png)로 교체",
   "actor": "agent",
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-14T03:36:12.760Z",
+  "since": "2026-09-14T03:40:34.741Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/(auth)/forgot-password.tsx",
+    "frontend/app/(auth)/sign-in.tsx",
     "frontend/app/_layout.tsx",
+    "frontend/app/app-intro.tsx",
+    "frontend/app/auth/password/reset.tsx",
+    "frontend/app/index.tsx",
+    "frontend/assets/brand/gabolle-logo-hd.png",
+    "frontend/src/components/BrandLogoLink.tsx",
     "frontend/src/components/GlobalLanguageBadge.tsx",
     "frontend/src/components/LanguageBadge.tsx"
   ]
