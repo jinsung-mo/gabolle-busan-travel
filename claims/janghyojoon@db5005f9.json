@@ -1,15 +1,19 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-106",
-  "intent": "카페 category 가 이제 CAFE_HEALING 이라 FOOD 하나뿐이라는 주석이 낡았다 — 한 줄 정정",
+  "intent": "해안산책로 2곳(절영해안산책로·해운대 그린레일웨이)만 SEA_BEACH 로 재분류한다 — 바다 재고 2→4",
   "actor": "agent",
   "session": "1244ad40-8ab9-4acc-8b52-8225cb9d3a6a",
-  "since": "2026-09-14T15:50:35.244Z",
+  "since": "2026-09-14T15:58:27.354Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/place/loader/SbizPlaceLoader.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/TourApiCategory.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/TourApiPlaceLoader.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/TourApiPlaceLoaderRunner.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateTranslator.java",
     "backend/src/main/resources/db/migration",
-    "backend/src/test/java/com/gabolle/backend/place/SbizPlaceLoaderIntegrationTest.java"
+    "backend/src/test/java/com/gabolle/backend/place/SbizPlaceLoaderIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/place/loader/TourApiCategoryTest.java"
   ]
 }
