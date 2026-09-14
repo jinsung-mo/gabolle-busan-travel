@@ -1,0 +1,13 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-948",
+  "intent": "place_feature 로더의 check-then-act 중복 방지를 ON CONFLICT DO NOTHING 으로 바꾼다 — S15P21E201-948",
+  "actor": "agent",
+  "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
+  "since": "2026-09-14T08:36:51.258Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/loader/PlaceFeatureLoader.java",
+    "backend/src/test/java/com/gabolle/backend/place/PlaceFeatureLoaderIntegrationTest.java"
+  ]
+}
