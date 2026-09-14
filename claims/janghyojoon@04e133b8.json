@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-957",
+  "intent": "탭 전환 때 서버를 다시 안 부르게 서버 데이터 캐시를 넣는다 (S15P21E201-957)",
+  "actor": "agent",
+  "session": "4ae90fd3-cbf7-4280-994e-aec53a6fb4ae",
+  "since": "2026-09-14T15:03:33.265Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/trips.tsx",
+    "frontend/app/_layout.tsx",
+    "frontend/package.json",
+    "frontend/src/api/queryClient.ts"
+  ]
+}
