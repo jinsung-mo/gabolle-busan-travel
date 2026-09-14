@@ -7,15 +7,7 @@
   "since": "2026-09-14T05:52:59.536Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/build.gradle",
     "backend/docs/VULNERABILITY-REPORT.md",
-    "backend/gradle.lockfile",
-    "backend/src/main/java/com/gabolle/backend/common/security/HtmlOutputEncoder.java",
-    "backend/src/main/java/com/gabolle/backend/review/presentation/dto/PlaceReviewResponse.java",
-    "backend/src/main/java/com/gabolle/backend/story/application/StoryResponseAssembler.java",
-    "backend/src/test/java/com/gabolle/backend/common/security/HtmlOutputEncoderTest.java",
-    "backend/src/test/java/com/gabolle/backend/review/presentation/dto/PlaceReviewResponseTest.java",
-    "backend/src/test/java/com/gabolle/backend/story/application/StoryResponseAssemblerTest.java",
     "docs/VULNERABILITY-REPORT.md"
   ]
 }
