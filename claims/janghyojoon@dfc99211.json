@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-639",
-  "intent": "온보딩·마이페이지가 계정 기본 취향을 저장하고 읽는 경로를 만든다",
+  "intent": "계정 취향 경로가 인증 주체의 것만 다루는지 검사",
   "actor": "agent",
   "session": "1c50007f-cd97-4342-bcec-351170013b57",
-  "since": "2026-09-14T15:52:27.685Z",
+  "since": "2026-09-14T15:54:51.886Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/trip/application/PreferenceDefaultsService.java",
@@ -12,6 +12,7 @@
     "backend/src/main/java/com/gabolle/backend/trip/presentation/dto/TastePreferencesRequest.java",
     "backend/src/main/java/com/gabolle/backend/trip/presentation/dto/TastePreferencesResponse.java",
     "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java",
-    "backend/src/test/java/com/gabolle/backend/trip/PreferenceDefaultsOverlayTest.java"
+    "backend/src/test/java/com/gabolle/backend/trip/PreferenceDefaultsOverlayTest.java",
+    "backend/src/test/java/com/gabolle/backend/trip/presentation/TastePreferencesControllerTest.java"
   ]
 }
