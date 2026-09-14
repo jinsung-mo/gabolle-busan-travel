@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-884",
-  "intent": "짝 비교를 네 벌로 — 경사·그늘·놀이비용이 문항 하나에서만 갈려 폭이 넓다. a·b 는 얼려 두고 c·d 를 더한다. index.html 은 954 가 잡고 있어 나중에",
+  "intent": "문항 블록을 네 벌로 다시 쓴다 (design-v5.mjs 가 씀). a·b 는 그대로 두고 c·d 만 더한다",
   "actor": "agent",
   "session": "1c50007f-cd97-4342-bcec-351170013b57",
-  "since": "2026-09-14T13:54:18.722Z",
+  "since": "2026-09-14T13:57:30.363Z",
   "ttlMs": 2700000,
   "paths": [
-    "survey-recommend/design-v5.mjs"
+    "survey-recommend/design-v5.mjs",
+    "survey-recommend/index.html"
   ]
 }
