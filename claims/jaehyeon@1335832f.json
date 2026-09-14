@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-833",
+  "intent": "애플 로그인에 이메일을 요청하도록 전환한다 — scope=email·response_mode=form_post 를 싣고 애플에 넘기는 주소만 서버 POST 수신 경로로 바꾼다",
+  "actor": "agent",
+  "session": "c61c9806-a49e-4a8c-a2a9-b07538e95f10",
+  "since": "2026-09-14T02:44:33.703Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/auth/oauth.ts"
+  ]
+}
