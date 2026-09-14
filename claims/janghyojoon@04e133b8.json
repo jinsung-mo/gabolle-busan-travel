@@ -1,15 +1,16 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-960",
-  "intent": "마이페이지와 설정 줄이 같은 캐시를 쓰도록 계정 취향 읽기를 한 곳에 모은다",
+  "intent": "마이페이지 취향 화면도 로그인 보호와 화면 미리보기 통로를 타게 한다",
   "actor": "agent",
   "session": "4ae90fd3-cbf7-4280-994e-aec53a6fb4ae",
-  "since": "2026-09-14T22:30:04.618Z",
+  "since": "2026-09-14T22:35:09.586Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(onboarding)/spend-profile.tsx",
     "frontend/app/(onboarding)/taste-profile.tsx",
     "frontend/app/(tabs)/me.tsx",
+    "frontend/app/me/_layout.tsx",
     "frontend/app/me/preferences.tsx",
     "frontend/src/preferences/accountPreferences.ts",
     "frontend/src/preferences/tasteProfile.ts"
