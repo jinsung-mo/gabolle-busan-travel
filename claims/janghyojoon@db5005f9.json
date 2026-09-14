@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-106",
+  "intent": "카페(소분류=카페)의 place.category 를 FOOD 에서 CAFE_HEALING 으로 바꾼다 — 카페힐링 후보 0건 문제",
+  "actor": "agent",
+  "session": "1244ad40-8ab9-4acc-8b52-8225cb9d3a6a",
+  "since": "2026-09-14T15:48:27.205Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/loader/SbizPlaceLoader.java",
+    "backend/src/main/resources/db/migration",
+    "backend/src/test/java/com/gabolle/backend/place/SbizPlaceLoaderIntegrationTest.java"
+  ]
+}
