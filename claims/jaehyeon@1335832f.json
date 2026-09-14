@@ -1,13 +1,20 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-939",
-  "intent": "안드로이드에서 화면 아래가 시스템 버튼에 가리고 키보드가 입력칸을 덮는 것을 공통 뼈대에서 고친다 (S15P21E201-939)",
+  "intent": "탭 막대가 있는 화면에 그 높이만큼 하단 여백을 확보한다 — 스크롤 끝이 막대에 가린다 (S15P21E201-939)",
   "actor": "agent",
   "session": "c61c9806-a49e-4a8c-a2a9-b07538e95f10",
-  "since": "2026-09-14T06:25:56.480Z",
+  "since": "2026-09-14T06:27:01.273Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app.json",
+    "frontend/app/(tabs)/feed.tsx",
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/app/(tabs)/saved.tsx",
+    "frontend/app/(tabs)/trips.tsx",
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/app/trips/[id]/recommendations.tsx",
     "frontend/src/components/Screen.tsx",
     "frontend/src/components/TabBar.tsx"
   ]
