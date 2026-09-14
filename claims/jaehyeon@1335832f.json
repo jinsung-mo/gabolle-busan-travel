@@ -1,0 +1,14 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-939",
+  "intent": "안드로이드에서 화면 아래가 시스템 버튼에 가리고 키보드가 입력칸을 덮는 것을 공통 뼈대에서 고친다 (S15P21E201-939)",
+  "actor": "agent",
+  "session": "c61c9806-a49e-4a8c-a2a9-b07538e95f10",
+  "since": "2026-09-14T06:25:56.480Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app.json",
+    "frontend/src/components/Screen.tsx",
+    "frontend/src/components/TabBar.tsx"
+  ]
+}
