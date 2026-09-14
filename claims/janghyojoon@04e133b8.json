@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-955",
+  "intent": "사진 3MB 한도를 올리기 전에 알려준다 (S15P21E201-955)",
+  "actor": "agent",
+  "session": "4ae90fd3-cbf7-4280-994e-aec53a6fb4ae",
+  "since": "2026-09-14T14:05:54.785Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/feed/compose.tsx",
+    "frontend/src/social/imageResize.ts"
+  ]
+}
