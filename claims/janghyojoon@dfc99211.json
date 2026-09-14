@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-639",
+  "intent": "여행에서 답한 취향 다섯 차원을 계정 기본값의 빈칸에만 채운다 — 덮어쓰지 않는다. 두 번째 여행부터 안 묻기",
+  "actor": "agent",
+  "session": "1c50007f-cd97-4342-bcec-351170013b57",
+  "since": "2026-09-14T15:20:24.471Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/trip/application/PreferenceDefaultsService.java",
+    "backend/src/main/java/com/gabolle/backend/trip/application/TripCreationService.java"
+  ]
+}
