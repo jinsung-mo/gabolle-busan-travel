@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-927",
+  "intent": "S15P21E201-927: 짝 비교 안내 문구를 same 값이 실제로 있을 때만 붙이도록 고친다",
+  "actor": "agent",
+  "session": "90c9144e-09ee-4ad6-8a76-0e3048b1e674",
+  "since": "2026-09-14T02:51:13.202Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "survey-recommend/index.html"
+  ]
+}
