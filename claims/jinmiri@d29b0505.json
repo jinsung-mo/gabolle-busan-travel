@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-922",
+  "intent": "일정 생성 실패 시 배지·제목·프린터 라벨이 여전히 \"생성 중\"이라고 말하는 모순 문구 수정",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-14T00:51:44.691Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/generating.tsx"
+  ]
+}
