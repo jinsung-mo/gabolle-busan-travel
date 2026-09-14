@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-247",
+  "intent": "스토어 심사 준비도 재실측 — Google Play/Apple 둘 다 지금 당장 제출 가능한지 최신 코드 기준으로 갱신",
+  "actor": "agent",
+  "session": "311ec94e-6435-4653-937e-be461e074acd",
+  "since": "2026-09-14T02:29:10.085Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/STORE-REVIEW-CHECKLIST.md"
+  ]
+}
