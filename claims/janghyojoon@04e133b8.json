@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-959",
+  "intent": "취향 경로가 400 대신 500 을 내는 것을 고치고, 소비 성향이 안 지워지는지 시험을 더한다",
+  "actor": "agent",
+  "session": "4ae90fd3-cbf7-4280-994e-aec53a6fb4ae",
+  "since": "2026-09-14T16:16:46.407Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/trip/presentation/TastePreferencesExceptionHandler.java",
+    "backend/src/test/java/com/gabolle/backend/trip/PreferenceDefaultsOverlayTest.java",
+    "backend/src/test/java/com/gabolle/backend/trip/presentation/TastePreferencesControllerTest.java"
+  ]
+}
