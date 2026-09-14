@@ -1,10 +1,10 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-835",
-  "intent": "S15P21E201-835 사용자 입력 JSON 응답 출력 인코딩(XSS 방어 2층) — story body·리뷰 body",
+  "intent": "S15P21E201-835 재검증 결과 6.2절에 이어붙이기",
   "actor": "agent",
   "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
-  "since": "2026-09-14T05:46:34.912Z",
+  "since": "2026-09-14T05:46:59.586Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/build.gradle",
@@ -12,6 +12,7 @@
     "backend/gradle.lockfile",
     "backend/src/main/java/com/gabolle/backend/common/security/HtmlOutputEncoder.java",
     "backend/src/main/java/com/gabolle/backend/review/presentation/dto/PlaceReviewResponse.java",
-    "backend/src/main/java/com/gabolle/backend/story/application/StoryResponseAssembler.java"
+    "backend/src/main/java/com/gabolle/backend/story/application/StoryResponseAssembler.java",
+    "docs/VULNERABILITY-REPORT.md"
   ]
 }
