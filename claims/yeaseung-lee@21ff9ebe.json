@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-247",
+  "intent": "MR 761 병합 충돌 해결 — main의 최신본으로 유지",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-14T06:20:55.566Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "docs/STORE-REVIEW-CHECKLIST.md"
+  ]
+}
