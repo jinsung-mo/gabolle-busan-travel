@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-960",
+  "intent": "온보딩 ③ 취향 다섯 화면과 마이페이지 여행 취향 화면을 만든다",
+  "actor": "agent",
+  "session": "4ae90fd3-cbf7-4280-994e-aec53a6fb4ae",
+  "since": "2026-09-14T22:25:20.716Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(onboarding)/spend-profile.tsx",
+    "frontend/app/(onboarding)/taste-profile.tsx",
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/app/me/preferences.tsx",
+    "frontend/src/preferences/tasteProfile.ts"
+  ]
+}
