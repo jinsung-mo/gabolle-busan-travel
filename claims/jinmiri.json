@@ -7,7 +7,6 @@
   "since": "2026-09-15T11:23:44.868Z",
   "ttlMs": 1800000,
   "paths": [
-    "frontend/src/social/__tests__/storyImageReadiness.test.ts",
     "frontend/src/social/useStoryImages.ts"
   ]
 }
