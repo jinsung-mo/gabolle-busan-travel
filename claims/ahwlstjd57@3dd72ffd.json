@@ -1,16 +1,13 @@
 {
   "agent": "ahwlstjd57",
-  "task": "S15P21E201-160",
-  "intent": "S15P21E201-160: 추천 Job 성공률/평균 지연/실패 사유 KPI 확장",
+  "task": "S15P21E201-986",
+  "intent": "S15P21E201-986: 챗봇 phrase 응답에 여행 실전 표현(택시/응급/알레르기 등) 카테고리 추가",
   "actor": "agent",
   "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
-  "since": "2026-09-15T02:39:25.212Z",
+  "since": "2026-09-15T06:55:34.256Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/src/main/java/com/gabolle/backend/event/application/AnalyticsQueryService.java",
-    "backend/src/main/java/com/gabolle/backend/event/presentation/dto/AnalyticsKpiResponse.java",
-    "backend/src/main/java/com/gabolle/backend/recommendation/repository/RecommendationJobRepository.java",
-    "backend/src/test/java/com/gabolle/backend/event/AnalyticsControllerTest.java",
-    "backend/src/test/java/com/gabolle/backend/event/AnalyticsQueryServiceTest.java"
+    "backend/src/main/java/com/gabolle/backend/assistant/adapter/GeminiAssistantAdapter.java",
+    "backend/src/test/java/com/gabolle/backend/assistant/adapter/GeminiAssistantAdapterTest.java"
   ]
 }
