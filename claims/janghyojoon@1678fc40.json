@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-106",
+  "intent": "ThemeWeightResolver 를 coursetheme 패키지로 옮겨 슬라이스 131건 실패를 고친다",
+  "actor": "agent",
+  "session": "a42c8755-aee2-44c6-b450-31cb771c557e",
+  "since": "2026-09-15T03:16:42.604Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/coursetheme",
+    "backend/src/main/java/com/gabolle/backend/recommendation/config",
+    "backend/src/test/java/com/gabolle/backend/coursetheme",
+    "backend/src/test/java/com/gabolle/testslice/RecommendationSliceApplication.java"
+  ]
+}
