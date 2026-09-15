@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-999",
+  "intent": "축제 응답 키를 서버(items/nameEn/photoUrl)에 맞춘다",
+  "actor": null,
+  "session": "8249036c-eefc-4100-a921-10ea2a37d58b",
+  "since": "2026-09-15T14:03:48.040Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/discovery/festivals.ts"
+  ]
+}
