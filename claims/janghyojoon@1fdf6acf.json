@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1011",
-  "intent": "일정 판 목록에 쪽나눔을 붙인다 — 지금은 상한도 쪽나눔도 없다",
+  "intent": "판 목록 응답 봉투를 새로 만든다 (items·count·hasMore)",
   "actor": "agent",
   "session": "8f0da7c2-4f9c-4439-acb6-4b0a244c323c",
-  "since": "2026-09-15T14:16:24.613Z",
+  "since": "2026-09-15T14:17:06.084Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
@@ -13,6 +13,7 @@
     "backend/src/main/java/com/gabolle/backend/itinerary/infra/ItineraryVersionJpaRepository.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/infra/JpaItineraryRepository.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/presentation/ItineraryQueryController.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/ItineraryVersionsResponse.java",
     "backend/src/main/java/com/gabolle/backend/place/api/FestivalController.java",
     "backend/src/main/java/com/gabolle/backend/place/api/FestivalResponse.java",
     "backend/src/main/java/com/gabolle/backend/place/repository/PlaceEventPeriodRepository.java",
