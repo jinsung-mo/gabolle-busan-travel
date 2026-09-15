@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1025",
+  "intent": "메뉴판 열쇠의 환경변수 자리를 만든다 — 없으면 이름을 아무도 모른다",
+  "actor": "agent",
+  "session": "8f0da7c2-4f9c-4439-acb6-4b0a244c323c",
+  "since": "2026-09-15T20:57:54.373Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/resources/application-dev.properties"
+  ]
+}
