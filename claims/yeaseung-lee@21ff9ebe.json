@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-891",
-  "intent": "backend-deploy에 dangling 이미지 정리 추가",
+  "intent": "frontend-deploy에 dangling 이미지 정리 추가",
   "actor": null,
   "session": "16acb503-8737-4b5e-9609-8c222334a72b",
-  "since": "2026-09-15T05:24:55.166Z",
+  "since": "2026-09-15T05:25:44.132Z",
   "ttlMs": 1800000,
   "paths": [
     "bigData/deploy/morning-report.py",
