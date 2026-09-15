@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-968",
+  "intent": "데스크톱 상단 바를 확정안 2c로 — 활성 판정을 라우트로 고치고 주 행동 버튼·하단 표식을 넣는다",
+  "actor": "agent",
+  "session": "6cc47f50-33ce-4b3b-b576-27ae1a6982a7",
+  "since": "2026-09-15T01:13:15.850Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/plan/PlanWebNav.tsx"
+  ]
+}
