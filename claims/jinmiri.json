@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "첫 사용자 앱 소개 강화와 도움말·문의 진입 추가",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T07:13:44.054Z",
+  "ttlMs": 3600000,
+  "paths": [
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/app/app-intro.tsx",
+    "frontend/app/help.tsx"
+  ]
+}
