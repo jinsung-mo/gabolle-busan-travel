@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1026",
+  "intent": "받은 음식 사진 22장을 사전에 채운다",
+  "actor": null,
+  "session": "8249036c-eefc-4100-a921-10ea2a37d58b",
+  "since": "2026-09-15T23:44:23.812Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/field/dishImages.ts"
+  ]
+}
