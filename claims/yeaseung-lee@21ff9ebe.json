@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-942",
+  "intent": "취향 벡터 배치 매일 자동 실행 DAG 추가",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-15T05:30:11.810Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "infra/personalization/airflow/dags/taste_vector_daily.py",
+    "infra/personalization/compose.yaml"
+  ]
+}
