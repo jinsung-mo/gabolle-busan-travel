@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1006",
+  "intent": "축제 수집기 커밋 — 법정동 코드로 부산 축제 72건을 받는다",
+  "actor": "agent",
+  "session": "c0ea8370-d3fd-45a0-aa8d-6c2bcdcb2770",
+  "since": "2026-09-15T15:45:13.596Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/collect/tourapi-festival.mjs",
+    "bigData/config/sources.json"
+  ]
+}
