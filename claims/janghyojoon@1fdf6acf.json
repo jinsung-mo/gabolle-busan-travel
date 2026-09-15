@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1013",
-  "intent": "판단을 사람별에서 여행별(동행자 공유)로 바꾼다 — 초대가 곧 공유 장치",
+  "intent": "이미 머지된 표를 여행별 공유 모양으로 바꾸는 새 마이그레이션 (앞 파일은 안 건드린다)",
   "actor": "agent",
   "session": "8f0da7c2-4f9c-4439-acb6-4b0a244c323c",
-  "since": "2026-09-15T14:48:21.484Z",
+  "since": "2026-09-15T14:51:19.022Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationActionService.java",
@@ -12,6 +12,7 @@
     "backend/src/main/java/com/gabolle/backend/recommendation/presentation/dto/RecommendationActionResponse.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/repository/RecommendationPlaceActionRepository.java",
     "backend/src/main/resources/db/migration/V20260915090000__recommendation_place_action.sql",
+    "backend/src/main/resources/db/migration/V20260915100000__recommendation_place_action_shared_per_trip.sql",
     "backend/src/test/java/com/gabolle/backend/recommendation/RecommendationActionAuthorizationTest.java",
     "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java"
   ]
