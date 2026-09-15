@@ -1,14 +1,18 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1010",
-  "intent": "익명 토큰으로 열리는 시스템 지표 경로를 운영자 전용으로 옮긴다",
+  "intent": "옮긴 지표 경로를 가리키는 낡은 주석 참조를 새 경로로 맞춘다",
   "actor": "agent",
   "session": "8f0da7c2-4f9c-4439-acb6-4b0a244c323c",
-  "since": "2026-09-15T14:02:53.404Z",
+  "since": "2026-09-15T14:04:28.542Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/event/presentation/AnalyticsController.java",
+    "backend/src/main/java/com/gabolle/backend/event/presentation/dto/AnalyticsKpiResponse.java",
+    "backend/src/main/java/com/gabolle/backend/event/repository/EventOutboxRepository.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/repository/RecommendationJobRepository.java",
     "backend/src/test/java/com/gabolle/backend/event/AnalyticsControllerTest.java",
+    "backend/src/test/java/com/gabolle/backend/event/AnalyticsQueryServiceTest.java",
     "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java"
   ]
 }
