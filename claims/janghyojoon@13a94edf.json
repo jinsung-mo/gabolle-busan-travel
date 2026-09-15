@@ -1,0 +1,18 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-994",
+  "intent": "넓은 화면 상단 바를 앱 뼈대에 한 번만 붙인다 — src/nav/TopNav.tsx 로 옮기고 네 군데 중복 마운트를 걷어낸다",
+  "actor": "agent",
+  "session": "6cc47f50-33ce-4b3b-b576-27ae1a6982a7",
+  "since": "2026-09-15T07:26:17.520Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/_layout.tsx",
+    "frontend/app/_layout.tsx",
+    "frontend/app/index.tsx",
+    "frontend/app/me/_layout.tsx",
+    "frontend/app/plan/_layout.tsx",
+    "frontend/src/nav",
+    "frontend/src/plan/PlanWebNav.tsx"
+  ]
+}
