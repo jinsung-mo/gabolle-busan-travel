@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "운영에서 누락된 감천문화마을·범어사 등 핵심 명소 적재 재검증",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T21:48:09.762Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/resources/db/migration/V20260915121000__curated_core_busan_landmarks.sql",
+    "backend/src/test/java/com/gabolle/backend/place/CuratedLandmarkMigrationIntegrationTest.java"
+  ]
+}
