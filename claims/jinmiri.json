@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "계정 취향 자동 적용 후 여행별 제약 초기화",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T15:54:15.232Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(plan)/generating.tsx"
+  ]
+}
