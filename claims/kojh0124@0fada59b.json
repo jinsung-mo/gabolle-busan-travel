@@ -1,15 +1,16 @@
 {
   "agent": "kojh0124",
-  "task": "S15P21E201-635",
-  "intent": "작은 수정 둘 — 소수로 온 5단계 답이 최댓값으로 뭉개지던 것, 그리고 asOf 에 상한이 없어 표시가 영구히 앞서던 것",
+  "task": "S15P21E201-772",
+  "intent": "미래 asOf 를 막는 새 검사 파일 (772 후속)",
   "actor": "agent",
   "session": "b6749bc6-5070-4be4-a7fb-8721c2a62405",
-  "since": "2026-09-15T03:21:06.639Z",
+  "since": "2026-09-15T03:30:32.575Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/batch/presentation/InternalTasteVectorController.java",
     "backend/src/main/java/com/gabolle/backend/batch/presentation/dto/RebuildTasteVectorsRequest.java",
     "backend/src/main/java/com/gabolle/backend/preference/application/PreferenceJson.java",
+    "backend/src/test/java/com/gabolle/backend/batch/InternalTasteVectorAsOfBoundTest.java",
     "backend/src/test/java/com/gabolle/backend/recommendation/adapter/PreferenceValueShapeAndScaleTest.java"
   ]
 }
