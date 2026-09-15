@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-291",
+  "intent": "리뷰·방문 인증 화면 신규 구현",
+  "actor": null,
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-15T01:13:34.968Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/place-reviews",
+    "frontend/app/place/[id].tsx",
+    "frontend/src/review/placeReviews.ts"
+  ]
+}
