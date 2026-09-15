@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1006",
-  "intent": "이미 있는 장소에 사진만 붙이는 적재기 — 장소 적재기는 기존 장소를 안 건드린다",
+  "intent": "사진 피사체 판정이 실제 자료로 옳은지 잰다",
   "actor": "agent",
   "session": "8f0da7c2-4f9c-4439-acb6-4b0a244c323c",
-  "since": "2026-09-15T16:02:16.548Z",
+  "since": "2026-09-15T16:03:23.597Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/place/api/FestivalResponse.java",
@@ -14,6 +14,7 @@
     "backend/src/main/java/com/gabolle/backend/place/loader/PlacePhotoReader.java",
     "backend/src/main/java/com/gabolle/backend/place/loader/PlacePhotoRow.java",
     "backend/src/main/java/com/gabolle/backend/place/service/FestivalQueryService.java",
-    "backend/src/main/resources/db/migration/V20260915120000__place_photo_subject.sql"
+    "backend/src/main/resources/db/migration/V20260915120000__place_photo_subject.sql",
+    "backend/src/test/java/com/gabolle/backend/place/loader/PlacePhotoReaderTest.java"
   ]
 }
