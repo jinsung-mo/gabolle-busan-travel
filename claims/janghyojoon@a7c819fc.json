@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1015",
+  "intent": "조사 안 함과 못 정함을 다르게 그린다 · 장소 상세 2단",
+  "actor": null,
+  "session": "8249036c-eefc-4100-a921-10ea2a37d58b",
+  "since": "2026-09-15T15:25:04.261Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/place/[id].tsx",
+    "frontend/src/discovery/places.ts"
+  ]
+}
