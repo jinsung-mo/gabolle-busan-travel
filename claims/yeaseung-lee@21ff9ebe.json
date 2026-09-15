@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-160",
+  "intent": "MR !805 CI 마지막 조각 — TripSlice에 RecommendationJobRepository 배선 추가",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-15T04:22:53.369Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/testslice/TripSliceApplication.java"
+  ]
+}
