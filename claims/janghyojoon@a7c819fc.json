@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-329",
+  "intent": "메뉴판 촬영 — 읽은 것만 말하고 없다고는 절대 말하지 않는다",
+  "actor": null,
+  "session": "8249036c-eefc-4100-a921-10ea2a37d58b",
+  "since": "2026-09-15T20:45:07.792Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/field/menu-scan.tsx",
+    "frontend/app/field/translate.tsx",
+    "frontend/src/field/__tests__/menuScan.test.ts",
+    "frontend/src/field/menuScan.ts",
+    "frontend/src/legal/legalContent.ts"
+  ]
+}
