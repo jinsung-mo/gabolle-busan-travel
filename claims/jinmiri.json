@@ -1,0 +1,15 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "홈 장소 카드의 회색 플레이스홀더를 부산 이미지와 브랜드 대체 비주얼로 개선",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T09:01:33.364Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "FE/app/(tabs)/home.tsx",
+    "FE/src/components/PlaceVisual.tsx",
+    "FE/src/components/__tests__/PlaceVisual.test.tsx",
+    "FE/src/home/HomeBlocks.tsx"
+  ]
+}
