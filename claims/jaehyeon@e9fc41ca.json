@@ -1,16 +1,20 @@
 {
   "agent": "jaehyeon",
-  "task": "S15P21E201-973",
-  "intent": "S15P21E201-973 — 씨앗 저장 검사 추가와 생성자 시그니처 변경에 따른 기존 검사 호출부 정리",
+  "task": "S15P21E201-975",
+  "intent": "S15P21E201-975 — 추천 저장·제외를 여행별로 기기에 남기고, 꼭 가고 싶은 장소를 여행 생성 요청에 실어 확인 화면에 보여 준다",
   "actor": "agent",
   "session": "939e9f39-2190-4a36-a686-a9b99e23223e",
-  "since": "2026-09-15T02:34:22.602Z",
+  "since": "2026-09-15T02:36:38.116Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/trip/application/TripCreationService.java",
     "backend/src/main/java/com/gabolle/backend/trip/presentation/TripController.java",
     "backend/src/main/java/com/gabolle/backend/trip/presentation/dto/CreateTripRequest.java",
     "backend/src/main/java/com/gabolle/backend/trip/presentation/dto/CreateTripRequestMapper.java",
-    "backend/src/test/java/com/gabolle/backend/trip"
+    "backend/src/test/java/com/gabolle/backend/trip",
+    "frontend/app/(plan)/confirm.tsx",
+    "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/src/api/tripApi.ts",
+    "frontend/src/plan/recommendationActions.ts"
   ]
 }
