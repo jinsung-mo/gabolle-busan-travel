@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-298",
+  "intent": "모바일 온보딩 하단 CTA 잘림 방지와 작은 화면 레이아웃 안정화",
+  "actor": null,
+  "session": "codex-20260915-mobile-ux",
+  "since": "2026-09-15T05:14:30.238Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/app-intro.tsx"
+  ]
+}
