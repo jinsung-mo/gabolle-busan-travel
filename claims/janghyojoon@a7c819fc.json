@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1014",
+  "intent": "일정 상세 데스크톱 배치 · 지연 오표시와 미확인 칸 제거",
+  "actor": null,
+  "session": "8249036c-eefc-4100-a921-10ea2a37d58b",
+  "since": "2026-09-15T14:45:41.670Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/src/plan/itinerary.ts"
+  ]
+}
