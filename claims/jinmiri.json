@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "실제 날씨와 일정 도보 기반 여행 준비물 안내",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T14:43:12.793Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(trip)/[id]/prepare.tsx",
+    "frontend/src/trip/__tests__/prepItems.test.ts",
+    "frontend/src/trip/prepItems.ts"
+  ]
+}
