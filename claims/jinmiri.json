@@ -4,12 +4,12 @@
   "intent": "홈 장소 카드의 회색 플레이스홀더를 부산 이미지와 브랜드 대체 비주얼로 개선",
   "actor": null,
   "session": null,
-  "since": "2026-09-15T09:01:33.364Z",
+  "since": "2026-09-15T10:43:00.966Z",
   "ttlMs": 1800000,
   "paths": [
-    "FE/app/(tabs)/home.tsx",
-    "FE/src/components/PlaceVisual.tsx",
-    "FE/src/components/__tests__/PlaceVisual.test.tsx",
-    "FE/src/home/HomeBlocks.tsx"
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/src/components/PlaceVisual.tsx",
+    "frontend/src/components/__tests__/PlaceVisual.test.tsx",
+    "frontend/src/home/HomeBlocks.tsx"
   ]
 }
