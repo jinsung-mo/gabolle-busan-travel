@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1011",
-  "intent": "판 목록 응답이 봉투로 바뀐 것에 맞춰 단언을 고치고 쪽나눔을 잰다",
+  "intent": "DB 없이 도는 판 목록 쪽나눔 계산 검사 (경계값)",
   "actor": "agent",
   "session": "8f0da7c2-4f9c-4439-acb6-4b0a244c323c",
-  "since": "2026-09-15T14:18:44.153Z",
+  "since": "2026-09-15T14:19:16.783Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
@@ -19,6 +19,7 @@
     "backend/src/main/java/com/gabolle/backend/place/repository/PlaceEventPeriodRepository.java",
     "backend/src/main/java/com/gabolle/backend/place/repository/PlaceRepository.java",
     "backend/src/main/java/com/gabolle/backend/place/service/FestivalQueryService.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/InMemoryItineraryVersionPagingTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryVersionListingIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryVersionRaceTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/TripActivityIntegrationTest.java",
