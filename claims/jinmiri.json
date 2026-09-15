@@ -1,0 +1,16 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "로컬 탐색 내 근처/부산 전체 전환 및 홈 부산 장소 노출 개선",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T08:47:15.742Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/explore.tsx",
+    "frontend/src/discovery/localExplore.ts",
+    "frontend/src/discovery/places.ts",
+    "frontend/src/home/HomeBlocks.tsx",
+    "frontend/src/home/useHomeData.ts"
+  ]
+}
