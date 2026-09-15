@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "로그인 후 사용자가 누른 여행 기능 복귀 경로 보존",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T08:04:34.740Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/auth/ProtectedRoute.tsx",
+    "frontend/src/auth/__tests__/ProtectedRoute.test.ts"
+  ]
+}
