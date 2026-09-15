@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1021",
+  "intent": "축제 사진이 무엇을 찍은 것인지 말한다 — 출처 줄과 행사장 배지",
+  "actor": null,
+  "session": "8249036c-eefc-4100-a921-10ea2a37d58b",
+  "since": "2026-09-15T16:06:42.143Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/festivals.tsx",
+    "frontend/src/discovery/__tests__/photoLabels.test.ts",
+    "frontend/src/discovery/festivals.ts",
+    "frontend/src/discovery/places.ts"
+  ]
+}
