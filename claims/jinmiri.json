@@ -7,7 +7,6 @@
   "since": "2026-09-15T11:35:33.751Z",
   "ttlMs": 1800000,
   "paths": [
-    "frontend/app/(plan)/taste.tsx",
     "frontend/src/plan/PlanProvider.tsx",
     "frontend/src/plan/planPersistence.test.ts"
   ]
