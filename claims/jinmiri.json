@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "부산 대표 명소 검색 데이터 최신 back/dev 통합",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T15:33:05.375Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/resources/db/migration/V20260915121000__curated_core_busan_landmarks.sql",
+    "backend/src/test/java/com/gabolle/backend/place/CuratedLandmarkMigrationIntegrationTest.java"
+  ]
+}
