@@ -1,13 +1,15 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-990",
-  "intent": "사용자 차단 — user_block 표와 차단/해제 API, 목록 필터, 프로필 blocked 플래그",
+  "intent": "차단 통합 시험 추가와 인가 정책표에 /block 두 경로 등록",
   "actor": "agent",
   "session": "6990f4ed-3e3d-4b3f-ac47-e810acf0dc8e",
-  "since": "2026-09-15T07:09:18.740Z",
+  "since": "2026-09-15T07:23:49.268Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/story",
-    "backend/src/main/resources/db/migration"
+    "backend/src/main/resources/db/migration",
+    "backend/src/test/java/com/gabolle/backend/security",
+    "backend/src/test/java/com/gabolle/backend/story"
   ]
 }
