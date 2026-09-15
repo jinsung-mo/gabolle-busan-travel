@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "현장 도구 날씨 버튼의 demo-trip 오동작 제거 및 실제 여행 선택 동선 연결",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T07:27:36.274Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/field/translate.tsx"
+  ]
+}
