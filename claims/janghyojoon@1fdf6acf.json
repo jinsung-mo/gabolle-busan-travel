@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1001",
+  "intent": "여행 ID 로 그 여행의 추천 작업 목록을 받는 경로 추가 (GET /api/v1/trips/{tripId}/recommendation-jobs)",
+  "actor": "agent",
+  "session": "8f0da7c2-4f9c-4439-acb6-4b0a244c323c",
+  "since": "2026-09-15T13:56:33.539Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationJobRunner.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/presentation/RecommendationJobController.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/repository/RecommendationJobRepository.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/RecommendationResultAuthorizationTest.java",
+    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java"
+  ]
+}
