@@ -1,12 +1,16 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1011",
-  "intent": "이름 검색 둘에 정렬 기준을 넣는다 — 상한에 걸렸을 때 어느 행이 남는지 정한다",
+  "intent": "축제 목록에 상한과 이어보기를 붙인다 — 지금은 행 수 상한이 아예 없다",
   "actor": "agent",
   "session": "8f0da7c2-4f9c-4439-acb6-4b0a244c323c",
-  "since": "2026-09-15T14:09:11.446Z",
+  "since": "2026-09-15T14:10:09.838Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/src/main/java/com/gabolle/backend/place/repository/PlaceRepository.java"
+    "backend/src/main/java/com/gabolle/backend/place/api/FestivalController.java",
+    "backend/src/main/java/com/gabolle/backend/place/api/FestivalResponse.java",
+    "backend/src/main/java/com/gabolle/backend/place/repository/PlaceEventPeriodRepository.java",
+    "backend/src/main/java/com/gabolle/backend/place/repository/PlaceRepository.java",
+    "backend/src/main/java/com/gabolle/backend/place/service/FestivalQueryService.java"
   ]
 }
