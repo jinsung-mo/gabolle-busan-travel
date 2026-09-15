@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-970",
+  "intent": "데스크톱 홈을 다시 짠다 — 히어로에 최근 기록·갈래 칩·날씨, 아래에 장소와 내 여행",
+  "actor": "agent",
+  "session": "6cc47f50-33ce-4b3b-b576-27ae1a6982a7",
+  "since": "2026-09-15T02:24:09.693Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/index.tsx",
+    "frontend/src/home"
+  ]
+}
