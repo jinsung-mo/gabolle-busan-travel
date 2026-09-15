@@ -44,6 +44,17 @@
 #    수 있다. 잠금 파일 조건만 두면 그런 날 아무도 모른 채 지나간다.
 frontend:dependency-scan:
   stage: verify
+  # 🔴 S15P21E201-983 — 이 파일의 잡 셋을 전부 백업 러너(2065)로 보낸다.
+  #    운영 호스트(러너 2037)는 Jenkins·운영 컨테이너와 같은 기계다.
+  #
+  #    실측 (운영 서버에 붙어 ps 로 잼, 2026-09-15): frontend:unit 과
+  #    frontend:smoke 가 동시에 도는 동안 프론트 node 프로세스들이 CPU 약 190%
+  #    (4코어 중 2개)를 먹고 있었고, 정작 운영 앱(gabolle-backend.jar)은 9.8%
+  #    였다. 프론트 잡 10건 중 9건이 2037 로 갔다.
+  #
+  #    소요 시간(204~272초)만 보고 "가볍다" 고 판단했던 것이 틀렸다 — 짧아도
+  #    굵다. 2065 의 동시 실행을 1 → 2 로 올려 두어 지금처럼 나란히 돈다.
+  tags: [heavy]
   image: node:20-alpine
   before_script: []
   # 🔴 캐시하는 것은 node_modules 가 아니라 **npm 이 받아 둔 꾸러미 보관함**(.npm)이다.
@@ -96,6 +107,8 @@ frontend:dependency-scan:
 #    doesn't exist" 로 죽는다.
 frontend:smoke:
   stage: verify
+  # S15P21E201-983 — 백업 러너로. 이유는 위 frontend:dependency-scan 주석에 있다.
+  tags: [heavy]
   image: mcr.microsoft.com/playwright:v1.62.1-noble
   before_script: []
   # 🔴 캐시가 줄여 주는 것은 `npm ci` 안의 **내려받기 부분**뿐이고, 그 크기는
@@ -177,6 +190,8 @@ frontend:smoke:
 #    남는다)를 먼저 본다 — 자원 경합이 아니라 다른 원인일 수 있다.
 frontend:e2e:
   stage: verify
+  # S15P21E201-983 — 백업 러너로. 이유는 위 frontend:dependency-scan 주석에 있다.
+  tags: [heavy]
   image: mcr.microsoft.com/playwright:v1.62.1-noble
   services:
     - name: postgres:16-alpine
