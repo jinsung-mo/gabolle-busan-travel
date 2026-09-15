@@ -7,7 +7,6 @@
   "since": "2026-09-15T11:44:39.677Z",
   "ttlMs": 1800000,
   "paths": [
-    "backend/src/main/resources/db/migration/V20260915121000__curated_core_busan_landmarks.sql",
     "backend/src/test/java/com/gabolle/backend/place/CuratedLandmarkMigrationIntegrationTest.java"
   ]
 }
