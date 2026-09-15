@@ -1,13 +1,14 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-985",
-  "intent": "S15P21E201-985: 챗봇 navigate 응답에 대화에서 뽑은 조건을 쿼리 파라미터로 실어 보내기",
+  "intent": "S15P21E201-985: GeminiStructuredReply 에 days·people 필드 추가",
   "actor": "agent",
   "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
-  "since": "2026-09-15T07:05:57.196Z",
+  "since": "2026-09-15T07:33:36.365Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/assistant/adapter/GeminiAssistantAdapter.java",
+    "backend/src/main/java/com/gabolle/backend/assistant/adapter/GeminiStructuredReply.java",
     "backend/src/main/java/com/gabolle/backend/assistant/domain/AssistantReply.java",
     "backend/src/test/java/com/gabolle/backend/assistant/adapter/GeminiAssistantAdapterTest.java"
   ]
