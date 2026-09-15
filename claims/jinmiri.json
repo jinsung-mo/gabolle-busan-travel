@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "탭 개수 축소 뒤 사라진 다시 가고 싶은 장소 진입 경로 복원",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T12:53:27.110Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/me.tsx"
+  ]
+}
