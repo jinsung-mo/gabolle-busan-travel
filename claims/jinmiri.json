@@ -1,13 +1,14 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-76",
-  "intent": "저장 취향 안내와 모바일 배치",
+  "intent": "계정 취향 자동 적용과 민감 제약 비저장",
   "actor": null,
   "session": null,
-  "since": "2026-09-15T15:54:41.965Z",
+  "since": "2026-09-15T15:55:08.801Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(plan)/generating.tsx",
-    "frontend/app/(plan)/taste.tsx"
+    "frontend/app/(plan)/taste.tsx",
+    "frontend/src/plan/PlanProvider.tsx"
   ]
 }
