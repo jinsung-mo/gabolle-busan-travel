@@ -19,7 +19,6 @@
     "backend/src/main/java/com/gabolle/backend/place/repository/PlaceEventPeriodRepository.java",
     "backend/src/main/java/com/gabolle/backend/place/repository/PlaceRepository.java",
     "backend/src/main/java/com/gabolle/backend/place/service/FestivalQueryService.java",
-    "backend/src/test/java/com/gabolle/backend/itinerary/InMemoryItineraryVersionPagingTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryVersionListingIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryVersionRaceTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/TripActivityIntegrationTest.java",
