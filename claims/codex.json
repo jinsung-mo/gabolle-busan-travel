@@ -1,0 +1,17 @@
+{
+  "agent": "codex",
+  "task": "S15P21E201-76",
+  "intent": "로그인 완료 뒤 인증 화면 스택 제거로 iOS 뒤로 스와이프 재로그인 방지",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T12:44:04.546Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(auth)/oauth-link.tsx",
+    "frontend/app/(auth)/oauth-signup.tsx",
+    "frontend/app/(auth)/sign-in.tsx",
+    "frontend/src/auth/authNavigation.test.ts",
+    "frontend/src/auth/authNavigation.ts",
+    "frontend/src/auth/oauthNavigation.ts"
+  ]
+}
