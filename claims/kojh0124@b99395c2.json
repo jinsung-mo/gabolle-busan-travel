@@ -1,0 +1,12 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-866",
+  "intent": "Testcontainers 대체 경로가 아직 죽은 도커허브 minio/minio 를 가리킨다 — quay.io 로 옮긴다 (CI 설정은 09-12 에 옮겼는데 테스트 코드만 남았다)",
+  "actor": "agent",
+  "session": "9b5dee8e-1748-4252-98f8-513afbafeb21",
+  "since": "2026-09-15T00:35:04.444Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/story/S3FileStorageTest.java"
+  ]
+}
