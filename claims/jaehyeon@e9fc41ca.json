@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-982",
+  "intent": "S15P21E201-982 — 로컬 탐색에서 위치가 없으면 갈래를 열어도 아무것도 안 나오는 것을 고친다. 부산 중심으로 대신 보여 준다",
+  "actor": "agent",
+  "session": "939e9f39-2190-4a36-a686-a9b99e23223e",
+  "since": "2026-09-15T05:50:04.042Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/explore.tsx"
+  ]
+}
