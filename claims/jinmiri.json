@@ -8,7 +8,6 @@
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
-    "frontend/app/explore.tsx",
     "frontend/app/feed/compose.tsx",
     "frontend/src/social/__tests__/storyImageReadiness.test.ts",
     "frontend/src/social/useStoryImages.ts"
