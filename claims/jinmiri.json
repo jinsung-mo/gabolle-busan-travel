@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "계정별 여행 제약조건을 매 여행마다 다시 묻지 않도록 유지",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T11:27:04.527Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/plan/PlanProvider.tsx",
+    "frontend/src/plan/planPersistence.test.ts"
+  ]
+}
