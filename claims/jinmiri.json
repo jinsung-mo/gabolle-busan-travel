@@ -1,13 +1,14 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-76",
-  "intent": "사진 업로드 실패 시 텍스트만 조용히 게시되는 피드 UX 차단",
+  "intent": "로컬 탐색 장소를 상세 화면으로 바로 열 수 있게 개선",
   "actor": null,
   "session": null,
-  "since": "2026-09-15T11:14:48.474Z",
-  "ttlMs": 2400000,
+  "since": "2026-09-15T11:23:44.868Z",
+  "ttlMs": 1800000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
+    "frontend/app/explore.tsx",
     "frontend/app/feed/compose.tsx",
     "frontend/src/social/__tests__/storyImageReadiness.test.ts",
     "frontend/src/social/useStoryImages.ts"
