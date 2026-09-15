@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-981",
+  "intent": "S15P21E201-981 — 홈의 '메뉴판 번역' 버튼 라벨을 실제 가는 화면에 맞춘다. 그 기능은 제품 결정으로 빠졌는데 버튼만 남아 있다",
+  "actor": "agent",
+  "session": "939e9f39-2190-4a36-a686-a9b99e23223e",
+  "since": "2026-09-15T05:39:11.161Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx"
+  ]
+}
