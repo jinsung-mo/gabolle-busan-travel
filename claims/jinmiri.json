@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "홈 로컬 탐색 칩의 선택 갈래 전달 및 결과 자동 펼침",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T07:45:21.034Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/explore.tsx",
+    "frontend/src/home/HomeBlocks.tsx"
+  ]
+}
