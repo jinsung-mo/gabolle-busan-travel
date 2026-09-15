@@ -1,12 +1,13 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-76",
-  "intent": "Expo SDK 공식 권장 패키지 버전 정렬 및 스토어 빌드 진단 통과",
+  "intent": "Expo WebBrowser 설정 플러그인 자동 등록 및 SDK 진단 통과",
   "actor": null,
   "session": null,
-  "since": "2026-09-15T07:32:12.359Z",
+  "since": "2026-09-15T07:35:01.511Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app.json",
     "frontend/package-lock.json",
     "frontend/package.json"
   ]
