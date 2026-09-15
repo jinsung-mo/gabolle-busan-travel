@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "최근 변경 취소가 가능한 경우에만 노출하고 완료 직후 숨김",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T12:04:16.431Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/src/plan/itineraryUndo.test.ts",
+    "frontend/src/plan/itineraryUndo.ts"
+  ]
+}
