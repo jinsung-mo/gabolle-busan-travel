@@ -1,13 +1,15 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-753",
-  "intent": "대중교통 단계 안내가 없는 자리에 지도 앱 연결",
+  "intent": "경로 열기 주소와 시험",
   "actor": null,
   "session": "8249036c-eefc-4100-a921-10ea2a37d58b",
-  "since": "2026-09-15T15:33:29.753Z",
+  "since": "2026-09-15T15:35:50.285Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/route-detail.tsx",
-    "frontend/src/map"
+    "frontend/src/map",
+    "frontend/src/utils/externalMaps.ts",
+    "frontend/src/utils/routeMapUrl.test.ts"
   ]
 }
