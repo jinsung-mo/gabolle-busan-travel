@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "Google Play 제출용 공개 계정 삭제 안내와 실제 탈퇴 진입 경로 추가",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T13:07:04.807Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/account-deletion.tsx"
+  ]
+}
