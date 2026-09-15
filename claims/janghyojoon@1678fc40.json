@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-983",
+  "intent": "프론트 CI 잡도 백업 러너로 — 운영 서버 CPU 190% 를 먹고 있었다",
+  "actor": "agent",
+  "session": "a42c8755-aee2-44c6-b450-31cb771c557e",
+  "since": "2026-09-15T08:08:35.130Z",
+  "ttlMs": 2700000,
+  "paths": [
+    ".gitlab-ci.yml",
+    "ci/parts/frontend.yml"
+  ]
+}
