@@ -9,8 +9,6 @@
   "paths": [
     "backend/Jenkinsfile",
     "bigData/deploy/morning-report.py",
-    "frontend/Jenkinsfile",
-    "infra/personalization/Jenkinsfile",
-    "infra/personalization/scripts/cleanup-images.sh"
+    "frontend/Jenkinsfile"
   ]
 }
