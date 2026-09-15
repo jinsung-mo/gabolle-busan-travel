@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-94",
+  "intent": "MR !796 CI 실패 수정 — 브레이크타임/라스트오더용 가짜 문 추가",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-15T02:12:30.399Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryReorderOpeningHoursIntegrationTest.java"
+  ]
+}
