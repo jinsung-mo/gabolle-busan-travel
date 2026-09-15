@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "고정 목업 체크인 경로를 실제 일정 방문 기록으로 연결",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T14:34:33.732Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(trip)/[id]/checkin.tsx"
+  ]
+}
