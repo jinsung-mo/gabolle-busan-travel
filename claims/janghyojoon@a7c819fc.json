@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1002",
+  "intent": "경로의 작업 번호를 읽는다 (배포본 실측 결함)",
+  "actor": null,
+  "session": "8249036c-eefc-4100-a921-10ea2a37d58b",
+  "since": "2026-09-15T15:12:37.840Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/src/plan/recommendations.ts"
+  ]
+}
