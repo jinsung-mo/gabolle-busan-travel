@@ -1,14 +1,16 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-991",
-  "intent": "피드 ⋯ 메뉴와 프로필에 차단·해제, 차단당한 쪽 프로필 상태",
+  "intent": "차단 확인창과 회귀 테스트",
   "actor": null,
   "session": "8249036c-eefc-4100-a921-10ea2a37d58b",
-  "since": "2026-09-15T14:15:17.166Z",
+  "since": "2026-09-15T14:18:04.686Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/feed/[id].tsx",
     "frontend/app/user/[id].tsx",
+    "frontend/src/social/BlockUserDialog.tsx",
+    "frontend/src/social/__tests__/blockUser.test.ts",
     "frontend/src/social/stories.ts"
   ]
 }
