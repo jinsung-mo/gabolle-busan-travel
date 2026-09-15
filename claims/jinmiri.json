@@ -7,7 +7,6 @@
   "since": "2026-09-15T06:12:52.540Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/(plan)/generating.tsx",
-    "frontend/app/me/profile.tsx"
+    "frontend/app/(plan)/generating.tsx"
   ]
 }
