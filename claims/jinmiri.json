@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "expo-doctor가 지적한 SDK 57 패치 버전 5개 정렬",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T22:14:11.726Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/package-lock.json",
+    "frontend/package.json"
+  ]
+}
