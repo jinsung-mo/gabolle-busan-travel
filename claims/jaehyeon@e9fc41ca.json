@@ -1,10 +1,10 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-980",
-  "intent": "S15P21E201-980 — 여행 범위(해운대·광안리 등)를 받아 저장하고, 추천이 그 지역에서 후보를 고르게 한다. 점수 계산은 안 건드린다",
+  "intent": "S15P21E201-980 — 여행 범위 저장 검사 추가와 생성자 시그니처 변경에 따른 기존 검사 호출부 정리",
   "actor": "agent",
   "session": "939e9f39-2190-4a36-a686-a9b99e23223e",
-  "since": "2026-09-15T03:27:55.483Z",
+  "since": "2026-09-15T03:34:10.470Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineRecommendationEngine.java",
@@ -12,6 +12,8 @@
     "backend/src/main/java/com/gabolle/backend/trip/domain",
     "backend/src/main/java/com/gabolle/backend/trip/infra",
     "backend/src/main/java/com/gabolle/backend/trip/presentation/dto",
-    "backend/src/main/resources/db/migration"
+    "backend/src/main/resources/db/migration",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter",
+    "backend/src/test/java/com/gabolle/backend/trip"
   ]
 }
