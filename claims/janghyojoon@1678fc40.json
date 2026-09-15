@@ -1,12 +1,15 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-983",
-  "intent": "hostinfo 잡에 rules 추가 — MR 파이프라인에서 잡이 안 생기던 것",
+  "task": "S15P21E201-993",
+  "intent": "부산 날씨 51칸을 미리 받아 두고 익명에게도 캐시로 뿌린다",
   "actor": "agent",
   "session": "a42c8755-aee2-44c6-b450-31cb771c557e",
-  "since": "2026-09-15T06:48:18.032Z",
+  "since": "2026-09-15T06:59:05.041Z",
   "ttlMs": 2700000,
   "paths": [
-    ".gitlab-ci.yml"
+    ".gitlab-ci.yml",
+    "backend/src/main/java/com/gabolle/backend/weather",
+    "backend/src/main/resources/application-dev.properties",
+    "backend/src/test/java/com/gabolle/backend/weather"
   ]
 }
