@@ -1,0 +1,13 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-965",
+  "intent": "운영 502 복구 — Flyway out-of-order 로 기동이 막힌 V20260914060000·070000 을 0915030000 뒤 번호로 재명명한다 (SQL 내용은 안 바꾼다)",
+  "actor": "agent",
+  "session": "939e9f39-2190-4a36-a686-a9b99e23223e",
+  "since": "2026-09-15T01:08:57.416Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/resources/db/migration",
+    "backend/src/test/java/com/gabolle/backend/event/OutboxTransactionIntegrationTest.java"
+  ]
+}
