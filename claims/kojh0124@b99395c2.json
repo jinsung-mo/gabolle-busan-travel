@@ -1,0 +1,15 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-549",
+  "intent": "개인화를 꺼도 살아 있던 속도 계수 고침(S15P21E201-549) — 최신 back/dev 로 rebase 하고 MR 을 연다. AccountDeletionService 는 내 !801 과 같은 파일이라 내가 둘 다 들고 있다",
+  "actor": "agent",
+  "session": "9b5dee8e-1748-4252-98f8-513afbafeb21",
+  "since": "2026-09-15T02:19:28.408Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/auth/service/AccountDeletionService.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/PaceFactorService.java",
+    "backend/src/main/java/com/gabolle/backend/user/application/BehaviorPersonalizationReset.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryPaceIntegrationTest.java"
+  ]
+}
