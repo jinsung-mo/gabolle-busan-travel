@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1002",
+  "intent": "배포 전 405 를 아직 없음으로 다룬다 (백엔드 실측 반영)",
+  "actor": null,
+  "session": "8249036c-eefc-4100-a921-10ea2a37d58b",
+  "since": "2026-09-15T14:13:58.995Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/plan/recommendations.ts",
+    "frontend/src/plan/tripRecommendationLookup.test.ts"
+  ]
+}
