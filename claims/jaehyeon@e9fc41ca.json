@@ -1,0 +1,16 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-964",
+  "intent": "S15P21E201-964 — 일정이 처음 저장될 때 여행 상태를 PLANNING 에서 READY 로 옮긴다. TripRepository 에 상태 갱신 자리를 두고 두 구현에 넣는다",
+  "actor": "agent",
+  "session": "939e9f39-2190-4a36-a686-a9b99e23223e",
+  "since": "2026-09-15T00:48:38.920Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
+    "backend/src/main/java/com/gabolle/backend/trip/domain/TripRepository.java",
+    "backend/src/main/java/com/gabolle/backend/trip/infra/InMemoryTripRepository.java",
+    "backend/src/main/java/com/gabolle/backend/trip/infra/JpaTripRepository.java",
+    "backend/src/main/java/com/gabolle/backend/trip/infra/TripJpaEntity.java"
+  ]
+}
