@@ -1,0 +1,18 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-430",
+  "intent": "영어 화면에서 한글 이름에 읽는 법을 덧붙인다",
+  "actor": null,
+  "session": "8249036c-eefc-4100-a921-10ea2a37d58b",
+  "since": "2026-09-15T15:37:31.198Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(plan)/constraints.tsx",
+    "frontend/app/(plan)/taste.tsx",
+    "frontend/app/(tabs)/saved.tsx",
+    "frontend/app/place-reviews/[id].tsx",
+    "frontend/app/place/[id].tsx",
+    "frontend/src/discovery/__tests__/romanize.test.ts",
+    "frontend/src/discovery/romanize.ts"
+  ]
+}
