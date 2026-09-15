@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1006",
+  "intent": "음식 예시 사진 수집기 — 갤러리에서 제목이 딱 맞는 것만 원본으로 받는다",
+  "actor": "agent",
+  "session": "c0ea8370-d3fd-45a0-aa8d-6c2bcdcb2770",
+  "since": "2026-09-15T23:39:35.740Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/collect/tourapi-gallery-dish.mjs",
+    "bigData/config/sources.json"
+  ]
+}
