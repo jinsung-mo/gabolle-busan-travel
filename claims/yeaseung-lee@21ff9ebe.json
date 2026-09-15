@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-942",
+  "intent": "internal API 토큰 docker run -e 누락 수정 (401 원인)",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-15T06:15:41.875Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/Jenkinsfile"
+  ]
+}
