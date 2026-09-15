@@ -1,0 +1,16 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "홈에서도 익명 공개 피드를 조회하고 로그인 안내 대신 실제 기록 노출",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T12:10:35.511Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/index.tsx",
+    "frontend/src/home/HomeBlocks.tsx",
+    "frontend/src/home/__tests__/guestFeed.test.ts",
+    "frontend/src/home/useHomeData.ts"
+  ]
+}
