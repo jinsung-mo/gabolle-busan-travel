@@ -1,12 +1,14 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-76",
-  "intent": "iOS Android 네이티브 여행 지도 구현",
+  "intent": "Android 지도 키를 빌드 설정에 안전하게 주입",
   "actor": null,
   "session": null,
-  "since": "2026-09-15T13:35:28.726Z",
+  "since": "2026-09-15T13:42:33.300Z",
   "ttlMs": 1800000,
   "paths": [
+    "frontend/.env.example",
+    "frontend/app.config.js",
     "frontend/app.json",
     "frontend/app/(trip)/[id]/map.tsx",
     "frontend/app/trips/[id]/itinerary.tsx",
