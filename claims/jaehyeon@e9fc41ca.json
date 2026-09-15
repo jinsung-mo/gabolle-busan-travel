@@ -1,13 +1,15 @@
 {
   "agent": "jaehyeon",
-  "task": "S15P21E201-965",
-  "intent": "운영 502 복구 — Flyway out-of-order 로 기동이 막힌 V20260914060000·070000 을 0915030000 뒤 번호로 재명명한다 (SQL 내용은 안 바꾼다)",
+  "task": "S15P21E201-973",
+  "intent": "S15P21E201-973 — 여행 생성이 꼭 가고 싶은 장소(mustVisitPlaceIds)를 받아 trip_seed_place 에 적는다. 점수 계산은 안 건드린다",
   "actor": "agent",
   "session": "939e9f39-2190-4a36-a686-a9b99e23223e",
-  "since": "2026-09-15T01:08:57.416Z",
+  "since": "2026-09-15T02:29:36.661Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/src/main/resources/db/migration",
-    "backend/src/test/java/com/gabolle/backend/event/OutboxTransactionIntegrationTest.java"
+    "backend/src/main/java/com/gabolle/backend/trip/application/TripCreationService.java",
+    "backend/src/main/java/com/gabolle/backend/trip/presentation/TripController.java",
+    "backend/src/main/java/com/gabolle/backend/trip/presentation/dto/CreateTripRequest.java",
+    "backend/src/main/java/com/gabolle/backend/trip/presentation/dto/CreateTripRequestMapper.java"
   ]
 }
