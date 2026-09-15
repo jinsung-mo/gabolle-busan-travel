@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "로컬 탐색에 자동 장소명 검색과 입력 전체 지우기 제공",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T12:31:53.713Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/explore.tsx",
+    "frontend/src/discovery/__tests__/localSearchQuery.test.ts",
+    "frontend/src/discovery/localSearchQuery.ts"
+  ]
+}
