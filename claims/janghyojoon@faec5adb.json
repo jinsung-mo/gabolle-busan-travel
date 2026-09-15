@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1006",
+  "intent": "축제 사진 구분 고침 — 이름이 통째로 맞을 때만 축제 사진으로 친다",
+  "actor": "agent",
+  "session": "c0ea8370-d3fd-45a0-aa8d-6c2bcdcb2770",
+  "since": "2026-09-15T15:58:50.450Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/collect/tourapi-gallery-photo.mjs"
+  ]
+}
