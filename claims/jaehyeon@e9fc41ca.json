@@ -1,15 +1,16 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-973",
-  "intent": "S15P21E201-973 — 여행 생성이 꼭 가고 싶은 장소(mustVisitPlaceIds)를 받아 trip_seed_place 에 적는다. 점수 계산은 안 건드린다",
+  "intent": "S15P21E201-973 — 씨앗 저장 검사 추가와 생성자 시그니처 변경에 따른 기존 검사 호출부 정리",
   "actor": "agent",
   "session": "939e9f39-2190-4a36-a686-a9b99e23223e",
-  "since": "2026-09-15T02:29:36.661Z",
+  "since": "2026-09-15T02:34:22.602Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/trip/application/TripCreationService.java",
     "backend/src/main/java/com/gabolle/backend/trip/presentation/TripController.java",
     "backend/src/main/java/com/gabolle/backend/trip/presentation/dto/CreateTripRequest.java",
-    "backend/src/main/java/com/gabolle/backend/trip/presentation/dto/CreateTripRequestMapper.java"
+    "backend/src/main/java/com/gabolle/backend/trip/presentation/dto/CreateTripRequestMapper.java",
+    "backend/src/test/java/com/gabolle/backend/trip"
   ]
 }
