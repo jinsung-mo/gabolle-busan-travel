@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1011",
+  "intent": "이름 검색 둘에 정렬 기준을 넣는다 — 상한에 걸렸을 때 어느 행이 남는지 정한다",
+  "actor": "agent",
+  "session": "8f0da7c2-4f9c-4439-acb6-4b0a244c323c",
+  "since": "2026-09-15T14:09:11.446Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/repository/PlaceRepository.java"
+  ]
+}
