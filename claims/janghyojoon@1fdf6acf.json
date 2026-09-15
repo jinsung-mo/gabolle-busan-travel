@@ -1,17 +1,24 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1011",
-  "intent": "축제 쪽나눔에 맞춰 가짜 저장소 반환형을 Page 로 맞추고 상한 동작을 잰다",
+  "intent": "일정 판 목록에 쪽나눔을 붙인다 — 지금은 상한도 쪽나눔도 없다",
   "actor": "agent",
   "session": "8f0da7c2-4f9c-4439-acb6-4b0a244c323c",
-  "since": "2026-09-15T14:12:01.591Z",
+  "since": "2026-09-15T14:16:24.613Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/domain/ItineraryRepository.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/infra/InMemoryItineraryRepository.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/infra/ItineraryVersionJpaRepository.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/infra/JpaItineraryRepository.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/presentation/ItineraryQueryController.java",
     "backend/src/main/java/com/gabolle/backend/place/api/FestivalController.java",
     "backend/src/main/java/com/gabolle/backend/place/api/FestivalResponse.java",
     "backend/src/main/java/com/gabolle/backend/place/repository/PlaceEventPeriodRepository.java",
     "backend/src/main/java/com/gabolle/backend/place/repository/PlaceRepository.java",
     "backend/src/main/java/com/gabolle/backend/place/service/FestivalQueryService.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryVersionRaceTest.java",
     "backend/src/test/java/com/gabolle/backend/place/FestivalControllerHttpTest.java"
   ]
 }
