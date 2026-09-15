@@ -1,0 +1,15 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-891",
+  "intent": "디스크 자동정리 — 커밋태그 보관개수 제한·dangling 이미지 정리·아침보고서 디스크 경고",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-15T05:19:04.612Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/Jenkinsfile",
+    "bigData/deploy/morning-report.py",
+    "frontend/Jenkinsfile",
+    "infra/personalization/Jenkinsfile"
+  ]
+}
