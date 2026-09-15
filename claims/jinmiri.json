@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "최근 변경이 없을 때 되돌리기 버튼을 숨겨 오해 방지",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T06:18:34.972Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/trips/[id]/itinerary.tsx"
+  ]
+}
