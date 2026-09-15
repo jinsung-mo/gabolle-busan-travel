@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-76",
-  "intent": "iOS Android 네이티브 여행 지도 컴포넌트 추가",
+  "intent": "iOS Android 네이티브 여행 지도 구현",
   "actor": null,
   "session": null,
-  "since": "2026-09-15T13:32:42.407Z",
+  "since": "2026-09-15T13:35:28.726Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app.json",
@@ -12,6 +12,7 @@
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/package-lock.json",
     "frontend/package.json",
+    "frontend/src/map/RouteMap.native.tsx",
     "frontend/src/map/RouteMap.tsx",
     "frontend/src/map/__tests__/itineraryMap.test.ts",
     "frontend/src/map/itineraryMap.ts",
