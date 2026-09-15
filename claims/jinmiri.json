@@ -1,15 +1,16 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-76",
-  "intent": "Android 지도 키를 빌드 설정에 안전하게 주입",
+  "intent": "지도 탭을 데모가 아닌 내 여행 선택으로 연결",
   "actor": null,
   "session": null,
-  "since": "2026-09-15T13:42:33.300Z",
+  "since": "2026-09-15T13:49:31.157Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/.env.example",
     "frontend/app.config.js",
     "frontend/app.json",
+    "frontend/app/(tabs)/map.tsx",
     "frontend/app/(trip)/[id]/map.tsx",
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/package-lock.json",
