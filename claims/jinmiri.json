@@ -1,12 +1,13 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-195",
-  "intent": "계정 삭제 실패 복구와 삭제 영향 개수를 명확히 표시",
+  "task": "S15P21E201-200",
+  "intent": "기능 없는 여행표 버튼 제거와 도장 잘림·정렬 수정",
   "actor": null,
   "session": null,
-  "since": "2026-09-15T06:11:10.441Z",
-  "ttlMs": 1800000,
+  "since": "2026-09-15T06:12:52.540Z",
+  "ttlMs": 2700000,
   "paths": [
+    "frontend/app/(plan)/generating.tsx",
     "frontend/app/me/profile.tsx"
   ]
 }
