@@ -1,0 +1,20 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1025",
+  "intent": "메뉴판 사진을 서버가 중계해 글자만 읽는다 — 키를 앱에 안 넣고, 사진을 저장 안 하고, 없다는 말을 안 한다",
+  "actor": "agent",
+  "session": "8f0da7c2-4f9c-4439-acb6-4b0a244c323c",
+  "since": "2026-09-15T20:49:08.259Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/menuscan/adapter/GmsMenuReader.java",
+    "backend/src/main/java/com/gabolle/backend/menuscan/application/ImageMetadataStripper.java",
+    "backend/src/main/java/com/gabolle/backend/menuscan/application/MenuScanRateLimiter.java",
+    "backend/src/main/java/com/gabolle/backend/menuscan/application/MenuScanService.java",
+    "backend/src/main/java/com/gabolle/backend/menuscan/config/MenuScanProperties.java",
+    "backend/src/main/java/com/gabolle/backend/menuscan/presentation/MenuScanController.java",
+    "backend/src/main/java/com/gabolle/backend/menuscan/presentation/MenuScanExceptionHandler.java",
+    "backend/src/main/java/com/gabolle/backend/menuscan/presentation/dto/MenuScanResponse.java",
+    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java"
+  ]
+}
