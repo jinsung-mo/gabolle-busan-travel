@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-972",
-  "intent": "제목만 세는지·에픽을 건너뛰는지 재는 회귀 검사",
+  "intent": "ci 스크립트 검사 잡을 더한다 — 지금 이 자리에 검사가 하나도 없다",
   "actor": "agent",
   "session": "8f0da7c2-4f9c-4439-acb6-4b0a244c323c",
-  "since": "2026-09-15T15:27:50.724Z",
+  "since": "2026-09-15T15:29:27.132Z",
   "ttlMs": 2700000,
   "paths": [
+    ".gitlab-ci.yml",
     "ci/jira-transition.mjs",
     "ci/jira-transition.test.mjs"
   ]
