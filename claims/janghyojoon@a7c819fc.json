@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1019",
+  "intent": "E2E가 지운 백엔드 파일을 되살리는 것을 막는다",
+  "actor": null,
+  "session": "8249036c-eefc-4100-a921-10ea2a37d58b",
+  "since": "2026-09-15T16:00:34.236Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "ci/parts/frontend.yml"
+  ]
+}
