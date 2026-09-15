@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "비회원 홈 장소 저장을 기기 저장으로 통일",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T21:19:31.148Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx"
+  ]
+}
