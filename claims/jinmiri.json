@@ -1,0 +1,15 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "실제 일정 데이터 기반 여행 지도와 길찾기 연결",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T13:28:10.781Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(trip)/[id]/map.tsx",
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/src/map/RouteMap.tsx",
+    "frontend/src/plan/itinerary.ts"
+  ]
+}
