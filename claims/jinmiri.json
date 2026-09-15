@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "고정 목업 여행 회고 경로를 실제 여행 추억 화면으로 연결",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T14:51:48.422Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(trip)/[id]/log.tsx"
+  ]
+}
