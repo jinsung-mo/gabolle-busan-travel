@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1019",
-  "intent": "E2E가 지운 백엔드 파일을 되살리는 것을 막는다",
+  "intent": "잡의 정의가 바뀌면 그 잡을 돌린다 — 프론트 잡에도 적용",
   "actor": null,
   "session": "8249036c-eefc-4100-a921-10ea2a37d58b",
-  "since": "2026-09-15T16:00:34.236Z",
+  "since": "2026-09-15T16:04:34.583Z",
   "ttlMs": 1800000,
   "paths": [
+    ".gitlab-ci.yml",
     "ci/parts/frontend.yml"
   ]
 }
