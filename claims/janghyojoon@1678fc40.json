@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-983",
+  "intent": "bigData/dev·common/dev 에도 backend:build heavy 태그 적용",
+  "actor": "agent",
+  "session": "a42c8755-aee2-44c6-b450-31cb771c557e",
+  "since": "2026-09-15T07:34:30.786Z",
+  "ttlMs": 2700000,
+  "paths": [
+    ".gitlab-ci.yml"
+  ]
+}
