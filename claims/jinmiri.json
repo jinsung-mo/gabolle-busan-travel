@@ -1,13 +1,14 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-456",
-  "intent": "숙소 및 이용 조건 요청 계약 테스트",
+  "task": "S15P21E201-775",
+  "intent": "Windows에서도 Playwright E2E를 Jest에서 제외",
   "actor": null,
   "session": null,
-  "since": "2026-09-15T06:34:27.885Z",
-  "ttlMs": 3600000,
+  "since": "2026-09-15T06:40:50.649Z",
+  "ttlMs": 1800000,
   "paths": [
     "frontend/app/(plan)/constraints.tsx",
+    "frontend/jest.config.js",
     "frontend/src/api/tripApi.ts",
     "frontend/src/plan/PlanProvider.tsx",
     "frontend/src/plan/accommodationPayload.test.ts",
