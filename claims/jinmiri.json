@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "로컬 탐색 진입 시 위치 권한 자동 요청 제거 및 사용자 선택 요청으로 전환",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T07:53:20.226Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/explore.tsx"
+  ]
+}
