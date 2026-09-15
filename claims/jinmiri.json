@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "남아 있는 /map 데모 여행 리다이렉트를 실제 내 여행 목록으로 교체",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T07:58:36.180Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(tabs)/map.tsx"
+  ]
+}
