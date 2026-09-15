@@ -1,15 +1,16 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1013",
-  "intent": "저장한 장소를 서버와 합친다",
+  "intent": "합치기 규칙 시험",
   "actor": null,
   "session": "8249036c-eefc-4100-a921-10ea2a37d58b",
-  "since": "2026-09-15T15:50:29.748Z",
+  "since": "2026-09-15T15:52:28.458Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
     "frontend/app/(tabs)/saved.tsx",
     "frontend/app/place/[id].tsx",
+    "frontend/src/discovery/__tests__/savedPlaces.test.ts",
     "frontend/src/discovery/savedPlaces.ts"
   ]
 }
