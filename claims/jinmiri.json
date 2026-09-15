@@ -1,15 +1,16 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-456",
-  "intent": "숙소 검색·선택 상태와 여행 생성 요청 연결",
+  "intent": "숙소 및 이용 조건 요청 계약 테스트",
   "actor": null,
   "session": null,
-  "since": "2026-09-15T06:33:41.811Z",
+  "since": "2026-09-15T06:34:27.885Z",
   "ttlMs": 3600000,
   "paths": [
     "frontend/app/(plan)/constraints.tsx",
     "frontend/src/api/tripApi.ts",
     "frontend/src/plan/PlanProvider.tsx",
+    "frontend/src/plan/accommodationPayload.test.ts",
     "frontend/src/plan/apiContracts.test.ts"
   ]
 }
