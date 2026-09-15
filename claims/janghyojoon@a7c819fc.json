@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-996",
+  "intent": "알레르기 evidenceStatus NOT_COLLECTED를 확인됨으로 잘못 그리는 버그 수정",
+  "actor": null,
+  "session": "8249036c-eefc-4100-a921-10ea2a37d58b",
+  "since": "2026-09-15T13:55:44.337Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/place/[id].tsx",
+    "frontend/src/discovery/places.ts"
+  ]
+}
