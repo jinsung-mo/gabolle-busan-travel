@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-106",
+  "intent": "추천 슬라이스 스캔 범위에 coursetheme 추가 — MR !795 CI 실패 수정",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-15T01:53:56.657Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/testslice/RecommendationSliceApplication.java"
+  ]
+}
