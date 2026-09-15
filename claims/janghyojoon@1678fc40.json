@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-995",
+  "intent": "기록 상세를 익명에게 열되 공개 글만 — 못 보는 것은 404",
+  "actor": "agent",
+  "session": "a42c8755-aee2-44c6-b450-31cb771c557e",
+  "since": "2026-09-15T08:17:00.158Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/story/application/StoryVisibilityPolicy.java",
+    "backend/src/main/java/com/gabolle/backend/story/presentation/StoryController.java",
+    "backend/src/test/java/com/gabolle/backend/story/StoryVisibilityPolicyTest.java"
+  ]
+}
