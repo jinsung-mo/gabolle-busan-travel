@@ -1,12 +1,13 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-978",
-  "intent": "실패한 CI 고치기 — story.application 슬라이스 누락",
+  "intent": "실패한 CI 고치기 — story.application 슬라이스 누락 (Privacy 슬라이스도 동일)",
   "actor": null,
   "session": "16acb503-8737-4b5e-9609-8c222334a72b",
-  "since": "2026-09-15T14:38:24.050Z",
+  "since": "2026-09-15T14:44:40.089Z",
   "ttlMs": 1800000,
   "paths": [
-    "backend/src/test/java/com/gabolle/testslice/AuthSliceApplication.java"
+    "backend/src/test/java/com/gabolle/testslice/AuthSliceApplication.java",
+    "backend/src/test/java/com/gabolle/testslice/PrivacySliceApplication.java"
   ]
 }
