@@ -155,9 +155,13 @@ frontend:smoke:
     - npx serve dist -l 3000 &
     - sleep 2
     - npm run smoke -- http://localhost:3000
+  # 🔴 이 파일이 바뀔 때도 돈다 (S15P21E201-1019, 2026-09-16).
+  #    백엔드가 S15P21E201-866 에서 이미 정한 규칙을 프론트에도 적용한다 —
+  #    **잡의 정의가 바뀌면 그 잡을 돌려 봐야 한다.** 안 그러면 잡을 고치는 MR 이
+  #    그 잡을 한 번도 안 돌린 채 초록으로 지나간다.
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      changes: ['frontend/**/*']
+      changes: ['frontend/**/*', 'ci/parts/frontend.yml']
 
 # ── 실사용자 흐름 E2E — 로그인 → 여행 기본정보 → 추천 요청 (S15P21E201-775) ─────────
 #
@@ -237,7 +241,6 @@ frontend:e2e:
     #    backend:build가 쓰는 eclipse-temurin 이미지를 통째로 못 쓰는 이유는 그
     #    반대(크로미움이 없다)다. 둘 다 필요해서 이 잡 안에서 JDK만 얹는다.
     - apt-get update -qq && apt-get install -y -qq openjdk-17-jdk-headless postgresql-client
-    - cd backend
     # 🔴 2026-09-11 실측 — 세 번의 스케줄 실행이 전부 같은 자리(로그인)에서
     #    "서버에 연결할 수 없어요"로 죽었다. 원인은 IPv6도 자원 경합도 아니었다 —
     #    Playwright trace의 콘솔 로그가 실제 CORS 에러를 그대로 남겼다:
@@ -251,8 +254,32 @@ frontend:e2e:
     #    프론트가 지금 운영에 가장 가까운 백엔드와 맞물리는가"이지 front/dev 에
     #    우연히 박제된 백엔드 스냅샷이 아니다 — 그래서 back/dev HEAD로 backend/
     #    를 덮어쓰고 그걸로 띄운다.
+    #
+    # 🔴 2026-09-16 정정 (S15P21E201-1019) — 위 판단은 맞았는데 **덮어쓰는 방법이
+    #    틀렸다.** `git checkout <커밋> -- .` 은 **덮어쓰기만 하고 지우지 않는다.**
+    #    그 커밋에 없는 파일은 작업 폴더에 그대로 남는다.
+    #
+    #    그리고 이 잡이 도는 자리는 front/dev 체크아웃이고, front/dev 의 backend/
+    #    는 2026-09-09(042711b0)에 멈춰 있다 — 바로 위 주석이 말하는 그 이유로.
+    #    그래서 **back/dev 가 지운 파일이 front/dev 쪽에 남아 되살아났다.**
+    #
+    #      front/dev 의 backend/ (9/9)   NotCollectedOpeningHoursFilter.java  있다
+    #      back/dev (f72b62e5, 9/11)     ← 지웠다                             없다
+    #      덮어쓴 결과                    🔴 지워진 파일이 살아 있다
+    #
+    #    같은 커밋이 OpeningHoursFilterPort 의 서명도 바꿨으므로, 되살아난 클래스는
+    #    바뀐 규격을 안 지키는 구현체가 된다 → compileJava 가 4개 에러로 죽는다.
+    #    이 예약 잡이 **9/12·9/13·9/15 나흘을 글자 하나 다르지 않은 같은 실패로**
+    #    죽어 있었고, 예약 파이프라인은 아무것도 안 막으므로 아무도 몰랐다
+    #    (알림 자체가 없는 문제는 S15P21E201-1020).
+    #
+    #    🔴 **백엔드 코드는 어느 시점에도 깨지지 않았다.** 깨진 것은 CI 가 두
+    #    브랜치를 겹쳐 만든 가짜 트리뿐이다. 그래서 덮기 전에 **비운다** —
+    #    back/dev 의 트리를 그대로 복원하고, front/dev 에 남은 잔재는 안 남긴다.
     - git fetch --depth 1 origin back/dev
-    - git checkout FETCH_HEAD -- .
+    - rm -rf backend
+    - git checkout FETCH_HEAD -- backend
+    - cd backend
     - chmod +x gradlew
     - until pg_isready -h postgres -U gabolle; do sleep 1; done
     - nohup ./gradlew bootRun --args="--spring.profiles.active=dev --spring.flyway.create-schemas=true" > /tmp/backend.log 2>&1 &
@@ -291,5 +318,14 @@ frontend:e2e:
     paths:
       - frontend/test-results/
     expire_in: 7 days
+  # 🔴 이 잡은 예약으로만 돌았다. 그래서 **이 잡을 고치는 MR 이 이 잡을 한 번도
+  #    안 돌린 채 초록으로 지나갔고**, 고쳤는지 아닌지를 다음 날 아침 09:10 까지
+  #    알 수 없었다 (S15P21E201-1019, 2026-09-16).
+  #
+  #    백엔드가 S15P21E201-866 에서 backend:build 에 이미 정한 규칙과 같다 —
+  #    **잡의 정의가 바뀌면 그 잡을 돌려 봐야 한다.** 이 파일을 건드리는 MR 은
+  #    드물어서(CI 수정 때뿐) 비용도 거의 안 는다.
   rules:
     - if: $CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_KIND == "e2e"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes: ['ci/parts/frontend.yml']
