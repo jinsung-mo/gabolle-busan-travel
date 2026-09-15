@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-141",
+  "intent": "장소 상세 - 경사도·계단 접근성 정보 추가",
+  "actor": null,
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-15T01:32:10.298Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/place/[id].tsx",
+    "frontend/src/discovery/places.ts"
+  ]
+}
