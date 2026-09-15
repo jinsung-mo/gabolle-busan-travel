@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-195",
+  "intent": "계정 삭제 미리보기 실패를 숨기지 않고 다시 시도할 수 있게 개선",
+  "actor": null,
+  "session": "codex-20260915-account-delete-ux",
+  "since": "2026-09-15T05:08:28.569Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/me/profile.tsx"
+  ]
+}
