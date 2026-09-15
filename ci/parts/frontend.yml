@@ -155,9 +155,13 @@ frontend:smoke:
     - npx serve dist -l 3000 &
     - sleep 2
     - npm run smoke -- http://localhost:3000
+  # 🔴 이 파일이 바뀔 때도 돈다 (S15P21E201-1019, 2026-09-16).
+  #    백엔드가 S15P21E201-866 에서 이미 정한 규칙을 프론트에도 적용한다 —
+  #    **잡의 정의가 바뀌면 그 잡을 돌려 봐야 한다.** 안 그러면 잡을 고치는 MR 이
+  #    그 잡을 한 번도 안 돌린 채 초록으로 지나간다.
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      changes: ['frontend/**/*']
+      changes: ['frontend/**/*', 'ci/parts/frontend.yml']
 
 # ── 실사용자 흐름 E2E — 로그인 → 여행 기본정보 → 추천 요청 (S15P21E201-775) ─────────
 #
@@ -314,5 +318,14 @@ frontend:e2e:
     paths:
       - frontend/test-results/
     expire_in: 7 days
+  # 🔴 이 잡은 예약으로만 돌았다. 그래서 **이 잡을 고치는 MR 이 이 잡을 한 번도
+  #    안 돌린 채 초록으로 지나갔고**, 고쳤는지 아닌지를 다음 날 아침 09:10 까지
+  #    알 수 없었다 (S15P21E201-1019, 2026-09-16).
+  #
+  #    백엔드가 S15P21E201-866 에서 backend:build 에 이미 정한 규칙과 같다 —
+  #    **잡의 정의가 바뀌면 그 잡을 돌려 봐야 한다.** 이 파일을 건드리는 MR 은
+  #    드물어서(CI 수정 때뿐) 비용도 거의 안 는다.
   rules:
     - if: $CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_KIND == "e2e"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes: ['ci/parts/frontend.yml']
