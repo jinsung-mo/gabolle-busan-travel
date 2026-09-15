@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "첫 사용자·인증 화면에서 서버 배너가 핵심 내비게이션을 가리지 않도록 노출 범위 조정",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-15T11:06:51.918Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/components/ApiAvailabilityBanner.tsx"
+  ]
+}
