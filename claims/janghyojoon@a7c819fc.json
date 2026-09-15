@@ -1,12 +1,15 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-735",
-  "intent": "행동 개인화 동의를 서버와 잇는다",
+  "intent": "동의 토글에 계정 연결",
   "actor": null,
   "session": "8249036c-eefc-4100-a921-10ea2a37d58b",
-  "since": "2026-09-15T15:42:31.798Z",
+  "since": "2026-09-15T15:43:52.108Z",
   "ttlMs": 1800000,
   "paths": [
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/app/(trip)/[id]/checkin.tsx",
+    "frontend/src/personalization/__tests__/behaviorConsent.test.ts",
     "frontend/src/personalization/behaviorConsent.ts"
   ]
 }
