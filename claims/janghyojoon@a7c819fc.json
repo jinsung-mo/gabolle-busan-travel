@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-844",
+  "intent": "프로필 사진을 서버에 저장한다",
+  "actor": null,
+  "session": "8249036c-eefc-4100-a921-10ea2a37d58b",
+  "since": "2026-09-15T15:47:58.247Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/me/profile.tsx",
+    "frontend/src/auth/AuthProvider.tsx",
+    "frontend/src/auth/authApi.ts"
+  ]
+}
