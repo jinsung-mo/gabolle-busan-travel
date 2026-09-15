@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-997",
-  "intent": "익명 401을 세션 만료와 구분해 로그인 화면으로 튕기지 않게 한다",
+  "intent": "익명 401 회귀 테스트",
   "actor": null,
   "session": "8249036c-eefc-4100-a921-10ea2a37d58b",
-  "since": "2026-09-15T14:01:15.425Z",
+  "since": "2026-09-15T14:03:07.045Z",
   "ttlMs": 1800000,
   "paths": [
+    "frontend/src/api/__tests__/anonymousUnauthorized.test.ts",
     "frontend/src/api/client.ts"
   ]
 }
