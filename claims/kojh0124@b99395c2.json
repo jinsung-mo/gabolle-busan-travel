@@ -1,0 +1,13 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-425",
+  "intent": "취향 벡터가 있으면 탈퇴가 통째로 실패하던 삭제 순서 고침 — 최신 back/dev 로 rebase 하고 MR 을 연다",
+  "actor": "agent",
+  "session": "9b5dee8e-1748-4252-98f8-513afbafeb21",
+  "since": "2026-09-15T02:14:09.957Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/auth/service/AccountDeletionService.java",
+    "backend/src/test/java/com/gabolle/backend/auth/AccountDeletionIntegrationTest.java"
+  ]
+}
