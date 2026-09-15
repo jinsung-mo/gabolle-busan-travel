@@ -7,7 +7,6 @@
   "since": "2026-09-15T05:25:44.132Z",
   "ttlMs": 1800000,
   "paths": [
-    "bigData/deploy/morning-report.py",
-    "frontend/Jenkinsfile"
+    "bigData/deploy/morning-report.py"
   ]
 }
