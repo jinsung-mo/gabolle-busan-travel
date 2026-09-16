@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1103",
-  "intent": "상단 바를 2단(유틸 36 + 캡슐 내비 60)으로 — 시안 적용 (S15P21E201-1103)",
+  "task": "S15P21E201-1100",
+  "intent": "데스크톱 폭 1180->1440 (S15P21E201-1100) + 일정 헤더 배지 제거 (S15P21E201-1106)",
   "actor": "agent",
   "session": "a0bb936b-d87e-4e0d-b30d-a10312f8579f",
-  "since": "2026-09-16T07:38:38.813Z",
+  "since": "2026-09-16T07:55:57.206Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/src/components/Screen.tsx"
   ]
 }
