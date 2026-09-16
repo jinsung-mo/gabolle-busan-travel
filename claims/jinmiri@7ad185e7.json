@@ -1,13 +1,14 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1110",
-  "intent": "일문·중문 간체·번체 관광정보 수집기 — 키가 들어와서 실제로 받는다",
+  "intent": "일문·중문 수집본 셋을 넣는다",
   "actor": "agent",
   "session": "ff50a731-ce13-4ba5-a4a9-577509b3cec4",
-  "since": "2026-09-16T08:57:25.723Z",
+  "since": "2026-09-16T15:19:11.950Z",
   "ttlMs": 2700000,
   "paths": [
-    "bigData/collect/tourapi-i18n.mjs",
-    "bigData/config/sources.json"
+    "bigData/data/raw/tourapi/tourapi-busan-ja.ndjson",
+    "bigData/data/raw/tourapi/tourapi-busan-zh-hans.ndjson",
+    "bigData/data/raw/tourapi/tourapi-busan-zh-hant.ndjson"
   ]
 }
