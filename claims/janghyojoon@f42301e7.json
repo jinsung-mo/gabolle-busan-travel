@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-76",
-  "intent": "랜드마크 네 곳에 CATEGORY_TAG 표식을 붙인다 — 21만이 place.category 만 채워서 갈래 목록에 안 뜬다",
+  "task": "S15P21E201-1123",
+  "intent": "부산역→해운대가 실제 노선으로 납득할 시간에 나오는지, 한 정거장이 1분이 아닌지를 검사한다",
   "actor": "agent",
   "session": "268907d5-bcef-4994-a1d4-be88633e48fd",
-  "since": "2026-09-16T12:07:29.030Z",
+  "since": "2026-09-16T12:26:28.145Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
@@ -25,6 +25,7 @@
     "backend/src/test/java/com/gabolle/backend/place/DesiredFoodTagIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/place/ListResponsePhotoFieldsTest.java",
     "backend/src/test/java/com/gabolle/backend/place/SouvenirShopIntegrationTest.java",
-    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerTest.java"
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerTest.java",
+    "backend/src/test/java/com/gabolle/backend/route/adapter/BusanBusNetworkIntegrationTest.java"
   ]
 }
