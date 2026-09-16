@@ -1,14 +1,15 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-1083",
-  "intent": "S15P21E201-1083: 메뉴판 읽기의 서버 최악 지연을 앱 대기 시간(12초) 안으로 넣는다. 지금은 33초라 성공한 읽기도 사용자가 못 받고 한도만 깎인다",
+  "intent": "S15P21E201-1083: 메뉴판 읽기 대기 예산을 설정 파일에도 적어, 숫자만 보고 늘리는 것을 막는다",
   "actor": "agent",
   "session": "686077b8-30db-4ebe-ba61-f2d980c1054b",
-  "since": "2026-09-16T05:46:57.358Z",
+  "since": "2026-09-16T05:48:09.798Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/menuscan/adapter/GmsMenuReader.java",
     "backend/src/main/java/com/gabolle/backend/menuscan/config/MenuScanProperties.java",
+    "backend/src/main/resources/application-dev.properties",
     "backend/src/test/java/com/gabolle/backend/menuscan"
   ]
 }
