@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1109",
+  "intent": "언어 고르는 UI 를 다시 만든다 — 국기 그림문자가 나라 글자로 떠서 무슨 버튼인지 안 읽힌다",
+  "actor": "agent",
+  "session": "ff50a731-ce13-4ba5-a4a9-577509b3cec4",
+  "since": "2026-09-16T08:47:22.990Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/index.tsx",
+    "frontend/src/i18n/languages.ts"
+  ]
+}
