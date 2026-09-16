@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "재실행 통신 실패 시 갱신 토큰 보존 및 갱신 결과 즉시 저장",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-16T00:41:29.843Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/auth/AuthProvider.tsx",
+    "frontend/src/auth/__tests__/restoreMobileAuth.test.ts",
+    "frontend/src/auth/restoreMobileAuth.ts"
+  ]
+}
