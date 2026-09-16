@@ -1,0 +1,15 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "영어 로컬 분류와 장소명 표시 및 검색 범위 안내 복구",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-16T00:37:27.439Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/explore.tsx",
+    "frontend/src/discovery/__tests__/localExploreLabels.test.ts",
+    "frontend/src/discovery/localExplore.ts"
+  ]
+}
