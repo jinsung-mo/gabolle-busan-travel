@@ -1,16 +1,12 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1121",
-  "intent": "메뉴판 읽기도 resizeForUpload 에서 막혀 요청조차 못 나갔다 — 1121 과 같은 자리. 줄이기 실패 시 원본으로 보낸다",
+  "task": "S15P21E201-1141",
+  "intent": "Play 제출 자동화 — 서비스 계정 키를 EAS 서버에 올렸으므로 eas.json 에는 트랙만 남긴다(track: alpha = 비공개 테스트)",
   "actor": "agent",
   "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
-  "since": "2026-09-16T21:04:33.876Z",
+  "since": "2026-09-16T21:53:14.452Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/(plan)/confirm.tsx",
-    "frontend/src/field/__tests__/menuScanResize.test.ts",
-    "frontend/src/field/menuScan.ts",
-    "frontend/src/nav/__tests__/useFocusedRedirect.test.ts",
-    "frontend/src/nav/useFocusedRedirect.ts"
+    "frontend/eas.json"
   ]
 }
