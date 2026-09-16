@@ -1,16 +1,17 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1123",
-  "intent": "운행 시간을 안 봐서 낮 경로에 심야버스를 추천한다 — 첫차·막차를 싣고 운행 중인 노선만 고르게 한다",
+  "intent": "BIMS 관측에서 표정속도·정거장당 시간·실측 배차를 재는 스크립트 — 백엔드가 쓰는 14.4km/h 의 근거를 다시 잴 수 있게",
   "actor": "agent",
   "session": "268907d5-bcef-4994-a1d4-be88633e48fd",
-  "since": "2026-09-16T15:01:16.743Z",
+  "since": "2026-09-16T15:10:49.420Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/route/adapter/TransitRouteAdapter.java",
     "backend/src/main/java/com/gabolle/backend/route/transit/BusanBusNetworkPort.java",
     "backend/src/main/java/com/gabolle/backend/route/transit/HeadwayJourneyPlanner.java",
     "backend/src/main/java/com/gabolle/backend/route/transit/TransitNetwork.java",
-    "backend/src/test/java/com/gabolle/backend/route/adapter/BusanBusNetworkIntegrationTest.java"
+    "backend/src/test/java/com/gabolle/backend/route/adapter/BusanBusNetworkIntegrationTest.java",
+    "bigData/analysis/bims-travel-times.mjs"
   ]
 }
