@@ -7,11 +7,6 @@
   "since": "2026-09-16T07:38:38.813Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/assets/home/web-hero.png",
-    "frontend/docs/design_handoff_topnav",
-    "frontend/src/components/Screen.tsx",
-    "frontend/src/components/Text.tsx",
-    "frontend/src/design/tokens.ts",
-    "frontend/src/nav/TopNav.tsx"
+    "frontend/src/components/Screen.tsx"
   ]
 }
