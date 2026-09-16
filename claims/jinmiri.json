@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "시스템 하단 바 보호 및 작은 화면 온보딩 스크롤 복구",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-16T00:05:13.129Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/app-intro.tsx",
+    "frontend/app/index.tsx"
+  ]
+}
