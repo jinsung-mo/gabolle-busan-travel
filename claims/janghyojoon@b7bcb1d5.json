@@ -1,12 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1142",
-  "intent": "폭 1024~1439 에서 피드에 글 쓸 입구가 없다 — 인라인 글쓰기를 그 폭부터 켠다",
+  "intent": "폭마다 글쓰기 입구가 하나는 있는지 시험으로 못박는다 — 1024~1439 가 비어 있었다",
   "actor": "agent",
   "session": "703f7c8c-a681-493d-95f7-71cf766ae767",
-  "since": "2026-09-16T22:00:25.912Z",
+  "since": "2026-09-16T22:01:17.002Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/(tabs)/feed.tsx"
+    "frontend/app/(tabs)/feed.tsx",
+    "frontend/src/social/__tests__/composeEntry.test.ts",
+    "frontend/src/social/composeEntry.ts"
   ]
 }
