@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1076",
-  "intent": "로컬 미리보기 브랜치 — 열려 있는 MR 3건을 front/dev 에 합쳐 화면으로 확인만 한다 (push 안 함)",
+  "intent": "이예승 님 재진단 적용 — 보간 객체를 useMemo 로 묶어 렌더마다 애니메이션 노드가 새로 생기는 것을 막는다 (726ms→326ms)",
   "actor": "agent",
   "session": "ff50a731-ce13-4ba5-a4a9-577509b3cec4",
-  "since": "2026-09-16T06:30:19.161Z",
+  "since": "2026-09-16T06:59:33.930Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/generating.tsx",
