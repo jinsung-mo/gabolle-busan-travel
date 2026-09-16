@@ -1,12 +1,13 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-speak-order",
-  "intent": "현장 말하기 카드 - 영어 뜻 먼저 보여주고 눌러야 한국어가 나오게 순서 뒤집기",
+  "task": "S15P21E201-chat-suggestions",
+  "intent": "챗봇 영어모드 추천질문 영어로 보여주되 매처엔 한국어로 전송",
   "actor": null,
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-16T00:54:43.469Z",
+  "since": "2026-09-16T00:56:21.540Z",
   "ttlMs": 1800000,
   "paths": [
+    "frontend/app/chat.tsx",
     "frontend/src/components/PlacePhraseBrowser.tsx"
   ]
 }
