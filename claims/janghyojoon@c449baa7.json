@@ -1,12 +1,12 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1075",
-  "intent": "자리를 잘못 잡았다 — 팀 저장소에서 되돌리고 axMap 저장소로 옮긴다",
-  "actor": "agent",
+  "task": "S15P21E201-1047",
+  "intent": "장소 경사 설계 문서",
+  "actor": null,
   "session": "4ab51595-7294-4056-b7aa-e8ef08000dff",
-  "since": "2026-09-16T03:34:13.582Z",
-  "ttlMs": 2700000,
+  "since": "2026-09-16T06:50:07.579Z",
+  "ttlMs": 1800000,
   "paths": [
-    "docs/26.09.16-데이터"
+    "bigData/docs/PLACE-SLOPE.md"
   ]
 }
