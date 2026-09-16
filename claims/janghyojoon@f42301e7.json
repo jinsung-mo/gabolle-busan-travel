@@ -1,14 +1,15 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1113",
-  "intent": "일정 상세 응답 맨 뒤에 tripId 칸을 더한다 — 일정 화면이 자기가 어느 여행인지 몰라 지도·추천으로 못 넘어간다",
+  "task": "S15P21E201-76",
+  "intent": "표본 적재 조건을 「표가 비었나」에서 「내 표본이 들어와 있나」로 바꾼다 — 장소를 심는 마이그레이션이 생기면 표본을 건너뛰어 추천 후보가 0건이 된다",
   "actor": "agent",
   "session": "268907d5-bcef-4994-a1d4-be88633e48fd",
-  "since": "2026-09-16T10:40:44.946Z",
+  "since": "2026-09-16T11:06:39.393Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/ItineraryDetailResponse.java",
+    "backend/src/test/java/com/gabolle/backend/functional/RecommendationWithRealPlacesFunctionalTest.java",
     "backend/src/test/java/com/gabolle/backend/place/CuratedLandmarkMigrationIntegrationTest.java"
   ]
 }
