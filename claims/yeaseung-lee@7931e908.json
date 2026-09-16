@@ -1,13 +1,15 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1128",
-  "intent": "S15P21E201-1128 — 일정 생성 뒤 결과 화면으로 안 가고 1단계로 초기화. 밑에 남은 confirm 이 router.replace 를 부르는 것이 원인",
+  "task": "S15P21E201-1121",
+  "intent": "메뉴판 읽기도 resizeForUpload 에서 막혀 요청조차 못 나갔다 — 1121 과 같은 자리. 줄이기 실패 시 원본으로 보낸다",
   "actor": "agent",
   "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
-  "since": "2026-09-16T20:52:24.432Z",
+  "since": "2026-09-16T21:04:33.876Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/confirm.tsx",
+    "frontend/src/field/__tests__/menuScanResize.test.ts",
+    "frontend/src/field/menuScan.ts",
     "frontend/src/nav/__tests__/useFocusedRedirect.test.ts",
     "frontend/src/nav/useFocusedRedirect.ts"
   ]
