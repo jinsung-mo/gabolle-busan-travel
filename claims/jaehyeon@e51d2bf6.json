@@ -1,0 +1,23 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-1037",
+  "intent": "S15P21E201-1037: 어젯밤 연 경로 셋의 입력 길이 검증·멱등(확인 후 삽입 경쟁)·목록 상한을 고치고 실제 Postgres 에서 도는 테스트로 덮는다",
+  "actor": "agent",
+  "session": "686077b8-30db-4ebe-ba61-f2d980c1054b",
+  "since": "2026-09-16T01:28:24.807Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/collection",
+    "backend/src/main/java/com/gabolle/backend/place/api/SavedPlaceController.java",
+    "backend/src/main/java/com/gabolle/backend/place/api/SavedPlaceResponse.java",
+    "backend/src/main/java/com/gabolle/backend/place/repository/SavedPlaceRepository.java",
+    "backend/src/main/java/com/gabolle/backend/place/service/SavedPlaceService.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationActionService.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/presentation/RecommendationActionController.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/presentation/dto/RecommendationActionResponse.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/repository/RecommendationPlaceActionRepository.java",
+    "backend/src/test/java/com/gabolle/backend/collection",
+    "backend/src/test/java/com/gabolle/backend/place/SavedPlaceControllerTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/RecommendationActionAuthorizationTest.java"
+  ]
+}
