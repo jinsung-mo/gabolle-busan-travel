@@ -1,16 +1,17 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1047",
-  "intent": "경사 산출물 경로를 기존 적재 실행기에 더한다 (새 실행기 대신)",
+  "intent": "장소 경사 산출물 2,213곳 — 적재기의 입력",
   "actor": "agent",
   "session": "4ab51595-7294-4056-b7aa-e8ef08000dff",
-  "since": "2026-09-16T07:47:15.146Z",
-  "ttlMs": 2700000,
+  "since": "2026-09-16T07:49:51.226Z",
+  "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/place/loader/PlaceFeatureLoader.java",
     "backend/src/main/java/com/gabolle/backend/place/loader/PlaceFeatureLoaderRunner.java",
     "backend/src/main/java/com/gabolle/backend/place/loader/PlaceFeatureNdjsonReader.java",
     "backend/src/main/java/com/gabolle/backend/place/loader/PlaceSlopeLoaderRunner.java",
-    "backend/src/test/java/com/gabolle/backend/place/loader"
+    "backend/src/test/java/com/gabolle/backend/place/loader",
+    "bigData/data/staged/place-slope.ndjson"
   ]
 }
