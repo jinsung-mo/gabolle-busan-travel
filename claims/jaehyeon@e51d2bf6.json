@@ -1,10 +1,10 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-1038",
-  "intent": "S15P21E201-1038: 메뉴판 호출 기록 청소 주기를 개인정보 청소와 같은 방식으로 설정에서 읽도록 한 줄 추가",
+  "intent": "S15P21E201-1038: 메뉴판 호출 기록 표를 만든다 (앞서 선언한 파일명 정정 — quota 가 아니라 usage)",
   "actor": "agent",
   "session": "686077b8-30db-4ebe-ba61-f2d980c1054b",
-  "since": "2026-09-16T02:01:23.967Z",
+  "since": "2026-09-16T02:02:30.869Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/collection",
@@ -19,6 +19,7 @@
     "backend/src/main/java/com/gabolle/backend/recommendation/repository/RecommendationPlaceActionRepository.java",
     "backend/src/main/resources/application.properties",
     "backend/src/main/resources/db/migration/V20260916100000__menu_scan_quota.sql",
+    "backend/src/main/resources/db/migration/V20260916100000__menu_scan_usage.sql",
     "backend/src/test/java/com/gabolle/backend/collection",
     "backend/src/test/java/com/gabolle/backend/menuscan",
     "backend/src/test/java/com/gabolle/backend/place/SavedPlaceControllerTest.java",
