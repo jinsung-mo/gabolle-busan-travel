@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1089",
+  "intent": "폰 화면을 시안대로 세로 노선도로 다시 만든다 (S15P21E201-1089)",
+  "actor": "agent",
+  "session": "a0bb936b-d87e-4e0d-b30d-a10312f8579f",
+  "since": "2026-09-16T06:42:30.451Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/docs/design_handoff_itinerary",
+    "frontend/tools/shoot-itinerary.mjs"
+  ]
+}
