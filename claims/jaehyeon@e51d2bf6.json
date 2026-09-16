@@ -9,10 +9,7 @@
   "paths": [
     "backend/src/main/java/com/gabolle/backend/menuscan/adapter/GmsMenuReader.java",
     "backend/src/main/java/com/gabolle/backend/menuscan/config/MenuScanProperties.java",
-    "backend/src/main/java/com/gabolle/backend/weather/domain/WeatherQuery.java",
-    "backend/src/main/java/com/gabolle/backend/weather/presentation/WeatherExceptionHandler.java",
     "backend/src/main/resources/application-dev.properties",
-    "backend/src/test/java/com/gabolle/backend/menuscan",
-    "backend/src/test/java/com/gabolle/backend/weather"
+    "backend/src/test/java/com/gabolle/backend/menuscan"
   ]
 }
