@@ -1,0 +1,16 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1109",
+  "intent": "언어를 5개(한국어·영어·일본어·중국어 간체·번체)로 넓히고 첫 화면을 국기 선택으로 바꾼다",
+  "actor": "agent",
+  "session": "ff50a731-ce13-4ba5-a4a9-577509b3cec4",
+  "since": "2026-09-16T08:28:16.547Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/index.tsx",
+    "frontend/src/i18n/__tests__/languages.test.ts",
+    "frontend/src/i18n/index.ts",
+    "frontend/src/i18n/languages.ts",
+    "frontend/src/onboarding/OnboardingPreferences.tsx"
+  ]
+}
