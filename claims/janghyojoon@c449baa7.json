@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1031",
+  "intent": "수집기 셋의 지역 필터를 areaCode → lDongRegnCd 로. 목록만 다시 받아 2,218곳 실측",
+  "actor": "agent",
+  "session": "4ab51595-7294-4056-b7aa-e8ef08000dff",
+  "since": "2026-09-16T00:36:41.889Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/collect/tourapi-barrier-free.mjs",
+    "bigData/collect/tourapi-en.mjs",
+    "bigData/collect/tourapi.mjs",
+    "bigData/config/sources.json"
+  ]
+}
