@@ -1,14 +1,18 @@
 {
   "agent": "kojh0124",
   "task": "S15P21E201-943",
-  "intent": "채점기가 접힌 취향 벡터를 덧점수로 읽는다 — 기존 설문 채점은 안 건드린다 (S15P21E201-943)",
+  "intent": "score() 시그니처에 취향 벡터 인수가 늘어 부르는 검사들을 맞춘다 + 덧점수 검사를 더한다 (S15P21E201-943)",
   "actor": "agent",
   "session": "6d005b65-aed1-44ad-aded-60f96537d746",
-  "since": "2026-09-16T08:21:43.391Z",
+  "since": "2026-09-16T08:25:45.363Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineRecommendationEngine.java",
-    "backend/src/main/java/com/gabolle/backend/recommendation/config/BaselineEngineProperties.java"
+    "backend/src/main/java/com/gabolle/backend/recommendation/config/BaselineEngineProperties.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/RequestLocationPrivacyTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineRecommendationEngineCandidateCutTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/PreferenceValueShapeAndScaleTest.java"
   ]
 }
