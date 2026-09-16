@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1121",
-  "intent": "1121·1126·1116 수정에 따라오는 시험 파일과 잠금 파일",
+  "task": "S15P21E201-1117",
+  "intent": "S15P21E201-1117 — 부슐랭 동기화가 400 으로 조용히 실패. 손으로 추가한 장소는 kind: CUSTOM 으로 보낸다",
   "actor": "agent",
   "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
-  "since": "2026-09-16T13:49:41.300Z",
+  "since": "2026-09-16T14:01:18.565Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(auth)/sign-in.tsx",
@@ -20,6 +20,8 @@
     "frontend/src/auth/ProtectedRoute.tsx",
     "frontend/src/auth/__tests__/ProtectedRoute.test.ts",
     "frontend/src/auth/pendingReturnTo.ts",
+    "frontend/src/collection/__tests__/collectionsApi.test.ts",
+    "frontend/src/collection/collectionsApi.ts",
     "frontend/src/components/PlacePhraseBrowser.tsx",
     "frontend/src/field/__tests__/speakAloud.test.ts",
     "frontend/src/field/speakAloud.ts",
