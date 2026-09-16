@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1123",
-  "intent": "버스 속도를 BIMS 관측으로 잰 값(14.4km/h)으로 바꾼다 — 지어낸 값 셋을 잰 값 하나로",
+  "intent": "사진 저장 실패가 503 만 내고 로그에 한 줄도 안 남는다 — 원인을 남기게 한다",
   "actor": "agent",
   "session": "268907d5-bcef-4994-a1d4-be88633e48fd",
-  "since": "2026-09-16T15:15:20.436Z",
+  "since": "2026-09-16T15:20:37.976Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/route/adapter/TransitRouteAdapter.java",
@@ -12,6 +12,7 @@
     "backend/src/main/java/com/gabolle/backend/route/transit/HeadwayJourneyPlanner.java",
     "backend/src/main/java/com/gabolle/backend/route/transit/TransitNetwork.java",
     "backend/src/main/java/com/gabolle/backend/route/transit/TransitProperties.java",
+    "backend/src/main/java/com/gabolle/backend/story/presentation/UploadExceptionHandler.java",
     "backend/src/test/java/com/gabolle/backend/route/adapter/BusanBusNetworkIntegrationTest.java",
     "bigData/analysis/bims-travel-times.mjs"
   ]
