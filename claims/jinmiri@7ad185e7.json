@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1076",
+  "intent": "MR !940 의 frontend:unit 실패 수정 — reduce-motion 조회를 컴포넌트 밖으로 올려 버튼 인스턴스마다 붙는 비동기 setState 를 없앤다",
+  "actor": "agent",
+  "session": "ff50a731-ce13-4ba5-a4a9-577509b3cec4",
+  "since": "2026-09-16T05:26:38.175Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/components/Button.tsx"
+  ]
+}
