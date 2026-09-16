@@ -1,12 +1,14 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1141",
-  "intent": "Play 제출 자동화 — 서비스 계정 키를 EAS 서버에 올렸으므로 eas.json 에는 트랙만 남긴다(track: alpha = 비공개 테스트)",
+  "task": "S15P21E201-1133",
+  "intent": "S15P21E201-1133 — 이미 서버에 있는 리스트에 담은 장소가 올라가는 경로가 없다. 올린 뒤 다시 받아와 서버 열쇠를 기기 이름표로 삼는다",
   "actor": "agent",
   "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
-  "since": "2026-09-16T21:53:14.452Z",
+  "since": "2026-09-16T22:25:09.929Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/eas.json"
+    "frontend/eas.json",
+    "frontend/src/collection/__tests__/collectionsApi.test.ts",
+    "frontend/src/collection/collectionsApi.ts"
   ]
 }
