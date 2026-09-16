@@ -1,12 +1,14 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1081",
-  "intent": "404·501 과 5xx 를 가른다 / setSavedPlace 가 서버까지 갔는지를 함께 돌려준다",
+  "task": "S15P21E201-1084",
+  "intent": "추천 결과 응답에 tripId 를 싣는다 — 앱이 담아두기·빼기를 보낼 주소를 모른다",
   "actor": "agent",
   "session": "ff50a731-ce13-4ba5-a4a9-577509b3cec4",
-  "since": "2026-09-16T05:45:25.293Z",
+  "since": "2026-09-16T05:49:11.669Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationResultQueryService.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/presentation/dto/RecommendationResultResponse.java",
     "frontend/app/(tabs)/home.tsx",
     "frontend/app/(tabs)/saved.tsx",
     "frontend/app/place/[id].tsx",
