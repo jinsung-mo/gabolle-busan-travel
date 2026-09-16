@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1089",
-  "intent": "일정 화면을 시안대로 — 네이비 헤더·일차 탭·상태 배지·잠금·이동 요약 (S15P21E201-1089). 시안 문서도 저장소에 남긴다",
+  "task": "S15P21E201-프론트미리보기-팀규칙",
+  "intent": "프론트 화면 미리보기 규칙을 팀 규칙(4절 끝내기 전에)에 넣는다 — axMap 에만 두면 팀 세션에 안 간다",
   "actor": "agent",
   "session": "a0bb936b-d87e-4e0d-b30d-a10312f8579f",
-  "since": "2026-09-16T06:19:54.555Z",
+  "since": "2026-09-16T06:25:32.206Z",
   "ttlMs": 2700000,
   "paths": [
+    "CONTRIBUTING.md",
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/docs/design_handoff_itinerary"
   ]
