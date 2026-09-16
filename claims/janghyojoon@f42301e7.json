@@ -1,16 +1,17 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1123",
-  "intent": "BIMS 관측에서 표정속도·정거장당 시간·실측 배차를 재는 스크립트 — 백엔드가 쓰는 14.4km/h 의 근거를 다시 잴 수 있게",
+  "intent": "버스 속도를 BIMS 관측으로 잰 값(14.4km/h)으로 바꾼다 — 지어낸 값 셋을 잰 값 하나로",
   "actor": "agent",
   "session": "268907d5-bcef-4994-a1d4-be88633e48fd",
-  "since": "2026-09-16T15:10:49.420Z",
+  "since": "2026-09-16T15:15:20.436Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/route/adapter/TransitRouteAdapter.java",
     "backend/src/main/java/com/gabolle/backend/route/transit/BusanBusNetworkPort.java",
     "backend/src/main/java/com/gabolle/backend/route/transit/HeadwayJourneyPlanner.java",
     "backend/src/main/java/com/gabolle/backend/route/transit/TransitNetwork.java",
+    "backend/src/main/java/com/gabolle/backend/route/transit/TransitProperties.java",
     "backend/src/test/java/com/gabolle/backend/route/adapter/BusanBusNetworkIntegrationTest.java",
     "bigData/analysis/bims-travel-times.mjs"
   ]
