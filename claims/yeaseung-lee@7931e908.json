@@ -1,0 +1,14 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1128",
+  "intent": "S15P21E201-1128 — 일정 생성 뒤 결과 화면으로 안 가고 1단계로 초기화. 밑에 남은 confirm 이 router.replace 를 부르는 것이 원인",
+  "actor": "agent",
+  "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
+  "since": "2026-09-16T20:52:24.432Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/confirm.tsx",
+    "frontend/src/nav/__tests__/useFocusedRedirect.test.ts",
+    "frontend/src/nav/useFocusedRedirect.ts"
+  ]
+}
