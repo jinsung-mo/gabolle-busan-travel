@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-toss-polish",
+  "intent": "회원가입 화면을 모바일에서 4단계 진행형 UI로 (토스식 단순화)",
+  "actor": null,
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-16T03:21:09.411Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(auth)/sign-up.tsx"
+  ]
+}
