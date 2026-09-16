@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1095",
+  "intent": "판 작성자가 비어도(탈퇴) 견디게 한다 — 지금은 동행자 화면이 터진다",
+  "actor": "agent",
+  "session": "6742c46a-7801-42df-a18c-5db6f5082d95",
+  "since": "2026-09-16T06:39:31.278Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ActorNames.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/TripActivityService.java"
+  ]
+}
