@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1040",
+  "intent": "설문에서 뽑은 취향 비중 다섯 칸을 처음 넣는다 (model-version 도 같이 올린다)",
+  "actor": "agent",
+  "session": "6742c46a-7801-42df-a18c-5db6f5082d95",
+  "since": "2026-09-16T06:49:26.930Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/resources/application.properties"
+  ]
+}
