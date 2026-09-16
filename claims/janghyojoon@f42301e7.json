@@ -1,15 +1,16 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1129",
-  "intent": "일정 12곳이 전부 음식점이 되는 것을 고친다 — 하루 밥집 수를 개수 상한이 아니라 식사 시간대로 정하고, 명소가 모자라면 밥집으로 메우지 않고 비워 둔 채 알린다",
+  "intent": "시간대 기반 끼니 배분 시험 추가 — 밥집이 밥 때에만, 남으면 비워 둔다",
   "actor": "agent",
   "session": "268907d5-bcef-4994-a1d4-be88633e48fd",
-  "since": "2026-09-16T22:55:52.433Z",
+  "since": "2026-09-16T22:58:50.517Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/domain/ItineraryWarningCodes.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/application/port/ItineraryDraft.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryDraftServiceTest.java",
     "backend/src/test/java/com/gabolle/backend/recommendation/support/FakeItineraryDraftPort.java"
   ]
 }
