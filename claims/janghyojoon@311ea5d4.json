@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1100",
+  "intent": "2단 화면 최대 폭 1180 -> 1440 (경계값표와 시안에 맞춘다) — S15P21E201-1100",
+  "actor": "agent",
+  "session": "a0bb936b-d87e-4e0d-b30d-a10312f8579f",
+  "since": "2026-09-16T07:24:08.774Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/components/Screen.tsx"
+  ]
+}
