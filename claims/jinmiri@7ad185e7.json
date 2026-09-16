@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1081",
-  "intent": "5xx 와 404 를 가르는 규칙을 테스트로 고정한다",
+  "intent": "404·501 과 5xx 를 가른다 / setSavedPlace 가 서버까지 갔는지를 함께 돌려준다",
   "actor": "agent",
   "session": "ff50a731-ce13-4ba5-a4a9-577509b3cec4",
-  "since": "2026-09-16T05:42:14.899Z",
+  "since": "2026-09-16T05:45:25.293Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
@@ -16,6 +16,8 @@
     "frontend/src/components/Button.tsx",
     "frontend/src/discovery/__tests__/httpErrorShape.test.ts",
     "frontend/src/discovery/__tests__/savedPlaces.test.ts",
-    "frontend/src/discovery/localExplore.ts"
+    "frontend/src/discovery/localExplore.ts",
+    "frontend/src/discovery/placeCategories.ts",
+    "frontend/src/discovery/savedPlaces.ts"
   ]
 }
