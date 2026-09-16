@@ -1,15 +1,17 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-76",
-  "intent": "표본 적재 조건을 「표가 비었나」에서 「내 표본이 들어와 있나」로 바꾼다 — 장소를 심는 마이그레이션이 생기면 표본을 건너뛰어 추천 후보가 0건이 된다",
+  "intent": "접근성 표식이 「없는」 장소를 탈락이 아니라 감점으로 바꾼다 — 표식이 2,683곳 중 102곳뿐이라 켜면 추천이 0건이 된다",
   "actor": "agent",
   "session": "268907d5-bcef-4994-a1d4-be88633e48fd",
-  "since": "2026-09-16T11:06:39.393Z",
+  "since": "2026-09-16T11:09:17.108Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/ItineraryDetailResponse.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java",
     "backend/src/test/java/com/gabolle/backend/functional/RecommendationWithRealPlacesFunctionalTest.java",
-    "backend/src/test/java/com/gabolle/backend/place/CuratedLandmarkMigrationIntegrationTest.java"
+    "backend/src/test/java/com/gabolle/backend/place/CuratedLandmarkMigrationIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerTest.java"
   ]
 }
