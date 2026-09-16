@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "!929 front/dev 리베이스 충돌 해결",
+  "actor": null,
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-16T02:55:14.711Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/app-intro.tsx",
+    "frontend/src/home/HomeBlocks.tsx"
+  ]
+}
