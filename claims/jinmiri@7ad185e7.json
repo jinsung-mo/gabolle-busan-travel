@@ -1,13 +1,14 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1139",
-  "intent": "서버 연결 배너가 화면 제목을 덮는다 — absolute 를 걷어내고 자리를 차지하게 한다",
+  "intent": "TAB_BAR_HEIGHT 를 export 한다 — 배너가 탭바를 안 가리게 하려면 높이를 알아야 한다",
   "actor": "agent",
   "session": "ff50a731-ce13-4ba5-a4a9-577509b3cec4",
-  "since": "2026-09-16T16:42:35.892Z",
+  "since": "2026-09-16T16:45:55.308Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/src/components/ApiAvailabilityBanner.tsx",
+    "frontend/src/components/TabBar.tsx",
     "frontend/src/components/__tests__/ApiAvailabilityBanner.test.ts"
   ]
 }
