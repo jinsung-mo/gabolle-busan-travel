@@ -1,12 +1,16 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-ux-guidelines",
-  "intent": "부산 둘러보기 카드 하트 저장 상태를 색상만이 아니라 배경 원으로도 구분 (UX 가이드라인 #11)",
+  "task": "S15P21E201-76",
+  "intent": "미리 작업된 홈 장소 카드 사진/앱 소개 화면 개선 브랜치를 리베이스+검증 후 MR로 올림",
   "actor": null,
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-16T02:27:32.533Z",
+  "since": "2026-09-16T02:29:14.870Z",
   "ttlMs": 1800000,
   "paths": [
-    "frontend/app/(tabs)/home.tsx"
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/app-intro.tsx",
+    "frontend/src/components/PlaceVisual.tsx",
+    "frontend/src/components/__tests__/PlaceVisual.test.tsx",
+    "frontend/src/home/HomeBlocks.tsx"
   ]
 }
