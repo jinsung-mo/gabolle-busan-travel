@@ -4,7 +4,7 @@
   "intent": "S15P21E201-1037: 컬렉션·저장한 장소·추천 판단 리포지토리를 한 컨텍스트에 올리는 테스트 슬라이스를 새로 만든다 (제약·멱등 통합 시험용)",
   "actor": "agent",
   "session": "686077b8-30db-4ebe-ba61-f2d980c1054b",
-  "since": "2026-09-16T01:40:30.750Z",
+  "since": "2026-09-16T01:52:50.003Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/collection",
