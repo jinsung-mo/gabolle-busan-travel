@@ -1,0 +1,12 @@
+{
+  "agent": "kojh0124",
+  "task": null,
+  "intent": "MR 설명 채우는 예시를 고친다 — curl --data 에 긴 JSON 을 인자로 넘기면 Windows 에서 깨지고, 예시의 python 이 이 PC 에 없다",
+  "actor": "agent",
+  "session": "6d005b65-aed1-44ad-aded-60f96537d746",
+  "since": "2026-09-16T02:25:12.834Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/GITLAB-TOKEN.md"
+  ]
+}
