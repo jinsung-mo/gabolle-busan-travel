@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1116",
-  "intent": "하루의 첫 구간(출발지→첫 장소)이 화면에 안 그려진다 — 구간 합이 요약과 안 맞는 원인",
+  "intent": "첫 구간 문구 시험 추가 + 「첫 방문지는 구간이 없다」는 틀린 시험 이름 정정",
   "actor": "agent",
   "session": "703f7c8c-a681-493d-95f7-71cf766ae767",
-  "since": "2026-09-16T11:33:52.337Z",
+  "since": "2026-09-16T11:34:33.563Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/src/plan/itinerarySummary.test.ts",
     "frontend/src/plan/itinerarySummary.ts"
   ]
 }
