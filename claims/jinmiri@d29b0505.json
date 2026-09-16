@@ -1,12 +1,13 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-user-feedback",
-  "intent": "홈 화면 - AI 챗봇 버튼 크기 키우기 + 부산 둘러보기 카테고리 다양화",
+  "intent": "홈 화면 - 부산 둘러보기 카테고리 다양화",
   "actor": null,
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-16T01:36:03.633Z",
+  "since": "2026-09-16T01:43:03.101Z",
   "ttlMs": 1800000,
   "paths": [
-    "frontend/app/(tabs)/home.tsx"
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/src/home/useHomeData.ts"
   ]
 }
