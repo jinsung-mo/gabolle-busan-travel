@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1081",
-  "intent": "setSavedPlace 가 서버 실패를 알려주도록 바뀌어서, 부르는 세 화면의 문구를 사실대로 고친다",
+  "intent": "5xx 와 404 를 가르는 규칙을 테스트로 고정한다",
   "actor": "agent",
   "session": "ff50a731-ce13-4ba5-a4a9-577509b3cec4",
-  "since": "2026-09-16T05:40:32.419Z",
+  "since": "2026-09-16T05:42:14.899Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
@@ -14,6 +14,7 @@
     "frontend/src/api/placeCategories.ts",
     "frontend/src/api/savedPlaces.ts",
     "frontend/src/components/Button.tsx",
+    "frontend/src/discovery/__tests__/httpErrorShape.test.ts",
     "frontend/src/discovery/__tests__/savedPlaces.test.ts",
     "frontend/src/discovery/localExplore.ts"
   ]
