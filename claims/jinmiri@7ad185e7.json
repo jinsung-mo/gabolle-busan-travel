@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1076",
+  "intent": "useMemo 뒤에도 2코어 CI 에서 또 5초를 넘겼다 — 설문을 두 바퀴 도는 그 테스트 하나의 제한을 올린다",
+  "actor": "agent",
+  "session": "ff50a731-ce13-4ba5-a4a9-577509b3cec4",
+  "since": "2026-09-16T07:15:56.411Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/onboarding/__tests__/SpendProfileScreen.test.tsx"
+  ]
+}
