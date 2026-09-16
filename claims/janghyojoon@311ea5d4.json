@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1036",
+  "intent": "여행 이름 짓기 화면 — 디자인 handoff 대로 상태 6개 구현 (후보·빈 후보·직접 쓰기·저장 중·저장됨)",
+  "actor": "agent",
+  "session": "a0bb936b-d87e-4e0d-b30d-a10312f8579f",
+  "since": "2026-09-16T01:35:43.804Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(trip)/[id]/name.tsx",
+    "frontend/src/trip/__tests__/tripNameScreen.test.ts",
+    "frontend/src/trip/tripNaming.ts"
+  ]
+}
