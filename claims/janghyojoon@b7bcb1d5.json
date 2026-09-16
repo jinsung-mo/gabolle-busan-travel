@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1113",
+  "intent": "지도에 문을 달고 실제 일정을 띄운다 — 예시 일정 대신 내 일정, 추천은 맞는 번호로",
+  "actor": "agent",
+  "session": "703f7c8c-a681-493d-95f7-71cf766ae767",
+  "since": "2026-09-16T10:36:28.565Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(trip)/[id]/map.tsx",
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/app/trips/[id]/recommendations.tsx"
+  ]
+}
