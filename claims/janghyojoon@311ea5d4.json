@@ -1,13 +1,17 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1102",
-  "intent": "히어로 사진의 위아래 흰 띠를 잘라낸다 (S15P21E201-1102)",
+  "task": "S15P21E201-1103",
+  "intent": "상단 바를 2단(유틸 36 + 캡슐 내비 60)으로 — 시안 적용 (S15P21E201-1103)",
   "actor": "agent",
   "session": "a0bb936b-d87e-4e0d-b30d-a10312f8579f",
-  "since": "2026-09-16T07:28:57.132Z",
+  "since": "2026-09-16T07:38:38.813Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/assets/home/web-hero.png",
-    "frontend/src/components/Screen.tsx"
+    "frontend/docs/design_handoff_topnav",
+    "frontend/src/components/Screen.tsx",
+    "frontend/src/components/Text.tsx",
+    "frontend/src/design/tokens.ts",
+    "frontend/src/nav/TopNav.tsx"
   ]
 }
