@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1071",
+  "intent": "개발 빌드에서 개발 서버(http)에 못 닿는 것을 영구 수정 — 디버그에만 cleartext 허용",
+  "actor": "agent",
+  "session": "a0bb936b-d87e-4e0d-b30d-a10312f8579f",
+  "since": "2026-09-16T06:02:05.283Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/plugins/withExtraTrustedRoots.js"
+  ]
+}
