@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1087",
-  "intent": "시간·날짜에 숫자 자판과 자동 구분자를 붙이고, 인증 화면 엔터키·자동완성을 켠다",
+  "task": "S15P21E201-1016",
+  "intent": "일정이 완성된 뒤에도 \"처리 중 100%\" 와 \"여행표 출력 중\" 이 남는 것 — 끝난 뒤 문구를 끝났다고 바꾼다",
   "actor": "agent",
   "session": "ff50a731-ce13-4ba5-a4a9-577509b3cec4",
-  "since": "2026-09-16T06:02:22.929Z",
+  "since": "2026-09-16T06:11:00.910Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationResultQueryService.java",
@@ -14,6 +14,7 @@
     "frontend/app/(auth)/sign-in.tsx",
     "frontend/app/(auth)/sign-up.tsx",
     "frontend/app/(plan)/basics.tsx",
+    "frontend/app/(plan)/generating.tsx",
     "frontend/app/(tabs)/home.tsx",
     "frontend/app/(tabs)/saved.tsx",
     "frontend/app/festivals.tsx",
