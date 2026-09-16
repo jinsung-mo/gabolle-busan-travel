@@ -1,0 +1,19 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-479",
+  "intent": "지하철 출구 안내 문구 업데이트 로더 신설",
+  "actor": "agent",
+  "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
+  "since": "2026-09-16T06:46:14.282Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/domain/Place.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/SubwayExitLoader.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/SubwayExitLoaderRunner.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/SubwayExitReader.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/SubwayExitRow.java",
+    "backend/src/test/java/com/gabolle/backend/place/PlaceTest.java",
+    "backend/src/test/java/com/gabolle/backend/place/loader/SubwayExitLoaderTest.java",
+    "backend/src/test/java/com/gabolle/backend/place/loader/SubwayExitReaderTest.java"
+  ]
+}
