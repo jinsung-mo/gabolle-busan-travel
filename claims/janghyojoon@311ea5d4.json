@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1089",
+  "intent": "S15P21E201-1089 브랜치에 front/dev 12커밋을 병합한다 (머지 커밋이라 최상위 폴더로 짧게 잡음)",
+  "actor": "agent",
+  "session": "a0bb936b-d87e-4e0d-b30d-a10312f8579f",
+  "since": "2026-09-16T07:11:33.628Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend"
+  ]
+}
