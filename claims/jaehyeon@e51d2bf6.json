@@ -1,13 +1,14 @@
 {
   "agent": "jaehyeon",
-  "task": "S15P21E201-1102",
-  "intent": "모델 호출이 실패할 때 원인을 감싸서 502 봉투로 내보낸다 — 지금은 그대로 새어 나가 봉투 없는 500 이 되고 로그 말고는 원인을 볼 길이 없다",
+  "task": "S15P21E201-1105",
+  "intent": "메뉴판 실패를 응답 코드에서도 가른다 — 못 닿은 것·거절당한 것·못 읽은 것이 지금 전부 MENU_SCAN_FAILED 라 서버 로그 없이는 판정이 안 된다",
   "actor": "agent",
   "session": "686077b8-30db-4ebe-ba61-f2d980c1054b",
-  "since": "2026-09-16T07:46:37.924Z",
+  "since": "2026-09-16T08:06:41.044Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/menuscan/adapter/GmsMenuReader.java",
+    "backend/src/main/java/com/gabolle/backend/menuscan/presentation/MenuScanExceptionHandler.java",
     "backend/src/test/java/com/gabolle/backend/menuscan"
   ]
 }
