@@ -1,0 +1,13 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-1080",
+  "intent": "CI 빨간불 수정 — SavedPlaceService 의 EventIngestService 를 ObjectProvider 로 바꾼다 (place 슬라이스가 event 를 안 스캔해서 145건 실패)",
+  "actor": "agent",
+  "session": "6d005b65-aed1-44ad-aded-60f96537d746",
+  "since": "2026-09-16T07:24:53.263Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/service/SavedPlaceService.java",
+    "backend/src/test/java/com/gabolle/backend/place/SavedPlaceControllerTest.java"
+  ]
+}
