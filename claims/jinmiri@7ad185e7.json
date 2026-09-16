@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1141",
+  "intent": "택시 탭을 목적지 고르기로 바꾸고 외부 지도 앱 링크를 걷어낸다",
+  "actor": "agent",
+  "session": "ff50a731-ce13-4ba5-a4a9-577509b3cec4",
+  "since": "2026-09-16T21:47:15.447Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/field/speak.tsx",
+    "frontend/src/field/__tests__/taxiDestination.test.ts",
+    "frontend/src/field/taxiDestination.ts"
+  ]
+}
