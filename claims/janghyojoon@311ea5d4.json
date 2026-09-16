@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1092",
-  "intent": "프론트 화면 미리보기 규칙 본문을 파트 규칙 파일에 넣는다 (S15P21E201-1092)",
+  "task": "S15P21E201-1089",
+  "intent": "일정 화면을 고정 자료로 띄워 캡처하는 도구 — 새 규칙(화면을 보여주고 끝낸다)을 실제로 지킬 수 있게",
   "actor": "agent",
   "session": "a0bb936b-d87e-4e0d-b30d-a10312f8579f",
-  "since": "2026-09-16T06:26:28.453Z",
+  "since": "2026-09-16T06:36:49.267Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/trips/[id]/itinerary.tsx",
-    "frontend/docs/design_handoff_itinerary"
+    "frontend/docs/design_handoff_itinerary",
+    "frontend/tools/shoot-itinerary.mjs"
   ]
 }
