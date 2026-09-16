@@ -1,18 +1,24 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1140",
-  "intent": "앱 지도 WebView 컴포넌트 — 웹에서는 안 쓰이도록 플랫폼별 파일로 나눈다",
+  "intent": "앱 지도 — 안드로이드 키 판정을 순수 모듈로 떼어 시험 가능하게 하고 문서를 갱신한다",
   "actor": "agent",
   "session": "ff50a731-ce13-4ba5-a4a9-577509b3cec4",
-  "since": "2026-09-16T21:16:49.847Z",
+  "since": "2026-09-16T21:20:32.776Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/.env.example",
+    "frontend/app.config.js",
+    "frontend/docs/MAP-RECOVERY.md",
     "frontend/package-lock.json",
     "frontend/package.json",
     "frontend/src/map/NativeMap.tsx",
     "frontend/src/map/NativeMap.web.tsx",
+    "frontend/src/map/RouteMap.native.tsx",
     "frontend/src/map/RouteMap.tsx",
+    "frontend/src/map/__tests__/androidMapKey.test.ts",
     "frontend/src/map/__tests__/mapHtml.test.ts",
+    "frontend/src/map/androidMapKey.ts",
     "frontend/src/map/mapHtml.ts"
   ]
 }
