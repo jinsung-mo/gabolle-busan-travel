@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1078",
+  "intent": "9/16 프론트 작업 NotebookLM 자료 (S15P21E201-1078)",
+  "actor": "agent",
+  "session": "a0bb936b-d87e-4e0d-b30d-a10312f8579f",
+  "since": "2026-09-16T03:34:44.803Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/26.09.16-프론트"
+  ]
+}
