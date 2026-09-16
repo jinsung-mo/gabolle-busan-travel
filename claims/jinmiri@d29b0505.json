@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-ux-guidelines",
+  "intent": "여행 만들기 - 출발지 검색 필드에 지우기 버튼 추가 (UX 가이드라인 #18)",
+  "actor": null,
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-16T02:49:37.144Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(plan)/basics.tsx"
+  ]
+}
