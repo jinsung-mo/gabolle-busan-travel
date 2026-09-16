@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1120",
-  "intent": "목록 응답에 사진 주소와 출처 표기 문구를 싣는다 — 홈 카드가 사진이 있다는 것만 알고 못 그린다",
+  "intent": "목록 응답의 사진 주소·출처가 실제로 값을 옮기는지 검사한다 — 만드는 통로가 셋이라 한쪽만 고치기 쉽다",
   "actor": "agent",
   "session": "268907d5-bcef-4994-a1d4-be88633e48fd",
-  "since": "2026-09-16T11:42:56.265Z",
+  "since": "2026-09-16T11:49:52.749Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
@@ -17,6 +17,7 @@
     "backend/src/test/java/com/gabolle/backend/functional/RecommendationWithRealPlacesFunctionalTest.java",
     "backend/src/test/java/com/gabolle/backend/place/CuratedLandmarkMigrationIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/place/DesiredFoodTagIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/place/ListResponsePhotoFieldsTest.java",
     "backend/src/test/java/com/gabolle/backend/place/SouvenirShopIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerTest.java"
   ]
