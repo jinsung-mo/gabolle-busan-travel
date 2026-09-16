@@ -1,14 +1,15 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1023",
-  "intent": "여행 카드에 사용자가 붙인 이름을 표시한다 — 서버가 주는 title 칸을 화면 타입에 더하고, 이름이 없으면 지금처럼 날짜를 그린다",
+  "intent": "여행 카드에 사용자가 붙인 이름 표시 — 커밋 직전 재선점",
   "actor": "agent",
   "session": "a0bb936b-d87e-4e0d-b30d-a10312f8579f",
-  "since": "2026-09-16T00:36:55.440Z",
+  "since": "2026-09-16T00:41:45.213Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/trips.tsx",
     "frontend/src/home/HomeBlocks.tsx",
+    "frontend/src/trip/__tests__/tripDisplayTitle.test.ts",
     "frontend/src/trip/trips.ts"
   ]
 }
