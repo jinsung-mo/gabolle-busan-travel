@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-76",
+  "intent": "랜드마크 시험이 다른 시험의 실행 차례에 흔들리지 않게 고친다 — 마이그레이션 SQL 을 시험이 직접 다시 돌린 뒤 검사",
+  "actor": "agent",
+  "session": "268907d5-bcef-4994-a1d4-be88633e48fd",
+  "since": "2026-09-16T10:39:29.710Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/place/CuratedLandmarkMigrationIntegrationTest.java"
+  ]
+}
