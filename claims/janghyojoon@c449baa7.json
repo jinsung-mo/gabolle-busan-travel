@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1031",
+  "intent": "상세 전수 재수집 (2,217곳). 한도에 걸리는 지점을 실측한다 — 문서 둘이 서로 다르다",
+  "actor": "agent",
+  "session": "4ab51595-7294-4056-b7aa-e8ef08000dff",
+  "since": "2026-09-16T00:57:31.879Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/data/raw/tourapi/tourapi-busan.ndjson"
+  ]
+}
