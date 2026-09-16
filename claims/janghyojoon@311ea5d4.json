@@ -7,8 +7,6 @@
   "since": "2026-09-16T06:26:28.453Z",
   "ttlMs": 2700000,
   "paths": [
-    "CONTRIBUTING.md",
-    "frontend/CLAUDE.md",
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/docs/design_handoff_itinerary"
   ]
