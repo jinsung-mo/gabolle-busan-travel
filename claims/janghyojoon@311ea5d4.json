@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1036",
+  "intent": "홈 「내 여행」 카드에 여행 이름 표시(시안) + HeroStories 칩 영문 라벨(jinmiri 님 인계분)",
+  "actor": "agent",
+  "session": "a0bb936b-d87e-4e0d-b30d-a10312f8579f",
+  "since": "2026-09-16T03:01:26.120Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/home/HomeBlocks.tsx"
+  ]
+}
