@@ -1,0 +1,18 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1116",
+  "intent": "iOS 스윕 결함 8건 수정 — 1116 비회원 무한왕복 · 1122 실패사유 표시 · 1127 위치 설정경로 · 1124 피드 갱신 · 1118 세션 · 1126 음성 · 1121 업로드",
+  "actor": null,
+  "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
+  "since": "2026-09-16T12:56:32.333Z",
+  "ttlMs": 5400000,
+  "paths": [
+    "frontend/app/(auth)/sign-in.tsx",
+    "frontend/app/explore.tsx",
+    "frontend/app/feed/compose.tsx",
+    "frontend/app/field/speak.tsx",
+    "frontend/src/auth/AuthProvider.tsx",
+    "frontend/src/social/imageResize.ts",
+    "frontend/src/social/useStoryImages.ts"
+  ]
+}
