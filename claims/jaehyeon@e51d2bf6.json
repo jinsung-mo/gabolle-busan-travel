@@ -1,12 +1,13 @@
 {
   "agent": "jaehyeon",
-  "task": "S15P21E201-1038",
-  "intent": "S15P21E201-1038: CI 에서 실패한 청소 시험을 사용자 단위 판정으로 고친다 (청소기는 전역이라 지운 행 수로는 판정할 수 없다)",
+  "task": "S15P21E201-1039",
+  "intent": "S15P21E201-1039: 장소 상세 응답에 사진 주제 칸을 더하면서 칸 개수를 세는 보호 시험을 16에서 17로 갱신한다",
   "actor": "agent",
   "session": "686077b8-30db-4ebe-ba61-f2d980c1054b",
-  "since": "2026-09-16T03:22:40.312Z",
+  "since": "2026-09-16T03:28:37.669Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/src/test/java/com/gabolle/backend/menuscan"
+    "backend/src/test/java/com/gabolle/backend/menuscan",
+    "backend/src/test/java/com/gabolle/backend/place/PlaceDetailResponseFieldsTest.java"
   ]
 }
