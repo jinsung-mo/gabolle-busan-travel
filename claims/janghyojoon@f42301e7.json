@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-76",
+  "intent": "해운대·광안리 등 랜드마크 4곳 DB 파일의 번호를 운영 최댓값(20260916180000) 위로 올린다 — 210000 으로",
+  "actor": "agent",
+  "session": "268907d5-bcef-4994-a1d4-be88633e48fd",
+  "since": "2026-09-16T10:14:43.970Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/resources/db/migration/V20260915150000__curated_core_busan_landmarks.sql",
+    "backend/src/main/resources/db/migration/V20260916210000__curated_core_busan_landmarks.sql"
+  ]
+}
