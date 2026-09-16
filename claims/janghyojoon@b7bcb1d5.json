@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1113",
+  "intent": "부산 둘러보기가 가까운 순이라 음식점만 나온다 — 갈래를 지정해 골고루 뽑는다",
+  "actor": "agent",
+  "session": "703f7c8c-a681-493d-95f7-71cf766ae767",
+  "since": "2026-09-16T10:44:33.774Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/home/useHomeData.ts"
+  ]
+}
