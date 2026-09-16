@@ -1,10 +1,10 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-1039",
-  "intent": "S15P21E201-1039: 사진 주제(그 대상을 찍은 것인가, 열리는 곳을 찍은 것인가)를 장소 상세와 근처 장소 응답에도 싣는다. 지금은 축제 응답에만 있다",
+  "intent": "S15P21E201-1039: 장소 상세 응답에 사진 주제 칸을 채우는 조립부",
   "actor": "agent",
   "session": "686077b8-30db-4ebe-ba61-f2d980c1054b",
-  "since": "2026-09-16T02:04:20.761Z",
+  "since": "2026-09-16T02:05:02.672Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/collection",
@@ -14,6 +14,7 @@
     "backend/src/main/java/com/gabolle/backend/place/api/SavedPlaceController.java",
     "backend/src/main/java/com/gabolle/backend/place/api/SavedPlaceResponse.java",
     "backend/src/main/java/com/gabolle/backend/place/repository/SavedPlaceRepository.java",
+    "backend/src/main/java/com/gabolle/backend/place/service/PlaceDetailService.java",
     "backend/src/main/java/com/gabolle/backend/place/service/SavedPlaceService.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationActionService.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/presentation/RecommendationActionController.java",
