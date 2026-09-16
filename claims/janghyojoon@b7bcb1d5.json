@@ -1,17 +1,21 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1135",
-  "intent": "피드 사진을 트위터처럼 배치한다 — 장수와 가로세로에 따라 자리를 나누고 세 화면이 같은 부품을 쓴다",
+  "task": "S15P21E201-1136",
+  "intent": "피드 글에 마크다운 — markdown-it 으로 해석하고 그리는 것은 직접 만든다",
   "actor": "agent",
   "session": "703f7c8c-a681-493d-95f7-71cf766ae767",
-  "since": "2026-09-16T15:03:31.782Z",
+  "since": "2026-09-16T15:08:56.659Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
     "frontend/app/feed/[id].tsx",
     "frontend/app/feed/compose.tsx",
+    "frontend/package.json",
+    "frontend/src/components/MarkdownBody.tsx",
     "frontend/src/components/PhotoGrid.tsx",
+    "frontend/src/social/__tests__/markdown.test.ts",
     "frontend/src/social/__tests__/photoGrid.test.ts",
+    "frontend/src/social/markdown.ts",
     "frontend/src/social/photoGrid.ts"
   ]
 }
