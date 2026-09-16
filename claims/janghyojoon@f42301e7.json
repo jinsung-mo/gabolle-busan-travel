@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-453",
-  "intent": "주석의 틀린 전제를 정정한다 — SOUVENIR_SHOP 은 CATEGORY_TAG 가 아니라 INTEREST_TAG 낱말이고, 막는 것은 CHECK 가 아니라 외래키다",
+  "task": "S15P21E201-76",
+  "intent": "「정확히 한 벌」 검사를 「이름으로 찾아진다」로 낮춘다 — 공유 DB 에 다른 시험이 남긴 같은 이름 32벌이 있어 절대 개수는 셀 수 없다",
   "actor": "agent",
   "session": "268907d5-bcef-4994-a1d4-be88633e48fd",
-  "since": "2026-09-16T11:27:40.581Z",
+  "since": "2026-09-16T11:30:17.091Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
