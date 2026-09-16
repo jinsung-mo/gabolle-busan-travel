@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-1099",
+  "intent": "메뉴판 읽기와 여행 이름 추천이 쓰는 모델 키를 배포 컨테이너에 전달한다 — 지금은 Jenkinsfile 에 자리가 없어 운영에서 계속 503",
+  "actor": "agent",
+  "session": "686077b8-30db-4ebe-ba61-f2d980c1054b",
+  "since": "2026-09-16T07:25:05.360Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/Jenkinsfile"
+  ]
+}
