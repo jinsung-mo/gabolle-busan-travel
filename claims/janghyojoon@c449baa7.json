@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1047",
+  "intent": "CI 가 잡은 설계 오류 정정 — 열쇠 체계를 Fact 가 들고 다닌다",
+  "actor": null,
+  "session": "4ab51595-7294-4056-b7aa-e8ef08000dff",
+  "since": "2026-09-16T07:58:34.244Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/loader/PlaceFeatureLoader.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/PlaceFeatureNdjsonReader.java",
+    "backend/src/test/java/com/gabolle/backend/place/loader/PlaceSlopeReaderTest.java"
+  ]
+}
