@@ -1,10 +1,10 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-1038",
-  "intent": "S15P21E201-1038: 메뉴판 호출 한도를 서버 메모리에서 Postgres 표로 옮기고 지난 기록을 정리한다. 컨트롤러 프로필 표시도 나머지 50개와 맞춘다",
+  "intent": "S15P21E201-1038: 메뉴판 한도 표를 진짜 PostgreSQL 위에서 확인하는 테스트 슬라이스를 새로 만든다",
   "actor": "agent",
   "session": "686077b8-30db-4ebe-ba61-f2d980c1054b",
-  "since": "2026-09-16T01:55:25.227Z",
+  "since": "2026-09-16T01:59:28.716Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/collection",
@@ -22,6 +22,7 @@
     "backend/src/test/java/com/gabolle/backend/menuscan",
     "backend/src/test/java/com/gabolle/backend/place/SavedPlaceControllerTest.java",
     "backend/src/test/java/com/gabolle/backend/recommendation/RecommendationActionAuthorizationTest.java",
+    "backend/src/test/java/com/gabolle/testslice/MenuScanSliceApplication.java",
     "backend/src/test/java/com/gabolle/testslice/ReliabilitySliceApplication.java"
   ]
 }
