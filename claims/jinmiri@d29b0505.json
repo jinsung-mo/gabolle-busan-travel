@@ -7,9 +7,6 @@
   "since": "2026-09-16T02:58:33.357Z",
   "ttlMs": 1800000,
   "paths": [
-    "frontend/app/(tabs)/home.tsx",
-    "frontend/app/app-intro.tsx",
-    "frontend/app/chat.tsx",
-    "frontend/src/home/HomeBlocks.tsx"
+    "frontend/app/chat.tsx"
   ]
 }
