@@ -1,12 +1,16 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1076",
-  "intent": "MR !940 의 frontend:unit 실패 수정 — reduce-motion 조회를 컴포넌트 밖으로 올려 버튼 인스턴스마다 붙는 비동기 setState 를 없앤다",
+  "task": "S15P21E201-1081",
+  "intent": "배포 중 502 를 \"아직 준비 안 됨\" 으로 말하는 문제 — 5xx 와 404 를 한 자리에서 가른다 (jaehyeon 님 결함 1·2·3)",
   "actor": "agent",
   "session": "ff50a731-ce13-4ba5-a4a9-577509b3cec4",
-  "since": "2026-09-16T05:26:38.175Z",
+  "since": "2026-09-16T05:37:33.551Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/src/components/Button.tsx"
+    "frontend/src/api/client.ts",
+    "frontend/src/api/placeCategories.ts",
+    "frontend/src/api/savedPlaces.ts",
+    "frontend/src/components/Button.tsx",
+    "frontend/src/discovery/localExplore.ts"
   ]
 }
