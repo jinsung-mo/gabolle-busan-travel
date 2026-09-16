@@ -1,14 +1,15 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1123",
-  "intent": "사진 업로드가 403 으로 죽는다 — SDK 가 버킷 위치를 먼저 묻는데 그 권한이 없다. 지역을 직접 알려줘서 그 질문을 없앤다",
+  "task": "S15P21E201-1129",
+  "intent": "일정 12곳이 전부 음식점이 되는 것을 고친다 — 하루 밥집 수를 개수 상한이 아니라 식사 시간대로 정하고, 명소가 모자라면 밥집으로 메우지 않고 비워 둔 채 알린다",
   "actor": "agent",
   "session": "268907d5-bcef-4994-a1d4-be88633e48fd",
-  "since": "2026-09-16T21:52:55.852Z",
+  "since": "2026-09-16T22:55:52.433Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/src/main/java/com/gabolle/backend/story/storage/S3FileStorage.java",
-    "backend/src/main/java/com/gabolle/backend/story/storage/StorageProperties.java",
-    "backend/src/main/resources/application.properties"
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/domain/ItineraryWarningCodes.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/port/ItineraryDraft.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/support/FakeItineraryDraftPort.java"
   ]
 }
