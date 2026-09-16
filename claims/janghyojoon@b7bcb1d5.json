@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1134",
-  "intent": "사진을 고를 때 3MB 에서 거절하던 것을 30MB 로 — 어차피 1600px 로 줄여서 올린다",
+  "intent": "고르기 상한 30MB 가 시험에서 꺼져 있던 것을 켜고 새 동작을 못박는다",
   "actor": "agent",
   "session": "703f7c8c-a681-493d-95f7-71cf766ae767",
-  "since": "2026-09-16T15:00:24.314Z",
+  "since": "2026-09-16T15:02:12.661Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/src/social/__tests__/useStoryImages.test.ts",
     "frontend/src/social/imageResize.ts",
     "frontend/src/social/useStoryImages.ts"
   ]
