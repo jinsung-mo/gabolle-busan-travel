@@ -1,14 +1,15 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1137",
-  "intent": "환율 계산기 — 백엔드는 있는데 프론트가 없다. 고른 언어로 기본 통화를 정한다",
+  "intent": "현장 도구 목록에 환율 카드를 더한다",
   "actor": "agent",
   "session": "ff50a731-ce13-4ba5-a4a9-577509b3cec4",
-  "since": "2026-09-16T15:37:46.779Z",
+  "since": "2026-09-16T15:59:01.808Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/field/exchange.tsx",
     "frontend/app/field/index.tsx",
+    "frontend/app/field/translate.tsx",
     "frontend/src/field/__tests__/exchangeRates.test.ts",
     "frontend/src/field/exchangeRates.ts"
   ]
