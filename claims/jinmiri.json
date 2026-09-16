@@ -1,13 +1,14 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-76",
-  "intent": "첫 화면 비회원 진입 노출 및 Google OAuth 설정 없는 production 빌드 차단",
+  "intent": "로그인 화면 상단에 비회원 진입 노출",
   "actor": null,
   "session": null,
-  "since": "2026-09-15T23:51:20.776Z",
+  "since": "2026-09-16T00:02:16.525Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app.config.js",
+    "frontend/app/(auth)/sign-in.tsx",
     "frontend/app/index.tsx",
     "frontend/src/auth/__tests__/productionConfig.test.ts"
   ]
