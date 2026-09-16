@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-speak-order",
+  "intent": "현장 말하기 카드 - 영어 뜻 먼저 보여주고 눌러야 한국어가 나오게 순서 뒤집기",
+  "actor": null,
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-16T00:54:43.469Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/components/PlacePhraseBrowser.tsx"
+  ]
+}
