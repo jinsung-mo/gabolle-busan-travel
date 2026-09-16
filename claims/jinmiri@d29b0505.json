@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-ux-guidelines",
+  "intent": "부산 둘러보기 카드 하트 저장 상태를 색상만이 아니라 배경 원으로도 구분 (UX 가이드라인 #11)",
+  "actor": null,
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-16T02:27:32.533Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx"
+  ]
+}
