@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1123",
-  "intent": "대중교통 시간을 직선 어림값이 아니라 실제 정거장 수로 계산한다 — 노선망 파일을 서버에 싣고 배차간격 탐색기를 붙인다",
+  "task": "S15P21E201-1004",
+  "intent": "「후보 0곳」을 갈래가 아니라 거리로 만든다 — 바다 장소를 넣자 시험이 깨졌고, 다음 적재에도 또 깨진다",
   "actor": "agent",
   "session": "268907d5-bcef-4994-a1d4-be88633e48fd",
-  "since": "2026-09-16T11:57:26.435Z",
+  "since": "2026-09-16T12:04:25.808Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
