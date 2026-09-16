@@ -1,0 +1,14 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-409",
+  "intent": "완료 코드 인코딩/디코딩·설문 응답 적재 스크립트 신설",
+  "actor": "agent",
+  "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
+  "since": "2026-09-16T06:15:48.279Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/package.json",
+    "bigData/survey",
+    "bigData/test/verify.mjs"
+  ]
+}
