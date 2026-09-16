@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-toss-polish",
+  "intent": "버튼 눌림 피드백을 즉시 전환에서 부드러운 애니메이션으로 (토스식 마이크로 인터랙션)",
+  "actor": null,
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-16T03:10:22.377Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/components/Button.tsx"
+  ]
+}
