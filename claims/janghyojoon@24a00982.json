@@ -1,17 +1,22 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1109",
-  "intent": "택시 요금을 구간에 싣는다 — itinerary_leg 에 fare_krw 칸 추가. db/migration 은 데이터 세션 자리라 끝나고 바로 반납하고 쪽지로 알린다",
+  "intent": "택시 요금을 구간에 싣는다 — 카카오모빌리티가 주던 요금을 RouteLeg 에서 화면까지 잇는다. db/migration 은 데이터 세션 자리라 커밋 직후 반납하고 쪽지로 알린다",
   "actor": "agent",
   "session": "6742c46a-7801-42df-a18c-5db6f5082d95",
-  "since": "2026-09-16T08:37:00.997Z",
+  "since": "2026-09-16T08:37:30.305Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryLegPlanner.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/application/port/TravelTime.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/domain/ItineraryLeg.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/infra/ItineraryLegJpaEntity.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/infra/JpaItineraryRepository.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/ItineraryDetailResponse.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/port/ItineraryDraft.java",
     "backend/src/main/java/com/gabolle/backend/route/adapter/RouteTravelTimeAdapter.java",
-    "backend/src/main/resources/db/migration/V20260916180000__itinerary_leg_fare.sql"
+    "backend/src/main/resources/db/migration/V20260916180000__itinerary_leg_fare.sql",
+    "backend/src/test/java/com/gabolle/backend/route/adapter/RouteTravelTimeFareTest.java"
   ]
 }
