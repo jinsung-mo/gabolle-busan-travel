@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1144",
+  "intent": "게시 버튼만 모서리가 각져 보인다 — 바깥 껍데기에 중복으로 칠한 색을 지운다",
+  "actor": "agent",
+  "session": "703f7c8c-a681-493d-95f7-71cf766ae767",
+  "since": "2026-09-16T22:55:45.713Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/feed.tsx"
+  ]
+}
