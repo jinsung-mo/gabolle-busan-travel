@@ -1,0 +1,16 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1076",
+  "intent": "로컬 미리보기 브랜치 — 열려 있는 MR 3건을 front/dev 에 합쳐 화면으로 확인만 한다 (push 안 함)",
+  "actor": "agent",
+  "session": "ff50a731-ce13-4ba5-a4a9-577509b3cec4",
+  "since": "2026-09-16T06:30:19.161Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/generating.tsx",
+    "frontend/app/field/speak.tsx",
+    "frontend/src/components/Button.tsx",
+    "frontend/src/field/translate.test.ts",
+    "frontend/src/field/translate.ts"
+  ]
+}
