@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1099",
+  "intent": "로그인 시 히어로 왼쪽 아래에 생기는 빈 띠 — heroCopy 를 가운데 정렬 (S15P21E201-1099)",
+  "actor": "agent",
+  "session": "a0bb936b-d87e-4e0d-b30d-a10312f8579f",
+  "since": "2026-09-16T07:18:16.093Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/index.tsx"
+  ]
+}
