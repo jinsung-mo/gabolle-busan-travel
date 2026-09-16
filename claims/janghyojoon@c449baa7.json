@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1047",
-  "intent": "장소 경사 적재 — 적재기가 관광공사 contentid 로도 장소 id 를 만들게 열고 경사 줄을 읽는다 (S15P21E201-1047)",
+  "intent": "경사 산출물 경로를 기존 적재 실행기에 더한다 (새 실행기 대신)",
   "actor": "agent",
   "session": "4ab51595-7294-4056-b7aa-e8ef08000dff",
-  "since": "2026-09-16T07:45:32.501Z",
+  "since": "2026-09-16T07:47:15.146Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/place/loader/PlaceFeatureLoader.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/PlaceFeatureLoaderRunner.java",
     "backend/src/main/java/com/gabolle/backend/place/loader/PlaceFeatureNdjsonReader.java",
     "backend/src/main/java/com/gabolle/backend/place/loader/PlaceSlopeLoaderRunner.java",
     "backend/src/test/java/com/gabolle/backend/place/loader"
