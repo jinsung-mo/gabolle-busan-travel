@@ -1,0 +1,16 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1140",
+  "intent": "앱(네이티브)에 지도를 띄운다 — 웹의 카카오 지도를 WebView 로 그대로 돌린다",
+  "actor": "agent",
+  "session": "ff50a731-ce13-4ba5-a4a9-577509b3cec4",
+  "since": "2026-09-16T21:11:05.004Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/package-lock.json",
+    "frontend/package.json",
+    "frontend/src/map/RouteMap.tsx",
+    "frontend/src/map/__tests__/mapHtml.test.ts",
+    "frontend/src/map/mapHtml.ts"
+  ]
+}
