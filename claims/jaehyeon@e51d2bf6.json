@@ -1,13 +1,14 @@
 {
   "agent": "jaehyeon",
-  "task": "S15P21E201-1039",
-  "intent": "S15P21E201-1039: 장소 상세 응답에 사진 주제 칸을 더하면서 칸 개수를 세는 보호 시험을 16에서 17로 갱신한다",
+  "task": "S15P21E201-1083",
+  "intent": "S15P21E201-1083: 메뉴판 읽기의 서버 최악 지연을 앱 대기 시간(12초) 안으로 넣는다. 지금은 33초라 성공한 읽기도 사용자가 못 받고 한도만 깎인다",
   "actor": "agent",
   "session": "686077b8-30db-4ebe-ba61-f2d980c1054b",
-  "since": "2026-09-16T03:28:37.669Z",
+  "since": "2026-09-16T05:46:57.358Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/src/test/java/com/gabolle/backend/menuscan",
-    "backend/src/test/java/com/gabolle/backend/place/PlaceDetailResponseFieldsTest.java"
+    "backend/src/main/java/com/gabolle/backend/menuscan/adapter/GmsMenuReader.java",
+    "backend/src/main/java/com/gabolle/backend/menuscan/config/MenuScanProperties.java",
+    "backend/src/test/java/com/gabolle/backend/menuscan"
   ]
 }
