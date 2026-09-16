@@ -1,15 +1,18 @@
 {
   "agent": "jaehyeon",
-  "task": "S15P21E201-1083",
-  "intent": "S15P21E201-1083: 메뉴판 읽기 대기 예산을 설정 파일에도 적어, 숫자만 보고 늘리는 것을 막는다",
+  "task": "S15P21E201-1065",
+  "intent": "S15P21E201-1065 연장: 날씨 경로가 좌표를 검증 없이 벤더로 넘긴다. 값 객체 생성자에서 막되 「범위를 벗어난 좌표」와 「부산 밖」을 다른 오류로 가른다 (장효준 위임)",
   "actor": "agent",
   "session": "686077b8-30db-4ebe-ba61-f2d980c1054b",
-  "since": "2026-09-16T05:48:09.798Z",
+  "since": "2026-09-16T06:01:19.433Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/menuscan/adapter/GmsMenuReader.java",
     "backend/src/main/java/com/gabolle/backend/menuscan/config/MenuScanProperties.java",
+    "backend/src/main/java/com/gabolle/backend/weather/domain/WeatherQuery.java",
+    "backend/src/main/java/com/gabolle/backend/weather/presentation/WeatherExceptionHandler.java",
     "backend/src/main/resources/application-dev.properties",
-    "backend/src/test/java/com/gabolle/backend/menuscan"
+    "backend/src/test/java/com/gabolle/backend/menuscan",
+    "backend/src/test/java/com/gabolle/backend/weather"
   ]
 }
