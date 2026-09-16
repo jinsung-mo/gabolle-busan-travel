@@ -1,12 +1,13 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1076",
-  "intent": "useMemo 뒤에도 2코어 CI 에서 또 5초를 넘겼다 — 설문을 두 바퀴 도는 그 테스트 하나의 제한을 올린다",
+  "task": "S15P21E201-1107",
+  "intent": "앱 빌드가 서버 주소를 못 받아 localhost 를 부른다 — eas.json 에 env 를 넣고 앱 빌드에서도 공개설정값 검사가 돌게 한다",
   "actor": "agent",
   "session": "ff50a731-ce13-4ba5-a4a9-577509b3cec4",
-  "since": "2026-09-16T07:15:56.411Z",
+  "since": "2026-09-16T08:07:57.801Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/src/onboarding/__tests__/SpendProfileScreen.test.tsx"
+    "frontend/eas.json",
+    "frontend/package.json"
   ]
 }
