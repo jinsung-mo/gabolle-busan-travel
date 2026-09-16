@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-76",
+  "intent": "영어 설문 질문 제목 표시 수정 및 화면 회귀 테스트",
+  "actor": null,
+  "session": null,
+  "since": "2026-09-16T00:45:05.825Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(onboarding)/spend-profile.tsx",
+    "frontend/src/onboarding/__tests__/SpendProfileScreen.test.tsx"
+  ]
+}
