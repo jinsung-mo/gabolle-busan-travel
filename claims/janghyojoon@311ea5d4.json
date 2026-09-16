@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1036",
+  "intent": "여행 이름 후보 받기·이름 저장 두 API 연결 층과 시험 (화면은 디자인 나온 뒤)",
+  "actor": "agent",
+  "session": "a0bb936b-d87e-4e0d-b30d-a10312f8579f",
+  "since": "2026-09-16T01:20:39.923Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/trip/__tests__/tripNaming.test.ts",
+    "frontend/src/trip/tripNaming.ts"
+  ]
+}
