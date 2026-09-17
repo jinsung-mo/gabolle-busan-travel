@@ -1,17 +1,12 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-1176",
-  "intent": "앱 지도를 react-native-maps 에서 카카오 WebView 로 전환 — 웹과 같은 키 하나를 쓰도록",
-  "actor": "agent",
+  "intent": "카카오 지도 키를 EAS 빌드 환경 변수에 넣는다 — 앱 지도가 키 없이 나오던 것",
+  "actor": null,
   "session": "bd48f26e-c3fc-4a58-a2dc-d0ceeed18ae5",
-  "since": "2026-09-17T07:00:51.234Z",
+  "since": "2026-09-17T07:33:50.604Z",
   "ttlMs": 1800000,
   "paths": [
-    "frontend/eas.json",
-    "frontend/package-lock.json",
-    "frontend/package.json",
-    "frontend/src/map",
-    "frontend/src/map/RouteMap.native.tsx",
-    "frontend/src/map/androidMapKey.ts"
+    "frontend/eas.json"
   ]
 }
