@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1208",
+  "intent": "데이터 레인 — bigData/dev 를 펼쳐 편의시설 98쪽 LFS 실체 확인 후 나머지 84쪽 수집 (하루 한도 100회)",
+  "actor": "agent",
+  "session": "213b915e-b639-466b-800f-c8f6f8d42865",
+  "since": "2026-09-17T23:42:10.079Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/collect",
+    "bigData/data/raw/facility"
+  ]
+}
