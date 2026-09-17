@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": null,
+  "intent": "장소 목록 응답에 영문 주소를 더한다 (S15P21E201-1194) — 영어 이름 밑에 한글 주소가 붙고 있다",
+  "actor": "agent",
+  "session": "6894c6a5-6267-4616-8870-2570791882c3",
+  "since": "2026-09-17T15:18:38.089Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/api/NearbyPlaceItem.java",
+    "backend/src/main/java/com/gabolle/backend/place/api/PlaceSummaryResponse.java",
+    "backend/src/test/java/com/gabolle/backend/place/ListResponsePhotoFieldsTest.java"
+  ]
+}
