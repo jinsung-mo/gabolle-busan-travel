@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": null,
-  "intent": "「작성자 본인 제외가 링크 복사에도 같은가」가 정해졌다 — 가정으로 적어 둔 주석을 결정으로 고친다",
+  "intent": "조회수 규칙 일곱을 재는 시험 — 새 파일이라 claim 에서 빠뜨렸다",
   "actor": "agent",
   "session": "6894c6a5-6267-4616-8870-2570791882c3",
-  "since": "2026-09-17T22:37:25.557Z",
+  "since": "2026-09-17T22:41:29.923Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/common/security/AuthenticatedUsers.java",
@@ -13,6 +13,7 @@
     "backend/src/main/java/com/gabolle/backend/story/domain/StoryLinkCopy.java",
     "backend/src/main/java/com/gabolle/backend/story/presentation/StoryController.java",
     "backend/src/main/java/com/gabolle/backend/story/presentation/dto/StoryResponse.java",
-    "backend/src/main/java/com/gabolle/backend/story/repository/StoryViewRepository.java"
+    "backend/src/main/java/com/gabolle/backend/story/repository/StoryViewRepository.java",
+    "backend/src/test/java/com/gabolle/backend/story/StoryViewCountIntegrationTest.java"
   ]
 }
