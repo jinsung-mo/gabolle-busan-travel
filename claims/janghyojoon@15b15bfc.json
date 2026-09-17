@@ -4,7 +4,7 @@
   "intent": "글을 열면 조회수를 센다 (S15P21E201-1204) — 하루 한 번·작성자 제외·비회원 포함, 응답에 칸 둘",
   "actor": "agent",
   "session": "6894c6a5-6267-4616-8870-2570791882c3",
-  "since": "2026-09-17T22:31:55.307Z",
+  "since": "2026-09-17T22:32:04.868Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/common/security/AuthenticatedUsers.java",
