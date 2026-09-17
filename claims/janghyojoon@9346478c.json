@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-photo-subject-front",
-  "intent": "사진이 그 장소를 찍은 것인지 그 장소가 든 건물을 찍은 것인지를 화면에 말한다 — 지금은 축제 화면만 말한다",
+  "task": "S15P21E201-1206",
+  "intent": "본보기를 「모든 칸 필수」 타입으로 바꿔서, 칸을 더하면 컴파일이 막게 한다",
   "actor": "agent",
   "session": "76ea18ef-78ae-4b4a-b82c-78032784f8d9",
-  "since": "2026-09-17T22:41:38.090Z",
+  "since": "2026-09-17T22:43:47.667Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
@@ -13,6 +13,7 @@
     "frontend/src/components/PhotoSubjectBadge.tsx",
     "frontend/src/components/PlaceVisual.tsx",
     "frontend/src/components/__tests__/PhotoSubjectBadge.test.tsx",
+    "frontend/src/discovery/__tests__/placeSearchMapping.test.ts",
     "frontend/src/discovery/localExplore.ts",
     "frontend/src/discovery/places.ts"
   ]
