@@ -1,10 +1,10 @@
 {
   "agent": "kojh0124",
-  "task": "S15P21E201-1080",
-  "intent": "새 표 story_reaction 을 탈퇴 삭제 목록(USER_OWNED_ROWS)에 한 줄 추가 — 효준님 !1056 후속",
+  "task": "S15P21E201-1173",
+  "intent": "새 엔드포인트 둘(글 반응 PUT·DELETE)의 인가 정책을 POLICY 표에 적는다 — CI 가 빠짐을 잡았다",
   "actor": "agent",
   "session": "6d005b65-aed1-44ad-aded-60f96537d746",
-  "since": "2026-09-17T06:39:35.185Z",
+  "since": "2026-09-17T06:56:05.962Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/auth/service/AccountDeletionService.java",
@@ -18,6 +18,7 @@
     "backend/src/main/java/com/gabolle/backend/story/presentation/dto/StoryReactionRequest.java",
     "backend/src/main/java/com/gabolle/backend/story/repository/StoryReactionRepository.java",
     "backend/src/main/resources/db/migration/V20260917010000__story_reaction.sql",
+    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java",
     "backend/src/test/java/com/gabolle/backend/story"
   ]
 }
