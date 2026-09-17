@@ -1,15 +1,16 @@
 {
   "agent": "kojh0124",
   "task": "S15P21E201-553",
-  "intent": "경사 축이 살아 있으므로 합성 장소도 SLOPE_PERCENT 를 내야 한다 (S15P21E201-553)",
+  "intent": "한계 문구가 낡았다 — 경사는 이제 심고 있고 비어 있는 축은 다섯이다 (S15P21E201-553)",
   "actor": "agent",
   "session": "6d005b65-aed1-44ad-aded-60f96537d746",
-  "since": "2026-09-17T00:56:04.037Z",
+  "since": "2026-09-17T00:57:34.127Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/test/java/com/gabolle/backend/recommendation/simulation",
     "eval/click-sim/01-users.mjs",
     "eval/click-sim/02-expose.mjs",
+    "eval/click-sim/03-evaluate.mjs",
     "eval/click-sim/lib/axes.mjs"
   ]
 }
