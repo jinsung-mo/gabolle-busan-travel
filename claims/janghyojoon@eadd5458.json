@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1156",
+  "intent": "조용함을 상가 2,355곳에도 붙인다 + 공통 판정을 한 곳으로",
+  "actor": null,
+  "session": "2f528204-318e-459e-856d-0d6fa6711c21",
+  "since": "2026-09-17T02:20:38.244Z",
+  "ttlMs": 5400000,
+  "paths": [
+    "bigData/data/staged/place-quietness-sbiz.ndjson",
+    "bigData/docs/PLACE-QUIETNESS.md",
+    "bigData/process/place-quietness-sbiz.mjs",
+    "bigData/process/place-quietness.mjs",
+    "bigData/process/quietness-core.mjs"
+  ]
+}
