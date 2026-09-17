@@ -1,15 +1,19 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1174",
-  "intent": "MR !1078 리베이스·머지 준비 (S15P21E201-1174)",
+  "task": "S15P21E201-1186",
+  "intent": "MR !1079 티켓 번호 충돌(-1176은 다른 사람의 지도 baseUrl 티켓) 수정 후 리베이스·머지",
   "actor": "agent",
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-17T08:57:13.418Z",
+  "since": "2026-09-17T08:59:34.135Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/(onboarding)/permissions.tsx",
     "frontend/app/(tabs)/home.tsx",
     "frontend/app/place/[id].tsx",
+    "frontend/src/components/GettingStartedGuide.tsx",
     "frontend/src/discovery/places.ts",
-    "frontend/src/i18n/translations.ts"
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/me/AppLanguageSetting.tsx",
+    "frontend/src/me/__tests__/AppLanguageSetting.test.tsx"
   ]
 }
