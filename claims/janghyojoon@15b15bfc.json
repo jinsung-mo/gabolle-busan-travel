@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": null,
+  "intent": "장소 목록·근처 응답에 「무엇을 찍은 사진인가」를 싣는다 (S15P21E201-1205) — 상세에만 있어 뱃지를 못 단다",
+  "actor": "agent",
+  "session": "6894c6a5-6267-4616-8870-2570791882c3",
+  "since": "2026-09-17T22:42:47.151Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/api/NearbyPlaceItem.java",
+    "backend/src/main/java/com/gabolle/backend/place/api/PlaceSummaryResponse.java",
+    "backend/src/test/java/com/gabolle/backend/place/ListResponsePhotoFieldsTest.java"
+  ]
+}
