@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1215",
+  "intent": "링크 복사를 실제로 센다 — 인용수가 언제나 0 이던 것. 새 엔드포인트 POST /stories/{id}/link-copies (S15P21E201-1215)",
+  "actor": "agent",
+  "session": "6febc90b-8a49-40c3-9304-aed369628766",
+  "since": "2026-09-17T23:43:23.939Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/story/application/StoryService.java",
+    "backend/src/main/java/com/gabolle/backend/story/presentation/StoryController.java",
+    "backend/src/main/java/com/gabolle/backend/story/repository/StoryLinkCopyRepository.java",
+    "backend/src/test/java/com/gabolle/backend/story/StoryLinkCopyCountIntegrationTest.java"
+  ]
+}
