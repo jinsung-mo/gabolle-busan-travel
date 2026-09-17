@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1155",
-  "intent": "탭바를 띄운다 — 알약 둘레로 내용이 비치게",
+  "intent": "탭바 띄우기 + 줄 안의 버튼 폭 — 커밋/MR",
   "actor": null,
   "session": "e9ed8236-b26c-436b-8a89-b34b57a92915",
-  "since": "2026-09-17T02:15:01.485Z",
+  "since": "2026-09-17T03:40:05.849Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
