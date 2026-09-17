@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1194",
+  "intent": "장소 목록에 영문 주소를 받아 그린다 — 이름은 두 언어인데 주소만 한글이던 자리",
+  "actor": "agent",
+  "session": "76ea18ef-78ae-4b4a-b82c-78032784f8d9",
+  "since": "2026-09-17T15:26:21.401Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/constraints.tsx",
+    "frontend/app/explore.tsx",
+    "frontend/src/discovery/localExplore.ts",
+    "frontend/src/discovery/places.ts",
+    "frontend/src/plan/PlanProvider.tsx"
+  ]
+}
