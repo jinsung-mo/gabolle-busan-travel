@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1209",
-  "intent": "챗봇이 안내하는 주소를 앱에 실제로 있게 맞춘다",
+  "intent": "현장 도구 목록에서 바뀐 주소를 부르도록 고친다",
   "actor": "agent",
   "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
-  "since": "2026-09-17T22:54:33.448Z",
+  "since": "2026-09-17T23:00:11.665Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
@@ -12,6 +12,7 @@
     "frontend/app/field/exchange-rate.tsx",
     "frontend/app/field/exchange.tsx",
     "frontend/app/field/transit.tsx",
+    "frontend/app/field/translate.tsx",
     "frontend/src/__tests__/assistantHrefRoutes.test.ts"
   ]
 }
