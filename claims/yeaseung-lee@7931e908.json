@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1162",
+  "intent": "1162 — 뿌리 main 의 .gitlab-ci.yml 에 러너 태그를 넣는다 (hotfix 경로, main 전용 변경)",
+  "actor": "agent",
+  "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
+  "since": "2026-09-17T03:28:48.335Z",
+  "ttlMs": 2700000,
+  "paths": [
+    ".gitlab-ci.yml"
+  ]
+}
