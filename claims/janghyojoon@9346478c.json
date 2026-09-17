@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1190",
+  "intent": "홈 기록 카드: 사진 없으면 회색 빈 네모 대신 본문을 크게 (시안 규칙을 피드에서만 지키고 있었다)",
+  "actor": "agent",
+  "session": "76ea18ef-78ae-4b4a-b82c-78032784f8d9",
+  "since": "2026-09-17T14:42:53.335Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/src/home/HomeBlocks.tsx"
+  ]
+}
