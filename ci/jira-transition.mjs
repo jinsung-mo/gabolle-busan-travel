@@ -41,6 +41,8 @@
  */
 
 import { execFileSync } from 'node:child_process'
+import { resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 const args = process.argv.slice(2)
 const flag = (name) => {
@@ -82,7 +84,38 @@ function targetCategory(branch) {
   return null // 기능 브랜치에서는 아무것도 안 한다
 }
 
-/** 이번에 들어온 커밋 메시지에서 카드 번호를 뽑는다. 중복은 없앤다. */
+/**
+ * 커밋 **제목 한 줄**에서 "이 커밋이 한 일" 의 카드 번호를 뽑는다 — S15P21E201-972.
+ *
+ * 🔴 <b>본문을 읽지 않는다.</b> 예전에는 `%s%n%b` 로 제목과 본문을 함께 읽고 거기서
+ *    키를 전부 긁었다. 그런데 본문에는 <b>내가 한 일이 아닌 키</b>가 자주 들어간다 —
+ *    "상위 스토리는 …", "이 자리는 452 의 일이다", "-944 와 같은 패턴" 같은 참조다.
+ *    참조와 실제로 그 일을 한 커밋을 구분하지 못해서, 2026-09-15 실측에서 <b>아직
+ *    시작도 안 한 티켓</b>이 머지된 것으로 잡혔다. 참조로 걸렸던 키가 14건이었다.
+ *
+ * 세는 것은 둘뿐이다.
+ *   1. 제목 <b>맨 앞</b>의 `[KEY-###]` — 팀 커밋 규칙(CONTRIBUTING 2절)이 그 자리에 적게 한다
+ *   2. 머지 커밋의 `Merge branch '…/KEY-###-…'` — 첫 따옴표 안, 즉 <b>들어온 브랜치</b>에서만
+ *      찾는다. 뒤의 `into '…'` 는 대상 브랜치라 거기서 찾으면 안 된다
+ *
+ * @returns 이 제목이 한 일의 카드 번호. 없으면 빈 배열 (커밋 하나는 한 티켓의 일이다)
+ */
+export function keysFromSubject(subject, project = 'S15P21E201') {
+  const line = String(subject || '')
+
+  const head = line.match(new RegExp('^\\[(' + project + '-\\d+)\\]'))
+  if (head) return [head[1]]
+
+  const merge = line.match(/^Merge branch '([^']*)'/)
+  if (merge) {
+    const inBranch = merge[1].match(new RegExp(project + '-\\d+'))
+    if (inBranch) return [inBranch[0]]
+  }
+
+  return []
+}
+
+/** 이번에 들어온 커밋들이 한 일의 카드 번호. 중복은 없앤다. */
 function keysInRange(range) {
   const ZERO = '0000000000000000000000000000000000000000'
   if (!range || range.includes(ZERO)) {
@@ -91,14 +124,42 @@ function keysInRange(range) {
   }
   let out = ''
   try {
-    out = execFileSync('git', ['log', '--format=%s%n%b', range], { encoding: 'utf8' })
+    // 🔴 %s 만 읽는다. 본문(%b)을 읽으면 남의 티켓 참조까지 딸려 온다 — 위 javadoc 참고.
+    out = execFileSync('git', ['log', '--format=%s', range], { encoding: 'utf8' })
   } catch (e) {
     // 🔴 못 읽은 것을 "카드 0개" 로 내지 않는다. 그러면 조용히 아무것도 안 한다.
     console.error(`구간을 읽지 못했습니다 (${range}): ${e.message}`)
     process.exit(1)
   }
-  const re = new RegExp(PROJECT + '-(\\d+)', 'g')
-  return [...new Set((out.match(re) || []))]
+  const keys = []
+  for (const line of out.split('\n')) keys.push(...keysFromSubject(line, PROJECT))
+  return [...new Set(keys)]
+}
+
+/**
+ * 이 카드를 타입 때문에 건드리면 안 되는가 — S15P21E201-972.
+ *
+ * 🔴 <b>에픽은 커밋 하나로 끝나는 물건이 아니다.</b> 이 저장소에는 에픽 키로 직접 커밋한
+ *    이력이 실제로 있어서(예: `[S15P21E201-41] docs: …`, 41 은 출시 준비 에픽), 그 커밋이
+ *    최상위 `main` 에 들어가면 <b>에픽 전체가 완료로 바뀐다.</b>
+ *
+ * 🔴 <b>타입을 이름으로 판정하지 않는다.</b> 티켓(-972)은 영문 이름(`Epic`)으로 거르라고
+ *    적었는데, 그건 <b>JQL 로 검색할 때</b> 이야기다. 이슈를 직접 읽으면
+ *    {@code issuetype.name} 이 <b>화면 언어를 따라 한글로</b> 온다 — 2026-09-15 실측에서
+ *    이 프로젝트의 에픽은 `"에픽"`, 작업은 `"작업"` 이었다. 영문으로 비교했다면
+ *    <b>한 번도 안 걸려서 에픽이 그대로 날아갔을 것</b>이다.
+ *
+ *    대신 {@code hierarchyLevel} 은 숫자라 언어를 안 탄다 — 에픽 1, 작업 0 (같은 날 실측).
+ *    이 파일이 상태를 이름이 아니라 갈래로 판정하는 것과 같은 이유다(머리말).
+ *
+ * 🔴 모르면 <b>안 옮긴다.</b> 값이 없을 때 "에픽이 아니다" 로 넘기면, 언젠가 Jira 가 이 칸을
+ *    안 주는 날 검사가 조용히 사라지고 <b>그 사실을 아무도 모른다.</b> 반대로 막아 두면
+ *    건너뛴 수가 로그에 쌓여 사람이 알아챈다.
+ */
+export function skipByIssueType(issuetype) {
+  const level = issuetype?.hierarchyLevel
+  if (typeof level !== 'number') return true
+  return level >= 1
 }
 
 const auth = 'Basic ' + Buffer.from(`${EMAIL}:${TOKEN}`).toString('base64')
@@ -156,9 +217,19 @@ async function main() {
 
   for (const key of keys) {
     try {
-      const issue = await jira(`/issue/${key}?fields=status,summary`)
+      const issue = await jira(`/issue/${key}?fields=status,summary,issuetype`)
       const cat = issue.fields.status.statusCategory.key
       const now = issue.fields.status.name
+      const type = issue.fields.issuetype
+
+      if (skipByIssueType(type)) {
+        // 🔴 에픽은 커밋 하나로 끝나지 않는다. 건너뛴 사실을 반드시 남긴다 —
+        //    조용히 넘어가면 "왜 이 카드만 안 움직였나" 를 나중에 아무도 못 푼다.
+        const label = type?.name ? `${type.name}(level ${type.hierarchyLevel})` : '타입을 알 수 없음'
+        console.log(`  = ${key}  ${now} — ${label} 이라 건드리지 않습니다`)
+        skipped++
+        continue
+      }
 
       if (RANK[cat] >= RANK[want]) {
         // 🔴 뒤로 가지 않는다. 이미 완료인 카드를 dev 머지가 되감으면 안 된다.
@@ -202,7 +273,15 @@ async function main() {
   if (failed) process.exit(1)
 }
 
-main().catch((e) => {
-  console.error('치명:', e.message)
-  process.exit(1)
-})
+// 🔴 직접 실행할 때만 돈다 — S15P21E201-972.
+//    위 두 함수를 검사에서 부르려고 export 했는데, .mjs 는 import 하는 것만으로 모듈
+//    본체가 실행된다. 막지 않으면 **검사를 돌릴 때마다 진짜 Jira 카드가 움직인다.**
+const invokedDirectly =
+  process.argv[1] && resolve(fileURLToPath(import.meta.url)) === resolve(process.argv[1])
+
+if (invokedDirectly) {
+  main().catch((e) => {
+    console.error('치명:', e.message)
+    process.exit(1)
+  })
+}
