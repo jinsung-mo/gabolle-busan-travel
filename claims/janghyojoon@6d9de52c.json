@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1157",
+  "intent": "탈퇴 때 안 지워지던 표 11개를 지우고, 흩어진 삭제 목록을 코드 한 곳으로 모은다. 엔티티에 빠진 사용자 칸 둘도 더한다",
+  "actor": "agent",
+  "session": "8eba4339-46a4-4d4c-a225-44bdfb1bcb09",
+  "since": "2026-09-17T03:14:28.940Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/auth/domain/OAuthSignupTicket.java",
+    "backend/src/main/java/com/gabolle/backend/auth/service/AccountDeletionService.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/domain/RecommendationPlaceAction.java",
+    "backend/src/test/java/com/gabolle/backend/auth/AccountDeletionIntegrationTest.java"
+  ]
+}
