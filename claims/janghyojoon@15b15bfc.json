@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": null,
+  "intent": "app_user 를 가리키는 표가 새로 생기면 빨개지는 검사를 만든다 (S15P21E201-1196) — 새 파일",
+  "actor": "agent",
+  "session": "6894c6a5-6267-4616-8870-2570791882c3",
+  "since": "2026-09-17T15:35:21.717Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/auth/AccountDeletionTableInventoryTest.java"
+  ]
+}
