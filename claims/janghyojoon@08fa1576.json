@@ -1,15 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1167",
-  "intent": "피드 카드 — 사진 최대 높이·여백·본문 누르면 이동",
+  "task": "S15P21E201-1169",
+  "intent": "피드 사진 최대 높이·기둥 폭·본문 누르기",
   "actor": null,
   "session": "e9ed8236-b26c-436b-8a89-b34b57a92915",
-  "since": "2026-09-17T05:51:40.689Z",
+  "since": "2026-09-17T06:30:50.480Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
-    "frontend/app/explore.tsx",
-    "frontend/docs/design_handoff_explore",
     "frontend/src/components/PhotoGrid.tsx"
   ]
 }
