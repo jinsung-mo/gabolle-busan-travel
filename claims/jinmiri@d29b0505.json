@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1109",
+  "intent": "언어 선택 첫 화면을 컴팩트한 국기 가로줄로, 비회원 버튼 제거 (사용자 요청)",
+  "actor": null,
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-17T00:55:07.556Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/index.tsx",
+    "frontend/src/i18n/languages.ts"
+  ]
+}
