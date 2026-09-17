@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1156",
+  "intent": "거리뷰 4종 조사 결과",
+  "actor": null,
+  "session": "2f528204-318e-459e-856d-0d6fa6711c21",
+  "since": "2026-09-17T03:23:46.803Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/docs/STREETVIEW-SURVEY.md"
+  ]
+}
