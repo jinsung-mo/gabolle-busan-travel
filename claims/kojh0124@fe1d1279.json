@@ -1,12 +1,14 @@
 {
   "agent": "kojh0124",
   "task": "S15P21E201-553",
-  "intent": "SLOPE 를 다시 심는 축으로 되돌린다 — facets 0 은 데이터가 없는 것이 아니라 그 엔드포인트가 점수형을 못 세는 것이었다 (S15P21E201-553)",
+  "intent": "경사 축이 되살아나서 사용자 생성과 노출 계산이 점수형을 다시 다뤄야 한다 (S15P21E201-553)",
   "actor": "agent",
   "session": "6d005b65-aed1-44ad-aded-60f96537d746",
-  "since": "2026-09-17T00:53:09.073Z",
+  "since": "2026-09-17T00:54:12.583Z",
   "ttlMs": 2700000,
   "paths": [
+    "eval/click-sim/01-users.mjs",
+    "eval/click-sim/02-expose.mjs",
     "eval/click-sim/lib/axes.mjs"
   ]
 }
