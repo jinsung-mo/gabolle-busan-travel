@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1153",
+  "intent": "1153 — 이름 고치기가 서버엔 갔는데 화면이 한 번 뒤처진다. 보낸 뒤 다시 받아오게 한다",
+  "actor": "agent",
+  "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
+  "since": "2026-09-17T08:30:56.623Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/collection/collectionsApi.ts"
+  ]
+}
