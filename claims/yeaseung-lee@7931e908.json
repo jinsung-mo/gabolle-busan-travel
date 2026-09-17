@@ -1,14 +1,14 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1153",
-  "intent": "S15P21E201-1153 — 리스트 이름·설명이 서버에 안 간다. PATCH 보류 목록 + 짝짓기를 id 우선으로",
+  "task": "S15P21E201-1132",
+  "intent": "1132 — 안드로이드 날짜 선택기가 AppCompat 기본 청록(#009688)으로 뜨는 것을 브랜드 색으로 맞춘다 (config plugin 으로 datePickerDialogTheme 지정)",
   "actor": "agent",
   "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
-  "since": "2026-09-17T02:08:13.280Z",
+  "since": "2026-09-17T03:08:56.972Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/src/collection/CollectionProvider.tsx",
-    "frontend/src/collection/__tests__/collectionsApi.test.ts",
-    "frontend/src/collection/collectionsApi.ts"
+    "frontend/app.json",
+    "frontend/plugins/withDatePickerTheme.js",
+    "frontend/src/components/DateFieldInput.tsx"
   ]
 }
