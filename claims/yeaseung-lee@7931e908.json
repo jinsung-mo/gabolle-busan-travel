@@ -1,15 +1,18 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1187",
-  "intent": "Expo SDK57 fetch 가 RN {uri,name,type} 파트를 못 받는 것 — 업로드 전에 Blob 으로 바꾼다",
+  "intent": "업로드 경로가 Blob 으로 바뀌어 시험이 보는 자리를 옮긴다",
   "actor": "agent",
   "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
-  "since": "2026-09-17T16:34:47.328Z",
+  "since": "2026-09-17T16:38:18.992Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/src/api/__tests__/multipart.test.ts",
     "frontend/src/api/multipart.ts",
+    "frontend/src/field/__tests__/menuScan.test.ts",
+    "frontend/src/field/__tests__/menuScanResize.test.ts",
     "frontend/src/field/menuScan.ts",
+    "frontend/src/social/__tests__/uploadFailureCause.test.ts",
     "frontend/src/social/stories.ts"
   ]
 }
