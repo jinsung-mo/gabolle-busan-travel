@@ -1,14 +1,15 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1188",
-  "intent": "적재 뒤 확인 기준 — 축별 기대값을 줄 수가 아니라 실제로 붙을 수로 계산해 4절에 넣는다",
+  "task": "S15P21E201-1192",
+  "intent": "적재 뒤 기대값을 산출물에서 다시 계산하는 도구 — 줄 수가 아니라 실제로 붙을 수를 센다",
   "actor": "agent",
   "session": "744ebcd5-5e8a-4713-965b-2e228ac63921",
-  "since": "2026-09-17T15:08:41.201Z",
+  "since": "2026-09-17T15:09:23.601Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/docs/PLACE-DATA-LOAD.md",
     "backend/src/main/java/com/gabolle/backend/preference/application/PreferenceJson.java",
-    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/PreferenceValueShapeAndScaleTest.java"
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/PreferenceValueShapeAndScaleTest.java",
+    "bigData/verify/expected-feature-rows.mjs"
   ]
 }
