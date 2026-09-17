@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1212",
-  "intent": "이어받기가 파일 이름만 보고 「받았다」고 믿는 것을 고친다 — 내용이 없으면 멈춘다",
+  "task": "S15P21E201-1214",
+  "intent": "적재 명령이 끝나면 컨테이너가 스스로 내려가게 고친다 — 지금은 사람이 Ctrl+C 를 기억해야 한다",
   "actor": "agent",
   "session": "744ebcd5-5e8a-4713-965b-2e228ac63921",
-  "since": "2026-09-17T23:03:10.741Z",
+  "since": "2026-09-17T23:13:25.413Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitlab-ci.yml",
+    "backend/docs/PLACE-DATA-LOAD.md",
     "bigData/collect/disabled-facility.mjs",
     "ci/_negative-test-marker.txt",
     "ci/jira-key-check.mjs",
