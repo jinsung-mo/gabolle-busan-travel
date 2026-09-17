@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1210",
-  "intent": "커밋의 Jira 번호가 실재하는 카드인지, 그 카드의 파트가 브랜치와 맞는지 CI 가 검사하게 한다",
+  "intent": "일부러 틀린 번호로 CI 검사가 잡는지 시험하는 표식 파일 — 머지하지 않고 지운다",
   "actor": "agent",
   "session": "744ebcd5-5e8a-4713-965b-2e228ac63921",
-  "since": "2026-09-17T22:56:39.283Z",
+  "since": "2026-09-17T22:59:10.816Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitlab-ci.yml",
+    "ci/_negative-test-marker.txt",
     "ci/jira-key-check.mjs",
     "ci/jira-key-check.test.mjs"
   ]
