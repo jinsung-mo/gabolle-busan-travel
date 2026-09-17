@@ -1,12 +1,20 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-toss-polish",
-  "intent": "회원가입 화면을 모바일에서 4단계 진행형 UI로 (토스식 단순화)",
+  "task": "S15P21E201-1109",
+  "intent": "5개 언어 선택 화면 브랜치를 리베이스+검증 후 front/dev 로 살림",
   "actor": null,
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-16T03:21:09.411Z",
+  "since": "2026-09-17T00:03:59.447Z",
   "ttlMs": 1800000,
   "paths": [
-    "frontend/app/(auth)/sign-up.tsx"
+    "frontend/app/(tabs)/saved.tsx",
+    "frontend/app/index.tsx",
+    "frontend/src/discovery/localExplore.ts",
+    "frontend/src/discovery/placeCategoryLabels.ts",
+    "frontend/src/discovery/romanize.ts",
+    "frontend/src/field/translate.ts",
+    "frontend/src/i18n/index.ts",
+    "frontend/src/i18n/languages.ts",
+    "frontend/src/onboarding/OnboardingPreferences.tsx"
   ]
 }
