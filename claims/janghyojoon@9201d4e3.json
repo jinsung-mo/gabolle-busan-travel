@@ -1,16 +1,14 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1192",
-  "intent": "계산 결과 기록 — 절차서가 가리킬 자리",
+  "task": "S15P21E201-1210",
+  "intent": "커밋의 Jira 번호가 실재하는 카드인지, 그 카드의 파트가 브랜치와 맞는지 CI 가 검사하게 한다",
   "actor": "agent",
   "session": "744ebcd5-5e8a-4713-965b-2e228ac63921",
-  "since": "2026-09-17T15:11:33.839Z",
+  "since": "2026-09-17T22:56:39.283Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/docs/PLACE-DATA-LOAD.md",
-    "backend/src/main/java/com/gabolle/backend/preference/application/PreferenceJson.java",
-    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/PreferenceValueShapeAndScaleTest.java",
-    "bigData/data/staged/_expected-feature-rows.json",
-    "bigData/process/expected-feature-rows.mjs"
+    ".gitlab-ci.yml",
+    "ci/jira-key-check.mjs",
+    "ci/jira-key-check.test.mjs"
   ]
 }
