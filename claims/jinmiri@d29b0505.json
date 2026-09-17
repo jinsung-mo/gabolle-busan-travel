@@ -1,0 +1,18 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1140",
+  "intent": "폰 지도를 react-native-maps 대신 카카오 WebView 로",
+  "actor": null,
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-17T03:28:26.860Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/.env.example",
+    "frontend/app.config.js",
+    "frontend/docs/MAP-RECOVERY.md",
+    "frontend/package.json",
+    "frontend/src/map/RouteMap.native.tsx",
+    "frontend/src/map/androidMapKey.ts",
+    "frontend/src/map/kakaoMapHtml.ts"
+  ]
+}
