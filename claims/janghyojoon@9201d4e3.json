@@ -7,7 +7,6 @@
   "since": "2026-09-17T14:29:55.723Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/src/main/java/com/gabolle/backend/batch/application/TasteVectorFoldService.java",
     "backend/src/main/java/com/gabolle/backend/preference/application/PreferenceJson.java",
     "backend/src/test/java/com/gabolle/backend/recommendation/adapter/PreferenceValueShapeAndScaleTest.java"
   ]
