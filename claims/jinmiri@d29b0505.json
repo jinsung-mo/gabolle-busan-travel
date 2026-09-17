@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1167",
+  "intent": "로그인 화면 SNS 로그인 버튼을 원형 아이콘으로 개편",
+  "actor": null,
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-17T06:07:57.149Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(auth)/sign-in.tsx"
+  ]
+}
