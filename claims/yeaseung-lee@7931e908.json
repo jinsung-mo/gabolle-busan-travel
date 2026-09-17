@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1165",
+  "intent": "1165 — 일정 생성 전면 실패(ENGINE_DATASET_VERSION_AMBIGUOUS). datasetVersion 이 100자를 넘으면 지문으로 적는다",
+  "actor": "agent",
+  "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
+  "since": "2026-09-17T05:01:23.750Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineRecommendationEngine.java"
+  ]
+}
