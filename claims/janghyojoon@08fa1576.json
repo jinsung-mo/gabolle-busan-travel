@@ -1,16 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1155",
-  "intent": "탭바 띄우기 + 줄 안의 버튼 폭 — 커밋/MR",
+  "task": "S15P21E201-1166",
+  "intent": "로컬 탐색 넓은 화면 — 시안 반입 + 구현",
   "actor": null,
   "session": "e9ed8236-b26c-436b-8a89-b34b57a92915",
-  "since": "2026-09-17T03:40:05.849Z",
+  "since": "2026-09-17T05:19:32.763Z",
   "ttlMs": 1800000,
   "paths": [
-    "frontend/app/(tabs)/feed.tsx",
-    "frontend/src/components/Button.tsx",
-    "frontend/src/components/Screen.tsx",
-    "frontend/src/components/TabBar.tsx",
-    "frontend/src/components/__tests__/safeAreaLayout.test.ts"
+    "frontend/app/explore.tsx",
+    "frontend/docs/design_handoff_explore"
   ]
 }
