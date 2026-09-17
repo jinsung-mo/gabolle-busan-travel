@@ -1,15 +1,16 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1158",
-  "intent": "일정 상세 응답에 항목별 warningCodes 와 accessibilityUnverifiedCount 를 싣는다. 채점기의 「응답까지 간다」 낡은 주석도 정정",
+  "intent": "ACCESSIBILITY_UNVERIFIED 를 공용 코드표로 올린다 — 일정 쪽이 같은 값을 문자열로 또 적지 않게",
   "actor": "agent",
   "session": "8eba4339-46a4-4d4c-a225-44bdfb1bcb09",
-  "since": "2026-09-17T02:32:03.629Z",
+  "since": "2026-09-17T02:32:43.559Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/ItineraryDetailResponse.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationCodes.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryQueryServiceTest.java"
   ]
 }
