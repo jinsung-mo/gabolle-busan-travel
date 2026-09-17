@@ -1,16 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1171",
-  "intent": "경고 여덟 개를 사전에 넣고 추천 화면을 거치게 한다",
+  "task": "S15P21E201-1177",
+  "intent": "피드 개편 v2 — 시안 반입 + 목록 카드",
   "actor": null,
   "session": "e9ed8236-b26c-436b-8a89-b34b57a92915",
-  "since": "2026-09-17T06:35:20.969Z",
+  "since": "2026-09-17T07:47:52.681Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
-    "frontend/app/trips/[id]/recommendations.tsx",
-    "frontend/src/components/PhotoGrid.tsx",
-    "frontend/src/plan/__tests__/warningLabels.test.ts",
-    "frontend/src/plan/warningLabels.ts"
+    "frontend/docs/design_handoff_feed"
   ]
 }
