@@ -1,14 +1,15 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1187",
-  "intent": "1187 사진 업로드 실패 — 통째로 버려지던 실패 원인을 남겨 진단 가능하게 한다",
+  "intent": "1187 — 업로드 실패 원인을 남기는 동작을 붙드는 시험",
   "actor": "agent",
   "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
-  "since": "2026-09-17T12:34:19.680Z",
+  "since": "2026-09-17T12:38:15.301Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/src/api/client.ts",
     "frontend/src/field/menuScan.ts",
+    "frontend/src/social/__tests__/uploadFailureCause.test.ts",
     "frontend/src/social/stories.ts"
   ]
 }
