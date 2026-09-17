@@ -9,7 +9,6 @@
   "paths": [
     "backend/docs/PLACE-DATA-LOAD.md",
     "backend/src/main/java/com/gabolle/backend/preference/application/PreferenceJson.java",
-    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/PreferenceValueShapeAndScaleTest.java",
-    "bigData/verify/expected-feature-rows.mjs"
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/PreferenceValueShapeAndScaleTest.java"
   ]
 }
