@@ -1,0 +1,19 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-photo-subject-front",
+  "intent": "사진이 그 장소를 찍은 것인지 그 장소가 든 건물을 찍은 것인지를 화면에 말한다 — 지금은 축제 화면만 말한다",
+  "actor": "agent",
+  "session": "76ea18ef-78ae-4b4a-b82c-78032784f8d9",
+  "since": "2026-09-17T22:41:38.090Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/explore.tsx",
+    "frontend/app/place/[id].tsx",
+    "frontend/src/components/PhotoSubjectBadge.tsx",
+    "frontend/src/components/PlaceVisual.tsx",
+    "frontend/src/components/__tests__/PhotoSubjectBadge.test.tsx",
+    "frontend/src/discovery/localExplore.ts",
+    "frontend/src/discovery/places.ts"
+  ]
+}
