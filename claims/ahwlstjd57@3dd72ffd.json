@@ -1,15 +1,13 @@
 {
   "agent": "ahwlstjd57",
-  "task": "S15P21E201-453",
-  "intent": "마이그레이션 파일명 버전 갱신 (새 파일명)",
+  "task": "S15P21E201-language-chat",
+  "intent": "챗봇 언어 정규화를 프론트의 5개 언어(ko/en/ja/zh-Hans/zh-Hant)에 맞춰 확장",
   "actor": "agent",
   "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
-  "since": "2026-09-16T09:00:15.531Z",
+  "since": "2026-09-17T01:50:39.112Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/src/main/resources/db/migration/V20260916110000__place_feature_desired_food_tag.sql",
-    "backend/src/main/resources/db/migration/V20260916120000__place_feature_souvenir_item_tag.sql",
-    "backend/src/main/resources/db/migration/V20260916190000__place_feature_desired_food_tag.sql",
-    "backend/src/main/resources/db/migration/V20260916200000__place_feature_souvenir_item_tag.sql"
+    "backend/src/main/java/com/gabolle/backend/assistant/adapter/GeminiAssistantAdapter.java",
+    "backend/src/main/java/com/gabolle/backend/assistant/application/AssistantChatService.java"
   ]
 }
