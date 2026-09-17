@@ -1,13 +1,16 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1150",
-  "intent": "S15P21E201-1150 — 일정 화면에 SIGHT_SLOT_UNFILLED 코드가 그대로 노출된다. 문구를 붙이고 모르는 코드는 안 그린다",
+  "task": "S15P21E201-1148",
+  "intent": "S15P21E201-1148 — 지운 것이 되살아난다. 보류 삭제 목록을 두고 동기화 때 DELETE 를 보낸다",
   "actor": "agent",
   "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
-  "since": "2026-09-17T00:46:37.519Z",
+  "since": "2026-09-17T00:59:19.766Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/src/collection/CollectionProvider.tsx",
+    "frontend/src/collection/__tests__/collectionsApi.test.ts",
+    "frontend/src/collection/collectionsApi.ts",
     "frontend/src/plan/__tests__/warningLabels.test.ts",
     "frontend/src/plan/warningLabels.ts"
   ]
