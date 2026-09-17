@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1153",
+  "intent": "줄 안에 들어가는 버튼 — compact 와 줄 넘침",
+  "actor": null,
+  "session": "e9ed8236-b26c-436b-8a89-b34b57a92915",
+  "since": "2026-09-17T02:01:47.420Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(tabs)/feed.tsx",
+    "frontend/src/components/Button.tsx"
+  ]
+}
