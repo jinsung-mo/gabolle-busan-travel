@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": null,
+  "intent": "상세에 칸을 더할 때 「목록에도 실을까」를 묻는 검사 (S15P21E201-1211) — 새 파일 하나와 기존 파일 이름 정정",
+  "actor": "agent",
+  "session": "6894c6a5-6267-4616-8870-2570791882c3",
+  "since": "2026-09-17T22:59:50.071Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/place/ListResponseFieldsTest.java",
+    "backend/src/test/java/com/gabolle/backend/place/ListResponsePhotoFieldsTest.java",
+    "backend/src/test/java/com/gabolle/backend/place/PlaceListDetailFieldGapTest.java"
+  ]
+}
