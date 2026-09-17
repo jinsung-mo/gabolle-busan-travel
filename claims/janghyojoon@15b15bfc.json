@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": null,
+  "intent": "기록 응답의 장소 칸(PlaceRef)에 주소를 더한다 — 프론트가 기다리는 칸. 티켓 번호 확인 중",
+  "actor": "agent",
+  "session": "6894c6a5-6267-4616-8870-2570791882c3",
+  "since": "2026-09-17T14:19:40.035Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/story/application/StoryResponseAssembler.java",
+    "backend/src/main/java/com/gabolle/backend/story/presentation/dto/StoryResponse.java",
+    "backend/src/test/java/com/gabolle/backend/functional/TripStoryJourneyFunctionalTest.java"
+  ]
+}
