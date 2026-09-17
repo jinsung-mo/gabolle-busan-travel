@@ -1,0 +1,12 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-553",
+  "intent": "SLOPE 를 다시 심는 축으로 되돌린다 — facets 0 은 데이터가 없는 것이 아니라 그 엔드포인트가 점수형을 못 세는 것이었다 (S15P21E201-553)",
+  "actor": "agent",
+  "session": "6d005b65-aed1-44ad-aded-60f96537d746",
+  "since": "2026-09-17T00:53:09.073Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "eval/click-sim/lib/axes.mjs"
+  ]
+}
