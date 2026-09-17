@@ -1,0 +1,14 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-250",
+  "intent": "맥북 자동화가 길을 잃지 않게 — 실행 가능한 스크립트와 안내서",
+  "actor": "agent",
+  "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
+  "since": "2026-09-17T22:18:04.381Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/IOS-TEST-ON-BORROWED-MAC.md",
+    "docs/ios-automation/README.md",
+    "docs/ios-automation/gabolle_ios_test.py"
+  ]
+}
