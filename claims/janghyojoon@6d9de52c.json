@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1185",
-  "intent": "사진 주소 스킴 판정을 한 곳에 모으는 새 클래스",
+  "task": "S15P21E201-1183",
+  "intent": "피드 시험이 공유 DB 의 남은 행 때문에 깨졌다 — 개수가 아니라 「댓글이 없다」로 판정하게 고친다",
   "actor": "agent",
   "session": "8eba4339-46a4-4d4c-a225-44bdfb1bcb09",
-  "since": "2026-09-17T08:22:09.381Z",
+  "since": "2026-09-17T08:23:07.937Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/docs/PLACE-DATA-LOAD.md",
@@ -15,6 +15,7 @@
     "backend/src/main/java/com/gabolle/backend/place/loader/TourApiPlaceLoader.java",
     "backend/src/main/resources/db/migration",
     "backend/src/test/java/com/gabolle/backend/place/loader",
-    "backend/src/test/java/com/gabolle/backend/place/loader/PlaceQuietnessReaderTest.java"
+    "backend/src/test/java/com/gabolle/backend/place/loader/PlaceQuietnessReaderTest.java",
+    "backend/src/test/java/com/gabolle/backend/story/StoryReplyIntegrationTest.java"
   ]
 }
