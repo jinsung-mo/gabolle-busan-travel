@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1166",
-  "intent": "로컬 탐색 넓은 화면 — 시안 반입 + 구현",
+  "intent": "로컬 탐색 넓은 화면 구현 — 커밋",
   "actor": null,
   "session": "e9ed8236-b26c-436b-8a89-b34b57a92915",
-  "since": "2026-09-17T05:19:32.763Z",
+  "since": "2026-09-17T05:36:00.041Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/explore.tsx",
