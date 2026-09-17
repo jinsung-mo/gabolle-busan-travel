@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1183",
-  "intent": "댓글 마이그레이션 번호를 뒤로 민다 — 대상 브랜치가 앞서가 순서 검사가 빨개진다",
+  "task": "S15P21E201-1185",
+  "intent": "적재기가 http 를 https 로 바꾸게 되면서 옛 기대값을 붙잡던 시험을 새 계약에 맞춘다",
   "actor": "agent",
   "session": "8eba4339-46a4-4d4c-a225-44bdfb1bcb09",
-  "since": "2026-09-17T08:26:13.022Z",
+  "since": "2026-09-17T08:46:31.906Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/src/main/resources/db/migration"
+    "backend/src/main/resources/db/migration",
+    "backend/src/test/java/com/gabolle/backend/place/TourApiPlaceLoaderIntegrationTest.java"
   ]
 }
