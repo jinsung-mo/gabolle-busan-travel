@@ -1,0 +1,13 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-553",
+  "intent": "하네스를 검사가 아니라 Gradle 과제로 바꾼다 — 건너뛴 검사가 CI 관문에 걸렸고, 그 관문이 옳다 (S15P21E201-553)",
+  "actor": "agent",
+  "session": "6d005b65-aed1-44ad-aded-60f96537d746",
+  "since": "2026-09-17T02:39:38.813Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/build.gradle",
+    "backend/src/test/java/com/gabolle/backend/recommendation/simulation"
+  ]
+}
