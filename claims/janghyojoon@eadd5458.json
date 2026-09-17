@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1156",
+  "intent": "장애인편의시설 목록 수집기 — 이어받기 포함",
+  "actor": null,
+  "session": "2f528204-318e-459e-856d-0d6fa6711c21",
+  "since": "2026-09-17T02:25:27.714Z",
+  "ttlMs": 5400000,
+  "paths": [
+    "bigData/collect/disabled-facility.mjs",
+    "bigData/docs/DISABLED-FACILITY.md"
+  ]
+}
