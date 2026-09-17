@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1210",
-  "intent": "일부러 틀린 번호로 CI 검사가 잡는지 시험하는 표식 파일 — 머지하지 않고 지운다",
+  "task": "S15P21E201-1212",
+  "intent": "이어받기가 파일 이름만 보고 「받았다」고 믿는 것을 고친다 — 내용이 없으면 멈춘다",
   "actor": "agent",
   "session": "744ebcd5-5e8a-4713-965b-2e228ac63921",
-  "since": "2026-09-17T22:59:10.816Z",
+  "since": "2026-09-17T23:03:10.741Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitlab-ci.yml",
+    "bigData/collect/disabled-facility.mjs",
     "ci/_negative-test-marker.txt",
     "ci/jira-key-check.mjs",
     "ci/jira-key-check.test.mjs"
