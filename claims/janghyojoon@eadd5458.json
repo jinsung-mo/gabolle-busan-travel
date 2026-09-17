@@ -1,13 +1,15 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1154",
-  "intent": "조용함 축 — 도로 등급으로 소음 대리지표를 내고 장소에 붙인다",
+  "intent": "조용함 산출물",
   "actor": null,
   "session": "2f528204-318e-459e-856d-0d6fa6711c21",
-  "since": "2026-09-17T02:11:40.058Z",
-  "ttlMs": 5400000,
+  "since": "2026-09-17T02:15:43.490Z",
+  "ttlMs": 3600000,
   "paths": [
     "bigData/config/road-noise-weights.json",
+    "bigData/data/staged/_place-quietness-run",
+    "bigData/data/staged/place-quietness.ndjson",
     "bigData/docs/PLACE-QUIETNESS.md",
     "bigData/process/place-quietness.mjs"
   ]
