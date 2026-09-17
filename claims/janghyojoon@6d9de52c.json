@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1185",
-  "intent": "관광공사 사진 주소를 https 로 — 이미 들어간 것은 마이그레이션, 새로 들어오는 것은 적재기 한 곳에서",
+  "intent": "사진 주소 스킴 판정을 한 곳에 모으는 새 클래스",
   "actor": "agent",
   "session": "8eba4339-46a4-4d4c-a225-44bdfb1bcb09",
-  "since": "2026-09-17T08:18:41.765Z",
+  "since": "2026-09-17T08:22:09.381Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/docs/PLACE-DATA-LOAD.md",
+    "backend/src/main/java/com/gabolle/backend/place/loader/PhotoUrlScheme.java",
     "backend/src/main/java/com/gabolle/backend/place/loader/PlaceFeatureLoaderRunner.java",
     "backend/src/main/java/com/gabolle/backend/place/loader/PlaceFeatureNdjsonReader.java",
     "backend/src/main/java/com/gabolle/backend/place/loader/PlacePhotoReader.java",
