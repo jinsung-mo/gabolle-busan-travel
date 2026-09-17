@@ -1,0 +1,16 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1109",
+  "intent": "웹 중국어 폰트 대체 목록·html lang 동기화",
+  "actor": null,
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-17T02:25:49.654Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/_layout.tsx",
+    "frontend/src/components/ScreenStub.tsx",
+    "frontend/src/components/Text.tsx",
+    "frontend/src/design/tokens.ts",
+    "frontend/src/i18n/languages.ts"
+  ]
+}
