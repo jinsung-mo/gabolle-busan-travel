@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1179",
+  "intent": "MR !1080 CI 복구 — 새 관계 목록 엔드포인트 셋의 인가 정책을 등록표에 적는다",
+  "actor": "agent",
+  "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
+  "since": "2026-09-17T09:54:32.774Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java"
+  ]
+}
