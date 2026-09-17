@@ -1,12 +1,14 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1187",
-  "intent": "1187 — 업로드 실패 원인을 남기는 동작을 붙드는 시험",
+  "task": "S15P21E201-972",
+  "intent": "972 수정을 front 쪽으로 옮긴다 — 프론트 머지가 아직 낡은 판으로 남의 카드를 옮긴다",
   "actor": "agent",
   "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
-  "since": "2026-09-17T12:38:15.301Z",
+  "since": "2026-09-17T12:59:44.888Z",
   "ttlMs": 2700000,
   "paths": [
+    "ci/jira-transition.mjs",
+    "ci/jira-transition.test.mjs",
     "frontend/src/api/client.ts",
     "frontend/src/field/menuScan.ts",
     "frontend/src/social/__tests__/uploadFailureCause.test.ts",
