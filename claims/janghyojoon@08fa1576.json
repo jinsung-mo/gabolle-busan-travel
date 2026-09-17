@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1177",
-  "intent": "피드 데스크톱 지도 패널 520 — 장소 라벨과 지도 연결",
+  "intent": "피드 지도 패널 — 커밋",
   "actor": null,
   "session": "e9ed8236-b26c-436b-8a89-b34b57a92915",
-  "since": "2026-09-17T08:26:20.584Z",
+  "since": "2026-09-17T08:30:15.788Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx"
