@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-comments-front",
-  "intent": "피드 글 상세에 댓글 목록과 입력창을 붙인다 — 서버는 이미 준비돼 있다",
+  "task": "S15P21E201-1197",
+  "intent": "댓글 조회·작성이 칸을 흘리지 않고 실패를 빈 목록으로 바꾸지 않는지 재는 시험",
   "actor": "agent",
   "session": "76ea18ef-78ae-4b4a-b82c-78032784f8d9",
-  "since": "2026-09-17T15:50:36.577Z",
+  "since": "2026-09-17T15:53:07.276Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/feed/[id].tsx",
+    "frontend/src/social/__tests__/storyReplies.test.ts",
     "frontend/src/social/stories.ts"
   ]
 }
