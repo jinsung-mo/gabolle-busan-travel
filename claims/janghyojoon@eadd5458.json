@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-23",
+  "intent": "취향 축 6개 공백 실측 — 그늘 축을 장소 단위로 채울 수 있나",
+  "actor": null,
+  "session": "2f528204-318e-459e-856d-0d6fa6711c21",
+  "since": "2026-09-17T00:08:18.767Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/collect/street-trees.mjs",
+    "bigData/process/place-shade.mjs",
+    "bigData/process/shade.mjs"
+  ]
+}
