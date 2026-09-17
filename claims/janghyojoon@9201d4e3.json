@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": null,
+  "intent": "경사 취향의 낱말 답(AVOID/ALLOW)을 채점기가 읽게 한다 — 지금은 축이 통째로 빠진다",
+  "actor": "agent",
+  "session": "744ebcd5-5e8a-4713-965b-2e228ac63921",
+  "since": "2026-09-17T14:29:55.723Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/batch/application/TasteVectorFoldService.java",
+    "backend/src/main/java/com/gabolle/backend/preference/application/PreferenceJson.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/PreferenceValueShapeAndScaleTest.java"
+  ]
+}
