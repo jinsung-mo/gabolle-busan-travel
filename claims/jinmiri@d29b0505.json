@@ -1,0 +1,21 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1180",
+  "intent": "마이페이지 팔로워·팔로잉·차단 목록 화면 (S15P21E201-1180/-1181) 커밋",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-17T08:30:27.370Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/app/me/blocked.tsx",
+    "frontend/app/me/profile.tsx",
+    "frontend/app/user/[id].tsx",
+    "frontend/app/user/[id]/followers.tsx",
+    "frontend/app/user/[id]/following.tsx",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/me/MyPageShell.tsx",
+    "frontend/src/social/RelationListScreen.tsx",
+    "frontend/src/social/stories.ts"
+  ]
+}
