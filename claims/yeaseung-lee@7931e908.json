@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1185",
+  "intent": "배포 실패 복구 — 1185 사진 https 마이그레이션 번호를 500000 뒤로 민다 (Flyway out-of-order)",
+  "actor": "agent",
+  "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
+  "since": "2026-09-17T10:07:07.757Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/resources/db/migration"
+  ]
+}
