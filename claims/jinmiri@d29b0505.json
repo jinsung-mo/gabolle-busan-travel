@@ -1,0 +1,15 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1176",
+  "intent": "마이페이지 앱 언어 5개국어 지원 + 버튼 모양 통일(pill)",
+  "actor": null,
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-17T07:30:12.688Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(onboarding)/permissions.tsx",
+    "frontend/src/components/GettingStartedGuide.tsx",
+    "frontend/src/me/AppLanguageSetting.tsx",
+    "frontend/src/me/__tests__/AppLanguageSetting.test.tsx"
+  ]
+}
