@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1156",
+  "intent": "머지에 안 들어간 편의시설 수집기를 되살린다",
+  "actor": null,
+  "session": "2f528204-318e-459e-856d-0d6fa6711c21",
+  "since": "2026-09-17T03:12:30.184Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/collect/disabled-facility.mjs",
+    "bigData/docs/DISABLED-FACILITY.md"
+  ]
+}
