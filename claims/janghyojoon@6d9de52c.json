@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": null,
+  "intent": "「지금 갈 곳」(REC-04) POST /api/v1/recommendations/now 컨트롤러 부재 진단 — 만들기로 결정되면 여기에 컨트롤러를 추가한다",
+  "actor": "agent",
+  "session": "8eba4339-46a4-4d4c-a225-44bdfb1bcb09",
+  "since": "2026-09-17T00:05:12.006Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation/presentation"
+  ]
+}
