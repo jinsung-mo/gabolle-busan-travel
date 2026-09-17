@@ -1,6 +1,6 @@
 {
- "step": "process/place-quietness",
- "at": "2026-09-17T02:21:55.274Z",
+ "step": "process/place-quietness-sbiz",
+ "at": "2026-09-17T02:22:02.533Z",
  "git": "6aade21424eb32837271cf39642e12fe19c89e67",
  "node": "v24.18.0",
  "inputs": [
@@ -20,9 +20,14 @@
    "sha256_16": "e9f23a1aa2bef38d"
   },
   {
-   "path": "data/raw/tourapi/tourapi-busan.ndjson",
-   "bytes": 1025299,
-   "sha256_16": "b47146f3b5753201"
+   "path": "data/staged/place-slope-sbiz.ndjson",
+   "bytes": 484594,
+   "sha256_16": "089e424e35104f2c"
+  },
+  {
+   "path": "data/sbiz/부산_202606.csv",
+   "bytes": 86867744,
+   "sha256_16": "9a2de9bed72f7069"
   }
  ],
  "params": {
@@ -33,13 +38,12 @@
   "unknownWeight": 0.35
  },
  "result": {
-  "places": 656,
-  "made": 654,
-  "tooFew": 2,
+  "roster": 2355,
+  "placesWithCoord": 2355,
+  "made": 2355,
+  "tooFew": 0,
   "ways": 67793,
   "pieces": 192648,
-  "skippedRoads": 248,
-  "unknownClassRoads": 15,
   "control": {
    "quiet": [
     [
