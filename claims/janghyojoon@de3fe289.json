@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1159",
+  "intent": "휠체어 접근 확인 안 됨 경고 모달 — 추천 완료 시 한 번 띄운다",
+  "actor": "agent",
+  "session": "d492174e-e338-4129-b322-4c43bebad606",
+  "since": "2026-09-17T02:48:20.327Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/generating.tsx",
+    "frontend/src/components/AccessibilityUnverifiedModal.tsx",
+    "frontend/src/plan/warningLabels.ts"
+  ]
+}
