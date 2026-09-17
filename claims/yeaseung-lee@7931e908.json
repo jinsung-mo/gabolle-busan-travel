@@ -1,16 +1,17 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1193",
-  "intent": "1193 — 맥북 자동화 절차와 판정 규칙을 문서에 보강한다",
+  "intent": "1193 — 진입 경로 선택자 이름을 붙드는 시험",
   "actor": "agent",
   "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
-  "since": "2026-09-17T15:19:09.955Z",
+  "since": "2026-09-17T15:21:24.222Z",
   "ttlMs": 2700000,
   "paths": [
     "docs/IOS-TEST-ON-BORROWED-MAC.md",
     "frontend/app/(auth)/age-gate.tsx",
     "frontend/app/(onboarding)/permissions.tsx",
     "frontend/app/index.tsx",
-    "frontend/src/components/TabBar.tsx"
+    "frontend/src/components/TabBar.tsx",
+    "frontend/src/components/__tests__/entryTestIds.test.tsx"
   ]
 }
