@@ -1,0 +1,15 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-1140",
+  "intent": "앱 지도를 react-native-maps 에서 카카오 지도 WebView 로 바꿉니다 — 웹과 같은 키를 쓰도록",
+  "actor": "agent",
+  "session": "bd48f26e-c3fc-4a58-a2dc-d0ceeed18ae5",
+  "since": "2026-09-17T06:51:07.704Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/eas.json",
+    "frontend/package.json",
+    "frontend/src/map/RouteMap.native.tsx",
+    "frontend/src/map/androidMapKey.ts"
+  ]
+}
