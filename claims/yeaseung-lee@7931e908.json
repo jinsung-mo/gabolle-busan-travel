@@ -1,13 +1,14 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1132",
-  "intent": "1132 — 안드로이드 날짜 선택기가 AppCompat 기본 청록(#009688)으로 뜨는 것을 브랜드 색으로 맞춘다 (config plugin 으로 datePickerDialogTheme 지정)",
+  "task": "S15P21E201-1131",
+  "intent": "1131 — 완성된 일정을 5초마다 다시 받는 폴링을 줄인다(동행자 동기화 자체는 유지, 안 바뀌면 간격을 늘린다)",
   "actor": "agent",
   "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
-  "since": "2026-09-17T03:08:56.972Z",
+  "since": "2026-09-17T03:16:27.642Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app.json",
+    "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/plugins/withDatePickerTheme.js"
   ]
 }
