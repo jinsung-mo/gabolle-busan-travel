@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1203",
+  "intent": "사진 위 글자가 묻히지 않게 — 공공누리 출처가 읽혀야 한다",
+  "actor": "agent",
+  "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
+  "since": "2026-09-17T20:52:10.191Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/__tests__/placeHeroLegibility.test.tsx",
+    "frontend/app/place/[id].tsx"
+  ]
+}
