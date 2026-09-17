@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-467",
+  "intent": "일정에 장소 추가 — addItem API 연결",
+  "actor": null,
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-17T02:56:15.499Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/src/plan/itinerary.ts"
+  ]
+}
