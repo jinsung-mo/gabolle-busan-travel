@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": null,
+  "intent": "밤 11시 넘으면 오늘 날씨가 사라지는 것 (S15P21E201-1207) — 이전 회차 캐시를 거슬러 본다",
+  "actor": "agent",
+  "session": "6894c6a5-6267-4616-8870-2570791882c3",
+  "since": "2026-09-17T22:50:16.340Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/weather/application/WeatherService.java",
+    "backend/src/main/java/com/gabolle/backend/weather/domain/KmaBaseTimeCalculator.java",
+    "backend/src/test/java/com/gabolle/backend/weather/application/WeatherServiceTest.java",
+    "backend/src/test/java/com/gabolle/backend/weather/domain/KmaBaseTimeCalculatorTest.java"
+  ]
+}
