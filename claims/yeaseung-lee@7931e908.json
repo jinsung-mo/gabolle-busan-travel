@@ -1,12 +1,13 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1191",
-  "intent": "1191 — 온보딩의 안 보이는 페이지를 접근성 트리에서 가린다 + 버튼에 testID",
+  "intent": "1191 — 온보딩 접근성 결함을 붙드는 시험",
   "actor": "agent",
   "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
-  "since": "2026-09-17T15:03:19.803Z",
+  "since": "2026-09-17T15:05:41.310Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/__tests__/appIntroAccessibility.test.tsx",
     "frontend/app/app-intro.tsx"
   ]
 }
