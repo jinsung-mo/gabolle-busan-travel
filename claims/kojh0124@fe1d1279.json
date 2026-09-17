@@ -1,0 +1,12 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-1080",
+  "intent": "하트를 실제 DB 에 눌러 place_like 가 event_outbox 에 실제로 남는지 증명한다 — 지금은 목만 있고 끝까지 간 증거가 없다 (S15P21E201-1080)",
+  "actor": "agent",
+  "session": "6d005b65-aed1-44ad-aded-60f96537d746",
+  "since": "2026-09-17T02:17:33.393Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/place/SavedPlaceEventIntegrationTest.java"
+  ]
+}
