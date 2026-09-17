@@ -1,0 +1,12 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-553",
+  "intent": "클릭 시뮬레이터용 순위표 하네스 — 진짜 BaselineCandidateScorer 로 rankings.json 을 찍는다 (S15P21E201-553)",
+  "actor": "agent",
+  "session": "6d005b65-aed1-44ad-aded-60f96537d746",
+  "since": "2026-09-17T00:21:53.010Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/recommendation/simulation"
+  ]
+}
