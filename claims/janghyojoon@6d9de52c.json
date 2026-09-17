@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1184",
+  "intent": "그늘 축 커밋 — 선점 만료로 다시 잡는다. 변경은 끝났고 커밋만 남았다",
+  "actor": "agent",
+  "session": "8eba4339-46a4-4d4c-a225-44bdfb1bcb09",
+  "since": "2026-09-17T08:17:16.381Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/docs/PLACE-DATA-LOAD.md",
+    "backend/src/main/java/com/gabolle/backend/place/loader/PlaceFeatureLoaderRunner.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/PlaceFeatureNdjsonReader.java",
+    "backend/src/test/java/com/gabolle/backend/place/loader/PlaceQuietnessReaderTest.java"
+  ]
+}
