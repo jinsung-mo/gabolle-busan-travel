@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1177",
-  "intent": "피드 개편 v2 — 시안 반입 + 목록 카드",
+  "task": "S15P21E201-1178",
+  "intent": "이름 짓기에서 여행을 못 찾는다 — 주소 id 를 여행 id 로 착각",
   "actor": null,
   "session": "e9ed8236-b26c-436b-8a89-b34b57a92915",
-  "since": "2026-09-17T07:47:52.681Z",
+  "since": "2026-09-17T07:49:32.768Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
+    "frontend/app/trips/[id]/recommendations.tsx",
     "frontend/docs/design_handoff_feed"
   ]
 }
