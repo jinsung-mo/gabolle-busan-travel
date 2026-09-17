@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1151",
+  "intent": "실기기에서 휠이 안 돌아간다 — 안드로이드 중첩 스크롤",
+  "actor": null,
+  "session": "e9ed8236-b26c-436b-8a89-b34b57a92915",
+  "since": "2026-09-17T01:46:51.363Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/collection/WheelPicker.tsx"
+  ]
+}
