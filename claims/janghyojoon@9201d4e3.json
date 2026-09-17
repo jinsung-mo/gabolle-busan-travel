@@ -1,15 +1,16 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1192",
-  "intent": "적재 뒤 기대값을 산출물에서 다시 계산하는 도구 — 줄 수가 아니라 실제로 붙을 수를 센다",
+  "intent": "계산 결과 기록 — 절차서가 가리킬 자리",
   "actor": "agent",
   "session": "744ebcd5-5e8a-4713-965b-2e228ac63921",
-  "since": "2026-09-17T15:10:21.120Z",
+  "since": "2026-09-17T15:11:33.839Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/docs/PLACE-DATA-LOAD.md",
     "backend/src/main/java/com/gabolle/backend/preference/application/PreferenceJson.java",
     "backend/src/test/java/com/gabolle/backend/recommendation/adapter/PreferenceValueShapeAndScaleTest.java",
+    "bigData/data/staged/_expected-feature-rows.json",
     "bigData/process/expected-feature-rows.mjs"
   ]
 }
