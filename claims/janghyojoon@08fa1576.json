@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1177",
-  "intent": "피드 지도 패널 — 커밋",
+  "intent": "모바일 하단 플로팅 — 지도 표시하기 + 기록 FAB",
   "actor": null,
   "session": "e9ed8236-b26c-436b-8a89-b34b57a92915",
-  "since": "2026-09-17T08:30:15.788Z",
+  "since": "2026-09-17T08:47:22.550Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx"
