@@ -1,12 +1,14 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1187",
-  "intent": "업로드 경로가 Blob 으로 바뀌어 시험이 보는 자리를 옮긴다",
+  "task": "S15P21E201-1199",
+  "intent": "로그인한 사람에게 로그인 화면을 보여주지 않는다",
   "actor": "agent",
   "session": "fc88b9d4-e4fd-45f1-a7fc-429dd5749b05",
-  "since": "2026-09-17T16:38:18.992Z",
+  "since": "2026-09-17T16:53:13.335Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/(auth)/sign-in.tsx",
+    "frontend/app/__tests__/signInWhenSignedIn.test.tsx",
     "frontend/src/api/__tests__/multipart.test.ts",
     "frontend/src/api/multipart.ts",
     "frontend/src/field/__tests__/menuScan.test.ts",
