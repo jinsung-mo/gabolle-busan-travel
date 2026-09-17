@@ -1,0 +1,18 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1129",
+  "intent": "버튼 뒤로 주황·빨강이 삐져나온다 — containerStyle 대신 variant 로",
+  "actor": null,
+  "session": "e9ed8236-b26c-436b-8a89-b34b57a92915",
+  "since": "2026-09-17T01:12:20.355Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(auth)/age-gate.tsx",
+    "frontend/app/(onboarding)/permissions.tsx",
+    "frontend/app/(plan)/generating.tsx",
+    "frontend/app/(tabs)/trips.tsx",
+    "frontend/app/app-intro.tsx",
+    "frontend/app/help.tsx",
+    "frontend/src/components/Button.tsx"
+  ]
+}
