@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1229",
+  "intent": "정합성 리팩토링 — 로그 도우미 30벌을 하나로, 파이썬 print 정리 (산출물 값은 안 바꾼다)",
+  "actor": "agent",
+  "session": "213b915e-b639-466b-800f-c8f6f8d42865",
+  "since": "2026-09-18T07:33:07.894Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/collect",
+    "bigData/deploy",
+    "bigData/lib",
+    "bigData/process"
+  ]
+}
