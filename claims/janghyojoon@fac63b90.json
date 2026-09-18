@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1233",
-  "intent": "시안 전면 반영 — 여행 만들기 입구를 /plan 으로, 일정 화면 p6, 마이페이지 모달 (S15P21E201-1233)",
+  "intent": "홈에 여행 조건 모달을 붙인다 — 첫 진입 1회, 「일정 물어보기」마다 다시 (S15P21E201-1233)",
   "actor": "agent",
   "session": "c240ae08-4747-4116-ba8b-948f891c346d",
-  "since": "2026-09-18T03:08:08.930Z",
+  "since": "2026-09-18T03:13:41.516Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)",
+    "frontend/app/(tabs)/home.tsx",
     "frontend/app/(tabs)/trips.tsx",
     "frontend/app/chat.tsx",
     "frontend/app/index.tsx",
