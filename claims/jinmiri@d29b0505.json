@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1239",
+  "intent": "피드 상세 우측 상단에 ⋯ 케밥 메뉴(드롭다운) 추가 — 삭제/팔로우/신고/차단을 그 안으로 몰아넣는다 (요청: 카톡/구두 전달, 시안 FeedDetail.dc.html의 mine=연필/else=⋯ 구분은 이번에 통합)",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-18T03:29:37.965Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/feed/[id].tsx",
+    "frontend/src/components/DropdownMenu.tsx"
+  ]
+}
