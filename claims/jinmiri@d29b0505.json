@@ -1,0 +1,15 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1237",
+  "intent": "메뉴판 인식 언어 버그 프론트 반영 커밋 (S15P21E201-1237, 백엔드 -1236 이미 병합됨)",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-18T02:39:18.045Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/field/menu-scan.tsx",
+    "frontend/src/field/__tests__/menuScan.test.ts",
+    "frontend/src/field/__tests__/menuScanResize.test.ts",
+    "frontend/src/field/menuScan.ts"
+  ]
+}
