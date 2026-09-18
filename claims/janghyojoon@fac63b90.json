@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1237",
+  "intent": "하루 예상 비용이 「일부만 아는 합계」를 전체처럼 보이던 것 — 아는 곳 수를 같이 적는다",
+  "actor": "agent",
+  "session": "c240ae08-4747-4116-ba8b-948f891c346d",
+  "since": "2026-09-18T02:36:28.180Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/trips"
+  ]
+}
