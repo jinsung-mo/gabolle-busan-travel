@@ -1,15 +1,16 @@
 {
   "agent": "kojh0124",
   "task": "S15P21E201-1174",
-  "intent": "S15P21E201-1174 읽는 쪽 — likeCount·dislikeCount·myReaction 을 목록·상세 둘 다에 (한 쪽당 질의 둘)",
+  "intent": "조립기 생성자에 반응 저장소가 늘어 단위 검사의 목 하나를 더한다 (S15P21E201-1174)",
   "actor": "agent",
   "session": "6d005b65-aed1-44ad-aded-60f96537d746",
-  "since": "2026-09-18T00:47:18.384Z",
+  "since": "2026-09-18T00:49:34.848Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/story/application/StoryResponseAssembler.java",
     "backend/src/main/java/com/gabolle/backend/story/presentation/dto/StoryResponse.java",
     "backend/src/main/java/com/gabolle/backend/story/repository/StoryReactionRepository.java",
-    "backend/src/test/java/com/gabolle/backend/story/StoryReactionResponseIntegrationTest.java"
+    "backend/src/test/java/com/gabolle/backend/story/StoryReactionResponseIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/story/application/StoryResponseAssemblerTest.java"
   ]
 }
