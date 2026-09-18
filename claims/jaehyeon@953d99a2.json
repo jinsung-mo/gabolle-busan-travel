@@ -1,0 +1,13 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-comment-trim-front",
+  "intent": "프런트 주석 정리 — 티켓 키·빨간 점·이력 서술을 걷어내고 꼭 필요한 한두 줄만 명사형으로 남긴다. 코드는 한 줄도 안 바뀌며 기계로 대조해 확인한다. 백엔드는 고지혁 님이 하는 중이라 겹치지 않는다. 끝나면 즉시 반납",
+  "actor": "agent",
+  "session": "a51d3d59-83cc-4a50-adf5-8188cf5556f5",
+  "since": "2026-09-18T09:49:53.699Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app",
+    "frontend/src"
+  ]
+}
