@@ -7,7 +7,6 @@
   "since": "2026-09-18T01:34:56.222Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/build.gradle",
     "backend/src/test/java/com/gabolle/backend/story/StoryReactionResponseIntegrationTest.java"
   ]
 }
