@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1245",
-  "intent": "승격 병합 커밋 — 파트마다 갈라진 .gitlab-ci.yml 을 한 벌로 (S15P21E201-1245). 커밋 직후 반납",
+  "intent": "승격 병합 — 세 파트 CI 를 한 벌로 합치고 main 을 통합한다 (S15P21E201-1245). 커밋 직후 반납",
   "actor": "agent",
   "session": "c240ae08-4747-4116-ba8b-948f891c346d",
-  "since": "2026-09-18T08:19:09.213Z",
+  "since": "2026-09-18T08:23:18.831Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitlab-ci.yml",
