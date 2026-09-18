@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1236",
+  "intent": "메뉴판 인식 언어 버그 프론트 반영 — language 파라미터 전송, translatedText 표시 (백엔드 -1236 MR !1159)",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-18T02:15:14.991Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/field/menu-scan.tsx",
+    "frontend/src/field/menuScan.ts"
+  ]
+}
