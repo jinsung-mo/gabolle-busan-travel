@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1186",
+  "intent": "메뉴판 인식 모델을 gpt-4.1-mini 로, 읽기 시간 제한을 올린다 (실측 근거)",
+  "actor": "agent",
+  "session": "958bf48a-ebd0-41da-90f9-2562f6b19962",
+  "since": "2026-09-18T13:18:17.004Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/menuscan/config/MenuScanProperties.java",
+    "backend/src/main/resources/application-dev.properties"
+  ]
+}
