@@ -1,12 +1,13 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1239",
-  "intent": "댓글 수정 API 클라이언트 함수 추가 (updateStory) — S15P21E201-1239",
+  "intent": "댓글(ReplyCard)에 수정·삭제·신고 버튼 추가 — S15P21E201-1239 (jaehyeon 님 확인: 뒤로버튼·로그인유도 줄과 안 겹침)",
   "actor": "agent",
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-18T03:02:58.798Z",
+  "since": "2026-09-18T03:10:17.452Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/feed/[id].tsx",
     "frontend/src/social/stories.ts"
   ]
 }
