@@ -1,12 +1,15 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1309",
-  "intent": "커버 사진을 계정에 붙인다 (S15P21E201-1309) — 커밋 직전",
+  "task": "S15P21E201-1312",
+  "intent": "글 쓰다 나가면 올라간 사진까지 사라지던 것 (S15P21E201-1312) — 커밋 직전",
   "actor": "agent",
   "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
-  "since": "2026-09-18T16:59:27.150Z",
+  "since": "2026-09-18T17:12:19.423Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/src/auth/__tests__/updateMePhotos.test.ts"
+    "frontend/app/feed/compose.tsx",
+    "frontend/src/auth/__tests__/updateMePhotos.test.ts",
+    "frontend/src/social/__tests__/useStoryImages.test.ts",
+    "frontend/src/social/useStoryImages.ts"
   ]
 }
