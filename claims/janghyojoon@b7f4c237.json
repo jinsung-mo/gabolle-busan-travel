@@ -1,19 +1,22 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1291",
-  "intent": "대중교통 요금 계산 — 총운임은 탄 수단들의 기본요금 최댓값. 30분·2회 넘으면 환승이 끊긴다. 요금 모르는 종류가 끼면 null",
+  "intent": "어댑터 생성자에 요금 계산기가 늘어서 시험 둘의 만드는 자리를 맞춘다. 재는 것은 안 바꾼다",
   "actor": "agent",
   "session": "98c2600f-7bd2-4d6f-b3d9-98eab27d5627",
-  "since": "2026-09-18T15:30:09.262Z",
+  "since": "2026-09-18T15:35:53.095Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/route/adapter/TransitRouteAdapter.java",
     "backend/src/main/java/com/gabolle/backend/route/domain/RouteLeg.java",
+    "backend/src/main/java/com/gabolle/backend/route/presentation/dto/RouteDirectionsResponse.java",
     "backend/src/main/java/com/gabolle/backend/route/transit/BusanBusNetworkPort.java",
     "backend/src/main/java/com/gabolle/backend/route/transit/TransitFareCalculator.java",
     "backend/src/main/java/com/gabolle/backend/route/transit/TransitFareTable.java",
     "backend/src/main/java/com/gabolle/backend/route/transit/TransitNetwork.java",
     "backend/src/main/resources/transit/transit-fare.json",
+    "backend/src/test/java/com/gabolle/backend/route/adapter/BusanBusNetworkIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/route/adapter/TransitRouteAdapterTest.java",
     "backend/src/test/java/com/gabolle/backend/route/transit/TransitFareCalculatorTest.java"
   ]
 }
