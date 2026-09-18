@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1278",
-  "intent": "AI 도우미를 드롭업 메뉴로 — 메뉴판 번역·통역·AI 챗봇 셋. 홈 재설계에서 빠진 마지막 조각입니다.",
+  "intent": "AI 드롭업이 데려다주는 화면이 실제로 있는지 보는 시험",
   "actor": "agent",
   "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
-  "since": "2026-09-18T14:02:23.250Z",
+  "since": "2026-09-18T14:07:41.231Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
@@ -14,6 +14,7 @@
     "frontend/src/home/AssistantMenu.tsx",
     "frontend/src/home/HomeBlocks.tsx",
     "frontend/src/home/HomeRow.tsx",
+    "frontend/src/home/__tests__/assistantMenu.test.js",
     "frontend/src/home/__tests__/guestFeed.test.ts",
     "frontend/src/home/useHomeData.ts",
     "frontend/src/home/useSavedPlaces.ts",
