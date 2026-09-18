@@ -1,30 +1,15 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1271",
-  "intent": "back/dev 에 못 들어간 translatedName 을 되살린다 — 지금 앱이 그 칸을 읽는데 서버가 안 준다 (1271)",
+  "task": "S15P21E201-1295",
+  "intent": "메뉴판 문구를 5개 언어로 채우고, 빠지면 빨개지는 검사를 CI 에 붙인다 (1295 2단계)",
   "actor": "agent",
   "session": "958bf48a-ebd0-41da-90f9-2562f6b19962",
-  "since": "2026-09-18T15:30:59.654Z",
+  "since": "2026-09-18T16:45:37.075Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/src/main/java/com/gabolle/backend/auth/service/AccountDeletionService.java",
-    "backend/src/main/java/com/gabolle/backend/dish",
-    "backend/src/main/java/com/gabolle/backend/menuscan",
-    "backend/src/main/java/com/gabolle/backend/menuscan/adapter/GmsMenuReader.java",
-    "backend/src/main/java/com/gabolle/backend/menuscan/config/MenuScanProperties.java",
-    "backend/src/main/java/com/gabolle/backend/menuscan/presentation/dto/MenuScanResponse.java",
-    "backend/src/main/resources/application-dev.properties",
-    "backend/src/main/resources/db/migration/V20260918170000__dish_description_and_image.sql",
-    "backend/src/main/resources/db/migration/V20260918190000__dish_description_and_image.sql",
-    "backend/src/test/java/com/gabolle/backend/auth/AccountDeletionOwnedRowsRemovedTest.java",
-    "backend/src/test/java/com/gabolle/backend/auth/AccountDeletionTableInventoryTest.java",
-    "backend/src/test/java/com/gabolle/backend/dish",
-    "backend/src/test/java/com/gabolle/backend/menuscan",
-    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java",
-    "backend/src/test/java/com/gabolle/testslice/AuthSliceApplication.java",
-    "frontend/app/field/menu-scan.tsx",
-    "frontend/src/field/__tests__",
-    "frontend/src/field/dish.ts",
-    "frontend/src/field/menuScan.ts"
+    "ci/parts/frontend.yml",
+    "frontend/package.json",
+    "frontend/src/i18n/translations.ts",
+    "frontend/tools/check-menu-translations.mjs"
   ]
 }
