@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1244",
+  "intent": "피드 상세 우측 상단 ⋯ 케밥 메뉴 — S15P21E201-1244 (-1239 리베이스 대기 중)",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-18T03:48:55.305Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/__tests__/feedDetailMenu.test.tsx",
+    "frontend/app/feed/[id].tsx",
+    "frontend/src/components/DropdownMenu.tsx"
+  ]
+}
