@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1292",
+  "intent": "밤샘 시나리오의 권한 규칙 갱신 + 머지 함정 둘 기록",
+  "actor": "agent",
+  "session": "52e839d7-aa42-45c3-960b-a10b8a31c6c0",
+  "since": "2026-09-18T17:51:04.462Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/NIGHT-TEST-SCENARIO.md"
+  ]
+}
