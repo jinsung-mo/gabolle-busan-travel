@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1257",
+  "intent": "여행 조건 한 페이지 개편(-1233)에 맞춰 e2e 재작성",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-18T07:09:34.268Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/tests/e2e/core-journey.spec.ts"
+  ]
+}
