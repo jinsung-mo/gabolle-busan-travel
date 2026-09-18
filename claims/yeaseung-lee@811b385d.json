@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1186",
+  "intent": "TAGO 키 MR 을 back/dev 에 맞춰 충돌 해소",
+  "actor": "agent",
+  "session": "a71738c1-45f6-4950-993f-9c87a34e27e9",
+  "since": "2026-09-18T07:10:53.355Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/Jenkinsfile"
+  ]
+}
