@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1280",
-  "intent": "반응 줄에 무엇이 보이는지 그려서 보는 시험 (S15P21E201-1280)",
+  "task": "S15P21E201-1283",
+  "intent": "피드 제목·설명 새 문구의 일본어·중국어를 채운다 (S15P21E201-1283)",
   "actor": "agent",
   "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
-  "since": "2026-09-18T14:26:08.386Z",
+  "since": "2026-09-18T14:29:40.637Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitlab-ci.yml",
@@ -24,6 +24,7 @@
     "frontend/src/home/__tests__/guestFeed.test.ts",
     "frontend/src/home/useHomeData.ts",
     "frontend/src/home/useSavedPlaces.ts",
+    "frontend/src/i18n/translations.ts",
     "frontend/src/social/StoryReactionRow.tsx",
     "frontend/src/social/__tests__/storyLinkCopy.test.ts",
     "frontend/src/social/__tests__/storyReaction.test.ts",
