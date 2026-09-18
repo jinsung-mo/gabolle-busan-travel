@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1184",
+  "intent": "길 단위 가로수 그늘(segment-shade)을 처음 산출한다 — 건물 그림자와 합치기 전 단계",
+  "actor": "agent",
+  "session": "213b915e-b639-466b-800f-c8f6f8d42865",
+  "since": "2026-09-18T00:15:25.296Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/data/staged",
+    "bigData/process"
+  ]
+}
