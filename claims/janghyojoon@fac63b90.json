@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1245",
-  "intent": "피드 위치를 고르면 「구」만 남던 것 — 고른 장소 이름을 남긴다 (S15P21E201-1245)",
+  "intent": "피드 카드에서 이름·⋯ 를 사진 위가 아니라 그 위 한 줄로 뺀다 (S15P21E201-1245)",
   "actor": "agent",
   "session": "c240ae08-4747-4116-ba8b-948f891c346d",
-  "since": "2026-09-18T06:46:55.950Z",
+  "since": "2026-09-18T06:48:44.273Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)",
+    "frontend/app/(tabs)/feed.tsx",
     "frontend/app/(tabs)/home.tsx",
     "frontend/app/index.tsx",
     "frontend/app/plan",
