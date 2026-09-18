@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1225",
+  "intent": "마이그레이션 버전 번호 재배치 (Flyway 순서 오류 수정)",
+  "actor": null,
+  "session": "16acb503-8737-4b5e-9609-8c222334a72b",
+  "since": "2026-09-18T01:02:43.643Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/resources/db/migration/V20260918020000__privacy_cleanup_story_activity.sql"
+  ]
+}
