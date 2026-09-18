@@ -1,13 +1,16 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1268",
-  "intent": "메뉴판 읽기 모델을 gpt-4o-mini → gpt-4.1-mini 로 바꾼다 (한글 오독, 실측 근거 티켓에)",
+  "task": "S15P21E201-1271",
+  "intent": "메뉴 줄을 이름·가격으로 나눠 응답에 싣는다 (설명·그림은 1272 에서 따로)",
   "actor": "agent",
   "session": "958bf48a-ebd0-41da-90f9-2562f6b19962",
-  "since": "2026-09-18T13:23:15.810Z",
+  "since": "2026-09-18T13:35:23.699Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/src/main/java/com/gabolle/backend/menuscan/adapter/GmsMenuReader.java",
     "backend/src/main/java/com/gabolle/backend/menuscan/config/MenuScanProperties.java",
-    "backend/src/main/resources/application-dev.properties"
+    "backend/src/main/java/com/gabolle/backend/menuscan/presentation/dto/MenuScanResponse.java",
+    "backend/src/main/resources/application-dev.properties",
+    "backend/src/test/java/com/gabolle/backend/menuscan"
   ]
 }
