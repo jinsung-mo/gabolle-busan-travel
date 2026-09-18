@@ -1,0 +1,15 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1244",
+  "intent": "!1167 머지 완료 — !1169(케밥 메뉴)를 front/dev 위로 rebase",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-18T04:46:44.649Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/__tests__/feedDetailMenu.test.tsx",
+    "frontend/app/__tests__/feedDetailReplyActions.test.tsx",
+    "frontend/app/feed/[id].tsx",
+    "frontend/src/components/DropdownMenu.tsx"
+  ]
+}
