@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1262",
+  "intent": "주석에 심긴 보이지 않는 제어문자(0x01) 254군데 일괄 제거 — 107파일에 흩어져 있어 폴더로 잡습니다. 코드는 한 줄도 안 바꿉니다(주석만). 10분 안에 반납합니다 — 급하면 쪽지 주십시오, 바로 비켜 드립니다.",
+  "actor": "agent",
+  "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
+  "since": "2026-09-18T12:09:59.122Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app",
+    "frontend/src"
+  ]
+}
