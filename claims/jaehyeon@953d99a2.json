@@ -1,14 +1,15 @@
 {
   "agent": "jaehyeon",
-  "task": "S15P21E201-reaction-detail",
-  "intent": "피드 상세에 좋아요·싫어요를 붙인다 — 백엔드(-1174)가 목록·상세 둘 다에 실어 줬는데 상세만 연결이 없었다. 목록의 반응 UI 를 공용 부품으로 빼서 둘이 같은 것을 쓰게 한다",
+  "task": "S15P21E201-1247",
+  "intent": "S15P21E201-1247 과 같은 묶음 — 반응 토글·낙관적 수 계산 검사를 더한다",
   "actor": "agent",
   "session": "a51d3d59-83cc-4a50-adf5-8188cf5556f5",
-  "since": "2026-09-18T05:54:22.294Z",
+  "since": "2026-09-18T06:00:27.807Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
     "frontend/app/feed/[id].tsx",
-    "frontend/src/social/StoryReactionRow.tsx"
+    "frontend/src/social/StoryReactionRow.tsx",
+    "frontend/src/social/__tests__/storyReaction.test.ts"
   ]
 }
