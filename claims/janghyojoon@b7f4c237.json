@@ -1,16 +1,17 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1250",
-  "intent": "지하철 노선망을 백엔드에 들인다 — 읽는 쪽이 버스 전용이라 두 망을 합쳐 올리게 한다",
+  "task": "S15P21E201-1310",
+  "intent": "지하철 노선망을 길찾기에 들인다 — 커밋 직전 재선점",
   "actor": "agent",
   "session": "98c2600f-7bd2-4d6f-b3d9-98eab27d5627",
-  "since": "2026-09-18T16:56:26.297Z",
+  "since": "2026-09-18T17:04:35.839Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/route/transit/BusanBusNetworkPort.java",
     "backend/src/main/java/com/gabolle/backend/route/transit/BusanTransitNetworkPort.java",
     "backend/src/main/java/com/gabolle/backend/route/transit/TransitFareTable.java",
     "backend/src/main/resources/transit/busan-subway-network.json",
-    "backend/src/test/java/com/gabolle/backend/route/adapter/BusanBusNetworkIntegrationTest.java"
+    "backend/src/test/java/com/gabolle/backend/route/adapter/BusanBusNetworkIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/route/adapter/BusanTransitNetworkIntegrationTest.java"
   ]
 }
