@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1258",
-  "intent": "오류 메시지 자리를 문장으로 통일 — 아까 경로를 잘못 짚어 다시 잡는다 (S15P21E201-1258)",
+  "intent": "키를 문장으로 통일하면서 낡아진 주석 정정 — 이 파일이 그 갈림을 설명하고 있다 (S15P21E201-1258)",
   "actor": "agent",
   "session": "6febc90b-8a49-40c3-9304-aed369628766",
-  "since": "2026-09-18T07:33:50.854Z",
+  "since": "2026-09-18T07:34:42.899Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/presentation/TripActivityExceptionHandler.java",
+    "backend/src/main/java/com/gabolle/backend/place/api/PlaceExceptionHandler.java",
     "backend/src/main/java/com/gabolle/backend/share/presentation/ShareCloneExceptionHandler.java",
     "backend/src/main/java/com/gabolle/backend/story/presentation/TripStoryExceptionHandler.java",
     "backend/src/main/java/com/gabolle/backend/trip/presentation/ShareCloneExceptionHandler.java",
