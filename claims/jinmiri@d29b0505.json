@@ -1,12 +1,14 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1244",
-  "intent": "피드 상세 우측 상단에 ⋯ 케밥 메뉴(드롭다운) 추가 — 삭제/팔로우/신고/차단을 그 안으로 몰아넣는다",
+  "intent": "⋯ 메뉴 시험 파일 — S15P21E201-1244 (기존 댓글 시험의 fetch mock도 프로필 조회 대응하도록 보강)",
   "actor": "agent",
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-18T03:37:00.737Z",
+  "since": "2026-09-18T03:41:28.403Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/__tests__/feedDetailMenu.test.tsx",
+    "frontend/app/__tests__/feedDetailReplyActions.test.tsx",
     "frontend/app/feed/[id].tsx",
     "frontend/src/components/DropdownMenu.tsx"
   ]
