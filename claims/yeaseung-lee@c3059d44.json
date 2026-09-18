@@ -1,13 +1,13 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1327",
-  "intent": "S15P21E201-1327 비서 제안을 누르면 말풍선에 한국어가 뜨던 것 — 보여 준 문구를 말풍선에 쓴다",
+  "task": "S15P21E201-1332",
+  "intent": "S15P21E201-1332 사진에 없는 알레르기 재료를 지어내는 것 — text 에 없는 낱말은 서버가 버린다",
   "actor": "agent",
   "session": "52e839d7-aa42-45c3-960b-a10b8a31c6c0",
-  "since": "2026-09-18T19:40:58.168Z",
+  "since": "2026-09-18T23:39:18.398Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/chat.tsx",
-    "frontend/src/assistant/__tests__/suggestionEcho.test.ts"
+    "backend/src/main/java/com/gabolle/backend/menuscan/adapter/GmsMenuReader.java",
+    "backend/src/test/java/com/gabolle/backend/menuscan/GmsMenuReaderAllergenTest.java"
   ]
 }
