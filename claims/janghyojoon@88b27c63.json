@@ -1,0 +1,17 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1320",
+  "intent": "여행 조건을 한 번에 하나씩 (S15P21E201-1320) — 커밋 직전",
+  "actor": "agent",
+  "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
+  "since": "2026-09-18T17:43:53.334Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/questions.tsx",
+    "frontend/src/plan/MustVisitSearch.tsx",
+    "frontend/src/plan/PlanContextColumn.tsx",
+    "frontend/src/plan/PlanStepperParts.tsx",
+    "frontend/src/plan/__tests__",
+    "frontend/src/plan/planOptions.ts"
+  ]
+}
