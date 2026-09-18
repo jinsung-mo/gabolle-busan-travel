@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1239",
+  "intent": "!1167 CI 계속 실패 — fetch 목 대신 @/api/client apiRequest 목으로 바꿔 무게를 줄인다",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-18T03:57:50.393Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/__tests__/feedDetailReplyActions.test.tsx"
+  ]
+}
