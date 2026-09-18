@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1233",
+  "intent": "넓은 화면 홈에 시작 바가 안 보이던 것 — 데스크톱 홈은 app/index.tsx 다 (S15P21E201-1233)",
+  "actor": "agent",
+  "session": "c240ae08-4747-4116-ba8b-948f891c346d",
+  "since": "2026-09-18T02:54:16.328Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/index.tsx"
+  ]
+}
