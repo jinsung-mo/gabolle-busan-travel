@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1229",
+  "intent": "요금표에 실제 공시값을 채운다 — 부산교통공사 운임정보(공공데이터포털 3057225)",
+  "actor": "agent",
+  "session": "213b915e-b639-466b-800f-c8f6f8d42865",
+  "since": "2026-09-18T05:32:37.311Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/config/transit-fare.json"
+  ]
+}
