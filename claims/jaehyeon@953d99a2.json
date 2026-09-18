@@ -1,15 +1,17 @@
 {
   "agent": "jaehyeon",
-  "task": "S15P21E201-returnTo",
-  "intent": "로그인으로 보낼 때 returnTo 를 안 넘기던 다섯 자리를 고친다 — 로그인 성공 뒤 보던 화면으로 돌아오지 않고 홈으로 떨어지던 것. 피드 상세 뒤로 버튼 라벨도 저장소 표준(뒤로)에 맞춘다",
+  "task": "S15P21E201-1240",
+  "intent": "S15P21E201-1240 과 같은 묶음 — 회귀 검사가 대중교통 화면에서도 같은 returnTo 누락을 찾아내 함께 고친다",
   "actor": "agent",
   "session": "a51d3d59-83cc-4a50-adf5-8188cf5556f5",
-  "since": "2026-09-18T02:59:29.881Z",
+  "since": "2026-09-18T03:03:25.658Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
     "frontend/app/feed/[id].tsx",
     "frontend/app/field/exchange-rate.tsx",
+    "frontend/app/field/transit.tsx",
+    "frontend/src/auth/__tests__/signInReturnTo.test.ts",
     "frontend/src/auth/pendingReturnTo.ts"
   ]
 }
