@@ -1,0 +1,14 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1274",
+  "intent": "S15P21E201-1274 비서가 보낸 days·people 을 여행 초안에 채운다 (지금은 아무도 안 읽는다)",
+  "actor": "agent",
+  "session": "52e839d7-aa42-45c3-960b-a10b8a31c6c0",
+  "since": "2026-09-18T14:01:15.731Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/questions.tsx",
+    "frontend/src/plan/__tests__/assistantPrefill.test.ts",
+    "frontend/src/plan/assistantPrefill.ts"
+  ]
+}
