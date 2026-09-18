@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1325",
+  "intent": "진행 상태를 서버에 남긴다 — 화면 쪽 (S15P21E201-1325) — 커밋 직전",
+  "actor": "agent",
+  "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
+  "since": "2026-09-18T22:04:58.243Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/src/plan/__tests__/tripProgressApi.test.ts",
+    "frontend/src/plan/tripProgressApi.ts"
+  ]
+}
