@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1245",
-  "intent": "빠른 스크롤에 하단 탭바가 따라 올라오던 것 — 뷰포트에 고정 (S15P21E201-1245)",
+  "intent": "main 승격 전 프론트 정합성 — 죽은 파일·중복 구현 정리 (S15P21E201-1245)",
   "actor": "agent",
   "session": "c240ae08-4747-4116-ba8b-948f891c346d",
-  "since": "2026-09-18T07:04:14.859Z",
+  "since": "2026-09-18T07:35:04.567Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)",
@@ -14,14 +14,18 @@
     "frontend/app/plan",
     "frontend/src/api",
     "frontend/src/auth/__tests__",
+    "frontend/src/components",
     "frontend/src/components/TabBar.tsx",
     "frontend/src/home",
+    "frontend/src/me",
+    "frontend/src/plan",
     "frontend/src/plan/PlanDesktopShell.tsx",
     "frontend/src/plan/PlanStepHeader.tsx",
     "frontend/src/plan/__tests__",
     "frontend/src/plan/recommendationJob.ts",
     "frontend/src/plan/tripPassData.ts",
     "frontend/src/social/__tests__",
-    "frontend/src/social/regionSearch.ts"
+    "frontend/src/social/regionSearch.ts",
+    "frontend/src/utils"
   ]
 }
