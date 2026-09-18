@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1233",
+  "intent": "여행 만들기 흐름 개편(S15P21E201-1233) — 홈 시작 바·조건 한 페이지·여행 티켓 + 지도 경로선(S15P21E201-1234)",
+  "actor": "agent",
+  "session": "c240ae08-4747-4116-ba8b-948f891c346d",
+  "since": "2026-09-18T01:40:14.762Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)",
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/src/home",
+    "frontend/src/map",
+    "frontend/src/plan"
+  ]
+}
