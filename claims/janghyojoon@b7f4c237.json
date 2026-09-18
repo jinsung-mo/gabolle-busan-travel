@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1275",
-  "intent": "동영상 업로드 창구와 저장 자리 — 기록 삭제·탈퇴 둘 다에서 파일이 실제로 지워지는 것까지. 사진 길은 안 건드린다",
+  "intent": "동영상을 힙에 통째로 안 올리려고 스트림으로 쓰는 통로를 더한다. 기본 구현을 줘서 기존 가짜 구현 넷은 안 고친다. 사진 길은 그대로",
   "actor": "agent",
   "session": "98c2600f-7bd2-4d6f-b3d9-98eab27d5627",
-  "since": "2026-09-18T13:45:00.451Z",
+  "since": "2026-09-18T13:47:38.331Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitlab-ci.yml",
@@ -17,6 +17,9 @@
     "backend/src/main/java/com/gabolle/backend/story/presentation/dto/VideoUploadResponse.java",
     "backend/src/main/java/com/gabolle/backend/story/repository/StoryVideoRepository.java",
     "backend/src/main/java/com/gabolle/backend/story/repository/UploadedVideoRepository.java",
+    "backend/src/main/java/com/gabolle/backend/story/storage/LocalFileStorage.java",
+    "backend/src/main/java/com/gabolle/backend/story/storage/S3FileStorage.java",
+    "backend/src/main/java/com/gabolle/backend/story/storage/StoragePort.java",
     "backend/src/main/java/com/gabolle/backend/story/storage/StorageProperties.java",
     "backend/src/main/java/com/gabolle/backend/story/video",
     "backend/src/main/resources/application.properties",
