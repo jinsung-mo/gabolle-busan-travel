@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1297",
-  "intent": "커버 사진이 없으면 칸째 빠지는지 — JSON 모양을 재는 시험",
+  "intent": "계정에 붙은 사진(커버·프로필)이 고아 청소기에 지워지지 않게 — 붙는 자리가 하나 더 늘었다",
   "actor": "agent",
   "session": "98c2600f-7bd2-4d6f-b3d9-98eab27d5627",
-  "since": "2026-09-18T15:55:15.375Z",
+  "since": "2026-09-18T15:57:09.098Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/auth/api/AuthUserResponse.java",
@@ -17,6 +17,7 @@
     "backend/src/main/java/com/gabolle/backend/route/transit/TransitFareCalculator.java",
     "backend/src/main/java/com/gabolle/backend/route/transit/TransitFareTable.java",
     "backend/src/main/java/com/gabolle/backend/route/transit/TransitNetwork.java",
+    "backend/src/main/java/com/gabolle/backend/story/repository/UploadedImageRepository.java",
     "backend/src/main/java/com/gabolle/backend/user/domain/AppUser.java",
     "backend/src/main/resources/db/migration/V20260919090000__app_user_cover_url.sql",
     "backend/src/main/resources/transit/transit-fare.json",
@@ -26,6 +27,7 @@
     "backend/src/test/java/com/gabolle/backend/auth/service/ProfileUpdateServiceTest.java",
     "backend/src/test/java/com/gabolle/backend/route/adapter/BusanBusNetworkIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/route/adapter/TransitRouteAdapterTest.java",
-    "backend/src/test/java/com/gabolle/backend/route/transit/TransitFareCalculatorTest.java"
+    "backend/src/test/java/com/gabolle/backend/route/transit/TransitFareCalculatorTest.java",
+    "backend/src/test/java/com/gabolle/backend/story/OrphanUploadSweeperIntegrationTest.java"
   ]
 }
