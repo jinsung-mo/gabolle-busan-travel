@@ -1,14 +1,15 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1325",
-  "intent": "마이그레이션 번호를 올린다 (S15P21E201-1325) — 커밋 직전",
+  "intent": "새 경로 다섯을 인가 정책 표에 적는다 (S15P21E201-1325) — 커밋 직전",
   "actor": "agent",
   "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
-  "since": "2026-09-18T22:06:51.109Z",
+  "since": "2026-09-18T22:15:57.400Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/resources/db/migration/V20260919100000__itinerary_run.sql",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryRunSqlMatchesMigrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java",
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/src/plan/__tests__/tripProgressApi.test.ts",
     "frontend/src/plan/tripProgressApi.ts"
