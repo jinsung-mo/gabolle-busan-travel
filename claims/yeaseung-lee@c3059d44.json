@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1281",
+  "intent": "S15P21E201-1281 「서버 연결 확인 중」 배너가 안 사라지는 것 — 취소를 끊김으로 세지 않고, 다시 붙었는지 되묻는다",
+  "actor": "agent",
+  "session": "52e839d7-aa42-45c3-960b-a10b8a31c6c0",
+  "since": "2026-09-18T14:25:35.382Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/api/__tests__/apiAvailabilityRecovery.test.ts",
+    "frontend/src/api/client.ts"
+  ]
+}
