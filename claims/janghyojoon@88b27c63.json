@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1283",
-  "intent": "피드 제목·설명 새 문구의 일본어·중국어를 채운다 (S15P21E201-1283)",
+  "task": "S15P21E201-1285",
+  "intent": "탭바 알약이 지도 시트로 늘어난다 (S15P21E201-1285)",
   "actor": "agent",
   "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
-  "since": "2026-09-18T14:29:40.637Z",
+  "since": "2026-09-18T14:37:14.700Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitlab-ci.yml",
@@ -16,6 +16,8 @@
     "frontend/app/index.tsx",
     "frontend/assets/icons/common/quote.png",
     "frontend/assets/icons/common/quote.svg",
+    "frontend/src/components/TabBar.tsx",
+    "frontend/src/components/__tests__/tabBarSheet.test.tsx",
     "frontend/src/design/tokens.ts",
     "frontend/src/home/AssistantMenu.tsx",
     "frontend/src/home/HomeBlocks.tsx",
