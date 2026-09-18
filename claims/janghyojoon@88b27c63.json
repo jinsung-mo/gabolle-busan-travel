@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1267",
-  "intent": "홈을 Airbnb식 전폭 줄 배치로 (디자인 인계 01·02). 데스크톱+모바일. 피드·로컬탐색은 별건입니다.",
+  "intent": "홈 재설계에서 빠뜨린 둘 — 하트를 두 화면이 같이 쓰는 자리로 빼고, 개수를 고정하던 시험을 순서 규칙으로 바꿉니다.",
   "actor": "agent",
   "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
-  "since": "2026-09-18T13:21:52.729Z",
+  "since": "2026-09-18T13:54:44.033Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
@@ -13,7 +13,9 @@
     "frontend/src/design/tokens.ts",
     "frontend/src/home/HomeBlocks.tsx",
     "frontend/src/home/HomeRow.tsx",
+    "frontend/src/home/__tests__/guestFeed.test.ts",
     "frontend/src/home/useHomeData.ts",
+    "frontend/src/home/useSavedPlaces.ts",
     "frontend/src/social/__tests__/storyLinkCopy.test.ts",
     "frontend/src/social/stories.ts"
   ]
