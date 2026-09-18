@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1245",
-  "intent": "피드 카드에서 이름·⋯ 를 사진 위가 아니라 그 위 한 줄로 뺀다 (S15P21E201-1245)",
+  "intent": "빠른 스크롤에 하단 탭바가 따라 올라오던 것 — 뷰포트에 고정 (S15P21E201-1245)",
   "actor": "agent",
   "session": "c240ae08-4747-4116-ba8b-948f891c346d",
-  "since": "2026-09-18T06:48:44.273Z",
+  "since": "2026-09-18T07:04:14.859Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)",
@@ -14,6 +14,7 @@
     "frontend/app/plan",
     "frontend/src/api",
     "frontend/src/auth/__tests__",
+    "frontend/src/components/TabBar.tsx",
     "frontend/src/home",
     "frontend/src/plan/PlanDesktopShell.tsx",
     "frontend/src/plan/PlanStepHeader.tsx",
