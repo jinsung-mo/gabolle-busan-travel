@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1265",
+  "intent": "nginx 업로드 크기 상한을 저장소에 남긴다 (서버에만 있어 재구축 때 사라진다)",
+  "actor": "agent",
+  "session": "09e5fd77-9a97-4e84-99d7-246582628ddf",
+  "since": "2026-09-18T14:52:01.025Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/SERVER-SETUP.md"
+  ]
+}
