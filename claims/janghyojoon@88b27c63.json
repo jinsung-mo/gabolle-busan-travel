@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1263",
+  "intent": "기록 상세에 「링크 복사」 단추를 답니다 — 화면이 「인용 N」을 그리는데 누를 자리가 없어 영원히 0입니다. 서버(-1215)는 아침에 끝나 있습니다.",
+  "actor": "agent",
+  "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
+  "since": "2026-09-18T13:02:55.804Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/feed/[id].tsx",
+    "frontend/src/social/__tests__/storyLinkCopy.test.ts",
+    "frontend/src/social/stories.ts"
+  ]
+}
