@@ -1,14 +1,20 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1241",
-  "intent": "버튼 검사기 CI 연결을 별도 MR 로 분리한다 (e2e 가 나을 때까지)",
+  "intent": "버튼 껍데기 색 제거 — feed.tsx 를 빼고 한 커밋으로 다시 만든다",
   "actor": "agent",
   "session": "a71738c1-45f6-4950-993f-9c87a34e27e9",
-  "since": "2026-09-18T06:50:54.268Z",
+  "since": "2026-09-18T07:01:08.673Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/transit/adapter/TagoTransitVendorAdapter.java",
     "backend/src/test/java/com/gabolle/backend/transit/adapter/TagoTransitVendorAdapterTest.java",
-    "ci/parts/frontend.yml"
+    "ci/parts/frontend.yml",
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/app/festivals.tsx",
+    "frontend/app/place/[id].tsx",
+    "frontend/package.json",
+    "frontend/src/components/EmptyTabScreen.tsx",
+    "frontend/tools/check-button-container.mjs"
   ]
 }
