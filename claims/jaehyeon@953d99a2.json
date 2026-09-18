@@ -8,10 +8,8 @@
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
-    "frontend/app/feed/[id].tsx",
     "frontend/app/field/exchange-rate.tsx",
     "frontend/app/field/transit.tsx",
-    "frontend/src/auth/__tests__/signInReturnTo.test.ts",
-    "frontend/src/auth/pendingReturnTo.ts"
+    "frontend/src/auth/__tests__/signInReturnTo.test.ts"
   ]
 }
