@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1259",
+  "intent": "「참조 0건」 26개가 전부 스프링 빈이라는 실측을 README 에 한 절로 남긴다. 코드는 안 바꾼다 (S15P21E201-1259)",
+  "actor": "agent",
+  "session": "6febc90b-8a49-40c3-9304-aed369628766",
+  "since": "2026-09-18T07:47:34.412Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/README.md"
+  ]
+}
