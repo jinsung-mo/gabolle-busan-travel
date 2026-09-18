@@ -1,0 +1,15 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1242",
+  "intent": "비회원 뒤로가기 → 로그인 튕김. 온보딩 진입을 enterApp 으로 바꾸고 검사 시험을 붙인다",
+  "actor": "agent",
+  "session": "52e839d7-aa42-45c3-960b-a10b8a31c6c0",
+  "since": "2026-09-18T12:52:59.151Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(onboarding)/permissions.tsx",
+    "frontend/app/(onboarding)/spend-profile.tsx",
+    "frontend/app/(onboarding)/taste-profile.tsx",
+    "frontend/src/auth/__tests__/enterAppOnEntry.test.ts"
+  ]
+}
