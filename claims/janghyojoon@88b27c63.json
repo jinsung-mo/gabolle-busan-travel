@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1287",
-  "intent": "로컬 탐색 결과를 정사각 사진 격자로 — 열 수 계산을 따로 뺀다 (S15P21E201-1287)",
+  "task": "S15P21E201-1290",
+  "intent": "동영상 고르기·줄이기 — 사진과 같은 모양으로 (S15P21E201-1290)",
   "actor": "agent",
   "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
-  "since": "2026-09-18T15:05:17.481Z",
+  "since": "2026-09-18T15:20:18.678Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitlab-ci.yml",
@@ -17,6 +17,8 @@
     "frontend/app/index.tsx",
     "frontend/assets/icons/common/quote.png",
     "frontend/assets/icons/common/quote.svg",
+    "frontend/package-lock.json",
+    "frontend/package.json",
     "frontend/src/components/Screen.tsx",
     "frontend/src/components/TabBar.tsx",
     "frontend/src/components/__tests__/tabBarSheet.test.tsx",
@@ -37,6 +39,9 @@
     "frontend/src/social/__tests__/storyLinkCopy.test.ts",
     "frontend/src/social/__tests__/storyReaction.test.ts",
     "frontend/src/social/__tests__/storyReactionRow.test.tsx",
-    "frontend/src/social/stories.ts"
+    "frontend/src/social/__tests__/useStoryVideo.test.ts",
+    "frontend/src/social/stories.ts",
+    "frontend/src/social/useStoryVideo.ts",
+    "frontend/src/social/videoCompress.ts"
   ]
 }
