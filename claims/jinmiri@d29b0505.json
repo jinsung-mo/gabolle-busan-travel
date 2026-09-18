@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
-  "task": "티켓 번호 확인 중",
-  "intent": "글 저장 기능 엔드포인트 2개(+목록 1개)를 인가 정책 표에 등록",
+  "task": "S15P21E201-1224",
+  "intent": "S15P21E201-1224 기록 저장·북마크 API 커밋",
   "actor": "agent",
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-18T00:50:44.454Z",
+  "since": "2026-09-18T01:08:29.580Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/story/application/StorySaveService.java",
@@ -13,6 +13,7 @@
     "backend/src/main/java/com/gabolle/backend/story/presentation/StorySaveExceptionHandler.java",
     "backend/src/main/java/com/gabolle/backend/story/presentation/dto/StorySaveResponse.java",
     "backend/src/main/java/com/gabolle/backend/story/repository/StorySaveRepository.java",
+    "backend/src/main/resources/db/migration/V20260918120000__story_save.sql",
     "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java",
     "backend/src/test/java/com/gabolle/backend/story/StorySaveIntegrationTest.java"
   ]
