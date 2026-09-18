@@ -1,12 +1,14 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-250",
-  "intent": "윈도우 노트북에서 iOS 실기기 테스트하는 방법 문서",
+  "intent": "윈도우 문서로 가는 한 줄 이정표 추가",
   "actor": "agent",
   "session": "a71738c1-45f6-4950-993f-9c87a34e27e9",
-  "since": "2026-09-18T01:11:32.294Z",
+  "since": "2026-09-18T01:16:27.948Z",
   "ttlMs": 2700000,
   "paths": [
-    "docs/IOS-TEST-ON-WINDOWS.md"
+    "docs/IOS-TEST-ON-BORROWED-MAC.md",
+    "docs/IOS-TEST-ON-WINDOWS.md",
+    "docs/ios-automation/README.md"
   ]
 }
