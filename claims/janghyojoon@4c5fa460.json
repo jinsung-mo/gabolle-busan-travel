@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1221",
+  "intent": "가로수를 「길을 덮는 비율 0~1」로 바꿔 건물 그림자와 합친다 (S15P21E201-1221)",
+  "actor": "agent",
+  "session": "213b915e-b639-466b-800f-c8f6f8d42865",
+  "since": "2026-09-18T00:41:53.083Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/config/tree-shade-weights.json",
+    "bigData/process/shade-route.mjs",
+    "bigData/process/shade.mjs"
+  ]
+}
