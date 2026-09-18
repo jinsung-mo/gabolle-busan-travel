@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1290",
-  "intent": "동영상 고르기·줄이기 — 사진과 같은 모양으로 (S15P21E201-1290)",
+  "intent": "동영상 올리는 함수 추가 (S15P21E201-1290)",
   "actor": "agent",
   "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
-  "since": "2026-09-18T15:20:18.678Z",
+  "since": "2026-09-18T15:23:16.746Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitlab-ci.yml",
