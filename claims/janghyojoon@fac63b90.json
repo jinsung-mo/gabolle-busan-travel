@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1245",
-  "intent": "생성 화면 p4 의 여행표 상세 칸 builder (S15P21E201-1245)",
+  "intent": "시작 바에 에어비앤비식 부드러운 펼침·강조 (S15P21E201-1245)",
   "actor": "agent",
   "session": "c240ae08-4747-4116-ba8b-948f891c346d",
-  "since": "2026-09-18T05:59:41.409Z",
+  "since": "2026-09-18T06:43:07.462Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)",
