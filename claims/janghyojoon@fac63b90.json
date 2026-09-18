@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1233",
+  "intent": "폰 홈 알약에 기본값 「성인 2」가 찍히던 것 (S15P21E201-1233)",
+  "actor": "agent",
+  "session": "c240ae08-4747-4116-ba8b-948f891c346d",
+  "since": "2026-09-18T03:01:50.606Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/home"
+  ]
+}
