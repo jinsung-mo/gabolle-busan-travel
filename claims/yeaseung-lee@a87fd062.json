@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1306",
+  "intent": "backend 컨테이너에 재시작 정책을 붙인다 — 지금은 재부팅하면 백엔드만 안 올라온다 (1306)",
+  "actor": "agent",
+  "session": "09e5fd77-9a97-4e84-99d7-246582628ddf",
+  "since": "2026-09-18T16:41:57.839Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/Jenkinsfile"
+  ]
+}
