@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1226",
+  "intent": "「그늘 상가 1,749 — 확인 못 함」을 운영 실측으로 바꾼다 (S15P21E201-1226)",
+  "actor": "agent",
+  "session": "213b915e-b639-466b-800f-c8f6f8d42865",
+  "since": "2026-09-18T02:26:20.286Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/docs/PLACE-DERIVED-LOAD-RUN.md"
+  ]
+}
