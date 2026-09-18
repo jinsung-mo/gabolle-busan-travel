@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1245",
-  "intent": "확인 화면(/plan/confirm)을 걷어낸다 — 시안에 없는 단계 (S15P21E201-1245)",
+  "intent": "비회원 홈 공개 피드(진미리 커밋 가져오기) + 안내 링크 제거 + 칩 가운데 정렬 (S15P21E201-1245)",
   "actor": "agent",
   "session": "c240ae08-4747-4116-ba8b-948f891c346d",
-  "since": "2026-09-18T05:12:28.719Z",
+  "since": "2026-09-18T05:29:22.696Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)",
+    "frontend/app/(tabs)/home.tsx",
     "frontend/app/index.tsx",
     "frontend/app/plan",
     "frontend/src/auth/__tests__",
