@@ -1,0 +1,15 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1312",
+  "intent": "진짜 메뉴판이 안 읽힌다 — 칸을 나눠 읽게 하고 메뉴판 경로만 시간 예산을 늘린다 (실측 11~13초)",
+  "actor": "agent",
+  "session": "09e5fd77-9a97-4e84-99d7-246582628ddf",
+  "since": "2026-09-18T17:18:28.930Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/menuscan/adapter/GmsMenuReader.java",
+    "backend/src/main/java/com/gabolle/backend/menuscan/config/MenuScanProperties.java",
+    "backend/src/main/resources/application-dev.properties",
+    "backend/src/test/java/com/gabolle/backend/menuscan/MenuScanLatencyBudgetTest.java"
+  ]
+}
