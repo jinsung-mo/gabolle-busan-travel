@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1254",
+  "intent": "분위기 0.15 를 그대로 두기로 한 결정을 주석으로 남긴다. 동작은 안 바꾼다 (S15P21E201-1254)",
+  "actor": "agent",
+  "session": "6febc90b-8a49-40c3-9304-aed369628766",
+  "since": "2026-09-18T06:44:18.755Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation/config/BaselineEngineProperties.java"
+  ]
+}
