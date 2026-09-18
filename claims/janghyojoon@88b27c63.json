@@ -7,11 +7,6 @@
   "since": "2026-09-18T16:59:27.150Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/(tabs)/me.tsx",
-    "frontend/src/auth/AuthProvider.tsx",
-    "frontend/src/auth/__tests__/updateMePhotos.test.ts",
-    "frontend/src/auth/authApi.ts",
-    "frontend/src/me/MyPageCover.tsx",
-    "frontend/src/me/panels/ProfileBody.tsx"
+    "frontend/src/auth/__tests__/updateMePhotos.test.ts"
   ]
 }
