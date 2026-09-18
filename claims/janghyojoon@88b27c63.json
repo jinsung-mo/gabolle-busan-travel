@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1286",
-  "intent": "로컬 탐색 고르는 줄 — 기둥을 없애고 한 줄로, 범위 알약이 미끄러진다 (S15P21E201-1286)",
+  "intent": "로컬 탐색 새 문구의 일본어·중국어 (S15P21E201-1286)",
   "actor": "agent",
   "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
-  "since": "2026-09-18T14:57:20.572Z",
+  "since": "2026-09-18T15:03:46.096Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitlab-ci.yml",
