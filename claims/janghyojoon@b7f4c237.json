@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1313",
-  "intent": "대중교통 요금이 일정 구간까지 가게 잇는다 — 지금은 「자동차일 때만」에서 끊긴다",
+  "intent": "대중교통 요금을 구간까지 잇는다 — 커밋 직전 재선점",
   "actor": "agent",
   "session": "98c2600f-7bd2-4d6f-b3d9-98eab27d5627",
-  "since": "2026-09-18T17:16:27.998Z",
+  "since": "2026-09-18T17:27:44.561Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/route/adapter/RouteTravelTimeAdapter.java",
