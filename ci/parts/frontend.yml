@@ -150,6 +150,11 @@ frontend:smoke:
     #    러너 슬롯을 하나 더 먹는다. 그게 바로 frontend:build 를 지운 이유다.
     #    여기 두면 이미 깔아 둔 node_modules 를 그대로 쓰고, 무거운 번들링
     #    앞에서 싼 검사가 먼저 실패한다.
+    # 🔴 타입 검사보다 먼저 — 몇 초면 끝나고, 실기기에서만 보이던 결함을 잡는다
+    #    (S15P21E201-1241). Button 의 containerStyle 에 색·모서리를 칠하면
+    #    둥근 버튼 뒤에 각진 도형이 하나 더 남는다. 타입 검사도 시험도 이걸 못 잡는다 —
+    #    2026-09-18 iOS 실기기 시험에서 사람이 눈으로 찾았다.
+    - npm run check:button-container
     - npx tsc --noEmit
     - npx expo export --platform web
     - npx serve dist -l 3000 &
