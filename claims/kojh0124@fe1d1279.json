@@ -1,12 +1,13 @@
 {
   "agent": "kojh0124",
   "task": "S15P21E201-1173",
-  "intent": "리뷰에서 찾은 결함 둘 고침 — reacted_at 분리, 취소해도 행 유지(이벤트 상한)",
+  "intent": "낡은 주석 한 문단 정정 — 401 이 고리를 만든다는 근거가 -997 에서 프론트가 고쳐진 뒤로 사실이 아니다 (주석만, 동작 안 바꿈)",
   "actor": "agent",
   "session": "6d005b65-aed1-44ad-aded-60f96537d746",
-  "since": "2026-09-18T00:30:06.802Z",
+  "since": "2026-09-18T00:33:42.841Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/src/main/java/com/gabolle/backend/story/application/StoryFeedService.java",
     "backend/src/main/java/com/gabolle/backend/story/application/StoryReactionService.java",
     "backend/src/main/java/com/gabolle/backend/story/domain/StoryReaction.java",
     "backend/src/main/java/com/gabolle/backend/story/repository/StoryReactionRepository.java",
