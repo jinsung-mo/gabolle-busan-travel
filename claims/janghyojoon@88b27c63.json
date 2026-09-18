@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1324",
+  "intent": "코스 3안 화면 (S15P21E201-1324) — 커밋 직전",
+  "actor": "agent",
+  "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
+  "since": "2026-09-18T18:07:44.507Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/src/plan/CourseCard.tsx",
+    "frontend/src/plan/__tests__/tripCourses.test.ts",
+    "frontend/src/plan/tripCourses.ts",
+    "frontend/tools/check-button-container.mjs"
+  ]
+}
