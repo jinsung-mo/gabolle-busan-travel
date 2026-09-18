@@ -7,7 +7,6 @@
   "since": "2026-09-18T13:47:38.331Z",
   "ttlMs": 2700000,
   "paths": [
-    ".gitlab-ci.yml",
     "backend/src/main/java/com/gabolle/backend/auth/service/AccountDeletionService.java",
     "backend/src/main/java/com/gabolle/backend/story/application/StoryService.java",
     "backend/src/main/java/com/gabolle/backend/story/application/VideoUploadService.java",
@@ -24,10 +23,6 @@
     "backend/src/main/java/com/gabolle/backend/story/video",
     "backend/src/main/resources/application.properties",
     "backend/src/main/resources/db/migration/V20260918170000__story_video.sql",
-    "ci/jira-key-check.mjs",
-    "ci/jira-key-check.test.mjs",
-    "ci/jira-transition.mjs",
-    "ci/jira-transition.test.mjs",
     "docs/SERVER-SETUP.md"
   ]
 }
