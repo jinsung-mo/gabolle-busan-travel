@@ -1,0 +1,16 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1228",
+  "intent": "S15P21E201-1228 피드 좋아요/싫어요/저장 버튼 + 마이페이지 저장한 기록 화면",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-18T01:26:01.620Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/feed.tsx",
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/app/me/saved.tsx",
+    "frontend/src/me/MyPageShell.tsx",
+    "frontend/src/social/stories.ts"
+  ]
+}
