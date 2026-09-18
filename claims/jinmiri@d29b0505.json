@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1244",
+  "intent": "!1169 파이프라인 #205816 실패 — CI 러너 지연으로 5초 기본 timeout 초과, 30초로 늘림",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-18T05:00:00.352Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/__tests__/feedDetailMenu.test.tsx"
+  ]
+}
