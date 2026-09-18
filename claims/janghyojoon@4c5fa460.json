@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1221",
+  "intent": "유도값(조용함·로컬·그늘) 운영 적재 실행표를 쓴다 — 준비만, 실행은 사람이 누른다 (S15P21E201-1221)",
+  "actor": "agent",
+  "session": "213b915e-b639-466b-800f-c8f6f8d42865",
+  "since": "2026-09-18T01:06:17.254Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/docs"
+  ]
+}
