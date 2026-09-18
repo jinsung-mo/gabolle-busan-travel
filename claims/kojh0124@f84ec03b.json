@@ -1,0 +1,13 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-comment-diet",
+  "intent": "백엔드 Java 주석 정리 — 티켓번호·서사·중복 설명을 걷어내고 꼭 필요한 한두 줄만 남긴다. 코드는 안 건드린다(별도 MR). 같은 일을 하는 분은 backend 말고 다른 파트를 잡아 주세요",
+  "actor": "agent",
+  "session": "3019635a-a917-4177-b01f-33e8823c0723",
+  "since": "2026-09-18T09:36:04.463Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java",
+    "backend/src/test/java"
+  ]
+}
