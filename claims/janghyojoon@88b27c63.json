@@ -1,0 +1,19 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1317",
+  "intent": "팔로워·팔로잉 목록 줄마다 기록 수를 싣는다 — 한 명씩 세지 않고 보이는 범위끼리 묶어 최대 세 번",
+  "actor": "agent",
+  "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
+  "since": "2026-09-18T22:32:26.193Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/story/application/FollowService.java",
+    "backend/src/main/java/com/gabolle/backend/story/application/RelationCursor.java",
+    "backend/src/main/java/com/gabolle/backend/story/application/StoryCountBuckets.java",
+    "backend/src/main/java/com/gabolle/backend/story/application/StoryService.java",
+    "backend/src/main/java/com/gabolle/backend/story/presentation/dto/RelationItemResponse.java",
+    "backend/src/main/java/com/gabolle/backend/story/repository/StoryRepository.java",
+    "backend/src/test/java/com/gabolle/backend/story/RelationListIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/story/application/StoryCountBucketsTest.java"
+  ]
+}
