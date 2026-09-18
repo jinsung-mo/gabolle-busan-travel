@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1227",
+  "intent": "!1151 CI 마지막 실패 수정 — TABLES_POINTING_AT_APP_USER 에 story_save 한 줄 추가 (yeaseung-lee 안내)",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-18T02:48:41.318Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/auth/AccountDeletionTableInventoryTest.java"
+  ]
+}
