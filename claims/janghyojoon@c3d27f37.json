@@ -7,7 +7,6 @@
   "since": "2026-09-18T13:08:29.276Z",
   "ttlMs": 2700000,
   "paths": [
-    "bigData/collect/disabled-facility.mjs",
     "bigData/test/verify.mjs"
   ]
 }
