@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1236",
+  "intent": "메뉴판 읽기가 언어를 안 받는다 — GmsMenuReader 한 호출에 번역까지 얹는다 (yeaseung-lee 확인 완료, 겹치지 않음)",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-18T02:10:14.513Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/menuscan",
+    "backend/src/test/java/com/gabolle/backend/menuscan"
+  ]
+}
