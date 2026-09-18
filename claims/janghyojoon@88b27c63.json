@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1277",
-  "intent": "front/dev 에 빠진 검사 잡 둘을 back/dev 와 같은 바이트로 옮긴다 (S15P21E201-1277)",
+  "task": "S15P21E201-1280",
+  "intent": "피드 반응 줄 — 👎 를 「인용 N」으로 바꾸고 세 칸을 알약으로 (S15P21E201-1280)",
   "actor": "agent",
   "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
-  "since": "2026-09-18T14:09:04.564Z",
+  "since": "2026-09-18T14:15:32.282Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitlab-ci.yml",
@@ -13,6 +13,8 @@
     "frontend/app/(tabs)/home.tsx",
     "frontend/app/feed/[id].tsx",
     "frontend/app/index.tsx",
+    "frontend/assets/icons/common/quote.png",
+    "frontend/assets/icons/common/quote.svg",
     "frontend/src/design/tokens.ts",
     "frontend/src/home/AssistantMenu.tsx",
     "frontend/src/home/HomeBlocks.tsx",
@@ -21,7 +23,9 @@
     "frontend/src/home/__tests__/guestFeed.test.ts",
     "frontend/src/home/useHomeData.ts",
     "frontend/src/home/useSavedPlaces.ts",
+    "frontend/src/social/StoryReactionRow.tsx",
     "frontend/src/social/__tests__/storyLinkCopy.test.ts",
+    "frontend/src/social/__tests__/storyReaction.test.ts",
     "frontend/src/social/stories.ts"
   ]
 }
