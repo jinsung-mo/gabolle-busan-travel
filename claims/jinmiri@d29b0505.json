@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1227",
+  "intent": "MR !1151 리베이스 충돌 해결 — RouteAuthorizationRegistryTest.java 정책 표에 저장/링크복사 줄 둘 다 남기기 (kojh0124 안내대로)",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-18T02:02:54.999Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java"
+  ]
+}
