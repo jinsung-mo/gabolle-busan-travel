@@ -1,0 +1,14 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-assistant-href",
+  "intent": "비서 이동 버튼 셋이 앱에서 사라지는 것 — 앱 허용 목록이 서버가 내주는 다섯과 다르다 (운영 실측)",
+  "actor": "agent",
+  "session": "52e839d7-aa42-45c3-960b-a10b8a31c6c0",
+  "since": "2026-09-18T13:32:28.277Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/__tests__/assistantHrefRoutes.test.ts",
+    "frontend/src/assistant/assistantApi.ts",
+    "frontend/src/assistant/intent.ts"
+  ]
+}
