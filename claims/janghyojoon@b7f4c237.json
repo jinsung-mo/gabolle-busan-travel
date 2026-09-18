@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": null,
+  "intent": "업로드 크기 상한(nginx 5MB)을 서버 구축 문서에 남긴다 — 서버에만 손으로 만들어져 있어 재구축 때 사라진다. 값은 안 바꾼다",
+  "actor": "agent",
+  "session": "98c2600f-7bd2-4d6f-b3d9-98eab27d5627",
+  "since": "2026-09-18T13:09:19.191Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/SERVER-SETUP.md"
+  ]
+}
