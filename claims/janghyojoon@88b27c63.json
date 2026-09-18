@@ -1,13 +1,19 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1263",
-  "intent": "기록 상세에 「링크 복사」 단추를 답니다 — 화면이 「인용 N」을 그리는데 누를 자리가 없어 영원히 0입니다. 서버(-1215)는 아침에 끝나 있습니다.",
+  "task": "S15P21E201-1267",
+  "intent": "홈을 Airbnb식 전폭 줄 배치로 (디자인 인계 01·02). 데스크톱+모바일. 피드·로컬탐색은 별건입니다.",
   "actor": "agent",
   "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
-  "since": "2026-09-18T13:02:55.804Z",
+  "since": "2026-09-18T13:21:52.729Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/(tabs)/home.tsx",
     "frontend/app/feed/[id].tsx",
+    "frontend/app/index.tsx",
+    "frontend/src/design/tokens.ts",
+    "frontend/src/home/HomeBlocks.tsx",
+    "frontend/src/home/HomeRow.tsx",
+    "frontend/src/home/useHomeData.ts",
     "frontend/src/social/__tests__/storyLinkCopy.test.ts",
     "frontend/src/social/stories.ts"
   ]
