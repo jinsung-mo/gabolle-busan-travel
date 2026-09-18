@@ -1,0 +1,12 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-1174",
+  "intent": "CI OOM — 속성이 달라 컨텍스트가 하나 더 떴다. 속성을 빼고 통계를 런타임에 켠다",
+  "actor": "agent",
+  "session": "6d005b65-aed1-44ad-aded-60f96537d746",
+  "since": "2026-09-18T01:18:14.842Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/story/StoryReactionResponseIntegrationTest.java"
+  ]
+}
