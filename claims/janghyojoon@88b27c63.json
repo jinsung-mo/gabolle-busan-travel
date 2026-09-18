@@ -1,12 +1,15 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1278",
-  "intent": "AI 드롭업이 데려다주는 화면이 실제로 있는지 보는 시험",
+  "task": "S15P21E201-1277",
+  "intent": "front/dev 에 빠진 검사 잡 둘을 back/dev 와 같은 바이트로 옮긴다 (S15P21E201-1277)",
   "actor": "agent",
   "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
-  "since": "2026-09-18T14:07:41.231Z",
+  "since": "2026-09-18T14:09:04.564Z",
   "ttlMs": 2700000,
   "paths": [
+    ".gitlab-ci.yml",
+    "ci/jira-key-check.mjs",
+    "ci/jira-key-check.test.mjs",
     "frontend/app/(tabs)/home.tsx",
     "frontend/app/feed/[id].tsx",
     "frontend/app/index.tsx",
