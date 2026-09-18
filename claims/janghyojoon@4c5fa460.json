@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1226",
+  "intent": "실패 판정을 네 줄 규칙으로 올린다 — 축마다 예외를 적지 않게 (S15P21E201-1226)",
+  "actor": "agent",
+  "session": "213b915e-b639-466b-800f-c8f6f8d42865",
+  "since": "2026-09-18T01:09:06.649Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/docs/PLACE-DERIVED-LOAD-RUN.md"
+  ]
+}
