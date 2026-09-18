@@ -1,12 +1,24 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1245",
-  "intent": "main 승격 전 프론트 정합성 — 죽은 파일·중복 구현 정리 (S15P21E201-1245)",
+  "intent": "승격 병합 커밋 — 파트마다 갈라진 .gitlab-ci.yml 을 한 벌로 (S15P21E201-1245). 커밋 직후 반납",
   "actor": "agent",
   "session": "c240ae08-4747-4116-ba8b-948f891c346d",
-  "since": "2026-09-18T07:35:04.567Z",
+  "since": "2026-09-18T08:19:09.213Z",
   "ttlMs": 2700000,
   "paths": [
+    ".gitlab-ci.yml",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "CONTRIBUTING.md",
+    "README.md",
+    "backend",
+    "bigData",
+    "ci",
+    "city3d-spike",
+    "docs",
+    "eval",
+    "frontend",
     "frontend/app/(plan)",
     "frontend/app/(tabs)/feed.tsx",
     "frontend/app/(tabs)/home.tsx",
@@ -26,6 +38,11 @@
     "frontend/src/plan/tripPassData.ts",
     "frontend/src/social/__tests__",
     "frontend/src/social/regionSearch.ts",
-    "frontend/src/utils"
+    "frontend/src/utils",
+    "governance",
+    "infra",
+    "ref",
+    "survey-place",
+    "survey-recommend"
   ]
 }
