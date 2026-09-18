@@ -1,15 +1,19 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1312",
-  "intent": "진짜 메뉴판이 안 읽힌다 — 칸을 나눠 읽게 하고 메뉴판 경로만 시간 예산을 늘린다 (실측 11~13초)",
+  "task": "S15P21E201-1315",
+  "intent": "메뉴판 경로만 요청 제한을 30초로 — 서버가 25초로 늘어 앱이 먼저 끊으면 손해가 그대로 난다 (1315)",
   "actor": "agent",
   "session": "09e5fd77-9a97-4e84-99d7-246582628ddf",
-  "since": "2026-09-18T17:18:28.930Z",
+  "since": "2026-09-18T17:24:22.386Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/menuscan/adapter/GmsMenuReader.java",
     "backend/src/main/java/com/gabolle/backend/menuscan/config/MenuScanProperties.java",
     "backend/src/main/resources/application-dev.properties",
-    "backend/src/test/java/com/gabolle/backend/menuscan/MenuScanLatencyBudgetTest.java"
+    "backend/src/test/java/com/gabolle/backend/menuscan/MenuScanLatencyBudgetTest.java",
+    "frontend/app/field/menu-scan.tsx",
+    "frontend/src/api/client.ts",
+    "frontend/src/field/__tests__/menuScan.test.ts",
+    "frontend/src/field/menuScan.ts"
   ]
 }
