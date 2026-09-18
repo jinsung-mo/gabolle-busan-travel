@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1326",
-  "intent": "「지금」 카드와 단계 표시 (S15P21E201-1326) — 커밋 직전",
+  "intent": "시험이 시간대에 기대던 것 고침 (S15P21E201-1326) — 커밋 직전",
   "actor": "agent",
   "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
-  "since": "2026-09-18T18:16:54.256Z",
+  "since": "2026-09-18T18:23:52.372Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/trips/[id]/itinerary.tsx",
