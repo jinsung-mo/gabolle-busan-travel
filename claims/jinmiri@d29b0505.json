@@ -1,0 +1,18 @@
+{
+  "agent": "jinmiri",
+  "task": "티켓 번호 확인 중",
+  "intent": "글(기록) 저장(북마크) 기능 신규 — saved_place와 같은 패턴, StoryReaction 관련 파일은 안 건드림",
+  "actor": "agent",
+  "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
+  "since": "2026-09-18T00:43:08.848Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/story/application/StorySaveService.java",
+    "backend/src/main/java/com/gabolle/backend/story/domain/StorySave.java",
+    "backend/src/main/java/com/gabolle/backend/story/presentation/StorySaveController.java",
+    "backend/src/main/java/com/gabolle/backend/story/presentation/StorySaveExceptionHandler.java",
+    "backend/src/main/java/com/gabolle/backend/story/presentation/dto/StorySaveResponse.java",
+    "backend/src/main/java/com/gabolle/backend/story/repository/StorySaveRepository.java",
+    "backend/src/test/java/com/gabolle/backend/story/StorySaveIntegrationTest.java"
+  ]
+}
