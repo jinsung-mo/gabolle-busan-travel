@@ -1,16 +1,22 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1245",
-  "intent": "승격 병합 — 세 파트 CI 를 한 벌로 합치고 main 을 통합한다 (S15P21E201-1245). 커밋 직후 반납",
+  "intent": "승격 병합 커밋에 딸려 오는 루트 파일들 (S15P21E201-1245). 커밋 직후 반납",
   "actor": "agent",
   "session": "c240ae08-4747-4116-ba8b-948f891c346d",
-  "since": "2026-09-18T08:23:18.831Z",
+  "since": "2026-09-18T08:23:49.431Z",
   "ttlMs": 2700000,
   "paths": [
+    ".claude",
+    ".editorconfig",
+    ".gitattributes",
+    ".gitignore",
+    ".gitlab",
     ".gitlab-ci.yml",
     "AGENTS.md",
     "CLAUDE.md",
     "CONTRIBUTING.md",
+    "LICENSE",
     "README.md",
     "backend",
     "bigData",
@@ -42,6 +48,8 @@
     "governance",
     "infra",
     "ref",
+    "setup.ps1",
+    "setup.sh",
     "survey-place",
     "survey-recommend"
   ]
