@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1245",
-  "intent": "일정 생성 실패 메시지를 사람이 읽는 문장으로 (S15P21E201-1245)",
+  "intent": "피드 위치를 고르면 「구」만 남던 것 — 고른 장소 이름을 남긴다 (S15P21E201-1245)",
   "actor": "agent",
   "session": "c240ae08-4747-4116-ba8b-948f891c346d",
-  "since": "2026-09-18T06:45:01.034Z",
+  "since": "2026-09-18T06:46:55.950Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)",
@@ -18,6 +18,8 @@
     "frontend/src/plan/PlanStepHeader.tsx",
     "frontend/src/plan/__tests__",
     "frontend/src/plan/recommendationJob.ts",
-    "frontend/src/plan/tripPassData.ts"
+    "frontend/src/plan/tripPassData.ts",
+    "frontend/src/social/__tests__",
+    "frontend/src/social/regionSearch.ts"
   ]
 }
