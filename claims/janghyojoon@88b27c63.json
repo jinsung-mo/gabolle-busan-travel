@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1290",
-  "intent": "동영상 올리는 함수 추가 (S15P21E201-1290)",
+  "task": "S15P21E201-1293",
+  "intent": "웹에서는 동영상을 못 줄인다 — 파일을 갈라 웹 번들이 안 깨지게 (S15P21E201-1293)",
   "actor": "agent",
   "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
-  "since": "2026-09-18T15:23:16.746Z",
+  "since": "2026-09-18T15:37:36.745Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitlab-ci.yml",
@@ -40,8 +40,11 @@
     "frontend/src/social/__tests__/storyReaction.test.ts",
     "frontend/src/social/__tests__/storyReactionRow.test.tsx",
     "frontend/src/social/__tests__/useStoryVideo.test.ts",
+    "frontend/src/social/__tests__/videoCompressPlatform.test.js",
     "frontend/src/social/stories.ts",
     "frontend/src/social/useStoryVideo.ts",
-    "frontend/src/social/videoCompress.ts"
+    "frontend/src/social/videoCompress.native.ts",
+    "frontend/src/social/videoCompress.ts",
+    "frontend/src/social/videoLimits.ts"
   ]
 }
