@@ -1,12 +1,13 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1236",
-  "intent": "메뉴판 인식 언어 버그 프론트 반영 — language 파라미터 전송, translatedText 표시 (백엔드 -1236 MR !1159)",
+  "task": "S15P21E201-1227",
+  "intent": "!1151 마이그레이션 버전 충돌 재해결 — V20260918130000 을 150000 이후로 재명명 (yeaseung-lee 확인, back/dev 최대가 140000 으로 다시 올라감)",
   "actor": "agent",
   "session": "ec3de25c-8bdb-4af8-93c9-4962e96ca0d4",
-  "since": "2026-09-18T02:15:14.991Z",
+  "since": "2026-09-18T02:36:12.313Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/src/main/resources/db/migration/V20260918130000__story_save.sql",
     "frontend/app/field/menu-scan.tsx",
     "frontend/src/field/menuScan.ts"
   ]
