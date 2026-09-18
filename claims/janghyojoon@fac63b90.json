@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1245",
-  "intent": "조건이 다 채워지면 「반드시 지킬 조건」 카드를 다른 카드와 같은 배경으로 (S15P21E201-1245)",
+  "intent": "여행 만들기 세 화면에서 시안에 없는 왼쪽 사진 패널을 걷어낸다 (S15P21E201-1245)",
   "actor": "agent",
   "session": "c240ae08-4747-4116-ba8b-948f891c346d",
-  "since": "2026-09-18T04:50:05.291Z",
+  "since": "2026-09-18T04:55:24.034Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/(plan)"
+    "frontend/app/(plan)",
+    "frontend/src/plan/PlanDesktopShell.tsx"
   ]
 }
