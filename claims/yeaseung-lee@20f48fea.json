@@ -1,12 +1,13 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1253",
-  "intent": "비서를 GMS 경유로 옮기고 시간 제한을 건다 — 개인 Gemini 키가 429 로 막히던 것",
+  "intent": "비서가 GMS 키로 물러서도록 GABOLLE_ASSISTANT_API_KEY 주입을 걷어낸다",
   "actor": "agent",
   "session": "874b1aa8-4270-41e2-8961-b9fa74619aaf",
-  "since": "2026-09-18T06:37:53.193Z",
+  "since": "2026-09-18T06:41:00.069Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/Jenkinsfile",
     "backend/src/main/java/com/gabolle/backend/assistant/adapter/GeminiAssistantAdapter.java",
     "backend/src/main/java/com/gabolle/backend/assistant/config/AssistantProperties.java",
     "backend/src/main/resources/application-dev.properties"
