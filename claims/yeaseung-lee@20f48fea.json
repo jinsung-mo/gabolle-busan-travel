@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1232",
+  "intent": "Maintainer 목록 정정 — MR !1152 를 올바른 Jira 키로 다시 올린다",
+  "actor": "agent",
+  "session": "874b1aa8-4270-41e2-8961-b9fa74619aaf",
+  "since": "2026-09-18T01:40:50.992Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "CONTRIBUTING.md"
+  ]
+}
