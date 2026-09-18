@@ -1,13 +1,15 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1245",
-  "intent": "여행 만들기 세 화면에서 시안에 없는 왼쪽 사진 패널을 걷어낸다 (S15P21E201-1245)",
+  "intent": "홈을 시안 p0 대로 — 사진 히어로 걷어내고 가운데 정렬, 네이비용 흰 글자 정리 (S15P21E201-1245)",
   "actor": "agent",
   "session": "c240ae08-4747-4116-ba8b-948f891c346d",
-  "since": "2026-09-18T04:55:24.034Z",
+  "since": "2026-09-18T05:09:12.462Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)",
+    "frontend/app/index.tsx",
+    "frontend/src/home",
     "frontend/src/plan/PlanDesktopShell.tsx"
   ]
 }
