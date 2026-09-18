@@ -1,12 +1,13 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-250",
-  "intent": "버튼 껍데기에 칠한 색 때문에 뒤에 사각형이 남는 것 — iOS 실기기 확인분",
+  "intent": "버튼 껍데기 검사기를 frontend:smoke 에 한 줄 붙인다",
   "actor": "agent",
   "session": "a71738c1-45f6-4950-993f-9c87a34e27e9",
-  "since": "2026-09-18T03:12:32.854Z",
+  "since": "2026-09-18T03:13:58.979Z",
   "ttlMs": 2700000,
   "paths": [
+    "ci/parts/frontend.yml",
     "frontend/app/(tabs)/feed.tsx",
     "frontend/app/place/[id].tsx",
     "frontend/package.json",
