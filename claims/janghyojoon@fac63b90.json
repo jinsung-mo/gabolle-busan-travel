@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1199",
+  "intent": "로그인 뒤 뒤로 가기 고침(S15P21E201-1199) + 마이페이지 개편 시안 반입",
+  "actor": "agent",
+  "session": "c240ae08-4747-4116-ba8b-948f891c346d",
+  "since": "2026-09-18T02:27:56.876Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(auth)",
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/docs/design_handoff_mypage",
+    "frontend/src/auth",
+    "frontend/src/me"
+  ]
+}
