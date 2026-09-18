@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1186",
+  "intent": "키가 거절당했을 때 「잠시 후 다시 시도」라는 거짓말을 막는다",
+  "actor": "agent",
+  "session": "a71738c1-45f6-4950-993f-9c87a34e27e9",
+  "since": "2026-09-18T06:31:58.476Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/transit/adapter/TagoTransitVendorAdapter.java",
+    "backend/src/test/java/com/gabolle/backend/transit/adapter/TagoTransitVendorAdapterTest.java"
+  ]
+}
