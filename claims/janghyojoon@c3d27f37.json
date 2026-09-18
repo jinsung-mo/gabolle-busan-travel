@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1288",
+  "intent": "자정에 받은 편의시설 나머지 82쪽을 LFS 로 올린다 — 182쪽이 이 컴퓨터에만 있다",
+  "actor": "agent",
+  "session": "734b2752-5500-472c-927a-c087b124f653",
+  "since": "2026-09-18T15:06:47.232Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/data/raw/facility/pages"
+  ]
+}
