@@ -1,15 +1,16 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1280",
-  "intent": "피드 반응 줄 — 👎 를 「인용 N」으로 바꾸고 세 칸을 알약으로 (S15P21E201-1280)",
+  "intent": "저장 버튼도 알약과 같은 손가락 영역을 쓰게 한다 (S15P21E201-1280)",
   "actor": "agent",
   "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
-  "since": "2026-09-18T14:15:32.282Z",
+  "since": "2026-09-18T14:17:47.774Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitlab-ci.yml",
     "ci/jira-key-check.mjs",
     "ci/jira-key-check.test.mjs",
+    "frontend/app/(tabs)/feed.tsx",
     "frontend/app/(tabs)/home.tsx",
     "frontend/app/feed/[id].tsx",
     "frontend/app/index.tsx",
