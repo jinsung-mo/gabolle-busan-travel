@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1308",
+  "intent": "사진 떼기가 서버에 안 먹던 것을 고친다 (S15P21E201-1308) — 커밋 직전",
+  "actor": "agent",
+  "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
+  "since": "2026-09-18T16:56:16.740Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/auth/AuthProvider.tsx",
+    "frontend/src/auth/__tests__/updateMePhotos.test.ts",
+    "frontend/src/auth/authApi.ts"
+  ]
+}
