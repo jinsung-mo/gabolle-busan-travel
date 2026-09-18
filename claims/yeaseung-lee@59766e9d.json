@@ -1,0 +1,15 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1294",
+  "intent": "화면이 RATE_LIMITED 를 몰라 그림이 조용히 사라진다 + 시험 이름이 거짓말한다",
+  "actor": "agent",
+  "session": "60dbf2e2-db78-4637-a0c7-07cfa84525a9",
+  "since": "2026-09-18T16:25:31.561Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/dish/DishControllerTest.java",
+    "frontend/app/field/menu-scan.tsx",
+    "frontend/src/field/__tests__/dish.test.ts",
+    "frontend/src/field/dish.ts"
+  ]
+}
