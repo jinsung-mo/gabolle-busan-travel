@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1343",
+  "intent": "MR !1286 충돌 해소 — front/dev 의 testID 추가와 우리 배색 변경을 한 줄 안에서 합친다",
+  "actor": "agent",
+  "session": "23e5fc75-7377-47fc-ab81-c708a91105f3",
+  "since": "2026-09-19T03:49:56.311Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(auth)/sign-in.tsx",
+    "frontend/app/(auth)/sign-up.tsx",
+    "frontend/app/(plan)/generating.tsx",
+    "frontend/app/feed/compose.tsx",
+    "frontend/app/trips/[id]/itinerary.tsx"
+  ]
+}
