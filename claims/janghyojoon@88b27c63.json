@@ -1,13 +1,18 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1338",
-  "intent": "여행표의 「인원」을 일정에서 읽는다 — 언제나 1명으로 나오던 것",
+  "task": "S15P21E201-1343",
+  "intent": "부산은행 톤 배색 — 토큰과 부품 넷. 밀고 바로 놓습니다(두 창이 이어받습니다)",
   "actor": "agent",
   "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
-  "since": "2026-09-19T01:38:47.539Z",
+  "since": "2026-09-19T02:06:37.769Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/generating.tsx",
+    "frontend/src/components/Button.tsx",
+    "frontend/src/components/TabBar.tsx",
+    "frontend/src/components/Text.tsx",
+    "frontend/src/components/Toggle.tsx",
+    "frontend/src/design/tokens.ts",
     "frontend/src/plan/__tests__/tripPassData.test.ts",
     "frontend/src/plan/itinerary.ts",
     "frontend/src/plan/tripPassData.ts"
