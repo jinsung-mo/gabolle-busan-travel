@@ -1,16 +1,24 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1343",
-  "intent": "MR !1286 충돌 해소 — front/dev 의 testID 추가와 우리 배색 변경을 한 줄 안에서 합친다",
+  "intent": "MR !1286 합치기 커밋 — front/dev 쪽에서 딸려 오는 파일들. 그리고 대비 수치 오기 정정",
   "actor": "agent",
   "session": "23e5fc75-7377-47fc-ab81-c708a91105f3",
-  "since": "2026-09-19T03:49:56.311Z",
+  "since": "2026-09-19T03:51:59.446Z",
   "ttlMs": 2700000,
   "paths": [
+    "docs/IOS-XCUITEST-A-Z.md",
+    "docs/ios-automation/XCUITEST-A-Z.swift",
     "frontend/app/(auth)/sign-in.tsx",
     "frontend/app/(auth)/sign-up.tsx",
     "frontend/app/(plan)/generating.tsx",
     "frontend/app/feed/compose.tsx",
-    "frontend/app/trips/[id]/itinerary.tsx"
+    "frontend/app/field/translate.tsx",
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/src/components/__tests__/automationTestIds.test.ts",
+    "frontend/src/design/tokens.ts",
+    "frontend/src/plan/__tests__/tripPassData.test.ts",
+    "frontend/src/plan/itinerary.ts",
+    "frontend/src/plan/tripPassData.ts"
   ]
 }
