@@ -1,0 +1,33 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1343",
+  "intent": "배색 — 여행 흐름",
+  "actor": "agent",
+  "session": "ef2a5cd3-b767-4ecc-b79e-b3fd1783b7c8",
+  "since": "2026-09-19T02:38:22.709Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/generating.tsx",
+    "frontend/app/(plan)/questions.tsx",
+    "frontend/app/(tabs)/feed.tsx",
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/explore.tsx",
+    "frontend/app/feed/[id].tsx",
+    "frontend/app/feed/[id]/coauthors.tsx",
+    "frontend/app/festivals.tsx",
+    "frontend/app/index.tsx",
+    "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/src/discovery/ScopeSwitch.tsx",
+    "frontend/src/home/HomeBlocks.tsx",
+    "frontend/src/home/HomeRow.tsx",
+    "frontend/src/home/PlanStartBar.tsx",
+    "frontend/src/nav/TopNav.tsx",
+    "frontend/src/plan/CourseCard.tsx",
+    "frontend/src/plan/MustVisitSearch.tsx",
+    "frontend/src/plan/PlanContextColumn.tsx",
+    "frontend/src/plan/PlanStepperParts.tsx",
+    "frontend/src/plan/TripPass.tsx",
+    "frontend/src/plan/courseMap.ts",
+    "frontend/src/social/StoryReactionRow.tsx"
+  ]
+}
