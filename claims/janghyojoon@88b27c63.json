@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1333",
-  "intent": "코스 화면에 진짜 동선 지도를 그린다 — 좌표를 실어 나르고, 없으면 글로 세우던 그대로",
+  "task": "S15P21E201-1334",
+  "intent": "「저장하고 시작」이 시작을 안 하던 것 — 조건 창의 닫힘 값을 질문 화면만 버리고 있었다",
   "actor": "agent",
   "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
-  "since": "2026-09-18T23:54:39.198Z",
+  "since": "2026-09-19T00:08:44.545Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/auth/api/AuthController.java",
@@ -40,6 +40,7 @@
     "frontend/src/me/myPanels.tsx",
     "frontend/src/me/panels/IdentitiesBody.tsx",
     "frontend/src/me/panels/ProfileBody.tsx",
+    "frontend/src/plan/__tests__/conditionsOutcomeUsed.test.js",
     "frontend/src/plan/__tests__/courseMap.test.ts",
     "frontend/src/plan/courseMap.ts",
     "frontend/src/plan/itinerary.ts",
