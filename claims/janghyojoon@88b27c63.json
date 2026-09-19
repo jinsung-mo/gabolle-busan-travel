@@ -1,13 +1,15 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1343",
-  "intent": "부산은행 톤 배색 — 토큰과 부품 넷. 밀고 바로 놓습니다(두 창이 이어받습니다)",
+  "intent": "부산은행 톤 배색 토대 — 버튼 갈래 이름 바꾸기가 46개 파일에 번집니다. 커밋 직후 놓습니다",
   "actor": "agent",
   "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
-  "since": "2026-09-19T02:06:37.769Z",
+  "since": "2026-09-19T02:07:18.055Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app",
     "frontend/app/(plan)/generating.tsx",
+    "frontend/src",
     "frontend/src/components/Button.tsx",
     "frontend/src/components/TabBar.tsx",
     "frontend/src/components/Text.tsx",
