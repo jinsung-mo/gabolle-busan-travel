@@ -1,0 +1,18 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1343",
+  "intent": "배색 §3 — 여행 흐름·지도·현장 화면군. 동백 채움을 화면당 하나로 줄인다",
+  "actor": "agent",
+  "session": "242bf697-2c6d-4301-bbb5-d99123db3c47",
+  "since": "2026-09-19T03:08:27.906Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(trip)/[id]/map.tsx",
+    "frontend/app/chat.tsx",
+    "frontend/app/field/menu-scan.tsx",
+    "frontend/app/route-detail.tsx",
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/src/map/RouteMap.tsx",
+    "frontend/src/plan/NowCard.tsx"
+  ]
+}
