@@ -7,28 +7,8 @@
   "since": "2026-09-19T03:05:52.995Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/(auth)/age-gate.tsx",
-    "frontend/app/(auth)/sign-in.tsx",
-    "frontend/app/(auth)/sign-up.tsx",
-    "frontend/app/(onboarding)/permissions.tsx",
-    "frontend/app/(onboarding)/spend-profile.tsx",
-    "frontend/app/(onboarding)/taste-profile.tsx",
-    "frontend/app/app-intro.tsx",
-    "frontend/app/auth/email/verify.tsx",
-    "frontend/app/now.tsx",
-    "frontend/app/trips/[id]/itinerary.tsx",
-    "frontend/app/user/[id].tsx",
     "frontend/package.json",
     "frontend/src/design/tokens.ts",
-    "frontend/src/discovery/__tests__/scopeSwitch.test.tsx",
-    "frontend/src/me/panels/HelpBody.tsx",
-    "frontend/src/me/panels/IdentitiesBody.tsx",
-    "frontend/src/me/panels/MyPostsBody.tsx",
-    "frontend/src/me/panels/PreferencesBody.tsx",
-    "frontend/src/me/panels/ProfileBody.tsx",
-    "frontend/src/me/panels/SavedRecordsBody.tsx",
-    "frontend/src/plan/NowCard.tsx",
-    "frontend/src/social/RelationListScreen.tsx",
     "frontend/tools/check-palette.mjs"
   ]
 }
