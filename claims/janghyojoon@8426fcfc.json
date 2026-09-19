@@ -4,7 +4,7 @@
   "intent": "배색 — 여행 흐름",
   "actor": "agent",
   "session": "ef2a5cd3-b767-4ecc-b79e-b3fd1783b7c8",
-  "since": "2026-09-19T02:38:22.709Z",
+  "since": "2026-09-19T02:38:32.152Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/generating.tsx",
