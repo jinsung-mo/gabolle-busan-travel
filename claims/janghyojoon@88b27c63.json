@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1343",
+  "intent": "배색 — 로고 다시 뽑기(핀 빨강·글자 먹색)와 점 규칙 검사 추가",
+  "actor": "agent",
+  "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
+  "since": "2026-09-19T02:33:35.575Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/assets/brand",
+    "frontend/src/social/SignInPromptModal.tsx",
+    "frontend/tools/check-palette.mjs"
+  ]
+}
