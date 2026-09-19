@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1343",
-  "intent": "배색 — 화면 바탕이 순백이라 선 없는 흰 카드가 사라진다. 바탕 스타일만 canvas 로",
+  "intent": "글쓰기 입구 — 1023/1024 경계 단언 추가 (FAB 조건 변경의 근거)",
   "actor": "agent",
   "session": "242bf697-2c6d-4301-bbb5-d99123db3c47",
-  "since": "2026-09-19T03:30:39.052Z",
+  "since": "2026-09-19T03:33:56.985Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/generating.tsx",
@@ -17,6 +17,7 @@
     "frontend/app/festivals.tsx",
     "frontend/app/field/menu-scan.tsx",
     "frontend/app/trips/[id]/itinerary.tsx",
-    "frontend/app/trips/[id]/recommendations.tsx"
+    "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/src/social/__tests__/composeEntry.test.ts"
   ]
 }
