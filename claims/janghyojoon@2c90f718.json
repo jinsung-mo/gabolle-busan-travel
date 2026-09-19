@@ -1,14 +1,16 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1343",
-  "intent": "배색 마무리 — 장소 상세·초대·택시카드·신고목록. 동백 채움 줄이기 + 채움으로 쓴 위험색",
+  "intent": "배색 마무리 — 기록 상세의 동백 채움 6개를 하나로, 공동작성자 화면 둘, 그리고 두 파일의 옛 남색",
   "actor": "agent",
   "session": "23e5fc75-7377-47fc-ab81-c708a91105f3",
-  "since": "2026-09-19T03:22:37.082Z",
+  "since": "2026-09-19T03:26:01.638Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/trips.tsx",
     "frontend/app/admin/story-reports.tsx",
+    "frontend/app/feed/[id].tsx",
+    "frontend/app/feed/[id]/coauthors.tsx",
     "frontend/app/invite/[token].tsx",
     "frontend/app/place/[id].tsx",
     "frontend/app/s/[token].tsx",
