@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1343",
-  "intent": "배색 §3 — 진입·계정·모달·마이페이지·온보딩 화면군. 동백 채움을 화면당 하나로 줄인다",
+  "intent": "배색 §3 마이페이지 — 「프로필 편집」을 붉은 선 버튼으로, 아바타는 짙은 회색으로 (배정 목록에 빠져 있던 두 파일)",
   "actor": "agent",
   "session": "4ca71a38-6993-4b0d-a1d2-4983c7f9f8c6",
-  "since": "2026-09-19T03:12:50.436Z",
+  "since": "2026-09-19T03:16:41.039Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(auth)/oauth-signup.tsx",
@@ -17,6 +17,8 @@
     "frontend/src/components/AddPlaceToItineraryModal.tsx",
     "frontend/src/components/PlaceReviewModal.tsx",
     "frontend/src/components/ReportModal.tsx",
+    "frontend/src/me/MyPageCover.tsx",
+    "frontend/src/me/ProfileCard.tsx",
     "frontend/src/me/panels",
     "frontend/src/social/SignInPromptModal.tsx"
   ]
