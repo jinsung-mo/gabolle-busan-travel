@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1343",
+  "intent": "e2e — 옛 흐름의 잔재인 「입력 완료」 단계 제거. 지금 마지막 질문의 단추는 「이 조건으로 일정 만들기」다",
+  "actor": "agent",
+  "session": "23e5fc75-7377-47fc-ab81-c708a91105f3",
+  "since": "2026-09-19T16:10:28.952Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/tests/e2e/core-journey.spec.ts"
+  ]
+}
