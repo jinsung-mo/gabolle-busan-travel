@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1341",
-  "intent": "문 닫은 가게를 추천 후보에서 뺀다 — 폐업 칸을 만들고 질의 둘에서 거른다",
+  "intent": "폐업 여부를 장소에 적는 적재기 — 커밋 직전, 바로 놓습니다",
   "actor": "agent",
   "session": "ab7fdfed-b80e-4eb9-a474-a7355bd3872a",
-  "since": "2026-09-19T01:12:44.771Z",
+  "since": "2026-09-19T01:28:19.827Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/auth/api/AuthController.java",
@@ -16,6 +16,10 @@
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/ItineraryDetailResponse.java",
     "backend/src/main/java/com/gabolle/backend/place/domain/Place.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/PlaceClosureLoader.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/PlaceClosureLoaderRunner.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/PlaceClosureReader.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/PlaceClosureRow.java",
     "backend/src/main/java/com/gabolle/backend/place/repository/PlaceRepository.java",
     "backend/src/main/java/com/gabolle/backend/story/application/FollowService.java",
     "backend/src/main/java/com/gabolle/backend/story/application/RelationCursor.java",
@@ -28,6 +32,8 @@
     "backend/src/test/java/com/gabolle/backend/auth/api",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryQueryServiceTest.java",
     "backend/src/test/java/com/gabolle/backend/place/PlaceCandidateIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/place/PlaceClosureLoaderIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/place/loader/PlaceClosureReaderTest.java",
     "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java",
     "backend/src/test/java/com/gabolle/backend/story/RelationListIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/story/application/StoryCountBucketsTest.java"
