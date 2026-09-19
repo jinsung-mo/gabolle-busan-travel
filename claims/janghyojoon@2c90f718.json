@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1343",
+  "intent": "MR !1286 을 막던 낡은 선택자 두 줄 — 선택지에 부제가 붙어 정확일치가 깨졌다",
+  "actor": "agent",
+  "session": "23e5fc75-7377-47fc-ab81-c708a91105f3",
+  "since": "2026-09-19T04:27:56.415Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/tests/e2e/core-journey.spec.ts"
+  ]
+}
