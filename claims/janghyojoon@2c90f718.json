@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1343",
+  "intent": "배색 마무리 — 옛 이름 brand.orange 제거 + 「화면당 동백 채움 하나」를 검사로 만든다. 조율 세션",
+  "actor": "agent",
+  "session": "23e5fc75-7377-47fc-ab81-c708a91105f3",
+  "since": "2026-09-19T03:04:08.131Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/package.json",
+    "frontend/src/design/tokens.ts",
+    "frontend/tools/check-palette.mjs"
+  ]
+}
