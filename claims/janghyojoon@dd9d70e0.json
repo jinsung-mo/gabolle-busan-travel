@@ -8,15 +8,7 @@
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/me.tsx",
-    "frontend/app/feed/compose.tsx",
-    "frontend/src/components/AccessibilityUnverifiedModal.tsx",
     "frontend/src/components/ExcludeConfirmModal.tsx",
-    "frontend/src/components/PhotoSubjectBadge.tsx",
-    "frontend/src/components/PlacePhraseModal.tsx",
-    "frontend/src/map/RouteMap.tsx",
-    "frontend/src/map/kakaoMapHtml.ts",
-    "frontend/src/me/MyPageModal.tsx",
-    "frontend/src/plan/ConditionsPromptModal.tsx",
     "frontend/src/social/BlockUserDialog.tsx",
     "frontend/src/trip/TripNameSheet.tsx"
   ]
