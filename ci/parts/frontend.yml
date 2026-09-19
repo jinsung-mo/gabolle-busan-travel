@@ -156,6 +156,10 @@ frontend:smoke:
     #    2026-09-18 iOS 실기기 시험에서 사람이 눈으로 찾았다.
     - npm run check:button-container
     - npm run check:menu-translations
+    # 🔴 화면에 색이 직접 박히면 빨개진다 (S15P21E201-1343). 배색을 토큰 한 곳에서만
+    #    읽는다는 규칙이 이 검사로 지켜진다 — 안 지키면 다음 배색 전환 때 그 자리만
+    #    옛 색으로 남고, 화면은 멀쩡해 보여서 아무도 못 찾는다.
+    - npm run check:palette
     - npx tsc --noEmit
     - npx expo export --platform web
     - npx serve dist -l 3000 &
