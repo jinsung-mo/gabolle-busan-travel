@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": null,
+  "intent": "편의시설 182쪽을 우리 장소에 이름으로 붙여 실제 몇 곳인지 잰다 (좌표는 확인용으로만)",
+  "actor": "agent",
+  "session": "f94a4082-b8a6-4edc-a329-aa06a2d5274e",
+  "since": "2026-09-20T15:31:51.279Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/data/staged/facility-matched.ndjson",
+    "bigData/process/facility-match.mjs"
+  ]
+}
