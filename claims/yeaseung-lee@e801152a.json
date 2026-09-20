@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1347",
+  "intent": "주석 정리가 잘라 먹은 티켓 번호 97군데를 git 이력에서 되살린다 — 주석만 바뀐다 (S15P21E201-1347)",
+  "actor": "agent",
+  "session": "5b352b1b-4388-40d4-a7fd-0251ae9098e2",
+  "since": "2026-09-20T04:02:00.171Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app",
+    "frontend/src"
+  ]
+}
