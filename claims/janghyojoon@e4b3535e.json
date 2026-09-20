@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1365",
+  "intent": "장애인편의시설 실태조사에서 휠체어 접근 표식을 붙이는 적재기 (BF_FACILITY 출처)",
+  "actor": "agent",
+  "session": "7d55e1f6-6c7c-45b5-8d71-2caf02995a0e",
+  "since": "2026-09-20T15:56:50.071Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/loader/FacilityAccessibilityLoader.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/FacilityAccessibilityLoaderRunner.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/FacilityAccessibilityReader.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/FacilityAccessibilityRow.java",
+    "backend/src/test/java/com/gabolle/backend/place/FacilityAccessibilityLoaderTest.java"
+  ]
+}
