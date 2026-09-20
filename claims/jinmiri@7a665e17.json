@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1361",
-  "intent": "실패 문장 localizeMessage · 통역 언어 방향",
+  "intent": "현장 말하기 뜻을 고른 언어로",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-20T15:36:26.004Z",
+  "since": "2026-09-20T15:43:14.107Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(auth)",
@@ -39,6 +39,7 @@
     "frontend/app/user/[id].tsx",
     "frontend/assets/brand",
     "frontend/src/components/DongbaekMascot.tsx",
+    "frontend/src/components/PlacePhraseBrowser.tsx",
     "frontend/src/components/PlaceReviewModal.tsx",
     "frontend/src/components/ReportModal.tsx",
     "frontend/src/field/translate.test.ts",
