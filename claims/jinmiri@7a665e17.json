@@ -1,0 +1,21 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1376",
+  "intent": "문항 화면 안 달력 · 자리 기억 · 필수 셋이 3으로 보이게",
+  "actor": "agent",
+  "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
+  "since": "2026-09-20T21:20:18.348Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/questions.tsx",
+    "frontend/app/__tests__",
+    "frontend/docs/design_handoff_brand_first_run/captures",
+    "frontend/src/home/PlanStartBar.tsx",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/plan/DateRangeCard.tsx",
+    "frontend/src/plan/PlanStepperParts.tsx",
+    "frontend/src/plan/__tests__",
+    "frontend/src/plan/planQuestions.ts",
+    "frontend/src/plan/questionState.ts"
+  ]
+}
