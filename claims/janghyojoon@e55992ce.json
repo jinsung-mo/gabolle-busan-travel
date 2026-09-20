@@ -1,17 +1,19 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1369",
-  "intent": "홈 시작 바 에어비앤비식 재설계 — 모바일 전체화면 시트 · 칸 전환 애니메이션 · 줄 화살표 · 날씨를 상단 바로",
+  "intent": "날씨를 상단 바로 옮기면서 — 날씨 문구 부품과 날씨 질의 훅이 이 둘에 있었다",
   "actor": "agent",
   "session": "e976e1f0-989e-4aee-8fe2-f873709f55d8",
-  "since": "2026-09-20T16:46:58.168Z",
+  "since": "2026-09-20T16:51:54.914Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
     "frontend/app/index.tsx",
     "frontend/src/components/TabBar.tsx",
+    "frontend/src/home/HomeBlocks.tsx",
     "frontend/src/home/HomeRow.tsx",
     "frontend/src/home/PlanStartBar.tsx",
+    "frontend/src/home/useHomeData.ts",
     "frontend/src/nav/TopNav.tsx"
   ]
 }
