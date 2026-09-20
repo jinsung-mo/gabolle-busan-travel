@@ -1,0 +1,16 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1371",
+  "intent": "여행 조건 열 문항을 가볍게 — 필수 3·선택 7 로 세고 답한 것은 접고 필수만 답하면 바로 만들기",
+  "actor": "agent",
+  "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
+  "since": "2026-09-20T16:54:50.606Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/questions.tsx",
+    "frontend/app/__tests__",
+    "frontend/docs/design_handoff_brand_first_run/captures",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/plan/PlanStepperParts.tsx"
+  ]
+}
