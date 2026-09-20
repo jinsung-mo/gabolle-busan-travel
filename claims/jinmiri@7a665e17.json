@@ -1,0 +1,27 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1372",
+  "intent": "앱 전체 UX 점검 — 홈 카드 중복 글자·손님 401 안내·문항 날짜 CTA·현장 도구 아이콘·일정 진행 표시 등",
+  "actor": "agent",
+  "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
+  "since": "2026-09-20T17:49:57.284Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/questions.tsx",
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/chat.tsx",
+    "frontend/app/feed/[id].tsx",
+    "frontend/app/festivals.tsx",
+    "frontend/app/field/translate.tsx",
+    "frontend/app/now.tsx",
+    "frontend/app/place-reviews/[id].tsx",
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/app/user/[id].tsx",
+    "frontend/docs/design_handoff_brand_first_run/captures",
+    "frontend/src/home/HomeBlocks.tsx",
+    "frontend/src/i18n/__tests__",
+    "frontend/src/i18n/korean.ts",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/plan/NowCard.tsx"
+  ]
+}
