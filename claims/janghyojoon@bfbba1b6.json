@@ -1,16 +1,17 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1365",
-  "intent": "기구표(조사 항목)를 받아 값의 사전을 만든다 — 판정은 아직 안 한다",
+  "intent": "추정 80곳을 실측 46곳으로 정정하고 기구표 사전을 남긴다",
   "actor": "agent",
   "session": "f94a4082-b8a6-4edc-a329-aa06a2d5274e",
-  "since": "2026-09-20T15:46:17.193Z",
+  "since": "2026-09-20T15:48:54.465Z",
   "ttlMs": 2700000,
   "paths": [
     "bigData/collect/facility-eval.mjs",
     "bigData/collect/tourapi-en.mjs",
     "bigData/data/raw/facility/eval",
     "bigData/data/staged/facility-matched.ndjson",
+    "bigData/docs/DISABLED-FACILITY.md",
     "bigData/process/facility-match.mjs",
     "bigData/process/place-i18n.mjs"
   ]
