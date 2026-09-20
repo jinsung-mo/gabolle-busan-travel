@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1379",
-  "intent": "알림 — 여행 활동을 모아 진짜 알림 목록을 만들고, 안 본 것이 있으면 종에 점",
+  "task": "S15P21E201-1380",
+  "intent": "알림 — 여행 활동을 모아 진짜 알림 목록 · 종에 점",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-20T23:49:29.990Z",
+  "since": "2026-09-20T23:59:16.606Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/questions.tsx",
