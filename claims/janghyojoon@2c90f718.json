@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1343",
+  "intent": "이미 있던 검사의 예외 목록에서 고쳐진 두 줄 제거 + 내가 중복으로 만든 규칙 철회",
+  "actor": "agent",
+  "session": "23e5fc75-7377-47fc-ab81-c708a91105f3",
+  "since": "2026-09-20T01:18:07.017Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/tools/check-button-container.mjs",
+    "frontend/tools/check-palette.mjs"
+  ]
+}
