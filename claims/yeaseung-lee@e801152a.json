@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1356",
+  "intent": "번역표에 빠져 있던 평범한 문구 161개를 채운다 — S15P21E201-1356",
+  "actor": "agent",
+  "session": "5b352b1b-4388-40d4-a7fd-0251ae9098e2",
+  "since": "2026-09-20T08:27:40.670Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/me/__tests__/AppLanguageSetting.test.tsx"
+  ]
+}
