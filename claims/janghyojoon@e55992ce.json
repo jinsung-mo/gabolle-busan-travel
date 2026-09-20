@@ -1,14 +1,15 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1379",
-  "intent": "커버 부품 API 변경(actions·eyebrow)에 맞춰 시험 갱신",
+  "intent": "마이페이지 기록 줄 재사용 — 카드 폭이 홈(7열)과 달라 화살표 이동량을 받을 칸을 연다",
   "actor": "agent",
   "session": "e976e1f0-989e-4aee-8fe2-f873709f55d8",
-  "since": "2026-09-20T23:26:43.734Z",
+  "since": "2026-09-20T23:30:40.409Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/me.tsx",
     "frontend/app/user/[id].tsx",
+    "frontend/src/home/HomeRow.tsx",
     "frontend/src/me/MyPageCover.tsx",
     "frontend/src/me/ProfileCard.tsx",
     "frontend/src/me/__tests__/myPageCoverTripCount.test.tsx",
