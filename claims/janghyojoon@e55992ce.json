@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1379",
+  "intent": "마이페이지·유저 프로필 통합 — 커버 잘림 · 「내 기록」 줄 · 모바일 기록|설정 세그먼트",
+  "actor": "agent",
+  "session": "e976e1f0-989e-4aee-8fe2-f873709f55d8",
+  "since": "2026-09-20T23:24:44.890Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/app/user/[id].tsx",
+    "frontend/src/me/MyPageCover.tsx",
+    "frontend/src/me/ProfileCard.tsx",
+    "frontend/tools/check-palette.mjs"
+  ]
+}
