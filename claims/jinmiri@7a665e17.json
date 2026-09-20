@@ -1,13 +1,14 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1376",
-  "intent": "환율 통화 목록 — 여행객이 쓰는 통화를 앞에(USD·JPY·CNY·TWD…), 나머지는 뒤에",
+  "intent": "여행 카드 「예정」 배지가 지난 여행에도 붙던 것 — 날짜로 상태를 바로잡는다",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-20T21:58:42.175Z",
+  "since": "2026-09-20T22:03:34.849Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/questions.tsx",
+    "frontend/app/(tabs)/trips.tsx",
     "frontend/app/(trip)/[id]/prepare.tsx",
     "frontend/app/__tests__",
     "frontend/app/field/exchange-rate.tsx",
@@ -26,6 +27,7 @@
     "frontend/src/plan/questionState.ts",
     "frontend/src/trip/__tests__",
     "frontend/src/trip/tripNaming.ts",
+    "frontend/src/trip/tripStatus.ts",
     "frontend/src/trip/weather.ts"
   ]
 }
