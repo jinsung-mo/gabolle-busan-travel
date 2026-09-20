@@ -1,0 +1,20 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1377",
+  "intent": "문항 열 장 → 세 장(기본·취향·세부)",
+  "actor": "agent",
+  "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
+  "since": "2026-09-20T22:23:14.817Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/questions.tsx",
+    "frontend/app/__tests__",
+    "frontend/docs/design_handoff_brand_first_run/captures",
+    "frontend/src/home/__tests__/setDatesRoute.test.ts",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/plan/PlanStepperParts.tsx",
+    "frontend/src/plan/__tests__",
+    "frontend/src/plan/planQuestions.ts",
+    "frontend/src/plan/questionState.ts"
+  ]
+}
