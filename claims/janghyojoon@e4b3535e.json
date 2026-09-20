@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1365",
+  "intent": "진짜 PostgreSQL 에서 실태조사 접근성 표식이 실제로 붙는지 확인",
+  "actor": "agent",
+  "session": "7d55e1f6-6c7c-45b5-8d71-2caf02995a0e",
+  "since": "2026-09-20T16:15:20.102Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/place/FacilityAccessibilityLoaderIntegrationTest.java"
+  ]
+}
