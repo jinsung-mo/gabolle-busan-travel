@@ -1,0 +1,15 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1348",
+  "intent": "일정 이름이 언제나 한국어이고 사용자가 붙인 이름을 무시하던 것을 고친다 (S15P21E201-1348)",
+  "actor": "agent",
+  "session": "52e839d7-aa42-45c3-960b-a10b8a31c6c0",
+  "since": "2026-09-20T07:36:59.237Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
+    "backend/src/main/java/com/gabolle/backend/share/application/SharedItineraryAssembler.java",
+    "backend/src/main/java/com/gabolle/backend/trip/domain/Trip.java",
+    "backend/src/test/java/com/gabolle/backend/trip/TripDisplayTitleTest.java"
+  ]
+}
