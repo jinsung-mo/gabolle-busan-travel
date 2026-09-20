@@ -1,0 +1,19 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1354",
+  "intent": "이름·장소가 끼는 문구를 번역표에 올린다 (3/3 일정·여행·홈·장소) — S15P21E201-1354",
+  "actor": "agent",
+  "session": "5b352b1b-4388-40d4-a7fd-0251ae9098e2",
+  "since": "2026-09-20T07:36:35.985Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(trip)/[id]/map.tsx",
+    "frontend/app/(trip)/[id]/prepare.tsx",
+    "frontend/app/s/[token].tsx",
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/src/discovery/places.ts",
+    "frontend/src/home/HomeBlocks.tsx",
+    "frontend/src/i18n",
+    "frontend/src/plan/CourseCard.tsx"
+  ]
+}
