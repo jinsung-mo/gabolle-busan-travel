@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1349",
+  "intent": "채팅에서 답이 와도 맨 아래로 안 내려가 「일정에 적용」 단추가 숨는 것을 고친다",
+  "actor": "agent",
+  "session": "52e839d7-aa42-45c3-960b-a10b8a31c6c0",
+  "since": "2026-09-20T07:18:43.665Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/chat.tsx"
+  ]
+}
