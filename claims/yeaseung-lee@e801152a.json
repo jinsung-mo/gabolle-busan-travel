@@ -1,0 +1,14 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1345",
+  "intent": "「지금 갈 곳」이 지어낸 장소를 추천하던 것을 진짜 주변 장소로 바꾼다 — S15P21E201-1345",
+  "actor": "agent",
+  "session": "5b352b1b-4388-40d4-a7fd-0251ae9098e2",
+  "since": "2026-09-20T03:35:57.299Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/now.tsx",
+    "frontend/src/plan/__tests__/nowRecommendations.test.ts",
+    "frontend/src/plan/nowRecommendations.ts"
+  ]
+}
