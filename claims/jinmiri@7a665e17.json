@@ -1,0 +1,23 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1367",
+  "intent": "인용 버튼 · 내 기록 갈래 · 여행 카드 상태 · 현장 말하기 발음 · 환율 국기",
+  "actor": "agent",
+  "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
+  "since": "2026-09-20T16:40:33.030Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/feed.tsx",
+    "frontend/app/(tabs)/trips.tsx",
+    "frontend/app/feed/[id].tsx",
+    "frontend/app/field/exchange-rate.tsx",
+    "frontend/src/components/PlacePhraseBrowser.tsx",
+    "frontend/src/field/CurrencyBadge.tsx",
+    "frontend/src/field/placePhrases.ts",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/social/StoryReactionRow.tsx",
+    "frontend/src/social/stories.ts",
+    "frontend/src/trip/__tests__/tripStatus.test.ts",
+    "frontend/src/trip/tripStatus.ts"
+  ]
+}
