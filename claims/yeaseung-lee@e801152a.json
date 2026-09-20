@@ -1,0 +1,16 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1344",
+  "intent": "값이 끼는 문구(「예시 · 출처」 등)가 일본어·중국어에서 영원히 영어로 떨어지던 것을 고친다 — 번역표에 자릿수 틀을 넣는다",
+  "actor": "agent",
+  "session": "5b352b1b-4388-40d4-a7fd-0251ae9098e2",
+  "since": "2026-09-20T03:03:51.898Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/field/menu-scan.tsx",
+    "frontend/src/discovery/categoryStand.ts",
+    "frontend/src/i18n/__tests__/interpolatedTx.test.ts",
+    "frontend/src/i18n/index.ts",
+    "frontend/src/i18n/translations.ts"
+  ]
+}
