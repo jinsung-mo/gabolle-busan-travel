@@ -1,0 +1,18 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1361",
+  "intent": "「메뉴는 아직 영어로 나와요」 안내 제거 — 다섯 언어 전부 번역됨",
+  "actor": "agent",
+  "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
+  "since": "2026-09-20T16:09:43.677Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/index.tsx",
+    "frontend/src/home/PlanStartBar.tsx",
+    "frontend/src/i18n/__tests__/koreanLeak.test.ts",
+    "frontend/src/i18n/__tests__/languages.test.ts",
+    "frontend/src/i18n/languages.ts",
+    "frontend/src/me/AppLanguageSetting.tsx",
+    "frontend/src/me/__tests__/AppLanguageSetting.test.tsx"
+  ]
+}
