@@ -1,0 +1,18 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1353",
+  "intent": "이름이 끼는 문구를 번역표에 올린다 (2/3 피드·소셜·마이페이지) — S15P21E201-1353",
+  "actor": "agent",
+  "session": "5b352b1b-4388-40d4-a7fd-0251ae9098e2",
+  "since": "2026-09-20T07:24:20.156Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/feed.tsx",
+    "frontend/app/(trip)/[id]/collaborate.tsx",
+    "frontend/app/collection/[id].tsx",
+    "frontend/app/feed",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/me",
+    "frontend/src/social/BlockUserDialog.tsx"
+  ]
+}
