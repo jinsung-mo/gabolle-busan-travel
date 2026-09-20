@@ -1,13 +1,14 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1376",
-  "intent": "서버가 이름 없는 일정에 「2026-09-21 ~ 2026-09-23」를 제목으로 주는 것 — 이름 없음으로 다룬다",
+  "intent": "출발 3일 넘게 남은 여행의 예보 400 을 「가져오지 못했습니다」로 보여 주던 것 — 범위 밖이라고 말한다",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-20T21:49:02.952Z",
+  "since": "2026-09-20T21:55:39.167Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/questions.tsx",
+    "frontend/app/(trip)/[id]/prepare.tsx",
     "frontend/app/__tests__",
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/docs/design_handoff_brand_first_run/captures",
@@ -22,6 +23,7 @@
     "frontend/src/plan/planQuestions.ts",
     "frontend/src/plan/questionState.ts",
     "frontend/src/trip/__tests__",
-    "frontend/src/trip/tripNaming.ts"
+    "frontend/src/trip/tripNaming.ts",
+    "frontend/src/trip/weather.ts"
   ]
 }
