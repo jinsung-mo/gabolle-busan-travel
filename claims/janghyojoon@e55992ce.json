@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1369",
-  "intent": "날씨를 상단 바로 옮기면서 — 날씨 문구 부품과 날씨 질의 훅이 이 둘에 있었다",
+  "intent": "시트 도입으로 소스 글자가 바뀐 시험 — 의도는 지키고 기준점을 옮긴다",
   "actor": "agent",
   "session": "e976e1f0-989e-4aee-8fe2-f873709f55d8",
-  "since": "2026-09-20T16:51:54.914Z",
+  "since": "2026-09-20T16:56:57.418Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
@@ -13,6 +13,7 @@
     "frontend/src/home/HomeBlocks.tsx",
     "frontend/src/home/HomeRow.tsx",
     "frontend/src/home/PlanStartBar.tsx",
+    "frontend/src/home/__tests__/setDatesRoute.test.ts",
     "frontend/src/home/useHomeData.ts",
     "frontend/src/nav/TopNav.tsx"
   ]
