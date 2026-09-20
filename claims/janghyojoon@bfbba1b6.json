@@ -1,13 +1,15 @@
 {
   "agent": "janghyojoon",
-  "task": null,
-  "intent": "편의시설 182쪽을 우리 장소에 이름으로 붙여 실제 몇 곳인지 잰다 (좌표는 확인용으로만)",
+  "task": "S15P21E201-1364",
+  "intent": "수집기 주석 정정 + 가공기 둘을 기능 브랜치에 커밋",
   "actor": "agent",
   "session": "f94a4082-b8a6-4edc-a329-aa06a2d5274e",
-  "since": "2026-09-20T15:31:51.279Z",
+  "since": "2026-09-20T15:40:00.943Z",
   "ttlMs": 2700000,
   "paths": [
+    "bigData/collect/tourapi-en.mjs",
     "bigData/data/staged/facility-matched.ndjson",
-    "bigData/process/facility-match.mjs"
+    "bigData/process/facility-match.mjs",
+    "bigData/process/place-i18n.mjs"
   ]
 }
