@@ -1,0 +1,14 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1350",
+  "intent": "「날짜 정하기」가 홈으로만 튕기던 것 — 시작 바를 열린 채로 열고 문항으로 돌아오게 한다",
+  "actor": "agent",
+  "session": "52e839d7-aa42-45c3-960b-a10b8a31c6c0",
+  "since": "2026-09-20T07:26:09.196Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/questions.tsx",
+    "frontend/src/home/PlanStartBar.tsx",
+    "frontend/src/home/startBarValue.ts"
+  ]
+}
