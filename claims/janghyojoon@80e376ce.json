@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1383",
-  "intent": "적재기가 이미 있는 행을 건너뛴다 — 비어 있는 갈래만 채우는 좁은 변경 메서드를 넣는다 (있는 값은 안 덮는다)",
+  "intent": "이미 들어와 있는 장소의 빈 갈래를 적재가 채우는지, 이미 있는 값은 안 덮는지 시험한다",
   "actor": "agent",
   "session": "eb812c9c-0058-43e0-91d9-ab17c6317d7f",
-  "since": "2026-09-21T00:28:53.404Z",
+  "since": "2026-09-21T00:30:05.687Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/place/domain/AccommodationCategories.java",
@@ -13,6 +13,7 @@
     "backend/src/main/java/com/gabolle/backend/place/service/PlaceCandidateQueryService.java",
     "backend/src/test/java/com/gabolle/backend/place/AccommodationNotInCandidatesTest.java",
     "backend/src/test/java/com/gabolle/backend/place/AccommodationQueryIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/place/TourApiCategoryBackfillTest.java",
     "backend/src/test/java/com/gabolle/backend/place/loader",
     "backend/src/test/java/com/gabolle/backend/place/service"
   ]
