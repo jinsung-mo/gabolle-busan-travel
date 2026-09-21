@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1377",
-  "intent": "세 장 흐름에 맞춰 e2e 클릭 순서 갱신",
+  "task": "S15P21E201-1381",
+  "intent": "넓은 화면 마이페이지 커버 사진이 바탕 뒤로 가던 것 — 같은 쌓임 문맥 버그",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T00:50:08.360Z",
+  "since": "2026-09-21T01:20:34.488Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(auth)/sign-in.tsx",
@@ -25,6 +25,7 @@
     "frontend/src/i18n/__tests__",
     "frontend/src/i18n/korean.ts",
     "frontend/src/i18n/translations.ts",
+    "frontend/src/me/MyPageCover.tsx",
     "frontend/src/me/panels/NotificationsBody.tsx",
     "frontend/src/nav/TopNav.tsx",
     "frontend/src/notifications",
