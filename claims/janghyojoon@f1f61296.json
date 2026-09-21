@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1467",
-  "intent": "넓은 화면 — 일차 칩 · 전면 지도 · 하단 스트립",
+  "task": "S15P21E201-1471",
+  "intent": "실패 문구가 어느 조건 때문인지 짚어 준다",
   "actor": null,
   "session": "db8f38ee-5049-49bc-8631-909e96197be6",
-  "since": "2026-09-21T17:27:14.006Z",
+  "since": "2026-09-21T17:28:28.740Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/trips/[id]/itinerary.tsx",
