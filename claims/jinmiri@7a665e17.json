@@ -1,14 +1,15 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1431",
-  "intent": "내 근처 정렬 (S15P21E201-1431)",
+  "intent": "여행 만들기 취향 카테고리 카드에 사진 — 글자만이라 가독성 낮음 (티켓 번호는 Jira 복구 뒤)",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T08:56:51.558Z",
+  "since": "2026-09-21T09:30:55.719Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app.json",
     "frontend/app/(auth)/sign-in.tsx",
+    "frontend/app/(plan)/questions.tsx",
     "frontend/app/(tabs)/feed.tsx",
     "frontend/app/(tabs)/home.tsx",
     "frontend/app/(tabs)/me.tsx",
@@ -23,6 +24,7 @@
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/assets/audio",
     "frontend/assets/notification-icon.png",
+    "frontend/assets/taste/thumb",
     "frontend/docs/design_handoff_brand_first_run/captures",
     "frontend/src/assistant/__tests__",
     "frontend/src/assistant/assistantApi.ts",
@@ -38,6 +40,8 @@
     "frontend/src/me/panels/MyPostsBody.tsx",
     "frontend/src/notifications/__tests__",
     "frontend/src/notifications/pushToken.ts",
+    "frontend/src/plan/PlanStepperParts.tsx",
+    "frontend/src/plan/planOptions.ts",
     "frontend/src/social/__tests__",
     "frontend/src/social/nearby.ts"
   ]
