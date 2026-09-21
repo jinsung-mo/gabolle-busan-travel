@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1446",
+  "intent": "첫 실행 코치마크 단추가 화면 밖으로 밀리던 것 — 아래가 모자라면 시작 바 위에 놓는다",
+  "actor": "agent",
+  "session": "bf3e77e0-ca50-483a-b5ab-f9f375c74606",
+  "since": "2026-09-21T12:55:48.009Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/onboarding/HomeCoach.tsx"
+  ]
+}
