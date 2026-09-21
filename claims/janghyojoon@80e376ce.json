@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1383",
+  "intent": "숙박(관광공사 대분류 B02) 65곳에 갈래값 LODGING 을 넣는다 — TourApiCategory·TourApiExploreFacet 과 그 시험 둘",
+  "actor": "agent",
+  "session": "eb812c9c-0058-43e0-91d9-ab17c6317d7f",
+  "since": "2026-09-21T00:17:38.198Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/loader",
+    "backend/src/test/java/com/gabolle/backend/place/loader"
+  ]
+}
