@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1446",
+  "intent": "앱스토어 제출 — 아이패드 지원을 끈다(아이폰 전용). supportsTablet 한 칸",
+  "actor": "agent",
+  "session": "4345be27-4bbe-47d6-b77b-c0738b25e19f",
+  "since": "2026-09-21T12:55:11.793Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app.json"
+  ]
+}
