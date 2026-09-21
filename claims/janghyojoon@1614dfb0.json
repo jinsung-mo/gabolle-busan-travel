@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1424",
+  "intent": "한국어 이름만 있는 장소를 「이름 없음」으로 버리던 것을 고친다 — name 다음에 name:ko 를 본다",
+  "actor": "agent",
+  "session": "19144035-b819-469e-85b6-d544100d5b6f",
+  "since": "2026-09-21T07:33:13.258Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/loader/OsmPoiReader.java",
+    "backend/src/test/java/com/gabolle/backend/place/OsmPlaceLoaderTest.java"
+  ]
+}
