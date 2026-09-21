@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1384",
+  "intent": "TourAPI 비식품 갈래를 후보에 덧붙인다 (음식 선정 로직은 안 건드림)",
+  "actor": "agent",
+  "session": "982e004e-033f-4ca8-a6eb-0d59bc090107",
+  "since": "2026-09-21T00:19:28.199Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/process/select-2000.mjs"
+  ]
+}
