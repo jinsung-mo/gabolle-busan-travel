@@ -1,0 +1,12 @@
+{
+  "agent": "s15p21e201-front",
+  "task": "S15P21E201-1455",
+  "intent": "구간별 선으로 바뀐 것 반영",
+  "actor": null,
+  "session": "db8f38ee-5049-49bc-8631-909e96197be6",
+  "since": "2026-09-21T13:36:03.922Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/plan/__tests__/courseMap.test.ts"
+  ]
+}
