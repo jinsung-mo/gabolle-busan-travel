@@ -1,0 +1,12 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "landscape-no-nav",
+  "intent": "아이폰 가로에서 탭바·상단바가 둘 다 사라지던 것 — TabBar 숨김 기준을 TopNav 와 같은 kind 로",
+  "actor": "agent",
+  "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
+  "since": "2026-09-21T08:46:51.163Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/components/TabBar.tsx"
+  ]
+}
