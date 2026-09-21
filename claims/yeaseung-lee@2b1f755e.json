@@ -1,12 +1,13 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1391",
-  "intent": "1391 2단계 — 여행 활동(일정 생성 완료·동행 편집·초대 수락·역할 변경) 때 Expo Push 전송",
+  "intent": "1391 — 탈퇴는 app_user 를 익명화만 하므로 push_token 의 ON DELETE CASCADE 가 안 도는 것을 고친다",
   "actor": "agent",
   "session": "4345be27-4bbe-47d6-b77b-c0738b25e19f",
-  "since": "2026-09-21T10:29:39.817Z",
+  "since": "2026-09-21T10:40:36.897Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/src/main/java/com/gabolle/backend/auth/service/AccountDeletionService.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryEditService.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/domain/ItineraryChangedByMember.java",
@@ -27,6 +28,7 @@
     "backend/src/main/java/com/gabolle/backend/trip/domain/TripMemberJoined.java",
     "backend/src/main/java/com/gabolle/backend/trip/domain/TripMemberRoleChanged.java",
     "backend/src/main/resources/db/migration/V20260921130000__push_token.sql",
+    "backend/src/test/java/com/gabolle/backend/auth/AccountDeletionTableInventoryTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryDraftServiceTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryVersionConflictTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryVersionRaceTest.java",
