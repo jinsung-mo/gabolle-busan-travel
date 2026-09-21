@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1340",
-  "intent": "1340 값이 끼어든 문구 txf 전환 + 표에 빠진 문구 채움 + 앱 전체 번역표 검사 CI",
+  "intent": "1340 — 오류 경계 화면이 일본어·중국어에서 영어로 뜨던 것(고른 언어를 훅 밖에서도 읽게)",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T11:21:15.679Z",
+  "since": "2026-09-21T11:38:53.490Z",
   "ttlMs": 2700000,
   "paths": [
     "ci/parts/frontend.yml",
@@ -13,9 +13,12 @@
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/app/trips/[id]/recommendations.tsx",
     "frontend/package.json",
+    "frontend/src/components/AppErrorBoundary.tsx",
     "frontend/src/home/PlanStartBar.tsx",
     "frontend/src/i18n/format.ts",
+    "frontend/src/i18n/languages.ts",
     "frontend/src/i18n/translations.ts",
+    "frontend/src/onboarding/OnboardingPreferences.tsx",
     "frontend/tools/check-menu-translations.mjs",
     "frontend/tools/check-translations.mjs"
   ]
