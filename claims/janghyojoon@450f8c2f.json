@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1414",
+  "intent": "가격조사 청크9 (인덱스 400~449)",
+  "actor": null,
+  "session": "7de0a1a7-77df-4003-ac55-32685d992790",
+  "since": "2026-09-21T21:49:24.132Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/research/data/combined-results/chunk-9"
+  ]
+}
