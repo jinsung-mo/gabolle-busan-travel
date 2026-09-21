@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1433",
+  "intent": "OSM 장소 추출본이 노트북 한 대에만 있다 — 예외와 이유를 달아 커밋한다",
+  "actor": "agent",
+  "session": "eb812c9c-0058-43e0-91d9-ab17c6317d7f",
+  "since": "2026-09-21T08:48:49.592Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/.gitignore",
+    "bigData/data/raw/pbf/poi.ndjson"
+  ]
+}
