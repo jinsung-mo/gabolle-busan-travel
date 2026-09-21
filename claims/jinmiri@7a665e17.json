@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1398",
+  "intent": "웹 로그인 왼쪽 판에 부산 바다 가로 영상 (S15P21E201-1398)",
+  "actor": "agent",
+  "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
+  "since": "2026-09-21T05:29:59.058Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(auth)/sign-in.tsx",
+    "frontend/docs/design_handoff_brand_first_run/captures",
+    "frontend/src/components/ScenicVideo.tsx"
+  ]
+}
