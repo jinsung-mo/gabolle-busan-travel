@@ -1,14 +1,15 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1414",
-  "intent": "2,355곳 전수 가격 조사 — 재개 가능한 체크포인트 러너",
+  "intent": "가격 조사 JSON 스키마",
   "actor": "agent",
   "session": "982e004e-033f-4ca8-a6eb-0d59bc090107",
-  "since": "2026-09-21T06:22:01.490Z",
+  "since": "2026-09-21T06:25:26.675Z",
   "ttlMs": 2700000,
   "paths": [
     "bigData/process/lowfloor-bus-normalize.mjs",
     "bigData/process/subway-elevator-feature.mjs",
-    "bigData/research/price-queue.mjs"
+    "bigData/research/price-queue.mjs",
+    "bigData/research/price-schema.json"
   ]
 }
