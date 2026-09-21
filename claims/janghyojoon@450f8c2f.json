@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1414",
+  "intent": null,
+  "actor": null,
+  "session": "7de0a1a7-77df-4003-ac55-32685d992790",
+  "since": "2026-09-21T16:03:41.854Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/research/price-queue.mjs"
+  ]
+}
