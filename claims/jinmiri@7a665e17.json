@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1422",
-  "intent": "부산 사투리 한마디 독립 화면 + 챗봇 2×2 교체(환율·버스·사투리·도움말) + 가짜 준비물 제거 (S15P21E201-1422)",
+  "intent": "1422 캡처 (S15P21E201-1422)",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T07:33:44.713Z",
+  "since": "2026-09-21T07:49:51.220Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(trip)/[id]/prepare.tsx",
@@ -13,6 +13,7 @@
     "frontend/app/field/translate.tsx",
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/assets/audio",
+    "frontend/docs/design_handoff_brand_first_run/captures",
     "frontend/src/assistant/intent.ts",
     "frontend/src/discovery/DialectFlashcards.tsx",
     "frontend/src/discovery/dialectPhrases.ts",
