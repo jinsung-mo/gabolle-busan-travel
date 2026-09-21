@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1467",
-  "intent": "접힘 애니메이션 · 스트립 넘침 처리",
+  "intent": "스트립 양끝 페이드",
   "actor": null,
   "session": "db8f38ee-5049-49bc-8631-909e96197be6",
-  "since": "2026-09-21T23:19:10.979Z",
+  "since": "2026-09-21T23:23:37.838Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/trips/[id]/recommendations.tsx",
