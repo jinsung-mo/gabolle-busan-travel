@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1424",
+  "intent": "OSM 부산 장소를 place 표에 적재한다 — 카카오를 저장할 수 없으니 저장해도 되는 자료로 폭을 넓힌다",
+  "actor": "agent",
+  "session": "19144035-b819-469e-85b6-d544100d5b6f",
+  "since": "2026-09-21T07:25:20.586Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/loader",
+    "backend/src/test/java/com/gabolle/backend/place"
+  ]
+}
