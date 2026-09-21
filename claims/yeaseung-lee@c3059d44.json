@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1390",
+  "intent": "로그인 상태 홈 헤더에서 알림 종이 날씨 칩에 밀려 폭 4px 로 찌부러지는 것 수정",
+  "actor": "agent",
+  "session": "52e839d7-aa42-45c3-960b-a10b8a31c6c0",
+  "since": "2026-09-21T05:37:08.538Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx"
+  ]
+}
