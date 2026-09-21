@@ -1,12 +1,13 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1475",
-  "intent": "1475 정정 — 알약이 왼쪽으로 쏠린 것을 되돌리고, 가로에서는 상한을 화면 폭에 맞춘다",
+  "intent": "1475 가로·세로 확인 캡처 두 장을 남긴다",
   "actor": "agent",
   "session": "bf3e77e0-ca50-483a-b5ab-f9f375c74606",
-  "since": "2026-09-21T22:06:46.672Z",
+  "since": "2026-09-21T22:11:17.647Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/docs/design_handoff_brand_first_run/captures",
     "frontend/src/components/TabBar.tsx",
     "frontend/src/components/__tests__/safeAreaLayout.test.ts"
   ]
