@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1444",
+  "intent": "진미리 님 !1399(1444 기록 달력)의 front/dev 충돌을 푼다 — 충돌 양쪽이 내 변경이다",
+  "actor": "agent",
+  "session": "bf3e77e0-ca50-483a-b5ab-f9f375c74606",
+  "since": "2026-09-21T21:34:44.212Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/src/i18n/translations.ts"
+  ]
+}
