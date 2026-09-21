@@ -1,13 +1,14 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1342",
-  "intent": "서버 원문·칸 이름·오류 코드가 사용자 화면에 그대로 새던 것 (S15P21E201-1342 의 절반)",
+  "intent": "탭바로 들어오면 출발지를 묻는 자리가 없어 일정이 안 만들어지던 것 (S15P21E201-1342 나머지 절반)",
   "actor": "agent",
   "session": "52e839d7-aa42-45c3-960b-a10b8a31c6c0",
-  "since": "2026-09-21T01:12:49.279Z",
+  "since": "2026-09-21T03:04:42.554Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/src/api/__tests__/errorTextFields.test.ts",
-    "frontend/src/api/errorText.ts"
+    "frontend/app/(plan)/questions.tsx",
+    "frontend/src/plan/__tests__/originRequired.test.ts",
+    "frontend/src/plan/planQuestions.ts"
   ]
 }
