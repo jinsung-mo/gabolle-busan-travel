@@ -1,12 +1,13 @@
 {
   "agent": "ahwlstjd57",
-  "task": "S15P21E201-camera-permission",
-  "intent": "메뉴판 스캔이 카메라를 부르는데 권한 안내 문구가 없어 영어 기본 문장이 뜨던 것 — 한국어 문구를 넣는다",
+  "task": "S15P21E201-native-audit",
+  "intent": "일정 시작 시트가 Modal이 아니라 View라 안드로이드 하드웨어 뒤로가기를 안 삼키던 것 — BackHandler/ESC 추가",
   "actor": "agent",
   "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
-  "since": "2026-09-21T05:55:45.465Z",
+  "since": "2026-09-21T06:39:11.621Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app.json"
+    "frontend/app.json",
+    "frontend/src/home/PlanStartBar.tsx"
   ]
 }
