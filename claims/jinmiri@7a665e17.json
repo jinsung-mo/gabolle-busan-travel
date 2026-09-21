@@ -1,0 +1,17 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1444",
+  "intent": "1444 마이페이지 기록을 달력으로 — 격자|달력, 지역·#태그 칩",
+  "actor": "agent",
+  "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
+  "since": "2026-09-21T12:07:46.356Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/docs/design_handoff_brand_first_run/captures/1444-records-calendar.jpg",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/me/RecordsBrowser.tsx",
+    "frontend/src/me/__tests__/recordsBrowse.test.ts",
+    "frontend/src/me/recordsBrowse.ts"
+  ]
+}
