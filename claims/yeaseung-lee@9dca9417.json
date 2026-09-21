@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1430",
+  "intent": "달력 날짜가 요일과 어긋나는 것 — 한 줄에 6칸씩 접힘. 주 단위 줄로 묶는다",
+  "actor": "agent",
+  "session": "bf3e77e0-ca50-483a-b5ab-f9f375c74606",
+  "since": "2026-09-21T08:54:28.646Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/home/PlanStartBar.tsx",
+    "frontend/src/home/__tests__/monthGrid.test.ts"
+  ]
+}
