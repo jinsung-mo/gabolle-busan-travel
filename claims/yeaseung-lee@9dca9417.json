@@ -1,12 +1,14 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1448",
-  "intent": "코치마크 설명 덩이 자리 판정을 기기 크기별로 재는 시험",
+  "task": "S15P21E201-1449",
+  "intent": "환율 화면에 100단위 고시 통화의 기준 단위를 함께 적는다",
   "actor": "agent",
   "session": "bf3e77e0-ca50-483a-b5ab-f9f375c74606",
-  "since": "2026-09-21T12:59:09.397Z",
+  "since": "2026-09-21T13:03:47.215Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/field/exchange-rate.tsx",
+    "frontend/src/i18n/translations.ts",
     "frontend/src/onboarding/HomeCoach.tsx",
     "frontend/src/onboarding/__tests__/homeCoachPlacement.test.ts"
   ]
