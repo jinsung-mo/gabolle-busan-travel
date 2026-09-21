@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1460",
+  "intent": "승차권 맨 아래 힌트 글자가 종이 밖으로 보이던 것 — 종이 배경을 준다",
+  "actor": "agent",
+  "session": "34fd95a5-b6a1-4fc9-8643-4908dec2cdfd",
+  "since": "2026-09-21T14:05:38.348Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/plan/TripPass.tsx"
+  ]
+}
