@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1422",
-  "intent": "1422 캡처 (S15P21E201-1422)",
+  "task": "S15P21E201-1427",
+  "intent": "동백이 챗봇 호출에 실제 언어(ja·zh) 싣기 (S15P21E201-1427)",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T07:49:51.220Z",
+  "since": "2026-09-21T07:54:05.970Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(trip)/[id]/prepare.tsx",
@@ -14,6 +14,8 @@
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/assets/audio",
     "frontend/docs/design_handoff_brand_first_run/captures",
+    "frontend/src/assistant/__tests__",
+    "frontend/src/assistant/assistantApi.ts",
     "frontend/src/assistant/intent.ts",
     "frontend/src/discovery/DialectFlashcards.tsx",
     "frontend/src/discovery/dialectPhrases.ts",
