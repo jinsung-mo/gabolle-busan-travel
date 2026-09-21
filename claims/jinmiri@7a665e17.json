@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1381",
-  "intent": "시안 5 마지막 손질 — 사진(일정·승차권·여행 카드) · 웹 로그인 왼쪽 판 · AI 단추 흰 원 · 현장 도구·AI 화면에 연한 동백빛",
+  "task": "S15P21E201-1385",
+  "intent": "「일정 물어보기」 단추 이름 복구 — e2e 가 못 찾던 것",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T00:09:58.497Z",
+  "since": "2026-09-21T00:25:38.490Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(auth)/sign-in.tsx",
@@ -21,6 +21,7 @@
     "frontend/docs/design_handoff_brand_first_run/captures",
     "frontend/src/design/tokens.ts",
     "frontend/src/home/AssistantMenu.tsx",
+    "frontend/src/home/PlanStartBar.tsx",
     "frontend/src/i18n/__tests__",
     "frontend/src/i18n/korean.ts",
     "frontend/src/i18n/translations.ts",
