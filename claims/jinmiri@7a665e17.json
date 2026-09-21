@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1431",
-  "intent": "피드를 시안 4 02a/02b 처럼 — 실시간 인기·맞춤 추천·내 피드, 1·2·3위, 전체/내 근처 (S15P21E201-1431)",
+  "intent": "내 근처 정렬 (S15P21E201-1431)",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T08:44:11.610Z",
+  "since": "2026-09-21T08:56:51.558Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app.json",
@@ -38,6 +38,7 @@
     "frontend/src/me/panels/MyPostsBody.tsx",
     "frontend/src/notifications/__tests__",
     "frontend/src/notifications/pushToken.ts",
-    "frontend/src/social/__tests__"
+    "frontend/src/social/__tests__",
+    "frontend/src/social/nearby.ts"
   ]
 }
