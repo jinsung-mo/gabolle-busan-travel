@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1400",
-  "intent": "승차권 비행기 방향·가짜 바코드·젖힘·도장·첫 일정 잘림, 일정 마지막 붉은 세로줄 (S15P21E201-1400)",
+  "intent": "승차권 「첫 일정」 칸 온 칸 표시 (S15P21E201-1400)",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T05:38:30.769Z",
+  "since": "2026-09-21T05:51:26.425Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(auth)/sign-in.tsx",
@@ -12,6 +12,7 @@
     "frontend/docs/design_handoff_brand_first_run/captures",
     "frontend/src/components/ScenicVideo.tsx",
     "frontend/src/plan/TripPass.tsx",
-    "frontend/src/plan/__tests__/tripPassFlip.test.tsx"
+    "frontend/src/plan/__tests__/tripPassFlip.test.tsx",
+    "frontend/src/plan/tripPassData.ts"
   ]
 }
