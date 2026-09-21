@@ -1,13 +1,14 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1411",
-  "intent": "피드 「추천」 갈래·「인기순」 정렬을 서버 1368 에 붙이고 대체 안내 (S15P21E201-1411)",
+  "task": "S15P21E201-1415",
+  "intent": "03b 생성 중 화면을 시안 5 대로 — 동백이 대기 화면, 만드는 동안 빈 승차권 숨김 (S15P21E201-1415)",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T06:20:19.659Z",
+  "since": "2026-09-21T06:26:10.975Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(auth)/sign-in.tsx",
+    "frontend/app/(plan)/generating.tsx",
     "frontend/app/(plan)/questions.tsx",
     "frontend/app/(tabs)/feed.tsx",
     "frontend/app/(tabs)/me.tsx",
