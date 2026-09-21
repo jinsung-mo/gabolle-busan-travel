@@ -1,12 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1414",
-  "intent": "가격조사 청크8 (인덱스 350~399)",
+  "intent": "청크8 결과 커밋",
   "actor": null,
   "session": "7de0a1a7-77df-4003-ac55-32685d992790",
-  "since": "2026-09-21T16:18:22.841Z",
-  "ttlMs": 1800000,
+  "since": "2026-09-21T16:41:11.585Z",
+  "ttlMs": 600000,
   "paths": [
+    "bigData/research/data/combined-results/MA010120220804472494.json",
+    "bigData/research/data/combined-results/MA010120220810613973.json",
     "bigData/research/data/combined-results/chunk-8"
   ]
 }
