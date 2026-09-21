@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1382",
+  "intent": "하루 동선을 거리 최소 순서로 다시 세운다 — OR-Tools 풀이기를 일정 생성에 연결한다 (순서만 바꾸고 장소는 안 뺀다)",
+  "actor": "agent",
+  "session": "19144035-b819-469e-85b6-d544100d5b6f",
+  "since": "2026-09-21T00:16:37.311Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application",
+    "backend/src/main/java/com/gabolle/backend/optimizer",
+    "backend/src/test/java/com/gabolle/backend/itinerary",
+    "backend/src/test/java/com/gabolle/backend/optimizer"
+  ]
+}
