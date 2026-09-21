@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1478",
+  "intent": "가격 적재를 막던 CHECK 목록에 두 종류를 더한다",
+  "actor": null,
+  "session": "db8f38ee-5049-49bc-8631-909e96197be6",
+  "since": "2026-09-21T22:23:23.227Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/docs/PLACE-DATA-LOAD.md",
+    "backend/src/main/resources/db/migration/V20260922080000__place_feature_price_narrative_types.sql"
+  ]
+}
