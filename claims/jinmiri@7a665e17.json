@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1340",
-  "intent": "1340 — pickLanguage 를 훅 없는 모듈로 떼어 순환 import 없이 오류 경계에서 쓴다",
+  "intent": "1340 증빙 캡처",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T11:39:56.631Z",
+  "since": "2026-09-21T11:44:31.088Z",
   "ttlMs": 2700000,
   "paths": [
     "ci/parts/frontend.yml",
@@ -12,6 +12,7 @@
     "frontend/app/s/[token].tsx",
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/docs/design_handoff_brand_first_run/captures/1340-ja-screens.jpg",
     "frontend/package.json",
     "frontend/src/components/AppErrorBoundary.tsx",
     "frontend/src/home/PlanStartBar.tsx",
