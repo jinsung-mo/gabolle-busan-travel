@@ -1,0 +1,12 @@
+{
+  "agent": "s15p21e201-front",
+  "task": "S15P21E201-1452",
+  "intent": "번역 카탈로그 채우기",
+  "actor": null,
+  "session": "db8f38ee-5049-49bc-8631-909e96197be6",
+  "since": "2026-09-21T14:01:28.800Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/i18n/translations.ts"
+  ]
+}
