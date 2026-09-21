@@ -1,0 +1,12 @@
+{
+  "agent": "s15p21e201-front",
+  "task": "S15P21E201-1464",
+  "intent": "솔버 예산 실측 기반으로 낮춤",
+  "actor": null,
+  "session": "db8f38ee-5049-49bc-8631-909e96197be6",
+  "since": "2026-09-21T15:19:06.460Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/optimizer/OrToolsRouteOrderAdapter.java"
+  ]
+}
