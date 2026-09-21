@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1467",
-  "intent": "front/dev 합치기 — 번역 카탈로그 충돌 해결",
+  "task": "S15P21E201-1468",
+  "intent": "실패 문구가 어느 조건 때문인지 짚어 준다",
   "actor": null,
   "session": "db8f38ee-5049-49bc-8631-909e96197be6",
-  "since": "2026-09-21T17:11:54.798Z",
+  "since": "2026-09-21T17:21:53.224Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/trips/[id]/itinerary.tsx",
@@ -12,6 +12,8 @@
     "frontend/src/components/__tests__/safeAreaLayout.test.ts",
     "frontend/src/i18n/translations.ts",
     "frontend/src/plan/CourseCard.tsx",
-    "frontend/src/plan/__tests__/courseCardLayout.test.ts"
+    "frontend/src/plan/__tests__/courseCardLayout.test.ts",
+    "frontend/src/plan/recommendationJob.test.ts",
+    "frontend/src/plan/recommendationJob.ts"
   ]
 }
