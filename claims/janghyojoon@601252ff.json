@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1425",
-  "intent": "/plan 설문 재설계 — 10→7문항·데스크톱 레일·fork/기억카드 제거 (S15P21E201-1425)",
+  "intent": "/plan 10→7문항 재설계에 맞춰 문항 수·삭제된 키(scales/moods/foods) 테스트 갱신 (S15P21E201-1425)",
   "actor": "agent",
   "session": "88ec17dc-9e45-46c4-bbab-26dd9789131d",
-  "since": "2026-09-21T07:36:15.137Z",
+  "since": "2026-09-21T07:45:15.369Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/questions.tsx",
+    "frontend/src/plan/__tests__/planQuestions.test.ts",
     "frontend/src/plan/planQuestions.ts"
   ]
 }
