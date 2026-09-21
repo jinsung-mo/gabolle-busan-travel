@@ -1,14 +1,15 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1467",
-  "intent": "코스 카드 콜라주 · 하단 바가 마지막 카드를 덮던 것",
+  "intent": "코스 바와 시트 · 고른 뒤 나머지 접기",
   "actor": null,
   "session": "db8f38ee-5049-49bc-8631-909e96197be6",
-  "since": "2026-09-21T16:55:24.380Z",
+  "since": "2026-09-21T17:10:33.570Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/trips/[id]/recommendations.tsx",
     "frontend/src/components/__tests__/safeAreaLayout.test.ts",
+    "frontend/src/i18n/translations.ts",
     "frontend/src/plan/CourseCard.tsx",
     "frontend/src/plan/__tests__/courseCardLayout.test.ts"
   ]
