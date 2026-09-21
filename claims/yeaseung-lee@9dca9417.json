@@ -1,13 +1,14 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1444",
-  "intent": "일정·추천 코스 화면의 하단 고정 줄이 탭바·시스템 탐색줄 뒤에 깔리는 것을 고친다",
+  "intent": "탭바·안전영역을 비우는 계산을 한 곳(bottomBarClearance)으로 모은다",
   "actor": "agent",
   "session": "bf3e77e0-ca50-483a-b5ab-f9f375c74606",
-  "since": "2026-09-21T12:32:21.991Z",
+  "since": "2026-09-21T12:35:28.315Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/trips/[id]/itinerary.tsx",
-    "frontend/app/trips/[id]/recommendations.tsx"
+    "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/src/components/TabBar.tsx"
   ]
 }
