@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1441",
+  "intent": "설문 재설계(1425) 뒤 한 장에 한 질문이 되어 깨진 core-journey e2e 를 새 흐름에 맞춘다",
+  "actor": "agent",
+  "session": "4345be27-4bbe-47d6-b77b-c0738b25e19f",
+  "since": "2026-09-21T10:04:23.917Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/tests/e2e/core-journey.spec.ts"
+  ]
+}
