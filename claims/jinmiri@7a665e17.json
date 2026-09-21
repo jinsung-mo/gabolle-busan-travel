@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1415",
-  "intent": "03b 생성 중 화면을 시안 5 대로 — 동백이 대기 화면, 만드는 동안 빈 승차권 숨김 (S15P21E201-1415)",
+  "task": "S15P21E201-1417",
+  "intent": "피드 추억 지도 위 한 줄만 그려짐 — 칸 크기 바뀌면 relayout (S15P21E201-1417)",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T06:26:10.975Z",
+  "since": "2026-09-21T06:43:08.230Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(auth)/sign-in.tsx",
@@ -17,6 +17,9 @@
     "frontend/src/api/client.ts",
     "frontend/src/components/ScenicVideo.tsx",
     "frontend/src/i18n/translations.ts",
+    "frontend/src/map/RouteMap.tsx",
+    "frontend/src/map/__tests__",
+    "frontend/src/map/kakaoMapHtml.ts",
     "frontend/src/me/myPanels.tsx",
     "frontend/src/me/panels/ProfileBody.tsx",
     "frontend/src/plan/TripPass.tsx",
