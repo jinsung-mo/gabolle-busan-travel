@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1381",
-  "intent": "넓은 화면 마이페이지 커버 사진이 바탕 뒤로 가던 것 — 같은 쌓임 문맥 버그",
+  "intent": "여행 카드 커버 사진 로더",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T01:20:34.488Z",
+  "since": "2026-09-21T01:27:53.206Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(auth)/sign-in.tsx",
@@ -35,6 +35,7 @@
     "frontend/src/plan/__tests__",
     "frontend/src/plan/placePhotos.ts",
     "frontend/src/plan/planQuestions.ts",
+    "frontend/src/plan/tripCover.ts",
     "frontend/tests/e2e/core-journey.spec.ts"
   ]
 }
