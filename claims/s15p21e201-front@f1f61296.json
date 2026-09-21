@@ -1,0 +1,12 @@
+{
+  "agent": "s15p21e201-front",
+  "task": "S15P21E201-1432",
+  "intent": "알약 색 결정 근거 주석",
+  "actor": null,
+  "session": "db8f38ee-5049-49bc-8631-909e96197be6",
+  "since": "2026-09-21T11:15:44.750Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/trips/[id]/itinerary.tsx"
+  ]
+}
