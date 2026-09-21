@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1388",
-  "intent": "「여행 기분」이 하루 곳 수를 정하게 한다 — pace 를 받아 trip 에 싣고 일정 생성이 읽는다",
+  "intent": "「여행 기분」 작업의 시험 — pace 를 임의 예시로 쓰던 시험 셋을 실제 어휘로 바꾸고 새 시험을 더한다",
   "actor": "agent",
   "session": "19144035-b819-469e-85b6-d544100d5b6f",
-  "since": "2026-09-21T02:39:49.541Z",
+  "since": "2026-09-21T02:54:12.607Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
@@ -12,6 +12,8 @@
     "backend/src/main/java/com/gabolle/backend/trip/domain/PreferenceDimensions.java",
     "backend/src/main/java/com/gabolle/backend/trip/domain/Trip.java",
     "backend/src/main/java/com/gabolle/backend/trip/infra",
-    "backend/src/main/resources/db/migration"
+    "backend/src/main/resources/db/migration",
+    "backend/src/test/java/com/gabolle/backend/itinerary",
+    "backend/src/test/java/com/gabolle/backend/trip"
   ]
 }
