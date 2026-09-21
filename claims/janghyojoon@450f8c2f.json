@@ -1,12 +1,17 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1414",
-  "intent": "가격조사 청크17 (인덱스 800~849)",
+  "intent": "청크17 결과 커밋",
   "actor": null,
   "session": "7de0a1a7-77df-4003-ac55-32685d992790",
-  "since": "2026-09-21T22:37:40.767Z",
-  "ttlMs": 1800000,
+  "since": "2026-09-21T22:58:25.816Z",
+  "ttlMs": 600000,
   "paths": [
+    "bigData/research/data/combined-results/MA010120220805513136.json",
+    "bigData/research/data/combined-results/MA010120220809904820.json",
+    "bigData/research/data/combined-results/MA010120220810134901.json",
+    "bigData/research/data/combined-results/MA010120220810696051.json",
+    "bigData/research/data/combined-results/MA010120220810723089.json",
     "bigData/research/data/combined-results/chunk-17"
   ]
 }
