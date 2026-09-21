@@ -8,8 +8,6 @@
   "ttlMs": 2700000,
   "paths": [
     "bigData/process/lowfloor-bus-normalize.mjs",
-    "bigData/process/subway-elevator-feature.mjs",
-    "bigData/research/price-queue.mjs",
-    "bigData/research/price-schema.json"
+    "bigData/process/subway-elevator-feature.mjs"
   ]
 }
