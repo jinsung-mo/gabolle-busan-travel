@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1414",
-  "intent": "가격 조사 JSON 스키마",
+  "intent": "스키마 파일 존재 확인 fail-fast, found:null 재시도 버그 수정",
   "actor": "agent",
   "session": "982e004e-033f-4ca8-a6eb-0d59bc090107",
-  "since": "2026-09-21T06:25:26.675Z",
+  "since": "2026-09-21T06:30:36.627Z",
   "ttlMs": 2700000,
   "paths": [
     "bigData/process/lowfloor-bus-normalize.mjs",
-    "bigData/process/subway-elevator-feature.mjs"
+    "bigData/process/subway-elevator-feature.mjs",
+    "bigData/research/price-queue.mjs"
   ]
 }
