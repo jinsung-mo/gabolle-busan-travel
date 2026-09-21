@@ -8,7 +8,6 @@
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/field/exchange-rate.tsx",
-    "frontend/src/i18n/translations.ts",
     "frontend/src/onboarding/HomeCoach.tsx",
     "frontend/src/onboarding/__tests__/homeCoachPlacement.test.ts"
   ]
