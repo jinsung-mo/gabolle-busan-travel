@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1387",
+  "intent": "「꼭 가고 싶은 장소」가 반경 밖이면 사라지던 것을 고친다 — 후보 풀에 끼워 넣고 이유 코드를 가른다",
+  "actor": "agent",
+  "session": "19144035-b819-469e-85b6-d544100d5b6f",
+  "since": "2026-09-21T00:53:15.590Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter",
+    "backend/src/test/java/com/gabolle/backend/recommendation"
+  ]
+}
