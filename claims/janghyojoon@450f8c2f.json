@@ -1,12 +1,19 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1414",
-  "intent": "가격조사 청크5 (인덱스 200~249)",
+  "intent": "청크5 결과 커밋",
   "actor": null,
   "session": "7de0a1a7-77df-4003-ac55-32685d992790",
-  "since": "2026-09-21T14:25:03.824Z",
-  "ttlMs": 1800000,
+  "since": "2026-09-21T14:26:01.875Z",
+  "ttlMs": 600000,
   "paths": [
+    "research/data/combined-results/MA010120220804431257.json",
+    "research/data/combined-results/MA010120220808169837.json",
+    "research/data/combined-results/MA010120220809783535.json",
+    "research/data/combined-results/MA010120220810797915.json",
+    "research/data/combined-results/MA010120220812327957.json",
+    "research/data/combined-results/MA0101202406A0429209.json",
+    "research/data/combined-results/MA0101202506A0035675.json",
     "research/data/combined-results/chunk-5"
   ]
 }
