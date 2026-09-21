@@ -1,0 +1,12 @@
+{
+  "agent": "s15p21e201-front",
+  "task": "S15P21E201-1455",
+  "intent": "지도 실측 그림 교체",
+  "actor": null,
+  "session": "db8f38ee-5049-49bc-8631-909e96197be6",
+  "since": "2026-09-21T13:58:12.127Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/docs/design_handoff_itinerary/captures"
+  ]
+}
