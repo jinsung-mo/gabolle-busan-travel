@@ -1,16 +1,23 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1442",
-  "intent": "여행 카테고리 카드 사진 (S15P21E201-1442)",
+  "task": "S15P21E201-1439",
+  "intent": "실기 결함 넷 — 출발지 뒤로가기 중복 화면(1439) · 시트 버튼 탐색줄 가림(1438) · 도장 날짜(1437) · 退会 번역(1440) · 코치마크 겹침(1403)",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T10:39:29.009Z",
+  "since": "2026-09-21T10:42:40.042Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/questions.tsx",
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/index.tsx",
+    "frontend/assets/brand",
     "frontend/assets/taste/thumb",
     "frontend/docs/design_handoff_brand_first_run/captures",
+    "frontend/src/home/PlanStartBar.tsx",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/onboarding/HomeCoach.tsx",
     "frontend/src/plan/PlanStepperParts.tsx",
+    "frontend/src/plan/TripPass.tsx",
     "frontend/src/plan/planOptions.ts"
   ]
 }
