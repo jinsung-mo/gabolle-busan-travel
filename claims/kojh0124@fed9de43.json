@@ -1,16 +1,13 @@
 {
   "agent": "kojh0124",
-  "task": "S15P21E201-1406",
-  "intent": "S15P21E201-1406 — 취향 벡터 덧점수에서 evidence=SURVEY 성분을 뺀다(설문 두 번 세기 제거) + fold 의 낡은 주석 정정",
+  "task": "S15P21E201-1419",
+  "intent": "S15P21E201-1419 — 취향 벡터 덧점수 주석을 사실로 맞춘다 (CATEGORY 0건이라 이미 0). 주석만, 코드 변경 없음",
   "actor": "agent",
   "session": "18c57558-4c0d-4df5-9b6a-52376448d125",
-  "since": "2026-09-21T05:54:18.665Z",
+  "since": "2026-09-21T06:53:41.700Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/batch/application/TasteVectorFoldService.java",
-    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java",
-    "backend/src/main/java/com/gabolle/backend/story",
-    "backend/src/test/java/com/gabolle/backend/recommendation",
-    "backend/src/test/java/com/gabolle/backend/story"
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java"
   ]
 }
