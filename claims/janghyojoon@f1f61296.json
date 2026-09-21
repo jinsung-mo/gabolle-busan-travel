@@ -1,15 +1,16 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1467",
-  "intent": "스트립 양끝 페이드",
+  "intent": "시안과 어긋난 값 다섯 맞추기",
   "actor": null,
   "session": "db8f38ee-5049-49bc-8631-909e96197be6",
-  "since": "2026-09-21T23:23:37.838Z",
+  "since": "2026-09-21T23:38:50.203Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/trips/[id]/recommendations.tsx",
     "frontend/src/components/TabBar.tsx",
     "frontend/src/i18n/translations.ts",
-    "frontend/src/map/RouteMap.tsx"
+    "frontend/src/map/RouteMap.tsx",
+    "frontend/src/plan/CourseCard.tsx"
   ]
 }
