@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1413",
+  "intent": "저장 직후 다시 읽어 옛 값을 내보내던 것 — 실제 DB 통합시험으로 확정하고 고친다",
+  "actor": "agent",
+  "session": "19144035-b819-469e-85b6-d544100d5b6f",
+  "since": "2026-09-21T06:45:37.707Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary",
+    "backend/src/test/java/com/gabolle/backend/itinerary"
+  ]
+}
