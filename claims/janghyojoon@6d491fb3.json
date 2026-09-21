@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1405",
+  "intent": "반경을 150m 로 확정 (실측 결과 반영)",
+  "actor": "agent",
+  "session": "982e004e-033f-4ca8-a6eb-0d59bc090107",
+  "since": "2026-09-21T06:02:06.898Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/process/market-join.mjs"
+  ]
+}
