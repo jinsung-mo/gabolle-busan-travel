@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1425",
-  "intent": "effectOf 에서 moods/foods 분기 제거 (10→7문항 재설계, S15P21E201-1425)",
+  "intent": "buildNow ↑카드 제거(시안)에 맞춰 날짜 안내·문 가드를 새 메커니즘(자동 달력 카드)으로 갱신 (S15P21E201-1425)",
   "actor": "agent",
   "session": "88ec17dc-9e45-46c4-bbab-26dd9789131d",
-  "since": "2026-09-21T07:53:59.109Z",
+  "since": "2026-09-21T07:57:35.208Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/questions.tsx",
+    "frontend/src/plan/__tests__/datesRequired.test.js",
     "frontend/src/plan/__tests__/planOptions.test.ts",
     "frontend/src/plan/__tests__/planQuestions.test.ts",
     "frontend/src/plan/planOptions.ts",
