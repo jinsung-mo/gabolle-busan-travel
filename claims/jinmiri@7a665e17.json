@@ -1,14 +1,17 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1398",
-  "intent": "웹 로그인 왼쪽 판에 부산 바다 가로 영상 (S15P21E201-1398)",
+  "task": "S15P21E201-1400",
+  "intent": "승차권 비행기 방향·가짜 바코드·젖힘·도장·첫 일정 잘림, 일정 마지막 붉은 세로줄 (S15P21E201-1400)",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T05:29:59.058Z",
+  "since": "2026-09-21T05:38:30.769Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(auth)/sign-in.tsx",
+    "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/docs/design_handoff_brand_first_run/captures",
-    "frontend/src/components/ScenicVideo.tsx"
+    "frontend/src/components/ScenicVideo.tsx",
+    "frontend/src/plan/TripPass.tsx",
+    "frontend/src/plan/__tests__/tripPassFlip.test.tsx"
   ]
 }
