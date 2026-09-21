@@ -1,24 +1,28 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1398",
-  "intent": "웹 로그인 왼쪽 판 바다 전차 영상 (S15P21E201-1398)",
+  "task": "S15P21E201-1429",
+  "intent": "푸시 토큰 등록·해제, 알림 아이콘·채널, 알림 눌러 열기 (S15P21E201-1429)",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T08:12:54.566Z",
+  "since": "2026-09-21T08:15:43.877Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app.json",
     "frontend/app/(auth)/sign-in.tsx",
     "frontend/app/(tabs)/me.tsx",
     "frontend/app/(trip)/[id]/prepare.tsx",
+    "frontend/app/_layout.tsx",
     "frontend/app/chat.tsx",
     "frontend/app/field/dialect.tsx",
     "frontend/app/field/translate.tsx",
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/assets/audio",
+    "frontend/assets/notification-icon.png",
     "frontend/docs/design_handoff_brand_first_run/captures",
     "frontend/src/assistant/__tests__",
     "frontend/src/assistant/assistantApi.ts",
     "frontend/src/assistant/intent.ts",
+    "frontend/src/auth/AuthProvider.tsx",
     "frontend/src/components/ScenicVideo.tsx",
     "frontend/src/discovery/DialectFlashcards.tsx",
     "frontend/src/discovery/dialectPhrases.ts",
@@ -26,6 +30,8 @@
     "frontend/src/field/dialectVoice.ts",
     "frontend/src/i18n/translations.ts",
     "frontend/src/legal/legalContent.ts",
-    "frontend/src/me/panels/MyPostsBody.tsx"
+    "frontend/src/me/panels/MyPostsBody.tsx",
+    "frontend/src/notifications/__tests__",
+    "frontend/src/notifications/pushToken.ts"
   ]
 }
