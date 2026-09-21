@@ -1,16 +1,22 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1363",
-  "intent": "번역 방향에 일본어·중국어(간체·번체) 양방향 추가 — 방향마다 언어 이름을 enum 에 둔다",
+  "intent": "일괄 번역 POST /api/v1/tools/translate/batch — 캐시 우선·개수 상한·시간 예산·업체 장애 시 중단",
   "actor": "agent",
   "session": "2b8a87d5-2ff1-4ac7-89ce-495cbffc0b93",
-  "since": "2026-09-21T07:15:16.777Z",
+  "since": "2026-09-21T07:21:33.253Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/tools/adapter/TranslationVendorAdapter.java",
+    "backend/src/main/java/com/gabolle/backend/tools/application/TranslationBatchItem.java",
+    "backend/src/main/java/com/gabolle/backend/tools/application/TranslationService.java",
+    "backend/src/main/java/com/gabolle/backend/tools/config/TranslateProperties.java",
     "backend/src/main/java/com/gabolle/backend/tools/domain/TranslationDirection.java",
     "backend/src/main/java/com/gabolle/backend/tools/presentation/TranslateController.java",
+    "backend/src/main/java/com/gabolle/backend/tools/presentation/dto/TranslateBatchRequestDto.java",
+    "backend/src/main/java/com/gabolle/backend/tools/presentation/dto/TranslateBatchResponseDto.java",
     "backend/src/test/java/com/gabolle/backend/tools/adapter/TranslationVendorAdapterTest.java",
+    "backend/src/test/java/com/gabolle/backend/tools/application/TranslationServiceTest.java",
     "backend/src/test/java/com/gabolle/backend/tools/domain/TranslationDirectionTest.java",
     "backend/src/test/java/com/gabolle/backend/tools/presentation/TranslateControllerTest.java"
   ]
