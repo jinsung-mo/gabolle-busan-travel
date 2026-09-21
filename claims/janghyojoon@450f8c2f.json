@@ -7,8 +7,6 @@
   "since": "2026-09-21T16:41:11.585Z",
   "ttlMs": 600000,
   "paths": [
-    "bigData/research/data/combined-results/MA010120220804472494.json",
-    "bigData/research/data/combined-results/MA010120220810613973.json",
     "bigData/research/data/combined-results/chunk-8"
   ]
 }
