@@ -1,12 +1,13 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1456",
-  "intent": "취향 지우기 안내문의 「여덟」을 고치고 사전에 올린다 — 1456 의 남은 한 줄",
+  "intent": "지우기 안내문도 개수를 안 적는지 재는 줄을 더한다",
   "actor": "agent",
   "session": "bf3e77e0-ca50-483a-b5ab-f9f375c74606",
-  "since": "2026-09-21T14:34:20.453Z",
+  "since": "2026-09-21T14:35:53.452Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/__tests__/teamReportFixes.test.ts",
     "frontend/src/i18n/translations.ts",
     "frontend/src/me/panels/PreferencesBody.tsx"
   ]
