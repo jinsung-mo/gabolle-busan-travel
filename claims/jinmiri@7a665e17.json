@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1385",
-  "intent": "「일정 물어보기」 단추 이름 복구 — e2e 가 못 찾던 것",
+  "task": "S15P21E201-1377",
+  "intent": "세 장 흐름에 맞춰 e2e 클릭 순서 갱신",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T00:25:38.490Z",
+  "since": "2026-09-21T00:50:08.360Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(auth)/sign-in.tsx",
@@ -33,6 +33,7 @@
     "frontend/src/plan/TripPass.tsx",
     "frontend/src/plan/__tests__",
     "frontend/src/plan/placePhotos.ts",
-    "frontend/src/plan/planQuestions.ts"
+    "frontend/src/plan/planQuestions.ts",
+    "frontend/tests/e2e/core-journey.spec.ts"
   ]
 }
