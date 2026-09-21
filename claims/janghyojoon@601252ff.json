@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1394",
+  "intent": "죽은 취향 전송 제거 — atmosphere·touristPreference 를 백엔드로 안 보낸다 (분위기·관광지)",
+  "actor": "agent",
+  "session": "88ec17dc-9e45-46c4-bbab-26dd9789131d",
+  "since": "2026-09-21T03:16:56.970Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/api/tripApi.ts"
+  ]
+}
