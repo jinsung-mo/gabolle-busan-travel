@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1383",
-  "intent": "숙소가 일반 후보에는 안 나오고 숙소 전용 조회로는 나오는 것을 한 시험에서 증명한다 — 숙소 0건이 사실이라던 낡은 시험 문구도 고친다",
+  "intent": "자바독이 「숙소 적재 코드가 없어 0건이 정상」이라고 적고 있다 — 이제 사실이 아니라 고친다",
   "actor": "agent",
   "session": "eb812c9c-0058-43e0-91d9-ab17c6317d7f",
-  "since": "2026-09-21T00:20:59.379Z",
+  "since": "2026-09-21T00:22:01.216Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/domain/AccommodationCategories.java",
     "backend/src/main/java/com/gabolle/backend/place/loader",
     "backend/src/main/java/com/gabolle/backend/place/service/PlaceCandidateQueryService.java",
     "backend/src/test/java/com/gabolle/backend/place/AccommodationNotInCandidatesTest.java",
