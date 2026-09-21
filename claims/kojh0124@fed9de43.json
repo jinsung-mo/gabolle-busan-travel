@@ -1,0 +1,13 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-1368",
+  "intent": "S15P21E201-1368 — /api/v1/stories 에 sort=POPULAR 와 scope=FOR_YOU 추가, X-Feed-Applied 헤더. 즉석 계산(피드 빌더 안 만듦)",
+  "actor": "agent",
+  "session": "18c57558-4c0d-4df5-9b6a-52376448d125",
+  "since": "2026-09-21T04:58:01.240Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/story",
+    "backend/src/test/java/com/gabolle/backend/story"
+  ]
+}
