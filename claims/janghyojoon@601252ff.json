@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1407",
+  "intent": "계정 취향(로컬성·조용함·음식)을 새 여행 기본값으로 얹는 효과 추가 — 온보딩 취향이 추천에 흐르게",
+  "actor": "agent",
+  "session": "88ec17dc-9e45-46c4-bbab-26dd9789131d",
+  "since": "2026-09-21T05:54:46.637Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/plan/PlanProvider.tsx"
+  ]
+}
