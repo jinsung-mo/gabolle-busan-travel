@@ -1,0 +1,13 @@
+{
+  "agent": "s15p21e201-front",
+  "task": "S15P21E201-1466",
+  "intent": "도보 미집계 표시",
+  "actor": null,
+  "session": "db8f38ee-5049-49bc-8631-909e96197be6",
+  "since": "2026-09-21T16:43:17.556Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/src/i18n/translations.ts"
+  ]
+}
