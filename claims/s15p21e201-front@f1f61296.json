@@ -1,0 +1,12 @@
+{
+  "agent": "s15p21e201-front",
+  "task": "S15P21E201-1432",
+  "intent": "일정 화면 겉모습 재설계",
+  "actor": null,
+  "session": "db8f38ee-5049-49bc-8631-909e96197be6",
+  "since": "2026-09-21T11:01:08.275Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/trips/[id]/itinerary.tsx"
+  ]
+}
