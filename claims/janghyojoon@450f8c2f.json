@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1414",
+  "intent": "가격조사 청크6 (인덱스 250~299)",
+  "actor": null,
+  "session": "7de0a1a7-77df-4003-ac55-32685d992790",
+  "since": "2026-09-21T14:26:36.117Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "research/data/combined-results/chunk-6"
+  ]
+}
