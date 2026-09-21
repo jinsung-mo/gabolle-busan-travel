@@ -1,0 +1,16 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1370",
+  "intent": "여행 목록에 대표 사진(coverImageUrl)·첫 장소 이름(firstStopName) 한 번의 질의로 붙이기",
+  "actor": "agent",
+  "session": "52e839d7-aa42-45c3-960b-a10b8a31c6c0",
+  "since": "2026-09-21T03:19:55.664Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/adapter/TripCoverAdapter.java",
+    "backend/src/main/java/com/gabolle/backend/trip/application/TripQueryService.java",
+    "backend/src/main/java/com/gabolle/backend/trip/application/port/TripCoverPort.java",
+    "backend/src/main/java/com/gabolle/backend/trip/presentation/TripController.java",
+    "backend/src/main/java/com/gabolle/backend/trip/presentation/dto/TripSummaryResponse.java"
+  ]
+}
