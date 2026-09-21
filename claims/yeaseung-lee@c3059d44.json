@@ -1,13 +1,14 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1342",
-  "intent": "탭바로 들어오면 출발지를 묻는 자리가 없어 일정이 안 만들어지던 것 (S15P21E201-1342 나머지 절반)",
+  "intent": "출발지가 필수가 되면서 이 시험의 초안에도 출발지를 넣는다 (S15P21E201-1342)",
   "actor": "agent",
   "session": "52e839d7-aa42-45c3-960b-a10b8a31c6c0",
-  "since": "2026-09-21T03:04:42.554Z",
+  "since": "2026-09-21T03:09:23.270Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/questions.tsx",
+    "frontend/app/__tests__/planQuestionsLight.test.tsx",
     "frontend/src/plan/__tests__/originRequired.test.ts",
     "frontend/src/plan/planQuestions.ts"
   ]
