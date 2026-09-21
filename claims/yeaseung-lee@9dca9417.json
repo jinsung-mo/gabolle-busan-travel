@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1475",
+  "intent": "가로에서 탭바 알약 폭이 안 풀려 내용 위에 뜨던 것 — 백분율을 걷어낸다",
+  "actor": "agent",
+  "session": "bf3e77e0-ca50-483a-b5ab-f9f375c74606",
+  "since": "2026-09-21T21:54:46.683Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/components/TabBar.tsx",
+    "frontend/src/components/__tests__/safeAreaLayout.test.ts"
+  ]
+}
