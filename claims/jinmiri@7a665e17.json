@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1439",
-  "intent": "실기 결함 넷 + 코치마크 (1437·1438·1439·1440·1403)",
+  "task": "S15P21E201-1443",
+  "intent": "알림 목록에 REPLAN_DAY 갈래 (S15P21E201-1443)",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T10:57:55.199Z",
+  "since": "2026-09-21T11:10:25.123Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/questions.tsx",
@@ -17,11 +17,14 @@
     "frontend/docs/design_handoff_brand_first_run/captures",
     "frontend/src/home/PlanStartBar.tsx",
     "frontend/src/i18n/translations.ts",
+    "frontend/src/notifications/activityFeed.test.ts",
+    "frontend/src/notifications/activityFeed.ts",
     "frontend/src/onboarding/HomeCoach.tsx",
     "frontend/src/plan/PlanStepperParts.tsx",
     "frontend/src/plan/TripPass.tsx",
     "frontend/src/plan/__tests__",
     "frontend/src/plan/planOptions.ts",
-    "frontend/src/plan/tripPassData.ts"
+    "frontend/src/plan/tripPassData.ts",
+    "frontend/src/trip/collaboration.ts"
   ]
 }
