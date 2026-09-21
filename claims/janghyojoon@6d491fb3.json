@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1412",
+  "intent": "저상버스·지하철 엘리베이터 가공본 만들기 (적재 없음)",
+  "actor": "agent",
+  "session": "982e004e-033f-4ca8-a6eb-0d59bc090107",
+  "since": "2026-09-21T06:18:10.451Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/process/lowfloor-bus-normalize.mjs",
+    "bigData/process/subway-elevator-feature.mjs"
+  ]
+}
