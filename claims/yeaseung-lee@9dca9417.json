@@ -1,19 +1,13 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1435",
-  "intent": "여행 카드 사진을 서버 coverImageUrl 로 — 카드마다 따로 부르던 것 제거",
+  "task": "S15P21E201-1444",
+  "intent": "일정·추천 코스 화면의 하단 고정 줄이 탭바·시스템 탐색줄 뒤에 깔리는 것을 고친다",
   "actor": "agent",
   "session": "bf3e77e0-ca50-483a-b5ab-f9f375c74606",
-  "since": "2026-09-21T09:58:16.042Z",
+  "since": "2026-09-21T12:32:21.991Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/src/main/java/com/gabolle/backend/itinerary/adapter/TripCoverAdapter.java",
-    "backend/src/main/java/com/gabolle/backend/trip/application/port/TripCoverPort.java",
-    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java",
-    "backend/src/test/java/com/gabolle/backend/trip/TripCoverTest.java",
-    "frontend/app/(tabs)/trips.tsx",
-    "frontend/src/plan/tripCover.ts",
-    "frontend/src/trip/__tests__/tripCoverField.test.ts",
-    "frontend/src/trip/trips.ts"
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/app/trips/[id]/recommendations.tsx"
   ]
 }
