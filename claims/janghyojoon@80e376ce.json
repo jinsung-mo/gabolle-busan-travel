@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1428",
+  "intent": "카카오 항목을 「확인된 것 / 확인 못 한 것」으로 갈라 적는다 — 로드뷰 금지는 근거를 못 찾았다",
+  "actor": "agent",
+  "session": "eb812c9c-0058-43e0-91d9-ab17c6317d7f",
+  "since": "2026-09-21T08:17:45.026Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/config/sources.json"
+  ]
+}
