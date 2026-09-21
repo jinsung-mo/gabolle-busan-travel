@@ -1,14 +1,16 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1383",
-  "intent": "숙소에 LODGING 을 붙이면 갈래를 안 좁힌 요청의 후보 풀에 호텔 65곳이 새로 들어온다 — 후보 조회에서 숙소를 빼는 가드를 넣는다",
+  "intent": "숙소가 일반 후보에는 안 나오고 숙소 전용 조회로는 나오는 것을 한 시험에서 증명한다 — 숙소 0건이 사실이라던 낡은 시험 문구도 고친다",
   "actor": "agent",
   "session": "eb812c9c-0058-43e0-91d9-ab17c6317d7f",
-  "since": "2026-09-21T00:18:37.155Z",
+  "since": "2026-09-21T00:20:59.379Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/place/loader",
     "backend/src/main/java/com/gabolle/backend/place/service/PlaceCandidateQueryService.java",
+    "backend/src/test/java/com/gabolle/backend/place/AccommodationNotInCandidatesTest.java",
+    "backend/src/test/java/com/gabolle/backend/place/AccommodationQueryIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/place/loader",
     "backend/src/test/java/com/gabolle/backend/place/service"
   ]
