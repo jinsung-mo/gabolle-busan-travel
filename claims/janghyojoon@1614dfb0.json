@@ -1,15 +1,17 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1413",
-  "intent": "여행 진행을 GPS 로 따라간다 — 궤적 표·마지막 위치·배치 업로드·자동 도착 판정·완료",
+  "intent": "GPS 진행 추적 — 탈퇴 시험의 생성자와 인가 정책 표에 새 경로 둘을 등록한다",
   "actor": "agent",
   "session": "19144035-b819-469e-85b6-d544100d5b6f",
-  "since": "2026-09-21T06:18:16.941Z",
+  "since": "2026-09-21T06:32:52.138Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/auth/service/AccountDeletionService.java",
     "backend/src/main/java/com/gabolle/backend/itinerary",
     "backend/src/main/resources/db/migration",
-    "backend/src/test/java/com/gabolle/backend/itinerary"
+    "backend/src/test/java/com/gabolle/backend/auth/AccountDeletionConfirmationTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary",
+    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java"
   ]
 }
