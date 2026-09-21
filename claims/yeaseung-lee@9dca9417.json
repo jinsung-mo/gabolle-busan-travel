@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1456",
+  "intent": "취향 지우기 안내문의 「여덟」을 고치고 사전에 올린다 — 1456 의 남은 한 줄",
+  "actor": "agent",
+  "session": "bf3e77e0-ca50-483a-b5ab-f9f375c74606",
+  "since": "2026-09-21T14:34:20.453Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/me/panels/PreferencesBody.tsx"
+  ]
+}
