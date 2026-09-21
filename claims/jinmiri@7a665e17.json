@@ -1,15 +1,16 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1443",
-  "intent": "알림 목록에 REPLAN_DAY 갈래 (S15P21E201-1443)",
+  "intent": "참여자 활동 목록에도 REPLAN_DAY 문구 (S15P21E201-1443)",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T11:10:25.123Z",
+  "since": "2026-09-21T11:11:37.526Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/questions.tsx",
     "frontend/app/(tabs)/home.tsx",
     "frontend/app/(tabs)/me.tsx",
+    "frontend/app/(trip)/[id]/collaborate.tsx",
     "frontend/app/index.tsx",
     "frontend/assets/brand",
     "frontend/assets/taste/thumb",
