@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1387",
+  "intent": "이유 코드 사전에 MUST_VISIT_PLACE 추가 — 꼭 가고 싶다고 적은 곳이 화면에 그렇게 보이게 (S15P21E201-1387 프론트 몫)",
+  "actor": "agent",
+  "session": "88ec17dc-9e45-46c4-bbab-26dd9789131d",
+  "since": "2026-09-21T01:03:44.127Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/plan/recommendations.ts"
+  ]
+}
