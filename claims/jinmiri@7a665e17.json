@@ -1,17 +1,19 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1386",
-  "intent": "AI 단추 동백이 정지 · 알림 종을 넓은 화면·손님에게도",
+  "intent": "마이페이지 팔로워·팔로잉 행 — 위 타일과 같은 곳이라 뺀다",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T02:53:20.845Z",
+  "since": "2026-09-21T02:55:00.106Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
+    "frontend/app/(tabs)/me.tsx",
     "frontend/docs/design_handoff_brand_first_run/captures",
     "frontend/src/components/TabBar.tsx",
     "frontend/src/components/__tests__",
     "frontend/src/i18n/translations.ts",
+    "frontend/src/me/__tests__",
     "frontend/src/nav/TopNav.tsx"
   ]
 }
