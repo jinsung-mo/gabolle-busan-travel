@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1405",
+  "intent": "전통시장 300m 반경 안 음식점 → MARKET 후보 ndjson 만들기",
+  "actor": "agent",
+  "session": "982e004e-033f-4ca8-a6eb-0d59bc090107",
+  "since": "2026-09-21T05:45:19.136Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/process/market-join.mjs"
+  ]
+}
