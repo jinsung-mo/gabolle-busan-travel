@@ -4,7 +4,7 @@
   "intent": "피드 「추천」 갈래·「인기순」 정렬을 서버 1368 에 붙이고 대체 안내 (S15P21E201-1411)",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-21T06:16:52.472Z",
+  "since": "2026-09-21T06:20:19.659Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(auth)/sign-in.tsx",
