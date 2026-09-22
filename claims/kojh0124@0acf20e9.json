@@ -1,16 +1,17 @@
 {
   "agent": "kojh0124",
-  "task": "S15P21E201-1468",
-  "intent": "S15P21E201-1468 자기 검토 후 고침 — 표현/응용 계층 분리, 코드 뜻 표를 하나로, 모르는 코드의 사유를 지어내지 않기",
+  "task": "S15P21E201-1251",
+  "intent": "S15P21E201-1251 자기 검토 후 고침 — 좌표에 NaN 이 오면 JSON 이 깨져 일정 생성이 통째로 죽던 것",
   "actor": "agent",
   "session": "616e3aa3-7f6c-493c-82b6-a22a332b3c18",
-  "since": "2026-09-22T11:15:50.728Z",
+  "since": "2026-09-22T11:19:40.448Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/infra/JpaItineraryRepository.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/application/BlockingConstraintAnalyzer.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/presentation/RecommendationJobController.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/presentation/dto/RecommendationJobResponse.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryLegPathPersistenceIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/recommendation/application/BlockingConstraintAnalyzerTest.java"
   ]
 }
