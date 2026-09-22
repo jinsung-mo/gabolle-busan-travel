@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1504",
+  "intent": "1504 — Play 를 막는 포그라운드 서비스 권한을 매니페스트에서 걷어낸다 (expo-video 가 media3 로 끌어온 것)",
+  "actor": "agent",
+  "session": "4345be27-4bbe-47d6-b77b-c0738b25e19f",
+  "since": "2026-09-22T11:57:09.625Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app.json",
+    "frontend/plugins/withoutMediaForegroundService.js"
+  ]
+}
