@@ -1,0 +1,12 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-1498",
+  "intent": "S15P21E201-1498 일정을 처음 만들 때 구간 요금이 버려지던 것 — persist·revise 두 자리에서 draftLeg.fareKrw() 를 넘긴다",
+  "actor": "agent",
+  "session": "616e3aa3-7f6c-493c-82b6-a22a332b3c18",
+  "since": "2026-09-22T11:34:54.032Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java"
+  ]
+}
