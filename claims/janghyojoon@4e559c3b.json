@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1493",
+  "intent": "날짜 배정이 좌표를 보게 한다 — 지역으로 먼저 묶고 그 안에서 기존 순서 최적화 유지",
+  "actor": "agent",
+  "session": "bc8d5ea0-aaf7-4711-a19d-22b99d5b2ed6",
+  "since": "2026-09-22T06:23:59.725Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary"
+  ]
+}
