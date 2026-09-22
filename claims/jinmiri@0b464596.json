@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1044",
+  "intent": "여행 조건 화면에서 판정할 장소 자료가 없는 문항에 「지금은 이 조건을 확인할 자료가 없어요」를 붙인다 (서버는 S15P21E201-1508 의 /api/v1/places/condition-coverage)",
+  "actor": "agent",
+  "session": "4b77fcf6-fb20-4dbd-bb4f-50683e33d1b3",
+  "since": "2026-09-22T14:19:23.361Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/plan/ConditionsPromptModal.tsx",
+    "frontend/src/plan/conditionCoverage.ts"
+  ]
+}
