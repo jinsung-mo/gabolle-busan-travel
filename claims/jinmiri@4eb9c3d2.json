@@ -1,0 +1,12 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1414",
+  "intent": "가격조사 청크30 (자동배정)",
+  "actor": null,
+  "session": "price-chunk-jinmiri",
+  "since": "2026-09-22T11:24:31.069Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/research/data/combined-results/chunk-30"
+  ]
+}
