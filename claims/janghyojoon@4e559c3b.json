@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-561",
+  "intent": "카프카 서비스가 자기 별명을 못 풀어 기동 실패 — 컨트롤러 주소를 localhost 로. 커밋 직후 반납",
+  "actor": "agent",
+  "session": "bc8d5ea0-aaf7-4711-a19d-22b99d5b2ed6",
+  "since": "2026-09-22T04:09:54.800Z",
+  "ttlMs": 2700000,
+  "paths": [
+    ".gitlab-ci.yml",
+    "backend/docker-compose.yml"
+  ]
+}
