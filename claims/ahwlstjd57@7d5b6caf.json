@@ -1,0 +1,12 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-1414",
+  "intent": "가격조사 청크24 (자동배정)",
+  "actor": null,
+  "session": "cbf66b44-cf24-4a08-b253-2c674c0110bf",
+  "since": "2026-09-22T06:54:59.232Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/research/data/combined-results/chunk-24"
+  ]
+}
