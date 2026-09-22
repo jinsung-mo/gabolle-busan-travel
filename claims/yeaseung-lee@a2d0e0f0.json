@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1510",
+  "intent": "글꼴 실패 시 빈 화면이 되던 것",
+  "actor": null,
+  "session": "yeaseung-main",
+  "since": "2026-09-22T15:22:51.381Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/_layout.tsx"
+  ]
+}
