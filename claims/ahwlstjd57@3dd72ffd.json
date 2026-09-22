@@ -1,16 +1,17 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-1489",
-  "intent": "iOS build 39 QA 후속 — 문구·접근성 8건(B-03·10·11·13·14·15·16·18)",
+  "intent": "B-03 — 스위치가 accessibilityLabel 을 못 받아 VoiceOver 가 「스위치」라고만 읽던 것",
   "actor": "agent",
   "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
-  "since": "2026-09-22T03:36:35.362Z",
+  "since": "2026-09-22T03:37:21.794Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/generating.tsx",
     "frontend/app/(tabs)/me.tsx",
     "frontend/app/app-intro.tsx",
     "frontend/app/place/[id].tsx",
+    "frontend/src/components/Toggle.tsx",
     "frontend/src/field/menuScan.ts",
     "frontend/src/i18n/translations.ts",
     "frontend/src/plan/tripProgress.ts"
