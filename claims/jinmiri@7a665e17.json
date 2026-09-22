@@ -1,13 +1,15 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1486",
-  "intent": "1486 — 앱 쪽 중복 place_like 이벤트 제거 (서버 recordLike 가 정본)",
+  "intent": "1486 — useSavedPlaces 의 surface 인자 제거에 따른 호출부 두 줄",
   "actor": "agent",
   "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
-  "since": "2026-09-22T10:19:59.600Z",
+  "since": "2026-09-22T10:20:53.929Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/(tabs)/home.tsx",
     "frontend/app/__tests__/placeViewEvent.test.tsx",
+    "frontend/app/index.tsx",
     "frontend/app/place/[id].tsx",
     "frontend/src/home/__tests__/useSavedPlaces.test.ts",
     "frontend/src/home/useSavedPlaces.ts"
