@@ -1,0 +1,15 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1484",
+  "intent": "1391 푸시 결함 둘 — forget() 이 AFTER_COMMIT 안에서 커밋되지 않는 것(REQUIRES_NEW)과, actorUserId 가 null 일 때 알림이 통째로 버려지는 것을 고친다 + 진짜 DB 검사",
+  "actor": "agent",
+  "session": "bf3e77e0-ca50-483a-b5ab-f9f375c74606",
+  "since": "2026-09-22T03:04:25.579Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/notification/application/PushTokenService.java",
+    "backend/src/main/java/com/gabolle/backend/notification/application/TripPushNotifier.java",
+    "backend/src/test/java/com/gabolle/backend/notification",
+    "backend/src/test/java/com/gabolle/testslice/NotificationSliceApplication.java"
+  ]
+}
