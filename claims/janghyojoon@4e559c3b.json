@@ -1,14 +1,15 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-561",
-  "intent": "카프카 소비자·DLQ·멱등 적재 + Outbox→Kafka→소비자 최소 경로 통합시험 (M3 재현)",
+  "intent": "카프카 생산자·소비자·DLQ·재시도상한 + Outbox→Kafka→소비자 최소경로 통합시험 커밋",
   "actor": "agent",
   "session": "bc8d5ea0-aaf7-4711-a19d-22b99d5b2ed6",
-  "since": "2026-09-22T00:47:44.639Z",
+  "since": "2026-09-22T03:02:19.420Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/build.gradle",
     "backend/docker-compose.yml",
+    "backend/gradle.lockfile",
     "backend/src/main/java/com/gabolle/backend/event",
     "backend/src/main/resources/application.properties",
     "backend/src/main/resources/db/migration",
