@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1414",
+  "intent": "가격조사",
+  "actor": null,
+  "session": "7181f51f-b67c-4671-b019-3e4c60aba60b",
+  "since": "2026-09-22T05:56:16.821Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "(자동배정)",
+    "bigData/research/data/combined-results/chunk-17",
+    "청크17"
+  ]
+}
