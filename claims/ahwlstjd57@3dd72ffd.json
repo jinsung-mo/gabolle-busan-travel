@@ -1,12 +1,13 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-1490",
-  "intent": "B-12 — 「목록으로 돌아가기」가 좌하단이라 Kakao 로고·축척을 가리던 것",
+  "intent": "B-06 — SVG Mask 가 안 먹어 덮개가 아예 안 그려지던 것. evenodd 구멍 path 로 바꾼다",
   "actor": "agent",
   "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
-  "since": "2026-09-22T05:25:44.972Z",
+  "since": "2026-09-22T05:28:27.921Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/src/map/RouteMap.native.tsx"
+    "frontend/src/map/RouteMap.native.tsx",
+    "frontend/src/onboarding/HomeCoach.tsx"
   ]
 }
