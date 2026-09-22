@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1479",
+  "intent": "S15P21E201-1479 — 실린 MENU_PRICE_WON 을 추천·일정의 estimatedCostKrw 로 잇는다. 값 없는 곳은 0 이 아니라 null 로 둔다",
+  "actor": "agent",
+  "session": "c9016d3e-f85c-461a-a469-130359c4890b",
+  "since": "2026-09-22T00:17:39.697Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
+    "backend/src/main/java/com/gabolle/backend/place/service/MenuPriceWon.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationResultQueryService.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/presentation/dto/RecommendationResultResponse.java",
+    "backend/src/test/java/com/gabolle/backend/place/MenuPriceWonTest.java"
+  ]
+}
