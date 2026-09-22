@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-561",
+  "intent": "카프카 발행자 어댑터 + 릴레이 스케줄러 + 재시도 상한/DLQ — 아웃박스를 실제로 내보내게 한다",
+  "actor": "agent",
+  "session": "bc8d5ea0-aaf7-4711-a19d-22b99d5b2ed6",
+  "since": "2026-09-22T00:36:06.692Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/build.gradle",
+    "backend/docker-compose.yml",
+    "backend/src/main/java/com/gabolle/backend/event",
+    "backend/src/main/resources/application.properties",
+    "backend/src/test/java/com/gabolle/backend/event"
+  ]
+}
