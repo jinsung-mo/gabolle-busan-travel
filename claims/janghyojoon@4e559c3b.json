@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-561",
+  "intent": "CI 에 카프카 서비스 컨테이너를 붙이고 시험이 밖에서 준 브로커를 쓰게 한다 (MR !1442 빨간 것 수리)",
+  "actor": "agent",
+  "session": "bc8d5ea0-aaf7-4711-a19d-22b99d5b2ed6",
+  "since": "2026-09-22T03:25:05.072Z",
+  "ttlMs": 2700000,
+  "paths": [
+    ".gitlab-ci.yml",
+    "backend/src/test/java/com/gabolle/backend/event",
+    "backend/src/test/java/com/gabolle/backend/recommendation/support"
+  ]
+}
