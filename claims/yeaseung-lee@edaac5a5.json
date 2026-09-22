@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1414",
+  "intent": "가격조사 청크37 (자동배정)",
+  "actor": null,
+  "session": "price-chunk-yeaseung",
+  "since": "2026-09-22T11:55:31.501Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/research/data/combined-results/chunk-37"
+  ]
+}
