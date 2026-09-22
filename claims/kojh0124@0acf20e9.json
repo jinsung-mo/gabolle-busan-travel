@@ -1,0 +1,22 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-1251",
+  "intent": "S15P21E201-1251 구간에 「어느 길로 가는지」(선형)를 담는다 — RouteLeg.path 가 이미 있는데 TravelTime 이 버리고 있다",
+  "actor": "agent",
+  "session": "616e3aa3-7f6c-493c-82b6-a22a332b3c18",
+  "since": "2026-09-22T09:57:58.278Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryLegPlanner.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/port/TravelTime.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/domain/ItineraryLeg.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/infra/ItineraryLegJpaEntity.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/infra/JpaItineraryRepository.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/ItineraryDetailResponse.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/port/ItineraryDraft.java",
+    "backend/src/main/java/com/gabolle/backend/route/adapter/RouteTravelTimeAdapter.java",
+    "backend/src/main/resources/db/migration"
+  ]
+}
