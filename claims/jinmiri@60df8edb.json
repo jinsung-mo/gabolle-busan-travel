@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1502",
+  "intent": "1502 — 홈 날씨 칩을 누를 수 있게 + 최저=최고면 한 번만, 챗봇 「크게 보고 듣기」가 고른 문장을 들고 가게",
+  "actor": "agent",
+  "session": "89b252f0-b2ff-4e7b-944a-2381a220422d",
+  "since": "2026-09-22T12:18:59.747Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/chat.tsx",
+    "frontend/app/field/speak.tsx"
+  ]
+}
