@@ -1,0 +1,14 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-1479-follow-up",
+  "intent": "추천 응답의 imageUrl 이 null 로 못 박혀 사진 있는 후보 710건(24%)이 버려진다 — place.photo_url 을 잇는다 (-1479 와 같은 낡은 주석 버그)",
+  "actor": "agent",
+  "session": "616e3aa3-7f6c-493c-82b6-a22a332b3c18",
+  "since": "2026-09-22T09:51:06.651Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationResultQueryService.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/presentation/dto/RecommendationResultResponse.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/application/RecommendationResultQueryServiceTest.java"
+  ]
+}
