@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1511",
-  "intent": "숙소 칸 새 문구 6개의 일본어·중국어 번역 추가 (MR 검사 실패 수정)",
+  "task": "S15P21E201-1509",
+  "intent": "피드 탭 복귀 시 다시 불러오기 — 커밋",
   "actor": "agent",
   "session": "48b538d1-774f-45a1-86c5-85b1905c0bb2",
-  "since": "2026-09-22T23:34:38.139Z",
+  "since": "2026-09-22T23:38:45.483Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/(tabs)/feed.tsx",
     "frontend/src/i18n/translations.ts"
   ]
 }
