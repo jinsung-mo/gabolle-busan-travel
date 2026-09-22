@@ -93,3 +93,50 @@ test('🔴 git show 가 실패하면 null 이다 — 빈 문자열로 넘기면 
   const r = readSource('a/b.java', 'origin/back/dev', { fs, git: () => null })
   assert.equal(r.source, null)
 })
+
+// ── 낡은 거울이 놓인 브랜치 (S15P21E201-1492) ───────────────────────────────
+//
+// `<파트>/main` 은 `main` 에서 갈라져 나와 남의 파트 폴더까지 진짜로 들고 있다 — 다만
+// 낡았다. 거기서 working tree 는 「이 MR 이 바꾼 값」이 아니라 아무도 안 건드린 사본이다.
+// 승격 !1332 가 그 사본을 앱의 현재 모습으로 읽는 바람에 «있지도 않은» 계약 위반으로 막혔다.
+
+test('🔴 --app-ref 를 «주면» working tree 를 이긴다 — 낡은 거울을 건너뛰어야 한다', () => {
+  // 파일이 있어도(= 낡은 거울이 놓여 있어도) 준 ref 를 읽는다.
+  const fs = { existsSync: () => true, readFileSync: () => 'STALE_MIRROR' }
+  const r = readSource('frontend/src/assistant/assistantApi.ts', 'origin/front/dev',
+    { preferRef: true, fs, git: () => 'FROM_REF' })
+  assert.equal(r.source, 'FROM_REF')
+  assert.equal(r.from, 'origin/front/dev:frontend/src/assistant/assistantApi.ts')
+})
+
+test('ref 를 «안 주면» 전과 같이 working tree 가 이긴다 — 이 MR 이 바꾼 값을 봐야 한다', () => {
+  const fs = { existsSync: () => true, readFileSync: () => 'LOCAL' }
+  const r = readSource('a/b.java', 'origin/back/dev', { preferRef: false, fs, git: () => 'FROM_REF' })
+  assert.equal(r.source, 'LOCAL')
+  assert.match(r.from, /working tree/)
+})
+
+test('🔴 준 ref 를 못 읽으면 working tree 로 물러나지 «않는다» — 물러나면 고친 함정으로 되돌아간다', () => {
+  const fs = { existsSync: () => true, readFileSync: () => 'STALE_MIRROR' }
+  const r = readSource('frontend/src/assistant/assistantApi.ts', 'origin/front/dev',
+    { preferRef: true, fs, git: () => null })
+  assert.equal(r.source, null)
+})
+
+test('🔴 !1332 를 막았던 그림 그대로 — 낡은 거울이면 빨갛고, 진짜 앱을 보면 초록이다', () => {
+  const SERVER = 'static final Set<String> ALLOWED_HREFS = Set.of("/plan", "/trips", "/field/translate", "/field/transit", "/field/exchange-rate");'
+  const STALE = "const ALLOWED_NAVIGATE_HREFS = ['/plan/basic', '/trips', '/field/translate'] as const;"
+  const REAL = `export const ALLOWED_NAVIGATE_HREFS: readonly AssistantNavigatePath[] = [
+    '/plan', '/plan/basic', '/trips', '/field/translate', '/field/transit', '/field/exchange-rate',
+  ]`
+
+  const fs = { existsSync: () => true, readFileSync: () => STALE }
+  const git = () => REAL
+
+  const mirror = readSource('frontend/src/assistant/assistantApi.ts', 'origin/front/dev', { fs, git })
+  assert.equal(compare(serverHrefs(SERVER), appHrefs(mirror.source)).verdict, 'mismatch')
+
+  const real = readSource('frontend/src/assistant/assistantApi.ts', 'origin/front/dev',
+    { preferRef: true, fs, git })
+  assert.equal(compare(serverHrefs(SERVER), appHrefs(real.source)).verdict, 'ok')
+})

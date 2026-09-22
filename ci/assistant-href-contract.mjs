@@ -40,6 +40,12 @@
  *    assistant 패키지가 아예 없다. 그래서 **한쪽은 반드시 다른 브랜치에서 받아 와야 한다.**
  *    ref 를 안 주면 working tree 에 파일이 있는 쪽은 그것을 쓰고(= 이 MR 이 바꾼 값),
  *    없는 쪽만 기본 ref 에서 읽는다.
+ *
+ * 🔴 **그 전제가 참이 아닌 브랜치가 있다 (S15P21E201-1492).** `<파트>/main` 은 `main` 에서
+ *    갈라져 나와 남의 파트 폴더까지 진짜로 들고 있다 — 다만 낡았다. 거기서는 working tree 가
+ *    「이 MR 이 바꾼 값」이 아니라 **아무도 안 건드린 낡은 거울**이다. 그런 자리에서는
+ *    `--app-ref` / `--server-ref` 를 명시해서 그 거울을 건너뛰어야 한다. 명시한 ref 는
+ *    working tree 를 이긴다.
  */
 
 import { execFileSync } from 'node:child_process'
@@ -97,14 +103,26 @@ function quoted(block) {
 }
 
 /**
- * 파일 하나를 읽는다. working tree 에 있으면 그것을, 없으면 ref 에서 받아 온다.
+ * 파일 하나를 읽는다. 기본은 working tree 가 있으면 그것을, 없으면 ref 에서 받아 온다.
+ *
+ * 🔴 **`preferRef` 면 준 ref 가 working tree 를 이긴다 — S15P21E201-1492.**
+ *    전에는 파일이 있기만 하면 무조건 working tree 였고, 그래서 `--app-ref` 가
+ *    <b>정작 필요한 상황에서만</b> 무력해졌다. 필요한 상황이란 그 자리에 **낡은 거울**이
+ *    놓여 있는 브랜치다.
+ *
+ *    `back/dev` 의 `frontend/` 는 README 한 장이라 없는 것과 같지만, **`back/main` 은
+ *    `main` 에서 갈라져 나와 진짜 `frontend/` 트리를 통째로 들고 있다** — 몇 주 낡은 채로.
+ *    그 사본은 그 브랜치가 건드린 적도 없고 머지해도 남지 않는데, 검사는 그것을 앱의
+ *    현재 모습으로 읽고 **있지도 않은 계약 위반을 보고했다.** 승격 MR !1332 가 그래서
+ *    막혔다. 잡이 `git fetch origin front/dev` 를 해 두고도 그 값을 못 쓰고 있었다.
  *
  * 🔴 `git show <ref>:<경로>` 가 실패하는 것을 **조용히 빈 문자열로 넘기지 않는다.**
  *    빈 문자열은 "주소가 하나도 없다" 로 읽혀서 **모든 대조를 통과시킨다** — 검사가
- *    꺼진 것을 아무도 모르는 상태가 제일 나쁘다.
+ *    꺼진 것을 아무도 모르는 상태가 제일 나쁘다. `preferRef` 로 준 ref 를 못 읽을 때도
+ *    working tree 로 슬쩍 물러나지 않는다. 물러나면 고친 그 함정으로 되돌아간다.
  */
-export function readSource(path, ref, { fs = { existsSync, readFileSync }, git = gitShow } = {}) {
-  if (fs.existsSync(path)) {
+export function readSource(path, ref, { preferRef = false, fs = { existsSync, readFileSync }, git = gitShow } = {}) {
+  if (!preferRef && fs.existsSync(path)) {
     return { source: fs.readFileSync(path, 'utf8'), from: `working tree (${path})` }
   }
   const source = git(ref, path)
@@ -133,11 +151,15 @@ export function compare(server, app) {
 }
 
 function main() {
-  const serverRef = flag('server-ref') || DEFAULT_SERVER_REF
-  const appRef = flag('app-ref') || DEFAULT_APP_REF
+  // 🔴 「준 것」과 「기본값」을 가른다. 손으로 준 ref 만 working tree 를 이긴다 —
+  //    기본값까지 이기게 하면 이 MR 이 «실제로 바꾼» 값을 안 보게 된다.
+  const givenServerRef = flag('server-ref')
+  const givenAppRef = flag('app-ref')
+  const serverRef = givenServerRef || DEFAULT_SERVER_REF
+  const appRef = givenAppRef || DEFAULT_APP_REF
 
-  const server = readSource(SERVER_FILE, serverRef)
-  const app = readSource(APP_FILE, appRef)
+  const server = readSource(SERVER_FILE, serverRef, { preferRef: Boolean(givenServerRef) })
+  const app = readSource(APP_FILE, appRef, { preferRef: Boolean(givenAppRef) })
 
   for (const [label, read] of [['서버', server], ['앱', app]]) {
     if (read.source === null) {
