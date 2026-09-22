@@ -1,12 +1,20 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1509",
-  "intent": "피드 탭 포커스 복귀 시 useFocusEffect로 다시 불러오게 한다",
+  "task": "S15P21E201-lodging-startbar",
+  "intent": "홈 시작 바에 숙소 칸 추가 — design_handoff_home_lodging 반영",
   "actor": "agent",
   "session": "48b538d1-774f-45a1-86c5-85b1905c0bb2",
-  "since": "2026-09-22T13:53:53.603Z",
+  "since": "2026-09-22T15:21:40.949Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/(tabs)/feed.tsx"
+    "frontend/app/(plan)/questions.tsx",
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/index.tsx",
+    "frontend/src/api/tripApi.ts",
+    "frontend/src/home/PlanStartBar.tsx",
+    "frontend/src/home/__tests__/startBarValue.test.ts",
+    "frontend/src/home/startBarValue.ts",
+    "frontend/src/plan/PlanProvider.tsx",
+    "frontend/src/plan/origins.ts"
   ]
 }
