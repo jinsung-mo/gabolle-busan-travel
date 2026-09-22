@@ -1,10 +1,10 @@
 {
   "agent": "kojh0124",
   "task": "S15P21E201-1450",
-  "intent": "다양성 축 추가에 맞춰 추천 테스트 고정물 갱신 (-1450)",
+  "intent": "placesNeeded(날 수 × 하루 항목 수) 검사 추가 (-1450)",
   "actor": "agent",
   "session": "4d7f8c4e-2f19-4328-9fbc-4b36f783a44f",
-  "since": "2026-09-22T01:57:00.568Z",
+  "since": "2026-09-22T01:59:56.034Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
@@ -15,6 +15,7 @@
     "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationService.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/application/port/ItineraryDraftPort.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/config/DiversityProperties.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryDraftServiceTest.java",
     "backend/src/test/java/com/gabolle/backend/recommendation"
   ]
 }
