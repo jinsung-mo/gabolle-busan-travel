@@ -1,0 +1,15 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-1175",
+  "intent": "인기순을 최근 24시간 창으로 자르고 창 기준 시각을 커서에 싣는다",
+  "actor": "agent",
+  "session": "fae86baf-6286-4a56-8927-561e59a1a11d",
+  "since": "2026-09-22T00:19:50.324Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/story/application/FeedCursor.java",
+    "backend/src/main/java/com/gabolle/backend/story/application/StoryFeedService.java",
+    "backend/src/main/java/com/gabolle/backend/story/repository/StoryRepository.java",
+    "backend/src/test/java/com/gabolle/backend/story"
+  ]
+}
