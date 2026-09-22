@@ -1,0 +1,19 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-1450",
+  "intent": "음식 종류 다양성 축 추가 + 후보 풀을 일정이 필요한 만큼으로",
+  "actor": "agent",
+  "session": "4d7f8c4e-2f19-4328-9fbc-4b36f783a44f",
+  "since": "2026-09-22T01:52:32.696Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/DiversityKeys.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/DiversityMetrics.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/DiversityReranker.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationService.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/port/ItineraryDraftPort.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/config/DiversityProperties.java"
+  ]
+}
