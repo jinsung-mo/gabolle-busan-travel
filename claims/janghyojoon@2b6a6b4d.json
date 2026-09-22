@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-lodging-startbar",
-  "intent": "홈 시작 바에 숙소 칸 추가 — design_handoff_home_lodging 반영",
+  "intent": "숙소 칸 추가로 StartBarValue 필수 칸이 늘어 깨진 시험 고침",
   "actor": "agent",
   "session": "48b538d1-774f-45a1-86c5-85b1905c0bb2",
-  "since": "2026-09-22T15:21:40.949Z",
+  "since": "2026-09-22T15:27:11.126Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/questions.tsx",
@@ -12,6 +12,7 @@
     "frontend/app/index.tsx",
     "frontend/src/api/tripApi.ts",
     "frontend/src/home/PlanStartBar.tsx",
+    "frontend/src/home/__tests__/setDatesRoute.test.ts",
     "frontend/src/home/__tests__/startBarValue.test.ts",
     "frontend/src/home/startBarValue.ts",
     "frontend/src/plan/PlanProvider.tsx",
