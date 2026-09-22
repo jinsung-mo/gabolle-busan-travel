@@ -1,0 +1,14 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-1481",
+  "intent": "앱이 보낸 place_id 를 입구에서 placeId 로 옮긴다 (품질 게이트 뷰가 읽는 키)",
+  "actor": "agent",
+  "session": "9938b473-a669-48c5-b9e8-3c6fc847122b",
+  "since": "2026-09-22T02:10:44.950Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/event/application",
+    "backend/src/main/resources/db/migration",
+    "backend/src/test/java/com/gabolle/backend/event"
+  ]
+}
