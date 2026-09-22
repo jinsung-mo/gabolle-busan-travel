@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-561",
-  "intent": "카프카 생산자·소비자·DLQ·재시도상한 + Outbox→Kafka→소비자 최소경로 통합시험 커밋",
+  "intent": "back/dev 머지 커밋 한 건만 — 충돌 없음. 커밋 직후 즉시 반납합니다",
   "actor": "agent",
   "session": "bc8d5ea0-aaf7-4711-a19d-22b99d5b2ed6",
-  "since": "2026-09-22T03:02:19.420Z",
+  "since": "2026-09-22T03:03:10.860Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend",
     "backend/build.gradle",
     "backend/docker-compose.yml",
     "backend/gradle.lockfile",
