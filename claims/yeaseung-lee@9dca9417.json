@@ -1,0 +1,16 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1497",
+  "intent": "S15P21E201-1497 알레르기 질문 닫기 — 커밋 직전 재선점 (앞 선점이 장부 경합으로 유실됨). 커밋하면 바로 반납한다",
+  "actor": "agent",
+  "session": "bf3e77e0-ca50-483a-b5ab-f9f375c74606",
+  "since": "2026-09-22T10:43:04.826Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/api/tripApi.ts",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/plan/ConditionsPromptModal.tsx",
+    "frontend/src/plan/__tests__/conditionsModalNoAllergy.test.tsx",
+    "frontend/src/plan/allergyNotSent.test.ts"
+  ]
+}
