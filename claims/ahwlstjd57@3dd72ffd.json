@@ -1,10 +1,10 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-1489",
-  "intent": "B-14 — 글자 못 읽었을 때 알레르기 안내를 안 내는 회귀 시험 추가",
+  "intent": "B-18 — 일본어·중국어 번역값에 조사 앞 공백이 다시 들어오면 빨개지는 검사",
   "actor": "agent",
   "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
-  "since": "2026-09-22T03:42:34.611Z",
+  "since": "2026-09-22T03:46:26.724Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/generating.tsx",
@@ -17,6 +17,7 @@
     "frontend/src/components/Toggle.tsx",
     "frontend/src/field/__tests__/menuScan.test.ts",
     "frontend/src/field/menuScan.ts",
+    "frontend/src/i18n/__tests__/interpolatedText.test.ts",
     "frontend/src/i18n/translations.ts",
     "frontend/src/plan/tripProgress.ts"
   ]
