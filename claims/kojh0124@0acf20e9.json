@@ -1,0 +1,13 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-1468",
+  "intent": "S15P21E201-1468 식단 ㄴ — DIET_SUPPORT_UNVERIFIED 를 unknownFacts 에서 warnings 로. 앱은 !1503 으로 front/dev 에 들어와 있다",
+  "actor": "agent",
+  "session": "616e3aa3-7f6c-493c-82b6-a22a332b3c18",
+  "since": "2026-09-22T12:20:23.931Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerTest.java"
+  ]
+}
