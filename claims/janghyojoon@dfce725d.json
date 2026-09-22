@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1414",
+  "intent": "가격조사 남은 청크 배정표 작성",
+  "actor": null,
+  "session": "7181f51f-b67c-4671-b019-3e4c60aba60b",
+  "since": "2026-09-22T02:57:15.589Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/research/PRICE-QUEUE-HANDOVER.md"
+  ]
+}
