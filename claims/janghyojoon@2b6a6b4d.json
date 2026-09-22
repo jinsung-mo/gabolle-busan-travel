@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1511",
+  "intent": "숙소 칸 새 문구 6개의 일본어·중국어 번역 추가 (MR 검사 실패 수정)",
+  "actor": "agent",
+  "session": "48b538d1-774f-45a1-86c5-85b1905c0bb2",
+  "since": "2026-09-22T23:34:38.139Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/i18n/translations.ts"
+  ]
+}
