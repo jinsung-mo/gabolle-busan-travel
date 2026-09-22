@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-638",
+  "intent": "638 장소 상세에서 place_view 이벤트 — 화면당 한 번, 로딩 끝난 뒤, demoPlace 제외; place_like 키를 placeId 로",
+  "actor": "agent",
+  "session": "c50e1c47-ceaf-4f32-8037-15c995889c77",
+  "since": "2026-09-22T02:58:18.310Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/__tests__/placeViewEvent.test.tsx",
+    "frontend/app/place/[id].tsx",
+    "frontend/src/home/useSavedPlaces.ts"
+  ]
+}
