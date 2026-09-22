@@ -1,13 +1,15 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1414",
-  "intent": "자동 청크 배정 스크립트 + 팀 안내 문서 갱신",
+  "intent": "photoUrls 필드 추가 (사진 주소만 수집)",
   "actor": null,
   "session": "7181f51f-b67c-4671-b019-3e4c60aba60b",
-  "since": "2026-09-22T05:49:58.695Z",
-  "ttlMs": 2700000,
+  "since": "2026-09-22T05:55:38.076Z",
+  "ttlMs": 1800000,
   "paths": [
     "bigData/research/PRICE-QUEUE-HANDOVER.md",
+    "bigData/research/price-queue.mjs",
+    "bigData/research/price-schema.json",
     "bigData/research/work-chunk.mjs"
   ]
 }
