@@ -1,0 +1,21 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1414",
+  "intent": "가격 조사 결과 커밋 (1회차)",
+  "actor": null,
+  "session": "price-chunk-yeaseung",
+  "since": "2026-09-22T11:35:36.498Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/research/data/combined-results/MA010120220803380155.json",
+    "bigData/research/data/combined-results/MA010120220810586449.json",
+    "bigData/research/data/combined-results/MA010120220811394813.json",
+    "bigData/research/data/combined-results/MA010120220811437318.json",
+    "bigData/research/data/combined-results/MA0101202406A0512484.json",
+    "bigData/research/data/combined-results/MA0101202406A0578509.json",
+    "bigData/research/data/combined-results/MA0101202411A0049339.json",
+    "bigData/research/data/combined-results/MA0101202502A0094544.json",
+    "bigData/research/data/combined-results/MA0101202503A0078811.json",
+    "bigData/research/data/combined-results/MA0101202507A0015350.json"
+  ]
+}
