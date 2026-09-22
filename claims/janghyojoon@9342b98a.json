@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1414",
+  "intent": "수집 루프가 서로를 못 막던 것 — 루프마다 세션을 따로 주고 TTL·거부판정을 고친다",
+  "actor": "agent",
+  "session": "995be6e8-9941-43a6-b397-097833324485",
+  "since": "2026-09-22T10:47:00.356Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "bigData/research/collect-chunks.sh"
+  ]
+}
