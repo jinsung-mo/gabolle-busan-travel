@@ -1,14 +1,15 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1506",
-  "intent": "하트 취소 이벤트를 만들고, 상태 이벤트를 «마지막 하나»로 읽게 한다",
+  "intent": "지운 행 수를 돌려주게 — 실제로 껐을 때만 이벤트를 적기 위해",
   "actor": "agent",
   "session": "995be6e8-9941-43a6-b397-097833324485",
-  "since": "2026-09-22T13:08:01.798Z",
+  "since": "2026-09-22T13:09:31.424Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/batch/application/BehaviorTasteFolder.java",
     "backend/src/main/java/com/gabolle/backend/event/domain/EventType.java",
+    "backend/src/main/java/com/gabolle/backend/place/repository/SavedPlaceRepository.java",
     "backend/src/main/java/com/gabolle/backend/place/service/SavedPlaceService.java"
   ]
 }
