@@ -1,0 +1,15 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-1482",
+  "intent": "행동 이벤트를 (차원, 코드) 취향 성분으로 귀속시키는 단계를 만든다",
+  "actor": "agent",
+  "session": "9938b473-a669-48c5-b9e8-3c6fc847122b",
+  "since": "2026-09-22T02:36:13.780Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/batch/application",
+    "backend/src/main/resources/application.properties",
+    "backend/src/test/java/com/gabolle/backend/batch",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter"
+  ]
+}
