@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1502",
+  "intent": "1502 — 삼성 실기 QA: 홈 날씨 칩 누를 수 있게 + 22°/22° 정리, 챗봇 「크게 보고 듣기」가 문장을 들고 가게 (translations.ts 는 예승님 점유 중이라 뒤에 따로)",
+  "actor": "agent",
+  "session": "89b252f0-b2ff-4e7b-944a-2381a220422d",
+  "since": "2026-09-22T11:40:52.598Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/chat.tsx",
+    "frontend/app/field/speak.tsx"
+  ]
+}
