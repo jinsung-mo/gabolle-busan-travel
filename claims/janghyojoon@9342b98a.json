@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1499",
+  "intent": "취향 무게를 근거별로 나눠 적고, 합치는 것을 읽을 때로 옮긴다 (동작 변화 없음)",
+  "actor": "agent",
+  "session": "995be6e8-9941-43a6-b397-097833324485",
+  "since": "2026-09-22T11:46:14.763Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/batch/application/TasteVectorFoldService.java",
+    "backend/src/main/java/com/gabolle/backend/preference/domain/UserTasteWeight.java",
+    "backend/src/main/java/com/gabolle/backend/preference/domain/UserTasteWeightId.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineRecommendationEngine.java"
+  ]
+}
