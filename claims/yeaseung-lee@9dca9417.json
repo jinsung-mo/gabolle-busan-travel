@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1492",
-  "intent": "ai/main ← main 동기화 병합의 나머지 경로. 효준 님이 잡고 계신 PRICE-QUEUE-HANDOVER.md · work-chunk.mjs 는 이 병합에 «들어오지 않아» 일부러 뺐다. 커밋 직후 전부 반납한다",
+  "intent": "ai/main ← main 동기화 병합의 마지막 세 경로. 효준 님 점유(PRICE-QUEUE-HANDOVER.md · work-chunk.mjs)와 겹치지 않는다. 커밋 직후 전부 반납",
   "actor": "agent",
   "session": "bf3e77e0-ca50-483a-b5ab-f9f375c74606",
-  "since": "2026-09-22T05:53:36.958Z",
+  "since": "2026-09-22T05:54:29.277Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitattributes",
@@ -32,6 +32,9 @@
     "bigData/research/collect-chunks.sh",
     "bigData/research/data",
     "bigData/research/price-queue.mjs",
+    "bigData/research/price-schema.json",
+    "bigData/research/queue.mjs",
+    "bigData/research/queue.test.mjs",
     "bigData/research/run-chunk.mjs",
     "bigData/survey",
     "bigData/test",
