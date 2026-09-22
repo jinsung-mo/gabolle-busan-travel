@@ -1,0 +1,14 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1503",
+  "intent": "식단 미확인 경고 라벨을 올바른 프런트 티켓(S15P21E201-1503)으로 다시 커밋한다 — 앞 브랜치가 남의 백엔드 카드(1468)를 가리켜 verify:jira-key 가 막았다",
+  "actor": "agent",
+  "session": "bf3e77e0-ca50-483a-b5ab-f9f375c74606",
+  "since": "2026-09-22T11:50:36.601Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/plan/__tests__/warningLabels.test.ts",
+    "frontend/src/plan/warningLabels.ts"
+  ]
+}
