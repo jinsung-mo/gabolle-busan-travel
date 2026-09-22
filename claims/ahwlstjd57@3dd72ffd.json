@@ -1,10 +1,10 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-1489",
-  "intent": "B-14 — allergenNotice 가 null 을 낼 수 있게 되어 호출부에서 카드를 안 그리게 한다",
+  "intent": "B-13 — 시작 전(PLANNED)인데 「예정보다 빠름」이라 진행 중처럼 읽히던 것",
   "actor": "agent",
   "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
-  "since": "2026-09-22T03:38:35.895Z",
+  "since": "2026-09-22T03:39:34.809Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/generating.tsx",
@@ -12,6 +12,7 @@
     "frontend/app/app-intro.tsx",
     "frontend/app/field/menu-scan.tsx",
     "frontend/app/place/[id].tsx",
+    "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/src/components/Toggle.tsx",
     "frontend/src/field/menuScan.ts",
     "frontend/src/i18n/translations.ts",
