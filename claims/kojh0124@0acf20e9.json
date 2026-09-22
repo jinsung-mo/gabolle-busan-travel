@@ -1,0 +1,12 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-1251",
+  "intent": "S15P21E201-1251 마이그레이션 번호를 back/dev 최대(20260922150000) 위로 올린다 — -1499 가 먼저 들어와 내 것이 out-of-order 가 됐다",
+  "actor": "agent",
+  "session": "616e3aa3-7f6c-493c-82b6-a22a332b3c18",
+  "since": "2026-09-22T12:41:50.893Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/resources/db/migration"
+  ]
+}
