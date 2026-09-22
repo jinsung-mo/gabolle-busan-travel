@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1479",
-  "intent": "S15P21E201-1479 — 가격을 읽는 포트와 구현을 더하고, 일정 항목 생성 자리에서 비용을 채운다",
+  "intent": "S15P21E201-1479 — 생성자에 가격 포트가 붙어서 시험 세 곳의 조립부를 맞춘다",
   "actor": "agent",
   "session": "c9016d3e-f85c-461a-a469-130359c4890b",
-  "since": "2026-09-22T00:18:50.748Z",
+  "since": "2026-09-22T00:22:23.994Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
@@ -14,6 +14,9 @@
     "backend/src/main/java/com/gabolle/backend/place/service/PlaceMenuPricePort.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationResultQueryService.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/presentation/dto/RecommendationResultResponse.java",
-    "backend/src/test/java/com/gabolle/backend/place/MenuPriceWonTest.java"
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryActualTimeServiceTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryQueryServiceTest.java",
+    "backend/src/test/java/com/gabolle/backend/place/MenuPriceWonTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/application/RecommendationResultQueryServiceTest.java"
   ]
 }
