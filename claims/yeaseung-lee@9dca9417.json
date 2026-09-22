@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1481",
+  "intent": "App Store 2.1 반려 회신문과 화면 녹화 촬영 지시서를 남긴다",
+  "actor": "agent",
+  "session": "bf3e77e0-ca50-483a-b5ab-f9f375c74606",
+  "since": "2026-09-22T02:44:36.751Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/app-review"
+  ]
+}
