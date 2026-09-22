@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-561",
+  "intent": "🔴 운영 다운 복구 — docker run 안의 주석이 줄 이음을 삼켜 이미지 인자가 사라졌다. 긴급",
+  "actor": "agent",
+  "session": "bc8d5ea0-aaf7-4711-a19d-22b99d5b2ed6",
+  "since": "2026-09-22T06:59:03.947Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/Jenkinsfile"
+  ]
+}
