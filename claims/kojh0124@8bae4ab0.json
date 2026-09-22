@@ -1,0 +1,13 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-1508",
+  "intent": "S15P21E201-1508 CI 빨간 것 둘 고침 — 새 끝점의 인가 정책 등록 누락, 그리고 통합시험이 DB 격리를 전제한 것",
+  "actor": "agent",
+  "session": "5f92c315-0494-4895-8597-c1779b159f77",
+  "since": "2026-09-22T14:17:01.560Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/place/ConditionCoverageQueryIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java"
+  ]
+}
