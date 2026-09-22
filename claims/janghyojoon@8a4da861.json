@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1414",
+  "intent": "선점 거부를 끝으로 읽던 것 고침",
+  "actor": null,
+  "session": "8f2302a8-e8c1-4537-9129-0cda4ca18e30",
+  "since": "2026-09-22T11:49:51.159Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/research/PRICE-QUEUE-HANDOVER.md",
+    "bigData/research/work-chunk.mjs"
+  ]
+}
