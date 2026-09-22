@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1414",
+  "intent": "조사 결과 보관 — PC 종료 전",
+  "actor": null,
+  "session": "db8f38ee-5049-49bc-8631-909e96197be6",
+  "since": "2026-09-22T02:36:50.797Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/research/data/combined-results"
+  ]
+}
