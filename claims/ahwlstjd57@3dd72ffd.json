@@ -1,0 +1,12 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-1489",
+  "intent": "B-16 새 문구가 번역표에 없어 CI(check:translations) 가 빨개진 것 — 세 언어 채운다",
+  "actor": "agent",
+  "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
+  "since": "2026-09-22T03:58:02.093Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/i18n/translations.ts"
+  ]
+}
