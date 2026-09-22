@@ -1,14 +1,14 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1503",
-  "intent": "식단 미확인 경고 라벨을 올바른 프런트 티켓(S15P21E201-1503)으로 다시 커밋한다 — 앞 브랜치가 남의 백엔드 카드(1468)를 가리켜 verify:jira-key 가 막았다",
+  "task": "S15P21E201-1496",
+  "intent": "추천 코스 카드가 출처 없이 사진을 그릴 수 있는 구멍을 구조로 막는다 — 출처가 없으면 사진을 안 그리고, 그릴 때는 출처를 함께 그린다 (공공누리 표기 의무, S15P21E201-1125 의 「구조로 강제한다」)",
   "actor": "agent",
   "session": "bf3e77e0-ca50-483a-b5ab-f9f375c74606",
-  "since": "2026-09-22T11:50:36.601Z",
+  "since": "2026-09-22T13:10:48.920Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/src/i18n/translations.ts",
-    "frontend/src/plan/__tests__/warningLabels.test.ts",
-    "frontend/src/plan/warningLabels.ts"
+    "frontend/src/plan/CourseCard.tsx",
+    "frontend/src/plan/__tests__/coursePhotoCredit.test.ts",
+    "frontend/src/plan/tripCourses.ts"
   ]
 }
