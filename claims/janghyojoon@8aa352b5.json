@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1495",
+  "intent": "S15P21E201-1495 — 예산이 추천에 안 닿는 것. BudgetFit 이 보는 PRICE_LEVEL 은 0행이라 실제 자료인 MENU_PRICE_WON 에서 등급을 만든다",
+  "actor": "agent",
+  "session": "c9016d3e-f85c-461a-a469-130359c4890b",
+  "since": "2026-09-22T06:39:59.414Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineRecommendationEngine.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BudgetFit.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BudgetFitTest.java"
+  ]
+}
