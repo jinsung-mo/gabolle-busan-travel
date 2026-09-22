@@ -1,0 +1,14 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1468",
+  "intent": "식단 ㄴ(경고 후 내보내기)의 앱 쪽 — 서버가 DIET_SUPPORT_UNVERIFIED 를 warnings 로 옮기기 «전에» 앱 사전에 먼저 넣는다. 사전에 없으면 그 경고가 화면에서 조용히 사라진다 (전에 실제로 겪음)",
+  "actor": "agent",
+  "session": "bf3e77e0-ca50-483a-b5ab-f9f375c74606",
+  "since": "2026-09-22T11:40:00.405Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/plan/__tests__/warningLabels.test.ts",
+    "frontend/src/plan/warningLabels.ts"
+  ]
+}
