@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-561",
+  "intent": "🔴 운영 2시간째 다운 — docker run 의 줄 이음(\\\\) 다음 줄이 # 주석이라 이미지 인자까지 주석이 됐다. 배포 경로(450)와 되돌리기 경로(642) 둘 다. 주석을 명령 밖으로 옮긴다",
+  "actor": "agent",
+  "session": "bf3e77e0-ca50-483a-b5ab-f9f375c74606",
+  "since": "2026-09-22T08:45:05.624Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/Jenkinsfile"
+  ]
+}
