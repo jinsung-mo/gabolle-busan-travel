@@ -1,5 +1,8 @@
 package com.gabolle.backend.trip;
 
+import java.util.Optional;
+import com.gabolle.backend.user.support.ConsentGuards;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -46,7 +49,7 @@ class TripControllerExceptionRoutingTest {
 		InMemoryTripRepository repository = new InMemoryTripRepository();
 		Clock clock = Clock.fixed(Instant.parse("2026-09-03T00:00:00Z"), ZoneOffset.UTC);
 		TripCreationService creationService = new TripCreationService(repository, clock,
-				new PreferenceDefaultsService(repository, clock));
+				new PreferenceDefaultsService(repository, clock), ConsentGuards.granting(), Optional.empty(), Optional.empty());
 		TripQueryService queryService = new TripQueryService(repository);
 
 		TripController controller = new TripController(creationService, queryService,
@@ -70,6 +73,8 @@ class TripControllerExceptionRoutingTest {
 				  "startDate": "2026-09-10",
 				  "finishDate": "2026-09-12",
 				  "partySize": 1,
+				  "originLat": 35.1587,
+				  "originLng": 129.1604,
 				  "timezone": "Asia/Seoul",
 				  "constraints": [
 				    { "type": "ALLERGY", "constraintKey": "OTHER", "severity": "SOFT", "answerStatus": "NONE" }

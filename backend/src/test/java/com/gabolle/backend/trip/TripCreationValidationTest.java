@@ -1,5 +1,8 @@
 package com.gabolle.backend.trip;
 
+import java.util.Optional;
+import com.gabolle.backend.user.support.ConsentGuards;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -53,7 +56,7 @@ class TripCreationValidationTest {
         InMemoryTripRepository repository = new InMemoryTripRepository();
         Clock clock = Clock.fixed(Instant.parse("2026-09-03T00:00:00Z"), ZoneOffset.UTC);
         TripCreationService creationService = new TripCreationService(repository, clock,
-                new PreferenceDefaultsService(repository, clock));
+                new PreferenceDefaultsService(repository, clock), ConsentGuards.granting(), Optional.empty(), Optional.empty());
         TripQueryService queryService = new TripQueryService(repository);
 
         TripController controller = new TripController(creationService, queryService,
@@ -75,6 +78,8 @@ class TripCreationValidationTest {
                   "startDate": "2026-09-06",
                   "finishDate": "2026-09-08",
                   "partySize": 1,
+                  "originLat": 35.1587,
+                  "originLng": 129.1604,
                   "timeWindow": "18:00-09:00"
                 }""";
 
@@ -95,6 +100,8 @@ class TripCreationValidationTest {
                   "startDate": "2026-09-06",
                   "finishDate": "2026-09-08",
                   "partySize": 1,
+                  "originLat": 35.1587,
+                  "originLng": 129.1604,
                   "preferences": [
                     { "dimension": "transport", "value": "\\"HELICOPTER\\"", "answerStatus": "SELECTED" }
                   ]
@@ -116,6 +123,8 @@ class TripCreationValidationTest {
                   "startDate": "2026-09-06",
                   "finishDate": "2026-09-08",
                   "partySize": 1,
+                  "originLat": 35.1587,
+                  "originLng": 129.1604,
                   "timeWindow": "09:00-18:00",
                   "preferences": [
                     { "dimension": "transport", "value": "\\"TRANSIT\\"", "answerStatus": "SELECTED" }

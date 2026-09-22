@@ -4,18 +4,355 @@
 #    여섯 파트가 승격할 때마다 같은 파일에서 충돌했고, bigData 의 LFS 훅 우회
 #    한 줄을 잘못 받으면 태그 push 가 죽는 상황까지 갔다.
 #
-# 아직 비어 있다. 파트 잡을 여기로 옮기는 절차는 docs/CI-SPLIT.md 에 있다.
+# 뿌리 .gitlab-ci.yml 에 있던 frontend:dependency-scan · frontend:smoke 를
+# 2026-09-10 에 그대로 옮겼다(S15P21E201-786). 옮기는 절차는 docs/CI-SPLIT.md 에 있다.
 
-# 🔴 아래 한 줄을 지우지 마라 — 첫 잡을 옮겨 오기 전까지는 필요하다.
+# ── frontend:build 는 지웠다 (S15P21E201-700) ────────────────────────────────
 #
-#    주석만 있는 파일은 YAML 이 "빈 값"(null)으로 읽고, GitLab 은 그것을
-#    `Included file ... does not have valid YAML syntax!` 로 거부한다.
-#    그러면 **잡이 하나도 안 만들어지고 파이프라인만 failed 로 찍힌다** —
-#    화면에 실패한 잡이 없어서 원인을 찾을 단서가 안 남는다.
-#    (2026-09-09 실측: 이 파일 여섯이 비어서 MR !462 가 그렇게 죽었다.)
+# 🔴 다시 넣지 마라. "프론트 빌드 검사가 없네" 로 보이지만 없는 게 아니다.
+#    아래 `frontend:smoke` 가 `npm ci` + `npx expo export --platform web` 을
+#    **똑같이** 하고, 거기에 더해 헤드리스 브라우저로 실제로 열어 본다.
+#    번들이 안 만들어지면 smoke 가 그 자리에서 실패한다 — 검사 강도는 그대로다.
 #
-#    점(.)으로 시작하는 이름은 GitLab 이 **잡으로 만들지 않는다**(숨은 잡).
-#    이 파트의 첫 잡을 여기로 옮겨 오면 이 줄은 지워도 된다.
-.frontend-part-placeholder:
+# 왜 지웠나 — 낭비가 아니라 **해로웠다.** 둘 다 stage: verify 라 동시에 돌았고,
+# 4코어 러너에서 Metro 번들러 두 개가 서로를 밀어냈다. 실측(2026-09-07, 잡 4,466개):
+#
+#     러너에 동시 3개일 때  frontend:build 130초
+#     러너에 동시 4개일 때                  247초   ← 정확히 2배
+#     한가한 기계(동시 1개)                 118초
+#
+# 이 잡 하나를 지워 4일치 CI 실행시간의 19.7%(9.4시간)를 회수한다.
+
+# ── 의존성 취약점 스캔 (OWASP A06) ────────────────────────────────────────────
+#
+# npm audit은 이미 package-lock.json(잠금 파일)을 쓰므로 backend처럼 별도
+# 잠금 설정이 필요 없다 — S15P21E201-680, 형제 잡은 backend:dependency-scan.
+#
+# --audit-level=high 는 npm 내장 기준이라 HIGH·CRITICAL 에서만 실패한다.
+# 실측(2026-09-07): 현재 MODERATE 14건뿐이라 이 잡은 지금 통과한다.
+#
+# 🔴 2026-09-08 — 언제 도는가를 두 갈래로 바꿨다.
+#
+#    전에는 `frontend/**/*` 가 바뀌면 돌았다. 그런데 이 검사가 보는 것은 **의존성**
+#    이지 우리 화면 코드가 아니다. 글자 하나만 고친 MR 에서도 `npm ci` 를 통째로
+#    돌리고 있었고, 그때 의존성은 한 줄도 안 바뀌었다.
+#
+#    그래서 MR 에서는 **잠금 파일이 바뀔 때만** 돈다.
+#
+#    🔴 대신 하루 한 번 예약으로 전체를 다시 본다. **새 취약점은 우리 코드가 안
+#    바뀌어도 생기기 때문이다** — 지난달에 깐 라이브러리가 오늘 취약하다고 공개될
+#    수 있다. 잠금 파일 조건만 두면 그런 날 아무도 모른 채 지나간다.
+frontend:dependency-scan:
+  stage: verify
+  # 🔴 S15P21E201-983 — 이 파일의 잡 셋을 전부 백업 러너(2065)로 보낸다.
+  #    운영 호스트(러너 2037)는 Jenkins·운영 컨테이너와 같은 기계다.
+  #
+  #    실측 (운영 서버에 붙어 ps 로 잼, 2026-09-15): frontend:unit 과
+  #    frontend:smoke 가 동시에 도는 동안 프론트 node 프로세스들이 CPU 약 190%
+  #    (4코어 중 2개)를 먹고 있었고, 정작 운영 앱(gabolle-backend.jar)은 9.8%
+  #    였다. 프론트 잡 10건 중 9건이 2037 로 갔다.
+  #
+  #    소요 시간(204~272초)만 보고 "가볍다" 고 판단했던 것이 틀렸다 — 짧아도
+  #    굵다. 2065 의 동시 실행을 1 → 2 로 올려 두어 지금처럼 나란히 돈다.
+  tags: [heavy]
+  image: node:20-alpine
+  before_script: []
+  # 🔴 캐시하는 것은 node_modules 가 아니라 **npm 이 받아 둔 꾸러미 보관함**(.npm)이다.
+  #    보관함에는 내려받은 tarball 이 들어 있고, npm 은 잠금 파일대로 다시 풀되
+  #    **내려받는 일만 건너뛴다.** GitLab 공식 캐싱 예제가 쓰는 방식 그대로다.
+  #
+  #    node_modules 를 캐시하지 않는 이유는 위험해서가 아니라 **낭비라서**다 —
+  #    `npm ci` 는 시작 전에 node_modules 를 무조건 지운다(재현 확인: 가짜 패키지를
+  #    심어 두어도 다음 npm ci 에서 사라진다). 지워질 것을 압축해 옮기는 셈이다.
+  #
+  #    key 를 잠금 파일 내용으로 잡아서, 의존성이 바뀌면 캐시도 저절로 갈린다.
+  #
+  # 🔴 이 저장소의 러너는 **2대**이고 캐시는 **러너 로컬 디스크**에 쌓인다(원격 캐시
+  #    설정이 없다). 그래서 다른 러너로 배정된 잡은 **캐시가 그냥 미스난다.**
+  #    절감폭이 날마다 들쭉날쭉한 것은 고장이 아니라 이 구조 때문이다.
+  cache:
+    key:
+      files:
+        - frontend/package-lock.json
+    paths:
+      - frontend/.npm
   script:
-    - "true"
+    - cd frontend
+    - npm ci --cache .npm --prefer-offline
+    - npm audit --audit-level=high
+  rules:
+    # ① 의존성이 실제로 바뀐 MR
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes: ['frontend/package.json', 'frontend/package-lock.json']
+    # ② 매일 예약 — 코드가 안 바뀌어도 새로 공개된 취약점을 잡는다
+    - if: $CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_KIND == "depscan"
+
+# ── 화면이 실제로 뜨는가 ───────────────────────────────────────────────────────
+#
+# 🔴 위 frontend:build는 번들이 만들어지는지만 본다 — 문법 검사·타입 검사와
+#    같은 층이라, 브라우저에서 실행돼야만 터지는 문제(예: let 선언이 첫
+#    사용처보다 아래에 있어 부트스트랩이 죽는 것)는 못 잡는다. docs/CI.md가
+#    이걸 실제로 하룻밤에 두 번 겪었다고 적어 뒀다 — 문법 검사·단위 테스트
+#    전부 통과한 채로 흰 화면이 배포될 뻔했다 (S15P21E201-252).
+#
+#    헤드리스 브라우저로 실제로 열어서 (1) 화면에 글자가 그려졌는지
+#    (2) 콘솔에 error가 안 찍혔는지를 본다 — tools/smoke-check.mjs.
+#
+# 🔴 이미지를 Microsoft 공식 Playwright 이미지로 고른 이유. docs/CI.md 3절이
+#    남긴 함정 — "데비안 계열 이미지는 패키지 목록이 비어 있어서
+#    apt-get update 없이 apt-get install을 치면 실패한다" — 이 자체를
+#    피한다. 이 이미지는 크로미움과 필요한 라이브러리가 전부 미리 깔려 있어서
+#    apt-get을 아예 안 부른다. 태그(v1.62.1)는 package.json의 playwright
+#    버전과 반드시 같아야 한다 — 다르면 "browserType.launch: Executable
+#    doesn't exist" 로 죽는다.
+frontend:smoke:
+  stage: verify
+  # S15P21E201-983 — 백업 러너로. 이유는 위 frontend:dependency-scan 주석에 있다.
+  tags: [heavy]
+  image: mcr.microsoft.com/playwright:v1.62.1-noble
+  before_script: []
+  # 🔴 캐시가 줄여 주는 것은 `npm ci` 안의 **내려받기 부분**뿐이고, 그 크기는
+  #    **10~20초**다. 이 저장소 잡 로그 실측에서 `npm ci` 자체가 22~49초였고,
+  #    같은 잠금 파일로 로컬 재현하니 29.2초 → 12.6~19.5초였다.
+  #
+  #    🔴 이 자리에 한때 "69~112초가 준다" 고 적혀 있었는데 **틀린 값이었다.**
+  #    그 숫자는 `npm ci` 가 아니라 아래 `expo export`(Metro 번들러)가 **러너 동시
+  #    부하에 따라 41초 → 74~111초로 늘어나는 폭**이다. 캐시와 아무 상관이 없다.
+  #    그래서 이 잡을 빠르게 만드는 진짜 손잡이는 캐시가 아니라 **동시에 도는
+  #    잡을 줄이는 것**이다 (그래서 dependency-scan 조건을 좁혔다).
+  #
+  #    타입 검사와 `expo export` 는 우리 코드를 다루는 일이라 캐시와 무관하게
+  #    매번 그대로 돈다. 캐시는 "바뀐 부분만 빌드" 가 아니라 "라이브러리를 다시
+  #    안 받는다" 이다.
+  #
+  #    형제 잡(frontend:dependency-scan)과 key 를 같은 잠금 파일로 잡았으므로,
+  #    **같은 러너에 배정되면** 둘 중 먼저 도는 쪽이 채운 보관함을 나머지가 쓴다.
+  cache:
+    key:
+      files:
+        - frontend/package-lock.json
+    paths:
+      - frontend/.npm
+  script:
+    - cd frontend
+    - npm ci --cache .npm --prefer-offline
+    # 🔴 타입 검사를 여기 넣은 이유 — 이건 원래 CI 에 없던 검사다.
+    #    package.json 에 `typecheck: tsc --noEmit` 이 있는데 .gitlab-ci.yml
+    #    어디에서도 안 불렀다(실측 2026-09-07: tsc·typecheck·verify 0건).
+    #    지운 frontend:build 도 expo export 만 했으므로, 타입은 지금까지
+    #    CI 에서 한 번도 안 봤다.
+    #
+    #    Metro 번들러는 **타입 오류를 무시하고 번들을 만든다.** `user.nmae`
+    #    같은 오타는 번들도 되고 화면도 뜨고, 그 값을 쓰는 순간에만 터진다.
+    #    아래 스모크로도 안 잡히는 자리가 있다.
+    #
+    #    별도 잡으로 안 뺀 이유: 그러면 `npm ci`(69~112초)를 한 번 더 돌리고
+    #    러너 슬롯을 하나 더 먹는다. 그게 바로 frontend:build 를 지운 이유다.
+    #    여기 두면 이미 깔아 둔 node_modules 를 그대로 쓰고, 무거운 번들링
+    #    앞에서 싼 검사가 먼저 실패한다.
+    # 🔴 타입 검사보다 먼저 — 몇 초면 끝나고, 실기기에서만 보이던 결함을 잡는다
+    #    (S15P21E201-1241). Button 의 containerStyle 에 색·모서리를 칠하면
+    #    둥근 버튼 뒤에 각진 도형이 하나 더 남는다. 타입 검사도 시험도 이걸 못 잡는다 —
+    #    2026-09-18 iOS 실기기 시험에서 사람이 눈으로 찾았다.
+    - npm run check:button-container
+    - npm run check:menu-translations
+    # 🔴 앱 전체 문구가 다섯 언어로 다 있는가 (S15P21E201-1340). 위 메뉴판 검사가 지키던 것을
+    #    앱 전체로 넓혔다 — tx 는 표에 없으면 «조용히» 영어로 떨어지고, 한국어 화면에서는 끝까지
+    #    안 보인다. 2026-09-19 일본어 실기에서 여행 만들기 문항이 통째로 영어였다.
+    - npm run check:translations
+    # 🔴 화면에 색이 직접 박히면 빨개진다 (S15P21E201-1343). 배색을 토큰 한 곳에서만
+    #    읽는다는 규칙이 이 검사로 지켜진다 — 안 지키면 다음 배색 전환 때 그 자리만
+    #    옛 색으로 남고, 화면은 멀쩡해 보여서 아무도 못 찾는다.
+    - npm run check:palette
+    - npx tsc --noEmit
+    - npx expo export --platform web
+    - npx serve dist -l 3000 &
+    - sleep 2
+    - npm run smoke -- http://localhost:3000
+  # 🔴 이 파일이 바뀔 때도 돈다 (S15P21E201-1019, 2026-09-16).
+  #    백엔드가 S15P21E201-866 에서 이미 정한 규칙을 프론트에도 적용한다 —
+  #    **잡의 정의가 바뀌면 그 잡을 돌려 봐야 한다.** 안 그러면 잡을 고치는 MR 이
+  #    그 잡을 한 번도 안 돌린 채 초록으로 지나간다.
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes: ['frontend/**/*', 'ci/parts/frontend.yml']
+
+# ── 실사용자 흐름 E2E — 로그인 → 여행 기본정보 → 추천 요청 (S15P21E201-775) ─────────
+#
+# 위 frontend:smoke는 "화면에 글자가 그려졌는가·콘솔에 에러가 없는가"만 본다
+# (S15P21E201-252 재발 방지용, 백엔드 없는 환경). 이 잡은 다르다 — 실제 백엔드를
+# 이 잡 안에서 띄우고, 로그인부터 추천 요청까지 실제로 눌러 본다.
+#
+# 🔴 MR마다 안 돌리고 예약(schedule)으로만 돈다. 이 저장소는 이미 한 번
+# frontend:build를 지웠다(위 주석 참고) — Metro 번들러 두 개가 동시에 돌면 러너가
+# 서로를 밀어냈기 때문이다. 이 잡은 그보다 훨씬 무겁다(백엔드 JVM 기동 + 프론트
+# 번들링 + 브라우저) — MR마다 돌리면 같은 문제가 더 크게 재발한다. ticket이 스스로
+# "MR에서는 무겁다면 스케줄로 뺄지 결정"이라고 열어 둔 길이 이것이다.
+#
+# 🔴 spring.flyway.create-schemas=false(운영 안전장치, application-dev.properties
+# 12행 주석)를 명령줄 인자로 뒤집는다 — 이 잡의 DB는 매번 새로 뜨는 이 잡 전용
+# postgres 서비스라 "운영 DB에 실수로 스키마를 만드는" 위험이 아예 없다. psql
+# 클라이언트를 이미지에 새로 깔지 않고 넘어가는 이유가 이것이다.
+#
+# 🔴 2026-09-11 실측 — 스케줄을 처음 켠 첫 실행이 로그인 단계에서
+#    "서버에 연결할 수 없어요"(ApiUnavailableError, client.ts)로 실패했다
+#    (파이프라인 188557 · 잡 513302). 같은 컨테이너 하나가 postgres·백엔드
+#    JVM(bootRun, JIT 미완료)·Metro 번들링·크로미움을 전부 동시에 떠안는 구조라,
+#    "헬스체크(단순 401)는 통과했지만 그 뒤 npm ci + expo export(약 100초짜리
+#    CPU 작업)가 도는 동안 JVM이 첫 실제 요청(로그인)의 Hibernate 지연 초기화를
+#    미처 못 끝내 응답이 소켓 단에서 막혔다"는 쪽에 무게를 둔다 — 로그에 백엔드
+#    쪽 에러가 없고(로그를 못 받아 뒀던 것도 원인 — 이번에 고친다), CORS 설정도
+#    코드로 확인했을 때 이상이 없었다.
+#
+#    아래 세 가지로 완화한다. 그래도 다시 나면 백엔드 로그(이제 아티팩트로
+#    남는다)를 먼저 본다 — 자원 경합이 아니라 다른 원인일 수 있다.
+frontend:e2e:
+  stage: verify
+  # S15P21E201-983 — 백업 러너로. 이유는 위 frontend:dependency-scan 주석에 있다.
+  tags: [heavy]
+  image: mcr.microsoft.com/playwright:v1.62.1-noble
+  services:
+    - name: postgres:16-alpine
+      alias: postgres
+  variables:
+    POSTGRES_DB: gabolle_e2e
+    POSTGRES_USER: gabolle
+    POSTGRES_PASSWORD: gabolle_ci
+    GABOLLE_DB_URL: jdbc:postgresql://postgres:5432/gabolle_e2e
+    GABOLLE_DB_USERNAME: gabolle
+    GABOLLE_DB_PASSWORD: gabolle_ci
+    GABOLLE_DB_SCHEMA: e2etest
+    GABOLLE_JWT_SECRET: e2e-only-secret-not-used-anywhere-else
+    GABOLLE_CORS_ALLOWED_ORIGINS: http://localhost:3000
+    GABOLLE_WEB_REFRESH_COOKIE_SECURE: "false"
+    GABOLLE_WEB_REFRESH_COOKIE_SAME_SITE: Lax
+    GABOLLE_SERVICE_VERSION: e2e-ci
+    GABOLLE_DEPLOYMENT_ENVIRONMENT: e2e
+    # 🔴 2026-09-11 정정 — 바로 위 "해가 되지 않는다"는 틀렸다. 127.0.0.1로 고정한
+    #    뒤(파이프라인 188579) 로그인 자체는 200으로 성공했는데, 로그인 직후 앱이
+    #    보내는 조용한 갱신 요청(POST /auth/web/refresh)이 401로 돌아와 도로
+    #    로그아웃 상태가 됐다 — 최종 확인 화면에 "이 조건으로 일정 만들기"가 아니라
+    #    "로그인하고 일정 만들기"가 떴다. Playwright trace의 네트워크 로그를 보니
+    #    원인이 SameSite=Lax 쿠키였다: 로그인 응답이 심는 gabolle_refresh_token
+    #    쿠키는 Lax라 "동일 사이트(site)"가 아닌 요청에는 브라우저가 아예 안
+    #    붙인다. "localhost"와 "127.0.0.1"은 둘 다 루프백을 가리켜도 사이트
+    #    판정에서는 **다른 site**다(포트만 다른 것과 다르다 — 호스트 이름 자체가
+    #    다르다). frontend(localhost:3000)는 그대로인데 backend만 127.0.0.1로
+    #    바꾼 것이 정확히 이 어긋남을 만들었다 — 바꾸기 전(둘 다 localhost, 포트만
+    #    다름)에는 같은 site라 문제가 없었다. localhost로 되돌린다.
+    EXPO_PUBLIC_API_BASE_URL: http://localhost:8080
+    # 🔴 기본값 12초(client.ts) 그대로 두면, npm ci + expo export가 도는 동안
+    #    JVM이 첫 실제 요청의 지연 초기화를 못 끝냈을 때 타임아웃이 먼저 끊고
+    #    "서버 응답이 늦어…"로 죽는다. 이 잡 전용으로만 넉넉히 둔다 — 앱 기본값도,
+    #    다른 환경도 안 건드린다.
+    EXPO_PUBLIC_API_TIMEOUT_MS: "30000"
+    E2E_DB_URL: "postgres://gabolle:gabolle_ci@postgres:5432/gabolle_e2e?options=-csearch_path%3De2etest"
+    E2E_BASE_URL: http://localhost:3000
+    GRADLE_USER_HOME: $CI_PROJECT_DIR/.gradle-home
+  before_script: []
+  script:
+    # 🔴 이 이미지(mcr.microsoft.com/playwright)는 크로미움은 있어도 JDK가 없다 —
+    #    backend:build가 쓰는 eclipse-temurin 이미지를 통째로 못 쓰는 이유는 그
+    #    반대(크로미움이 없다)다. 둘 다 필요해서 이 잡 안에서 JDK만 얹는다.
+    - apt-get update -qq && apt-get install -y -qq openjdk-17-jdk-headless postgresql-client
+    # 🔴 2026-09-11 실측 — 세 번의 스케줄 실행이 전부 같은 자리(로그인)에서
+    #    "서버에 연결할 수 없어요"로 죽었다. 원인은 IPv6도 자원 경합도 아니었다 —
+    #    Playwright trace의 콘솔 로그가 실제 CORS 에러를 그대로 남겼다:
+    #    "Request header field x-session-token is not allowed by
+    #    Access-Control-Allow-Headers in preflight response." 이건 S15P21E201-775가
+    #    back/dev에 이미 고친 바로 그 버그다 — 그런데 **이 잡은 front/dev 체크아웃의
+    #    backend/ 를 그대로 쓴다.** front/dev 와 back/dev 는 서로 다른 브랜치라
+    #    promote(파트 dev → 파트 main, CLAUDE.md 2절)가 돌기 전까지는 서로의
+    #    백엔드 변경을 안 받는다 — 그래서 이 잡은 이미 고쳐진 CORS 버그를 매번
+    #    다시 재현하고 있었다. 프론트 E2E가 실제로 검증해야 하는 것은 "지금 이
+    #    프론트가 지금 운영에 가장 가까운 백엔드와 맞물리는가"이지 front/dev 에
+    #    우연히 박제된 백엔드 스냅샷이 아니다 — 그래서 back/dev HEAD로 backend/
+    #    를 덮어쓰고 그걸로 띄운다.
+    #
+    # 🔴 2026-09-16 정정 (S15P21E201-1019) — 위 판단은 맞았는데 **덮어쓰는 방법이
+    #    틀렸다.** `git checkout <커밋> -- .` 은 **덮어쓰기만 하고 지우지 않는다.**
+    #    그 커밋에 없는 파일은 작업 폴더에 그대로 남는다.
+    #
+    #    그리고 이 잡이 도는 자리는 front/dev 체크아웃이고, front/dev 의 backend/
+    #    는 2026-09-09(042711b0)에 멈춰 있다 — 바로 위 주석이 말하는 그 이유로.
+    #    그래서 **back/dev 가 지운 파일이 front/dev 쪽에 남아 되살아났다.**
+    #
+    #      front/dev 의 backend/ (9/9)   NotCollectedOpeningHoursFilter.java  있다
+    #      back/dev (f72b62e5, 9/11)     ← 지웠다                             없다
+    #      덮어쓴 결과                    🔴 지워진 파일이 살아 있다
+    #
+    #    같은 커밋이 OpeningHoursFilterPort 의 서명도 바꿨으므로, 되살아난 클래스는
+    #    바뀐 규격을 안 지키는 구현체가 된다 → compileJava 가 4개 에러로 죽는다.
+    #    이 예약 잡이 **9/12·9/13·9/15 나흘을 글자 하나 다르지 않은 같은 실패로**
+    #    죽어 있었고, 예약 파이프라인은 아무것도 안 막으므로 아무도 몰랐다
+    #    (알림 자체가 없는 문제는 S15P21E201-1020).
+    #
+    #    🔴 **백엔드 코드는 어느 시점에도 깨지지 않았다.** 깨진 것은 CI 가 두
+    #    브랜치를 겹쳐 만든 가짜 트리뿐이다. 그래서 덮기 전에 **비운다** —
+    #    back/dev 의 트리를 그대로 복원하고, front/dev 에 남은 잔재는 안 남긴다.
+    - git fetch --depth 1 origin back/dev
+    - rm -rf backend
+    - git checkout FETCH_HEAD -- backend
+    - cd backend
+    - chmod +x gradlew
+    - until pg_isready -h postgres -U gabolle; do sleep 1; done
+    - nohup ./gradlew bootRun --args="--spring.profiles.active=dev --spring.flyway.create-schemas=true" > /tmp/backend.log 2>&1 &
+    - |
+      for i in $(seq 1 60); do
+        code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/api/v1/auth/me || echo 000)
+        [ "$code" = "401" ] && break
+        sleep 3
+      done
+      if [ "$code" != "401" ]; then echo "🔴 백엔드가 안 떴다 — 로그:"; cat /tmp/backend.log; exit 1; fi
+    # 🔴 워밍업 — 위 헬스체크(/auth/me)는 보안 필터만 타고 끝나는 가벼운 401이라
+    #    Hibernate 지연 초기화를 안 건드린다. 실제 여정의 첫 요청(회원가입)과
+    #    같은 무거운 경로를 여기서 한 번 미리 태워서, 뒤이은 npm ci + expo export
+    #    (CPU를 몇십 초간 다 쓴다) 동안 JVM이 그 초기화까지 끝내 두게 한다.
+    #    실패해도 무시한다 — 이건 데이터가 아니라 JIT/캐시를 데우는 것뿐이다.
+    - |
+      curl -s -o /dev/null -X POST http://localhost:8080/api/v1/auth/signup \
+        -H "Content-Type: application/json" \
+        -d '{"email":"warmup-discard@example.com","password":"WarmupOnly1234!","displayName":"warmup","language":"KO","ageGateAccepted":true,"consents":{"TERMS_OF_SERVICE":true,"PRIVACY_POLICY":true}}' || true
+    - cd ../frontend
+    - npm ci --cache .npm --prefer-offline
+    - npx expo export --platform web
+    - npx serve dist -l 3000 -s &
+    - sleep 2
+    - node tools/e2e-seed-user.mjs > /tmp/seed.env
+    - export $(cat /tmp/seed.env | xargs)
+    - npx playwright test
+  after_script:
+    # 🔴 실패 원인이 백엔드 쪽일 때 이걸 못 받아 두면 다음에도 똑같이 추측만
+    #    한다(2026-09-11, 첫 스케줄 실행 실패 때 실제로 이것 때문에 못 봤다).
+    #    아티팩트 경로(frontend/test-results/)는 이미 있으니 그 안에 같이 담는다.
+    - mkdir -p frontend/test-results
+    - cp /tmp/backend.log frontend/test-results/backend.log 2>/dev/null || true
+  artifacts:
+    when: on_failure
+    paths:
+      - frontend/test-results/
+    expire_in: 7 days
+  # 🔴 이 잡은 예약으로만 돌았다. 그래서 **이 잡을 고치는 MR 이 이 잡을 한 번도
+  #    안 돌린 채 초록으로 지나갔고**, 고쳤는지 아닌지를 다음 날 아침 09:10 까지
+  #    알 수 없었다 (S15P21E201-1019, 2026-09-16).
+  #
+  #    백엔드가 S15P21E201-866 에서 backend:build 에 이미 정한 규칙과 같다 —
+  #    **잡의 정의가 바뀌면 그 잡을 돌려 봐야 한다.** 이 파일을 건드리는 MR 은
+  #    드물어서(CI 수정 때뿐) 비용도 거의 안 는다.
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_KIND == "e2e"
+    # 🔴 승격 MR 에서도 돈다 (S15P21E201-1256).
+    #
+    #    위 예약은 매일 09:13 에 한 번이다. 2026-09-18 에 그 한계가 드러났다 —
+    #    아침 예약은 통과했고, 여행 조건 한 페이지 개편(S15P21E201-1233)이 그 뒤에
+    #    들어오면서 핵심 여정이 깨졌다. 다음 예약까지 하루가 비어 있어 아무도 몰랐고,
+    #    무관한 MR 이 ci/parts/frontend.yml 을 건드리는 바람에 우연히 드러났다.
+    #    그때는 이미 front/dev 에 머지된 뒤였다.
+    #
+    #    MR 마다 돌리지 않는 이유는 위 주석에 실측으로 적혀 있다(자원 경합 —
+    #    frontend:build 를 지운 것과 같은 이유). 그 결정은 그대로 둔다. 대신
+    #    **파트 main 으로 올라가는 문 하나**에만 세운다. 하루에 많아야 몇 번이고,
+    #    깨진 핵심 여정이 파트 브랜치를 넘어가는 것을 그 자리에서 막는다.
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /(^|\/)(main|func)$/
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes: ['ci/parts/frontend.yml']

@@ -40,8 +40,18 @@ public class TripJpaEntity {
 	@Column(name = "trip_id")
 	private UUID tripId;
 
+	/**
+	 * 🔴 S15P21E201-317 — {@code updatable = false} 다. 소유자는 여행 생성 이후 바뀌지 않는다는
+	 * 뜻이었는데, 딱 하나(익명 세션 승계) 예외가 생겼다. 그 예외는 이 엔티티를 고쳐 저장하는
+	 * 경로가 아니라 {@link JpaTripRepository#claimAnonymousTrips} 의 네이티브 SQL 로만 이뤄진다 —
+	 * 그래서 이 플래그는 그대로 둔다("보통은 안 바뀐다"는 사실은 여전히 참이다).
+	 */
 	@Column(name = "owner_user_id", nullable = false, updatable = false)
 	private UUID ownerUserId;
+
+	/** {@code USER} | {@code ANONYMOUS}. {@link com.gabolle.backend.trip.domain.Trip.OwnerType} 과 1:1. */
+	@Column(name = "owner_type", nullable = false, updatable = false, length = 20)
+	private String ownerType;
 
 	@Column(name = "start_date", nullable = false)
 	private LocalDate startDate;
@@ -96,6 +106,14 @@ public class TripJpaEntity {
 	@Column(name = "timezone", nullable = false)
 	private String timezone;
 
+	/**
+	 * 사용자가 붙인 이름 — S15P21E201-1023. {@code null} 이면 아직 이름이 없다.
+	 *
+	 * <p>길이 60 은 마이그레이션 {@code V20260915140000__trip_title.sql} 과 같은 값이다.
+	 */
+	@Column(name = "title", length = 60)
+	private String title;
+
 	@Enumerated(EnumType.STRING)
 	@Column(name = "status", nullable = false, length = 20)
 	private Trip.Status status;
@@ -113,15 +131,16 @@ public class TripJpaEntity {
 		// JPA 전용
 	}
 
-	TripJpaEntity(UUID tripId, UUID ownerUserId, LocalDate startDate, LocalDate endDate,
+	TripJpaEntity(UUID tripId, UUID ownerUserId, String ownerType, LocalDate startDate, LocalDate endDate,
 			Double originLat, Double originLng, Long budgetKrw, Integer partySize,
 			String timeWindow, String timezone, String[] travelModes,
 			LocalTime timeWindowStart, LocalTime timeWindowEnd,
 			UUID accommodationPlaceId, boolean englishMenuRequired, boolean foreignCardRequired,
-			boolean soloFriendlyPriority, Integer maxTransitTransfers, Trip.Status status,
+			boolean soloFriendlyPriority, Integer maxTransitTransfers, String title, Trip.Status status,
 			OffsetDateTime createdAt, OffsetDateTime updatedAt, OffsetDateTime deletedAt) {
 		this.tripId = tripId;
 		this.ownerUserId = ownerUserId;
+		this.ownerType = ownerType;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.originLat = originLat;
@@ -138,6 +157,7 @@ public class TripJpaEntity {
 		this.soloFriendlyPriority = soloFriendlyPriority;
 		this.maxTransitTransfers = maxTransitTransfers;
 		this.timezone = timezone;
+		this.title = title;
 		this.status = status;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
@@ -157,8 +177,32 @@ public class TripJpaEntity {
 		this.updatedAt = updatedAt;
 	}
 
+	/**
+	 * 상태 칸을 옮긴다 — S15P21E201-964. 어느 상태로 갈 수 있는지는 도메인
+	 * ({@link Trip#markReady}) 이 이미 판정했고 여기서는 옮겨 적기만 한다.
+	 *
+	 * <p>{@link #markDeleted} 와 같이 시각을 인자로 받는다 — 같은 이유다.
+	 */
+	void changeStatus(Trip.Status status, OffsetDateTime updatedAt) {
+		this.status = status;
+		this.updatedAt = updatedAt;
+	}
+
+	/**
+	 * 이름 칸만 옮겨 적는다 — S15P21E201-1023. 길이·제어문자 규칙은 도메인
+	 * ({@link Trip#rename}) 이 이미 판정했다.
+	 *
+	 * <p>{@link #changeStatus} 와 같이 시각을 인자로 받는다 — 같은 이유다.
+	 */
+	void changeTitle(String title, OffsetDateTime updatedAt) {
+		this.title = title;
+		this.updatedAt = updatedAt;
+	}
+
 	UUID tripId() { return tripId; }
+	String title() { return title; }
 	UUID ownerUserId() { return ownerUserId; }
+	String ownerType() { return ownerType; }
 	LocalDate startDate() { return startDate; }
 	LocalDate endDate() { return endDate; }
 	Double originLat() { return originLat; }

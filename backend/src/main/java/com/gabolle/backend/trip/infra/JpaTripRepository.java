@@ -134,6 +134,38 @@ public class JpaTripRepository implements TripRepository {
 		tripJpaRepository.save(entity);
 	}
 
+	/**
+	 * 상태 칸만 옮긴다 — S15P21E201-964. 위 {@link #softDelete} 와 같은 이유로 읽어서
+	 * 고치지, {@code toEntity(trip)} 로 만든 객체를 통째로 덮어쓰지 않는다.
+	 *
+	 * <p>🔴 {@code @Transactional} 을 새로 열지 않는다. 이 자리를 부르는 것은 일정이
+	 * 처음 저장되는 트랜잭션 안이고({@code ItineraryDraftService.persist}), 여기서 새
+	 * 트랜잭션을 열면 일정 저장이 뒤에서 굴러떨어져도 상태만 READY 로 남는다.
+	 * 저장 자체는 바깥 트랜잭션이 끝날 때 함께 반영된다.
+	 */
+	@Override
+	public void updateStatus(Trip trip) {
+		TripJpaEntity entity = tripJpaRepository.findById(UUID.fromString(trip.tripId()))
+				.orElseThrow(() -> new IllegalStateException("상태를 바꾸려는 여행이 표에 없다: tripId=" + trip.tripId()));
+		entity.changeStatus(trip.status(), toOffset(trip.updatedAt()));
+		tripJpaRepository.save(entity);
+	}
+
+	/**
+	 * 이름 칸만 저장한다 — S15P21E201-1023.
+	 *
+	 * <p>{@link #updateStatus} 와 같은 모양이다. 읽어 온 행의 <b>그 칸만</b> 고치고,
+	 * {@code toEntity(trip)} 로 만든 객체를 통째로 덮어쓰지 않는다 — 덮어쓰면 이름을 바꾸는
+	 * 요청이 그 사이 다른 경로가 바꾼 칸(상태·삭제 시각)까지 옛 값으로 되돌린다.
+	 */
+	@Override
+	public void updateTitle(Trip trip) {
+		TripJpaEntity entity = tripJpaRepository.findById(UUID.fromString(trip.tripId()))
+				.orElseThrow(() -> new IllegalStateException("이름을 바꾸려는 여행이 표에 없다: tripId=" + trip.tripId()));
+		entity.changeTitle(trip.title(), toOffset(trip.updatedAt()));
+		tripJpaRepository.save(entity);
+	}
+
 	@Override
 	public List<TripConstraint> findConstraints(String tripId) {
 		UUID id = UUID.fromString(tripId);
@@ -308,9 +340,62 @@ public class JpaTripRepository implements TripRepository {
 		return new SaveOutcome(existingTrip, existingSnapshot, false);
 	}
 
+	/**
+	 * S15P21E201-317 — 가입 시 익명 여행 승계.
+	 *
+	 * <p>🔴 <b>네이티브 SQL 로만 옮긴다.</b> {@code trip.owner_user_id}·{@code trip_member.user_id}
+	 * 는 둘 다 {@code updatable = false} 다(엔티티 주석 참고) — Hibernate 가 엔티티를 고쳐 저장하는
+	 * 평소 경로로는 그 두 칸을 <b>조용히 안 바꾼다.</b> 그래서 그 경로를 안 쓰고
+	 * {@link EntityManager#createNativeQuery(String)} 로 직접 UPDATE 한다.
+	 *
+	 * <p>여행마다 trip → trip_member(OWNER 행) → preference_snapshot → constraint_snapshot
+	 * 순으로 옮긴다. 뒤의 두 스냅샷 표는 도메인({@link Trip}·{@link TripMember})에 없는,
+	 * 순수 인프라 칸이라({@code JpaTripRepository.save} 가 저장할 때만 쓴다) 여기서도
+	 * SQL로만 다룬다 — 남겨 두면 승계된 여행의 취향·제약이 사라진 익명 세션 UUID를
+	 * 계속 가리키는 채로 남는다.
+	 */
+	@Override
+	@Transactional
+	public int claimAnonymousTrips(String sessionId, String newOwnerId, Instant at) {
+		UUID session = UUID.fromString(sessionId);
+		UUID newOwner = UUID.fromString(newOwnerId);
+		OffsetDateTime now = toOffset(at);
+
+		List<TripJpaEntity> anonymousTrips = tripJpaRepository.findByOwnerTypeAndOwnerUserId("ANONYMOUS", session);
+		if (anonymousTrips.isEmpty()) {
+			return 0;
+		}
+
+		for (TripJpaEntity entity : anonymousTrips) {
+			UUID tripId = entity.tripId();
+
+			entityManager.createNativeQuery(
+					"UPDATE trip SET owner_user_id = ?1, owner_type = 'USER', updated_at = ?2 WHERE trip_id = ?3")
+					.setParameter(1, newOwner).setParameter(2, now).setParameter(3, tripId)
+					.executeUpdate();
+
+			entityManager.createNativeQuery(
+					"UPDATE trip_member SET user_id = ?1 WHERE trip_id = ?2 AND user_id = ?3 AND role = 'OWNER'")
+					.setParameter(1, newOwner).setParameter(2, tripId).setParameter(3, session)
+					.executeUpdate();
+
+			entityManager.createNativeQuery(
+					"UPDATE preference_snapshot SET user_id = ?1 WHERE trip_id = ?2 AND user_id = ?3")
+					.setParameter(1, newOwner).setParameter(2, tripId).setParameter(3, session)
+					.executeUpdate();
+
+			entityManager.createNativeQuery(
+					"UPDATE constraint_snapshot SET user_id = ?1 WHERE trip_id = ?2 AND user_id = ?3")
+					.setParameter(1, newOwner).setParameter(2, tripId).setParameter(3, session)
+					.executeUpdate();
+		}
+
+		return anonymousTrips.size();
+	}
+
 	private static TripJpaEntity toEntity(Trip t) {
 		return new TripJpaEntity(
-				UUID.fromString(t.tripId()), UUID.fromString(t.createdBy()),
+				UUID.fromString(t.tripId()), UUID.fromString(t.createdBy()), t.ownerType().name(),
 				t.startDate(), t.finishDate(),
 				t.originLat(), t.originLng(),
 				t.budgetKrw() == null ? null : t.budgetKrw().longValue(),
@@ -318,7 +403,7 @@ public class JpaTripRepository implements TripRepository {
 				t.travelModes(), t.timeWindowStart(), t.timeWindowEnd(),
 				t.accommodationPlaceId() == null ? null : UUID.fromString(t.accommodationPlaceId()),
 				t.englishMenuRequired(), t.foreignCardRequired(), t.soloFriendlyPriority(),
-				t.maxTransitTransfers(), t.status(),
+				t.maxTransitTransfers(), t.title(), t.status(),
 				toOffset(t.createdAt()), toOffset(t.updatedAt()), toOffset(t.deletedAt()));
 	}
 
@@ -326,6 +411,7 @@ public class JpaTripRepository implements TripRepository {
 		return Trip.builder()
 				.tripId(e.tripId().toString())
 				.createdBy(e.ownerUserId().toString())
+				.ownerType(Trip.OwnerType.valueOf(e.ownerType()))
 				.startDate(e.startDate())
 				.finishDate(e.endDate())
 				.originLat(e.originLat())
@@ -342,6 +428,7 @@ public class JpaTripRepository implements TripRepository {
 				.soloFriendlyPriority(e.soloFriendlyPriority())
 				.maxTransitTransfers(e.maxTransitTransfers())
 				.timezone(e.timezone())
+				.title(e.title())
 				.status(e.status())
 				.createdAt(toInstant(e.createdAt()))
 				.updatedAt(toInstant(e.updatedAt()))
@@ -381,13 +468,34 @@ public class JpaTripRepository implements TripRepository {
 	}
 
 	private static TripConstraint toDomain(ConstraintAnswerJpaEntity e, String tripId) {
+		// 🔴 S15P21E201 사용자 리포트 — value 를 항상 null 로 읽어 왔다. WHEELCHAIR·STROLLER·
+		// HEAVY_LUGGAGE·STAIRS_AVOIDANCE 는 threshold(미터)가 아니라 value("true")로 답을
+		// 싣는데, 여기서 value 를 버리고 threshold 만 복원하다 보니 answerStatus=SELECTED인데
+		// value·threshold 가 둘 다 null인 TripConstraint 가 만들어져 생성자가 거부했다
+		// (recommendation-jobs 요청이 400 RECOMMENDATION_JOB_VALIDATION_FAILED로 실패 —
+		// trip 생성 자체는 원본 값을 그대로 써서 통과하므로 이 read 경로에서만 재현된다).
 		return new TripConstraint(
 				e.constraintAnswerId().toString(), tripId, e.constraintType(), e.constraintKey(),
 				e.hard() ? TripConstraint.Severity.HARD : TripConstraint.Severity.SOFT,
 				defaultOperatorFor(e.constraintType()),
-				null, extractMeters(e.valueJson()),
+				extractValue(e.valueJson()), extractMeters(e.valueJson()),
 				TripConstraint.EvidenceStatus.NEEDS_REVIEW,
 				e.answerStatus(), PersonalizationScope.TRIP, e.dietRequirement());
+	}
+
+	/**
+	 * {@link #valueJsonOf} 가 문자열 값에 씌운 JSON 문자열 인코딩({@code "\"escaped\""})을
+	 * 되돌린다. meters 객체({@code {"meters":N}})는 여기서 다루지 않는다 — 그건 threshold
+	 * 쪽({@link #extractMeters})의 몫이라 둘 다 값을 낼 일이 없다(하나가 채워지면 나머지는
+	 * null).
+	 */
+	private static String extractValue(String valueJson) {
+		if (valueJson == null || valueJson.length() < 2
+				|| valueJson.charAt(0) != '"' || valueJson.charAt(valueJson.length() - 1) != '"') {
+			return null;
+		}
+		String inner = valueJson.substring(1, valueJson.length() - 1);
+		return inner.replace("\\\"", "\"").replace("\\\\", "\\");
 	}
 
 	private static String defaultOperatorFor(String type) {

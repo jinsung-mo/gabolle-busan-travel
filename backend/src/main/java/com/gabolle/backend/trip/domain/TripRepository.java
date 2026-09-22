@@ -62,6 +62,29 @@ public interface TripRepository {
      */
     void softDelete(Trip trip);
 
+    /**
+     * 상태 칸만 저장한다 — S15P21E201-964.
+     *
+     * <p>{@link #softDelete(Trip)} 와 같은 모양이다. 부르는 쪽이 도메인 규칙
+     * ({@link Trip#markReady(java.time.Instant)})을 먼저 태우고, 그 결과가 든 여행을
+     * 그대로 넘긴다. 어떤 상태로 갈 수 있는지는 도메인이 정하고 여기서 다시 정하지 않는다.
+     *
+     * <p>{@link #save} 를 쓰지 않는 이유는 그것이 제약·소유자·취향 판까지 함께 받는
+     * 생성용 자리이기 때문이다. 상태 한 칸을 옮기려고 그것들을 다시 만들어 넘기면,
+     * 넘긴 쪽이 의도하지 않은 값으로 딸린 것들을 덮어쓸 수 있다.
+     */
+    void updateStatus(Trip trip);
+
+    /**
+     * 이름 칸만 저장한다 — S15P21E201-1023.
+     *
+     * <p>{@link #updateStatus(Trip)} 와 같은 모양이고 같은 이유다. 부르는 쪽이 도메인 규칙
+     * ({@link Trip#rename(String, java.time.Instant)})을 먼저 태우고, 그 결과가 든 여행을
+     * 그대로 넘긴다. 길이·제어문자 규칙을 여기서 다시 보면 같은 규칙이 두 곳에 생기고,
+     * 언젠가 한쪽만 바뀐다.
+     */
+    void updateTitle(Trip trip);
+
     /** 특정 판. 없으면 비어 있다. */
     Optional<PreferenceSnapshot> findSnapshot(String tripId, int version);
 
@@ -159,6 +182,22 @@ public interface TripRepository {
 
     /** {@code created=false} 면 재시도였고 기존 여행을 돌려준 것이다. */
     record SaveOutcome(Trip trip, PreferenceSnapshot snapshot, boolean created) {}
+
+    /**
+     * 가입 시 익명 여행 승계 — S15P21E201-317.
+     *
+     * <p>{@code sessionId} 가 만든({@code ownerType=ANONYMOUS}) 여행을 전부 찾아 소유자를
+     * {@code newOwnerId}(방금 만든 회원)로 옮긴다. 여행 자체({@code createdBy}·{@code ownerType})와
+     * OWNER 참여자 행({@code TripMember})을 함께 옮겨야 한다 — 참여자 행이 그대로면
+     * "조회 권한 판정이 이 표를 본다"({@link TripMember} 문서)는 전제 때문에 승계돼도 목록에
+     * 안 보인다.
+     *
+     * <p>🔴 익명 여행이 하나도 없어도 <b>정상</b>이다 — 0 을 돌려준다. 이 메서드를 부르는
+     * 쪽(회원가입)은 그 결과로 실패 여부를 판단하지 않는다.
+     *
+     * @return 옮긴 여행 수
+     */
+    int claimAnonymousTrips(String sessionId, String newOwnerId, java.time.Instant at);
 
     /** 같은 키를 다른 내용으로 재사용했을 때 — API-09 가 409 로 거부하라고 한다. */
     class IdempotencyKeyConflictException extends RuntimeException {

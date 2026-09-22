@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 
+import com.gabolle.backend.auth.config.AnonymousSessionAuthenticationFilter;
 import com.gabolle.backend.auth.service.AuthException;
 
 /**
@@ -57,5 +58,69 @@ public final class AuthenticatedUsers {
 		catch (IllegalArgumentException ex) {
 			return Optional.empty();
 		}
+	}
+
+	/**
+	 * 익명 세션 id — S15P21E201-1204. 로그인 여부가 선택인 자리에서 <b>{@link #optionalId} 의 짝</b>이다.
+	 *
+	 * <p>🔴 {@code optionalId} 는 익명 요청에 <b>빈 값</b>을 준다. principal 이
+	 * {@code "anon:" + sessionId} 형식이라 {@code UUID.fromString} 이 실패하기 때문이다. 그래서
+	 * 「회원이면 누구고 아니면 어느 익명 세션인가」를 알아야 하는 자리는 <b>둘 다 불러야</b> 한다.
+	 *
+	 * <p>{@link #requireOwner} 와 다른 점은 <b>인증이 아예 없어도 예외를 안 던지는 것</b>이다.
+	 * 그쪽은 익명 세션이 자원의 <b>주인</b>이 되는 자리(여행 생성)라 401 이 맞고, 이쪽은 그냥
+	 * 「누가 읽었나」를 아는 자리다. 아무도 아니면 빈 값이고, 부르는 쪽이 그때 무엇을 할지 정한다.
+	 */
+	public static Optional<UUID> optionalAnonymousSessionId(Authentication authentication) {
+		if (authentication == null || authentication.getName() == null) {
+			return Optional.empty();
+		}
+		String name = authentication.getName();
+		if (!name.startsWith(AnonymousSessionAuthenticationFilter.ANONYMOUS_PRINCIPAL_PREFIX)) {
+			return Optional.empty();
+		}
+		try {
+			return Optional.of(UUID.fromString(
+					name.substring(AnonymousSessionAuthenticationFilter.ANONYMOUS_PRINCIPAL_PREFIX.length())));
+		}
+		catch (IllegalArgumentException ex) {
+			return Optional.empty();
+		}
+	}
+
+	/**
+	 * 🔴 S15P21E201-317 — <b>여행 생성처럼 익명 세션도 자원의 주인이 될 수 있는 자리 전용.</b>
+	 * 그 외의 모든 자리는 계속 {@link #requireId}를 쓴다 — 회원 전용 자원(내 여행 목록 등)까지
+	 * 여기로 바꾸면 익명 세션이 로그인 없이 회원 자원에 닿는 길이 열린다.
+	 *
+	 * <p>{@code principal} 이 {@code "anon:" + sessionId} 형식(익명 인증 필터가 채운 것,
+	 * {@link AnonymousSessionAuthenticationFilter#ANONYMOUS_PRINCIPAL_PREFIX})이면 익명 소유자를,
+	 * 아니면(회원 JWT) 회원 소유자를 돌려준다. 둘 다 아니면 401.
+	 */
+	public static Owner requireOwner(Authentication authentication) {
+		if (authentication == null || authentication.getName() == null) {
+			throw new AuthException("AUTHENTICATION_REQUIRED", "로그인이 필요합니다.", HttpStatus.UNAUTHORIZED);
+		}
+		String name = authentication.getName();
+		if (name.startsWith(AnonymousSessionAuthenticationFilter.ANONYMOUS_PRINCIPAL_PREFIX)) {
+			try {
+				UUID sessionId = UUID.fromString(
+						name.substring(AnonymousSessionAuthenticationFilter.ANONYMOUS_PRINCIPAL_PREFIX.length()));
+				return new Owner(sessionId, true);
+			}
+			catch (IllegalArgumentException ex) {
+				throw new AuthException("INVALID_AUTHENTICATION", "인증 정보가 올바르지 않습니다.", HttpStatus.UNAUTHORIZED);
+			}
+		}
+		try {
+			return new Owner(UUID.fromString(name), false);
+		}
+		catch (IllegalArgumentException ex) {
+			throw new AuthException("INVALID_AUTHENTICATION", "인증 정보가 올바르지 않습니다.", HttpStatus.UNAUTHORIZED);
+		}
+	}
+
+	/** {@code anonymous=true} 면 {@code id} 는 익명 세션 ID(session_id)이지 회원 ID 가 아니다. */
+	public record Owner(UUID id, boolean anonymous) {
 	}
 }

@@ -1,5 +1,6 @@
 package com.gabolle.backend.recommendation.presentation;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -11,10 +12,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import com.gabolle.backend.common.api.ApiResponse;
 import com.gabolle.backend.common.security.AuthenticatedUsers;
+import com.gabolle.backend.recommendation.application.JobProgressBroker;
 import com.gabolle.backend.recommendation.application.RecommendationJobRunner;
 import com.gabolle.backend.recommendation.domain.RecommendationJob;
 import com.gabolle.backend.recommendation.presentation.dto.CreateRecommendationJobRequest;
@@ -45,20 +49,27 @@ public class RecommendationJobController {
 
 	private final RecommendationJobRunner runner;
 
-	public RecommendationJobController(RecommendationJobRunner runner) {
+	/** 열려 있는 진행률 통로를 들고 있는 쪽 — S15P21E201-193. */
+	private final JobProgressBroker progressBroker;
+
+	public RecommendationJobController(RecommendationJobRunner runner, JobProgressBroker progressBroker) {
 		this.runner = runner;
+		this.progressBroker = progressBroker;
 	}
 
 	/**
 	 * REC-01 — {@code 202} + 작업 번호. 계산이 끝나기 전에 돌아온다.
 	 *
-	 * <p>🔴 <b>아직 없는 것</b> — {@code Idempotency-Key}. 재시도로 같은 요청이 두 번 오면
-	 * Job 이 두 개 생긴다.
+	 * <p>{@code Idempotency-Key} 헤더를 주면 재시도가 안전해진다 — S15P21E201-944.
+	 * 같은 키 + 같은 본문으로 다시 오면 새 Job 을 만들지 않고 기존 Job 을 {@code 200}
+	 * 으로 돌려주고, 같은 키 + 다른 본문이면 {@code 409} 다({@link RecommendationJobExceptionHandler}
+	 * 가 처리한다). 헤더가 없으면 예전과 같다 — 매번 새 Job.
 	 */
 	@PostMapping("/api/v1/trips/{tripId}/recommendation-jobs")
 	public ResponseEntity<ApiResponse<RecommendationJobResponse>> create(
 			@PathVariable String tripId,
 			@RequestBody(required = false) CreateRecommendationJobRequest request,
+			@RequestHeader(value = "Idempotency-Key", required = false) String idempotencyKey,
 			Authentication authentication) {
 
 		CreateRecommendationJobRequest body = (request != null) ? request
@@ -69,11 +80,45 @@ public class RecommendationJobController {
 		//    만 싣는다) — 헤더 방식으로는 실제 클라이언트에서 이 API 가 동작할 수 없었다.
 		String requester = AuthenticatedUsers.requireId(authentication).toString();
 
-		RecommendationJob job = this.runner.enqueue(tripId, requester, body.preferenceSnapshotVersion(),
-				body.topK());
+		RecommendationJobRunner.EnqueueOutcome outcome = this.runner.enqueue(tripId, requester,
+				body.preferenceSnapshotVersion(), body.topK(), idempotencyKey);
 
-		return ResponseEntity.status(HttpStatus.ACCEPTED)
-				.body(ApiResponse.success(RecommendationJobResponse.of(job), "req_" + UUID.randomUUID()));
+		HttpStatus status = outcome.created() ? HttpStatus.ACCEPTED : HttpStatus.OK;
+		return ResponseEntity.status(status)
+				.body(ApiResponse.success(RecommendationJobResponse.of(outcome.job()), "req_" + UUID.randomUUID()));
+	}
+
+	/**
+	 * 🔴 S15P21E201-1001 — <b>여행 번호로 그 여행의 추천 작업을 되찾는다.</b>
+	 *
+	 * <p>지금까지 Job 을 되찾는 길은 {@code jobId} 하나뿐이었다. 그런데 그 번호는 생성 응답에
+	 * 한 번 실려 나갈 뿐 어디에도 안 남아서, 화면을 나갔다 다시 열면 이미 만들어 둔 추천을
+	 * <b>찾을 방법이 없었다</b> — 사용자에게는 「아직 생성된 추천이 없어요」로 보였다.
+	 *
+	 * <p>최신순이다. 화면이 쓰는 것은 대개 맨 앞 하나지만 목록으로 준다 — 이유는
+	 * {@link RecommendationJobRunner#findJobsByTrip} 의 상한 설명에 있다.
+	 *
+	 * <h2>🔴 없는 여행과 추천이 없는 여행은 다르게 답한다</h2>
+	 * 없는 여행·남의 여행은 <b>404</b>({@code TRIP_NOT_FOUND}), 내 여행인데 추천을 만든 적이
+	 * 없으면 <b>200 + 빈 목록</b>이다. 둘을 같은 404 로 답하면 화면이 「아직 안 만들었으니
+	 * 만들자」와 「이 여행은 없다」를 갈라 그릴 수 없다.
+	 *
+	 * <p>이 응답은 <b>진행 상태</b>({@link RecommendationJobResponse})이지 결과가 아니다. 결과
+	 * (추천된 장소·일정)는 여기서 얻은 {@code jobId} 로 {@code GET /api/v1/recommendation-jobs/{jobId}}
+	 * 를 부른다 — {@link RecommendationResultController} 의 javadoc 이 그 둘이 다른 자원인
+	 * 이유를 적어 뒀다.
+	 */
+	@GetMapping("/api/v1/trips/{tripId}/recommendation-jobs")
+	public ApiResponse<List<RecommendationJobResponse>> listByTrip(@PathVariable String tripId,
+			Authentication authentication) {
+		// 🔴 POST 와 같은 자리에서 신원을 읽는다 — 헤더가 아니라 인증 주체다(S15P21E201-604).
+		String requester = AuthenticatedUsers.requireId(authentication).toString();
+
+		List<RecommendationJobResponse> jobs = this.runner.findJobsByTrip(tripId, requester).stream()
+				.map(RecommendationJobResponse::of)
+				.toList();
+
+		return ApiResponse.success(jobs, "req_" + UUID.randomUUID());
 	}
 
 	/**
@@ -95,6 +140,67 @@ public class RecommendationJobController {
 		}
 		return ApiResponse.success(RecommendationJobResponse.of(job), "req_" + UUID.randomUUID());
 	}
+
+	/**
+	 * 진행률을 연결을 열어 둔 채 밀어 보낸다 — S15P21E201-193 · F-REC-05.
+	 *
+	 * <p>화면이 {@code GET /api/v1/jobs/{jobId}} 를 반복해서 묻는 대신 이 통로에 한 번
+	 * 접속해 두면, 단계가 넘어갈 때마다 서버가 알려 준다. 폴링(주기적으로 다시 묻기)을
+	 * <b>없애지는 않는다</b> — 이 통로는 서버 한 대를 전제하고(JobProgressBroker javadoc),
+	 * 프록시나 이동통신망이 오래 열린 연결을 끊는 환경도 있다. 화면은 두 길을 다 가질 수
+	 * 있어야 한다.
+	 *
+	 * <h2>접속하자마자 지금 값을 한 번 보낸다</h2>
+	 * 완료 기준의 <i>"연결을 끊었다 붙이면 끊긴 지점부터 이어진다"</i> 가 이것이다. 다시 붙은
+	 * 화면은 0%가 아니라 표에 저장된 지금 진행률을 먼저 받는다. 이미 끝난 작업이면 그 한
+	 * 건을 보내고 <b>바로 닫는다</b> — 끝난 작업의 연결을 붙들고 있을 이유가 없다.
+	 *
+	 * <h2>남의 작업은 없는 작업과 같게 답한다</h2>
+	 * 🔴 소유권 검사는 {@link #get} 과 같은 규칙이다. 여기에만 없으면 진행률이 옆문으로
+	 * 새어 나간다 — 남의 {@code jobId} 를 알기만 하면 그 사람의 계산이 어디까지 갔는지
+	 * 보이게 된다. 다만 이 자리는 응답이 스트림이라 404 를 예외로 던진다(그 예외는
+	 * {@link RecommendationJobExceptionHandler} 가 이미 404 로 바꾼다).
+	 */
+	// 🔴 경로를 value 로 준다. path 는 같은 뜻이지만 인가 정책 표를 대조하는 검사
+	//    (RouteAuthorizationRegistryTest)가 value 를 읽어서, path 로 쓰면 경로가 빈 값으로
+	//    잡혀 "정책 없는 경로" 로 걸린다.
+	@GetMapping(value = "/api/v1/jobs/{jobId}/progress", produces = "text/event-stream")
+	public SseEmitter progress(@PathVariable String jobId, Authentication authentication) {
+		RecommendationJob job = this.runner.findJob(jobId).orElseThrow(() -> new JobNotFoundException(jobId));
+		if (!isOwner(job, authentication)) {
+			throw new JobNotFoundException(jobId);
+		}
+
+		SseEmitter emitter = new SseEmitter(STREAM_TIMEOUT_MS);
+		JobProgressBroker.JobProgressSnapshot now = new JobProgressBroker.JobProgressSnapshot(
+				job.getJobId(), job.getJobStatus(),
+				job.getJobStage() == null ? null : job.getJobStage().name(),
+				job.getProgressPercent(), job.getErrorCode());
+
+		// 이미 끝난 작업이면 등록하지 않는다. 그 작업은 다시 진행률을 내보내지 않으므로
+		// 기다릴 것이 없고, 한 건 보내고 닫는 것으로 끝이다.
+		if (job.getJobStatus().isTerminal()) {
+			this.progressBroker.send(now, emitter);
+			return emitter;
+		}
+
+		// 🔴 순서가 중요하다. 먼저 등록하고 그다음에 지금 값을 보낸다. 반대로 하면 두 호출
+		//    사이에 단계가 넘어간 경우 그 한 건을 못 받고, 화면은 다음 단계까지 멈춘 것으로
+		//    보인다. 등록을 먼저 하면 같은 값을 두 번 받을 수는 있는데, 그쪽이 안전하다 —
+		//    진행률은 같은 값이 두 번 와도 화면이 달라지지 않는다.
+		this.progressBroker.register(job.getJobId(), emitter);
+		this.progressBroker.send(now, emitter);
+		return emitter;
+	}
+
+	/**
+	 * 연결 하나를 열어 두는 시간의 상한.
+	 *
+	 * <p>일정 생성이 이보다 오래 걸리면 연결이 한 번 끊기고, 화면은 다시 붙어 그 시점의
+	 * 진행률부터 이어 받는다. 무한히 열어 두지 않는 이유는 죽은 연결이 스레드를 잡기
+	 * 때문이다 — 브라우저가 조용히 사라지면 서버는 그것을 바로 알 수 없다.
+	 */
+	static final long STREAM_TIMEOUT_MS = 5 * 60 * 1000L;
 
 	/**
 	 * 요청자가 이 Job 의 주인인가.

@@ -14,6 +14,7 @@ import com.gabolle.backend.common.api.ApiResponse;
 import com.gabolle.backend.trip.application.TripDeletionService;
 import com.gabolle.backend.trip.application.TripQueryService;
 import com.gabolle.backend.trip.domain.TimeWindows;
+import com.gabolle.backend.trip.domain.TripConditionRules;
 import com.gabolle.backend.trip.domain.TravelModes;
 import com.gabolle.backend.trip.domain.TripConstraint;
 import com.gabolle.backend.trip.domain.TripRepository;
@@ -40,7 +41,23 @@ public class TripExceptionHandler {
                 .toList();
 
         return ResponseEntity.badRequest().body(ApiResponse.failure(
-                new ApiError("TRIP_VALIDATION_FAILED", "error.trip.validation", fields),
+                new ApiError("TRIP_VALIDATION_FAILED", "입력한 조건 중 서버가 받지 못한 것이 있어요.", fields),
+                requestId()));
+    }
+
+    /**
+     * 여행 조건 재검증이 거부한 것 — S15P21E201-440.
+     *
+     * <p>🔴 이 처리기가 아래 {@link #handleIllegalArgument} 보다 먼저 잡힌다(Spring 은 예외
+     * 계층에서 가장 구체적인 타입을 고른다). 갈라 두는 이유는 <b>어긴 항목을 전부</b> 담기
+     * 위해서다 — 저쪽은 메시지 한 줄만 담으므로 화면이 어느 칸을 짚을지 알 수 없다.
+     */
+    @ExceptionHandler(TripConditionRules.TripConditionRejectedException.class)
+    public ResponseEntity<ApiResponse<Void>> handleTripConditionRejected(
+            TripConditionRules.TripConditionRejectedException e) {
+
+        return ResponseEntity.badRequest().body(ApiResponse.failure(
+                new ApiError("TRIP_VALIDATION_FAILED", "입력한 조건 중 서버가 받지 못한 것이 있어요.", e.fieldLines()),
                 requestId()));
     }
 
@@ -48,7 +65,7 @@ public class TripExceptionHandler {
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ApiResponse<Void>> handleIllegalArgument(IllegalArgumentException e) {
         return ResponseEntity.badRequest().body(ApiResponse.failure(
-                new ApiError("TRIP_VALIDATION_FAILED", "error.trip.validation",
+                new ApiError("TRIP_VALIDATION_FAILED", "입력한 조건 중 서버가 받지 못한 것이 있어요.",
                         List.of(e.getMessage())),
                 requestId()));
     }
@@ -94,7 +111,7 @@ public class TripExceptionHandler {
             TripConstraint.SensitiveConstraintNotSupportedException e) {
         return ResponseEntity.badRequest().body(ApiResponse.failure(
                 new ApiError("SENSITIVE_CONSTRAINT_NOT_SUPPORTED",
-                        "error.trip.sensitiveConstraint", List.of(e.type())),
+                        "건강·신념처럼 민감한 조건은 아직 받지 않아요.", List.of(e.type())),
                 requestId()));
     }
 
@@ -103,7 +120,7 @@ public class TripExceptionHandler {
     public ResponseEntity<ApiResponse<Void>> handleIdempotencyConflict(
             TripRepository.IdempotencyKeyConflictException e) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ApiResponse.failure(
-                new ApiError("IDEMPOTENCY_KEY_CONFLICT", "error.idempotency.conflict"),
+                new ApiError("IDEMPOTENCY_KEY_CONFLICT", "같은 요청이 다른 내용으로 다시 왔어요. 잠시 후 다시 시도해 주세요."),
                 requestId()));
     }
 
@@ -111,7 +128,7 @@ public class TripExceptionHandler {
     @ExceptionHandler(TripQueryService.TripNotFoundException.class)
     public ResponseEntity<ApiResponse<Void>> handleNotFound(TripQueryService.TripNotFoundException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ApiResponse.failure(
-                new ApiError("TRIP_NOT_FOUND", "error.trip.notFound"),
+                new ApiError("TRIP_NOT_FOUND", "그 여행을 찾지 못했어요."),
                 requestId()));
     }
 

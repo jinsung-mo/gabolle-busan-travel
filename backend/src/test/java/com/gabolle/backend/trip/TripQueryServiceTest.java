@@ -1,5 +1,8 @@
 package com.gabolle.backend.trip;
 
+import java.util.Optional;
+import com.gabolle.backend.user.support.ConsentGuards;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -37,7 +40,7 @@ class TripQueryServiceTest {
         repository = new InMemoryTripRepository();
         Clock clock = Clock.fixed(NOW, ZoneOffset.UTC);
         creationService = new TripCreationService(repository, clock,
-                new PreferenceDefaultsService(repository, clock));
+                new PreferenceDefaultsService(repository, clock), ConsentGuards.granting(), Optional.empty(), Optional.empty());
         queryService = new TripQueryService(repository);
     }
 
@@ -95,7 +98,7 @@ class TripQueryServiceTest {
     void tripWithNoConstraintsReturnsEmptyListNotNull() {
         var noConstraints = new TripCreationService.Command("usr_1",
                 LocalDate.of(2026, 9, 6), LocalDate.of(2026, 9, 8),
-                null, null, null, 1, null, null, List.of(), List.of());
+                35.1587, 129.1604, null, 1, null, null, List.of(), List.of()); // 출발지 좌표 - 이 검사가 재는 것은 빈 제약 목록이지 좌표가 아니다
         var created = creationService.create(noConstraints, null);
 
         var view = queryService.get(created.trip().tripId(), "usr_1");

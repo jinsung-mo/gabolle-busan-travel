@@ -1,0 +1,179 @@
+// 앱(폰)의 지도 — S15P21E201-1140.
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { WebView, type WebViewMessageEvent } from 'react-native-webview';
+
+import { Button } from '@/components/Button';
+import { Text } from '@/components/Text';
+import { color, radius, spacing } from '@/design/tokens';
+import { useI18n } from '@/i18n';
+
+import { buildKakaoMapHtml } from './kakaoMapHtml';
+
+import type { MapStop } from './types';
+
+export type MapRouteLayer = { id: string; color: string; stops: MapStop[] };
+export type MapPointLayer = { id: string; label: string; color: string; stops: MapStop[] };
+export type CurrentLocation = { latitude: number; longitude: number };
+
+type RouteMapProps = {
+  stops: MapStop[];
+  selectedId: string;
+  onSelect: (id: string) => void;
+  routes?: MapRouteLayer[];
+  points?: MapPointLayer[];
+  currentLocation?: CurrentLocation | null;
+  onBackToList?: () => void;
+  height?: number;
+};
+
+/**
+ * 기본값 배열을 파일 수준에서 한 번만 만든다. 함수 시그니처에 `points = []` 라고
+ * 쓰면 이 컴포넌트가 다시 그려질 때마다 새 배열이 생기고, 그게 `useEffect` 의 의존성으로
+ * 들어가 매번 다시 돈다, 웹 지도가 겪었다).
+ */
+const NO_POINT_LAYERS: MapPointLayer[] = [];
+
+type WebViewOutMessage = { type: 'sdkLoaded' | 'ready' | 'select' | 'scriptError'; payload?: unknown };
+
+export function RouteMap({
+  stops,
+  selectedId,
+  onSelect,
+  routes,
+  points = NO_POINT_LAYERS,
+  currentLocation,
+  onBackToList,
+  height = 340,
+}: RouteMapProps) {
+  const { tx } = useI18n();
+  const webViewRef = useRef<WebView | null>(null);
+  const sdkReadyRef = useRef(false);
+  const [scriptFailed, setScriptFailed] = useState(false);
+  const appKey = process.env.EXPO_PUBLIC_KAKAO_MAP_JS_KEY;
+  // 키가 바뀔 일은 앱이 켜져 있는 동안 없다시피 하다 — appKey 만 의존성으로 둬서
+  // stops·selectedId 가 바뀔 때마다 HTML을 다시 만들어 WebView를 재시작하지 않는다.
+  const html = useMemo(() => (appKey ? buildKakaoMapHtml(appKey) : ''), [appKey]);
+
+  const visibleStops = useMemo(() => [...stops, ...points.flatMap((layer) => layer.stops)], [points, stops]);
+
+  const sendRender = () => {
+    if (!sdkReadyRef.current || !webViewRef.current) return;
+    const data = {
+      stops,
+      points,
+      routes: routes ?? [{ id: 'selected', color: color.action.primary, stops }],
+      selectedId,
+      currentLocation: currentLocation ?? null,
+      colors: { navy: color.brand.navy, selected: color.action.secondary, canvas: color.canvas },
+    };
+    webViewRef.current.injectJavaScript(`window.__renderKakaoMap(${JSON.stringify(data)}); true;`);
+  };
+
+  // stops·points·routes·selectedId·currentLocation 이 바뀔 때마다 이미 떠 있는 지도에
+  // 새 데이터를 밀어 넣는다. sdk 가 아직 안 떴으면(sdkReadyRef.current === false) 아무 일도
+  // 안 하고, onMessage 의 'sdkLoaded' 처리부가 뜬 직후 한 번 sendRender 를 부른다.
+  useEffect(() => {
+    sendRender();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stops, points, routes, selectedId, currentLocation]);
+
+  const onMessage = (event: WebViewMessageEvent) => {
+    let message: WebViewOutMessage;
+    try {
+      message = JSON.parse(event.nativeEvent.data);
+    } catch {
+      return;
+    }
+    if (message.type === 'sdkLoaded') {
+      sdkReadyRef.current = true;
+      sendRender();
+      return;
+    }
+    if (message.type === 'select' && typeof message.payload === 'string') {
+      onSelect(message.payload);
+      return;
+    }
+    if (message.type === 'scriptError') setScriptFailed(true);
+  };
+
+  // ① 키가 아예 없다 — 웹(RouteMap.tsx)과 완전히 같은 문구를 쓴다. 원인이 같기 때문이다
+  // (EXPO_PUBLIC_ 값은 빌드 순간 문자열로 박히므로, 폰 빌드에도 이 키가 EAS 환경
+  // 변수로 들어가야 한다 — docs/MAP-RECOVERY.md 참고).
+  if (!appKey) {
+    return (
+      <View style={[styles.fallback, { minHeight: height }]}>
+        <Text variant="title" weight="bold">{tx('지도 키가 이 빌드에 안 들어갔어요', 'This build was made without a map key')}</Text>
+        <Text variant="body" style={styles.description}>
+          {tx(
+            '앱 지도를 그리려면 빌드할 때 카카오 지도 키가 함께 들어가야 하는데, 이 빌드에는 빈 값이 들어갔습니다. 방문 순서와 장소 목록은 아래에서 그대로 볼 수 있어요.',
+            'The app map needs a Kakao map key baked in at build time, and this build got an empty one. You can still use the visit order and place list below.',
+          )}
+        </Text>
+        <Text variant="caption" style={styles.tech}>EXPO_PUBLIC_KAKAO_MAP_JS_KEY = (빈 값) · EAS 빌드 환경 변수로 넣어야 한다</Text>
+        {onBackToList ? <Button label={tx('목록으로 돌아가기', 'Back to list')} variant="tertiary" onPress={onBackToList} /> : null}
+      </View>
+    );
+  }
+
+  // ② 스크립트를 못 받았다 — 웹의 「지도 파일을 못 받았어요」와 같은 자리다. 다만 폰에서는
+  // 서버 CSP(웹의 두 번째 실패 원인)가 적용되지 않는다 — WebView가 로드하는 것은
+  // 우리 서버가 아니라 이 자리에서 만든 HTML 문자열이라 우리 nginx 응답 헤더를 안 거친다.
+  // 대신 카카오 콘솔의 "사이트 도메인" 등록이 이 경로(출처가 없는 로컬 HTML)에서도
+  // 똑같이 통하는지는 확인하지 못했다 — 실기기 빌드가 나와야 알 수 있다.
+  if (scriptFailed) {
+    return (
+      <View style={[styles.fallback, { minHeight: height }]}>
+        <Text variant="title" weight="bold">{tx('지도 파일을 못 받았어요', 'Could not fetch the map file')}</Text>
+        <Text variant="body" style={styles.description}>
+          {tx(
+            '카카오 지도 파일을 받지 못했습니다. 네트워크가 막혔거나, 이 앱이 카카오 개발자 콘솔에 등록되지 않았을 수 있습니다.',
+            'The Kakao map file could not be fetched. The network may be blocked, or this app may not be registered in the Kakao developer console.',
+          )}
+        </Text>
+        {onBackToList ? <Button label={tx('목록으로 돌아가기', 'Back to list')} variant="tertiary" onPress={onBackToList} /> : null}
+      </View>
+    );
+  }
+
+  if (!stops.length) return <View style={[styles.empty, { height }]} />;
+
+  return (
+    <View style={[styles.shell, { height }]}>
+      <WebView
+        ref={webViewRef}
+        style={styles.map}
+        originWhitelist={['*']}
+        // — baseUrl 을 꼭 준다. 없으면 지도가 조용히 안 뜬다.
+        source={{ html, baseUrl: MAP_BASE_URL }}
+        onMessage={onMessage}
+        onError={() => setScriptFailed(true)}
+        javaScriptEnabled
+        domStorageEnabled
+      />
+      {onBackToList ? (
+        <View style={styles.backRow}>
+          <Button label={tx('목록으로 돌아가기', 'Back to list')} variant="tertiary" onPress={onBackToList} />
+        </View>
+      ) : null}
+    </View>
+  );
+}
+
+/** WebView 가 자기 출처로 말할 주소 — S15P21E201-1176. */
+const RAW_MAP_BASE_URL = process.env.EXPO_PUBLIC_API_BASE_URL ?? 'https://j15e201.p.ssafy.io';
+const MAP_BASE_URL = RAW_MAP_BASE_URL.endsWith('/') ? RAW_MAP_BASE_URL.slice(0, -1) : RAW_MAP_BASE_URL;
+
+const styles = StyleSheet.create({
+  shell: { width: '100%', borderRadius: radius.lg, overflow: 'hidden', backgroundColor: color.surface.soft },
+  map: { width: '100%', height: '100%', backgroundColor: 'transparent' },
+  backRow: { position: 'absolute', left: spacing[3], bottom: spacing[3] },
+  empty: { width: '100%', borderRadius: radius.lg, backgroundColor: color.surface.soft },
+  fallback: {
+    width: '100%', borderRadius: radius.lg, backgroundColor: color.surface.soft,
+    borderWidth: 1, borderColor: color.surface.field,
+    alignItems: 'center', justifyContent: 'center', padding: spacing[6], gap: spacing[2],
+  },
+  description: { color: color.text.body, textAlign: 'center', maxWidth: 420 },
+  tech: { color: color.text.muted, textAlign: 'center', maxWidth: 460 },
+});

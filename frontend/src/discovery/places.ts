@@ -1,0 +1,271 @@
+import { txf } from '@/i18n/format';
+import { apiRequest } from '@/api/client';
+
+// openingHours·priceLevel — place_feature 의 OPENING_HOURS·PRICE_LEVEL 표식. 행이 있으면
+// 상태와 무관하게 실리고 행이 없으면 키 자체가 빠져서 optional 이다. value 의 JSON 구조가
+// 미확정이라 화면은 「있다/없다」와 VERIFIED 여부만 보고 값은 문자열로 펼친다.
+export type PlaceFeature = { featureType: string; [key: string]: unknown };
+
+// NOT_COLLECTED 는 응답 계층이 만들어 붙이는 값 — 「아직 수집 대상 밖」이라 UNKNOWN(「확인했으나
+// 결과 없음」)과 다음 행동이 다르다.
+export type EvidenceStatus = 'VERIFIED' | 'ESTIMATED' | 'UNKNOWN' | 'NOT_COLLECTED';
+export type FeatureSlot = { value: unknown; evidenceStatus: EvidenceStatus };
+
+export type Place = {
+  placeId: string;
+  nameKo: string;
+  nameEn: string | null;
+  category: string;
+  address: string;
+  addressEn?: string;
+  lat: number;
+  lng: number;
+  features: PlaceFeature[];
+  photoUrl?: string;
+  photoSource?: string;
+  // 사진 피사체 구분용. 값이 없으면 칸 자체가 안 온다.
+  photoSubject?: PhotoSubject | null;
+  openingHours?: FeatureSlot;
+  priceLevel?: FeatureSlot;
+};
+
+// 값이 없는 이유 둘의 구분.
+export function missingValueLabel(slot: FeatureSlot, tx: (ko: string, en: string) => string): string {
+  return slot.evidenceStatus === 'NOT_COLLECTED'
+    ? tx('아직 확인하지 않았어요', 'Not checked yet')
+    : tx('알아봤지만 확인 못 했어요', 'Looked, but could not confirm');
+}
+
+// 사진의 피사체가 그 장소가 아닐 수 있음.
+export type PhotoSubject = 'SELF' | 'VENUE';
+
+/** 사진 설명 두 줄 — null 이면 화면에 줄을 안 만든다 */
+export function photoLabels(
+  photo: { photoSource?: string | null; photoSubject?: PhotoSubject | null },
+  tx: (ko: string, en: string) => string,
+): { badge: string | null; credit: string | null } {
+  return {
+    badge: photo.photoSubject === 'VENUE' ? tx('행사장 사진', 'Venue photo') : null,
+    credit: photo.photoSource ? txf(tx, '사진 제공: %s', 'Photo: %s', photo.photoSource) : null,
+  };
+}
+
+// 표식 상태 셋 다 화면에 보여준다 — UNKNOWN 은 「확인했으나 결과 없음」이라 그 자체가 정보다.
+// 추정값에는 「추정」을 붙인다. 모르는 모양은 JSON.stringify 대신 사람이 읽을 문장으로 물러선다
+// — 화면에 {"raw":"매일 10:00-22:00"} 이 글자 그대로 찍힌 적이 있다.
+function extractDisplayText(value: unknown, tx: (ko: string, en: string) => string): string {
+  if (typeof value === 'string' || typeof value === 'number') return String(value);
+  if (value && typeof value === 'object') {
+    const hours = formatOpeningHoursValue(value, tx);
+    if (hours) return hours;
+    if (typeof (value as { raw?: unknown }).raw === 'string') return (value as { raw: string }).raw;
+  }
+  return tx('확인했지만 형식을 읽지 못했어요', "We checked, but couldn't read the format");
+}
+
+// 요일 순서 월→일 — 서버의 byDay 는 사전이라 순서가 없다.
+const WEEK: { key: string; ko: string; en: string }[] = [
+  { key: 'mon', ko: '월', en: 'Mon' },
+  { key: 'tue', ko: '화', en: 'Tue' },
+  { key: 'wed', ko: '수', en: 'Wed' },
+  { key: 'thu', ko: '목', en: 'Thu' },
+  { key: 'fri', ko: '금', en: 'Fri' },
+  { key: 'sat', ko: '토', en: 'Sat' },
+  { key: 'sun', ko: '일', en: 'Sun' },
+];
+
+function rangesText(ranges: unknown): string | null {
+  if (!Array.isArray(ranges) || ranges.length === 0) return null;
+  const parts = ranges
+    .map((r) => (Array.isArray(r) && typeof r[0] === 'string' && typeof r[1] === 'string' ? `${r[0]}~${r[1]}` : null))
+    .filter((r): r is string => r !== null);
+  return parts.length ? parts.join(', ') : null;
+}
+
+/** 영업시간 값의 문장화 */
+export function formatOpeningHoursValue(value: unknown, tx: (ko: string, en: string) => string): string | null {
+  if (!value || typeof value !== 'object') return null;
+  const byDay = (value as { byDay?: unknown }).byDay;
+  if (byDay && typeof byDay === 'object') {
+    const rows = WEEK.map((day) => ({ day, text: rangesText((byDay as Record<string, unknown>)[day.key]) }));
+    // 🔴 걸러 낸 뒤에는 text 가 반드시 있다. 그것을 «타입으로» 적어 둔다 — 그냥
+    //    filter 로는 타입이 안 좁혀져서, 값을 쓰는 자리마다 null 을 다시 달래야 한다.
+    const known = rows.filter((row): row is typeof rows[number] & { text: string } => row.text !== null);
+    if (known.length) {
+      // 일곱 요일이 같으면 「매일」 한 줄로 묶음.
+      const sameEveryDay = known.length === WEEK.length && known.every((row) => row.text === known[0].text);
+      if (sameEveryDay) return txf(tx, '매일 %s', 'Daily %s', known[0].text);
+      return known.map((row) => `${tx(row.day.ko, row.day.en)} ${row.text}`).join(' · ');
+    }
+  }
+  const raw = (value as { raw?: unknown }).raw;
+  if (typeof raw === 'string') return raw;
+  if (raw && typeof raw === 'object' && typeof (raw as { hoursValue?: unknown }).hoursValue === 'string') {
+    return (raw as { hoursValue: string }).hoursValue;
+  }
+  return null;
+}
+
+export function formatFeatureSlot(slot: FeatureSlot | undefined, tx: (ko: string, en: string) => string): string | null {
+  if (!slot) return null;
+  if (slot.evidenceStatus === 'UNKNOWN' || slot.value == null) return missingValueLabel(slot, tx);
+  const text = extractDisplayText(slot.value, tx);
+  return slot.evidenceStatus === 'ESTIMATED' ? txf(tx, '%s (추정)', '%s (est.)', text) : text;
+}
+
+// 로컬점수(LOCALITY_SCORE) 유무만 확인 — 값 칸 이름이 미정이라 숫자는 안 꺼내고 배지만 표시.
+export function hasLocalityScore(place: Place) {
+  return place.features.some((feature) => feature.featureType === 'LOCALITY_SCORE');
+}
+
+// category 값 목록이 미확정이라 식당·카페 키워드로 식음료 장소를 추정한다.
+function isFoodPlace(category: string) {
+  return /FOOD|RESTAURANT|CAFE|맛집|카페|식당/i.test(category);
+}
+
+// 안전 정보 — 알레르기 = ALLERGEN_TAG, 식단 = DIETARY_SUPPORT_TAG.
+function hasVerifiedFeature(place: Place, featureType: string) {
+  return place.features.some(
+    (feature) => feature.featureType === featureType && (feature as { evidenceStatus?: EvidenceStatus }).evidenceStatus === 'VERIFIED',
+  );
+}
+
+export function needsFoodSafetyCheck(place: Place) {
+  if (!isFoodPlace(place.category)) return false;
+  return !hasVerifiedFeature(place, 'ALLERGEN_TAG') || !hasVerifiedFeature(place, 'DIETARY_SUPPORT_TAG');
+}
+
+// 「확인 못 함」과 「확인했고 문제 없음」의 구분 — 빈 자리를 사용자는 안전 확인으로 읽는다.
+// 식음료 장소가 아니면 이 표시 자체가 무의미.
+export function hasFoodSafetyConfirmed(place: Place) {
+  if (!isFoodPlace(place.category)) return false;
+  return hasVerifiedFeature(place, 'ALLERGEN_TAG') && hasVerifiedFeature(place, 'DIETARY_SUPPORT_TAG');
+}
+
+function findFeature(place: Place, featureType: string): PlaceFeature | undefined {
+  return place.features.find((feature) => feature.featureType === featureType);
+}
+
+function toFeatureSlot(feature: PlaceFeature | undefined): FeatureSlot | undefined {
+  if (!feature) return undefined;
+  return { value: (feature as { value?: unknown }).value, evidenceStatus: (feature as { evidenceStatus?: EvidenceStatus }).evidenceStatus ?? 'UNKNOWN' };
+}
+
+// 혼밥 안심(SOLO_FRIENDLY) — FLAG 피처라 값이 boolean 이다. 공통 서식은 "true"/"false" 로
+// 내보내 뜻이 안 통하므로 이 필드만 라벨을 따로 붙인다.
+export function formatSoloFriendly(place: Place, tx: (ko: string, en: string) => string): string | null {
+  const slot = toFeatureSlot(findFeature(place, 'SOLO_FRIENDLY'));
+  if (!slot) return null;
+  if (slot.evidenceStatus === 'UNKNOWN' || slot.value == null) return missingValueLabel(slot, tx);
+  const label = slot.value === true ? tx('혼밥하기 좋아요', 'Good for solo dining') : tx('혼밥은 어려울 수 있어요', 'May not suit solo diners');
+  return slot.evidenceStatus === 'ESTIMATED' ? txf(tx, '%s (추정)', '%s (est.)', label) : label;
+}
+
+// 브레이크타임·라스트오더 — 값 모양이 미확정이라 예상 모양과 맞을 때만 합치고, 아니면 안전한
+// 문자열화로 물러선다. 모르는 모양을 아는 척 파싱하지 않는다.
+export function formatBreakTime(place: Place, tx: (ko: string, en: string) => string): string | null {
+  const slot = toFeatureSlot(findFeature(place, 'BREAK_TIME'));
+  if (!slot) return null;
+  if (slot.evidenceStatus === 'UNKNOWN' || slot.value == null) return missingValueLabel(slot, tx);
+  const value = slot.value as { start?: unknown; end?: unknown };
+  const text = typeof value?.start === 'string' && typeof value?.end === 'string' ? `${value.start}–${value.end}` : JSON.stringify(slot.value);
+  return slot.evidenceStatus === 'ESTIMATED' ? txf(tx, '%s (추정)', '%s (est.)', text) : text;
+}
+
+export function formatLastOrderTime(place: Place, tx: (ko: string, en: string) => string): string | null {
+  const slot = toFeatureSlot(findFeature(place, 'LAST_ORDER_TIME'));
+  if (!slot) return null;
+  if (slot.evidenceStatus === 'UNKNOWN' || slot.value == null) return missingValueLabel(slot, tx);
+  const value = slot.value as { time?: unknown };
+  const text = typeof value?.time === 'string' ? value.time : JSON.stringify(slot.value);
+  return slot.evidenceStatus === 'ESTIMATED' ? txf(tx, '%s (추정)', '%s (est.)', text) : text;
+}
+
+// 계단 유무(STAIRS_PRESENT) — FLAG 피처. 「정보 없음 = 계단 없음」으로 읽지 않는다.
+export function formatStairsPresent(place: Place, tx: (ko: string, en: string) => string): string | null {
+  const slot = toFeatureSlot(findFeature(place, 'STAIRS_PRESENT'));
+  if (!slot) return null;
+  if (slot.evidenceStatus === 'UNKNOWN' || slot.value == null) return missingValueLabel(slot, tx);
+  const label = slot.value === true ? tx('계단 있음', 'Has stairs') : tx('계단 없음', 'No stairs');
+  return slot.evidenceStatus === 'ESTIMATED' ? txf(tx, '%s (추정)', '%s (est.)', label) : label;
+}
+
+// 경사도(SLOPE_PERCENT) — 점수형 피처. 단위 없는 숫자는 뜻이 안 통하므로 % 를 붙인다.
+/** 경사도 표시용 숫자 추출 — 못 꺼내면 null */
+function slopeText(value: unknown): string | null {
+  if (typeof value === 'number') return `${value}%`;
+  if (value && typeof value === 'object') {
+    const score = (value as { score?: unknown }).score;
+    if (typeof score === 'number') return `${score}%`;
+  }
+  return null;
+}
+
+export function formatSlopePercent(place: Place, tx: (ko: string, en: string) => string): string | null {
+  const slot = toFeatureSlot(findFeature(place, 'SLOPE_PERCENT'));
+  if (!slot) return null;
+  if (slot.evidenceStatus === 'UNKNOWN' || slot.value == null) return missingValueLabel(slot, tx);
+  // JSON.stringify 금지 자리 — 서버 값이 숫자에서 객체로 바뀌면 화면에 그대로 찍힌다.
+  const text = slopeText(slot.value);
+  if (text === null) return tx('확인했지만 형식을 읽지 못했어요', "We checked, but couldn't read the format");
+  return slot.evidenceStatus === 'ESTIMATED' ? txf(tx, '%s (추정)', '%s (est.)', text) : text;
+}
+
+// 숙박 체크인·체크아웃(CHECK_IN_OUT) — 숙박에는 OPENING_HOURS 대신 이 표식이 온다. 답하는
+// 질문이 달라 한 자리에 안 섞는다. 한쪽만 있을 수 있다.
+export function formatCheckInOut(place: Place, tx: (ko: string, en: string) => string): string | null {
+  const slot = toFeatureSlot(findFeature(place, 'CHECK_IN_OUT'));
+  if (!slot) return null;
+  if (slot.evidenceStatus === 'UNKNOWN' || slot.value == null) return missingValueLabel(slot, tx);
+  const value = slot.value as { checkIn?: unknown; checkOut?: unknown };
+  const checkIn = typeof value?.checkIn === 'string' ? value.checkIn : null;
+  const checkOut = typeof value?.checkOut === 'string' ? value.checkOut : null;
+  const text = checkIn && checkOut
+    ? txf(tx, '체크인 %s · 체크아웃 %s', 'Check-in %s · Check-out %s', checkIn, checkOut)
+    : checkIn
+      ? txf(tx, '체크인 %s', 'Check-in %s', checkIn)
+      : checkOut
+        ? txf(tx, '체크아웃 %s', 'Check-out %s', checkOut)
+        : JSON.stringify(slot.value);
+  return slot.evidenceStatus === 'ESTIMATED' ? txf(tx, '%s (추정)', '%s (est.)', text) : text;
+}
+
+// 장소 이름 한글·영문 병기 — 언어 설정과 무관. 영문 이름은 택시 기사에게 쓸모없고 한글만으로는
+// 영어 사용자가 못 읽는다. 영문이 없으면 괄호 없이 한국어만.
+export function getPlace(placeId: string, signal?: AbortSignal) {
+  return apiRequest<Place>(`/api/v1/places/${encodeURIComponent(placeId)}`, { signal });
+}
+
+// 계약 — GET /api/v1/places, query 와 facetType 은 정확히 하나만(둘 다 없거나 둘 다 있으면 400).
+// photoUrl·photoSource 는 값이 없으면 칸이 안 와서 optional. 사진을 그리면 출처도 같이 그린다
+// — 공공누리 이용 조건.
+export type PlaceSearchItem = { placeId: string; nameKo: string; nameEn: string | null; category: string; address: string; addressEn?: string; lat: number; lng: number; photoUrl?: string | null; photoSource?: string | null; photoSubject?: PhotoSubject | null };
+
+type PlacePageDto = { items: PlaceSearchItemDto[]; limit: number; nextCursor: string | null; hasNext: boolean; rankTruncated: boolean };
+export type PlaceSearchItemDto = { placeId: string; nameKo: string; nameEn: string | null; category: string; address: string; addressEn?: string; lat: number; lng: number; matchedField: 'NAME_KO' | 'NAME_EN' | null; photoUrl?: string | null; photoSource?: string | null; photoSubject?: PhotoSubject | null };
+
+/** 목록 응답 한 건의 화면 모양 변환 */
+export function toPlaceSearchItem(dto: PlaceSearchItemDto): PlaceSearchItem {
+  const { placeId, nameKo, nameEn, category, address, addressEn, lat, lng, photoUrl, photoSource, photoSubject } = dto;
+  return { placeId, nameKo, nameEn, category, address, addressEn, lat, lng, photoUrl, photoSource, photoSubject };
+}
+
+/** 변환에서 일부러 빼는 칸 — 시험이 이 목록만 예외로 친다 */
+export const PLACE_SEARCH_FIELDS_DROPPED_ON_PURPOSE = ['matchedField'] as const;
+
+export async function searchPlacesByName(query: string, signal?: AbortSignal): Promise<PlaceSearchItem[]> {
+  const dto = await apiRequest<PlacePageDto>(`/api/v1/places?query=${encodeURIComponent(query)}&limit=8`, { signal });
+  return dto.items.map(toPlaceSearchItem);
+}
+
+/** 로컬 갈래별 장소 조회 — 거리 제한 없음 */
+export async function getPlacesByFacet(
+  facetType: string,
+  facetKey: string,
+  limit = 20,
+  signal?: AbortSignal,
+): Promise<PlaceSearchItem[]> {
+  const query = new URLSearchParams({ facetType, facetKey, limit: String(limit) });
+  const dto = await apiRequest<PlacePageDto>(`/api/v1/places?${query.toString()}`, { signal });
+  return dto.items.map(toPlaceSearchItem);
+}

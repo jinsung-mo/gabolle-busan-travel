@@ -1,0 +1,43 @@
+{
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_API_BASE_URL": "https://j15e201.p.ssafy.io"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_BASE_URL": "https://j15e201.p.ssafy.io"
+      }
+    },
+    "production": {
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_API_BASE_URL": "https://j15e201.p.ssafy.io"
+      }
+    }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "ascAppId": "6811252919"
+      },
+      "android": {
+        "track": "alpha"
+      }
+    }
+  },
+  "cli": {
+    "appVersionSource": "remote",
+    "promptToConfigurePushNotifications": false
+  }
+}

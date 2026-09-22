@@ -79,6 +79,21 @@ public class InMemoryTripRepository implements TripRepository {
         trips.put(trip.tripId(), trip);
     }
 
+    /**
+     * S15P21E201-964 — 위 {@link #softDelete} 와 같은 이유로 저장을 한 번 거친다.
+     * 상태를 바꾸는 규칙은 도메인이 이미 태웠으므로 여기서는 넣기만 한다.
+     */
+    @Override
+    public void updateStatus(Trip trip) {
+        trips.put(trip.tripId(), trip);
+    }
+
+    /** S15P21E201-1023 — 위 {@link #updateStatus} 와 같은 이유로 저장을 한 번 거친다. */
+    @Override
+    public void updateTitle(Trip trip) {
+        trips.put(trip.tripId(), trip);
+    }
+
     @Override
     public List<TripConstraint> findConstraints(String tripId) {
         return constraints.getOrDefault(tripId, List.of());
@@ -216,6 +231,55 @@ public class InMemoryTripRepository implements TripRepository {
         }
         Trip existing = trips.get(winner[0]);
         return new SaveOutcome(existing, findLatestSnapshot(winner[0]).orElse(null), false);
+    }
+
+    /**
+     * S15P21E201-317 — JPA 판과 같은 규칙. {@code createdBy} 는 불변이라({@link Trip} 필드가
+     * final) 승계된 새 값으로 {@link Trip.Builder} 를 다시 태워 바꿔 넣는다. preference_snapshot·
+     * constraint_snapshot 은 이 프로필({@code no-db})에 개념 자체가 없으므로(클래스 상단
+     * 주석) 건드릴 것이 없다.
+     */
+    @Override
+    public int claimAnonymousTrips(String sessionId, String newOwnerId, Instant at) {
+        List<Trip> anonymousTrips = trips.values().stream()
+                .filter(t -> t.ownerType() == Trip.OwnerType.ANONYMOUS && t.createdBy().equals(sessionId))
+                .toList();
+
+        for (Trip trip : anonymousTrips) {
+            Trip claimed = Trip.builder()
+                    .tripId(trip.tripId())
+                    .createdBy(newOwnerId)
+                    .ownerType(Trip.OwnerType.USER)
+                    .startDate(trip.startDate())
+                    .finishDate(trip.finishDate())
+                    .originLat(trip.originLat())
+                    .originLng(trip.originLng())
+                    .budgetKrw(trip.budgetKrw())
+                    .partySize(trip.partySize())
+                    .timeWindow(trip.timeWindow())
+                    .timeWindowStart(trip.timeWindowStart())
+                    .timeWindowEnd(trip.timeWindowEnd())
+                    .travelModes(trip.travelModes())
+                    .timezone(trip.timezone())
+                    .status(trip.status())
+                    .createdAt(trip.createdAt())
+                    .updatedAt(at)
+                    .deletedAt(trip.deletedAt())
+                    .build();
+            trips.put(trip.tripId(), claimed);
+
+            List<TripMember> tripMembers = members.get(trip.tripId());
+            if (tripMembers != null) {
+                for (int i = 0; i < tripMembers.size(); i++) {
+                    TripMember m = tripMembers.get(i);
+                    if (m.role() == TripMember.Role.OWNER && m.userId().equals(sessionId)) {
+                        tripMembers.set(i, m.claimedBy(newOwnerId));
+                    }
+                }
+            }
+        }
+
+        return anonymousTrips.size();
     }
 
     private static String keyOf(String userId, String key) {

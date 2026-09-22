@@ -22,10 +22,48 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * 프로필에서도 켜지고 {@code contextLoads} 가 죽는다. 같은 사고가
  * {@code RecommendationSliceApplication} 주석에 기록돼 있다.
  */
+// 🔴 S15P21E201-317 — trip 을 더했다. 가입(LocalAuthService)이 익명 여행을 승계하려면
+//    AnonymousTripClaimService(trip.application)·JpaTripRepository(trip.infra) 빈이 있어야
+//    한다. 아래 @EnableJpaRepositories 도 trip.infra 를 더해야 그 빈이 요구하는
+//    TripJpaRepository 등이 실제로 만들어진다 — 안 더하면 이 슬라이스의 컨텍스트가
+//    "그런 빈 없음" 으로 못 뜬다.
+// 🔴 S15P21E201-137 — place 를 더했다. 위에서 trip 을 더한 순간 그 패키지의 컨트롤러가 전부
+//    함께 올라오는데, 그중 TripFacetViewController(S15P21E201-475)가 place 쪽 서비스를 필수로
+//    요구한다. 그것이 없으면 이 슬라이스의 컨텍스트가 통째로 못 뜨고 인증 테스트 52개가
+//    한꺼번에 빨개진다 — 실제로 그렇게 back/dev 가 빨간 채로 있었다.
+//
+//    🔴 컨트롤러 쪽에 조건을 걸어 이 슬라이스에서만 빠지게 하는 방법은 쓰지 않는다. 그러면
+//    운영에서도 조용히 빠질 수 있는 자리가 하나 늘고, 그 실패는 아무 검사도 못 잡는다.
+//    ItinerarySliceApplication 이 같은 갈림길에서 같은 판단을 먼저 적어 뒀다.
+//
+//    남는 교훈은 스캔 목록에 패키지를 더하는 것이 그 패키지 하나를 더하는 일이 아니라는
+//    것이다. 그 패키지가 기대는 곳까지 함께 따라온다.
 @SpringBootApplication(scanBasePackages = {
 		"com.gabolle.backend.common",
 		"com.gabolle.backend.auth",
-		"com.gabolle.backend.user"
+		"com.gabolle.backend.user",
+		"com.gabolle.backend.trip",
+		"com.gabolle.backend.place",
+		// 🔴 S15P21E201-440 — event 를 더했다. 위의 trip 에 SpendProfileService(S15P21E201-709)가
+		//    들어오면서 그것이 event 쪽 EventIngestService 를 필수로 요구한다. place 를 더한
+		//    것과 똑같은 모양의 사고이고 오늘만 세 번째다.
+		//
+		//    🔴 이 목록이 계속 길어지는 것 자체가 신호다. trip 패키지에 빈을 하나 더할 때마다
+		//    이 슬라이스가 따라 넓어져야 하는데, 그러면 "인증만 올린다" 는 이 슬라이스의 뜻이
+		//    점점 사라진다. 언젠가는 trip 을 여기서 빼고 인증이 실제로 필요로 하는 것만
+		//    남기는 쪽을 봐야 한다 — 지금은 back/dev 를 세워 두는 것이 먼저라 미룬다.
+		"com.gabolle.backend.event",
+		// 🔴 S15P21E201-978 — AccountDeletionService 가 생성자로 StorageCleanupService(story.
+		// application)를 요구하게 됐다. event 를 더했을 때와 같은 모양의 사고다. story 전체가
+		// 아니라 application·storage 두 패키지만 더한다 — presentation(컨트롤러)은 이 슬라이스가
+		// 필요로 하지 않는다. application 을 더하면 그 패키지의 다른 서비스(StoryService 등)도
+		// 함께 빈으로 올라오는데, 그것들이 쓰는 저장소는 전부 story.repository 에 있어 아래
+		// @EnableJpaRepositories 에도 그 패키지를 더했다. storage 를 더한 것은
+		// StorageCleanupService 가 요구하는 StoragePort 의 기본 구현(LocalFileStorage)이 거기
+		// 있어서다 — @Profile({"db","dev"})·@ConditionalOnProperty(기본값 local) 라 이 슬라이스의
+		// db 프로필에서 MinIO 없이도 뜬다.
+		"com.gabolle.backend.story.application",
+		"com.gabolle.backend.story.storage"
 })
 // 🔴 엔티티는 인증 밖의 것도 올린다. 계정 삭제(S15P21E201-425)가 그 사람의 여행·일정·추천 기록을
 //    JPQL 로 지우는데, 엔티티가 이 영속성 단위에 없으면 "그런 엔티티 없다" 로 실행에서 터진다.
@@ -44,11 +82,48 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 		// 🔴 2026-09-07 (S15P21E201-188) — 계정 삭제 미리보기가 story 도 JPQL 로 센다
 		// (AccountDeletionService.preview). 위 문단이 경고한 바로 그 실패가 실제로 났다 —
 		// CI 가 UnknownEntityException 으로 잡았다.
-		"com.gabolle.backend.story.domain"
+		"com.gabolle.backend.story.domain",
+		// S15P21E201-137 — 위 scanBasePackages 에 place 를 더하면서 그 빈들이 쓰는 표 매핑도
+		// 함께 올린다. 매핑이 없으면 빈은 만들어지고 첫 질의에서 터진다.
+		"com.gabolle.backend.place.domain",
+		// 🔴 2026-09-11 (S15P21E201-549) — feed·preference 를 더했다. 위 문단이 경고한 실패가
+		// <b>두 번째로</b> 났다. 계정 삭제와 개인화 초기화가 취향 벡터(user_taste_vector·
+		// user_taste_weight)와 미리 만든 피드(feed_build·user_feed·community_feed)를 JPQL 로
+		// 지우는데, 그 엔티티가 이 영속성 단위에 없어서
+		// "Could not resolve root entity 'UserFeedEntry'" 로 실행에서 터졌다 — CI 가 잡았다.
+		//
+		// 🔴 로컬에서는 이 실패가 안 보인다. Docker 가 없는 PC 에서는 Postgres 검사가 통째로
+		// 건너뛰어지므로, 이 목록이 좁다는 사실은 CI 에 올려야 비로소 드러난다.
+		"com.gabolle.backend.feed.domain",
+		"com.gabolle.backend.preference.domain",
+		// 🔴 S15P21E201-1157 — 탈퇴가 ON DELETE CASCADE 에만 기대던 표들을 직접 지우게 되면서
+		// (AccountDeletionService.USER_OWNED_ROWS) 그 엔티티 매핑이 여기 필요해졌다.
+		//
+		// 위 story.domain 줄이 2026-09-07 에 적어 둔 것과 <b>똑같은 실패가 다시 났다</b> —
+		// 로컬에서는 도커가 없어 이 슬라이스 테스트가 건너뜀이 되고, CI 가
+		// UnknownEntityException("Could not resolve root entity 'Collection'") 으로 잡았다.
+		// 이번에는 AccountDeletionOwnedRowsTest 가 DB 없이 먼저 잡는다.
+		"com.gabolle.backend.collection.domain",
+		"com.gabolle.backend.menuscan.domain",
+		"com.gabolle.backend.review.domain",
+		"com.gabolle.backend.share.domain"
 })
 @EnableJpaRepositories(basePackages = {
 		"com.gabolle.backend.auth.repository",
-		"com.gabolle.backend.user.repository"
+		"com.gabolle.backend.user.repository",
+		"com.gabolle.backend.trip.infra",
+		"com.gabolle.backend.place.repository",
+		"com.gabolle.backend.event.repository",
+		// 🔴 S15P21E201-160 — AnalyticsQueryService(event.application)가 생성자로
+		// RecommendationJobRepository 를 요구한다. event 를 스캔하는 순간 그 빈도 같이
+		// 요구된다 — place·trip 을 더했을 때와 같은 모양의 사고다. 위 @EntityScan 에는
+		// recommendation.domain 이 이미 있었지만, 저장소는 @EnableJpaRepositories 가
+		// 따로 정한다.
+		"com.gabolle.backend.recommendation.repository",
+		// 🔴 S15P21E201-978 — 위 scanBasePackages 에 story.application 을 더하면서 그 서비스들이
+		// 쓰는 저장소(StorageCleanupRepository·UploadedImageRepository·UserBlockRepository 등)도
+		// 함께 필요해졌다. 엔티티 매핑(story.domain)은 이미 있었다.
+		"com.gabolle.backend.story.repository"
 })
 public class AuthSliceApplication {
 }

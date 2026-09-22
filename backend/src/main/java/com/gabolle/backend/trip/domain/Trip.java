@@ -18,6 +18,14 @@ public class Trip {
     private final String tripId;
     private final String createdBy;
 
+    /**
+     * 🔴 S15P21E201-317 — {@code createdBy} 가 회원(app_user)인지 익명 세션
+     * (anonymous_session)인지 구분한다. 가입 전 만든 여행은 {@code ANONYMOUS} 로 시작해서,
+     * 가입할 때 그 세션이 만든 여행을 전부 찾아 {@code USER} 로 바꾸는 승계(claim)의
+     * 대상이 된다. 회원이 직접 만든 여행은 항상 {@code USER} 다.
+     */
+    private final OwnerType ownerType;
+
     private final LocalDate startDate;
     private final LocalDate finishDate;
 
@@ -75,6 +83,18 @@ public class Trip {
      * 달라진다).
      */
     private final Integer maxTransitTransfers;
+
+    /**
+     * 사용자가 붙인 이름 — S15P21E201-1023. {@code null} 이면 <b>아직 이름이 없다</b>.
+     *
+     * <p>🔴 <b>생성자에 넣지 않았다.</b> 이름은 만들 때 정해지는 값이 아니라 나중에 붙는
+     * 값이다. 생성자에 넣으면 이미 네 개가 사슬로 물려 있는 호출부를 전부 고쳐야 하는데,
+     * 그건 이 칸이 가진 뜻과 아무 상관이 없는 변경이다.
+     *
+     * <p>🔴 {@code null} 을 「이름 없음」으로 쓰고 빈 문자열을 쓰지 않는다. 두 가지가
+     * 같은 뜻을 말하면 화면이 둘 다 검사해야 하고, 언젠가 한쪽을 빠뜨린다.
+     */
+    private String title;
 
     private Status status;
     private final Instant createdAt;
@@ -135,6 +155,27 @@ public class Trip {
                 String accommodationPlaceId, boolean englishMenuRequired, boolean foreignCardRequired,
                 boolean soloFriendlyPriority, Integer maxTransitTransfers,
                 Instant createdAt) {
+        this(tripId, createdBy, OwnerType.USER, startDate, finishDate, originLat, originLng, budgetKrw, partySize,
+                timeWindow, timezone, travelModes, timeWindowStart, timeWindowEnd,
+                accommodationPlaceId, englishMenuRequired, foreignCardRequired, soloFriendlyPriority,
+                maxTransitTransfers, createdAt);
+    }
+
+    /**
+     * S15P21E201-317 — 소유자 종류({@code ownerType})까지 받는 생성자. 익명 세션이 여행을
+     * 만드는 경로({@code TripCreationService})가 이걸 쓴다. 위 생성자들은 항상
+     * {@code OwnerType.USER} 로 고정해 이 생성자에 위임한다 — 회원 전용이던 기존 호출부를
+     * 하나도 고치지 않기 위해서다.
+     */
+    public Trip(String tripId, String createdBy, OwnerType ownerType,
+                LocalDate startDate, LocalDate finishDate,
+                Double originLat, Double originLng,
+                Integer budgetKrw, int partySize,
+                String timeWindow, String timezone,
+                String[] travelModes, LocalTime timeWindowStart, LocalTime timeWindowEnd,
+                String accommodationPlaceId, boolean englishMenuRequired, boolean foreignCardRequired,
+                boolean soloFriendlyPriority, Integer maxTransitTransfers,
+                Instant createdAt) {
 
         if (startDate == null || finishDate == null) {
             throw new IllegalArgumentException("여행 시작일과 종료일은 필수다");
@@ -162,6 +203,7 @@ public class Trip {
 
         this.tripId = tripId;
         this.createdBy = createdBy;
+        this.ownerType = ownerType != null ? ownerType : OwnerType.USER;
         this.startDate = startDate;
         this.finishDate = finishDate;
         this.originLat = originLat;
@@ -218,6 +260,7 @@ public class Trip {
     public static final class Builder {
         private String tripId;
         private String createdBy;
+        private OwnerType ownerType;
         private LocalDate startDate;
         private LocalDate finishDate;
         private Double originLat;
@@ -234,6 +277,7 @@ public class Trip {
         private boolean soloFriendlyPriority;
         private Integer maxTransitTransfers;
         private String timezone;
+        private String title;
         private Status status;
         private Instant createdAt;
         private Instant updatedAt;
@@ -244,6 +288,7 @@ public class Trip {
 
         public Builder tripId(String tripId) { this.tripId = tripId; return this; }
         public Builder createdBy(String createdBy) { this.createdBy = createdBy; return this; }
+        public Builder ownerType(OwnerType ownerType) { this.ownerType = ownerType; return this; }
         public Builder startDate(LocalDate startDate) { this.startDate = startDate; return this; }
         public Builder finishDate(LocalDate finishDate) { this.finishDate = finishDate; return this; }
         public Builder originLat(Double originLat) { this.originLat = originLat; return this; }
@@ -260,6 +305,8 @@ public class Trip {
         public Builder soloFriendlyPriority(boolean soloFriendlyPriority) { this.soloFriendlyPriority = soloFriendlyPriority; return this; }
         public Builder maxTransitTransfers(Integer maxTransitTransfers) { this.maxTransitTransfers = maxTransitTransfers; return this; }
         public Builder timezone(String timezone) { this.timezone = timezone; return this; }
+        /** 🔴 {@link Trip#rename} 을 태우지 않는다 — 이미 규칙을 통과해 저장된 값이다. */
+        public Builder title(String title) { this.title = title; return this; }
         public Builder status(Status status) { this.status = status; return this; }
         public Builder createdAt(Instant createdAt) { this.createdAt = createdAt; return this; }
         public Builder updatedAt(Instant updatedAt) { this.updatedAt = updatedAt; return this; }
@@ -272,10 +319,11 @@ public class Trip {
          * PLANNING·createdAt 으로 시작하도록 만들어졌다, TRIP-01).
          */
         public Trip build() {
-            Trip trip = new Trip(tripId, createdBy, startDate, finishDate, originLat, originLng,
+            Trip trip = new Trip(tripId, createdBy, ownerType, startDate, finishDate, originLat, originLng,
                     budgetKrw, partySize, timeWindow, timezone, travelModes, timeWindowStart, timeWindowEnd,
                     accommodationPlaceId, englishMenuRequired, foreignCardRequired, soloFriendlyPriority,
                     maxTransitTransfers, createdAt);
+            trip.title = title;
             if (status != null) {
                 trip.status = status;
             }
@@ -294,6 +342,14 @@ public class Trip {
 
     public int days() {
         return nights() + 1;
+    }
+
+    /** S15P21E201-317 — {@code createdBy} 가 가리키는 표. */
+    public enum OwnerType {
+        /** {@code createdBy} 는 {@code app_user.user_id} 다. */
+        USER,
+        /** {@code createdBy} 는 {@code anonymous_session.session_id} 다. 가입하면 {@code USER} 로 승계된다. */
+        ANONYMOUS
     }
 
     public enum Status {
@@ -336,8 +392,51 @@ public class Trip {
         this.updatedAt = at;
     }
 
+    /**
+     * 카드 한 줄에 들어가는 한계에서 온 값. 마이그레이션 {@code trip.title varchar(60)} 과
+     * 같은 숫자다 — DB 제약이 먼저 터지면 어느 필드가 문제인지 응답에 안 남는다.
+     */
+    public static final int TITLE_MAX_LENGTH = 60;
+
+    /**
+     * 이름을 붙이거나 지운다 — S15P21E201-1023.
+     *
+     * <p>비었거나 공백뿐이면 {@code null} 로 만든다. 즉 <b>이름 지우기가 따로 없다</b> —
+     * 빈 이름을 보내는 것이 지우는 것이다. 지우기 전용 경로를 따로 두면 «빈 이름» 과
+     * «이름 없음» 이 갈라지고, 그 둘은 화면에서 구분할 수 없는 같은 것이다.
+     *
+     * <p>🔴 줄바꿈·제어문자를 거부한다. 이름은 <b>한 줄</b>이라 카드가 두 줄로 밀리면
+     * 목록 전체가 어긋난다. 그리고 나중에 이 자리에 <b>모델이 지어낸 이름</b>이 들어온다
+     * (S15P21E201-1025) — 그때 막는 것보다 칸 자체가 안 받는 편이 확실하다.
+     *
+     * <p>길이는 글자 수로 센다({@code codePointCount}). 이모지 하나는 자바에서 두 칸을
+     * 차지하지만 DB {@code varchar(60)} 은 한 글자로 세므로, 자바 길이로 재면 멀쩡한
+     * 이름이 거부된다.
+     */
+    public void rename(String title, Instant at) {
+        String trimmed = (title == null) ? null : title.trim();
+        if (trimmed != null && trimmed.isEmpty()) {
+            trimmed = null;
+        }
+        if (trimmed != null) {
+            if (trimmed.codePoints().anyMatch(Character::isISOControl)) {
+                throw new IllegalArgumentException("여행 이름에 줄바꿈이나 제어문자를 넣을 수 없다");
+            }
+            int length = trimmed.codePointCount(0, trimmed.length());
+            if (length > TITLE_MAX_LENGTH) {
+                throw new IllegalArgumentException(
+                        "여행 이름은 " + TITLE_MAX_LENGTH + "자를 넘을 수 없다: " + length + "자");
+            }
+        }
+        this.title = trimmed;
+        this.updatedAt = at;
+    }
+
     public String tripId()       { return tripId; }
     public String createdBy()    { return createdBy; }
+    /** {@code null} 이면 아직 이름이 없다 — 화면이 날짜를 제목으로 쓴다. */
+    public String title()        { return title; }
+    public OwnerType ownerType() { return ownerType; }
     public LocalDate startDate() { return startDate; }
     public LocalDate finishDate(){ return finishDate; }
     public Double originLat()    { return originLat; }

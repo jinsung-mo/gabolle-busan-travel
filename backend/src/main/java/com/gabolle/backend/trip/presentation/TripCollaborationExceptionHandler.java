@@ -22,7 +22,10 @@ import com.gabolle.backend.trip.application.TripQueryService;
  * {@code assignableTypes = TripController.class} 로 범위가 좁혀져 있어 이 컨트롤러의 예외는
  * 어차피 거기서 안 잡힌다 — 그래서 이 컨트롤러 전용 처리기를 새로 둔다.
  */
-@RestControllerAdvice(assignableTypes = TripCollaborationController.class)
+// 갈래 열람 기록 경로(S15P21E201-475)도 이 번역기를 쓴다. 그 경로가 여행 회원 판정에
+// 같은 예외(TripQueryService.TripNotFoundException)를 쓰므로, 번역을 새로 만들면 같은
+// 잘못에 다른 응답이 나간다.
+@RestControllerAdvice(assignableTypes = { TripCollaborationController.class, TripFacetViewController.class })
 public class TripCollaborationExceptionHandler {
 
 	/**
@@ -35,14 +38,14 @@ public class TripCollaborationExceptionHandler {
 				.map(f -> f.getField() + ": " + f.getDefaultMessage())
 				.toList();
 		return ResponseEntity.badRequest().body(ApiResponse.failure(
-				new ApiError("TRIP_VALIDATION_FAILED", "error.trip.validation", fields), requestId()));
+				new ApiError("TRIP_VALIDATION_FAILED", "입력한 조건 중 서버가 받지 못한 것이 있어요.", fields), requestId()));
 	}
 
 	/** 없는 여행이거나, 요청자가 그 여행의 회원이 아니다. 둘을 구분해 응답하지 않는다. */
 	@ExceptionHandler(TripQueryService.TripNotFoundException.class)
 	public ResponseEntity<ApiResponse<Void>> handleTripNotFound(TripQueryService.TripNotFoundException e) {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ApiResponse.failure(
-				new ApiError("TRIP_NOT_FOUND", "error.trip.notFound"), requestId()));
+				new ApiError("TRIP_NOT_FOUND", "그 여행을 찾지 못했어요."), requestId()));
 	}
 
 	/** 회원이지만 그 여행의 소유자가 아니라서 초대를 발급할 수 없다. */

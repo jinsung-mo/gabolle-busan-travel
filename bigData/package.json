@@ -19,6 +19,8 @@
     "slope": "node --max-old-space-size=4096 process/slope.mjs",
     "verify": "node test/verify.mjs",
     "choice:design": "node process/choice-design.mjs",
-    "choice:fit": "node process/choice-fit.mjs"
+    "choice:fit": "node process/choice-fit.mjs",
+    "survey:decode": "node survey/decode.mjs",
+    "survey:load": "node survey/load.mjs"
   }
 }

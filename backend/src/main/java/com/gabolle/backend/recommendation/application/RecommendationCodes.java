@@ -65,6 +65,19 @@ public final class RecommendationCodes {
 	 */
 	public static final String WARNING_WALKING_LIMIT_NOT_CHECKED = "WALKING_LIMIT_NOT_CHECKED";
 
+	/**
+	 * 접근성을 <b>안 재 봤다</b>는 경고 — S15P21E201-1158 에서 이 자리로 올렸다.
+	 *
+	 * <p>"못 간다" 가 아니라 "모른다" 다 — {@code ACCESS_VERIFIED_UNAVAILABLE}(재 보고 안 된다고
+	 * 나온 곳)과 다른 사실이라 자리를 따로 둔다. 화면은 이 둘을 갈라 그릴 수 있어야 한다.
+	 *
+	 * <p>🔴 <b>여기 있는 이유.</b> 값을 만드는 곳({@code BaselineCandidateScorer})과 세는 곳
+	 * ({@code ItineraryQueryService})이 서로 다른 갈래에 있다. 양쪽이 각자 문자열을 적으면
+	 * 한쪽만 고쳐지는 날이 오고, 그때 <b>경고가 조용히 0건이 된다</b> — 세는 쪽이 못 찾을 뿐
+	 * 오류는 안 난다. 그래서 두 곳이 같은 상수를 본다.
+	 */
+	public static final String WARNING_ACCESSIBILITY_UNVERIFIED = "ACCESSIBILITY_UNVERIFIED";
+
 	/** 이 후보가 편집자가 고른 목록에서 왔다 (S15P21E201-555). */
 	public static final String REASON_EDITORIAL_PICK = "EDITORIAL_PICK";
 
@@ -96,6 +109,23 @@ public final class RecommendationCodes {
 	 * 슬쩍 풀어 채운 목록은, 빈 목록보다 나쁘다.
 	 */
 	public static final String ERROR_NO_FEASIBLE_RESULT = "RECOMMENDATION_NO_FEASIBLE_RESULT";
+
+	/**
+	 * 고른 갈래에 해당하는 장소가 반경 안에 하나도 없다 — S15P21E201-827.
+	 *
+	 * <p>{@link #ERROR_NO_FEASIBLE_RESULT} 와 다르다. 그쪽은 <b>후보를 만들었는데 제약에
+	 * 전부 걸린</b> 경우이고, 이것은 <b>고를 후보가 애초에 없는</b> 경우다. 사용자에게 할
+	 * 말이 다르다 — 앞의 것은 "조건을 좀 풀어 보시겠어요", 이것은 "그 갈래는 아직 준비가
+	 * 안 됐어요" 다.
+	 *
+	 * <p>2026-09-10 배포에서 실제로 났다. 바다만 골랐는데 적재된 장소가 전부 음식점이라
+	 * 후보가 0곳이었고, 그때 나간 코드는 {@code VERSION_UNRESOLVED} 였다 — 후보가 없어
+	 * 수집분 이름을 못 정한 것이 원인이 아니라 <b>결과</b>인데, 그 결과가 코드가 됐다.
+	 * 사용자도 우리도 그 코드에서는 이유를 못 읽는다.
+	 *
+	 * <p>다시 요청해도 달라지지 않는다. 자료가 들어와야 바뀐다.
+	 */
+	public static final String ERROR_NO_CANDIDATES = "ENGINE_NO_CANDIDATES";
 
 	/** 엔진 호출 자체가 실패했다. */
 	public static final String ERROR_ENGINE_UNAVAILABLE = "ENGINE_UNAVAILABLE";
