@@ -1,13 +1,14 @@
 {
   "agent": "ahwlstjd57",
   "task": "S15P21E201-1490",
-  "intent": "B-06 — SVG Mask 가 안 먹어 덮개가 아예 안 그려지던 것. evenodd 구멍 path 로 바꾼다",
+  "intent": "B-06 — 덮개 구멍 path 가 바깥 사각형과 구멍을 evenodd 로 잇는지 시험",
   "actor": "agent",
   "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
-  "since": "2026-09-22T05:28:27.921Z",
+  "since": "2026-09-22T05:37:13.783Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/src/map/RouteMap.native.tsx",
-    "frontend/src/onboarding/HomeCoach.tsx"
+    "frontend/src/onboarding/HomeCoach.tsx",
+    "frontend/src/onboarding/__tests__/homeCoach.test.ts"
   ]
 }
