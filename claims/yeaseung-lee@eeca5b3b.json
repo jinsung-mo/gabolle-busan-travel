@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": null,
+  "intent": "A-Z 전체 화면 테스트 지침서 신규 작성",
+  "actor": "agent",
+  "session": "df30a088-93ef-4c6d-abd0-59e1a7bfbc5a",
+  "since": "2026-09-23T20:14:41.760Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/docs/QA_FULL_SWEEP_GUIDE.md"
+  ]
+}
