@@ -1,0 +1,12 @@
+{
+  "agent": "ahwlstjd57",
+  "task": "S15P21E201-1490",
+  "intent": "MR !1502 의 check:palette 실패 고치기 — 주석 안 색상 표기에서 # 를 빼 검사에 안 걸리게",
+  "actor": "agent",
+  "session": "ddb16bce-af20-4683-bf17-68aa37e7c3f9",
+  "since": "2026-09-23T02:21:52.615Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/onboarding/HomeCoach.tsx"
+  ]
+}
