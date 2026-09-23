@@ -1,13 +1,14 @@
 {
   "agent": "jinmiri",
   "task": null,
-  "intent": "부슐랭에서 지운 리스트·장소가 되살아나는 것 — 낡은 서버 목록 합치기 · 두 리스트에 같은 장소가 있을 때 엉뚱한 항목 번호",
+  "intent": "부슐랭 삭제가 되살아나는 것 · 리스트 상세를 새로고침하면 화면이 죽는 것(훅 순서) · 피드 인기 순위 표시",
   "actor": "agent",
   "session": "4b77fcf6-fb20-4dbd-bb4f-50683e33d1b3",
-  "since": "2026-09-23T06:16:13.390Z",
+  "since": "2026-09-23T06:19:52.563Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
+    "frontend/app/collection/[id].tsx",
     "frontend/src/collection/CollectionProvider.tsx",
     "frontend/src/collection/__tests__/collectionsApi.test.ts",
     "frontend/src/collection/collectionsApi.ts"
