@@ -1,0 +1,12 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-1537",
+  "intent": "SHADE_SCORE 가 건물 그늘이 아니라 가로수라는 것을 0.39 옆에 적는다 — 값은 안 바꾼다",
+  "actor": "agent",
+  "session": "5ab857be-a866-4a03-ad55-f1a01a22da04",
+  "since": "2026-09-23T07:21:08.654Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/resources/application.properties"
+  ]
+}
