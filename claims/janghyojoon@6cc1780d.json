@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1535",
-  "intent": "여행 생성 요청에 테마·페이스가 실리는지 시험",
+  "task": "S15P21E201-1547",
+  "intent": "운영 카프카 개인화 스위치(발행·릴레이·소비) 기본값을 켬으로",
   "actor": "agent",
   "session": "9862b3ec-cf77-483f-bb6a-2a973e4c245d",
-  "since": "2026-09-23T14:14:54.080Z",
+  "since": "2026-09-23T14:23:43.129Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/Jenkinsfile",
     "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateTranslator.java",
     "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerCategoryTest.java",
