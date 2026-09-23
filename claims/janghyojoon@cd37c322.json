@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1513",
+  "intent": "질문 화면에서 알레르기 요구 제거 + e2e 식단만 누르기 (!1493 e2e 복구)",
+  "actor": null,
+  "session": "83c61812-d8cf-4119-a3ba-0e5eb21776ee",
+  "since": "2026-09-23T00:32:08.348Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(plan)/questions.tsx",
+    "frontend/src/i18n/translations.ts",
+    "frontend/tests/e2e/core-journey.spec.ts"
+  ]
+}
