@@ -1,15 +1,18 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1520",
-  "intent": "번역 검사가 labelKo·hintKo 같은 이름Ko/이름En 짝도 보게 한다 — 챗봇 카드 부제 2줄이 이 사각지대로 새어 나갔다",
+  "task": "S15P21E201-1480",
+  "intent": "소셜 로그인 창이 결과 없이 닫히면 「로그인이 취소되었어요」라고 사용자 탓으로 단정하던 것 — 취소인지 연결 문제인지 가를 수 없으니 둘 다에 참인 말로",
   "actor": "agent",
   "session": "4b77fcf6-fb20-4dbd-bb4f-50683e33d1b3",
-  "since": "2026-09-23T02:33:23.567Z",
+  "since": "2026-09-23T02:53:13.901Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/field/speak.tsx",
+    "frontend/src/auth/__tests__/oauthOutcome.test.ts",
+    "frontend/src/auth/oauth.ts",
     "frontend/src/discovery/__tests__/nameSearchHint.test.ts",
     "frontend/src/discovery/nameSearchHint.ts",
+    "frontend/src/i18n/messages.ts",
     "frontend/src/plan/MustVisitSearch.tsx",
     "frontend/tools/check-translations.mjs"
   ]
