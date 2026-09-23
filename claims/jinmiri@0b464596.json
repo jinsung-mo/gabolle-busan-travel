@@ -1,15 +1,18 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1524",
-  "intent": "가운데 정렬 카드 안 버튼이 글자 폭으로 쪼그라드는 것 — compact / 폭 지정 (S15P21E201-1524)",
+  "intent": "웹에서 일본어·중국어 줄바꿈이 keep-all 때문에 아무 데서나 끊겨 「。」가 줄 머리에 오는 것 — 한국어일 때만 keep-all",
   "actor": "agent",
   "session": "4b77fcf6-fb20-4dbd-bb4f-50683e33d1b3",
-  "since": "2026-09-23T05:18:31.127Z",
+  "since": "2026-09-23T05:26:35.134Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
     "frontend/app/collection/index.tsx",
     "frontend/app/explore.tsx",
+    "frontend/src/components/Text.tsx",
+    "frontend/src/design/__tests__/webGlobalStyles.test.ts",
+    "frontend/src/design/webGlobalStyles.ts",
     "frontend/src/me/panels/NotificationsBody.tsx"
   ]
 }
