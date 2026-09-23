@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": null,
+  "intent": "부슐랭에서 지운 리스트·장소가 새로고침하면 되살아나는 것 · 피드 인기 순위 표시가 프로필 위치를 흔드는 것",
+  "actor": "agent",
+  "session": "4b77fcf6-fb20-4dbd-bb4f-50683e33d1b3",
+  "since": "2026-09-23T06:14:27.211Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/feed.tsx",
+    "frontend/src/collection/__tests__/collectionsApi.test.ts",
+    "frontend/src/collection/collectionsApi.ts"
+  ]
+}
