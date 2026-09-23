@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1454",
-  "intent": "추천 코스 3안 서비스 시험 — 2·3안이 1안과 다른 곳으로 채워지는지, 두 번 골라도 하나만 만드는지",
+  "intent": "추천 코스 3안 DB 시험 — 2안 저장이 1안의 추천 번호와 안 부딪히는지, 비회원 404",
   "actor": "agent",
   "session": "03078ccc-1a95-4345-ae43-afabafbed092",
-  "since": "2026-09-23T11:36:11.605Z",
+  "since": "2026-09-23T11:40:15.685Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/CoursePool.java",
@@ -16,6 +16,7 @@
     "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/TripCoursesResponse.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/TripCourseIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/application/CoursePoolTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/application/TripCourseIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/application/TripCourseServiceTest.java",
     "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java"
   ]
