@@ -1,0 +1,16 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1517",
+  "intent": "챗봇 「부산 로컬 스팟」 칩이 새 여행 만들기로 가던 것(서버가 /explore 로 못 보냄) · 탈퇴 화면 「여행 기록」 문구를 「피드에 남긴 기록」으로",
+  "actor": "agent",
+  "session": "4b77fcf6-fb20-4dbd-bb4f-50683e33d1b3",
+  "since": "2026-09-23T02:01:16.570Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/chat.tsx",
+    "frontend/src/assistant/__tests__/intent.test.ts",
+    "frontend/src/assistant/intent.ts",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/me/panels/ProfileBody.tsx"
+  ]
+}
