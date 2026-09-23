@@ -1,0 +1,20 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1536",
+  "intent": "홈 시작 바에서 고른 숙소를 accommodation 스냅샷으로 싣는다 — 서버 !1512 계약 (S15P21E201-1536)",
+  "actor": "agent",
+  "session": "4b77fcf6-fb20-4dbd-bb4f-50683e33d1b3",
+  "since": "2026-09-23T07:18:10.395Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/index.tsx",
+    "frontend/src/api/tripApi.ts",
+    "frontend/src/home/PlanStartBar.tsx",
+    "frontend/src/home/startBarValue.ts",
+    "frontend/src/plan/PlanProvider.tsx",
+    "frontend/src/plan/accommodationPayload.test.ts",
+    "frontend/src/plan/origins.ts",
+    "frontend/src/social/regionSearch.ts"
+  ]
+}
