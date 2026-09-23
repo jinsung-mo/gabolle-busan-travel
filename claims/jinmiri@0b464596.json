@@ -1,18 +1,24 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1524",
-  "intent": "웹에서 일본어·중국어 줄바꿈이 keep-all 때문에 아무 데서나 끊겨 「。」가 줄 머리에 오는 것 — 한국어일 때만 keep-all",
+  "task": "S15P21E201-1426",
+  "intent": "기록에 카카오에서 고른 장소 스냅샷(place)을 싣는다 — 서버 계약 !1509 (source 는 KAKAO_LOCAL 그대로)",
   "actor": "agent",
   "session": "4b77fcf6-fb20-4dbd-bb4f-50683e33d1b3",
-  "since": "2026-09-23T05:26:35.134Z",
+  "since": "2026-09-23T05:37:15.192Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
     "frontend/app/collection/index.tsx",
     "frontend/app/explore.tsx",
+    "frontend/app/feed/compose.tsx",
+    "frontend/src/components/RegionPicker.tsx",
     "frontend/src/components/Text.tsx",
     "frontend/src/design/__tests__/webGlobalStyles.test.ts",
     "frontend/src/design/webGlobalStyles.ts",
-    "frontend/src/me/panels/NotificationsBody.tsx"
+    "frontend/src/me/panels/NotificationsBody.tsx",
+    "frontend/src/social/__tests__/createStoryPlace.test.ts",
+    "frontend/src/social/__tests__/regionSearch.test.ts",
+    "frontend/src/social/regionSearch.ts",
+    "frontend/src/social/stories.ts"
   ]
 }
