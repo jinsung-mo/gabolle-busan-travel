@@ -14,7 +14,6 @@
     "backend/src/main/java/com/gabolle/backend/itinerary/presentation/TripActivityExceptionHandler.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/presentation/TripCourseController.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/TripCoursesResponse.java",
-    "backend/src/test/java/com/gabolle/backend/itinerary/TripCourseIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/application/CoursePoolTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/application/TripCourseIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/application/TripCourseServiceTest.java",
