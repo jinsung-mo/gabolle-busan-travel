@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1516",
+  "intent": "배포 때 새벽 취향 접기 스위치를 켠다 (Jenkinsfile 기본값 false→true, 두 docker run 블록)",
+  "actor": "agent",
+  "session": "1eb0f605-9d9e-4027-be76-66d757945f88",
+  "since": "2026-09-23T03:22:22.840Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/Jenkinsfile"
+  ]
+}
