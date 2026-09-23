@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1535",
-  "intent": "태그 겹침 비율 시험을 테마-갈래 만점 규칙과 겹치지 않는 코드로",
+  "intent": "여행 생성 요청에 테마·페이스가 실리는지 시험",
   "actor": "agent",
   "session": "9862b3ec-cf77-483f-bb6a-2a973e4c245d",
-  "since": "2026-09-23T14:12:56.915Z",
+  "since": "2026-09-23T14:14:54.080Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java",
@@ -14,6 +14,7 @@
     "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateTranslatorTest.java",
     "backend/src/test/java/com/gabolle/backend/recommendation/adapter/PreferenceValueShapeAndScaleTest.java",
     "frontend/src/api/__tests__",
-    "frontend/src/api/tripApi.ts"
+    "frontend/src/api/tripApi.ts",
+    "frontend/src/plan/themePacePayload.test.ts"
   ]
 }
