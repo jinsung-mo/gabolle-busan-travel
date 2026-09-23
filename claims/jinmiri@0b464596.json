@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1531",
-  "intent": "손님이 팔로워 목록을 열면 「인증 정보가 올바르지 않습니다 · 다시 시도」가 뜨는 것 · 부슐랭 리스트 삭제 확인 방식",
+  "intent": "손님 팔로워 목록 안내 문구 번역 · 부슐랭 리스트 삭제 확인",
   "actor": "agent",
   "session": "4b77fcf6-fb20-4dbd-bb4f-50683e33d1b3",
-  "since": "2026-09-23T06:45:35.297Z",
+  "since": "2026-09-23T06:46:45.869Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
@@ -14,6 +14,7 @@
     "frontend/src/collection/collectionsApi.ts",
     "frontend/src/components/PencilIcon.tsx",
     "frontend/src/design/tokens.ts",
+    "frontend/src/i18n/translations.ts",
     "frontend/src/me/RecordsBrowser.tsx",
     "frontend/src/social/RelationListScreen.tsx"
   ]
