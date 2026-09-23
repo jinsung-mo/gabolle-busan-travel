@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1454",
-  "intent": "코스 확정 실패 문구를 번역 표에 올린다",
+  "intent": "추천 코스 2·3안 확정 흐름 시험 — 번호 있으면 안 부르고, 없으면 서버에 만들어 달라고 한다",
   "actor": "agent",
   "session": "03078ccc-1a95-4345-ae43-afabafbed092",
-  "since": "2026-09-23T12:23:44.965Z",
+  "since": "2026-09-23T12:27:12.085Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/CoursePool.java",
@@ -21,6 +21,7 @@
     "frontend/app/trips/[id]/recommendations.tsx",
     "frontend/src/i18n/messages.ts",
     "frontend/src/i18n/translations.ts",
+    "frontend/src/plan/__tests__/tripCourseChoose.test.ts",
     "frontend/src/plan/__tests__/tripCourses.test.ts",
     "frontend/src/plan/tripCourses.ts",
     "frontend/src/trip/page/TripPageDesktop.tsx",
