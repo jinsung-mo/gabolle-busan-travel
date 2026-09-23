@@ -4,7 +4,7 @@
   "intent": "이/가 조사 판정 함수 추가(여행 페이지 확인할 것 문장)",
   "actor": null,
   "session": "83c61812-d8cf-4119-a3ba-0e5eb21776ee",
-  "since": "2026-09-23T07:22:24.784Z",
+  "since": "2026-09-23T07:26:02.161Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/weather",
