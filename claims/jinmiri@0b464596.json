@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1536",
-  "intent": "숙소 스냅샷 칸을 요약 칩·시험에 반영 (S15P21E201-1536)",
+  "intent": "추천 동네를 숙소로 고르면 accommodation 을 안 싣는다 — 서버 TravelArea 와 어휘 겹침 (S15P21E201-1536, 고지혁 답)",
   "actor": "agent",
   "session": "4b77fcf6-fb20-4dbd-bb4f-50683e33d1b3",
-  "since": "2026-09-23T07:20:57.010Z",
+  "since": "2026-09-23T07:37:06.262Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/questions.tsx",
