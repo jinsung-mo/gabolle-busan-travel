@@ -1,0 +1,15 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1524",
+  "intent": "가운데 정렬 카드 안 버튼이 글자 폭으로 쪼그라드는 것 — compact / 폭 지정 (S15P21E201-1524)",
+  "actor": "agent",
+  "session": "4b77fcf6-fb20-4dbd-bb4f-50683e33d1b3",
+  "since": "2026-09-23T05:18:31.127Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/feed.tsx",
+    "frontend/app/collection/index.tsx",
+    "frontend/app/explore.tsx",
+    "frontend/src/me/panels/NotificationsBody.tsx"
+  ]
+}
