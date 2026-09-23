@@ -4,7 +4,7 @@
   "intent": "S15P21E201-1552 Kafka 이벤트 신뢰 경계 문서화 (주석/문서만)",
   "actor": "agent",
   "session": "98a46f4d-8734-49fc-8f17-71c2d406bccd",
-  "since": "2026-09-23T16:13:09.308Z",
+  "since": "2026-09-23T16:16:10.367Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/build.gradle",
