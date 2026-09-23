@@ -1,0 +1,21 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1518",
+  "intent": "회원가입·약관 동의 화면 시안 반영 (이유 목록·입력칸 상태·자동완성·야경 패널)",
+  "actor": null,
+  "session": "83c61812-d8cf-4119-a3ba-0e5eb21776ee",
+  "since": "2026-09-23T02:17:29.386Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(auth)/oauth-signup.tsx",
+    "frontend/app/(auth)/sign-in.tsx",
+    "frontend/app/(auth)/sign-up.tsx",
+    "frontend/app/__tests__",
+    "frontend/app/_layout.tsx",
+    "frontend/assets/home/busan-night.jpg",
+    "frontend/docs/design_handoff_signup_consent",
+    "frontend/src/design/tokens.ts",
+    "frontend/src/design/webGlobalStyles.ts",
+    "frontend/src/i18n/translations.ts"
+  ]
+}
