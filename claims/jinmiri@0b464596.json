@@ -1,12 +1,14 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1528",
-  "intent": "로그인 뒤·실패 상태 화면의 쪼그라든 버튼에 compact (S15P21E201-1528, -1524 나머지)",
+  "intent": "마이페이지 패널·소셜 가입 화면의 쪼그라든 버튼에 compact (S15P21E201-1528)",
   "actor": "agent",
   "session": "4b77fcf6-fb20-4dbd-bb4f-50683e33d1b3",
-  "since": "2026-09-23T05:57:46.029Z",
+  "since": "2026-09-23T06:05:59.760Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/(auth)/oauth-link.tsx",
+    "frontend/app/(auth)/oauth-signup.tsx",
     "frontend/app/(tabs)/trips.tsx",
     "frontend/app/auth/email/verify.tsx",
     "frontend/app/collection/[id].tsx",
@@ -15,6 +17,8 @@
     "frontend/app/taxi-card/[id].tsx",
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/app/user/[id].tsx",
+    "frontend/src/me/panels/MyPostsBody.tsx",
+    "frontend/src/me/panels/SavedRecordsBody.tsx",
     "frontend/src/social/RelationListScreen.tsx"
   ]
 }
