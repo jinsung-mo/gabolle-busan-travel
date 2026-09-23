@@ -4,7 +4,7 @@
   "intent": "회원가입·약관 동의 화면 시안 반영 (이유 목록·입력칸 상태·자동완성·야경 패널)",
   "actor": null,
   "session": "83c61812-d8cf-4119-a3ba-0e5eb21776ee",
-  "since": "2026-09-23T02:17:29.386Z",
+  "since": "2026-09-23T02:40:52.617Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(auth)/oauth-signup.tsx",
