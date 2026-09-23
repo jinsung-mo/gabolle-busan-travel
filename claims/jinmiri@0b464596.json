@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": null,
+  "intent": "손님으로 채운 여행 초안이 웹 소셜 로그인(페이지 다시 불러옴) 뒤 사라지는 것 — 로그인 계정으로 이어받는다",
+  "actor": "agent",
+  "session": "4b77fcf6-fb20-4dbd-bb4f-50683e33d1b3",
+  "since": "2026-09-23T08:06:12.650Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/plan/PlanProvider.tsx",
+    "frontend/src/plan/__tests__/planDraftCarry.test.ts",
+    "frontend/src/plan/planDraftCarry.ts"
+  ]
+}
