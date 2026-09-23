@@ -1,15 +1,16 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1519",
-  "intent": "일본어·중국어 장소 검색 — 결과가 비었고 검색어가 한자·가나뿐이면 「한국어나 영어로 찾아 주세요」로 길을 알려 준다 (택시 카드 · 꼭 가고 싶은 장소)",
+  "task": "S15P21E201-1520",
+  "intent": "번역 검사가 labelKo·hintKo 같은 이름Ko/이름En 짝도 보게 한다 — 챗봇 카드 부제 2줄이 이 사각지대로 새어 나갔다",
   "actor": "agent",
   "session": "4b77fcf6-fb20-4dbd-bb4f-50683e33d1b3",
-  "since": "2026-09-23T02:23:21.623Z",
+  "since": "2026-09-23T02:33:23.567Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/field/speak.tsx",
     "frontend/src/discovery/__tests__/nameSearchHint.test.ts",
     "frontend/src/discovery/nameSearchHint.ts",
-    "frontend/src/plan/MustVisitSearch.tsx"
+    "frontend/src/plan/MustVisitSearch.tsx",
+    "frontend/tools/check-translations.mjs"
   ]
 }
