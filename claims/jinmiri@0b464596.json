@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": null,
+  "intent": "메뉴판 — 서버가 알레르기를 찾아보지도 않는데(-1538 로컬 OCR) 앱이 「찾지 못했어요」라고 말하는 것",
+  "actor": "agent",
+  "session": "4b77fcf6-fb20-4dbd-bb4f-50683e33d1b3",
+  "since": "2026-09-23T08:39:45.307Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/field/__tests__/menuScan.test.ts",
+    "frontend/src/field/menuScan.ts",
+    "frontend/src/i18n/translations.ts"
+  ]
+}
