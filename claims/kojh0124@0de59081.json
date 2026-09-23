@@ -1,10 +1,10 @@
 {
   "agent": "kojh0124",
   "task": "S15P21E201-1426",
-  "intent": "StoryCreateRequest 에 place 스냅샷 칸이 늘어 정규 생성자 호출 한 줄이 따라 바뀐다",
+  "intent": "uq_place_source 가 생기면 모든 장소에 같은 (FIXTURE, token) 을 주던 시험 픽스처가 두 번째 삽입에서 깨진다 — source_id 를 장소마다 다르게 준다",
   "actor": "agent",
   "session": "5ab857be-a866-4a03-ad55-f1a01a22da04",
-  "since": "2026-09-23T03:11:42.339Z",
+  "since": "2026-09-23T03:14:14.122Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/place/domain/CurationStatus.java",
@@ -16,6 +16,7 @@
     "backend/src/main/resources/db/migration/V20260923120000__place_curation_status.sql",
     "backend/src/test/java/com/gabolle/backend/place/UserSubmittedPlaceIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/place/UserSubmittedPlaceServiceTest.java",
+    "backend/src/test/java/com/gabolle/backend/place/support/PlaceFixture.java",
     "backend/src/test/java/com/gabolle/backend/story/StoryVideoAttachIntegrationTest.java"
   ]
 }
