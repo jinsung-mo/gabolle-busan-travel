@@ -1,14 +1,15 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1535",
-  "intent": "여행 페이지 2단계 — 폰 화면(지도 위 탭바가 창이 된다 · 지금 카드 · 코스 알약 · 카드 타임라인)",
+  "intent": "여행 페이지(폰) 타임라인 날짜 원 위의 요일 — 언어별 짧은 요일 도우미 하나 추가",
   "actor": "agent",
   "session": "9862b3ec-cf77-483f-bb6a-2a973e4c245d",
-  "since": "2026-09-23T10:23:29.340Z",
+  "since": "2026-09-23T10:28:39.471Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/src/i18n/datetime.ts",
     "frontend/src/i18n/translations.ts",
     "frontend/src/trip/page/TripBudgetCard.tsx",
     "frontend/src/trip/page/TripPageDesktop.tsx",
