@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": null,
+  "intent": "App Store Guideline 2.5.4 반려 — 불필요한 UIBackgroundModes audio 제거 (expo-audio enableBackgroundPlayback: false)",
+  "actor": "agent",
+  "session": "98a46f4d-8734-49fc-8f17-71c2d406bccd",
+  "since": "2026-09-23T20:36:10.227Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app.json"
+  ]
+}
