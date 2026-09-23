@@ -1,15 +1,16 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1535",
-  "intent": "여행 만들기 입력이 추천에 반영되게 — 카테고리를 거르기에서 가산점으로, 앱이 카테고리·페이스를 실제로 보내게, topK 고정 제거",
+  "intent": "테마(CATEGORY)가 place.category 와 맞으면 가산 — 채점기 시험 추가",
   "actor": "agent",
   "session": "9862b3ec-cf77-483f-bb6a-2a973e4c245d",
-  "since": "2026-09-23T14:06:17.083Z",
+  "since": "2026-09-23T14:11:08.067Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateTranslator.java",
     "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerCategoryTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerTest.java",
     "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateTranslatorTest.java",
     "frontend/src/api/__tests__",
     "frontend/src/api/tripApi.ts"
