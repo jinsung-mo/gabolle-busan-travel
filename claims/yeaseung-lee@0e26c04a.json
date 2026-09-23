@@ -1,13 +1,14 @@
 {
   "agent": "yeaseung-lee",
   "task": null,
-  "intent": "Apple Sign-In CORS 회귀 테스트 추가 — Origin: appleid.apple.com",
+  "intent": "Apple Sign-In CORS 회귀 검증 — 순수 단위 테스트 (DB 불필요)",
   "actor": "agent",
   "session": "98a46f4d-8734-49fc-8f17-71c2d406bccd",
-  "since": "2026-09-23T20:31:09.651Z",
+  "since": "2026-09-23T20:32:42.115Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/auth/config/SecurityConfig.java",
+    "backend/src/test/java/com/gabolle/backend/auth/config/SecurityConfigCorsTest.java",
     "backend/src/test/java/com/gabolle/backend/functional/AppleFormPostJourneyFunctionalTest.java"
   ]
 }
