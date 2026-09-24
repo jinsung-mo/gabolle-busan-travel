@@ -1,12 +1,16 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1561",
-  "intent": "MR 1559 색 검사 실패 고치기 — 예외 등록을 옮긴 파일로, 그림자 색을 토큰으로",
+  "task": "S15P21E201-1562",
+  "intent": "여행 티켓 QR 자리에 「내 일정 보기」 버튼",
   "actor": "agent",
   "session": "14b9cad3-ca63-4409-84d4-f98e183c2757",
-  "since": "2026-09-24T04:53:20.460Z",
+  "since": "2026-09-24T04:57:41.134Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/(plan)/generating.tsx",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/plan/TripPass.tsx",
+    "frontend/src/plan/__tests__/tripPassNextButton.test.tsx",
     "frontend/src/trip/page/TripOverlay.tsx",
     "frontend/tools/check-palette.mjs"
   ]
