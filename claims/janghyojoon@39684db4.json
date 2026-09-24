@@ -4,7 +4,7 @@
   "intent": "1박 이상 숙소 필수 — 만들기 잠금 문자열 시험",
   "actor": null,
   "session": "14b9cad3-ca63-4409-84d4-f98e183c2757",
-  "since": "2026-09-24T11:34:38.520Z",
+  "since": "2026-09-24T11:34:47.953Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(plan)/questions.tsx",
