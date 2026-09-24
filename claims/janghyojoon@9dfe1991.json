@@ -1,19 +1,25 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-C-check",
-  "intent": "C 검증 — 숙소를 안 고른 1박 여행의 추천·일정·돌아가기 줄을 시험으로 재현",
+  "task": "S15P21E201-1585",
+  "intent": "1박 이상 여행은 숙소가 있어야 만들고 추천한다(당일치기 예외) — 400 TRIP_VALIDATION_FAILED \"accommodation: …\"",
   "actor": "agent",
   "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
-  "since": "2026-09-24T11:18:47.599Z",
+  "since": "2026-09-24T11:37:27.011Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryLegPlanner.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/ItineraryDetailResponse.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationJobRunner.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/presentation/RecommendationJobExceptionHandler.java",
+    "backend/src/main/java/com/gabolle/backend/trip/application/TripCreationService.java",
+    "backend/src/main/java/com/gabolle/backend/trip/domain/TripConditionRules.java",
     "backend/src/test/java/com/gabolle/backend/functional/RecommendationWithRealPlacesFunctionalTest.java",
+    "backend/src/test/java/com/gabolle/backend/functional/TripConditionRevalidationFunctionalTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryDraftServiceTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryQueryServiceTest.java",
-    "backend/src/test/java/com/gabolle/backend/itinerary/application/ItineraryLegPlannerLodgingTest.java"
+    "backend/src/test/java/com/gabolle/backend/itinerary/application/ItineraryLegPlannerLodgingTest.java",
+    "backend/src/test/java/com/gabolle/backend/trip/TripConditionRulesTest.java"
   ]
 }
