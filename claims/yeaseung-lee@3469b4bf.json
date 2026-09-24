@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1547",
+  "intent": "현재 Notes 백업 후 build 44 Notes 로 교체",
+  "actor": "agent",
+  "session": "5699fbbc-91f4-4561-9f59-895f454a28d5",
+  "since": "2026-09-24T17:43:13.105Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/app-review/2026-09-25-build44-resubmission-draft.md",
+    "docs/app-review/notes-backup-build42-2026-09-25.txt"
+  ]
+}
