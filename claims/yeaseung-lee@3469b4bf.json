@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1547",
-  "intent": "현재 Notes 백업 후 build 44 Notes 로 교체",
+  "intent": "영상 프레임 검수 결과와 타임스탬프 Notes 를 초안에 반영",
   "actor": "agent",
   "session": "5699fbbc-91f4-4561-9f59-895f454a28d5",
-  "since": "2026-09-24T17:43:13.105Z",
+  "since": "2026-09-24T18:02:15.375Z",
   "ttlMs": 2700000,
   "paths": [
     "docs/app-review/2026-09-25-build44-resubmission-draft.md",
