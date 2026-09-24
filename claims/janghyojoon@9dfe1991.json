@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1615",
+  "intent": "2인·세트 메뉴 값을 예산 계산에서 빼기",
+  "actor": null,
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-24T18:13:35.985Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/service/MenuPriceWon.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineRecommendationEngine.java",
+    "backend/src/test/java/com/gabolle/backend/place/MenuPriceWonTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BudgetFitTest.java"
+  ]
+}
