@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1597",
+  "intent": "기록 상세 글 제목 #·##·### 를 크기로 구분",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-24T15:28:15.371Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/components/MarkdownBody.tsx",
+    "frontend/src/components/__tests__/MarkdownBody.test.tsx"
+  ]
+}
