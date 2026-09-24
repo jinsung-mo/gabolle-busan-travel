@@ -1,0 +1,18 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1561",
+  "intent": "여행 페이지의 동행 초대·날씨를 화면 이동 대신 같은 화면의 창으로 연다",
+  "actor": "agent",
+  "session": "14b9cad3-ca63-4409-84d4-f98e183c2757",
+  "since": "2026-09-24T04:43:08.985Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(trip)/[id]/prepare.tsx",
+    "frontend/app/(trip)/[id]/share.tsx",
+    "frontend/src/trip/TripInvitePanel.tsx",
+    "frontend/src/trip/TripWeatherPanel.tsx",
+    "frontend/src/trip/page/TripOverlay.tsx",
+    "frontend/src/trip/page/TripPageDesktop.tsx",
+    "frontend/src/trip/page/TripPageMobile.tsx"
+  ]
+}
