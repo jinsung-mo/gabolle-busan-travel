@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1562",
+  "intent": "MR 1560 타입 오류 — 시험 파일이 비어 있을 수 있는 주소를 넘기던 것",
+  "actor": "agent",
+  "session": "14b9cad3-ca63-4409-84d4-f98e183c2757",
+  "since": "2026-09-24T05:03:26.301Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/plan/__tests__/tripPassNextButton.test.tsx"
+  ]
+}
