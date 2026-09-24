@@ -1,13 +1,18 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1582",
-  "intent": "날씨 1시간별 예보 문구(1시간별 예보 · %d시 · 비/눈 등) 번역 추가 — 날씨 묶음(1192행 근처)에만",
+  "task": "S15P21E201-1583",
+  "intent": "피드 카드·기록 상세 작성자 이름 뒤에 공동 작성자 「· 이예승」 (coauthors 칸, 누르면 참여자 화면)",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-24T11:15:47.656Z",
+  "since": "2026-09-24T11:27:14.036Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/(tabs)/feed.tsx",
+    "frontend/app/feed/[id].tsx",
     "frontend/src/i18n/translations.ts",
+    "frontend/src/social/CoauthorByline.tsx",
+    "frontend/src/social/__tests__/coauthorByline.test.tsx",
+    "frontend/src/social/stories.ts",
     "frontend/src/trip/TripWeatherPanel.tsx",
     "frontend/src/trip/__tests__/tripWeatherHourly.test.tsx",
     "frontend/src/trip/weather.ts"
