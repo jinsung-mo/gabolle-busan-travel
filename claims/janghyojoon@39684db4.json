@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1572",
-  "intent": "일정 합계 예산 20% 상한 · 카페 하루 한 곳",
+  "task": "S15P21E201-1573",
+  "intent": "카페 하루 한 곳 · 남는 자리는 명소 먼저",
   "actor": "agent",
   "session": "14b9cad3-ca63-4409-84d4-f98e183c2757",
-  "since": "2026-09-24T08:39:51.305Z",
+  "since": "2026-09-24T08:42:07.214Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
