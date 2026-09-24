@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1624",
+  "intent": "끼니 시각대마다 밥 칸 한 칸",
+  "actor": null,
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-24T20:04:08.722Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryDraftServiceTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/application/AssembleReadCountIntegrationTest.java"
+  ]
+}
