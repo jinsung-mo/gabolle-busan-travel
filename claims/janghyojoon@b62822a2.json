@@ -1,14 +1,15 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1595",
-  "intent": "홈 「내 여행」 상태 글자를 목록과 같은 날짜 기준 함수로",
+  "intent": "홈 상태 글자 — 안 쓰게 된 「준비 완료」 번역 한 줄 걷기",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-24T14:18:56.707Z",
+  "since": "2026-09-24T14:20:25.183Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
     "frontend/src/home/HomeBlocks.tsx",
-    "frontend/src/home/__tests__/homeTripStatus.test.tsx"
+    "frontend/src/home/__tests__/homeTripStatus.test.tsx",
+    "frontend/src/i18n/translations.ts"
   ]
 }
