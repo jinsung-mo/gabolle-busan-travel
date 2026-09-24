@@ -11,9 +11,6 @@
     "frontend/app/feed/[id].tsx",
     "frontend/src/social/CoauthorByline.tsx",
     "frontend/src/social/__tests__/coauthorByline.test.tsx",
-    "frontend/src/social/stories.ts",
-    "frontend/src/trip/TripWeatherPanel.tsx",
-    "frontend/src/trip/__tests__/tripWeatherHourly.test.tsx",
-    "frontend/src/trip/weather.ts"
+    "frontend/src/social/stories.ts"
   ]
 }
