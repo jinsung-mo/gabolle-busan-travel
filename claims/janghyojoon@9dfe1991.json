@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1579",
-  "intent": "여럿이 가는 여행의 식비가 1인분으로 계산되던 것 — 메뉴 값 × 인원수 (응답 비용·예산 상한)",
+  "task": "S15P21E201-1581",
+  "intent": "그날 출발점(start)을 일정 응답에 싣는다 — dayStart 와 한 함수에서 나오게",
   "actor": "agent",
   "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
-  "since": "2026-09-24T11:07:10.781Z",
+  "since": "2026-09-24T11:12:07.915Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryLegPlanner.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/ItineraryDetailResponse.java",
     "backend/src/main/java/com/gabolle/backend/story/application/StoryResponseAssembler.java",
@@ -15,6 +16,7 @@
     "backend/src/main/java/com/gabolle/backend/story/repository/StoryCoauthorRepository.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryDraftServiceTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryQueryServiceTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/application/ItineraryLegPlannerLodgingTest.java",
     "backend/src/test/java/com/gabolle/backend/story/StoryCoauthorsInResponseIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/story/application/StoryResponseAssemblerTest.java"
   ]
