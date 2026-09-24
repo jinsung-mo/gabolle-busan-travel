@@ -1,0 +1,19 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1600",
+  "intent": "내 댓글 목록 API — 원글이 지워지거나 가려져도 내 댓글을 찾게",
+  "actor": "agent",
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-24T15:41:55.428Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/story/application/MyRepliesService.java",
+    "backend/src/main/java/com/gabolle/backend/story/presentation/MyRepliesController.java",
+    "backend/src/main/java/com/gabolle/backend/story/presentation/StoryExceptionHandler.java",
+    "backend/src/main/java/com/gabolle/backend/story/presentation/dto/MyRepliesResponse.java",
+    "backend/src/main/java/com/gabolle/backend/story/repository/StoryRepository.java",
+    "backend/src/main/java/com/gabolle/backend/story/repository/UserBlockRepository.java",
+    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java",
+    "backend/src/test/java/com/gabolle/backend/story/MyRepliesIntegrationTest.java"
+  ]
+}
