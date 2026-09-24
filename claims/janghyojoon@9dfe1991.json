@@ -1,0 +1,18 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1616",
+  "intent": "체인점 점수 낮추기와 한 일정에 같은 상표 한 번만",
+  "actor": null,
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-24T18:26:32.811Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
+    "backend/src/main/java/com/gabolle/backend/place/service/ChainBrand.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineRecommendationEngine.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/ChainPenalty.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryDraftServiceTest.java",
+    "backend/src/test/java/com/gabolle/backend/place/ChainBrandTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/ChainPenaltyTest.java"
+  ]
+}
