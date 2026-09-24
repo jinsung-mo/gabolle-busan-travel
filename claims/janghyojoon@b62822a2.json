@@ -9,7 +9,6 @@
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
     "frontend/app/feed/[id].tsx",
-    "frontend/src/i18n/translations.ts",
     "frontend/src/social/CoauthorByline.tsx",
     "frontend/src/social/__tests__/coauthorByline.test.tsx",
     "frontend/src/social/stories.ts",
