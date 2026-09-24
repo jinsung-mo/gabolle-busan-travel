@@ -1,14 +1,16 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1587",
-  "intent": "내 여행 탭 새 시안 — 넓은 화면 3열 격자 · 부슐랭 버튼 제거 · 폰 상단 여백",
+  "task": "S15P21E201-1586",
+  "intent": "날씨 B안(비교용) — 넓은 화면 「들를 때 날씨」를 정차지마다 따로 뜬 카드로",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-24T11:56:17.028Z",
+  "since": "2026-09-24T12:04:42.128Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/trips.tsx",
     "frontend/docs/design_handoff_my_trips",
-    "frontend/src/trip/__tests__/myTripsLayout.test.tsx"
+    "frontend/src/trip/TripWeatherPanel.tsx",
+    "frontend/src/trip/__tests__/myTripsLayout.test.tsx",
+    "frontend/src/trip/__tests__/tripWeatherStopCards.test.tsx"
   ]
 }
