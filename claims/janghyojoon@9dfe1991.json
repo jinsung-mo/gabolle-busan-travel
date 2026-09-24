@@ -1,0 +1,19 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1618",
+  "intent": "축제 갈래 FESTIVAL 과 추천 후보 날짜 거르기",
+  "actor": null,
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-24T18:50:32.499Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/loader/TourApiCategory.java",
+    "backend/src/main/java/com/gabolle/backend/place/loader/TourApiPlaceLoader.java",
+    "backend/src/main/java/com/gabolle/backend/place/repository/PlaceRepository.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineRecommendationEngine.java",
+    "backend/src/main/resources/db/migration/V20260925040000__festival_category.sql",
+    "backend/src/test/java/com/gabolle/backend/place/FestivalCategoryMigrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/place/loader/TourApiCategoryTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineRecommendationEngineSeedInjectionTest.java"
+  ]
+}
