@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1565",
-  "intent": "동네 숙소도 숙소로 쓰고, 하루 끝 숙소(마지막 날 출발지)로 돌아가는 시간을 일정에 넣는다",
+  "task": "S15P21E201-1566",
+  "intent": "동네 숙소를 서버로 보내고 하루 끝 「숙소로 돌아가기 · N분」을 보여 준다",
   "actor": "agent",
   "session": "14b9cad3-ca63-4409-84d4-f98e183c2757",
-  "since": "2026-09-24T05:57:44.793Z",
+  "since": "2026-09-24T05:58:49.384Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
@@ -12,6 +12,15 @@
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/ItineraryDetailResponse.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryDraftServiceTest.java",
-    "backend/src/test/java/com/gabolle/backend/itinerary/application/ItineraryLegPlannerLodgingTest.java"
+    "backend/src/test/java/com/gabolle/backend/itinerary/application/ItineraryLegPlannerLodgingTest.java",
+    "frontend/src/api/tripApi.ts",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/plan/accommodationPayload.test.ts",
+    "frontend/src/plan/itinerary.ts",
+    "frontend/src/plan/origins.ts",
+    "frontend/src/trip/page/DayReturnRow.tsx",
+    "frontend/src/trip/page/TripPageDesktop.tsx",
+    "frontend/src/trip/page/TripPageMobile.tsx",
+    "frontend/src/trip/page/__tests__/dayReturnRow.test.tsx"
   ]
 }
