@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1570",
+  "intent": "동네 숙소로 돌아가는 선을 곧은 점선으로",
+  "actor": "agent",
+  "session": "14b9cad3-ca63-4409-84d4-f98e183c2757",
+  "since": "2026-09-24T08:29:55.733Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/trip/page/__tests__/returnTrip.test.ts",
+    "frontend/src/trip/page/tripPageModel.ts",
+    "frontend/src/trip/page/useTripPage.ts"
+  ]
+}
