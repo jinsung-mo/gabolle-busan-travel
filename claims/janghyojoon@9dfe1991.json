@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1604",
-  "intent": "추천이 끝나면 2·3안을 미리 짜 둔다 — 이벤트 + 작은 실행기",
+  "intent": "미리 짜기 시험 위치 옮김(1602 와 충돌 피함)",
   "actor": "agent",
   "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
-  "since": "2026-09-24T16:08:49.674Z",
+  "since": "2026-09-24T16:18:37.961Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/adapter/TripCoverAdapter.java",
