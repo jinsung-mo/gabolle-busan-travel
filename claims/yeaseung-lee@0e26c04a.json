@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": null,
+  "intent": "일정 완성 후 '일정 보기'가 트립 ID 자리에 잡 ID를 넣어 추천 코스 조회 404 나던 것 수정",
+  "actor": "agent",
+  "session": "98a46f4d-8734-49fc-8f17-71c2d406bccd",
+  "since": "2026-09-24T00:19:41.369Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/generating.tsx"
+  ]
+}
