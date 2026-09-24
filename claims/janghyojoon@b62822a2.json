@@ -1,0 +1,18 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1607",
+  "intent": "폰 여행 화면 일정 창 — 지도 안 줄이기, 밀어 올리기, 초대·공유·날씨를 창 안에서",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-24T16:39:00.491Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/map/RouteMap.native.tsx",
+    "frontend/src/map/RouteMap.tsx",
+    "frontend/src/map/__tests__/mapFocus.test.ts",
+    "frontend/src/map/kakaoMapHtml.ts",
+    "frontend/src/map/mapFocus.ts",
+    "frontend/src/trip/page/TripPageMobile.tsx",
+    "frontend/src/trip/page/__tests__/tripSheet.test.tsx"
+  ]
+}
