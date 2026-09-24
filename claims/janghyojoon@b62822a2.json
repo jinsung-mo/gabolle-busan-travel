@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1608",
+  "intent": "하단 탭바 창 밀어 올리기 · 폰 회원 탈퇴 확인을 창 안에서",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-24T16:51:00.516Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/components/TabBar.tsx",
+    "frontend/src/components/__tests__/tabBarSheet.test.tsx",
+    "frontend/src/me/__tests__/deleteAccountInline.test.tsx",
+    "frontend/src/me/panels/ProfileBody.tsx"
+  ]
+}
