@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1586",
+  "intent": "날씨 창 — 들를 때 날씨 · 일정 시각 테두리 · 폰 시간별 줄을 첫 일정 시각부터",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-24T11:42:46.418Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/trip/TripWeatherPanel.tsx",
+    "frontend/src/trip/__tests__/tripWeatherStops.test.tsx",
+    "frontend/src/trip/page/TripPageDesktop.tsx",
+    "frontend/src/trip/page/TripPageMobile.tsx"
+  ]
+}
