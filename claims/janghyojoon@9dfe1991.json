@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1611",
+  "intent": "카프카 받는 쪽 실패 → 죽은 편지함 시험",
+  "actor": null,
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-24T17:12:00.374Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/event/OutboxToKafkaRoundTripIntegrationTest.java"
+  ]
+}
