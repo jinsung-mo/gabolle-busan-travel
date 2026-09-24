@@ -1,0 +1,17 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1565",
+  "intent": "동네 숙소도 숙소로 쓰고, 하루 끝 숙소(마지막 날 출발지)로 돌아가는 시간을 일정에 넣는다",
+  "actor": "agent",
+  "session": "14b9cad3-ca63-4409-84d4-f98e183c2757",
+  "since": "2026-09-24T05:57:44.793Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryLegPlanner.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/ItineraryDetailResponse.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryDraftServiceTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/application/ItineraryLegPlannerLodgingTest.java"
+  ]
+}
