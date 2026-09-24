@@ -4,7 +4,7 @@
   "intent": "사진 적재기: 출처 열쇠로 장소 찾기 · 라이선스 칸 · 있는 사진 안 덮기",
   "actor": "agent",
   "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
-  "since": "2026-09-24T16:26:16.695Z",
+  "since": "2026-09-24T16:26:32.981Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/adapter/TripCoverAdapter.java",
