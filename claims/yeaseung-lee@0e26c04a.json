@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1547",
+  "intent": "가이드에 스토어 스크린샷(한/영 각 5장) 절 추가",
+  "actor": "agent",
+  "session": "98a46f4d-8734-49fc-8f17-71c2d406bccd",
+  "since": "2026-09-24T01:24:46.230Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/app-review/2026-09-24-build44-recording-guide.md"
+  ]
+}
