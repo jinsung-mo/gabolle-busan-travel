@@ -7,10 +7,6 @@
   "since": "2026-09-24T11:13:36.538Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/(plan)/generating.tsx",
-    "frontend/app/__tests__/generatingTicketPrintOnce.test.tsx",
-    "frontend/src/plan/TripPass.tsx",
-    "frontend/src/plan/__tests__/tripPassPrintOnce.test.tsx",
     "frontend/src/trip/TripWeatherPanel.tsx",
     "frontend/src/trip/__tests__/tripWeatherHourly.test.tsx",
     "frontend/src/trip/weather.ts"
