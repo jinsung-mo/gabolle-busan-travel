@@ -1,0 +1,17 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1584",
+  "intent": "1박 이상 여행은 숙소를 골라야 일정을 만든다",
+  "actor": null,
+  "session": "14b9cad3-ca63-4409-84d4-f98e183c2757",
+  "since": "2026-09-24T11:30:21.675Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(plan)/questions.tsx",
+    "frontend/src/api/errorText.ts",
+    "frontend/src/home/__tests__/startBarValue.test.ts",
+    "frontend/src/home/startBarValue.ts",
+    "frontend/src/plan/__tests__/lodgingRequired.test.ts",
+    "frontend/src/plan/lodgingRequired.ts"
+  ]
+}
