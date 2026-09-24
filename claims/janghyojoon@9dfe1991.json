@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1581",
-  "intent": "그날 출발점(start)을 일정 응답에 싣는다 — dayStart 와 한 함수에서 나오게",
+  "task": "S15P21E201-C-check",
+  "intent": "C 검증 — 숙소를 안 고른 1박 여행의 추천·일정·돌아가기 줄을 시험으로 재현",
   "actor": "agent",
   "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
-  "since": "2026-09-24T11:12:07.915Z",
+  "since": "2026-09-24T11:18:47.599Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
@@ -14,6 +14,7 @@
     "backend/src/main/java/com/gabolle/backend/story/application/StoryResponseAssembler.java",
     "backend/src/main/java/com/gabolle/backend/story/presentation/dto/StoryResponse.java",
     "backend/src/main/java/com/gabolle/backend/story/repository/StoryCoauthorRepository.java",
+    "backend/src/test/java/com/gabolle/backend/functional/RecommendationWithRealPlacesFunctionalTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryDraftServiceTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryQueryServiceTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/application/ItineraryLegPlannerLodgingTest.java",
