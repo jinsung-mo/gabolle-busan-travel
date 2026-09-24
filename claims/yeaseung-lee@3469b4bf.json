@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1547",
+  "intent": "build 44 재제출 초안(회신·Notes) 작성, 촬영 가이드의 탈퇴 위치 정정",
+  "actor": "agent",
+  "session": "5699fbbc-91f4-4561-9f59-895f454a28d5",
+  "since": "2026-09-24T16:50:12.751Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/app-review/2026-09-24-build44-recording-guide.md",
+    "docs/app-review/2026-09-25-build44-resubmission-draft.md"
+  ]
+}
