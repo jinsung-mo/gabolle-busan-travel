@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1598",
+  "intent": "코스 목록 속도 — 2·3안 초안을 추천 판·요청자마다 한 번만 짜서 재사용",
+  "actor": "agent",
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-24T15:30:19.748Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/TripCourseService.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/application/TripCourseServiceTest.java"
+  ]
+}
