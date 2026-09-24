@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1603",
+  "intent": "마이페이지 「기록 | 설정」 전환 — 판을 붙여 두고 보이는 것만 바꾸기",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-24T16:02:10.844Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/src/me/KeptPanes.tsx",
+    "frontend/src/me/__tests__/keptPanes.test.tsx"
+  ]
+}
