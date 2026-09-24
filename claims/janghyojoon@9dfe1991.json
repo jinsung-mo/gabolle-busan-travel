@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1623",
+  "intent": "진행률 스트림 nginx 모으기 끄기",
+  "actor": null,
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-24T19:51:40.913Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation/presentation/RecommendationJobController.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/RecommendationJobProgressStreamTest.java"
+  ]
+}
