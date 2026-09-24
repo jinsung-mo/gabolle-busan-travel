@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1620",
-  "intent": "중복 장소 합치기 — 표시·기록·되돌리기",
+  "task": "S15P21E201-1619",
+  "intent": "중복 장소 합치기",
   "actor": null,
   "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
-  "since": "2026-09-24T19:17:35.223Z",
+  "since": "2026-09-24T19:18:10.069Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/place/domain/CurationStatus.java",
