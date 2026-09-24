@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1578",
+  "intent": "기록 응답에 공동 작성자 칸(coauthors) 추가 — 목록은 기록 id 로 한 번에 읽는다",
+  "actor": "agent",
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-24T10:56:08.211Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/story/application/StoryResponseAssembler.java",
+    "backend/src/main/java/com/gabolle/backend/story/presentation/dto/StoryResponse.java",
+    "backend/src/main/java/com/gabolle/backend/story/repository/StoryCoauthorRepository.java",
+    "backend/src/test/java/com/gabolle/backend/story/StoryCoauthorsInResponseIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/story/application/StoryResponseAssemblerTest.java"
+  ]
+}
