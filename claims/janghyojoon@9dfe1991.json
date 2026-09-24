@@ -1,12 +1,18 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1612",
-  "intent": "품질 시험이 장소 표를 비우지 않게",
+  "task": "S15P21E201-1613",
+  "intent": "카프카가 잠깐 죽어도 이벤트를 버리지 않게",
   "actor": null,
   "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
-  "since": "2026-09-24T17:23:05.818Z",
+  "since": "2026-09-24T17:38:52.124Z",
   "ttlMs": 1800000,
   "paths": [
-    "backend/src/test/java/com/gabolle/backend/dataquality/PlaceDataQualityServiceTest.java"
+    "backend/src/main/java/com/gabolle/backend/event/application/OutboxRelayService.java",
+    "backend/src/main/java/com/gabolle/backend/event/application/port/EventPublisherPort.java",
+    "backend/src/main/java/com/gabolle/backend/event/infra/KafkaEventPublisher.java",
+    "backend/src/test/java/com/gabolle/backend/dataquality/PlaceDataQualityServiceTest.java",
+    "backend/src/test/java/com/gabolle/backend/event/KafkaEventPublisherTest.java",
+    "backend/src/test/java/com/gabolle/backend/event/OutboxRelayTest.java",
+    "backend/src/test/java/com/gabolle/backend/event/OutboxToKafkaRoundTripIntegrationTest.java"
   ]
 }
