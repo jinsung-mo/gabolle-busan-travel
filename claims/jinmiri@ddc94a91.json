@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1626",
+  "intent": "날짜 칸으로 가면 달력이 보이게 스크롤 · 달력 구간 띠 잇기 (머지 안 함)",
+  "actor": "agent",
+  "session": "9a4c4f50-ca63-474b-9bba-506f655af575",
+  "since": "2026-09-24T21:56:00.983Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/questions.tsx",
+    "frontend/src/components/Screen.tsx",
+    "frontend/src/home/PlanStartBar.tsx"
+  ]
+}
