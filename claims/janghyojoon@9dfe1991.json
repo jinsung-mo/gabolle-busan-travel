@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1609",
+  "intent": "형식이 틀린 일정 번호에 500 대신 404",
+  "actor": null,
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-24T16:53:43.897Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/infra/JpaItineraryRepository.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryPaceIntegrationTest.java"
+  ]
+}
