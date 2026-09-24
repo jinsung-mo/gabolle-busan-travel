@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1612",
+  "intent": "품질 시험이 장소 표를 비우지 않게",
+  "actor": null,
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-24T17:23:05.818Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/dataquality/PlaceDataQualityServiceTest.java"
+  ]
+}
