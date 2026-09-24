@@ -1,0 +1,20 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1589",
+  "intent": "부슐랭(컬렉션)을 앱에서 지운다 — 화면·Provider·API·소개 문구·번역 (서버는 남김)",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-24T12:13:06.333Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/trips.tsx",
+    "frontend/app/_layout.tsx",
+    "frontend/app/app-intro.tsx",
+    "frontend/app/collection",
+    "frontend/app/place/[id].tsx",
+    "frontend/src/collection",
+    "frontend/src/discovery/__tests__/placeCategoryLabels.test.ts",
+    "frontend/src/discovery/placeCategoryLabels.ts",
+    "frontend/src/i18n/translations.ts"
+  ]
+}
