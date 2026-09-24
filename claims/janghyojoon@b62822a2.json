@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1577",
-  "intent": "여행 티켓이 두 번 출력되던 것 고치기 + 감열 프린터처럼 뚝뚝 끊겨 나오게",
+  "intent": "생성 화면이 일정을 받아 온 뒤에만 티켓을 출력하는지 지키는 시험",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-24T10:55:59.340Z",
+  "since": "2026-09-24T10:59:37.308Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/generating.tsx",
+    "frontend/app/__tests__/generatingTicketPrintOnce.test.tsx",
     "frontend/src/plan/TripPass.tsx",
     "frontend/src/plan/__tests__/tripPassPrintOnce.test.tsx"
   ]
