@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1601",
+  "intent": "폰 홈 AI 버튼을 탭바와 같은 기준(화면 고정)에",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-24T15:52:13.736Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/src/components/TabBar.tsx",
+    "frontend/src/components/__tests__/bottomDockPosition.test.ts"
+  ]
+}
