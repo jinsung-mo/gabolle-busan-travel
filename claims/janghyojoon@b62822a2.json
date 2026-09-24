@@ -1,13 +1,21 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1591",
-  "intent": "여행 만들기 입력 — 예산 기본값 시험(.tsx)",
+  "task": "S15P21E201-1593",
+  "intent": "피드 공유 — 여행 화면 공유·기록 남기기 · 코스 링크·코스 카드 · 지역 입력칸 하나 · ⋯ 메뉴",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-24T13:32:20.613Z",
+  "since": "2026-09-24T13:40:54.240Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/questions.tsx",
+    "frontend/app/(tabs)/feed.tsx",
+    "frontend/app/__tests__/composeCourseLink.test.tsx",
+    "frontend/app/feed/[id].tsx",
+    "frontend/app/feed/compose.tsx",
+    "frontend/src/components/DropdownMenu.tsx",
+    "frontend/src/components/RegionPicker.tsx",
+    "frontend/src/components/__tests__/dropdownMenuHint.test.tsx",
+    "frontend/src/components/__tests__/regionPickerSingleInput.test.tsx",
     "frontend/src/home/PlanStartBar.tsx",
     "frontend/src/home/__tests__/lodgingEscapeHidden.test.tsx",
     "frontend/src/i18n/translations.ts",
@@ -16,6 +24,14 @@
     "frontend/src/plan/__tests__/budgetDefault.test.tsx",
     "frontend/src/plan/budgetDefault.ts",
     "frontend/src/plan/origins.ts",
-    "frontend/src/plan/planQuestions.ts"
+    "frontend/src/plan/planQuestions.ts",
+    "frontend/src/social/CourseLinkCard.tsx",
+    "frontend/src/social/__tests__/courseLink.test.tsx",
+    "frontend/src/social/courseLink.ts",
+    "frontend/src/trip/TripInvitePanel.tsx",
+    "frontend/src/trip/TripReadLinkPanel.tsx",
+    "frontend/src/trip/page/TripOverlay.tsx",
+    "frontend/src/trip/page/TripPageDesktop.tsx",
+    "frontend/src/trip/page/TripPageMobile.tsx"
   ]
 }
