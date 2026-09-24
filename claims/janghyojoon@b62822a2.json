@@ -7,10 +7,7 @@
   "since": "2026-09-24T12:04:42.128Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/(tabs)/trips.tsx",
-    "frontend/docs/design_handoff_my_trips",
     "frontend/src/trip/TripWeatherPanel.tsx",
-    "frontend/src/trip/__tests__/myTripsLayout.test.tsx",
     "frontend/src/trip/__tests__/tripWeatherStopCards.test.tsx"
   ]
 }
