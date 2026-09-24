@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1612",
+  "intent": "품질 시험 비우기를 딸린 표까지 한꺼번에(TRUNCATE CASCADE)",
+  "actor": null,
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-24T17:49:07.178Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/dataquality/PlaceDataQualityServiceTest.java"
+  ]
+}
