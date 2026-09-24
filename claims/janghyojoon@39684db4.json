@@ -1,0 +1,18 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1567",
+  "intent": "지도 실제 도로 선 좌표 뒤바뀜 고침 · 숙소로 돌아가는 선",
+  "actor": "agent",
+  "session": "14b9cad3-ca63-4409-84d4-f98e183c2757",
+  "since": "2026-09-24T06:29:03.244Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/map/__tests__/routePathOrder.test.tsx",
+    "frontend/src/map/courseRoutePaths.ts",
+    "frontend/src/trip/page/TripPageDesktop.tsx",
+    "frontend/src/trip/page/TripPageMobile.tsx",
+    "frontend/src/trip/page/__tests__/returnTrip.test.ts",
+    "frontend/src/trip/page/tripPageModel.ts",
+    "frontend/src/trip/page/useTripPage.ts"
+  ]
+}
