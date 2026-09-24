@@ -11,14 +11,9 @@
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryLegPlanner.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
     "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/ItineraryDetailResponse.java",
-    "backend/src/main/java/com/gabolle/backend/story/application/StoryResponseAssembler.java",
-    "backend/src/main/java/com/gabolle/backend/story/presentation/dto/StoryResponse.java",
-    "backend/src/main/java/com/gabolle/backend/story/repository/StoryCoauthorRepository.java",
     "backend/src/test/java/com/gabolle/backend/functional/RecommendationWithRealPlacesFunctionalTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryDraftServiceTest.java",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryQueryServiceTest.java",
-    "backend/src/test/java/com/gabolle/backend/itinerary/application/ItineraryLegPlannerLodgingTest.java",
-    "backend/src/test/java/com/gabolle/backend/story/StoryCoauthorsInResponseIntegrationTest.java",
-    "backend/src/test/java/com/gabolle/backend/story/application/StoryResponseAssemblerTest.java"
+    "backend/src/test/java/com/gabolle/backend/itinerary/application/ItineraryLegPlannerLodgingTest.java"
   ]
 }
