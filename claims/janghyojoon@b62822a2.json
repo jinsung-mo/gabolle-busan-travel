@@ -8,27 +8,10 @@
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(auth)/sign-in.tsx",
-    "frontend/app/(tabs)/feed.tsx",
-    "frontend/app/__tests__/composeCourseLink.test.tsx",
     "frontend/app/__tests__/signInWhenSignedIn.test.tsx",
-    "frontend/app/feed/[id].tsx",
-    "frontend/app/feed/compose.tsx",
     "frontend/src/auth/pendingReturnTo.ts",
-    "frontend/src/components/DropdownMenu.tsx",
-    "frontend/src/components/RegionPicker.tsx",
-    "frontend/src/components/__tests__/dropdownMenuHint.test.tsx",
-    "frontend/src/components/__tests__/regionPickerSingleInput.test.tsx",
     "frontend/src/home/HomeBlocks.tsx",
     "frontend/src/home/__tests__/homeCleanup.test.ts",
-    "frontend/src/home/useHomeData.ts",
-    "frontend/src/i18n/translations.ts",
-    "frontend/src/social/CourseLinkCard.tsx",
-    "frontend/src/social/__tests__/courseLink.test.tsx",
-    "frontend/src/social/courseLink.ts",
-    "frontend/src/trip/TripInvitePanel.tsx",
-    "frontend/src/trip/TripReadLinkPanel.tsx",
-    "frontend/src/trip/page/TripOverlay.tsx",
-    "frontend/src/trip/page/TripPageDesktop.tsx",
-    "frontend/src/trip/page/TripPageMobile.tsx"
+    "frontend/src/home/useHomeData.ts"
   ]
 }
