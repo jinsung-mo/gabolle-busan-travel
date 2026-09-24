@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1582",
-  "intent": "여행 화면 날씨 창에 1시간별 예보 — 서버 hourly 를 그린다 (번역표는 1580 이 풀리면)",
+  "intent": "날씨 1시간별 예보 문구(1시간별 예보 · %d시 · 비/눈 등) 번역 추가 — 날씨 묶음(1192행 근처)에만",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-24T11:13:36.538Z",
+  "since": "2026-09-24T11:15:47.656Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/src/i18n/translations.ts",
     "frontend/src/trip/TripWeatherPanel.tsx",
     "frontend/src/trip/__tests__/tripWeatherHourly.test.tsx",
     "frontend/src/trip/weather.ts"
