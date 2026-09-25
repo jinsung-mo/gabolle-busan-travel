@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1691",
-  "intent": "위치 동의 문 — 지금 갈 곳 · 방문 인증",
+  "intent": "주변 버스 좌표 약 100m 로 — 시험을 새 약속에 맞춤",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-25T15:04:42.101Z",
+  "since": "2026-09-25T15:06:54.790Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
@@ -16,6 +16,7 @@
     "frontend/app/place-reviews/[id].tsx",
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/src/discovery/localExplore.ts",
+    "frontend/src/field/__tests__/busArrivals.test.ts",
     "frontend/src/field/busArrivals.ts",
     "frontend/src/i18n/translations.ts",
     "frontend/src/personalization/__tests__/locationConsent.test.tsx",
