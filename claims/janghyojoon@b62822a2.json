@@ -1,0 +1,21 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1658",
+  "intent": "걷는 길 경사 색 조각 — 스위치로 꺼 둔 채 준비",
+  "actor": null,
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T10:04:13.288Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/map/RouteMap.native.tsx",
+    "frontend/src/map/RouteMap.tsx",
+    "frontend/src/map/__tests__/walkSlope.test.tsx",
+    "frontend/src/map/courseRoutePaths.ts",
+    "frontend/src/map/kakaoMapHtml.ts",
+    "frontend/src/map/routeDirections.ts",
+    "frontend/src/map/slopeGrades.ts",
+    "frontend/src/trip/page/tripPageModel.ts",
+    "frontend/src/trip/page/useTripPage.ts"
+  ]
+}
