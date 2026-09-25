@@ -4,7 +4,7 @@
   "intent": "종 점용 알림 요약 조회",
   "actor": null,
   "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
-  "since": "2026-09-25T16:47:59.331Z",
+  "since": "2026-09-25T16:57:23.807Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/NotificationSummaryService.java",
