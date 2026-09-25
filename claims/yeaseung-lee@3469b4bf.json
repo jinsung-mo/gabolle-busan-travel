@@ -1,0 +1,16 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1646",
+  "intent": "방침 문의처 반영 + 계정 삭제 안내 페이지 (Draft MR, iOS 심사 결과 전 머지 금지)",
+  "actor": "agent",
+  "session": "5699fbbc-91f4-4561-9f59-895f454a28d5",
+  "since": "2026-09-25T07:18:35.885Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/legal/account-deletion.tsx",
+    "frontend/src/legal/LegalDocumentScreen.tsx",
+    "frontend/src/legal/__tests__/legalContact.test.tsx",
+    "frontend/src/legal/contact.ts",
+    "frontend/src/legal/legalContent.ts"
+  ]
+}
