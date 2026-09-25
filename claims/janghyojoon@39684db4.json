@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1462",
+  "intent": "사진 원천 조사 보고서를 로컬 브랜치에 남김",
+  "actor": null,
+  "session": "14b9cad3-ca63-4409-84d4-f98e183c2757",
+  "since": "2026-09-25T06:08:12.190Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "bigData/research/photo-supply/REPORT.md"
+  ]
+}
