@@ -8,9 +8,7 @@
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/saved.tsx",
-    "frontend/app/__tests__/exploreScopeFits.test.ts",
     "frontend/app/__tests__/localityChipHidden.test.ts",
-    "frontend/app/explore.tsx",
     "frontend/app/place/[id].tsx",
     "frontend/src/discovery/places.ts",
     "frontend/src/i18n/translations.ts"
