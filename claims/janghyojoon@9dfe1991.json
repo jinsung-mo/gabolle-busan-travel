@@ -4,7 +4,7 @@
   "intent": "제약 이벤트에서 항목 이름을 모두 뺀다",
   "actor": null,
   "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
-  "since": "2026-09-25T15:18:35.668Z",
+  "since": "2026-09-25T15:24:34.881Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/trip/application/TripCreationService.java",
