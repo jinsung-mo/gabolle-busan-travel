@@ -1,0 +1,17 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1662",
+  "intent": "세 코스 비교 준비 중 문구 빼기",
+  "actor": null,
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T10:27:01.449Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/trip/__tests__/noComingSoonCourses.test.js",
+    "frontend/src/trip/page/TripPageDesktop.tsx",
+    "frontend/src/trip/page/TripPageMobile.tsx",
+    "frontend/src/trip/page/tripPageData.ts"
+  ]
+}
