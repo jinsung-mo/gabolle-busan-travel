@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1547",
+  "intent": "연락 이메일 결정 반영(빠진 이메일 복구)",
+  "actor": "agent",
+  "session": "5699fbbc-91f4-4561-9f59-895f454a28d5",
+  "since": "2026-09-25T05:09:39.549Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/play/2026-09-25-production-access-draft.md"
+  ]
+}
