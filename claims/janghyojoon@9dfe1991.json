@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1692",
-  "intent": "Spark 보정 틀 — 실제 체류 시간을 익명 집계로 재서 추천에 반영",
+  "intent": "Spark 보정 틀 — 보정된 체류 시간을 일정 조립이 읽는다",
   "actor": null,
   "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
-  "since": "2026-09-25T15:55:10.718Z",
+  "since": "2026-09-25T15:55:53.932Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/calibration",
