@@ -7,11 +7,6 @@
   "since": "2026-09-25T15:47:57.419Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/_layout.tsx",
-    "frontend/src/i18n/translations.ts",
-    "frontend/src/legal/PolicyUpdateNotice.tsx",
-    "frontend/src/legal/__tests__/privacyPolicyUpdate.test.tsx",
-    "frontend/src/legal/legalContent.ts",
     "frontend/src/trip/page/__tests__/arriveDepartEasy.test.tsx"
   ]
 }
