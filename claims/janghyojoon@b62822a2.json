@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1705",
+  "intent": "사진 출처 영어판 — 공공누리 출처 다섯 모양만 영어로(촬영자 이름은 한글 그대로)",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T17:45:31.676Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/components/PhotoCreditBar.tsx",
+    "frontend/src/discovery/__tests__/photoSourceEnglish.test.ts",
+    "frontend/src/discovery/places.ts",
+    "frontend/src/plan/CourseCard.tsx"
+  ]
+}
