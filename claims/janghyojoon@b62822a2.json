@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1690",
-  "intent": "머무는 중은 한 곳만 — 목록·카드 말 맞추기(조율 세션 결정)",
+  "intent": "단계 값에 staying 하나 더하기 — 대기 MR 과 같은 줄 안 건드리려고",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-25T15:58:26.365Z",
+  "since": "2026-09-25T16:04:35.448Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/src/i18n/translations.ts",
+    "frontend/src/plan/tripProgress.ts",
     "frontend/src/trip/page/TripPageMobile.tsx",
     "frontend/src/trip/page/__tests__/arriveDepartEasy.test.tsx",
     "frontend/src/trip/page/actualTime.ts"
