@@ -1,13 +1,20 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1666",
-  "intent": "여행표 앞면 단추 안 단추 없애기 — 안내 줄을 단추로",
+  "task": "S15P21E201-1668",
+  "intent": "일정 두 곳 사이 30분 이상 빈 시각에 「자유 시간 · n분」 줄 (endsAt 계약)",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-25T11:01:29.197Z",
+  "since": "2026-09-25T11:11:07.851Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/src/i18n/translations.ts",
     "frontend/src/plan/TripPass.tsx",
-    "frontend/src/plan/__tests__/tripPassButtons.test.tsx"
+    "frontend/src/plan/__tests__/tripPassButtons.test.tsx",
+    "frontend/src/plan/itinerary.ts",
+    "frontend/src/trip/page/FreeTimeRow.tsx",
+    "frontend/src/trip/page/TripPageDesktop.tsx",
+    "frontend/src/trip/page/TripPageMobile.tsx",
+    "frontend/src/trip/page/__tests__/freeTime.test.tsx",
+    "frontend/src/trip/page/tripPageModel.ts"
   ]
 }
