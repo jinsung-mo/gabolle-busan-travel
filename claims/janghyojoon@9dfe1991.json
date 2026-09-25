@@ -1,0 +1,23 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1700",
+  "intent": "보정 틀 두 번째 작업 — 실제 이동 시간으로 수단별 배율",
+  "actor": null,
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-25T17:11:58.345Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/calibration",
+    "backend/src/main/java/com/gabolle/backend/calibration",
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryLegPlanner.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/domain/ItineraryLeg.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/domain/ItineraryRevision.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/infra/ItineraryLegJpaEntity.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/infra/JpaItineraryRepository.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/port/ItineraryDraft.java",
+    "backend/src/main/resources/db/migration/V20260926020000__travel_calibration.sql",
+    "backend/src/test/java/com/gabolle/backend/calibration",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryLegCalibrationTest.java"
+  ]
+}
