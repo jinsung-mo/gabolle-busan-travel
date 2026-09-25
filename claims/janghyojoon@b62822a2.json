@@ -8,8 +8,6 @@
   "ttlMs": 2700000,
   "paths": [
     "frontend/src/i18n/translations.ts",
-    "frontend/src/plan/TripPass.tsx",
-    "frontend/src/plan/__tests__/tripPassButtons.test.tsx",
     "frontend/src/plan/itinerary.ts",
     "frontend/src/trip/page/FreeTimeRow.tsx",
     "frontend/src/trip/page/TripPageDesktop.tsx",
