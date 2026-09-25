@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1676",
+  "intent": "여행 취향 「8개 답하기」 단추 넓은 화면 쪼그라듦 + 버튼 검사 조건부 스타일 읽기",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T12:26:08.064Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/me/__tests__/preferencesEmptyCta.test.tsx",
+    "frontend/src/me/panels/PreferencesBody.tsx",
+    "frontend/tools/check-button-container.mjs"
+  ]
+}
