@@ -1,0 +1,20 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1692",
+  "intent": "Spark 보정 틀 — 실제 체류 시간을 익명 집계로 재서 추천에 반영",
+  "actor": null,
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-25T15:55:10.718Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/calibration",
+    "backend/src/main/java/com/gabolle/backend/calibration/CalibrationValueStayCalibration.java",
+    "backend/src/main/java/com/gabolle/backend/calibration/StayCalibrationPort.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
+    "backend/src/main/resources/application-dev.properties",
+    "backend/src/main/resources/db/migration/V20260926010000__calibration_value.sql",
+    "backend/src/test/java/com/gabolle/backend/calibration/CalibrationStayIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryDraftServiceTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/application/StayCalibrationBaselineTest.java"
+  ]
+}
