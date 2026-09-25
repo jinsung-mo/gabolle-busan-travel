@@ -1,16 +1,17 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1705",
-  "intent": "사진 출처 — 카드 띠·코스 표지 짧은 문구 시험",
+  "intent": "사진 출처 짧은 문구의 일·중 번역 한 줄(검사가 요구)",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-25T18:09:47.502Z",
+  "since": "2026-09-25T18:14:24.700Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/src/components/PhotoCreditBar.tsx",
     "frontend/src/components/__tests__/photoCreditShort.test.tsx",
     "frontend/src/discovery/__tests__/photoSourceEnglish.test.ts",
     "frontend/src/discovery/places.ts",
+    "frontend/src/i18n/translations.ts",
     "frontend/src/plan/CourseCard.tsx"
   ]
 }
