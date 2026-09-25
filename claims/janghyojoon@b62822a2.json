@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": null,
+  "intent": "공유 링크 — 분류 이름표·조사·날짜, 이름표에 빠진 서버 코드 넷",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T12:41:28.024Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/__tests__/sharedPageWords.test.tsx",
+    "frontend/app/s/[token].tsx",
+    "frontend/src/discovery/placeCategoryLabels.ts",
+    "frontend/src/i18n/korean.ts",
+    "frontend/src/i18n/translations.ts"
+  ]
+}
