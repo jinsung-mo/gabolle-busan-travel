@@ -4,7 +4,7 @@
   "intent": "보정 전 이동 분이 판을 건너 남는지 시험",
   "actor": null,
   "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
-  "since": "2026-09-25T17:17:53.810Z",
+  "since": "2026-09-25T17:34:18.735Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/calibration",
