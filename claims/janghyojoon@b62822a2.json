@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": null,
+  "intent": "여행표 안 보이는 면의 단추를 키보드 탭·화면 읽기에서 빼기",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T12:08:03.390Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/plan/TripPass.tsx",
+    "frontend/src/plan/__tests__/tripPassButtons.test.tsx"
+  ]
+}
