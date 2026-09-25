@@ -4,7 +4,7 @@
   "intent": "추천 실행기가 넘칠 때 작업을 실패(다시 시도 가능)로, 사용자 문장 봉투로",
   "actor": null,
   "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
-  "since": "2026-09-25T14:05:26.629Z",
+  "since": "2026-09-25T14:09:20.082Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationBusyException.java",
