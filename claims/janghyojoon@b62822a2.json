@@ -1,0 +1,20 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1641",
+  "intent": "헛된 호출 셋 — 없는 여행 코스 목록 · 미리보기 pace · 범위 밖 날씨",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T05:32:56.142Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/plan/__tests__/tripCoursesNotFound.test.ts",
+    "frontend/src/plan/tripCourses.ts",
+    "frontend/src/trip/__tests__/weatherWindow.test.ts",
+    "frontend/src/trip/page/__tests__/tripPageLoad.test.tsx",
+    "frontend/src/trip/page/tripPageData.ts",
+    "frontend/src/trip/page/useTripPage.ts",
+    "frontend/src/trip/weather.ts"
+  ]
+}
