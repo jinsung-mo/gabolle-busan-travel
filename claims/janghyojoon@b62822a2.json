@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1690",
+  "intent": "시각 고치기 시험 — CI 가 느리면 어긋나던 것, 시각 고정",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T15:46:20.027Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/trip/page/__tests__/arriveDepartEasy.test.tsx"
+  ]
+}
