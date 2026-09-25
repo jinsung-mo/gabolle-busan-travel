@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": null,
+  "intent": "글 상세 「공동 작성자 ›」 — 내 글이면 늘, 남의 글이면 공동 작성자 있을 때만",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T11:56:13.736Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/__tests__/feedDetailCoauthorEntry.test.tsx",
+    "frontend/app/feed/[id].tsx"
+  ]
+}
