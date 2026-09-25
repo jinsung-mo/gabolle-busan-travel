@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1646",
+  "intent": "Play 데이터 보안 양식 답안 초안과 방침 불일치 목록 (커밋 안 함)",
+  "actor": "agent",
+  "session": "5699fbbc-91f4-4561-9f59-895f454a28d5",
+  "since": "2026-09-25T07:41:20.778Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/play/2026-09-25-data-safety-draft.md"
+  ]
+}
