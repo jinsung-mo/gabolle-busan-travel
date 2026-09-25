@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1547",
+  "intent": "Play 프로덕션 액세스 신청 답변 초안과 앱 콘텐츠 점검표 (커밋 안 함)",
+  "actor": "agent",
+  "session": "5699fbbc-91f4-4561-9f59-895f454a28d5",
+  "since": "2026-09-25T05:03:37.900Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/play/2026-09-25-production-access-draft.md"
+  ]
+}
