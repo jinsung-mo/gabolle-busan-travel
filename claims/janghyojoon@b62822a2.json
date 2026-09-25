@@ -1,12 +1,17 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1690",
-  "intent": "시각 고치기 시험 — CI 가 느리면 어긋나던 것, 시각 고정",
+  "task": "S15P21E201-1694",
+  "intent": "처리방침 — 위치 쓰임·품질 통계 목적 · 바뀌었어요 알림",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-25T15:46:20.027Z",
+  "since": "2026-09-25T15:47:57.419Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/_layout.tsx",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/legal/PolicyUpdateNotice.tsx",
+    "frontend/src/legal/__tests__/privacyPolicyUpdate.test.tsx",
+    "frontend/src/legal/legalContent.ts",
     "frontend/src/trip/page/__tests__/arriveDepartEasy.test.tsx"
   ]
 }
