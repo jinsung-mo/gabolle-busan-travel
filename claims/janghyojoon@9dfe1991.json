@@ -1,0 +1,17 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1643",
+  "intent": "일정 응답 장소마다 추천 이유 코드 싣기",
+  "actor": null,
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-25T05:50:20.127Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/ItineraryDetailResponse.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryQueryServiceTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryReasonCodesIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/application/TripCourseIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/application/TripCourseServiceTest.java"
+  ]
+}
