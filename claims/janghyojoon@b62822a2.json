@@ -1,12 +1,15 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1694",
-  "intent": "처리방침 — 위치 쓰임·품질 통계 목적 · 바뀌었어요 알림",
+  "task": "S15P21E201-1690",
+  "intent": "머무는 중은 한 곳만 — 목록·카드 말 맞추기(조율 세션 결정)",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-25T15:47:57.419Z",
+  "since": "2026-09-25T15:58:26.365Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/src/trip/page/__tests__/arriveDepartEasy.test.tsx"
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/trip/page/TripPageMobile.tsx",
+    "frontend/src/trip/page/__tests__/arriveDepartEasy.test.tsx",
+    "frontend/src/trip/page/actualTime.ts"
   ]
 }
