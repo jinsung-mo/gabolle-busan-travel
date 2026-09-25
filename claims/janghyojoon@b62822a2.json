@@ -1,13 +1,18 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1703",
-  "intent": "둘러보기 넓은 화면 영어판 — 갈래 칩이 줄지 않아 범위 토글(All Busan)이 오른쪽 밖으로 밀리는 것",
+  "task": "S15P21E201-1704",
+  "intent": "「로컬 점수 있음」 알약 숨기기 — 장소 상세·저장 목록, 번역표 줄·판정 함수 걷어내기",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-25T17:27:34.145Z",
+  "since": "2026-09-25T17:34:33.738Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/(tabs)/saved.tsx",
     "frontend/app/__tests__/exploreScopeFits.test.ts",
-    "frontend/app/explore.tsx"
+    "frontend/app/__tests__/localityChipHidden.test.ts",
+    "frontend/app/explore.tsx",
+    "frontend/app/place/[id].tsx",
+    "frontend/src/discovery/places.ts",
+    "frontend/src/i18n/translations.ts"
   ]
 }
