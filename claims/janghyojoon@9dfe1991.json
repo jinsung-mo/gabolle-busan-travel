@@ -4,7 +4,7 @@
   "intent": "판 복사가 구간의 요금·선형을 흘리던 것",
   "actor": null,
   "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
-  "since": "2026-09-25T17:50:04.074Z",
+  "since": "2026-09-25T17:55:32.094Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/domain/ItineraryRevision.java",
