@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1632",
-  "intent": "닫힌 곳 대신 안 쓴 후보 중 연 곳",
+  "intent": "기준 일정 갈아 끼움",
   "actor": null,
   "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
-  "since": "2026-09-25T02:44:10.411Z",
+  "since": "2026-09-25T02:46:31.046Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
-    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryDraftServiceTest.java"
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryDraftServiceTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/application/AssembleReadCountIntegrationTest.java"
   ]
 }
