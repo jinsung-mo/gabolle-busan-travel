@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1669",
-  "intent": "!1664 추가 — 서버 없음일 때 폰 실패 화면 가운데 줄 「잠시 뒤 다시 해 볼까요?」",
+  "intent": "!1664 시험 파일 이름 바꿈 — 폰 실패 문구 시험까지 한 파일에",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-25T11:31:40.594Z",
+  "since": "2026-09-25T11:32:26.720Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(plan)/generating.tsx",
+    "frontend/app/__tests__/generatingFailed.test.tsx",
     "frontend/app/__tests__/generatingFailedWide.test.tsx",
     "frontend/src/i18n/messages.ts",
     "frontend/src/i18n/translations.ts"
