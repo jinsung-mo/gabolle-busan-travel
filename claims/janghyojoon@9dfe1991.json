@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1697",
+  "intent": "운영 nginx 접속 기록에 좌표가 안 남게 — 설정안과 절차",
+  "actor": null,
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-25T16:36:47.486Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "infra/nginx"
+  ]
+}
