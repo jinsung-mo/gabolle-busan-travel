@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1679",
+  "intent": "축제 목록 날짜 모양 · 사진 없는 축제 그림",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T13:00:10.302Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/__tests__/festivalListWords.test.tsx",
+    "frontend/app/festivals.tsx"
+  ]
+}
