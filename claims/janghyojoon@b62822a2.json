@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1665",
+  "intent": "기다림보다 시험 제한 시간을 넉넉히",
+  "actor": null,
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T10:42:16.283Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/__tests__/waitWithinTestTimeout.test.js",
+    "frontend/src/social/__tests__/courseLink.test.tsx",
+    "frontend/src/trip/__tests__/tripWeatherHourly.test.tsx",
+    "frontend/src/trip/__tests__/tripWeatherStops.test.tsx"
+  ]
+}
