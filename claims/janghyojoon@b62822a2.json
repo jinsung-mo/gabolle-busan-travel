@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1654",
+  "intent": "고른 곳만 바뀌면 다시 맞추지 않고 panTo",
+  "actor": null,
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T09:21:51.065Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/map/RouteMap.native.tsx",
+    "frontend/src/map/RouteMap.tsx",
+    "frontend/src/map/__tests__/routeMapSelect.test.tsx",
+    "frontend/src/map/kakaoMapHtml.ts"
+  ]
+}
