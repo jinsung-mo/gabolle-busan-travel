@@ -1,0 +1,17 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1642",
+  "intent": "여행 갈래에 축제·행사(FESTIVAL_EVENT)",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T05:42:02.574Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/assets/taste/thumb/festival.jpg",
+    "frontend/src/discovery/placeCategoryLabels.ts",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/plan/__tests__/festivalCategory.test.ts",
+    "frontend/src/plan/placePhotos.ts",
+    "frontend/src/plan/planOptions.ts"
+  ]
+}
