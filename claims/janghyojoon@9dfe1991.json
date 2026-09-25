@@ -1,0 +1,13 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1675",
+  "intent": "없는 주소·없는 메서드도 우리 오류 봉투로",
+  "actor": null,
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-25T12:12:50.999Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/common/api/NoRouteExceptionHandler.java",
+    "backend/src/test/java/com/gabolle/backend/functional/NoRouteEnvelopeFunctionalTest.java"
+  ]
+}
