@@ -1,16 +1,17 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1686",
-  "intent": "폰 홈 같은 요청 두 번(피드 글·여행 목록·여행 조건) 없애기 · 종 점은 몇 초 뒤 최근 여행 3개만",
+  "intent": "종 점 계산을 홈에서 떼어 낸 훅 — 몇 초 뒤, 최근 여행 3개만",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-25T14:06:46.122Z",
+  "since": "2026-09-25T14:07:51.056Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
     "frontend/src/home/__tests__/homeRequestsOnce.test.tsx",
     "frontend/src/home/useHomeData.ts",
     "frontend/src/notifications/activityFeed.ts",
+    "frontend/src/notifications/useHomeBellDot.ts",
     "frontend/src/plan/travelConditions.ts"
   ]
 }
