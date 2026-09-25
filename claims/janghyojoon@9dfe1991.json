@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1633",
+  "intent": "옛 알레르기 답을 경고로",
+  "actor": null,
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-25T02:54:05.841Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationCodes.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerTest.java"
+  ]
+}
