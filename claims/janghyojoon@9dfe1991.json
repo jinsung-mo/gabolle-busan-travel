@@ -1,17 +1,21 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1625",
-  "intent": "장소 번호로 경사 적재",
+  "intent": "이동 조건을 경사로 판정",
   "actor": null,
   "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
-  "since": "2026-09-25T01:32:39.672Z",
+  "since": "2026-09-25T01:39:14.326Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/place/loader/PlaceFeatureLoader.java",
     "backend/src/main/java/com/gabolle/backend/place/loader/PlaceFeatureLoaderRunner.java",
     "backend/src/main/java/com/gabolle/backend/place/loader/PlaceFeatureNdjsonReader.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/SeedBoost.java",
     "backend/src/test/java/com/gabolle/backend/place/PlaceFeatureLoaderIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/place/loader/PlaceFeatureLoaderIdTest.java",
-    "backend/src/test/java/com/gabolle/backend/place/loader/PlaceSlopeReaderTest.java"
+    "backend/src/test/java/com/gabolle/backend/place/loader/PlaceSlopeReaderTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/SeedBoostTest.java"
   ]
 }
