@@ -1,0 +1,17 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1645",
+  "intent": "일정 장소 카드에 추천 이유 한 줄",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T05:59:44.985Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/plan/__tests__/reasonLine.test.tsx",
+    "frontend/src/plan/itinerary.ts",
+    "frontend/src/plan/recommendations.ts",
+    "frontend/src/trip/page/TripPageDesktop.tsx",
+    "frontend/src/trip/page/TripPageMobile.tsx"
+  ]
+}
