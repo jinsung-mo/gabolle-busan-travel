@@ -4,7 +4,7 @@
   "intent": "일정 조립이 장소마다 영업표를 한 번 읽는다",
   "actor": null,
   "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
-  "since": "2026-09-25T10:40:45.553Z",
+  "since": "2026-09-25T10:53:07.512Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
