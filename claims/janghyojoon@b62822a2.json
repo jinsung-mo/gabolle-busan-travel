@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1691",
+  "intent": "위치 문구 바로잡기 — 지도·피드는 보내지 않는다(동의 창 !1684 · 처리방침 !1688)",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T16:09:39.440Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/legal/__tests__/privacyPolicyUpdate.test.tsx",
+    "frontend/src/legal/legalContent.ts",
+    "frontend/src/personalization/__tests__/locationConsent.test.tsx",
+    "frontend/src/personalization/useLocationGate.tsx"
+  ]
+}
