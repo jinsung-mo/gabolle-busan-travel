@@ -1,0 +1,17 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1656",
+  "intent": "경로 선 흰 테두리 실선·어림 옅게·멀면 단순화",
+  "actor": null,
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T09:31:36.610Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/map/RouteMap.tsx",
+    "frontend/src/map/__tests__/routeLineStyle.test.tsx",
+    "frontend/src/map/__tests__/simplifyPath.test.ts",
+    "frontend/src/map/kakaoMapHtml.ts",
+    "frontend/src/map/simplifyPath.ts"
+  ]
+}
