@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1688",
+  "intent": "추천 서버 꽉 참(SERVER_BUSY 503) — 연결 불가 띠 안 켜기 · 작업 실패 문장",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T14:32:11.617Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/api/__tests__/serverBusy.test.ts",
+    "frontend/src/api/client.ts",
+    "frontend/src/plan/recommendationJob.ts"
+  ]
+}
