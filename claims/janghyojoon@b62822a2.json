@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1678",
+  "intent": "폰 홈 내 여행 카드 이름 · 내 여행 목록 상태 줄 세로 맞춤",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T12:52:37.294Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/(tabs)/trips.tsx",
+    "frontend/src/home/__tests__/homeTripStatus.test.tsx",
+    "frontend/src/trip/__tests__/myTripsLayout.test.tsx"
+  ]
+}
