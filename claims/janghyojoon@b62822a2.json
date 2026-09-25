@@ -1,13 +1,14 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1707",
-  "intent": "기록의 동네 이름 영어판 — 부산 16개 구·군 이름이 글자 그대로일 때만 보여 줄 때 영어로",
+  "task": "S15P21E201-1705",
+  "intent": "사진 출처 — 카드 띠·코스 표지 짧은 문구 시험",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-25T17:57:03.461Z",
+  "since": "2026-09-25T18:09:47.502Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/src/components/PhotoCreditBar.tsx",
+    "frontend/src/components/__tests__/photoCreditShort.test.tsx",
     "frontend/src/discovery/__tests__/photoSourceEnglish.test.ts",
     "frontend/src/discovery/places.ts",
     "frontend/src/plan/CourseCard.tsx"
