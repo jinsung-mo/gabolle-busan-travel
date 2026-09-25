@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1661",
+  "intent": "체크인 샘플 화면 지우기",
+  "actor": null,
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T10:22:38.896Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(trip)/[id]/checkin.tsx",
+    "frontend/app/__tests__/checkinRemoved.test.js",
+    "frontend/docs/QA_FULL_SWEEP_GUIDE.md",
+    "frontend/src/i18n/translations.ts"
+  ]
+}
