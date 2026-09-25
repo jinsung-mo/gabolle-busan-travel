@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1646",
+  "intent": "콘솔 선언 내용과 코드 근거 대조표 추가",
+  "actor": "agent",
+  "session": "5699fbbc-91f4-4561-9f59-895f454a28d5",
+  "since": "2026-09-25T08:41:42.238Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/play/2026-09-25-data-safety-draft.md"
+  ]
+}
