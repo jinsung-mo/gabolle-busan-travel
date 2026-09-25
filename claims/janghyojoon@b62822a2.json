@@ -1,0 +1,16 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1640",
+  "intent": "서버 새 낱말 문구 — 경고 둘·추천 이유",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T05:25:30.440Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/plan/__tests__/recommendationReasons.test.ts",
+    "frontend/src/plan/__tests__/warningLabels.test.ts",
+    "frontend/src/plan/recommendations.ts",
+    "frontend/src/plan/warningLabels.ts"
+  ]
+}
