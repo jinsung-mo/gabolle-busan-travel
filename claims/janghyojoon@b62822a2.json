@@ -1,15 +1,24 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1705",
-  "intent": "사진 출처 영어판 — 공공누리 출처 다섯 모양만 영어로(촬영자 이름은 한글 그대로)",
+  "task": "S15P21E201-1707",
+  "intent": "기록의 동네 이름 영어판 — 부산 16개 구·군 이름이 글자 그대로일 때만 보여 줄 때 영어로",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-25T17:45:31.676Z",
+  "since": "2026-09-25T17:57:03.461Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/(tabs)/feed.tsx",
+    "frontend/app/feed/[id].tsx",
     "frontend/src/components/PhotoCreditBar.tsx",
     "frontend/src/discovery/__tests__/photoSourceEnglish.test.ts",
     "frontend/src/discovery/places.ts",
-    "frontend/src/plan/CourseCard.tsx"
+    "frontend/src/home/HomeBlocks.tsx",
+    "frontend/src/me/RecordCard.tsx",
+    "frontend/src/me/RecordsBrowser.tsx",
+    "frontend/src/me/panels/MyPostsBody.tsx",
+    "frontend/src/me/panels/SavedRecordsBody.tsx",
+    "frontend/src/plan/CourseCard.tsx",
+    "frontend/src/social/__tests__/districtNames.test.ts",
+    "frontend/src/social/districtNames.ts"
   ]
 }
