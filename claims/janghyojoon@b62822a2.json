@@ -7,18 +7,9 @@
   "since": "2026-09-25T17:57:03.461Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/(tabs)/feed.tsx",
-    "frontend/app/feed/[id].tsx",
     "frontend/src/components/PhotoCreditBar.tsx",
     "frontend/src/discovery/__tests__/photoSourceEnglish.test.ts",
     "frontend/src/discovery/places.ts",
-    "frontend/src/home/HomeBlocks.tsx",
-    "frontend/src/me/RecordCard.tsx",
-    "frontend/src/me/RecordsBrowser.tsx",
-    "frontend/src/me/panels/MyPostsBody.tsx",
-    "frontend/src/me/panels/SavedRecordsBody.tsx",
-    "frontend/src/plan/CourseCard.tsx",
-    "frontend/src/social/__tests__/districtNames.test.ts",
-    "frontend/src/social/districtNames.ts"
+    "frontend/src/plan/CourseCard.tsx"
   ]
 }
