@@ -1,0 +1,25 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1667",
+  "intent": "체류 시간을 갈래별 기본값으로 · 남는 시간은 빈 시각으로",
+  "actor": null,
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-25T11:08:32.734Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/DayTimeLayout.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryQueryService.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/application/StayDefaults.java",
+    "backend/src/main/java/com/gabolle/backend/itinerary/presentation/dto/ItineraryDetailResponse.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryDraftServiceTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryQueryServiceTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryReasonCodesIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryRecalculationIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/application/AssembleReadCountIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/application/AssembleTimeTableIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/application/DayTimeLayoutTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/application/TripCourseIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/application/TripCourseServiceTest.java"
+  ]
+}
