@@ -1,10 +1,10 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1620",
-  "intent": "적재기가 같은 장소를 다시 넣지 않게 — 이름 같고 150m 안이면 막고, 체인·넓은 갈래는 사람 확인 목록",
+  "task": "S15P21E201-1619",
+  "intent": "합치기가 키 없는 표식(NULL)을 같은 것으로 못 봐 운영 자료에서 실패하던 것",
   "actor": null,
   "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
-  "since": "2026-09-25T08:23:48.365Z",
+  "since": "2026-09-25T08:37:36.446Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
@@ -20,9 +20,11 @@
     "backend/src/main/java/com/gabolle/backend/place/service/ChainBrand.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineRecommendationEngine.java",
     "backend/src/main/java/com/gabolle/backend/recommendation/adapter/ChainPenalty.java",
+    "backend/src/main/resources/db/migration/V20260925050000__place_merge.sql",
     "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryDraftServiceTest.java",
     "backend/src/test/java/com/gabolle/backend/place/ChainBrandTest.java",
     "backend/src/test/java/com/gabolle/backend/place/OsmPlaceLoaderTest.java",
+    "backend/src/test/java/com/gabolle/backend/place/PlaceMergeIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/place/SamePlaceLoadIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/place/loader/SamePlaceRuleTest.java",
     "backend/src/test/java/com/gabolle/backend/recommendation/adapter/ChainPenaltyTest.java"
