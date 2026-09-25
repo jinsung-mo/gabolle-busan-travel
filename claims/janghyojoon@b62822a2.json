@@ -1,0 +1,14 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1649",
+  "intent": "피드 목록 카드 미리보기의 제목 줄을 굵게만",
+  "actor": null,
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T08:25:34.573Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(tabs)/feed.tsx",
+    "frontend/src/social/__tests__/markdown.test.ts",
+    "frontend/src/social/markdown.ts"
+  ]
+}
