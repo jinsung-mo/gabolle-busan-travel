@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1672",
+  "intent": "서버가 모르는 응답(봉투 아님·501)일 때 코스 확정·공유 링크가 그 자리의 정한 문장을 쓰게",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T11:48:49.373Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/api/__tests__/unknownResponseWords.test.ts",
+    "frontend/src/api/errorText.ts",
+    "frontend/src/plan/tripCourses.ts",
+    "frontend/src/share/sharedItinerary.ts"
+  ]
+}
