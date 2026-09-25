@@ -1,16 +1,17 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1655",
-  "intent": "이름·내 댓글 미리보기는 응답에서 HTML 인코딩 안 함 — 본문·후기는 유지",
+  "intent": "공동 작성자 이름은 원문 — 시험 기대값을 결정에 맞춤",
   "actor": null,
   "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
-  "since": "2026-09-25T09:32:14.743Z",
+  "since": "2026-09-25T09:50:07.969Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/story/application/MyRepliesService.java",
     "backend/src/main/java/com/gabolle/backend/story/application/StoryResponseAssembler.java",
     "backend/src/test/java/com/gabolle/backend/story/DisplayNameAsIsIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/story/MyRepliesIntegrationTest.java",
+    "backend/src/test/java/com/gabolle/backend/story/StoryCoauthorsInResponseIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/story/application/StoryResponseAssemblerTest.java",
     "docs/VULNERABILITY-REPORT.md"
   ]
