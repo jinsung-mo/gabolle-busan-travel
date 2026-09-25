@@ -1,0 +1,22 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1682",
+  "intent": "카드 사진 출처 띠 하나로 — 「사진:」·두 줄·라이선스 둘째 줄",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-25T13:29:09.964Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/explore.tsx",
+    "frontend/src/components/PhotoCredit.tsx",
+    "frontend/src/components/PhotoCreditBar.tsx",
+    "frontend/src/components/PlaceVisual.tsx",
+    "frontend/src/components/__tests__/PhotoSubjectBadge.test.tsx",
+    "frontend/src/components/__tests__/PlaceVisualPhoto.test.tsx",
+    "frontend/src/components/__tests__/photoCreditBar.test.tsx",
+    "frontend/src/discovery/__tests__/photoLabels.test.ts",
+    "frontend/src/discovery/__tests__/photoLicense.test.tsx",
+    "frontend/src/discovery/places.ts",
+    "frontend/src/plan/CourseCard.tsx"
+  ]
+}
