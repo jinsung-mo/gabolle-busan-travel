@@ -1,12 +1,19 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1754",
-  "intent": "지도 다시 맞추기 시험",
+  "intent": "지도 보기 전환 시 다시 맞추기 + 위 여백",
   "actor": null,
   "session": "ff4e9677-5ca2-4ed1-ae3b-4b2a4c3d9ea0",
-  "since": "2026-09-26T10:12:27.061Z",
+  "since": "2026-09-26T10:12:46.357Z",
   "ttlMs": 1800000,
   "paths": [
+    "frontend/src/map/RouteMap.native.tsx",
+    "frontend/src/map/RouteMap.tsx",
+    "frontend/src/map/__tests__/mapFocus.test.ts",
+    "frontend/src/map/__tests__/routeMapRefit.test.tsx",
+    "frontend/src/map/kakaoMapHtml.ts",
+    "frontend/src/map/mapFocus.ts",
+    "frontend/src/trip/page/TripPageMobile.tsx",
     "frontend/src/trip/page/__tests__/tripSheet.test.tsx"
   ]
 }
