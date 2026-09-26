@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": null,
+  "intent": "메뉴 이름 번역 프롬프트에 수식어(김치·얼큰 등)를 빼지 않는다는 예시를 추가 — 실기 발견(김치콩나물국밥→Bean Sprout Soup, S15P21E201)",
+  "actor": "agent",
+  "session": "a26dd75e-d605-43cf-a342-b2dad4b19426",
+  "since": "2026-09-26T03:33:54.071Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/menuscan/adapter/GmsNameTranslator.java"
+  ]
+}
