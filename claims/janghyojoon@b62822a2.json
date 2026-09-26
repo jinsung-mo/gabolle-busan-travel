@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1732",
+  "intent": "휠체어 안내 창 숫자를 승차권에 보이는 일정만으로 세기",
+  "actor": "agent",
+  "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
+  "since": "2026-09-26T06:28:30.644Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/generating.tsx",
+    "frontend/src/plan/__tests__/accessibilityNotice.test.ts",
+    "frontend/src/plan/accessibilityNotice.ts",
+    "frontend/src/plan/itinerary.ts"
+  ]
+}
