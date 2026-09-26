@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1774",
+  "intent": "초대 없음 문구 일본어·중국어",
+  "actor": null,
+  "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
+  "since": "2026-09-26T19:46:18.809Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/i18n/__tests__/inviteNotFoundMessage.test.ts",
+    "frontend/src/i18n/translations.ts"
+  ]
+}
