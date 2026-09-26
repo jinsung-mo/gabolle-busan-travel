@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1741",
+  "intent": "1741 2부 — 예전 일정 화면 「about 6 KRW」 버그 · 돈 표기 ₩ · 번역표 일·중 ₩",
+  "actor": "agent",
+  "session": "9a4c4f50-ca63-474b-9bba-506f655af575",
+  "since": "2026-09-26T08:35:47.701Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/src/i18n/translations.ts"
+  ]
+}
