@@ -1,0 +1,12 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1717",
+  "intent": "공용 Button 기본 스타일에 가로 여백을 준다 — 글자가 알약 끝에 붙는 결함 (S15P21E201-1717)",
+  "actor": "agent",
+  "session": "dc00f09c-ce84-407f-8d4c-6a08e20436ad",
+  "since": "2026-09-26T02:34:12.173Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/components/Button.tsx"
+  ]
+}
