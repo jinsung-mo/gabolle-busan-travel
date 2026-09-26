@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1738",
-  "intent": "넓은 화면 홈 「내 여행」 카드도 같은 이름·날짜 규칙으로",
+  "task": "S15P21E201-1737",
+  "intent": "공개 전 기록 안내 문구 3개의 일본어·중국어 번역",
   "actor": "agent",
   "session": "a26dd75e-d605-43cf-a342-b2dad4b19426",
-  "since": "2026-09-26T07:41:00.402Z",
+  "since": "2026-09-26T07:53:40.237Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/story/application/FollowService.java",
@@ -24,6 +24,7 @@
     "frontend/src/field/taxiDestination.ts",
     "frontend/src/home/HomeBlocks.tsx",
     "frontend/src/home/__tests__/homeTripStatus.test.tsx",
+    "frontend/src/i18n/translations.ts",
     "frontend/src/me/__tests__/pendingStoryLabel.test.tsx",
     "frontend/src/me/panels/MyPostsBody.tsx",
     "frontend/src/me/panels/NotificationsBody.tsx",
