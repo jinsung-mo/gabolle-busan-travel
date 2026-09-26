@@ -8,8 +8,6 @@
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/__tests__/placeButtonWords.test.ts",
-    "frontend/app/place/[id].tsx",
-    "frontend/src/home/PlanStartBar.tsx",
-    "frontend/src/home/__tests__/rangeBand.test.tsx"
+    "frontend/app/place/[id].tsx"
   ]
 }
