@@ -1,12 +1,14 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1720",
-  "intent": "여행 기간 달력 — 고른 기간을 한 띠로(시작·끝 고정 동그라미, 줄마다 알약으로 닫기)",
+  "task": "S15P21E201-1723",
+  "intent": "장소 상세 한국어 단추 짧게 — 기사님께 보여주기 · 후보에서 빼기(번역표는 선점이 풀린 뒤)",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-26T03:31:46.203Z",
+  "since": "2026-09-26T03:44:05.329Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/__tests__/placeButtonWords.test.ts",
+    "frontend/app/place/[id].tsx",
     "frontend/src/home/PlanStartBar.tsx",
     "frontend/src/home/__tests__/rangeBand.test.tsx"
   ]
