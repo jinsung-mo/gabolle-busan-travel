@@ -1,12 +1,13 @@
 {
   "agent": "janghyojoon",
   "task": "S15P21E201-1756",
-  "intent": "여행 화면 하단 탭바가 제자리에서 늘어나 창이 되게(밑에서 밀어 올리기 없앰)",
+  "intent": "jest 에서 Reanimated 를 불러올 수 있게 공용 흉내 추가(여행 화면 탭바 = 창)",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-26T12:08:30.655Z",
+  "since": "2026-09-26T12:14:24.678Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/jest.setup.js",
     "frontend/src/trip/page/TripPageMobile.tsx",
     "frontend/src/trip/page/__tests__/sheetMorph.test.ts",
     "frontend/src/trip/page/sheetMorph.ts"
