@@ -1,12 +1,13 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1745",
-  "intent": "searchByName 계약 변경(공백 뗀 pattern)에 맞춰 시험의 검색 패턴을 고친다",
+  "intent": "frontend:unit 의 jest 워커 수를 고정해 러너 2148 시간 초과를 없앤다",
   "actor": "agent",
   "session": "a26dd75e-d605-43cf-a342-b2dad4b19426",
-  "since": "2026-09-26T08:39:07.759Z",
+  "since": "2026-09-26T08:45:11.784Z",
   "ttlMs": 2700000,
   "paths": [
+    ".gitlab-ci.yml",
     "backend/src/main/java/com/gabolle/backend/place/repository/PlaceRepository.java",
     "backend/src/main/java/com/gabolle/backend/place/service/PlaceSearchService.java",
     "backend/src/main/resources/db/migration/V20260926180000__curated_more_busan_landmarks.sql",
