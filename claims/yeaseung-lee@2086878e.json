@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1738",
-  "intent": "이름 없는 여행을 모든 화면에서 같은 날짜 이름으로 부른다",
+  "intent": "알림의 여행 이름을 같은 규칙으로 — 언어(locale)를 넘긴다",
   "actor": "agent",
   "session": "a26dd75e-d605-43cf-a342-b2dad4b19426",
-  "since": "2026-09-26T07:36:01.109Z",
+  "since": "2026-09-26T07:36:44.946Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/story/application/FollowService.java",
@@ -24,6 +24,7 @@
     "frontend/src/field/taxiDestination.ts",
     "frontend/src/me/__tests__/pendingStoryLabel.test.tsx",
     "frontend/src/me/panels/MyPostsBody.tsx",
+    "frontend/src/me/panels/NotificationsBody.tsx",
     "frontend/src/notifications/activityFeed.ts",
     "frontend/src/trip/__tests__/tripNameOrDates.test.ts",
     "frontend/src/trip/page/useTripPage.ts",
