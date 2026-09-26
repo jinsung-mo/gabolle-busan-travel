@@ -1,16 +1,17 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1745",
-  "intent": "frontend:unit 의 jest 워커 수를 고정해 러너 2148 시간 초과를 없앤다",
+  "intent": "명소 26곳 마이그레이션 시험을 공유 DB 에 안 흔들리게 — 검사 직전에 SQL 을 다시 돌린다",
   "actor": "agent",
   "session": "a26dd75e-d605-43cf-a342-b2dad4b19426",
-  "since": "2026-09-26T08:45:11.784Z",
+  "since": "2026-09-26T08:53:05.606Z",
   "ttlMs": 2700000,
   "paths": [
     ".gitlab-ci.yml",
     "backend/src/main/java/com/gabolle/backend/place/repository/PlaceRepository.java",
     "backend/src/main/java/com/gabolle/backend/place/service/PlaceSearchService.java",
     "backend/src/main/resources/db/migration/V20260926180000__curated_more_busan_landmarks.sql",
+    "backend/src/test/java/com/gabolle/backend/place/MoreCuratedLandmarksMigrationIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/place/PlaceMergeIntegrationTest.java",
     "backend/src/test/java/com/gabolle/backend/place/PlaceSearchIntegrationTest.java"
   ]
