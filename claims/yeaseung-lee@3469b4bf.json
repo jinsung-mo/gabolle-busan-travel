@@ -1,0 +1,14 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1716",
+  "intent": "같은 조건으로 여행을 지웠다 다시 만들면 지운 여행이 돌아오는 것을 고친다 — 지워진 여행에 묶인 중복 방지 키는 새 여행으로 갈아 묶는다",
+  "actor": "agent",
+  "session": "5699fbbc-91f4-4561-9f59-895f454a28d5",
+  "since": "2026-09-26T02:28:16.523Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/trip/infra/InMemoryTripRepository.java",
+    "backend/src/main/java/com/gabolle/backend/trip/infra/JpaTripRepository.java",
+    "backend/src/test/java/com/gabolle/backend/trip/TripIdempotencyAfterDeleteIntegrationTest.java"
+  ]
+}
