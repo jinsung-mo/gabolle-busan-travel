@@ -1,0 +1,16 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1722",
+  "intent": "차단 관련 문구 4곳을 양방향으로 고친다 — 「나도 그 사람 글이 안 보인다」가 빠져 있었다 (S15P21E201-1722)",
+  "actor": "agent",
+  "session": "a9c2e677-ba40-4112-8ddf-9355c5b1f568",
+  "since": "2026-09-26T03:40:39.161Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/feed/[id].tsx",
+    "frontend/app/user/[id].tsx",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/me/myPanels.tsx",
+    "frontend/src/social/BlockUserDialog.tsx"
+  ]
+}
