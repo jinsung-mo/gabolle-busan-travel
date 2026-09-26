@@ -1,0 +1,15 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1745",
+  "intent": "장소 검색이 띄어쓰기를 무시하게 하고, 빠진 부산 주요 명소 26곳을 정본에 넣는다",
+  "actor": "agent",
+  "session": "a26dd75e-d605-43cf-a342-b2dad4b19426",
+  "since": "2026-09-26T08:35:28.810Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/place/repository/PlaceRepository.java",
+    "backend/src/main/java/com/gabolle/backend/place/service/PlaceSearchService.java",
+    "backend/src/main/resources/db/migration/V20260926180000__curated_more_busan_landmarks.sql",
+    "backend/src/test/java/com/gabolle/backend/place/PlaceSearchIntegrationTest.java"
+  ]
+}
