@@ -1,0 +1,19 @@
+{
+  "agent": "jinmiri",
+  "task": null,
+  "intent": "외국어 화면 남은 넷 — 단계 이름·지도 앱 이름 번역 · 1 days · 돈 표기 ₩ 로 통일 (로컬만, 머지 안 함)",
+  "actor": "agent",
+  "session": "9a4c4f50-ca63-474b-9bba-506f655af575",
+  "since": "2026-09-26T01:26:54.271Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/generating.tsx",
+    "frontend/app/route-detail.tsx",
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/social/CourseLinkCard.tsx",
+    "frontend/src/trip/page/TripBudgetCard.tsx",
+    "frontend/src/trip/page/TripPageDesktop.tsx",
+    "frontend/src/trip/page/TripPageMobile.tsx"
+  ]
+}
