@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1718",
+  "intent": "nginx 좌표 가리기를 칸 이름 끝으로 넓힘",
+  "actor": null,
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-26T03:20:17.273Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "infra/nginx"
+  ]
+}
