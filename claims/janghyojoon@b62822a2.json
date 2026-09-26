@@ -7,10 +7,6 @@
   "since": "2026-09-26T06:14:39.908Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/(tabs)/home.tsx",
-    "frontend/app/index.tsx",
-    "frontend/src/home/__tests__/dayTripHandoff.test.ts",
-    "frontend/src/home/startBarValue.ts",
     "frontend/src/onboarding/HomeCoach.tsx",
     "frontend/src/onboarding/__tests__/homeCoachFold.test.ts"
   ]
