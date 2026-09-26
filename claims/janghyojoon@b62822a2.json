@@ -7,8 +7,6 @@
   "since": "2026-09-26T06:01:28.774Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/app/__tests__/placeInfoRowLabel.test.tsx",
-    "frontend/app/place/[id].tsx",
     "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/src/trip/page/TripPageMobile.tsx",
     "frontend/src/trip/page/__tests__/stopsDoneOrder.test.ts"
