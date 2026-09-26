@@ -1,0 +1,14 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1648",
+  "intent": "개인정보 방침 §7(책임자·버전·시행일)을 확정값으로 채우고, 로그인 수단에 Naver·Apple 을 더한다 — 사용자 결정 반영 (S15P21E201-1648)",
+  "actor": "agent",
+  "session": "a9c2e677-ba40-4112-8ddf-9355c5b1f568",
+  "since": "2026-09-26T06:15:25.416Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/legal/__tests__/legalContact.test.tsx",
+    "frontend/src/legal/legalContent.ts"
+  ]
+}
