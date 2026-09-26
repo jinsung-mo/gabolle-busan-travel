@@ -1,13 +1,14 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-TBD",
-  "intent": "폰 스윕: 상태바 흰색 남음 · 탭 글자 줄바꿈",
+  "task": "S15P21E201-1747",
+  "intent": "탭 글자 한 줄 시험",
   "actor": null,
   "session": "ff4e9677-5ca2-4ed1-ae3b-4b2a4c3d9ea0",
-  "since": "2026-09-26T09:26:33.148Z",
+  "since": "2026-09-26T09:29:30.361Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/index.tsx",
-    "frontend/src/components/TabBar.tsx"
+    "frontend/src/components/TabBar.tsx",
+    "frontend/src/components/__tests__/tabBarLabelOneLine.test.tsx"
   ]
 }
