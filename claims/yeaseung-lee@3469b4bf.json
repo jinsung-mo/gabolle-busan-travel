@@ -1,0 +1,18 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1647",
+  "intent": "앱에 로그인할 수 없는 사람의 이메일 삭제 요청을 운영자가 대신 처리하는 경로(실행기 + 처리 기록 + 런북)",
+  "actor": "agent",
+  "session": "5699fbbc-91f4-4561-9f59-895f454a28d5",
+  "since": "2026-09-26T01:53:51.820Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/docs/ACCOUNT-DELETION-BY-EMAIL.md",
+    "backend/src/main/java/com/gabolle/backend/auth/domain/OperatorAccountDeletionLog.java",
+    "backend/src/main/java/com/gabolle/backend/auth/repository/OperatorAccountDeletionLogRepository.java",
+    "backend/src/main/java/com/gabolle/backend/auth/service/OperatorAccountDeletionRunner.java",
+    "backend/src/main/java/com/gabolle/backend/auth/service/OperatorAccountDeletionService.java",
+    "backend/src/main/resources/db/migration/V20260926110000__operator_account_deletion_log.sql",
+    "backend/src/test/java/com/gabolle/backend/auth/OperatorAccountDeletionIntegrationTest.java"
+  ]
+}
