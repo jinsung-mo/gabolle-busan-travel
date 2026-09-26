@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1751",
+  "intent": "보정 스위치 둘을 배포에",
+  "actor": null,
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-26T10:10:32.873Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/Jenkinsfile"
+  ]
+}
