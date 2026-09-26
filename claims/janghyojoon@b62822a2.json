@@ -9,10 +9,7 @@
   "paths": [
     "frontend/app/(tabs)/home.tsx",
     "frontend/app/index.tsx",
-    "frontend/app/trips/[id]/itinerary.tsx",
     "frontend/src/home/__tests__/dayTripHandoff.test.ts",
-    "frontend/src/home/startBarValue.ts",
-    "frontend/src/trip/page/TripPageMobile.tsx",
-    "frontend/src/trip/page/__tests__/stopsDoneOrder.test.ts"
+    "frontend/src/home/startBarValue.ts"
   ]
 }
