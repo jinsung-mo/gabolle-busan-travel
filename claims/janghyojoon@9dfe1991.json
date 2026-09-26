@@ -1,0 +1,15 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1762",
+  "intent": "깨진 인코딩 400 — 우리 봉투 + WARN 한 줄",
+  "actor": null,
+  "session": "fad98f98-7e29-4386-b7c6-4d0a508dd5be",
+  "since": "2026-09-26T13:02:17.824Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/common/api/UnreadableParameterExceptionHandler.java",
+    "backend/src/test/java/com/gabolle/backend/common/api/UnreadableParameterExceptionHandlerTest.java",
+    "backend/src/test/java/com/gabolle/backend/functional/UnreadableParameterFunctionalTest.java",
+    "backend/src/test/java/com/gabolle/backend/functional/support/AuthedClient.java"
+  ]
+}
