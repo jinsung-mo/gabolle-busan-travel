@@ -1,13 +1,17 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1728",
-  "intent": "여행 중 카드 영어 문구의 값 순서(4 of 1 stops done) 바로잡기",
+  "task": "S15P21E201-1729",
+  "intent": "홈 시작 바에서 하루만 고른 당일치기를 여행 만들기로 넘길 때 귀환일을 채우기",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-26T06:01:28.774Z",
+  "since": "2026-09-26T06:09:19.162Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/index.tsx",
     "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/src/home/__tests__/dayTripHandoff.test.ts",
+    "frontend/src/home/startBarValue.ts",
     "frontend/src/trip/page/TripPageMobile.tsx",
     "frontend/src/trip/page/__tests__/stopsDoneOrder.test.ts"
   ]
