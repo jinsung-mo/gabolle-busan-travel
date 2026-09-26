@@ -1,0 +1,13 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1626",
+  "intent": "1626 AI 리뷰 반영 — 타이머 대신 잰 자리로 스크롤",
+  "actor": "agent",
+  "session": "9a4c4f50-ca63-474b-9bba-506f655af575",
+  "since": "2026-09-26T07:46:41.031Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/questions.tsx",
+    "frontend/src/home/PlanStartBar.tsx"
+  ]
+}
