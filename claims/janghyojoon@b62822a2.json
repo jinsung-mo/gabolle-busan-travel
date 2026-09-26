@@ -1,15 +1,17 @@
 {
   "agent": "janghyojoon",
-  "task": "S15P21E201-1729",
-  "intent": "홈 시작 바에서 하루만 고른 당일치기를 여행 만들기로 넘길 때 귀환일을 채우기",
+  "task": "S15P21E201-1731",
+  "intent": "홈 처음 안내에서 동백이 설명이 시작 바를 덮으면 접기",
   "actor": "agent",
   "session": "85c22272-1d89-4f7b-9bcb-26be9bb3dd46",
-  "since": "2026-09-26T06:09:19.162Z",
+  "since": "2026-09-26T06:14:39.908Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
     "frontend/app/index.tsx",
     "frontend/src/home/__tests__/dayTripHandoff.test.ts",
-    "frontend/src/home/startBarValue.ts"
+    "frontend/src/home/startBarValue.ts",
+    "frontend/src/onboarding/HomeCoach.tsx",
+    "frontend/src/onboarding/__tests__/homeCoachFold.test.ts"
   ]
 }
