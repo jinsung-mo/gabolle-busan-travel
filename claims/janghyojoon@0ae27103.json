@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1808",
+  "intent": "발표 시연 — 갤럭시 S10 미러링 맞추기 시험 페이지 추가",
+  "actor": "agent",
+  "session": "b045b412-6658-4bdb-82bf-273ab6344940",
+  "since": "2026-09-27T12:32:20.839Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "docs/26.09.27-발표-시연-미러링.html"
+  ]
+}
