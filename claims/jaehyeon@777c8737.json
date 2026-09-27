@@ -1,0 +1,16 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-1787",
+  "intent": "시트 손잡이를 잡고 끌어 내리기 — 차단한 계정 등 마이페이지 창·여행 이름 창은 끌면 닫히고, 여행 상세 창은 끈 높이에 멈춘다",
+  "actor": "agent",
+  "session": "12903611-69f0-41a7-82d0-37ea4ce15621",
+  "since": "2026-09-27T10:53:12.835Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/components/__tests__/sheetDrag.test.ts",
+    "frontend/src/components/sheetDrag.ts",
+    "frontend/src/me/MyPageSheet.tsx",
+    "frontend/src/trip/TripNameSheet.tsx",
+    "frontend/src/trip/page/TripPageMobile.tsx"
+  ]
+}
