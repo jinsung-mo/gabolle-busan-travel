@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1826",
-  "intent": "비서 prefill 지역·취향·날짜",
+  "task": "S15P21E201-1825",
+  "intent": "비서 plan 쿼리 확장",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T17:04:21.688Z",
+  "since": "2026-09-27T17:04:43.656Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/assistant/adapter/GeminiAssistantAdapter.java",
