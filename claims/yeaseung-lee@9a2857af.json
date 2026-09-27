@@ -4,7 +4,7 @@
   "intent": "접근성 안내 창 문구를 고른 이동 보조에 맞춘다",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T15:44:49.378Z",
+  "since": "2026-09-27T15:45:05.363Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java",
@@ -18,6 +18,7 @@
     "frontend/src/plan/GuestPlanGate.tsx",
     "frontend/src/plan/__tests__/accessibilityNotice.test.ts",
     "frontend/src/plan/__tests__/guestPlanGate.test.ts",
+    "frontend/src/plan/accessibilityNotice.ts",
     "frontend/src/trip/page/__tests__/courseKeepDay.test.ts",
     "frontend/src/trip/page/useTripPage.ts"
   ]
