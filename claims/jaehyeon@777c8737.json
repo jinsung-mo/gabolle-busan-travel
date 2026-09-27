@@ -1,12 +1,13 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-1787",
-  "intent": "기록 상세에서 인용(링크 복사)을 눌러도 반응이 안 보이던 것 — 복사 알림을 글 맨 끝이 아니라 화면 아래 토스트로 띄운다",
+  "intent": "기록 상세 인용 알림이 화면에 보이는지 확인하는 시험",
   "actor": "agent",
   "session": "12903611-69f0-41a7-82d0-37ea4ce15621",
-  "since": "2026-09-27T08:22:49.345Z",
+  "since": "2026-09-27T08:23:19.410Z",
   "ttlMs": 2700000,
   "paths": [
+    "frontend/app/__tests__/feedDetailQuoteNotice.test.tsx",
     "frontend/app/feed/[id].tsx",
     "frontend/app/feed/__tests__"
   ]
