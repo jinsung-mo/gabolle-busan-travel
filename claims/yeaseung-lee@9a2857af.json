@@ -1,15 +1,19 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1820",
-  "intent": "경사 안내 문구 제거",
+  "task": "S15P21E201-1821",
+  "intent": "남의 프로필 사진을 홈 기록 카드·프로필 머리에 그린다",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T16:31:07.689Z",
+  "since": "2026-09-27T16:31:22.472Z",
   "ttlMs": 1800000,
   "paths": [
+    "frontend/app/user/[id].tsx",
+    "frontend/src/home/HomeBlocks.tsx",
     "frontend/src/i18n/translations.ts",
     "frontend/src/map/RouteMap.native.tsx",
     "frontend/src/map/RouteMap.tsx",
-    "frontend/src/map/__tests__/walkSlope.test.tsx"
+    "frontend/src/map/__tests__/walkSlope.test.tsx",
+    "frontend/src/social/__tests__/authorAvatarSites.test.ts",
+    "frontend/src/social/stories.ts"
   ]
 }
