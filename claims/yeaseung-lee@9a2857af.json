@@ -1,14 +1,15 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1796",
-  "intent": "일정 창 시험",
+  "task": "S15P21E201-1797",
+  "intent": "카드 스냅 시험",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T11:03:52.031Z",
+  "since": "2026-09-27T11:05:17.354Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/trips/[id]/recommendations.tsx",
     "frontend/src/home/HomeRow.tsx",
+    "frontend/src/home/__tests__/carouselSnap.test.tsx",
     "frontend/src/plan/ConditionsPromptModal.tsx",
     "frontend/src/plan/__tests__/ConditionsPromptModal.swipe.test.tsx",
     "frontend/src/trip/page/TripPageMobile.tsx",
