@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1776",
-  "intent": "ko/en 만 아는 문구 선택기 4곳",
+  "task": "S15P21E201-1781",
+  "intent": "출발지 영어 이름 시험",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T02:36:58.224Z",
+  "since": "2026-09-27T02:43:16.963Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/tripnaming",
@@ -30,6 +30,7 @@
     "frontend/src/plan/__tests__/localDateKey.test.ts",
     "frontend/src/plan/__tests__/noUtcDateKey.test.ts",
     "frontend/src/plan/__tests__/originEnglishNames.test.ts",
+    "frontend/src/plan/__tests__/originEnglishNames.test.tsx",
     "frontend/src/plan/__tests__/recommendationJobLanguage.test.ts",
     "frontend/src/plan/busanFoodCatalog.ts",
     "frontend/src/plan/foodConflicts.ts",
