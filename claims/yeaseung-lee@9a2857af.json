@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1778",
-  "intent": "팔로우·글쓰기 뒤 피드 보관소 초기화",
+  "task": "S15P21E201-1779",
+  "intent": "기록 달력 칸",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T02:29:43.746Z",
+  "since": "2026-09-27T02:29:53.157Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(tabs)/feed.tsx",
@@ -13,6 +13,7 @@
     "frontend/app/s/[token].tsx",
     "frontend/app/user/[id].tsx",
     "frontend/src/i18n/translations.ts",
+    "frontend/src/me/RecordsBrowser.tsx",
     "frontend/src/plan/__tests__/recommendationJobLanguage.test.ts",
     "frontend/src/plan/recommendationJob.ts",
     "frontend/src/social/RelationListScreen.tsx",
