@@ -1,0 +1,13 @@
+{
+  "agent": "yeaseung-lee",
+  "task": "S15P21E201-1785",
+  "intent": "편집 응답 옛 판 — 1차 캐시 갱신",
+  "actor": null,
+  "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
+  "since": "2026-09-27T03:28:04.801Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/infra/JpaItineraryRepository.java",
+    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryPersistenceIntegrationTest.java"
+  ]
+}
