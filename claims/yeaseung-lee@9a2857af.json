@@ -1,29 +1,15 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1817",
-  "intent": "여행 기분 설명을 시간당 곳 수로",
+  "task": "S15P21E201-1820",
+  "intent": "경사 안내 문구 제거",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T15:49:22.071Z",
+  "since": "2026-09-27T16:31:07.689Z",
   "ttlMs": 1800000,
   "paths": [
-    "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
-    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java",
-    "backend/src/test/java/com/gabolle/backend/itinerary/ItineraryDraftServiceTest.java",
-    "backend/src/test/java/com/gabolle/backend/itinerary/application/AssembleReadCountIntegrationTest.java",
-    "backend/src/test/java/com/gabolle/backend/itinerary/application/AssembleTimeTableIntegrationTest.java",
-    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerVegetarianTest.java",
-    "frontend/app/(plan)/generating.tsx",
-    "frontend/app/(plan)/questions.tsx",
-    "frontend/src/components/AccessibilityUnverifiedModal.tsx",
     "frontend/src/i18n/translations.ts",
-    "frontend/src/plan/GuestPlanGate.tsx",
-    "frontend/src/plan/__tests__/accessibilityNotice.test.ts",
-    "frontend/src/plan/__tests__/guestPlanGate.test.ts",
-    "frontend/src/plan/__tests__/paceCopy.test.ts",
-    "frontend/src/plan/accessibilityNotice.ts",
-    "frontend/src/plan/planOptions.ts",
-    "frontend/src/trip/page/__tests__/courseKeepDay.test.ts",
-    "frontend/src/trip/page/useTripPage.ts"
+    "frontend/src/map/RouteMap.native.tsx",
+    "frontend/src/map/RouteMap.tsx",
+    "frontend/src/map/__tests__/walkSlope.test.tsx"
   ]
 }
