@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1825",
-  "intent": "비서 /plan 쿼리에 지역·취향·출발일",
+  "task": "S15P21E201-1826",
+  "intent": "비서 prefill 지역·취향·날짜",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T17:04:10.564Z",
+  "since": "2026-09-27T17:04:21.688Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/assistant/adapter/GeminiAssistantAdapter.java",
@@ -27,7 +27,9 @@
     "frontend/src/map/RouteMap.native.tsx",
     "frontend/src/map/RouteMap.tsx",
     "frontend/src/map/__tests__/walkSlope.test.tsx",
+    "frontend/src/plan/__tests__/assistantPrefill.test.ts",
     "frontend/src/plan/__tests__/slowNetwork.test.ts",
+    "frontend/src/plan/assistantPrefill.ts",
     "frontend/src/plan/recommendationJob.ts",
     "frontend/src/plan/tripCourses.ts",
     "frontend/src/social/__tests__/authorAvatarSites.test.ts",
