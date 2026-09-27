@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1781",
-  "intent": "출발지 영어 이름 시험",
+  "task": "S15P21E201-1779",
+  "intent": "기록 달력 칸",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T02:43:16.963Z",
+  "since": "2026-09-27T02:44:44.820Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/tripnaming",
@@ -25,6 +25,8 @@
     "frontend/src/home/useHomeData.ts",
     "frontend/src/i18n/translations.ts",
     "frontend/src/me/RecordsBrowser.tsx",
+    "frontend/src/me/__tests__/recordsCalendarCell.test.tsx",
+    "frontend/src/me/recordsBrowse.ts",
     "frontend/src/plan/__tests__/foodLabelLanguage.test.ts",
     "frontend/src/plan/__tests__/lateTripToday.test.ts",
     "frontend/src/plan/__tests__/localDateKey.test.ts",
