@@ -1,12 +1,14 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1813",
-  "intent": "코스 바꿔도 보던 날 유지",
+  "task": "S15P21E201-1815",
+  "intent": "채식이면 고기집을 뺀다",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T15:38:10.060Z",
+  "since": "2026-09-27T15:38:30.311Z",
   "ttlMs": 1800000,
   "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerVegetarianTest.java",
     "frontend/src/trip/page/__tests__/courseKeepDay.test.ts",
     "frontend/src/trip/page/useTripPage.ts"
   ]
