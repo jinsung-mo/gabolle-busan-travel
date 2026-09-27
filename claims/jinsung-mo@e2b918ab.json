@@ -1,0 +1,13 @@
+{
+  "agent": "jinsung-mo",
+  "task": "S15P21E201-1802",
+  "intent": "폰 커버 사진 키우기 + 사진 전체보기 부품",
+  "actor": null,
+  "session": "782c762e-77f4-4eef-a629-2ec1867ee98f",
+  "since": "2026-09-27T11:15:21.055Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/components/PhotoViewer.tsx",
+    "frontend/src/me/ProfileCard.tsx"
+  ]
+}
