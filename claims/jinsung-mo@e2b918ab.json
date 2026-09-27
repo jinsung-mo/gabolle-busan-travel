@@ -1,0 +1,12 @@
+{
+  "agent": "jinsung-mo",
+  "task": "S15P21E201-1803",
+  "intent": "피드 사진에도 전체보기 연결 (PhotoViewer)",
+  "actor": null,
+  "session": "782c762e-77f4-4eef-a629-2ec1867ee98f",
+  "since": "2026-09-27T11:26:56.946Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/feed/[id].tsx"
+  ]
+}
