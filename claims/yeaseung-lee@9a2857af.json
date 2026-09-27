@@ -1,12 +1,14 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1821",
-  "intent": "남의 프로필 사진을 홈 기록 카드·프로필 머리에 그린다",
+  "task": "S15P21E201-1822",
+  "intent": "비건·채식 고기/해산물 집 제외 확대",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T16:31:22.472Z",
+  "since": "2026-09-27T16:53:34.700Z",
   "ttlMs": 1800000,
   "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerVegetarianTest.java",
     "frontend/app/user/[id].tsx",
     "frontend/src/home/HomeBlocks.tsx",
     "frontend/src/i18n/translations.ts",
