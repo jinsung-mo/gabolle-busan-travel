@@ -1,0 +1,13 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-1787",
+  "intent": "iOS에서 여행표를 뒤집을 때 반쪽이 사라지는 문제 — 인쇄 뒤에도 종이 창(paperWindow)을 네이티브 뷰로 남긴다(collapsable=false)",
+  "actor": "agent",
+  "session": "12903611-69f0-41a7-82d0-37ea4ce15621",
+  "since": "2026-09-27T06:35:16.026Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/plan/TripPass.tsx",
+    "frontend/src/plan/__tests__/tripPassFlip.test.tsx"
+  ]
+}
