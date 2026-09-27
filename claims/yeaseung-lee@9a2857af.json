@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1816",
-  "intent": "여행 기분별 하루 곳 수를 하루 길이로",
+  "task": "S15P21E201-1817",
+  "intent": "여행 기분 설명을 시간당 곳 수로",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T15:47:03.106Z",
+  "since": "2026-09-27T15:49:22.071Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary/application/ItineraryDraftService.java",
@@ -20,7 +20,9 @@
     "frontend/src/plan/GuestPlanGate.tsx",
     "frontend/src/plan/__tests__/accessibilityNotice.test.ts",
     "frontend/src/plan/__tests__/guestPlanGate.test.ts",
+    "frontend/src/plan/__tests__/paceCopy.test.ts",
     "frontend/src/plan/accessibilityNotice.ts",
+    "frontend/src/plan/planOptions.ts",
     "frontend/src/trip/page/__tests__/courseKeepDay.test.ts",
     "frontend/src/trip/page/useTripPage.ts"
   ]
