@@ -8,7 +8,6 @@
   "ttlMs": 2700000,
   "paths": [
     "frontend/src/social/__tests__/feedCacheReset.test.ts",
-    "frontend/src/social/__tests__/feedResetAfterBlock.test.ts",
     "frontend/src/social/stories.ts"
   ]
 }
