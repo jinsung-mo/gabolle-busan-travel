@@ -1,0 +1,19 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-1795",
+  "intent": "영어 화면: 추천 출발지·숙소 지역에 영어 이름, 고른 뒤 요약 알약에 영어 이름 (서버로 가는 한국어 이름은 그대로)",
+  "actor": "agent",
+  "session": "137fd0c7-7ff0-4b5f-83f7-135329667d2d",
+  "since": "2026-09-27T10:57:08.675Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(plan)/questions.tsx",
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/app/index.tsx",
+    "frontend/src/home/PlanStartBar.tsx",
+    "frontend/src/home/startBarValue.ts",
+    "frontend/src/plan/PlanProvider.tsx",
+    "frontend/src/plan/__tests__/originEnglishNames.test.tsx",
+    "frontend/src/plan/origins.ts"
+  ]
+}
