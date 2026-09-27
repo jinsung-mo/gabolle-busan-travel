@@ -4,7 +4,7 @@
   "intent": "접근성 안내 창 문구를 고른 이동 보조에 맞춘다",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T15:44:22.245Z",
+  "since": "2026-09-27T15:44:35.244Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java",
@@ -13,6 +13,7 @@
     "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerVegetarianTest.java",
     "frontend/app/(plan)/generating.tsx",
     "frontend/app/(plan)/questions.tsx",
+    "frontend/src/components/AccessibilityUnverifiedModal.tsx",
     "frontend/src/i18n/translations.ts",
     "frontend/src/plan/GuestPlanGate.tsx",
     "frontend/src/plan/__tests__/guestPlanGate.test.ts",
