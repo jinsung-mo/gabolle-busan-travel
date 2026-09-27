@@ -1,16 +1,17 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1798",
-  "intent": "조건 입력 시트 아래로 쓸어 닫기",
+  "task": "S15P21E201-1796",
+  "intent": "일정 창 시험",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T11:02:34.418Z",
+  "since": "2026-09-27T11:03:52.031Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/trips/[id]/recommendations.tsx",
     "frontend/src/home/HomeRow.tsx",
     "frontend/src/plan/ConditionsPromptModal.tsx",
     "frontend/src/plan/__tests__/ConditionsPromptModal.swipe.test.tsx",
-    "frontend/src/trip/page/TripPageMobile.tsx"
+    "frontend/src/trip/page/TripPageMobile.tsx",
+    "frontend/src/trip/page/__tests__/sheetNativeOpaqueDrag.test.ts"
   ]
 }
