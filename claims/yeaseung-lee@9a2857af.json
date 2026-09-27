@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1791",
-  "intent": "홈 날씨 칩 목적지",
+  "intent": "홈 날씨 칩 시험",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T08:24:29.389Z",
+  "since": "2026-09-27T08:26:28.379Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(auth)/sign-up.tsx",
@@ -12,6 +12,7 @@
     "frontend/app/(tabs)/home.tsx",
     "frontend/app/__tests__/signUpConsentBlockers.test.tsx",
     "frontend/app/__tests__/signUpWhenSignedIn.test.tsx",
+    "frontend/app/__tests__/weatherChipDestination.test.ts",
     "frontend/app/__tests__/weatherChipTemperature.test.ts",
     "frontend/src/field/CurrencyBadge.tsx",
     "frontend/src/field/__tests__/currencyDisplayName.test.ts",
