@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1824",
-  "intent": "위치 읽기 도우미를 동의 검사에 넣기",
+  "intent": "상세 실패 알림 시험",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T17:04:59.364Z",
+  "since": "2026-09-27T17:05:54.185Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/assistant/adapter/GeminiAssistantAdapter.java",
@@ -14,6 +14,7 @@
     "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerVegetarianTest.java",
     "frontend/app/(plan)/questions.tsx",
     "frontend/app/(tabs)/feed.tsx",
+    "frontend/app/__tests__/feedDetailFailureNotice.test.tsx",
     "frontend/app/explore.tsx",
     "frontend/app/feed/[id].tsx",
     "frontend/app/field/transit.tsx",
