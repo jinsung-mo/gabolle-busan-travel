@@ -1,0 +1,15 @@
+{
+  "agent": "jinsung-mo",
+  "task": "S15P21E201-1804",
+  "intent": "체크리스트 첫여행 체크 버그 2건 + 지역 검색 0건 안내",
+  "actor": null,
+  "session": "782c762e-77f4-4eef-a629-2ec1867ee98f",
+  "since": "2026-09-27T11:49:33.385Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/app/(tabs)/home.tsx",
+    "frontend/src/auth/AuthProvider.tsx",
+    "frontend/src/components/RegionPicker.tsx",
+    "frontend/src/onboarding/firstRun.ts"
+  ]
+}
