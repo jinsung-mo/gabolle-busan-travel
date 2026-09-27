@@ -1,24 +1,14 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1791",
-  "intent": "홈 날씨 칩 시험",
+  "task": "S15P21E201-1788",
+  "intent": "!1800 시험 파일 node 타입 수정(모진성 MR 마무리)",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T08:26:28.379Z",
+  "since": "2026-09-27T09:12:46.886Z",
   "ttlMs": 1800000,
   "paths": [
-    "frontend/app/(auth)/sign-up.tsx",
-    "frontend/app/(plan)/questions.tsx",
-    "frontend/app/(tabs)/home.tsx",
-    "frontend/app/__tests__/signUpConsentBlockers.test.tsx",
-    "frontend/app/__tests__/signUpWhenSignedIn.test.tsx",
-    "frontend/app/__tests__/weatherChipDestination.test.ts",
-    "frontend/app/__tests__/weatherChipTemperature.test.ts",
-    "frontend/src/field/CurrencyBadge.tsx",
-    "frontend/src/field/__tests__/currencyDisplayName.test.ts",
-    "frontend/src/map/RouteMap.tsx",
-    "frontend/src/map/__tests__/originMarkerZ.test.ts",
-    "frontend/src/map/kakaoMapHtml.ts",
-    "frontend/src/plan/__tests__/questionsPhoneChips.test.ts"
+    "frontend/app/__tests__/notificationsScroll.test.tsx",
+    "frontend/src/components/__tests__/phraseCardNoNestedButton.test.ts",
+    "frontend/src/plan/__tests__/courseSheetHeight.test.ts"
   ]
 }
