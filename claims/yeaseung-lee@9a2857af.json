@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1777",
-  "intent": "공유 페이지 언어",
+  "task": "S15P21E201-1776",
+  "intent": "시험이 화면 언어도 바꾸게",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T02:31:19.246Z",
+  "since": "2026-09-27T02:31:41.388Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/tripnaming",
@@ -17,6 +17,7 @@
     "frontend/src/home/PlanStartBar.tsx",
     "frontend/src/i18n/translations.ts",
     "frontend/src/me/RecordsBrowser.tsx",
+    "frontend/src/plan/__tests__/lateTripToday.test.ts",
     "frontend/src/plan/__tests__/originEnglishNames.test.ts",
     "frontend/src/plan/__tests__/recommendationJobLanguage.test.ts",
     "frontend/src/plan/origins.ts",
