@@ -1,20 +1,25 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1822",
-  "intent": "비건·채식 고기/해산물 집 제외 확대",
+  "task": "S15P21E201-1823",
+  "intent": "느린 네트워크 폴링·타임아웃·중복 제출",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T16:53:34.700Z",
+  "since": "2026-09-27T17:03:17.386Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java",
     "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerVegetarianTest.java",
+    "frontend/app/(plan)/questions.tsx",
     "frontend/app/user/[id].tsx",
+    "frontend/src/assistant/assistantApi.ts",
     "frontend/src/home/HomeBlocks.tsx",
     "frontend/src/i18n/translations.ts",
     "frontend/src/map/RouteMap.native.tsx",
     "frontend/src/map/RouteMap.tsx",
     "frontend/src/map/__tests__/walkSlope.test.tsx",
+    "frontend/src/plan/__tests__/slowNetwork.test.ts",
+    "frontend/src/plan/recommendationJob.ts",
+    "frontend/src/plan/tripCourses.ts",
     "frontend/src/social/__tests__/authorAvatarSites.test.ts",
     "frontend/src/social/stories.ts"
   ]
