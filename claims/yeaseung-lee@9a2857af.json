@@ -1,12 +1,14 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1781",
-  "intent": "출발지·숙소 영어 이름",
+  "task": "S15P21E201-1780",
+  "intent": "여행 이름 후보 영어",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T02:30:02.629Z",
+  "since": "2026-09-27T02:30:11.828Z",
   "ttlMs": 1800000,
   "paths": [
+    "backend/src/main/java/com/gabolle/backend/tripnaming",
+    "backend/src/test/java/com/gabolle/backend/tripnaming",
     "frontend/app/(tabs)/feed.tsx",
     "frontend/app/__tests__/sharedPageLanguage.test.tsx",
     "frontend/app/feed/[id].tsx",
