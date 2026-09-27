@@ -1,0 +1,12 @@
+{
+  "agent": "jinsung-mo",
+  "task": "S15P21E201-1803",
+  "intent": "onPressPhoto 에 몇 번째 사진인지 넘긴다 — 전체보기 연결",
+  "actor": null,
+  "session": "782c762e-77f4-4eef-a629-2ec1867ee98f",
+  "since": "2026-09-27T11:57:14.079Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "frontend/src/social/PhotoCarousel.tsx"
+  ]
+}
