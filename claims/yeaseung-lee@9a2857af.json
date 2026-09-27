@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1796",
-  "intent": "폰 일정 창 불투명",
+  "task": "S15P21E201-1800",
+  "intent": "여행 화면 장소 카드 줄 카드 단위 멈춤",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T11:16:57.700Z",
+  "since": "2026-09-27T11:32:29.392Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(auth)/oauth-link.tsx",
@@ -20,6 +20,7 @@
     "frontend/src/trip/page/TripPageMobile.tsx",
     "frontend/src/trip/page/__tests__/sheetNativeOpaque.test.ts",
     "frontend/src/trip/page/__tests__/sheetNativeOpaqueDrag.test.ts",
+    "frontend/src/trip/page/__tests__/tripStripSnap.test.ts",
     "src/trip/page/__tests__/sheetNativeOpaque.test.ts"
   ]
 }
