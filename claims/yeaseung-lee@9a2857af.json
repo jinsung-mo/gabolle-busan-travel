@@ -1,16 +1,23 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1777",
-  "intent": "공유 페이지 언어 전환",
+  "task": "S15P21E201-1778",
+  "intent": "팔로우·글쓰기 뒤 피드 보관소 초기화",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T02:29:34.481Z",
+  "since": "2026-09-27T02:29:43.746Z",
   "ttlMs": 1800000,
   "paths": [
+    "frontend/app/(tabs)/feed.tsx",
     "frontend/app/__tests__/sharedPageLanguage.test.tsx",
+    "frontend/app/feed/[id].tsx",
     "frontend/app/s/[token].tsx",
+    "frontend/app/user/[id].tsx",
     "frontend/src/i18n/translations.ts",
     "frontend/src/plan/__tests__/recommendationJobLanguage.test.ts",
-    "frontend/src/plan/recommendationJob.ts"
+    "frontend/src/plan/recommendationJob.ts",
+    "frontend/src/social/RelationListScreen.tsx",
+    "frontend/src/social/StoryComposeForm.tsx",
+    "frontend/src/social/__tests__/feedCacheReset.test.ts",
+    "frontend/src/social/stories.ts"
   ]
 }
