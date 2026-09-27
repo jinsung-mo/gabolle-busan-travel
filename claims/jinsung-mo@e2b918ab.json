@@ -1,18 +1,21 @@
 {
   "agent": "jinsung-mo",
-  "task": "S15P21E201-1812",
-  "intent": "Jira 번호 충돌 정정 — 커밋 메시지의 1804 를 1812 로",
+  "task": "S15P21E201-1811",
+  "intent": "Jira 번호 충돌 정정 — 1803 을 1811 로",
   "actor": null,
   "session": "782c762e-77f4-4eef-a629-2ec1867ee98f",
-  "since": "2026-09-27T12:41:08.374Z",
+  "since": "2026-09-27T12:47:39.496Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(tabs)/home.tsx",
+    "frontend/app/__tests__/feedPhotoViewer.test.tsx",
     "frontend/src/auth/AuthProvider.tsx",
     "frontend/src/components/RegionPicker.tsx",
+    "frontend/src/components/__tests__/photoViewerBehavior.test.tsx",
     "frontend/src/components/__tests__/regionPickerSingleInput.test.tsx",
     "frontend/src/i18n/translations.ts",
     "frontend/src/onboarding/__tests__/checklistAndRegion.test.ts",
-    "frontend/src/onboarding/firstRun.ts"
+    "frontend/src/onboarding/firstRun.ts",
+    "frontend/src/social/PhotoCarousel.tsx"
   ]
 }
