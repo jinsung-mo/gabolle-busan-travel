@@ -1,12 +1,15 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1802",
-  "intent": "여행 만들기 위 칩 줄 장소 칩이 빈 알약으로 줄던 것",
+  "task": "S15P21E201-1803",
+  "intent": "기록 작성자에 프로필 사진 주소 싣기",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T11:37:46.585Z",
+  "since": "2026-09-27T11:50:17.240Z",
   "ttlMs": 1800000,
   "paths": [
+    "backend/src/main/java/com/gabolle/backend/story/application/StoryResponseAssembler.java",
+    "backend/src/main/java/com/gabolle/backend/story/presentation/dto/StoryResponse.java",
+    "backend/src/test/java/com/gabolle/backend/story/application/StoryResponseAssemblerTest.java",
     "frontend/app/(auth)/age-gate.tsx",
     "frontend/app/(auth)/oauth-link.tsx",
     "frontend/app/(auth)/oauth-signup.tsx",
