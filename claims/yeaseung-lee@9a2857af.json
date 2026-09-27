@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1806",
-  "intent": "폰 피드 탭 밑줄 전체 폭",
+  "intent": "폰 피드 탭 밑줄 시험",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T12:13:06.242Z",
+  "since": "2026-09-27T12:13:42.967Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/story/application/StoryResponseAssembler.java",
@@ -19,6 +19,7 @@
     "frontend/app/(plan)/questions.tsx",
     "frontend/app/(tabs)/feed.tsx",
     "frontend/app/(trip)/[id]/collaborate.tsx",
+    "frontend/app/__tests__/feedTabsPhoneLine.test.ts",
     "frontend/app/feed/[id].tsx",
     "frontend/app/trips/[id]/recommendations.tsx",
     "frontend/app/user/[id].tsx",
