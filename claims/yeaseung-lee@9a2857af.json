@@ -4,7 +4,7 @@
   "intent": "브루나이 달러 이름 보정",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T08:22:10.731Z",
+  "since": "2026-09-27T08:22:28.308Z",
   "ttlMs": 1800000,
   "paths": [
     "frontend/app/(plan)/questions.tsx",
