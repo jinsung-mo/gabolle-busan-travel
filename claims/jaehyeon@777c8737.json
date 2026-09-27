@@ -1,0 +1,13 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-1787",
+  "intent": "차단·차단 해제 뒤 피드 보관소를 비운다 — 새로고침 전까지 차단한 사람 글이 피드에 남던 것",
+  "actor": "agent",
+  "session": "12903611-69f0-41a7-82d0-37ea4ce15621",
+  "since": "2026-09-27T10:28:03.328Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/social/__tests__/feedResetAfterBlock.test.ts",
+    "frontend/src/social/stories.ts"
+  ]
+}
