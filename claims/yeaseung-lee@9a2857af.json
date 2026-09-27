@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1780",
-  "intent": "여행 이름 후보 영어",
+  "task": "S15P21E201-1777",
+  "intent": "공유 페이지 언어",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T02:30:11.828Z",
+  "since": "2026-09-27T02:31:19.246Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/tripnaming",
@@ -21,6 +21,8 @@
     "frontend/src/plan/__tests__/recommendationJobLanguage.test.ts",
     "frontend/src/plan/origins.ts",
     "frontend/src/plan/recommendationJob.ts",
+    "frontend/src/share/__tests__/sharedPageLanguage.test.ts",
+    "frontend/src/share/sharedPageLanguage.ts",
     "frontend/src/social/RelationListScreen.tsx",
     "frontend/src/social/StoryComposeForm.tsx",
     "frontend/src/social/__tests__/feedCacheReset.test.ts",
