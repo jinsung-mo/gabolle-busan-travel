@@ -1,14 +1,12 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1788",
-  "intent": "!1800 시험 파일 node 타입 수정(모진성 MR 마무리)",
+  "task": "S15P21E201-1796",
+  "intent": "폰 일정 창 불투명화 + 손잡이 끌어 접기",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T09:12:46.886Z",
+  "since": "2026-09-27T10:59:59.530Z",
   "ttlMs": 1800000,
   "paths": [
-    "frontend/app/__tests__/notificationsScroll.test.tsx",
-    "frontend/src/components/__tests__/phraseCardNoNestedButton.test.ts",
-    "frontend/src/plan/__tests__/courseSheetHeight.test.ts"
+    "frontend/src/trip/page/TripPageMobile.tsx"
   ]
 }
