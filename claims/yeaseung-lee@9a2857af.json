@@ -1,12 +1,14 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1796",
-  "intent": "폰 일정 창 불투명화 + 손잡이 끌어 접기",
+  "task": "S15P21E201-1797",
+  "intent": "가로 카드 목록 카드 단위 스냅",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-27T10:59:59.530Z",
+  "since": "2026-09-27T11:00:12.255Z",
   "ttlMs": 1800000,
   "paths": [
+    "frontend/app/trips/[id]/recommendations.tsx",
+    "frontend/src/home/HomeRow.tsx",
     "frontend/src/trip/page/TripPageMobile.tsx"
   ]
 }
