@@ -1,0 +1,12 @@
+{
+  "agent": "codex-porting",
+  "task": "S15P21E201-porting",
+  "intent": "포팅 매뉴얼과 시연 시나리오 작성",
+  "actor": null,
+  "session": "codex-porting-20260928",
+  "since": "2026-09-28T00:22:18.318Z",
+  "ttlMs": 3600000,
+  "paths": [
+    "exec"
+  ]
+}
