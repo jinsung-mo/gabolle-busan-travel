@@ -1,0 +1,12 @@
+{
+  "agent": "jaehyeon",
+  "task": "S15P21E201-porting",
+  "intent": "사무국 제출용 포팅 매뉴얼 문체 정리와 사족 제거 (hotfix → main)",
+  "actor": "agent",
+  "session": "ebdfe34f-66da-4093-8f24-365250bf066b",
+  "since": "2026-09-28T02:54:35.659Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "exec"
+  ]
+}
