@@ -292,7 +292,10 @@ frontend:e2e:
     #    back/dev 의 트리를 그대로 복원하고, front/dev 에 남은 잔재는 안 남긴다.
     - git fetch --depth 1 origin back/dev
     - rm -rf backend
-    - git checkout FETCH_HEAD -- backend
+    # Git LFS(대용량 파일을 별도 저장하는 도구)의 post-checkout 훅(파일을 꺼낸 뒤 자동 실행되는 명령)이
+    # 러너에 남아 있다. Playwright 이미지에는 git-lfs가 없어 여기서 실패한다.
+    # 이 checkout에서만 훅을 끄고 backend 파일을 가져온다. 다른 Git 명령의 훅은 유지한다.
+    - git -c core.hooksPath=/dev/null checkout FETCH_HEAD -- backend
     - cd backend
     - chmod +x gradlew
     - until pg_isready -h postgres -U gabolle; do sleep 1; done
