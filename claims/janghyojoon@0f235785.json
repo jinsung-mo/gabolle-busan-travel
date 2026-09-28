@@ -1,0 +1,26 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1827",
+  "intent": "back/main 을 back/dev 에 합쳐 승격 충돌(취약점 보고서) 해결 — 머지 커밋 하나, 커밋 직후 반납",
+  "actor": "agent",
+  "session": "2b0b81b8-6ccb-4f33-8d2d-2e23c5417aa2",
+  "since": "2026-09-28T00:25:06.449Z",
+  "ttlMs": 2700000,
+  "paths": [
+    ".gitignore",
+    ".gitlab-ci.yml",
+    "CLAUDE.md",
+    "ai",
+    "backend",
+    "bigData",
+    "ci",
+    "city3d-spike",
+    "docs",
+    "eval",
+    "frontend",
+    "governance",
+    "infra",
+    "survey-place",
+    "survey-recommend"
+  ]
+}
