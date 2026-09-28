@@ -1,12 +1,13 @@
 {
   "agent": "codex-porting",
   "task": "S15P21E201-porting",
-  "intent": "포팅 매뉴얼과 시연 시나리오 작성",
+  "intent": "MR E2E checkout LFS 훅 실패 수정",
   "actor": null,
   "session": "codex-porting-20260928",
-  "since": "2026-09-28T00:22:18.318Z",
+  "since": "2026-09-28T00:42:23.223Z",
   "ttlMs": 3600000,
   "paths": [
+    "ci/parts/frontend.yml",
     "exec"
   ]
 }
