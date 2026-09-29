@@ -1,0 +1,18 @@
+{
+  "agent": "ahwlstjd57",
+  "task": null,
+  "intent": "경사를 휠체어 문제로만 말하던 겹 범례·경사 경고를 중립으로 — 휠체어·유아차 여행에만 안내",
+  "actor": "agent",
+  "session": "1779d1f5-4d67-48d9-bdc2-5584114280be",
+  "since": "2026-09-29T08:02:26.902Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/map/MobilityLayerToggle.tsx",
+    "frontend/src/map/__tests__/mobilityLayerStatus.test.tsx",
+    "frontend/src/plan/__tests__/warningLabels.test.ts",
+    "frontend/src/plan/warningLabels.ts",
+    "frontend/src/trip/page/TripPageDesktop.tsx",
+    "frontend/src/trip/page/TripPageMobile.tsx"
+  ]
+}
