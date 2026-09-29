@@ -4,7 +4,7 @@
   "intent": "주변 버스 지도(정류장·지하철역) + 경로 상세(대중교통·택시·도보 비교, 실제 경로선)",
   "actor": "agent",
   "session": "4b77fcf6-fb20-4dbd-bb4f-50683e33d1b3",
-  "since": "2026-09-29T06:27:18.031Z",
+  "since": "2026-09-29T06:49:03.748Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/field/transit.tsx",
