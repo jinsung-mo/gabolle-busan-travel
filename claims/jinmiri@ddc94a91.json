@@ -1,12 +1,17 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1846",
-  "intent": "주변 버스 새 문구 번역 추가(1846 CI 번역 검사)",
+  "task": "S15P21E201-1849",
+  "intent": "알림 묶기·종류별 아이콘 · 챗봇 대화 중 도구 한 줄 (UI 캔버스 ⑦⑫)",
   "actor": "agent",
   "session": "9a4c4f50-ca63-474b-9bba-506f655af575",
-  "since": "2026-09-29T13:09:50.165Z",
+  "since": "2026-09-29T13:11:43.411Z",
   "ttlMs": 2700000,
   "paths": [
-    "frontend/src/i18n/translations.ts"
+    "frontend/app/chat.tsx",
+    "frontend/src/components/NoticeIcon.tsx",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/me/panels/NotificationsBody.tsx",
+    "frontend/src/notifications/__tests__/noticeGroups.test.ts",
+    "frontend/src/notifications/activityFeed.ts"
   ]
 }
