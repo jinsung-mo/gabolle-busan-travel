@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1830",
-  "intent": "주변 버스 지도(정류장·지하철역) + 경로 상세(대중교통·택시·도보 비교, 실제 경로선)",
+  "task": "S15P21E201-1831",
+  "intent": "대중교통 경로 번역 줄 추가 + 일정 「이동 N분」에서 경로 상세로 가는 입구",
   "actor": "agent",
   "session": "4b77fcf6-fb20-4dbd-bb4f-50683e33d1b3",
-  "since": "2026-09-29T06:49:03.748Z",
+  "since": "2026-09-29T06:50:21.789Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/app/field/transit.tsx",
@@ -13,6 +13,11 @@
     "frontend/src/field/__tests__/subwayStations.test.ts",
     "frontend/src/field/busanSubwayStations.json",
     "frontend/src/field/routeLegs.ts",
-    "frontend/src/field/subwayStations.ts"
+    "frontend/src/field/subwayStations.ts",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/trip/page/TripPageDesktop.tsx",
+    "frontend/src/trip/page/TripPageMobile.tsx",
+    "frontend/src/trip/page/__tests__/legRoute.test.ts",
+    "frontend/src/trip/page/legRoute.ts"
   ]
 }
