@@ -1,0 +1,13 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-1829",
+  "intent": "식단 거르기가 식당을 다 지우지 않게 — 상위 200 을 자를 때 탈락 후보를 뒤로 보낸다 (고지혁, S15P21E201-1829)",
+  "actor": "agent",
+  "session": "5108534c-fb63-40ba-8b72-5646b675c2f4",
+  "since": "2026-09-29T05:05:19.568Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineRecommendationEngine.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineRecommendationEngineKeepEligibleTest.java"
+  ]
+}
