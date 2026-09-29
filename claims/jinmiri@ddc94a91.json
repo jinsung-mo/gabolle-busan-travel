@@ -1,0 +1,17 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1843",
+  "intent": "장소 상세 — 휴무일·영업시간 묶기·경사 말·넘김 점·단추 위계 (UI 캔버스 ⑳)",
+  "actor": "agent",
+  "session": "9a4c4f50-ca63-474b-9bba-506f655af575",
+  "since": "2026-09-29T12:00:47.690Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/__tests__/placePhotoGallery.test.tsx",
+    "frontend/app/place/[id].tsx",
+    "frontend/src/components/PlacePhotoGallery.tsx",
+    "frontend/src/discovery/__tests__/placeValueText.test.ts",
+    "frontend/src/discovery/places.ts",
+    "frontend/src/i18n/translations.ts"
+  ]
+}
