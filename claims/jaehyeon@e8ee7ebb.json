@@ -9,8 +9,6 @@
   "paths": [
     "frontend/src/plan/ConditionsPromptModal.tsx",
     "frontend/src/plan/__tests__/travelConditions.test.ts",
-    "frontend/src/plan/foodConflicts.test.ts",
-    "frontend/src/plan/foodConflicts.ts",
     "frontend/src/plan/travelConditions.ts"
   ]
 }
