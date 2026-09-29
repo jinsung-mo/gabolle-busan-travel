@@ -18,7 +18,6 @@
     "frontend/src/field/__tests__/routeLegs.test.ts",
     "frontend/src/field/goFromHere.ts",
     "frontend/src/field/routeLegs.ts",
-    "frontend/src/field/subwayStations.ts",
-    "frontend/src/i18n/translations.ts"
+    "frontend/src/field/subwayStations.ts"
   ]
 }
