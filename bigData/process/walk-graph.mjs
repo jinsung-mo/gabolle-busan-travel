@@ -58,7 +58,11 @@ const META = join(ROOT, 'data/staged/walk-graph.json')
 
 const EXIT = { OK: 0, INVARIANT: 1, INPUT: 2 }
 
-/** 이보다 짧은 길의 경사는 모르는 것으로 둔다 (m). */
+/**
+ * 이보다 짧은 길의 경사는 모르는 것으로 둔다 (m).
+ * slope.mjs 가 60m(기준선 × 0.6) 미만을 이미 null 로 내므로 새 파일에서는 그 null 검사가 먼저 걸린다.
+ * 이 30m 는 그 전에 만든 구간 파일을 읽을 때의 안전판이다 — 🔴 null 을 0(평지)으로 바꾸지 않는다.
+ */
 export const MIN_SLOPE_LENGTH_M = 30
 
 /** 한 덩어리로 이어진 점이 이 비율보다 적으면 좌표로 잇기가 깨진 것이다. */

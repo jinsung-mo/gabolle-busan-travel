@@ -45,6 +45,8 @@ describe('경사를 언제 모른다고 하는가', () => {
     assert.equal(slopePermille({ p50Slope: 0.2, length: 120 }, { bridge: 'yes' }), -1)
     assert.equal(slopePermille({ p50Slope: 0.2, length: 120 }, { tunnel: 'yes' }), -1)
     assert.equal(slopePermille(undefined, {}), -1)
+    // 🔴 slope.mjs 는 60m 미만 길을 null 로 낸다. 30m 는 넘지만 그래도 -1 이어야 한다 — 0 이면 평지가 된다
+    assert.equal(slopePermille({ p50Slope: null, length: 45, slopeTooShort: true }, {}), -1)
   })
 })
 

@@ -78,7 +78,10 @@ const EXIT = { OK: 0, INVARIANT: 1, INPUT: 2 }
 /** 반경(m). 🔴 100 아래로 내리지 않는다 — 머리말 참고. */
 export const RADIUS_M = 200
 
-/** 이보다 짧은 구간은 안 센다 (m). 경사 지도와 같은 값이다. */
+/**
+ * 이보다 짧은 구간은 안 센다 (m). 경사 지도와 같은 값이다.
+ * slope.mjs 가 60m 미만을 이미 경사 모름(null)으로 내므로 새 파일에서는 p50Slope null 검사가 먼저 건다.
+ */
 export const MIN_SEGMENT_M = 30
 
 /** 반경 안 걷는 길 총 길이가 이만큼도 안 되면 값을 만들지 않는다 (m). */
