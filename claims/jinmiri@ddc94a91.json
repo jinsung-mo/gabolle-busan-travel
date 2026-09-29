@@ -1,0 +1,15 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1854",
+  "intent": "기록 수정에서 지역·장소도 고치기",
+  "actor": "agent",
+  "session": "9a4c4f50-ca63-474b-9bba-506f655af575",
+  "since": "2026-09-29T14:27:38.638Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/__tests__/feedDetailEditPost.test.tsx",
+    "frontend/app/feed/[id].tsx",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/social/stories.ts"
+  ]
+}
