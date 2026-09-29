@@ -14,11 +14,6 @@
     "backend/src/main/java/com/gabolle/backend/recommendation",
     "backend/src/main/java/com/gabolle/backend/route",
     "backend/src/main/resources/db/migration",
-    "backend/src/test",
-    "bigData/CLAUDE.md",
-    "bigData/data/staged",
-    "bigData/process/calibrate-slope.mjs",
-    "bigData/process/slope.mjs",
-    "bigData/test"
+    "backend/src/test"
   ]
 }
