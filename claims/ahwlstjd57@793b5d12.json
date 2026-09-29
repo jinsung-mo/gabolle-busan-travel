@@ -1,10 +1,10 @@
 {
   "agent": "ahwlstjd57",
   "task": null,
-  "intent": "보정 선택 규칙을 거짓양성 0.5% 여유폭으로 고치고, 경사·보행 그래프·장소 경사 산출물을 다시 만든다",
+  "intent": "보정 문턱 1% → 0.5% 변경에 맞춰 문서 두 줄 갱신",
   "actor": "agent",
   "session": "1779d1f5-4d67-48d9-bdc2-5584114280be",
-  "since": "2026-09-29T06:40:18.855Z",
+  "since": "2026-09-29T06:42:06.462Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary",
@@ -15,6 +15,7 @@
     "backend/src/main/java/com/gabolle/backend/route",
     "backend/src/main/resources/db/migration",
     "backend/src/test",
+    "bigData/CLAUDE.md",
     "bigData/data/staged",
     "bigData/process/calibrate-slope.mjs",
     "bigData/process/slope.mjs",
