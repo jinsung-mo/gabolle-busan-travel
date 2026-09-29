@@ -1,0 +1,12 @@
+{
+  "agent": "ahwlstjd57",
+  "task": null,
+  "intent": "고친 경사(60m 미만 모름)로 다시 만든 보행 그래프 교체",
+  "actor": "agent",
+  "session": "1779d1f5-4d67-48d9-bdc2-5584114280be",
+  "since": "2026-09-29T06:58:08.715Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/resources/geo/walk-graph.bin.gz"
+  ]
+}
