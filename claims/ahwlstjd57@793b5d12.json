@@ -1,0 +1,13 @@
+{
+  "agent": "ahwlstjd57",
+  "task": null,
+  "intent": "!1859 를 front/dev 위로 rebase — itinerary.ts 충돌 풀기, routeDirections 낡은 주석 고치기",
+  "actor": "agent",
+  "session": "1779d1f5-4d67-48d9-bdc2-5584114280be",
+  "since": "2026-09-29T07:44:47.434Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/map/routeDirections.ts",
+    "frontend/src/plan/itinerary.ts"
+  ]
+}
