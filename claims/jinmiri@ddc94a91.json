@@ -1,0 +1,14 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1853",
+  "intent": "축제 기간을 칩·달력으로 고르기",
+  "actor": "agent",
+  "session": "9a4c4f50-ca63-474b-9bba-506f655af575",
+  "since": "2026-09-29T14:17:15.140Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/__tests__/festivalRange.test.tsx",
+    "frontend/app/festivals.tsx",
+    "frontend/src/i18n/translations.ts"
+  ]
+}
