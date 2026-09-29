@@ -1,10 +1,10 @@
 {
   "agent": "ahwlstjd57",
   "task": null,
-  "intent": "휠체어 후속 버그 10건 (경고 심각도·중복·길찾기 실제 도보·계단 회피 예산·일정 조각 저장·p90 경사·유아차 오판·선호 이유·조건 커버리지)",
+  "intent": "휠체어 후속: 경사 조각·stepFree 전달·레이어 상태·범례·경계값·문구 (wt-front2 fix/front/wheelchair-followups)",
   "actor": "agent",
   "session": "1779d1f5-4d67-48d9-bdc2-5584114280be",
-  "since": "2026-09-29T06:20:54.426Z",
+  "since": "2026-09-29T06:21:46.505Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary",
@@ -14,6 +14,15 @@
     "backend/src/main/java/com/gabolle/backend/recommendation",
     "backend/src/main/java/com/gabolle/backend/route",
     "backend/src/main/resources/db/migration",
-    "backend/src/test"
+    "backend/src/test",
+    "frontend/app/(trip)",
+    "frontend/src/api",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/map",
+    "frontend/src/plan/ConditionsPromptModal.tsx",
+    "frontend/src/plan/PlanProvider.tsx",
+    "frontend/src/plan/itinerary.ts",
+    "frontend/src/plan/warningLabels.ts",
+    "frontend/src/trip/page"
   ]
 }
