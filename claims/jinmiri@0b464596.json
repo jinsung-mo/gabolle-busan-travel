@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
   "task": "S15P21E201-1837",
-  "intent": "탑승 중 화면 — 남은 정류장·내릴 곳 알림",
+  "intent": "탑승 중 화면 문구 16줄 추가(파일 중간 한 자리, 기존 줄 안 건드림) — 끝나면 바로 반납",
   "actor": "agent",
   "session": "4b77fcf6-fb20-4dbd-bb4f-50683e33d1b3",
-  "since": "2026-09-29T08:00:36.047Z",
+  "since": "2026-09-29T08:14:01.128Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/route/adapter/TransitRouteAdapter.java",
@@ -17,6 +17,7 @@
     "frontend/src/field/__tests__/routeLegs.test.ts",
     "frontend/src/field/ride.ts",
     "frontend/src/field/routeLegs.ts",
-    "frontend/src/field/subwayStations.ts"
+    "frontend/src/field/subwayStations.ts",
+    "frontend/src/i18n/translations.ts"
   ]
 }
