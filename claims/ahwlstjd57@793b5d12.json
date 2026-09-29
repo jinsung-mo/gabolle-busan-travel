@@ -1,12 +1,14 @@
 {
   "agent": "ahwlstjd57",
   "task": null,
-  "intent": "휠체어 후속: 경사 조각·stepFree 전달·레이어 상태·범례·경계값·문구 (wt-front2 fix/front/wheelchair-followups)",
+  "intent": "9/28 jackson-databind 취약점 — 2.21.6·3.1.6 으로 올림 (MR !1855)",
   "actor": "agent",
   "session": "1779d1f5-4d67-48d9-bdc2-5584114280be",
-  "since": "2026-09-29T06:21:46.505Z",
+  "since": "2026-09-29T06:32:00.887Z",
   "ttlMs": 2700000,
   "paths": [
+    "backend/build.gradle",
+    "backend/gradle.lockfile",
     "backend/src/main/java/com/gabolle/backend/itinerary",
     "backend/src/main/java/com/gabolle/backend/place/api",
     "backend/src/main/java/com/gabolle/backend/place/loader",
