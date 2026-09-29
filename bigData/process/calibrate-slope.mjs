@@ -4,14 +4,21 @@
  *
  * 방법: 해안 매립지(최고 고도 12m 이하) 도로를 "실제로는 평지" 대조군으로 놓는다.
  *       거기서 "8% 이상 경사" 가 나오면 그것은 전부 거짓 양성이다.
- *       거짓 양성이 1% 이하가 되는 가장 짧은 기준선을 고른다 —
+ *       거짓 양성이 FLAT_FP_MAX(0.5%) 이하가 되는 가장 짧은 기준선을 고른다 —
  *       짧을수록 실제 신호를 덜 뭉갠다.
+ *
+ * 🔴 문턱은 1% 가 아니라 0.5% 다 — 여유폭을 둔다 (2026-09-29).
+ *    1% 문턱에서는 60m 가 0.9% 로 겨우 붙어 통과했다(옛 실측에서 같은 60m 는 2% 였다).
+ *    문턱에 딱 붙은 기준선은 원본(OSM 추출본·고도 타일)이 갱신될 때마다 판정이
+ *    이쪽저쪽으로 흔들리고, 그때마다 경사 산출물 전체의 뜻이 바뀐다.
+ *    반면 신호(산지 8% 이상 비율)는 60m 63% · 100m 62% 로 거의 같아서
+ *    짧게 잡아 얻는 것이 작다. 흔들리지 않는 쪽을 고른다.
  *
  * 🔴 범위를 바꾸거나 DEM 을 국가 5m 로 교체하면 이 스크립트를 다시 돌려
  *    기준선을 다시 정한다. 5m 는 수직오차가 훨씬 작아 30m 로 되돌릴 수 있을 것이다.
  *
  * 🔴 결과를 data/staged/_calibration.json 에 쓴다. test/verify.mjs 가 그것을 읽어
- *    "지금 쓰는 기준선의 거짓 양성이 1% 이하인가" 를 불변식으로 검사한다.
+ *    "지금 쓰는 기준선의 거짓 양성이 FLAT_FP_MAX 이하인가" 를 불변식으로 검사한다.
  *
  *   node process/calibrate-slope.mjs
  */
@@ -19,7 +26,7 @@ import { createReadStream, existsSync } from 'node:fs'
 import { createInterface } from 'node:readline'
 import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import { join, dirname } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import { createDemReader } from './dem-clean.mjs'
 import { log } from '../lib/log.mjs'
 
@@ -30,6 +37,18 @@ const OVP  = join(ROOT, 'data/raw/overpass')
 const OUT  = join(ROOT, 'data/staged')
 const ZOOM = 15, TILE = 256
 const BASELINES = [30, 60, 100, 150, 200]
+
+/**
+ * 평지 대조군의 거짓 양성(8% 이상 비율) 문턱. 이 이하인 가장 짧은 기준선을 권장한다.
+ * 🔴 1% 가 아니라 0.5% — 문턱에 붙은 기준선은 원본이 갱신될 때마다 판정이 흔들린다(머리말).
+ */
+export const FLAT_FP_MAX = 0.005
+
+/** 측정표에서 권장 기준선의 행을 고른다. 없으면 null — 어느 기준선도 잡음을 못 죽였다. */
+export function pickBaseline(rows) {
+  return [...rows].sort((a, b) => a.baselineM - b.baselineM)
+    .find(r => r.flatFalsePositive <= FLAT_FP_MAX) ?? null
+}
 
 const FLAT_MAX_M  = 12     // 이 아래는 해안 매립지 = 평지여야 한다
 const HILLY_MIN_M = 60     // 이 위는 산복도로 = 실제로 가파르다
@@ -147,23 +166,24 @@ async function main() {
     console.log(`기준선 ${String(B).padStart(3)}m │ 평지 거짓양성 ${(f.over8 * 100).toFixed(1).padStart(4)}% (p90 ${(f.p90 * 100).toFixed(1)}%)  ‖  산지 8%↑ ${(h.over8 * 100).toFixed(0)}% (중앙 ${(h.p50 * 100).toFixed(1)}%)`)
   }
 
-  // 거짓 양성이 1% 이하이면서 가장 짧은 기준선 = 신호를 가장 덜 뭉갠다
-  const pick = rows.find(r => r.flatFalsePositive <= 0.01)
+  // 거짓 양성이 FLAT_FP_MAX 이하이면서 가장 짧은 기준선 = 신호를 가장 덜 뭉갠다
+  const pick = pickBaseline(rows)
   console.log('')
   if (pick) {
     console.log(`✅ 권장 기준선: ${pick.baselineM}m  (평지 거짓양성 ${(pick.flatFalsePositive * 100).toFixed(1)}%, 산지 신호 ${(pick.hillyOver8 * 100).toFixed(0)}% 유지)`)
   } else {
-    console.log('🔴 어느 기준선에서도 거짓양성이 1% 아래로 안 내려갑니다. DEM 을 바꿔야 합니다.')
+    console.log(`🔴 어느 기준선에서도 거짓양성이 ${FLAT_FP_MAX * 100}% 아래로 안 내려갑니다. DEM 을 바꿔야 합니다.`)
   }
 
   await writeFile(join(OUT, '_calibration.json'), JSON.stringify({
     at: new Date().toISOString(), source, zoom: ZOOM,
     control: { flatMaxM: FLAT_MAX_M, flatWays: flat.length, hillyMinM: HILLY_MIN_M, hillyWays: hilly.length },
     demClean: { tiles: dem.stats.tilesLoaded, repairedPx: dem.stats.repairedPx, bumps: dem.stats.bumps.length, pressedPx: dem.stats.pressedPx },
-    rows, recommendedBaselineM: pick ? pick.baselineM : null,
-    rule: '평지 대조군의 8% 이상 비율(=거짓양성)이 1% 이하인 가장 짧은 기준선을 쓴다',
+    rows, recommendedBaselineM: pick ? pick.baselineM : null, flatFalsePositiveMax: FLAT_FP_MAX,
+    rule: `평지 대조군의 8% 이상 비율(=거짓양성)이 ${FLAT_FP_MAX * 100}% 이하인 가장 짧은 기준선을 쓴다 (문턱에 붙지 않게 여유폭)`,
   }, null, 2))
 
   if (!pick) process.exitCode = 1
 }
-main().catch(e => { console.error('치명:', e); process.exit(1) })
+const runDirectly = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href
+if (runDirectly) main().catch(e => { console.error('치명:', e); process.exit(1) })

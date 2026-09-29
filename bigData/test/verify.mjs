@@ -163,13 +163,16 @@ await t('경사 기준선 보정 불변식', async () => {
     return ok('보정 미실행 — 건너뜀 (npm run calibrate)')
   const c = JSON.parse(await readFile(join(ROOT, 'data/staged/_calibration.json'), 'utf8'))
 
-  // 🔴 어느 기준선에서도 평지 거짓양성이 1% 아래로 안 내려가면 DEM 이 못 쓸 것이다
+  // 🔴 문턱은 보정 스크립트의 상수 하나만 본다 — 두 곳에 숫자를 따로 적으면 한쪽만 고쳐진다
+  const { FLAT_FP_MAX } = await import('../process/calibrate-slope.mjs')
+  const pct = (v) => `${(v * 100).toFixed(1)}%`
+  // 🔴 어느 기준선에서도 평지 거짓양성이 문턱 아래로 안 내려가면 DEM 이 못 쓸 것이다
   if (c.recommendedBaselineM == null)
-    throw new Error('어느 기준선에서도 거짓양성이 1% 아래로 안 내려간다 — DEM 을 교체해야 한다')
+    throw new Error(`어느 기준선에서도 거짓양성이 ${pct(FLAT_FP_MAX)} 아래로 안 내려간다 — DEM 을 교체해야 한다`)
   const row = c.rows.find(r => r.baselineM === c.recommendedBaselineM)
   if (!row) throw new Error('권장 기준선이 측정표에 없다')
-  if (row.flatFalsePositive > 0.01)
-    throw new Error(`권장 기준선 ${row.baselineM}m 의 평지 거짓양성 ${(row.flatFalsePositive*100).toFixed(1)}% — 1% 를 넘는다`)
+  if (row.flatFalsePositive > FLAT_FP_MAX)
+    throw new Error(`권장 기준선 ${row.baselineM}m 의 평지 거짓양성 ${pct(row.flatFalsePositive)} — 문턱 ${pct(FLAT_FP_MAX)} 를 넘는다 (보정을 다시 돌려라)`)
   // 잡음만 죽고 신호도 같이 죽으면 의미가 없다
   if (row.hillyOver8 < 0.2)
     throw new Error(`산지 신호가 ${(row.hillyOver8*100).toFixed(0)}% 로 무너졌다 — 기준선이 너무 길다`)
