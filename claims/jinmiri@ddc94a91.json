@@ -1,0 +1,19 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1852",
+  "intent": "여행 일정 화면 — 도구 한 줄 · 고정 표시 · 오늘 진행 표시",
+  "actor": "agent",
+  "session": "9a4c4f50-ca63-474b-9bba-506f655af575",
+  "since": "2026-09-29T14:01:52.080Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/trips/[id]/itinerary.tsx",
+    "frontend/src/components/LockToggle.tsx",
+    "frontend/src/components/TripActionIcon.tsx",
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/onboarding/ItineraryHint.tsx",
+    "frontend/src/trip/page/TripPageDesktop.tsx",
+    "frontend/src/trip/page/TripPageMobile.tsx",
+    "frontend/src/trip/page/__tests__/resultConfirmAndRisk.test.tsx"
+  ]
+}
