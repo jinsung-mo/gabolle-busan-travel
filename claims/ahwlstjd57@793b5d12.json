@@ -1,0 +1,19 @@
+{
+  "agent": "ahwlstjd57",
+  "task": null,
+  "intent": "휠체어 후속 버그 10건 (경고 심각도·중복·길찾기 실제 도보·계단 회피 예산·일정 조각 저장·p90 경사·유아차 오판·선호 이유·조건 커버리지)",
+  "actor": "agent",
+  "session": "1779d1f5-4d67-48d9-bdc2-5584114280be",
+  "since": "2026-09-29T06:20:54.426Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary",
+    "backend/src/main/java/com/gabolle/backend/place/api",
+    "backend/src/main/java/com/gabolle/backend/place/loader",
+    "backend/src/main/java/com/gabolle/backend/place/service",
+    "backend/src/main/java/com/gabolle/backend/recommendation",
+    "backend/src/main/java/com/gabolle/backend/route",
+    "backend/src/main/resources/db/migration",
+    "backend/src/test"
+  ]
+}
