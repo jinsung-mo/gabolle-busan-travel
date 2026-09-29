@@ -1,10 +1,10 @@
 {
   "agent": "jinmiri",
-  "task": "S15P21E201-1834",
-  "intent": "지도에서 고른 정류장·역(점 표시)으로 지도가 옮겨 가게 + 경로 상세 외부 지도 버튼 정리",
+  "task": "S15P21E201-1837",
+  "intent": "탑승 중 화면 — 남은 정류장·내릴 곳 알림",
   "actor": "agent",
   "session": "4b77fcf6-fb20-4dbd-bb4f-50683e33d1b3",
-  "since": "2026-09-29T07:49:07.260Z",
+  "since": "2026-09-29T08:00:36.047Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/route/adapter/TransitRouteAdapter.java",
@@ -14,14 +14,18 @@
     "frontend/app/field/transit.tsx",
     "frontend/app/route-detail.tsx",
     "frontend/src/field/DestinationPicker.tsx",
+    "frontend/src/field/RidePanel.tsx",
     "frontend/src/field/__tests__/goFromHere.test.ts",
+    "frontend/src/field/__tests__/ride.test.ts",
     "frontend/src/field/__tests__/routeLegs.test.ts",
     "frontend/src/field/goFromHere.ts",
+    "frontend/src/field/ride.ts",
     "frontend/src/field/routeLegs.ts",
     "frontend/src/field/subwayStations.ts",
     "frontend/src/i18n/translations.ts",
     "frontend/src/map/RouteMap.tsx",
     "frontend/src/map/__tests__/pointFocus.test.ts",
-    "frontend/src/map/kakaoMapHtml.ts"
+    "frontend/src/map/kakaoMapHtml.ts",
+    "frontend/src/map/routeDirections.ts"
   ]
 }
