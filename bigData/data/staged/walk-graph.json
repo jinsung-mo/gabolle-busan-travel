@@ -1,43 +1,43 @@
 {
  "step": "process/walk-graph",
  "format": "GBWG v1 — 머리말 참고",
- "builtAt": "2026-09-25",
+ "builtAt": "2026-09-29",
  "inputs": [
   {
    "path": "data/staged/segment-slope.ndjson",
-   "bytes": 15590046,
-   "sha256_16": "e1b7f21de0ad421a"
+   "bytes": 19400037,
+   "sha256_16": "c49f31546e22a4ca"
   },
   {
    "path": "data/raw/pbf/road.ndjson",
-   "bytes": 23105796,
-   "sha256_16": "fabef76d814bab1d"
+   "bytes": 23254729,
+   "sha256_16": "395488a271cc7fcf"
   },
   {
    "path": "data/raw/pbf/walk.ndjson",
-   "bytes": 10589753,
-   "sha256_16": "b199ffb6eff841c2"
+   "bytes": 10645633,
+   "sha256_16": "e96747a9d9d3a3a1"
   },
   {
    "path": "data/raw/pbf/stairs.ndjson",
-   "bytes": 168251,
-   "sha256_16": "f0ce86837ec493f6"
+   "bytes": 170934,
+   "sha256_16": "2c74235684ee0ad7"
   }
  ],
  "output": {
   "path": "data/staged/walk-graph.bin.gz",
-  "bytes": 4940282,
-  "rawBytes": 6574346,
-  "sha256_16": "0deb5ec85b4c3607"
+  "bytes": 4954218,
+  "rawBytes": 6607837,
+  "sha256_16": "9de7271aef6ac9bb"
  },
  "counts": {
-  "nodes": 473756,
-  "ways": 66746,
-  "refs": 579264,
-  "stairs": 724,
-  "withSlope": 51417
+  "nodes": 475919,
+  "ways": 67347,
+  "refs": 582259,
+  "stairs": 738,
+  "withSlope": 41604
  },
- "largestComponentShare": 0.9776,
+ "largestComponentShare": 0.9779,
  "rules": {
   "excludedHighway": [
    "motorway",

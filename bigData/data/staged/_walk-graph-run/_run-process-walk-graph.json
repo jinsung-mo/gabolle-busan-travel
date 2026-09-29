@@ -1,28 +1,28 @@
 {
  "step": "process/walk-graph",
- "at": "2026-09-25T01:56:01.979Z",
- "git": "e961257cee5f9760223c089cc57d4bc50d71072b",
- "node": "v24.14.0",
+ "at": "2026-09-29T06:53:15.507Z",
+ "git": "6ea9e8bc31936bb4e09fa5181df01e468354724d",
+ "node": "v24.18.0",
  "inputs": [
   {
    "path": "data/staged/segment-slope.ndjson",
-   "bytes": 15590046,
-   "sha256_16": "e1b7f21de0ad421a"
+   "bytes": 19400037,
+   "sha256_16": "c49f31546e22a4ca"
   },
   {
    "path": "data/raw/pbf/road.ndjson",
-   "bytes": 23105796,
-   "sha256_16": "fabef76d814bab1d"
+   "bytes": 23254729,
+   "sha256_16": "395488a271cc7fcf"
   },
   {
    "path": "data/raw/pbf/walk.ndjson",
-   "bytes": 10589753,
-   "sha256_16": "b199ffb6eff841c2"
+   "bytes": 10645633,
+   "sha256_16": "e96747a9d9d3a3a1"
   },
   {
    "path": "data/raw/pbf/stairs.ndjson",
-   "bytes": 168251,
-   "sha256_16": "f0ce86837ec493f6"
+   "bytes": 170934,
+   "sha256_16": "2c74235684ee0ad7"
   }
  ],
  "params": {
@@ -39,12 +39,12 @@
   "nodeKey": "위경도 소수 7자리"
  },
  "result": {
-  "nodes": 473756,
-  "ways": 66746,
-  "refs": 579264,
-  "stairs": 724,
-  "withSlope": 51417,
-  "largestComponentShare": 0.9776,
-  "bytes": 4940282
+  "nodes": 475919,
+  "ways": 67347,
+  "refs": 582259,
+  "stairs": 738,
+  "withSlope": 41604,
+  "largestComponentShare": 0.9779,
+  "bytes": 4954218
  }
 }
