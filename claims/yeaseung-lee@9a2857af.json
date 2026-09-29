@@ -1,10 +1,10 @@
 {
   "agent": "yeaseung-lee",
-  "task": "S15P21E201-1839",
-  "intent": "장소 상세 사진 여러 장 넘겨 보기",
+  "task": "S15P21E201-1840",
+  "intent": "장소 상세 사진 여러 장",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-29T10:24:44.836Z",
+  "since": "2026-09-29T10:28:16.292Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/place/api/PlaceDetailResponse.java",
@@ -14,7 +14,9 @@
     "backend/src/main/resources/db/migration/V20260929200000__place_photo_gallery.sql",
     "backend/src/test/java/com/gabolle/backend/place/PlaceDetailAcceptLanguageWiringTest.java",
     "backend/src/test/java/com/gabolle/backend/place/PlaceDetailPhotosTest.java",
+    "backend/src/test/java/com/gabolle/backend/place/PlaceDetailResponseFieldsTest.java",
     "backend/src/test/java/com/gabolle/backend/place/PlaceDetailResponseSerializationTest.java",
+    "backend/src/test/java/com/gabolle/backend/place/PlaceListDetailFieldGapTest.java",
     "frontend/app/__tests__/placePhotoGallery.test.tsx",
     "frontend/app/place/[id].tsx",
     "frontend/src/components/PlacePhotoGallery.tsx",
