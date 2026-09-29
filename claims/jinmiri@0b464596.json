@@ -11,21 +11,12 @@
     "backend/src/main/java/com/gabolle/backend/route/domain/RouteLeg.java",
     "backend/src/main/java/com/gabolle/backend/route/presentation/dto/RouteDirectionsResponse.java",
     "backend/src/test/java/com/gabolle/backend/route/adapter/TransitRouteAdapterStopsTest.java",
-    "frontend/app/field/transit.tsx",
     "frontend/app/route-detail.tsx",
-    "frontend/src/field/DestinationPicker.tsx",
     "frontend/src/field/RidePanel.tsx",
-    "frontend/src/field/__tests__/goFromHere.test.ts",
     "frontend/src/field/__tests__/ride.test.ts",
     "frontend/src/field/__tests__/routeLegs.test.ts",
-    "frontend/src/field/goFromHere.ts",
     "frontend/src/field/ride.ts",
     "frontend/src/field/routeLegs.ts",
-    "frontend/src/field/subwayStations.ts",
-    "frontend/src/i18n/translations.ts",
-    "frontend/src/map/RouteMap.tsx",
-    "frontend/src/map/__tests__/pointFocus.test.ts",
-    "frontend/src/map/kakaoMapHtml.ts",
-    "frontend/src/map/routeDirections.ts"
+    "frontend/src/field/subwayStations.ts"
   ]
 }
