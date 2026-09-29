@@ -29,9 +29,13 @@
 ```json
 { "id": 12345, "topic": "road|walk|stairs", "highway": "residential", "name": "…",
   "length": 87.3, "p90Slope": 0.062, "p50Slope": 0.031, "maxSlope": 0.181,
-  "ascent": 5.4, "descent": 1.2, "stepCount": null, "stepEst": null,
+  "ascent": 5.4, "descent": 1.2, "slopeTooShort": false, "stepCount": null, "stepEst": null,
   "inclineTag": null, "widthTag": null }
 ```
+
+🔴 **60m(기준선 100m × 0.6) 미만인 길은 경사를 모른다.** `p50Slope`·`p90Slope`·`maxSlope`·`ascent`·`descent`
+가 전부 `null` 이고 `slopeTooShort: true` 다. 예전에는 처음·끝 점의 고도 차로 채웠는데, 고도 오차 ±5m 를
+40m 로 나누면 12% 경사가 생긴다. **읽는 쪽은 `null` 을 0(평지)으로 바꾸지 않고 그 구간을 뺀다.**
 
 🔴 **좌표가 없다.** 이 줄만으로는 **어느 장소 옆인지 알 수 없다.** 아래 4절이 이 구멍을 다룬다.
 

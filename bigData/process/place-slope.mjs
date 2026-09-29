@@ -151,7 +151,7 @@ async function main() {
 
   // ── 구간 ───────────────────────────────────────────────────────────
   const segs = []
-  let noCoord = 0
+  let noCoord = 0, slopeUnknown = 0
   {
     const rl = createInterface({ input: createReadStream(SEG), crlfDelay: Infinity })
     for await (const line of rl) {
@@ -159,6 +159,9 @@ async function main() {
       const o = JSON.parse(line)
       if (o.topic === 'stairs') continue // 🔴 계단은 경사가 아니다
       if (o.lat == null || o.lon == null) { noCoord++; continue }
+      // 🔴 경사를 모르는 구간(slope.mjs 가 60m 미만이라 null 로 낸 것)은 뺀다.
+      //    넣으면 가중 백분위가 null 을 0 처럼 정렬해 "평지 길" 로 센다.
+      if (o.p50Slope == null) { slopeUnknown++; continue }
       segs.push(o)
     }
   }
@@ -167,7 +170,7 @@ async function main() {
     process.exitCode = EXIT.INPUT
     return
   }
-  log(`  구간 ${segs.length.toLocaleString()}개 (계단 제외)`)
+  log(`  구간 ${segs.length.toLocaleString()}개 (계단 제외 · 경사 모름 ${slopeUnknown.toLocaleString()}개 제외)`)
 
   // ── 격자 ───────────────────────────────────────────────────────────
   // 🔴 장소마다 전체 구간을 훑으면 2천 x 7만 이다. 격자로 나눠 둔다.
@@ -258,7 +261,7 @@ async function main() {
     step: 'process/place-slope',
     inputs: [SEG, RAW],
     params: { radiusM: RADIUS_M, minLengthM: MIN_LENGTH_M, stat: 'length-weighted p90 of segment p50Slope' },
-    result: { places: places.size, made, tooFew, segments: segs.length, control: { flat, steep } },
+    result: { places: places.size, made, tooFew, segments: segs.length, slopeUnknownSegments: slopeUnknown, control: { flat, steep } },
   })
 
   // ── 불변식 ─────────────────────────────────────────────────────────

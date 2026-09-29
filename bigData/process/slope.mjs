@@ -7,18 +7,31 @@
  *
  * ⚠️ 경사 산출 기준선(baseline) = 100m. 이 값은 실측으로 정했다.
  *
- *    해안 매립지(고도 12m 이하, 실제로는 평지)를 대조군으로 놓고 재보니:
- *      기준선  30m → 평지의 6% 가 "8% 이상 경사" 로 나온다  (전부 거짓)
- *      기준선  60m → 2%
- *      기준선 100m → 0%          ← 거짓 양성이 사라지는 지점
- *    같은 기준선에서 산복도로는 여전히 58% 가 8% 이상으로 남는다.
- *    즉 100m 에서 잡음만 죽고 신호는 산다.
+ *    해안 매립지(고도 12m 이하, 실제로는 평지)를 대조군으로 놓고 재보니 (2026-09-29 실측 —
+ *    Geofabrik 2026-09-29 추출본 · AWS 타일 3,127장 · 청소된 DEM · 평지 10,888개 / 산지 10,277개):
+ *      기준선  30m → 평지의 2.4% 가 "8% 이상 경사" 로 나온다  (전부 거짓) · 산지 8%↑ 65%
+ *      기준선  60m → 0.9%                                              · 산지 8%↑ 63%
+ *      기준선 100m → 0.2%     ← 여유폭 문턱(0.5%) 아래로 처음 내려가는 지점 · 산지 8%↑ 62%
+ *    즉 100m 에서 잡음은 거의 죽고 신호는 산다. 60m 는 옛 문턱(1%)에 겨우 붙어 있어
+ *    원본이 갱신될 때마다 판정이 흔들리므로 고르지 않는다 (calibrate-slope.mjs 의 FLAT_FP_MAX).
+ *
+ *    옛 실측 (그때의 추출본·타일, DEM 청소 전후 기록 불명 — 지우지 않고 남긴다):
+ *      기준선  30m → 6% · 60m → 2% · 100m → 0%, 산복도로 58% 가 8% 이상
  *
  *    이유: 타일 격자는 3.9m 지만 원본은 SRTM ~30m 를 보간한 것이고, 수직 오차가
  *    ±5m 쯤 된다. 30m 기준선에서 5m 오차는 곧 17% 경사다 — 없는 언덕이 생긴다.
  *    5m 국가 DEM 이 오면 process/calibrate-slope.mjs 를 다시 돌려 기준선을 다시 정한다.
  *
  * ⚠️ 대표값은 최댓값이 아니라 p90 이다. 최댓값은 잡음 표본 하나에 끌려간다.
+ *
+ * 🔴 기준선보다 짧은 길은 경사를 **모른다**(null)로 낸다 — slopeTooShort: true.
+ *    창(기준선 길이만큼 떨어진 두 점) 하나도 안 나오는 길, 즉 BASELINE_M × 0.6 = 60m
+ *    미만인 길이다. 예전에는 이런 길을 "처음 점과 끝 점의 고도 차 ÷ 길이" 로 채웠는데,
+ *    그건 5~60m 기준선으로 잰 것이고 위 실측이 말하는 **바로 그 잡음**이다
+ *    (40m 에서 ±5m 오차 = 12% 경사). 보행로는 교차로마다 끊겨서 이런 토막이 많다.
+ *    calibrate-slope.mjs 도 60m 미만 단면에서는 창을 안 만든다 — 보정이 한 번도
+ *    재 본 적 없는 값을 산출물에 넣고 있었던 셈이다.
+ *    🔴 읽는 쪽은 null 을 0(평지)으로 바꾸지 않는다. 모르는 것이다.
  *
  * 🔴 부산 전역은 중구·동구의 241배다. 그래서 전부 스트리밍이다 —
  *    입력도 NDJSON 줄 단위, 출력도 NDJSON, DEM 타일도 필요할 때만 올린다.
@@ -30,7 +43,7 @@ import { createReadStream, existsSync } from 'node:fs'
 import { createInterface } from 'node:readline'
 import { readFile, readdir, writeFile, mkdir, open } from 'node:fs/promises'
 import { join, dirname } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import { createDemReader } from './dem-clean.mjs'
 import { log } from '../lib/log.mjs'
 
@@ -40,8 +53,13 @@ const PBF  = join(ROOT, 'data/raw/pbf')
 const OVP  = join(ROOT, 'data/raw/overpass')
 const OUT  = join(ROOT, 'data/staged')
 const ZOOM = 15, TILE = 256
-const BASELINE_M = 100
+export const BASELINE_M = 100
 const STEP_M = 10
+/** 창 하나가 되려면 두 점이 이만큼은 떨어져야 한다 (m). 이보다 짧은 길은 경사를 모른다. */
+export const MIN_SLOPE_RUN_M = BASELINE_M * 0.6
+
+/** 숫자면 자릿수를 맞추고, null 이면 null 그대로 둔다 — +null.toFixed() 는 터진다. */
+const fix = (v, d) => (v == null ? null : +v.toFixed(d))
 
 const R = 6371000, rad = d => d * Math.PI / 180
 const dist = (a, b) => {
@@ -85,7 +103,7 @@ function elevAt(lat, lon) {
   return q[0]*(1-fx)*(1-fy) + q[1]*fx*(1-fy) + q[2]*(1-fx)*fy + q[3]*fx*fy
 }
 
-function resample(geom) {
+export function resample(geom) {
   const pts = [{ ...geom[0], s: 0 }]
   let acc = 0
   for (let i = 1; i < geom.length; i++) {
@@ -97,6 +115,44 @@ function resample(geom) {
     pts.push({ ...b, s: acc })
   }
   return { pts, length: acc }
+}
+
+/**
+ * 길 하나의 경사 통계. 고도 파일을 안 읽는 순수 함수라 시험에서 바로 부른다.
+ * {@code pts} 는 resample() 의 점(s = 누적 거리 m), {@code elev} 는 점마다 고도(m).
+ *
+ * 🔴 창이 하나도 안 나오면(= 길이가 MIN_SLOPE_RUN_M 미만) 경사·누적 오르내림을 전부 null 로
+ *    내고 slopeTooShort: true 를 단다. 끝점끼리 잰 값으로 채우지 않는다 — 머리말 참고.
+ *    누적 오르내림(ascent/descent)도 같이 비운다. 같은 고도 표본에서 나오고, 10m 간격
+ *    고도 차를 더하는 것이라 ±5m 오차가 오히려 쌓인다. 계단 단수 추정(stepEst)이 이
+ *    값에서 나오므로 짧은 계단의 단수도 모름이 된다 — 없는 계단 수십 단보다 낫다.
+ */
+export function waySlopeStats(pts, elev) {
+  const slopes = []
+  for (let i = 0; i < pts.length; i++) {
+    let j = i
+    while (j < pts.length - 1 && pts[j].s - pts[i].s < BASELINE_M) j++
+    const run = pts[j].s - pts[i].s
+    if (run < MIN_SLOPE_RUN_M) break
+    slopes.push((elev[j] - elev[i]) / run)
+  }
+  if (!slopes.length) {
+    return { slopeTooShort: true, p50Slope: null, p90Slope: null, maxSlope: null, ascent: null, descent: null }
+  }
+
+  const abs = slopes.map(Math.abs).sort((a, b) => a - b)
+  let ascent = 0, descent = 0
+  for (let i = 1; i < elev.length; i++) {
+    const d = elev[i] - elev[i-1]
+    if (d > 0) ascent += d; else descent -= d
+  }
+  return {
+    slopeTooShort: false,
+    p50Slope: abs[Math.floor(abs.length * 0.5)],
+    p90Slope: abs[Math.floor(abs.length * 0.9)],
+    maxSlope: abs.at(-1),
+    ascent, descent,
+  }
 }
 
 /** 입력원을 고른다: PBF 추출본(전역) 이 있으면 그것, 없으면 Overpass(구역). */
@@ -147,6 +203,9 @@ async function main() {
 
   const hist = {}, byClass = {}
   let n = 0, noDem = 0, totalLen = 0, samples = 0, stairsN = 0, stairsSteps = 0
+  // 경사를 잰 길만의 연장 — 분포(%)의 분모다. 짧아서 모르는 길을 분모에 넣으면
+  // "8% 이상 비율" 이 모르는 만큼 낮아 보인다.
+  let measuredLen = 0, tooShortN = 0, tooShortLen = 0, tooShortStairs = 0
   let worstStairs = []
   const t0 = Date.now()
 
@@ -159,37 +218,27 @@ async function main() {
     const elev = pts.map(p => elevAt(p.lat, p.lon))
     if (elev.some(v => v === null)) { noDem++; continue }
 
-    const slopes = []
-    for (let i = 0; i < pts.length; i++) {
-      let j = i
-      while (j < pts.length - 1 && pts[j].s - pts[i].s < BASELINE_M) j++
-      const run = pts[j].s - pts[i].s
-      if (run < BASELINE_M * 0.6) break
-      slopes.push((elev[j] - elev[i]) / run)
-    }
-    if (!slopes.length) slopes.push((elev.at(-1) - elev[0]) / Math.max(length, 1))
-
-    const abs = slopes.map(Math.abs).sort((a, b) => a - b)
-    const maxSlope = abs.at(-1)
-    const p90Slope = abs[Math.floor(abs.length * 0.9)]
-    const p50Slope = abs[Math.floor(abs.length * 0.5)]
-    let ascent = 0, descent = 0
-    for (let i = 1; i < elev.length; i++) {
-      const d = elev[i] - elev[i-1]
-      if (d > 0) ascent += d; else descent -= d
-    }
+    const { slopeTooShort, p50Slope, p90Slope, maxSlope, ascent, descent } = waySlopeStats(pts, elev)
 
     n++; totalLen += length
-    const cls = el.tags?.highway || topic
-    byClass[cls] ??= { len: 0, sum: 0, n: 0 }
-    byClass[cls].len += length; byClass[cls].sum += p50Slope; byClass[cls].n++
+    // 🔴 짧아서 모르는 길은 분포·평균에 넣지 않는다. 넣으면 0 으로 섞이거나(평지로 보임)
+    //    예전처럼 잡음이 섞인다. 대신 몇 개·몇 km 인지 따로 센다.
+    if (slopeTooShort) {
+      tooShortN++; tooShortLen += length
+      if (topic === 'stairs') tooShortStairs++
+    } else {
+      measuredLen += length
+      const cls = el.tags?.highway || topic
+      byClass[cls] ??= { len: 0, sum: 0, n: 0 }
+      byClass[cls].len += length; byClass[cls].sum += p50Slope; byClass[cls].n++
 
-    const bucket = p90Slope >= 0.20 ? '20%+' : p90Slope >= 0.15 ? '15-20%'
-                 : p90Slope >= 0.10 ? '10-15%' : p90Slope >= 0.08 ? '8-10%'
-                 : p90Slope >= 0.04 ? '4-8%' : '0-4%'
-    hist[bucket] = (hist[bucket] || 0) + length
+      const bucket = p90Slope >= 0.20 ? '20%+' : p90Slope >= 0.15 ? '15-20%'
+                   : p90Slope >= 0.10 ? '10-15%' : p90Slope >= 0.08 ? '8-10%'
+                   : p90Slope >= 0.04 ? '4-8%' : '0-4%'
+      hist[bucket] = (hist[bucket] || 0) + length
+    }
 
-    const stepEst = topic === 'stairs' ? Math.round(Math.max(ascent, descent) / 0.17) : null
+    const stepEst = topic === 'stairs' && !slopeTooShort ? Math.round(Math.max(ascent, descent) / 0.17) : null
     if (stepEst) {
       stairsN++; stairsSteps += stepEst
       worstStairs.push({ steps: stepEst, name: el.tags?.name ?? null, len: +length.toFixed(0),
@@ -216,8 +265,10 @@ async function main() {
       id: el.id, topic, highway: el.tags?.highway ?? null, name: el.tags?.name ?? null,
       length: +length.toFixed(1),
       lat: +mid.lat.toFixed(6), lon: +mid.lon.toFixed(6),
-      p90Slope: +p90Slope.toFixed(4), p50Slope: +p50Slope.toFixed(4), maxSlope: +maxSlope.toFixed(4),
-      ascent: +ascent.toFixed(1), descent: +descent.toFixed(1),
+      // 🔴 짧은 길은 null 이다 — 0 이 아니다. fix() 가 null 을 null 로 남긴다.
+      p90Slope: fix(p90Slope, 4), p50Slope: fix(p50Slope, 4), maxSlope: fix(maxSlope, 4),
+      ascent: fix(ascent, 1), descent: fix(descent, 1),
+      slopeTooShort,
       stepCount: el.tags?.step_count ? Number(el.tags.step_count) : null, stepEst,
       inclineTag: el.tags?.incline ?? null, widthTag: el.tags?.width ?? null,
     }) + '\n')
@@ -233,6 +284,11 @@ async function main() {
   await writeFile(join(OUT, '_slope-summary.json'), JSON.stringify({
     at: new Date().toISOString(), source, zoom: ZOOM, baselineM: BASELINE_M, stepM: STEP_M,
     ways: n, samples, totalLengthKm: +(totalLen/1000).toFixed(1),
+    // 🔴 경사를 모르는 길(minSlopeRunM 미만). histogramM · byClass 에는 안 들어 있다.
+    minSlopeRunM: MIN_SLOPE_RUN_M,
+    slopeTooShortWays: tooShortN, slopeTooShortKm: +(tooShortLen/1000).toFixed(1),
+    slopeTooShortStairs: tooShortStairs,
+    measuredLengthKm: +(measuredLen/1000).toFixed(1),
     demMissWays: noDem, tilesLoaded: dem.stats.tilesLoaded, tilesMissing: dem.stats.tilesMissing,
     elapsedSec: +secs.toFixed(2), histogramM: hist,
     stairs: { count: stairsN, estimatedSteps: stairsSteps, worst: worstStairs.slice(0, 30) },
@@ -261,17 +317,23 @@ async function main() {
   log(`DEM 타일 ${dem.stats.tilesLoaded}장 사용, ${dem.stats.tilesMissing}장 없음, 고도 없어 건너뜀 ${noDem.toLocaleString()}개`)
   log(`DEM 청소 — 범위 밖 ${dem.stats.repairedPx.toLocaleString()}px 메움 · 가짜 혹 ${dem.stats.bumps.length}개 (${dem.stats.pressedPx.toLocaleString()}px) 누름`)
 
-  console.log(`\n📐 경사별 연장 — p90, 기준선 ${BASELINE_M}m (전체 ${(totalLen/1000).toFixed(0)} km)`)
+  log(`경사 모름(${MIN_SLOPE_RUN_M}m 미만) ${tooShortN.toLocaleString()}개 / ${(tooShortLen/1000).toFixed(1)} km`
+    + ` (${n ? (tooShortN/n*100).toFixed(1) : 0}% · 계단 ${tooShortStairs.toLocaleString()}개) — 분포에서 뺐다`)
+
+  console.log(`\n📐 경사별 연장 — p90, 기준선 ${BASELINE_M}m (잰 길 ${(measuredLen/1000).toFixed(0)} km / 전체 ${(totalLen/1000).toFixed(0)} km)`)
   for (const k of ['0-4%','4-8%','8-10%','10-15%','15-20%','20%+']) {
     const m = hist[k] || 0
-    console.log(`  ${k.padEnd(7)} ${(m/1000).toFixed(1).padStart(8)} km  ${'█'.repeat(Math.round(m/totalLen*40))}`)
+    console.log(`  ${k.padEnd(7)} ${(m/1000).toFixed(1).padStart(8)} km  ${'█'.repeat(measuredLen ? Math.round(m/measuredLen*40) : 0)}`)
   }
+  console.log(`  모름    ${(tooShortLen/1000).toFixed(1).padStart(8)} km  (${MIN_SLOPE_RUN_M}m 미만 — 위 막대에 안 들어 있다)`)
   const steep = ['8-10%','10-15%','15-20%','20%+'].reduce((a,k)=>a+(hist[k]||0),0)
-  console.log(`\n  🔴 8% 이상 = ${(steep/1000).toFixed(0)} km (${(steep/totalLen*100).toFixed(1)}%)`)
+  console.log(`\n  🔴 8% 이상 = ${(steep/1000).toFixed(0)} km (잰 길의 ${measuredLen ? (steep/measuredLen*100).toFixed(1) : '0.0'}%)`)
   if (stairsN) {
     console.log(`\n🪜 계단 ${stairsN.toLocaleString()}개 · 추정 총 ${stairsSteps.toLocaleString()}단`)
     for (const s of worstStairs.slice(0, 5))
       console.log(`   ${String(s.steps).padStart(4)}단  ${(s.name || '(이름없음)').padEnd(18)} ${s.len}m`)
   }
 }
-main().catch(e => { console.error('치명:', e); process.exit(1) })
+// 시험이 waySlopeStats 만 꺼내 쓸 수 있게, 직접 실행했을 때만 돈다.
+const runDirectly = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href
+if (runDirectly) main().catch(e => { console.error('치명:', e); process.exit(1) })
