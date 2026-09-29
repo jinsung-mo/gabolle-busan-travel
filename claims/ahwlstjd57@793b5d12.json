@@ -7,8 +7,6 @@
   "since": "2026-09-29T06:32:00.887Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/build.gradle",
-    "backend/gradle.lockfile",
     "backend/src/main/java/com/gabolle/backend/itinerary",
     "backend/src/main/java/com/gabolle/backend/place/api",
     "backend/src/main/java/com/gabolle/backend/place/loader",
