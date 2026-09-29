@@ -1,0 +1,12 @@
+{
+  "agent": "kojh0124",
+  "task": "S15P21E201-1829",
+  "intent": "임시 — 실제 채점기를 운영 장소 자료(내려받은 것)에 돌려 할랄·비건 판정을 확인한다. 커밋하지 않고 지운다 (고지혁)",
+  "actor": "agent",
+  "session": "5108534c-fb63-40ba-8b72-5646b675c2f4",
+  "since": "2026-09-29T05:56:22.585Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/TmpProductionDietCheckTest.java"
+  ]
+}
