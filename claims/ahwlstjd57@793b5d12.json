@@ -1,10 +1,10 @@
 {
   "agent": "ahwlstjd57",
   "task": null,
-  "intent": "9/28 jackson-databind 취약점 — 2.21.6·3.1.6 으로 올림 (MR !1855)",
+  "intent": "휠체어 후속 — 여행 조건 얹기·경고 문구·그늘 문구 시험",
   "actor": "agent",
   "session": "1779d1f5-4d67-48d9-bdc2-5584114280be",
-  "since": "2026-09-29T06:32:00.887Z",
+  "since": "2026-09-29T06:39:38.904Z",
   "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary",
@@ -21,6 +21,9 @@
     "frontend/src/map",
     "frontend/src/plan/ConditionsPromptModal.tsx",
     "frontend/src/plan/PlanProvider.tsx",
+    "frontend/src/plan/__tests__/conditionsShadeCopy.test.tsx",
+    "frontend/src/plan/__tests__/savedConditionsFill.test.tsx",
+    "frontend/src/plan/__tests__/warningLabels.test.ts",
     "frontend/src/plan/itinerary.ts",
     "frontend/src/plan/warningLabels.ts",
     "frontend/src/trip/page"
