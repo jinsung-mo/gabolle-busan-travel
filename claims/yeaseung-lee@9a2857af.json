@@ -4,7 +4,7 @@
   "intent": "장소 상세 사진 여러 장 넘겨 보기",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-29T10:24:32.274Z",
+  "since": "2026-09-29T10:24:44.836Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/place/api/PlaceDetailResponse.java",
