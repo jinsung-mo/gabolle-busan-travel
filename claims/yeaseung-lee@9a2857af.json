@@ -1,16 +1,17 @@
 {
   "agent": "yeaseung-lee",
   "task": "S15P21E201-1832",
-  "intent": "Google 장소 사진 대리 조회",
+  "intent": "Google 장소 사진 대리 조회 시험",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-29T06:55:39.284Z",
+  "since": "2026-09-29T06:59:11.122Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/Jenkinsfile",
     "backend/docker-compose.yml",
     "backend/src/main/java/com/gabolle/backend/auth/config/SecurityConfig.java",
     "backend/src/main/java/com/gabolle/backend/place/photo",
-    "backend/src/main/resources/application-dev.properties"
+    "backend/src/main/resources/application-dev.properties",
+    "backend/src/test/java/com/gabolle/backend/place/photo"
   ]
 }
