@@ -7,10 +7,6 @@
   "since": "2026-09-29T07:21:13.507Z",
   "ttlMs": 2700000,
   "paths": [
-    "backend/src/main/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorer.java",
-    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerHalalTest.java",
-    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerTest.java",
-    "backend/src/test/java/com/gabolle/backend/recommendation/adapter/BaselineCandidateScorerVegetarianTest.java",
     "frontend/src/plan/ConditionsPromptModal.tsx",
     "frontend/src/plan/foodConflicts.test.ts",
     "frontend/src/plan/foodConflicts.ts"
