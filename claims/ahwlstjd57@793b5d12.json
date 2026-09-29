@@ -1,0 +1,18 @@
+{
+  "agent": "ahwlstjd57",
+  "task": null,
+  "intent": "!1867 머지 뒤 빠진 경사 범례 중립화 커밋 하나를 front/dev 위로 다시 올림",
+  "actor": "agent",
+  "session": "1779d1f5-4d67-48d9-bdc2-5584114280be",
+  "since": "2026-09-29T08:23:06.474Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/src/i18n/translations.ts",
+    "frontend/src/map/MobilityLayerToggle.tsx",
+    "frontend/src/map/__tests__/mobilityLayerStatus.test.tsx",
+    "frontend/src/plan/__tests__/warningLabels.test.ts",
+    "frontend/src/plan/warningLabels.ts",
+    "frontend/src/trip/page/TripPageDesktop.tsx",
+    "frontend/src/trip/page/TripPageMobile.tsx"
+  ]
+}
