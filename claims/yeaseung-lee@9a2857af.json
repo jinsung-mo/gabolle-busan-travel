@@ -4,7 +4,7 @@
   "intent": "사진 대리 조회 공개 경로 등록",
   "actor": null,
   "session": "0a393031-1777-4a7e-8df0-888aa9d2160c",
-  "since": "2026-09-29T07:00:25.074Z",
+  "since": "2026-09-29T07:01:20.799Z",
   "ttlMs": 1800000,
   "paths": [
     "backend/Jenkinsfile",
@@ -13,6 +13,7 @@
     "backend/src/main/java/com/gabolle/backend/place/photo",
     "backend/src/main/resources/application-dev.properties",
     "backend/src/test/java/com/gabolle/backend/place/photo",
+    "backend/src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java",
     "src/test/java/com/gabolle/backend/security/RouteAuthorizationRegistryTest.java"
   ]
 }
