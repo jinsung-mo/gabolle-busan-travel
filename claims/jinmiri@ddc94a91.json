@@ -1,0 +1,18 @@
+{
+  "agent": "jinmiri",
+  "task": "S15P21E201-1848",
+  "intent": "화면 다듬기 — 피드 글 작성자 사진·수정 공개 범위·로그인/마이페이지 빨강 하나로 (UI 캔버스 ⑩⑱)",
+  "actor": "agent",
+  "session": "9a4c4f50-ca63-474b-9bba-506f655af575",
+  "since": "2026-09-29T12:54:34.299Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "frontend/app/(auth)/oauth-link.tsx",
+    "frontend/app/(auth)/sign-in.tsx",
+    "frontend/app/(tabs)/me.tsx",
+    "frontend/app/feed/[id].tsx",
+    "frontend/src/me/ProfileCard.tsx",
+    "frontend/src/social/stories.ts",
+    "frontend/tools/check-palette.mjs"
+  ]
+}
