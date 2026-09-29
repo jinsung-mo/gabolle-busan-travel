@@ -1,14 +1,16 @@
 {
   "agent": "jaehyeon",
   "task": "S15P21E201-1828",
-  "intent": "식단을 채식 하나로 합친다 — 비건·페스코를 채식 규칙(고기·해산물 제외)으로 처리하고 앱 선택지에서 뺀다(!1851 이어받음)",
+  "intent": "저장된 조건의 비건·페스코를 채식으로 읽어 옛 선택이 안 보이는 칩으로 남지 않게 한다(식단 채식 통합)",
   "actor": "agent",
   "session": "3c03951e-eb48-49ca-813b-cb303395c4a7",
-  "since": "2026-09-29T07:21:13.507Z",
+  "since": "2026-09-29T07:28:57.834Z",
   "ttlMs": 2700000,
   "paths": [
     "frontend/src/plan/ConditionsPromptModal.tsx",
+    "frontend/src/plan/__tests__/travelConditions.test.ts",
     "frontend/src/plan/foodConflicts.test.ts",
-    "frontend/src/plan/foodConflicts.ts"
+    "frontend/src/plan/foodConflicts.ts",
+    "frontend/src/plan/travelConditions.ts"
   ]
 }
