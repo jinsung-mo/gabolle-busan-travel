@@ -1,0 +1,12 @@
+{
+  "agent": "janghyojoon",
+  "task": "S15P21E201-1819",
+  "intent": "9/28 발표 8장면 카프카를 탭바 흐름으로 바꾼 판을 main 행 브랜치에 맞춘다",
+  "actor": null,
+  "session": "051d8f36-f10a-4de1-9bae-8f456db6007d",
+  "since": "2026-09-29T07:15:31.549Z",
+  "ttlMs": 1800000,
+  "paths": [
+    "docs/26.09.28-발표"
+  ]
+}
