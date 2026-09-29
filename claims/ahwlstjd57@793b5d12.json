@@ -1,0 +1,26 @@
+{
+  "agent": "ahwlstjd57",
+  "task": null,
+  "intent": "휠체어·경사·그늘 버그 6건 수정 커밋·MR",
+  "actor": "agent",
+  "session": "1779d1f5-4d67-48d9-bdc2-5584114280be",
+  "since": "2026-09-29T06:12:18.230Z",
+  "ttlMs": 2700000,
+  "paths": [
+    "backend/src/main/java/com/gabolle/backend/itinerary/application",
+    "backend/src/main/java/com/gabolle/backend/recommendation/adapter",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/BlockingConstraintAnalyzer.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/application/CandidateAssembler.java",
+    "backend/src/main/java/com/gabolle/backend/recommendation/config/PreferenceAlignmentWeights.java",
+    "backend/src/main/java/com/gabolle/backend/route",
+    "backend/src/test/java/com/gabolle/backend/itinerary/application/ItineraryLegPlannerStepFreeTest.java",
+    "backend/src/test/java/com/gabolle/backend/recommendation",
+    "backend/src/test/java/com/gabolle/backend/route",
+    "bigData/docs/PLACE-SLOPE.md",
+    "bigData/process",
+    "bigData/test/slope.test.mjs",
+    "bigData/test/walk-graph.test.mjs",
+    "frontend/src/plan/PlanProvider.tsx",
+    "frontend/src/plan/__tests__/mobilityDraftKept.test.tsx"
+  ]
+}
