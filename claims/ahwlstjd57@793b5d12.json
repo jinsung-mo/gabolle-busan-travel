@@ -4,8 +4,8 @@
   "intent": "경사 보정 문턱 0.5% 여유폭 + 경사·보행 그래프·장소 경사 산출물 재생성",
   "actor": "agent",
   "session": "1779d1f5-4d67-48d9-bdc2-5584114280be",
-  "since": "2026-09-29T06:52:31.794Z",
-  "ttlMs": 1800000,
+  "since": "2026-09-29T06:55:27.014Z",
+  "ttlMs": 2700000,
   "paths": [
     "backend/src/main/java/com/gabolle/backend/itinerary",
     "backend/src/main/java/com/gabolle/backend/place/api",
