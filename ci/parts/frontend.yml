@@ -354,5 +354,11 @@ frontend:e2e:
     #    **파트 main 으로 올라가는 문 하나**에만 세운다. 하루에 많아야 몇 번이고,
     #    깨진 핵심 여정이 파트 브랜치를 넘어가는 것을 그 자리에서 막는다.
     - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /(^|\/)(main|func)$/
+    # 🔴 이 잡이 돌리는 시험 파일(frontend/tests/e2e/)을 고치는 MR 도 돈다 (S15P21E201-1902).
+    #
+    #    바로 위와 같은 규칙이다 — 잡의 정의가 바뀌면 그 잡을 돌려 봐야 한다. 시험 파일도 잡의 정의다.
+    #    2026-09-30 에 홈의 여행 조건 창을 일정 물어보기 뒤로 옮긴 MR(S15P21E201-1863)이 이 시험을 깨뜨렸는데,
+    #    이 잡이 일반 MR 에서는 안 돌아 아무도 몰랐고 승격 MR 이 열려서야 드러났다. 그 시험을 고치는 MR 이
+    #    시험을 한 번도 안 돌린 채 초록으로 지나가면 고쳤는지 아닌지를 승격 MR 이 다시 빨개져서야 안다.
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      changes: ['ci/parts/frontend.yml']
+      changes: ['ci/parts/frontend.yml', 'frontend/tests/e2e/**/*']
