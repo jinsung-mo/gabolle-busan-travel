@@ -79,11 +79,16 @@ frontend:dependency-scan:
   script:
     - cd frontend
     - npm ci --cache .npm --prefer-offline
-    - npm audit --audit-level=high
+    # 🔴 S15P21E201-1977 — `npm audit --audit-level=high` 를 그대로 대신한다. 기준(HIGH·CRITICAL
+    #    이면 실패)은 같고, tools/audit-allowlist.json 에 **만료 전**으로 적힌 권고만 뺀다.
+    #    목록 밖의 새 권고, 만료가 지난 권고는 지금처럼 실패한다. 목록에는 고친 판이 없는
+    #    권고만 넣는다(2026-10-05: braces·node-forge — 둘 다 빌드·시험 도구 전용).
+    - node --test tools/__tests__/auditGate.test.mjs
+    - node tools/audit-gate.mjs
   rules:
     # ① 의존성이 실제로 바뀐 MR
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      changes: ['frontend/package.json', 'frontend/package-lock.json']
+      changes: ['frontend/package.json', 'frontend/package-lock.json', 'frontend/tools/audit-gate.mjs', 'frontend/tools/audit-allowlist.json']
     # ② 매일 예약 — 코드가 안 바뀌어도 새로 공개된 취약점을 잡는다
     - if: $CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_KIND == "depscan"
 
