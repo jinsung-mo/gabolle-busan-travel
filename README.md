@@ -71,7 +71,9 @@ SSAFY 15기 자율 프로젝트 · 부울경 E201 · 6인 팀
 
 현지 장소 설문과 별도로, [짝비교 분석 코드](bigData/process/choice-fit.mjs)는 사용자가 두 경로 중 하나를 고른 응답에서 걷는 시간·경사·계단·환승의 가중치를 추정합니다. 원본 응답과 분석 결과 수치는 이 공개 저장소에 없어 README에는 적지 않았습니다.
 
-작업은 [Jira 보드](https://ssafy.atlassian.net/jira/software/c/projects/S15P21E201/boards/15310)에서 이슈로 나눠 추적했습니다. [회의록](https://app.notion.com/p/434b996e22f182abb32881507c548f8a?source=copy_link), [요구사항](https://app.notion.com/p/313ffa9ff7524f75bb29a295653d0b1e?v=49950c1f190347ae8531dcbc8021682e&source=copy_link), [와이어프레임](https://claude.ai/artifact/LUW6tRsDPiozewVLYTxcMw), [API 설계](https://app.notion.com/p/API-3e4240be9cfd80d988a7e1f45146abc2?source=copy_link)도 함께 사용했습니다. 외부 협업 링크는 계정 권한에 따라 열리지 않을 수 있어, 공개 저장소에서 확인할 수 있는 확정 문서는 아래 `docs/gabolle`에 따로 연결했습니다.
+삐용 프로젝트에서 쓰던 Jira 협업 방식을 가볼래에도 맞춰 적용했습니다. [Jira 보드](https://ssafy.atlassian.net/jira/software/c/projects/S15P21E201/boards/15310)의 업무는 Epic·Story·Task로 나눴고, 브랜치와 커밋 메시지에 Jira 키를 넣어 관련 코드를 찾기 쉽게 했습니다. 기능 브랜치는 담당 파트의 개발 브랜치로 올리고, 병합 대상은 자동 검사로 확인했습니다. 규칙은 [CONTRIBUTING.md](CONTRIBUTING.md)에 남겨 두었습니다.
+
+[Notion 회의록](https://app.notion.com/p/434b996e22f182abb32881507c548f8a?source=copy_link)에는 팀 회의와 피드백을, [요구사항 정의서](https://app.notion.com/p/313ffa9ff7524f75bb29a295653d0b1e?v=49950c1f190347ae8531dcbc8021682e&source=copy_link)에는 기능별 구현 상태·담당·구현 위치를 정리했습니다. [API 명세서](https://app.notion.com/p/API-3e4240be9cfd80d988a7e1f45146abc2?source=copy_link)는 당시 백엔드 코드 기준의 공통 헤더·응답 형식과 API 목록을 담고 있어, 현재 동작은 코드와 테스트로 다시 확인해야 합니다. [와이어프레임](https://claude.ai/artifact/LUW6tRsDPiozewVLYTxcMw)도 기획에 사용했습니다. 저장소에서 바로 볼 수 있는 문서는 아래 `docs/gabolle`에 연결했습니다.
 
 ## 담당 역할과 주요 기여
 
