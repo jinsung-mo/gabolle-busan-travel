@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">가볼래 프로젝트 전체 아키텍처</title>
+  <desc id="desc">위쪽에는 Expo 앱과 웹 브라우저에서 Nginx, Spring Boot, PostgreSQL로 이어지는 서비스 요청을 가로로 배치했다. 아래쪽에는 별도로 운영하는 데이터 가공과 개인화 실험 인프라를 나란히 표시했다.</desc>
+  <defs>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#4777D8"/></marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#259A92"/></marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
+      .title { fill: #17253C; font-size: 29px; font-weight: 750; }
+      .subtitle { fill: #607087; font-size: 15px; }
+      .section { fill: #1C3152; font-size: 16px; font-weight: 700; }
+      .card-title { fill: #17253C; font-size: 18px; font-weight: 700; }
+      .card-sub { fill: #52647C; font-size: 13px; }
+      .small { fill: #607087; font-size: 12px; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#FFFFFF"/>
+  <rect x="40" y="31" width="7" height="39" rx="3.5" fill="#4777D8"/>
+  <text class="title" x="62" y="59">GABOLLE 시스템 아키텍처</text>
+  <text class="subtitle" x="62" y="84">온라인 서비스와 오프라인 데이터 작업을 분리해 표시했습니다.</text>
+
+  <rect x="40" y="111" width="1120" height="315" rx="22" fill="#F5F9FF" stroke="#DCE9FA" stroke-width="1.5"/>
+  <rect x="61" y="130" width="115" height="27" rx="13.5" fill="#DCEBFF"/>
+  <text x="79" y="149" fill="#2855A4" font-size="12" font-weight="700">ONLINE SERVICE</text>
+  <text class="section" x="189" y="150">사용자 요청</text>
+
+  <rect x="69" y="181" width="198" height="117" rx="16" fill="#FFFFFF" stroke="#BDD3F6" stroke-width="2"/>
+  <rect x="69" y="181" width="198" height="7" rx="3.5" fill="#5388E7"/>
+  <circle cx="93" cy="213" r="12" fill="#E6F0FF"/><text x="88" y="218" fill="#4777D8" font-size="13" font-weight="700">1</text>
+  <text class="card-title" x="112" y="219">앱 · 웹</text>
+  <text class="card-sub" x="89" y="246">Expo / React Native</text>
+  <text class="card-sub" x="89" y="268">iOS · Android · 브라우저</text>
+
+  <path d="M267 239H319" fill="none" stroke="#4777D8" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+  <text class="small" x="276" y="223">HTTPS</text>
+
+  <rect x="334" y="181" width="180" height="117" rx="16" fill="#FFFFFF" stroke="#BBDCD8" stroke-width="2"/>
+  <rect x="334" y="181" width="180" height="7" rx="3.5" fill="#27A69B"/>
+  <circle cx="358" cy="213" r="12" fill="#E2F6F2"/><text x="353" y="218" fill="#17877F" font-size="13" font-weight="700">2</text>
+  <text class="card-title" x="378" y="219">Nginx</text>
+  <text class="card-sub" x="354" y="246">TLS 종료 · 요청 분기</text>
+  <text class="card-sub" x="354" y="268">웹 화면 / API</text>
+
+  <path d="M514 239H566" fill="none" stroke="#4777D8" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+  <text class="small" x="520" y="223">/api</text>
+
+  <rect x="581" y="181" width="226" height="117" rx="16" fill="#FFFFFF" stroke="#CDBDF3" stroke-width="2"/>
+  <rect x="581" y="181" width="226" height="7" rx="3.5" fill="#8A67D3"/>
+  <circle cx="606" cy="213" r="12" fill="#F0EAFE"/><text x="601" y="218" fill="#7854C2" font-size="13" font-weight="700">3</text>
+  <text class="card-title" x="626" y="219">Spring Boot</text>
+  <text class="card-sub" x="601" y="246">인증 · 여행 · 일정 · 추천</text>
+  <text class="card-sub" x="601" y="268">이벤트 Outbox 저장</text>
+
+  <path d="M807 239H862" fill="none" stroke="#4777D8" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+  <text class="small" x="812" y="223">JPA</text>
+
+  <rect x="877" y="181" width="217" height="117" rx="16" fill="#FFFFFF" stroke="#F0D8AA" stroke-width="2"/>
+  <rect x="877" y="181" width="217" height="7" rx="3.5" fill="#E7A64A"/>
+  <circle cx="902" cy="213" r="12" fill="#FFF2D9"/><text x="897" y="218" fill="#B77920" font-size="13" font-weight="700">4</text>
+  <text class="card-title" x="922" y="219">PostgreSQL</text>
+  <text class="card-sub" x="897" y="246">여행 · 일정 버전</text>
+  <text class="card-sub" x="897" y="268">추천 작업 · Outbox</text>
+
+  <path d="M424 298V318" fill="none" stroke="#259A92" stroke-width="2.5" marker-end="url(#arrow-teal)"/>
+  <path d="M694 298V318" fill="none" stroke="#259A92" stroke-width="2.5" marker-end="url(#arrow-teal)"/>
+  <path d="M789 298V307H985V318" fill="none" stroke="#259A92" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+  <rect x="334" y="333" width="180" height="62" rx="12" fill="#E8F6F4" stroke="#BBDCD8"/>
+  <text x="424" y="359" text-anchor="middle" fill="#176E68" font-size="14" font-weight="700">Expo 웹 빌드</text>
+  <text x="424" y="379" text-anchor="middle" fill="#52756F" font-size="12">정적 파일 제공</text>
+  <rect x="581" y="333" width="226" height="62" rx="12" fill="#F0ECFB" stroke="#D4C9EF"/>
+  <text x="694" y="359" text-anchor="middle" fill="#6D4AB5" font-size="14" font-weight="700">외부 서비스</text>
+  <text x="694" y="379" text-anchor="middle" fill="#71668A" font-size="12">소셜 로그인 · 지도 · 경로</text>
+  <rect x="877" y="333" width="217" height="62" rx="12" fill="#FFF3E1" stroke="#F0D8AA"/>
+  <text x="985" y="359" text-anchor="middle" fill="#AA7121" font-size="14" font-weight="700">사진 저장</text>
+  <text x="985" y="379" text-anchor="middle" fill="#827256" font-size="12">로컬 볼륨 / MinIO</text>
+
+  <rect x="40" y="448" width="538" height="176" rx="22" fill="#F2FBF8" stroke="#CCE9DF" stroke-width="1.5"/>
+  <rect x="61" y="467" width="98" height="27" rx="13.5" fill="#DDF5EA"/>
+  <text x="79" y="486" fill="#248666" font-size="12" font-weight="700">DATA PREP</text>
+  <text class="section" x="172" y="486">별도 데이터 가공</text>
+  <rect x="65" y="519" width="139" height="71" rx="13" fill="#FFFFFF" stroke="#BCE0D0"/>
+  <text x="134" y="549" text-anchor="middle" fill="#1D6455" font-size="14" font-weight="700">관광 · 지형</text>
+  <text x="134" y="569" text-anchor="middle" class="card-sub">교통 자료</text>
+  <path d="M204 554H224" fill="none" stroke="#259A92" stroke-width="2.5" marker-end="url(#arrow-teal)"/>
+  <rect x="239" y="519" width="139" height="71" rx="13" fill="#FFFFFF" stroke="#BCE0D0"/>
+  <text x="308" y="549" text-anchor="middle" fill="#1D6455" font-size="14" font-weight="700">bigData</text>
+  <text x="308" y="569" text-anchor="middle" class="card-sub">수집 · 가공</text>
+  <path d="M378 554H398" fill="none" stroke="#259A92" stroke-width="2.5" marker-end="url(#arrow-teal)"/>
+  <rect x="413" y="519" width="139" height="71" rx="13" fill="#FFFFFF" stroke="#BCE0D0"/>
+  <text x="482" y="549" text-anchor="middle" fill="#1D6455" font-size="14" font-weight="700">장소 특성</text>
+  <text x="482" y="569" text-anchor="middle" class="card-sub">가공 산출물</text>
+
+  <rect x="604" y="448" width="556" height="176" rx="22" fill="#F9F6FF" stroke="#E4D9F4" stroke-width="1.5"/>
+  <rect x="625" y="467" width="115" height="27" rx="13.5" fill="#EDE4FB"/>
+  <text x="643" y="486" fill="#7653BA" font-size="12" font-weight="700">EXPERIMENT</text>
+  <text class="section" x="753" y="486">개인화 실험 인프라</text>
+  <rect x="632" y="519" width="155" height="71" rx="13" fill="#FFFFFF" stroke="#DECFF0"/>
+  <text x="709" y="548" text-anchor="middle" fill="#6F4CB0" font-size="15" font-weight="700">Airflow</text>
+  <text x="709" y="569" text-anchor="middle" class="card-sub">배치 작업</text>
+  <rect x="804" y="519" width="155" height="71" rx="13" fill="#FFFFFF" stroke="#DECFF0"/>
+  <text x="881" y="548" text-anchor="middle" fill="#6F4CB0" font-size="15" font-weight="700">MLflow</text>
+  <text x="881" y="569" text-anchor="middle" class="card-sub">실험 기록</text>
+  <rect x="976" y="519" width="155" height="71" rx="13" fill="#FFFFFF" stroke="#DECFF0"/>
+  <text x="1053" y="548" text-anchor="middle" fill="#6F4CB0" font-size="15" font-weight="700">Redis</text>
+  <text x="1053" y="569" text-anchor="middle" class="card-sub">인프라 구성</text>
+
+  <rect x="40" y="647" width="1120" height="34" rx="10" fill="#F3F6FA"/>
+  <circle cx="61" cy="664" r="5" fill="#4777D8"/>
+  <text x="75" y="669" fill="#52647C" font-size="12">온라인 요청 경로</text>
+  <circle cx="222" cy="664" r="5" fill="#259A92"/>
+  <text x="236" y="669" fill="#52647C" font-size="12">부가 서비스 · 데이터 가공</text>
+  <text x="520" y="669" fill="#52647C" font-size="12">GitLab · Jenkins로 웹과 백엔드 배포</text>
+  <text x="1139" y="669" text-anchor="end" fill="#8090A3" font-size="11">검증되지 않은 연결은 생략</text>
+</svg>

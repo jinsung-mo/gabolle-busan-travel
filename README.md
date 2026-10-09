@@ -50,10 +50,18 @@ SSAFY 15기 자율 프로젝트 · 부울경 E201 · 6인 팀
 | 앱 | Expo · React Native · TypeScript · Expo Router |
 | 서버 | Spring Boot · Java 17 · Spring Security |
 | 저장소 | PostgreSQL · Spring Data JPA · Flyway |
-| 데이터·추천 | Python · 장소/이동 데이터 가공 · 일정 추천 |
+| 데이터·추천 | Node.js·Python 데이터 가공 · Spring 추천 로직 |
 | 운영 | Docker Compose · Jenkins · Nginx |
 
-앱 코드는 `frontend/`, 서버 코드는 `backend/`, 장소·교통·지형 데이터 작업은 `bigData/`에 있습니다. 서버는 여행 조건과 장소·일정 데이터를 관리하고, 추천 영역은 후보 선택과 동선 계산을 맡습니다. 기능별 실제 구현과 실행 조건은 각 폴더의 README를 확인해 주세요.
+앱 코드는 `frontend/`, 서버 코드는 `backend/`, 장소·교통·지형 데이터 작업은 `bigData/`에 있습니다. 추천 후보 선정과 순위 계산은 현재 저장소의 Spring 서버 안에 있습니다. 기능별 실제 구현과 실행 조건은 각 폴더의 README를 확인해 주세요.
+
+### 전체 아키텍처
+
+![앱과 웹에서 Nginx, Spring Boot, PostgreSQL로 이어지는 온라인 서비스와 별도로 배치한 데이터 가공·개인화 실험 인프라](docs/architecture/system-overview.svg)
+
+위쪽은 사용자 요청이 지나는 경로, 아래쪽은 따로 운영하는 데이터 가공과 개인화 실험 환경입니다. PostgreSQL의 Outbox는 업무 데이터와 함께 이벤트를 먼저 저장하는 테이블입니다. 현재 공개 코드의 이벤트 발행 구현은 `NoOpEventPublisher`라 Kafka까지 이어진 운영 경로로 그리지 않았습니다. `bigData`의 산출물이 DB에 적재되는 자동 경로와 개인화 인프라가 온라인 추천에 연결되는 경로도 이 브랜치에서 확인하지 못해 화살표를 잇지 않았습니다. Python 경로 최적화 스크립트는 저장소에 있지만, 실제 추천 요청에서 호출되는 연결은 확인되지 않았습니다.
+
+[웹 배포 설정](frontend/Jenkinsfile) · [서버 배포 설정](backend/Jenkinsfile) · [추천 서비스](backend/src/main/java/com/gabolle/backend/recommendation/application/RecommendationService.java) · [데이터 수집](bigData/collect/) · [데이터 가공](bigData/process/) · [개인화 인프라](infra/personalization/compose.yaml)
 
 ### 여행 생성 API가 중복 요청을 처리하는 방식
 
