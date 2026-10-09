@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "가볼래 여행 생성 API와 중복 요청 처리",
+    "output": "docs/architecture/trip-create.html",
+    "quality_profile": "showcase",
+    "column_fit": "spread",
+    "viewBox": [1080, 640],
+    "repository": {
+      "url": "https://lab.ssafy.com/s15-bigdata-dist-sub1/S15P21E201.git",
+      "link_mode": "local-only",
+      "revision": "a9aa97d6ad053c908598d102ba951cfc058dd6c2"
+    }
+  },
+  "participants": [
+    { "id": "app", "type": "frontend", "label": "여행 앱", "sublabel": "요청 키 생성", "sources": [{ "path": "frontend/src/api/tripApi.ts", "line": 181, "end_line": 201 }] },
+    { "id": "controller", "type": "backend", "label": "TripController", "sublabel": "HTTP 응답", "sources": [{ "path": "backend/src/main/java/com/gabolle/backend/trip/presentation/TripController.java", "line": 64, "end_line": 81 }] },
+    { "id": "service", "type": "backend", "label": "TripCreationService", "sublabel": "여행 조건·지문", "sources": [{ "path": "backend/src/main/java/com/gabolle/backend/trip/application/TripCreationService.java", "line": 162, "end_line": 194 }] },
+    { "id": "repository", "type": "backend", "label": "JpaTripRepository", "sublabel": "키 확보·조회", "sources": [{ "path": "backend/src/main/java/com/gabolle/backend/trip/infra/JpaTripRepository.java", "line": 267, "end_line": 309 }] },
+    { "id": "postgres", "type": "database", "label": "PostgreSQL", "sublabel": "trip_idempotency", "sources": [{ "path": "backend/src/main/resources/db/migration/V20260904030000__trip_member_and_idempotency.sql", "line": 41, "end_line": 50 }] }
+  ],
+  "segments": [
+    { "from": 160, "to": 306, "label": "최초 요청" },
+    { "from": 336, "to": 535, "label": "같은 키로 재요청" }
+  ],
+  "messages": [
+    { "id": "create", "from": "app", "to": "controller", "y": 170, "label": "POST /api/v1/trips + Idempotency-Key", "variant": "emphasis" },
+    { "id": "delegate", "from": "controller", "to": "service", "y": 198, "label": "생성 요청", "variant": "default" },
+    { "id": "save", "from": "service", "to": "repository", "y": 226, "label": "본문 지문과 함께 저장", "variant": "default" },
+    { "id": "insert", "from": "repository", "to": "postgres", "y": 254, "label": "키 INSERT, 충돌 시 건너뜀", "variant": "emphasis" },
+    { "id": "inserted", "from": "postgres", "to": "repository", "y": 282, "label": "삽입 1건", "variant": "return" },
+    { "id": "created", "from": "controller", "to": "app", "y": 305, "label": "201 새 여행", "variant": "return" },
+    { "id": "retry", "from": "app", "to": "controller", "y": 340, "label": "같은 키로 재요청", "variant": "emphasis" },
+    { "id": "retry-delegate", "from": "controller", "to": "service", "y": 368, "label": "생성 요청", "variant": "default" },
+    { "id": "retry-save", "from": "service", "to": "repository", "y": 396, "label": "동일 키 확보 시도", "variant": "default" },
+    { "id": "conflict", "from": "repository", "to": "postgres", "y": 424, "label": "ON CONFLICT DO NOTHING", "variant": "emphasis" },
+    { "id": "existing", "from": "postgres", "to": "repository", "y": 452, "label": "삽입 0건 · 기존 지문 조회", "variant": "return" },
+    { "id": "replayed", "from": "repository", "to": "controller", "y": 480, "label": "지문 같으면 기존 여행", "variant": "return" },
+    { "id": "ok", "from": "controller", "to": "app", "y": 508, "label": "200 기존 여행", "variant": "return" }
+  ],
+  "cards": [
+    { "dot": "amber", "title": "같은 키, 다른 본문", "items": ["기존 지문과 다르면 409 충돌로 처리", "요청 키가 없으면 중복 방지를 적용하지 않음"] },
+    { "dot": "cyan", "title": "그림의 범위", "items": ["여행 조건 저장 API만 표시", "추천 일정 계산은 별도 recommendation-jobs 요청"] }
+  ]
+}

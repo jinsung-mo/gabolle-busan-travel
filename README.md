@@ -55,6 +55,24 @@ SSAFY 15기 자율 프로젝트 · 부울경 E201 · 6인 팀
 
 앱 코드는 `frontend/`, 서버 코드는 `backend/`, 장소·교통·지형 데이터 작업은 `bigData/`에 있습니다. 서버는 여행 조건과 장소·일정 데이터를 관리하고, 추천 영역은 후보 선택과 동선 계산을 맡습니다. 기능별 실제 구현과 실행 조건은 각 폴더의 README를 확인해 주세요.
 
+### 여행 생성 API가 중복 요청을 처리하는 방식
+
+삐용 프로젝트에서 썼던 [Archify](https://github.com/tt-a1i/archify)로 여행 생성 API의 호출 순서를 그렸습니다. 앱이 같은 요청에 동일한 `Idempotency-Key`(재요청을 알아보는 키)를 붙여 보내면, 서버는 PostgreSQL에서 키를 먼저 확보합니다. 새 키일 때는 여행·소유자·제약·취향 스냅샷을 같은 트랜잭션에 저장하고 `201`(새로 생성됨)을 반환합니다. 이미 사용한 키라면 요청 내용의 지문을 비교해, 내용이 같을 때 기존 여행을 `200`(성공)으로 돌려주고 다를 때는 `409`(충돌)로 거절합니다. **여행 생성과 추천 일정 계산은 별도 API**입니다.
+
+<a href="docs/architecture/trip-create.html"><img src="docs/architecture/trip-create.png" alt="여행 앱, TripController, TripCreationService, JpaTripRepository, PostgreSQL 사이의 생성·재요청 흐름" width="860" /></a>
+
+[Archify 다이어그램 HTML](docs/architecture/trip-create.html)은 내려받아 브라우저에서 열 수 있습니다. [다이어그램 원본 JSON](docs/architecture/trip-create.sequence.json)과 [앱 요청 코드](frontend/src/api/tripApi.ts), [여행 생성 API](backend/src/main/java/com/gabolle/backend/trip/presentation/TripController.java), [DB 저장 코드](backend/src/main/java/com/gabolle/backend/trip/infra/JpaTripRepository.java)를 함께 남겼습니다.
+
+## 현지 데이터 수집과 협업
+
+장소 정보는 관광지 목록만으로 채우기 어려웠습니다. 팀은 장소를 방문하기 좋은 시간처럼 현지에서 알 수 있는 정보를 모으기 위해 [현지인 설문](https://j15e201.p.ssafy.io/survey/)을 진행했습니다. 장소 상세 화면의 `좋은 때` 항목은 낮·밤·언제든 응답을 집계하고, 표가 없으면 표시하지 않습니다. 이 링크는 **진행 당시 설문 주소이며 현재는 404**입니다. [화면의 집계 코드](frontend/src/place/detailExtras.ts)
+
+장소 정보가 없다는 이유로 안전하다고 판정하지 않는 것도 중요했습니다. [팀 상세설계서](docs/gabolle/GABOLLE_기능_화면_상세설계서.md)는 제약을 `PASS / FAIL / UNKNOWN`(충족·위반·확인 필요)으로 나누고, 확인되지 않은 조건은 경고로 남기도록 정했습니다. 추천은 제약 판정 뒤 개인화 순위, 다양성 조정, 동선 계산으로 이어지는 구조입니다. 이 내용은 **설계 범위**이며, 시연 화면만으로 모든 단계의 운영 여부를 확인했다는 뜻은 아닙니다.
+
+현지 장소 설문과 별도로, [짝비교 분석 코드](bigData/process/choice-fit.mjs)는 사용자가 두 경로 중 하나를 고른 응답에서 걷는 시간·경사·계단·환승의 가중치를 추정합니다. 원본 응답과 분석 결과 수치는 이 공개 저장소에 없어 README에는 적지 않았습니다.
+
+작업은 [Jira 보드](https://ssafy.atlassian.net/jira/software/c/projects/S15P21E201/boards/15310)에서 이슈로 나눠 추적했습니다. [회의록](https://app.notion.com/p/434b996e22f182abb32881507c548f8a?source=copy_link), [요구사항](https://app.notion.com/p/313ffa9ff7524f75bb29a295653d0b1e?v=49950c1f190347ae8531dcbc8021682e&source=copy_link), [와이어프레임](https://claude.ai/artifact/LUW6tRsDPiozewVLYTxcMw), [API 설계](https://app.notion.com/p/API-3e4240be9cfd80d988a7e1f45146abc2?source=copy_link)도 함께 사용했습니다. 외부 협업 링크는 계정 권한에 따라 열리지 않을 수 있어, 공개 저장소에서 확인할 수 있는 확정 문서는 아래 `docs/gabolle`에 따로 연결했습니다.
+
 ## 담당 역할과 주요 기여
 
 저는 6인 팀에서 여행·일정 기능의 백엔드 개발, PostgreSQL 저장·검증, AI 여행 도우미 서버 기능을 맡았습니다. 화면과 추천 기능은 팀원들이 함께 개발했습니다.
